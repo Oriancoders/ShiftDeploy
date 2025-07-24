@@ -40,15 +40,20 @@ const Hero = () => {
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight"
             >
               <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
-                Transform Your
+                Launch Products 
+                {/* From Shift
+                To Deploy
+                Zero Stress */}
+
               </span>
               <br />
-              <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                Digital Vision
+              <span className="bg-gradient-to-r from-secondaryBlue to-toSecBlue bg-clip-text text-transparent">
+                That Perform
+
               </span>
               <br />
               <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
-                Into Reality
+                Under Pressure
               </span>
             </motion.h1>
 
@@ -56,9 +61,8 @@ const Hero = () => {
               variants={fadeInUp}
               className="text-sm sm:text-base md:text-sm xl:text-lg text-gray-600 mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto lg:mx-0 leading-relaxed px-4 sm:px-0"
             >
-              ShiftDeploy empowers businesses with cutting-edge web development, cloud solutions,
-              DevOps excellence, and seamless deployment strategies that drive growth and maximize
-              your digital presence.
+              “Empowering businesses with web development, cloud solutions & DevOps to drive your digital growth.”
+
             </motion.p>
 
             <motion.div
@@ -70,7 +74,7 @@ const Hero = () => {
 
                 text="Launch Your Project"
                 icon={<ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />}
-                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center space-x-2 text-sm transition-all duration-500"
+                className="bg-gradient-to-r from-primaryOrange to-[#D83A21] text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center space-x-2 text-sm transition-all duration-500"
                 gradientFrom="#0C1F3A"
                 gradientTo="#0B1D30"
                 circleSize={100}
@@ -120,7 +124,7 @@ const Hero = () => {
                         stiffness: 300,
                         damping: 15,
                       }}
-                      
+
                       className={`w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 bg-gradient-to-br ${stat.color} rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg`}>
                       <stat.icon className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 text-white" />
                     </motion.div>
