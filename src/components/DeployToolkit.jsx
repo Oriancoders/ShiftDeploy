@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Wrench, Zap, Shield, Globe, Server, Database, ArrowRight } from 'lucide-react';
 import { fadeInUp, staggerContainer, scaleOnHover } from '../utils/animations';
+import CursorFollower from '../utils/CursorFollower';
 
 const DeployToolkit = () => {
   const ref = useRef(null);
@@ -83,7 +84,7 @@ const DeployToolkit = () => {
             variants={fadeInUp}
             className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0"
           >
-            Our comprehensive Deploy Toolkit includes everything you need to build, 
+            Our comprehensive Deploy Toolkit includes everything you need to build,
             deploy, and scale modern applications with confidence.
           </motion.p>
           <motion.div
@@ -110,7 +111,7 @@ const DeployToolkit = () => {
               </div>
               <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 lg:mb-4 text-center sm:text-left">{tool.title}</h3>
               <p className="text-gray-600 mb-3 sm:mb-4 lg:mb-6 leading-relaxed text-center sm:text-left text-sm sm:text-base">{tool.description}</p>
-              
+
               <div className="space-y-1.5 sm:space-y-2 lg:space-y-3">
                 <div className="flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3">
                   <div className="w-2 sm:w-2.5 lg:w-3 h-2 sm:h-2.5 lg:h-3 bg-red-400 rounded-full flex-shrink-0" />
@@ -130,37 +131,55 @@ const DeployToolkit = () => {
         </div>
 
         {/* Problem-solving CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="bg-gradient-to-r from-orange-50 to-blue-50 border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 text-center shadow-xl"
+        <CursorFollower
+          framerAtts={{
+            initial: { opacity: 0, y: 60 },
+            animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 },
+            transition: { duration: 0.8, delay: 0.6 }
+
+          }}
+          gradientFrom='rgba(67, 97, 238, 0.2)'
+          gradientTo='rgba(67, 97, 238, 0.1)'
+          circleSize={200}
+          className="w-full bg-gradient-to-r from-orange-50 to-blue-50 border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 text-center shadow-xl flex flex-col justify-center items-center"
         >
           <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 lg:mb-8">
             Facing Technical Challenges?
           </h3>
           <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-gray-600 mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
-            Our Deploy Toolkit is designed to solve the most common problems businesses face 
+            Our Deploy Toolkit is designed to solve the most common problems businesses face
             when building and scaling digital products. Let us help you overcome technical barriers.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center">
-            <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg shadow-xl hover:shadow-2xl transition-all duration-300"
-            >
-              <span>Schedule Consultation</span>
-              <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
+          <div className="w-fit flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 items-center justify-center">
+            <CursorFollower
+              text="Schedule Consultation"
+              icon={<ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />}
+              className=" bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 sm:px-8 lg:px-10 xl:px-12 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg mx-auto shadow-xl hover:shadow-2xl transition-all duration-300"
+              gradientFrom="#0C1F3A"
+              gradientTo="#0B1D30"
+              circleSize={100}
+              framerAtts={{
+                whileHover: { scale: 1.05, y: -2 },
+                whileTap: { scale: 0.95 }
+              }}
+            />
+            <CursorFollower
+              text="Schedule Consultation"
+              
               className="bg-white border-2 border-blue-200 text-blue-600 px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base lg:text-lg"
-            >
-              View Case Studies
-            </motion.button>
+              gradientFrom="#2563eb"
+              gradientTo="#93c5fd"
+              hoverColor={""}
+              circleSize={100}
+              framerAtts={{
+                whileHover: { scale: 1.05, y: -2 },
+                whileTap: { scale: 0.95 }
+              }}
+            />
+
+
           </div>
-        </motion.div>
+        </CursorFollower>
       </div>
     </section>
   );

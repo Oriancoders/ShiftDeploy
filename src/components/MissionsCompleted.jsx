@@ -72,7 +72,7 @@ const MissionsCompleted = () => {
             variants={fadeInUp}
             className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0"
           >
-            Explore our portfolio of successful projects and see how we've helped 
+            Explore our portfolio of successful projects and see how we've helped
             businesses transform their digital presence.
           </motion.p>
           <motion.div
@@ -96,9 +96,19 @@ const MissionsCompleted = () => {
               variants={fadeInUp}
               className="text-center"
             >
-              <div className={`w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 bg-gradient-to-br ${stat.gradient} rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-lg`}>
+              <motion.div
+                whileHover={{
+                  y: -7,
+                  rotateZ: -15,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 15,
+                }}
+                className={`w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 bg-gradient-to-br ${stat.gradient} rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-lg`}>
                 <stat.icon className="w-6 sm:w-8 lg:w-10 h-6 sm:h-8 lg:h-10 text-white" />
-              </div>
+              </motion.div>
               <div className="text-lg sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-1 sm:mb-2">{stat.value}</div>
               <div className="text-gray-600 font-medium text-xs sm:text-sm lg:text-base">{stat.label}</div>
             </motion.div>
@@ -128,12 +138,12 @@ const MissionsCompleted = () => {
                     {project.category}
                   </div>
                 </div>
-                
+
                 <div className="p-4 sm:p-6 lg:p-8 xl:p-10 order-1 lg:order-2">
                   <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 mb-1 sm:mb-2 lg:mb-3">{project.title}</h3>
                   <p className="text-blue-600 font-semibold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">{project.client}</p>
                   <p className="text-gray-600 mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed">{project.description}</p>
-                  
+
                   <div className="space-y-3 sm:space-y-4 lg:space-y-6 mb-4 sm:mb-6 lg:mb-8">
                     <div>
                       <h4 className="text-gray-900 font-bold mb-2 sm:mb-3 lg:mb-4 text-sm sm:text-base lg:text-lg">Key Results:</h4>
@@ -146,7 +156,7 @@ const MissionsCompleted = () => {
                         ))}
                       </ul>
                     </div>
-                    
+
                     <div>
                       <h4 className="text-gray-900 font-bold mb-2 sm:mb-3 lg:mb-4 text-sm sm:text-base lg:text-lg">Technologies:</h4>
                       <div className="flex flex-wrap gap-1.5 sm:gap-2 lg:gap-3">
@@ -161,7 +171,7 @@ const MissionsCompleted = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 lg:space-x-4">
                     <motion.button
                       whileHover={{ scale: 1.05, y: -2 }}

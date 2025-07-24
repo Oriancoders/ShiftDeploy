@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Zap, Shield, Rocket, Play } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
+import CursorFollower from '../utils/CursorFollower';
 
 const Hero = () => {
   return (
@@ -20,17 +21,19 @@ const Hero = () => {
             animate="animate"
             className="text-center lg:text-left"
           >
-            <motion.div
-              variants={fadeInUp}
-              className="flex items-center justify-center lg:justify-start space-x-2 sm:space-x-3 mb-4 sm:mb-6 lg:mb-8"
-            >
-              <div className="w-8 sm:w-10 lg:w-12 xl:w-14 h-8 sm:h-10 lg:h-12 xl:h-14 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-lg">
-                <Rocket className="w-4 sm:w-5 lg:w-6 xl:w-7 h-4 sm:h-5 lg:h-6 xl:h-7 text-white" />
-              </div>
-              <div className="bg-gradient-to-r from-blue-100 to-orange-100 px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 rounded-full">
-                <span className="text-gray-700 font-semibold text-xs sm:text-sm lg:text-base">Deploy. Scale. Succeed.</span>
-              </div>
-            </motion.div>
+
+
+            <CursorFollower
+
+              text="Deploy -> Scale -> Succeed."
+              className="bg-gradient-to-r from-secondaryBlue to-blue-700 px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 mb-6 rounded-full"
+              textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base'
+              gradientFrom="#0C1F3A"
+              gradientTo="#0B1D30"
+              circleSize={100}
+
+            />
+
 
             <motion.h1
               variants={fadeInUp}
@@ -40,7 +43,7 @@ const Hero = () => {
                 Transform Your
               </span>
               <br />
-              <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
                 Digital Vision
               </span>
               <br />
@@ -51,10 +54,10 @@ const Hero = () => {
 
             <motion.p
               variants={fadeInUp}
-              className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto lg:mx-0 leading-relaxed px-4 sm:px-0"
+              className="text-sm sm:text-base md:text-sm xl:text-lg text-gray-600 mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto lg:mx-0 leading-relaxed px-4 sm:px-0"
             >
-              ShiftDeploy empowers businesses with cutting-edge web development, cloud solutions, 
-              DevOps excellence, and seamless deployment strategies that drive growth and maximize 
+              ShiftDeploy empowers businesses with cutting-edge web development, cloud solutions,
+              DevOps excellence, and seamless deployment strategies that drive growth and maximize
               your digital presence.
             </motion.p>
 
@@ -62,23 +65,32 @@ const Hero = () => {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center lg:justify-start mb-8 sm:mb-10 lg:mb-12 xl:mb-16 px-4 sm:px-0"
             >
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg shadow-xl hover:shadow-2xl transition-all duration-300"
-              >
-                <span>Launch Your Project</span>
-                <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
-              </motion.button>
+
+              <CursorFollower
+
+                text="Launch Your Project"
+                icon={<ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />}
+                className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center space-x-2 text-sm transition-all duration-500"
+                gradientFrom="#0C1F3A"
+                gradientTo="#0B1D30"
+                circleSize={100}
+                framerAtts={{
+                  whileHover: { scale: 1.05, y: -2 },
+                  whileTap: { scale: 0.95 }
+                }}
+              />
 
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white border-2 border-blue-200 text-blue-600 px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg"
+                className="bg-white border-2 border-blue-200 text-primaryBlue px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold hover:bg-blue-50 hover:border-toBlue transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg"
               >
                 <Play className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
                 <span>View Demo</span>
+
               </motion.button>
+
+
             </motion.div>
 
             {/* Stats */}
@@ -89,17 +101,29 @@ const Hero = () => {
               {[
                 { icon: Zap, number: "500+", label: "Projects Deployed", color: "from-yellow-500 to-orange-500" },
                 { icon: Shield, number: "99.9%", label: "Uptime Guarantee", color: "from-green-500 to-emerald-500" },
-                { icon: Rocket, number: "24/7", label: "Support Available", color: "from-blue-500 to-indigo-500" }
+                { icon: Rocket, number: "24/7", label: "Support Available", color: "from-primaryBlue to-toBlue" }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
                   variants={fadeInUp}
+
                   className="text-center lg:text-left"
                 >
                   <div className="flex justify-center lg:justify-start mb-2 sm:mb-3">
-                    <div className={`w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 bg-gradient-to-br ${stat.color} rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg`}>
+                    <motion.div
+                      whileHover={{
+                        y: -7,
+                        rotateZ: -15,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 15,
+                      }}
+                      
+                      className={`w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 bg-gradient-to-br ${stat.color} rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg`}>
                       <stat.icon className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 text-white" />
-                    </div>
+                    </motion.div>
                   </div>
                   <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1">{stat.number}</div>
                   <div className="text-xs sm:text-sm font-medium text-gray-600">{stat.label}</div>
@@ -118,20 +142,20 @@ const Hero = () => {
             <div className="relative">
               {/* Main card */}
               <motion.div
-                animate={{ 
+                animate={{
                   rotateY: [0, 5, 0],
                   rotateX: [0, 2, 0]
                 }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
                 }}
                 className="bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 xl:p-10 shadow-2xl"
               >
                 <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6 lg:mb-8">
                   <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-4 lg:p-6 backdrop-blur-sm">
-                    <div className="w-full h-1.5 sm:h-2 lg:h-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mb-1.5 sm:mb-2 lg:mb-3" />
+                    <div className="w-full h-1.5 sm:h-2 lg:h-3 bg-gradient-to-r from-primaryBlue to-toBlue rounded-full mb-1.5 sm:mb-2 lg:mb-3" />
                     <div className="w-3/4 h-1.5 sm:h-2 lg:h-3 bg-gray-300 rounded-full" />
                   </div>
                   <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-4 lg:p-6 backdrop-blur-sm">
@@ -139,10 +163,10 @@ const Hero = () => {
                     <div className="w-2/3 h-1.5 sm:h-2 lg:h-3 bg-gray-300 rounded-full" />
                   </div>
                 </div>
-                
+
                 <div className="space-y-2 sm:space-y-3 lg:space-y-4">
                   <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
-                    <div className="w-2 sm:w-3 lg:w-4 h-2 sm:h-3 lg:h-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full shadow-sm" />
+                    <div className="w-2 sm:w-3 lg:w-4 h-2 sm:h-3 lg:h-4 bg-gradient-to-br from-primaryBlue to-toBlue rounded-full shadow-sm" />
                     <div className="flex-1 h-1.5 sm:h-2 lg:h-3 bg-gray-200 rounded-full" />
                   </div>
                   <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
@@ -158,14 +182,14 @@ const Hero = () => {
 
               {/* Floating elements */}
               <motion.div
-                animate={{ 
+                animate={{
                   y: [-10, 10, -10],
                   rotate: [0, 5, 0]
                 }}
-                transition={{ 
-                  duration: 3, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
                 }}
                 className="absolute -top-3 sm:-top-4 lg:-top-6 xl:-top-8 -right-3 sm:-right-4 lg:-right-6 xl:-right-8 w-8 sm:w-10 lg:w-14 xl:w-16 h-8 sm:h-10 lg:h-14 xl:h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-xl"
               >
@@ -173,17 +197,17 @@ const Hero = () => {
               </motion.div>
 
               <motion.div
-                animate={{ 
+                animate={{
                   y: [10, -10, 10],
                   rotate: [0, -5, 0]
                 }}
-                transition={{ 
-                  duration: 3, 
-                  repeat: Infinity, 
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
                   ease: "easeInOut",
                   delay: 1.5
                 }}
-                className="absolute -bottom-3 sm:-bottom-4 lg:-bottom-6 xl:-bottom-8 -left-3 sm:-left-4 lg:-left-6 xl:-left-8 w-8 sm:w-10 lg:w-14 xl:w-16 h-8 sm:h-10 lg:h-14 xl:h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-xl"
+                className="absolute -bottom-3 sm:-bottom-4 lg:-bottom-6 xl:-bottom-8 -left-3 sm:-left-4 lg:-left-6 xl:-left-8 w-8 sm:w-10 lg:w-14 xl:w-16 h-8 sm:h-10 lg:h-14 xl:h-16 bg-gradient-to-br from-primaryBlue to-toBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-xl"
               >
                 <Shield className="w-4 sm:w-5 lg:w-7 xl:w-8 h-4 sm:h-5 lg:h-7 xl:h-8 text-white" />
               </motion.div>

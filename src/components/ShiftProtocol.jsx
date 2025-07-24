@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Search, BarChart3, Lightbulb, CheckCircle, Rocket, ArrowRight } from 'lucide-react';
 import { fadeInUp, staggerContainer, scaleOnHover } from '../utils/animations';
+import CursorFollower from '../utils/CursorFollower';
 
 const ShiftProtocol = () => {
   const ref = useRef(null);
@@ -86,7 +87,7 @@ const ShiftProtocol = () => {
           {/* Connection line */}
           <div className="absolute top-1/2 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-blue-200 via-orange-200 to-blue-200 transform -translate-y-1/2 hidden lg:block rounded-full" />
           
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {steps.map((step, index) => (
               <motion.div
                 key={index}
@@ -96,9 +97,9 @@ const ShiftProtocol = () => {
                 className="relative md:col-span-1 lg:col-span-1"
               >
                 {/* Step number */}
-                <div className="absolute -top-3 sm:-top-4 lg:-top-6 left-1/2 transform -translate-x-1/2 w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base lg:text-lg z-10 lg:relative lg:top-0 lg:left-0 lg:transform-none lg:mx-auto lg:mb-4 xl:mb-6 shadow-lg">
+                {/* <div className="absolute -top-3 sm:-top-4  left-1/2 transform -translate-x-1/2 w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base lg:text-lg z-10 lg:relative lg:top-0 lg:left-0 lg:transform-none lg:mx-auto lg:mb-4 xl:mb-6 shadow-lg">
                   {index + 1}
-                </div>
+                </div> */}
                 
                 <motion.div
                   variants={scaleOnHover}
@@ -127,11 +128,18 @@ const ShiftProtocol = () => {
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="bg-gradient-to-r from-blue-50 to-orange-50 border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 text-center shadow-xl"
+        <CursorFollower
+         framerAtts={{
+            initial: { opacity: 0, y: 60 },
+            animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 },
+            transition: { duration: 0.8, delay: 0.6 }
+
+          }}
+          gradientFrom='rgba(67, 97, 238, 0.2)'
+          gradientTo='rgba(67, 97, 238, 0.1)'
+          circleSize={200}
+          
+          className="w-full bg-gradient-to-r from-blue-50 to-orange-50 border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 text-center shadow-xl"
         >
           <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 lg:mb-8">
             Ready to Experience the Shift Protocol?
@@ -148,7 +156,7 @@ const ShiftProtocol = () => {
             <span>Begin Your Shift</span>
             <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
           </motion.button>
-        </motion.div>
+        </CursorFollower>
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Rocket } from 'lucide-react';
 import icon from '../Assets/Images/icon.png'
-
+import CursorFollower from '../utils/CursorFollower';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -28,9 +28,8 @@ const Navigation = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-200' : 'bg-transparent'
-      }`}
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-200' : 'bg-transparent'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 sm:h-20">
@@ -41,7 +40,7 @@ const Navigation = () => {
           >
 
 
-            <img src="https://res.cloudinary.com/dycwtnjbi/image/upload/v1753335541/colored-v_y7jkzd.png" alt=""  />
+            <img src="https://res.cloudinary.com/dycwtnjbi/image/upload/v1753335541/colored-v_y7jkzd.png" alt="" />
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -58,13 +57,20 @@ const Navigation = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
             ))}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+
+
+            <CursorFollower
+              text="Get Started"
               className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-sm xl:text-base"
-            >
-              Get Started
-            </motion.button>
+              gradientFrom="#0C1F3A"
+              gradientTo="#0B1D30"
+              circleSize={100}
+              framerAtts={{
+                whileHover : { scale: 1.05 },
+                whileTap :{ scale: 0.95 },
+                }}
+
+              />
           </div>
 
           {/* Mobile menu button */}
@@ -103,14 +109,22 @@ const Navigation = () => {
                   {item}
                 </motion.a>
               ))}
-              <motion.button
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navItems.length * 0.1 }}
+
+              <CursorFollower
+
+                text="Get Started"
                 className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
-              >
-                Get Started
-              </motion.button>
+                gradientFrom="#0C1F3A"
+                gradientTo="#0B1D30"
+                circleSize={100}
+                framerAtts={{
+                  initial: { opacity: 0, x: -20 },
+                  animate: { opacity: 1, x: 0 },
+                  transition: { delay: navItems.length * 0.1 }
+                }}
+
+              />
+
             </div>
           </motion.div>
         )}
