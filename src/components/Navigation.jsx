@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Rocket } from 'lucide-react';
 import icon from '../Assets/Images/icon.png'
+import { Link } from 'react-router-dom';
 import CursorFollower from '../utils/CursorFollower';
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,12 +17,13 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    'Inside ShiftDeploy',
-    'Deploy Toolkit',
-    'The Shift Protocol',
-    'Missions Completed',
-    'Flight Logs'
+    { label: 'Deploy Toolkit', path: '/deploy-toolkit' },
+    { label: 'Inside ShiftDeploy', path: '/insideShiftDeploy' },
+    { label: 'The Shift Protocol', path: '/shift-protocol' },
+    { label: 'Missions Completed', path: '/missions' },
+    { label: 'Flight Logs', path: '/flight-logs' },
   ];
+
 
   return (
     <motion.nav
@@ -40,23 +42,27 @@ const Navigation = () => {
           >
 
 
+            <Link to="/">
             <img src="https://res.cloudinary.com/dycwtnjbi/image/upload/v1753335541/colored-v_y7jkzd.png" alt="" />
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-6 xl:space-x-10">
-            {navItems.map((item) => (
-              <motion.a
-                key={item}
-                href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+            {navItems.map(({ label, path }) => (
+              <motion.div
+                key={label}
                 whileHover={{ y: -2 }}
                 transition={{ duration: 0.2 }}
-                className="text-gray-700 hover:text-primaryBlue transition-colors duration-300 font-medium relative group text-sm xl:text-base"
+                className="text-gray-700 cursor-pointer hover:text-primaryBlue transition-colors duration-300 font-medium relative group text-sm xl:text-base"
               >
-                {item}
+                <Link to={path}>
+                  {label}
+                </Link>
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-              </motion.a>
+              </motion.div>
             ))}
+
 
 
             <CursorFollower
@@ -66,11 +72,11 @@ const Navigation = () => {
               gradientTo="#0B1D30"
               circleSize={100}
               framerAtts={{
-                whileHover : { scale: 1.05 },
-                whileTap :{ scale: 0.95 },
-                }}
+                whileHover: { scale: 1.05 },
+                whileTap: { scale: 0.95 },
+              }}
 
-              />
+            />
           </div>
 
           {/* Mobile menu button */}

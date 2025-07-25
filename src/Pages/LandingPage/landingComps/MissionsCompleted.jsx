@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ExternalLink, Download, Star, Calendar, Users, TrendingUp } from 'lucide-react';
-import { fadeInUp, staggerContainer, scaleOnHover } from '../utils/animations';
+import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
 
 const MissionsCompleted = () => {
   const ref = useRef(null);

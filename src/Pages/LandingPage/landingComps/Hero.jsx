@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Zap, Shield, Rocket, Play } from 'lucide-react';
-import { fadeInUp, staggerContainer } from '../utils/animations';
-import CursorFollower from '../utils/CursorFollower';
+import { fadeInUp, staggerContainer } from '../../../utils/animations';
+import CursorFollower from '../../../utils/CursorFollower';
 
 const Hero = () => {
   return (
@@ -40,7 +40,7 @@ const Hero = () => {
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight"
             >
               <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
-                Launch Products 
+                Launch Products
                 {/* From Shift
                 To Deploy
                 Zero Stress */}
@@ -70,19 +70,13 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center lg:justify-start mb-8 sm:mb-10 lg:mb-12 xl:mb-16 px-4 sm:px-0"
             >
 
-              <CursorFollower
+              <motion.button className="bg-gradient-to-r from-primaryOrange to-[#D83A21] text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:gap-x-6 text-sm transition-all duration-500"
+              
+              >
+                Launch Your Project
+                <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
 
-                text="Launch Your Project"
-                icon={<ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />}
-                className="bg-gradient-to-r from-primaryOrange to-[#D83A21] text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center space-x-2 text-sm transition-all duration-500"
-                gradientFrom="#0C1F3A"
-                gradientTo="#0B1D30"
-                circleSize={100}
-                framerAtts={{
-                  whileHover: { scale: 1.05, y: -2 },
-                  whileTap: { scale: 0.95 }
-                }}
-              />
+              </motion.button>
 
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}

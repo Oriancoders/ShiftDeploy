@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Code, Cloud, Settings, Rocket, ArrowRight, CheckCircle } from 'lucide-react';
-import { fadeInUp, staggerContainer, scaleOnHover } from '../utils/animations';
-import CursorFollower from '../utils/CursorFollower';
+import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
+import CursorFollower from '../../../utils/CursorFollower';
 
 const InsideShiftDeploy = () => {
   const ref = useRef(null);
@@ -86,35 +86,44 @@ const InsideShiftDeploy = () => {
               initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300 hover:shadow-2xl transition-all  group"
+
             >
-              <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6">
-                <motion.div
-                  whileHover={{
-                    y: -7,
-                    rotateZ: -15,
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 15,
-                  }}
-                  className={`inline-block w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 bg-gradient-to-br ${solution.gradient} rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform  shadow-lg mx-auto sm:mx-0`}>
-                  <solution.icon className="w-6 sm:w-8 lg:w-10 h-6 sm:h-8 lg:h-10 text-white" />
-                </motion.div>
-                <div className="flex-1 text-center sm:text-left">
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 lg:mb-4">{solution.title}</h3>
-                  <p className="text-gray-600 mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed">{solution.description}</p>
-                  <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
-                    {solution.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3">
-                        <CheckCircle className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-green-500 flex-shrink-0" />
-                        <span className="text-gray-700 font-medium text-xs sm:text-sm lg:text-base">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+
+              <CursorFollower
+                className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300 hover:shadow-md transition-all  group"
+                gradientFrom='rgba(67, 97, 238, 0.2)'
+                gradientTo='rgba(67, 97, 238, 0.1)'
+                circleSize={100}
+
+              >
+                <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6">
+                  <motion.div
+                    whileHover={{
+                      y: -7,
+                      rotateZ: -15,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 15,
+                    }}
+                    className={`inline-block w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 bg-gradient-to-br ${solution.gradient} rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform  shadow-lg mx-auto sm:mx-0`}>
+                    <solution.icon className="w-6 sm:w-8 lg:w-10 h-6 sm:h-8 lg:h-10 text-white" />
+                  </motion.div>
+                  <div className="flex-1 text-center sm:text-left">
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 lg:mb-4">{solution.title}</h3>
+                    <p className="text-gray-600 mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed">{solution.description}</p>
+                    <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
+                      {solution.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3">
+                          <CheckCircle className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-green-500 flex-shrink-0" />
+                          <span className="text-gray-700 font-medium text-xs sm:text-sm lg:text-base">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
+              </CursorFollower>
             </motion.div>
           ))}
         </div>
@@ -130,8 +139,8 @@ const InsideShiftDeploy = () => {
             }}
             gradientFrom='rgba(67, 97, 238, 0.2)'
             gradientTo='rgba(67, 97, 238, 0.1)'
-            circleSize={200}
-            className="w-full bg-gradient-to-r from-blue-50 to-orange-50 border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 text-center shadow-xl"
+            circleSize={150}
+            className="w-full bg-gradient-to-r from-blue-50 to-orange-50 border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-md"
           >
             <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 lg:mb-8">
               Ready to Accelerate Your Growth?
@@ -143,20 +152,16 @@ const InsideShiftDeploy = () => {
             </p>
 
 
-            <CursorFollower
+            <motion.button 
+            whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+            className=" bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 sm:px-8 lg:px-10 xl:px-12 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg mx-auto shadow-xl hover:shadow-2xl transition-all duration-100"
+            >
 
-              text="Start Your Transformation"
-              icon={<ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />}
-              className=" bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 sm:px-8 lg:px-10 xl:px-12 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg mx-auto shadow-xl hover:shadow-2xl transition-all duration-300"
-              gradientFrom="#0C1F3A"
-              gradientTo="#0B1D30"
-              circleSize={100}
-              framerAtts={{
-                whileHover: { scale: 1.05, y: -2 },
-                whileTap: { scale: 0.95 }
-              }}
-            />
-            
+              Start Your Transformation
+              <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+            </motion.button>
+
           </CursorFollower>
         </div>
       </div>

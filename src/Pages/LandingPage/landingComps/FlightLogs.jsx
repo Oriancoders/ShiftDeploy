@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Star, Quote, Building } from 'lucide-react';
-import { fadeInUp, staggerContainer, scaleOnHover } from '../utils/animations';
+import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
 
 const FlightLogs = () => {
   const ref = useRef(null);
