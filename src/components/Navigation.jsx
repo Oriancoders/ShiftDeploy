@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Rocket } from 'lucide-react';
-import icon from '../Assets/Images/icon.png'
 import { Link } from 'react-router-dom';
 import CursorFollower from '../utils/CursorFollower';
 const Navigation = () => {
@@ -43,7 +42,7 @@ const Navigation = () => {
 
 
             <Link to="/">
-            <img src="https://res.cloudinary.com/dycwtnjbi/image/upload/v1753335541/colored-v_y7jkzd.png" alt="" />
+              <img src="https://res.cloudinary.com/dycwtnjbi/image/upload/v1753335541/colored-v_y7jkzd.png" alt="" />
             </Link>
           </motion.div>
 
@@ -102,18 +101,20 @@ const Navigation = () => {
             className="lg:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200"
           >
             <div className="px-4 sm:px-6 py-4 sm:py-6 space-y-3 sm:space-y-4">
-              {navItems.map((item, index) => (
-                <motion.a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+              {navItems.map(({ label, path } , index) => (
+                <motion.div
+                  key={index}
+                  // href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                   onClick={() => setIsOpen(false)}
                   className="block text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2 sm:py-3 font-medium text-base sm:text-lg"
                 >
-                  {item}
-                </motion.a>
+                  <Link to={path}>
+                    {label}
+                  </Link>
+                </motion.div>
               ))}
 
               <CursorFollower
