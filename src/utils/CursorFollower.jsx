@@ -6,7 +6,7 @@ export default function CursorFollower({
   text = "Hover Me",
   icon = "",
   className = "",
-  textClassName = "",
+  textClassName = "text-white",
   gradientFrom = "rgba(255,255,255,0.9)",
   gradientTo = "rgba(255,255,255,0.2)",
   circleSize = 80,
@@ -82,7 +82,7 @@ export default function CursorFollower({
 
       {/* Content wrapper to isolate text+icon from animation layout */}
       {children || (
-        <div className="relative z-10 flex items-center justify-center space-x-2">
+        <div className="relative z-20 flex items-center justify-center space-x-2">
         <span
           ref={textRef}
           className={`transition-colors duration-150 ${textClassName}`}
@@ -90,7 +90,7 @@ export default function CursorFollower({
         >
           {text}
         </span>
-        {icon}
+        <span className="z-40">{icon}</span>
       </div>
       )}
     </motion.button>

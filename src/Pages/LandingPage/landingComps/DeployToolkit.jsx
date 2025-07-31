@@ -61,7 +61,7 @@ const DeployToolkit = () => {
 
   return (
     <section id="deploy-toolkit" className="py-16 sm:py-20 lg:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" mx-auto ">
         <motion.div
           ref={ref}
           variants={staggerContainer}
@@ -73,16 +73,16 @@ const DeployToolkit = () => {
             variants={fadeInUp}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 lg:mb-8"
           >
-            <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+            <span className="text-textColor">
               What We
             </span>{" "}
-            <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+            <span className="bg-secondaryBlue bg-clip-text text-transparent">
               Launch
             </span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0"
+            className="text-sm sm:text-base  xl:text-lg text-gray-600 max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0"
           >
             Our comprehensive Deploy Toolkit includes everything you need to build,
             deploy, and scale modern applications with confidence.
@@ -95,24 +95,19 @@ const DeployToolkit = () => {
           </motion.div>
         </motion.div>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20">
+        <div className="w-full grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8">
           {tools.map((tool, index) => (
             <motion.div
               key={index}
               variants={scaleOnHover}
-              whileHover="whileHover"
-              initial={{ opacity: 0, y: 60 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-              transition={{ duration: 0.3, delay: index * 0.15 }}
-              
             >
-              <CursorFollower 
-                className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300 hover:shadow-2xl transition-all duration-300 group"
+              <CursorFollower
+                className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300  transition-all duration-300 group"
                 gradientFrom='rgba(67, 97, 238, 0.2)'
                 gradientTo='rgba(67, 97, 238, 0.1)'
                 circleSize={100}
               >
-                <div className={`w-12 sm:w-14 lg:w-16 h-12 sm:h-14 lg:h-16 bg-gradient-to-br ${tool.gradient} rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 lg:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg mx-auto sm:mx-0`}>
+                <div className={`w-12 sm:w-14 lg:w-16 h-12 sm:h-14 lg:h-16 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 lg:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg mx-auto sm:mx-0`}>
                   <tool.icon className="w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 text-white" />
                 </div>
                 <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 lg:mb-4 text-center sm:text-left">{tool.title}</h3>
@@ -138,55 +133,41 @@ const DeployToolkit = () => {
         </div>
 
         {/* Problem-solving CTA */}
-        <CursorFollower
-          framerAtts={{
-            initial: { opacity: 0, y: 60 },
-            animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 },
-            transition: { duration: 0.8, delay: 0.6 }
+        
+        <div className='w-full flex justify-center items-center'>
+          <CursorFollower
+            framerAtts={{
+              initial: { opacity: 0, y: 60 },
+              animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 },
+              transition: { duration: 0.8, delay: 0.6 }
 
-          }}
-          gradientFrom='rgba(67, 97, 238, 0.2)'
-          gradientTo='rgba(67, 97, 238, 0.1)'
-          circleSize={150}
-          className="w-full bg-gradient-to-r from-orange-50 to-blue-50 border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 text-center shadow-xl flex flex-col justify-center items-center"
-        >
-          <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 lg:mb-8">
-            Facing Technical Challenges?
-          </h3>
-          <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-gray-600 mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
-            Our Deploy Toolkit is designed to solve the most common problems businesses face
+            }}
+            gradientFrom='rgba(67, 97, 238, 0.2)'
+            gradientTo='rgba(67, 97, 238, 0.1)'
+            circleSize={150}
+            className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
+          >
+            <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold  mb-4 sm:mb-6 lg:mb-8">
+              Facing Technical Challenges?
+            </h3>
+            <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
+            >
+              Our Deploy Toolkit is designed to solve the most common problems businesses face
             when building and scaling digital products. Let us help you overcome technical barriers.
-          </p>
-          <div className="w-fit flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 items-center justify-center">
-            <CursorFollower
-              text="Schedule Consultation"
-              icon={<ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />}
-              className=" bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 sm:px-8 lg:px-10 xl:px-12 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg mx-auto shadow-xl hover:shadow-2xl transition-all duration-300"
-              gradientFrom="#0C1F3A"
-              gradientTo="#0B1D30"
-              circleSize={100}
-              framerAtts={{
-                whileHover: { scale: 1.05, y: -2 },
-                whileTap: { scale: 0.95 }
-              }}
-            />
-            <CursorFollower
-              text="Schedule Consultation"
-
-              className="bg-white border-2 border-blue-200 text-blue-600 px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold hover:bg-blue-50 hover:border-blue-300 transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base lg:text-lg"
-              gradientFrom="#2563eb"
-              gradientTo="#93c5fd"
-              hoverColor={""}
-              circleSize={100}
-              framerAtts={{
-                whileHover: { scale: 1.05, y: -2 },
-                whileTap: { scale: 0.95 }
-              }}
-            />
+            </p>
 
 
-          </div>
-        </CursorFollower>
+            <button
+
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
+            >
+
+              Schedule Consultation
+              <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+            </button>
+
+          </CursorFollower>
+        </div>
       </div>
     </section>
   );

@@ -55,7 +55,7 @@ const InsideShiftDeploy = () => {
             variants={fadeInUp}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 lg:mb-8"
           >
-            <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+            <span className="text-textColor">
               Inside
             </span>{" "}
             <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
@@ -64,7 +64,7 @@ const InsideShiftDeploy = () => {
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0"
+            className="text-sm sm:text-base  xl:text-lg text-gray-600 max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0"
           >
             We provide comprehensive technology solutions that help businesses scale,
             optimize performance, and achieve sustainable growth in today's digital landscape.
@@ -107,7 +107,7 @@ const InsideShiftDeploy = () => {
                       stiffness: 300,
                       damping: 15,
                     }}
-                    className={`inline-block w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 bg-gradient-to-br ${solution.gradient} rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform  shadow-lg mx-auto sm:mx-0`}>
+                    className={` w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform  shadow-lg mx-auto sm:mx-0`}>
                     <solution.icon className="w-6 sm:w-8 lg:w-10 h-6 sm:h-8 lg:h-10 text-white" />
                   </motion.div>
                   <div className="flex-1 text-center sm:text-left">
@@ -140,27 +140,26 @@ const InsideShiftDeploy = () => {
             gradientFrom='rgba(67, 97, 238, 0.2)'
             gradientTo='rgba(67, 97, 238, 0.1)'
             circleSize={150}
-            className="w-full bg-gradient-to-r from-blue-50 to-orange-50 border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-md"
+            className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
           >
-            <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 lg:mb-8">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold  mb-4 sm:mb-6 lg:mb-8">
               Ready to Accelerate Your Growth?
             </h3>
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-gray-600 mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
+            <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             >
               Join hundreds of successful businesses that have transformed their digital presence
               with ShiftDeploy's proven solutions and expert guidance.
             </p>
 
 
-            <motion.button 
-            whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-            className=" bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 sm:px-8 lg:px-10 xl:px-12 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg mx-auto shadow-xl hover:shadow-2xl transition-all duration-100"
+            <button 
+
+            className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
             >
 
               Start Your Transformation
               <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
-            </motion.button>
+            </button>
 
           </CursorFollower>
         </div>

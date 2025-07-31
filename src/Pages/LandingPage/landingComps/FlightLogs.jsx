@@ -75,7 +75,7 @@ const FlightLogs = () => {
 
   return (
     <section id="flight-logs" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-primaryBlue">
         <motion.div
           ref={ref}
           variants={staggerContainer}
@@ -87,12 +87,7 @@ const FlightLogs = () => {
             variants={fadeInUp}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 lg:mb-8"
           >
-            <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
-              Flight
-            </span>{" "}
-            <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
-              Logs
-            </span>
+            <h1>Flight <span className='text-secondaryBlue'>Logs</span></h1>
           </motion.h2>
           <motion.p
             variants={fadeInUp}

@@ -48,7 +48,7 @@ const MissionsCompleted = () => {
   ];
 
   return (
-    <section id="missions-completed" className="py-16 sm:py-20 lg:py-24 bg-white">
+    <section id="missions-completed" className="py-16 sm:py-20 lg:py-24 bg-white text-primaryBlue">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -61,10 +61,10 @@ const MissionsCompleted = () => {
             variants={fadeInUp}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 lg:mb-8"
           >
-            <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+            <span className="text-primaryBlue">
               Missions
             </span>{" "}
-            <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+            <span className="text-secondaryBlue">
               Completed
             </span>
           </motion.h2>
@@ -106,10 +106,10 @@ const MissionsCompleted = () => {
                   stiffness: 300,
                   damping: 15,
                 }}
-                className={`w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 bg-gradient-to-br ${stat.gradient} rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-lg`}>
+                className={`w-12 sm:w-16 lg:w-20 h-12 sm:h-16 lg:h-20 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-lg`}>
                 <stat.icon className="w-6 sm:w-8 lg:w-10 h-6 sm:h-8 lg:h-10 text-white" />
               </motion.div>
-              <div className="text-lg sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-1 sm:mb-2">{stat.value}</div>
+              <div className="text-lg sm:text-2xl lg:text-3xl xl:text-4xl font-bold  mb-1 sm:mb-2">{stat.value}</div>
               <div className="text-gray-600 font-medium text-xs sm:text-sm lg:text-base">{stat.label}</div>
             </motion.div>
           ))}

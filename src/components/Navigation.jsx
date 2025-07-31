@@ -37,7 +37,7 @@ const Navigation = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="max-w-60"
+            className="2xl:max-w-60 max-w-48"
           >
 
 

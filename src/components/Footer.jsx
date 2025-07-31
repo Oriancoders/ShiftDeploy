@@ -37,8 +37,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+    <footer className="bg-toBlue text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-6 sm:py-8 lg:py-10">
         <motion.div
           variants={staggerContainer}
           initial="initial"
@@ -133,9 +133,9 @@ const Footer = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="mt-8 sm:mt-12 lg:mt-16 pt-4 sm:pt-6 lg:pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center space-y-3 sm:space-y-4 lg:space-y-6 md:space-y-0"
+          className="mt-8 sm:mt-12 lg:mt-16  border-t border-gray-700 flex flex-col md:flex-row justify-between items-center  space-y-3 sm:space-y-4 lg:space-y-6 md:space-y-0"
         >
-          <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 lg:space-x-6 xl:space-x-8 text-center sm:text-left">
+          <div className="flex flex-col sm:flex-row  items-center space-y-3 sm:space-y-0 sm:space-x-4 lg:space-x-6 xl:space-x-8 text-center sm:text-left">
             <p className="text-gray-300 text-xs sm:text-sm lg:text-base">
               © {currentYear} ShiftDeploy. All rights reserved.
             </p>

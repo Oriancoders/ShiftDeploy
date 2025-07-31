@@ -47,7 +47,7 @@ const ShiftProtocol = () => {
   ];
 
   return (
-    <section id="the-shift-protocol" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section id="the-shift-protocol" className="py-16 sm:py-20 lg:py-24 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -60,7 +60,7 @@ const ShiftProtocol = () => {
             variants={fadeInUp}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 lg:mb-8"
           >
-            <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+            <span className="text-primaryBlue">
               The
             </span>{" "}
             <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
@@ -69,7 +69,7 @@ const ShiftProtocol = () => {
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0"
+            className="text-sm sm:text-base md:text-lg  text-gray-600 max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0"
           >
             Our proven 5-step methodology ensures successful project delivery from 
             concept to deployment and beyond.
@@ -83,7 +83,7 @@ const ShiftProtocol = () => {
         </motion.div>
 
         {/* Process visualization */}
-        <div className="relative mb-12 sm:mb-16 lg:mb-20">
+        <div className="relative mb-6  lg:mb-10">
           {/* Connection line */}
           <div className="absolute top-1/2 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-blue-200 via-orange-200 to-blue-200 transform -translate-y-1/2 hidden lg:block rounded-full" />
           
@@ -103,14 +103,13 @@ const ShiftProtocol = () => {
                 
                 <motion.div
                   variants={scaleOnHover}
-                  whileHover="whileHover"
-                  className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300 hover:shadow-2xl transition-all duration-300 group h-full pt-6 sm:pt-8 lg:pt-8"
+                  className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300  transition-all duration-200 group h-full pt-6 sm:pt-8 lg:pt-8"
                 >
-                  <div className={`w-10 sm:w-12 lg:w-14 xl:w-16 h-10 sm:h-12 lg:h-14 xl:h-16 bg-gradient-to-br ${step.gradient} rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 lg:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                  <div className={`w-10 sm:w-12 lg:w-14 xl:w-16 h-10 sm:h-12 lg:h-14 xl:h-16 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 lg:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                     <step.icon className="w-5 sm:w-6 lg:w-7 xl:w-8 h-5 sm:h-6 lg:h-7 xl:h-8 text-white" />
                   </div>
                   
-                  <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-gray-900 mb-2 sm:mb-3 lg:mb-4 text-center">{step.title}</h3>
+                  <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-primaryBlue mb-2 sm:mb-3 lg:mb-4 text-center">{step.title}</h3>
                   <p className="text-gray-600 mb-3 sm:mb-4 lg:mb-6 text-center leading-relaxed text-xs sm:text-sm lg:text-base">{step.description}</p>
                   
                   <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
@@ -128,18 +127,8 @@ const ShiftProtocol = () => {
         </div>
 
         {/* CTA */}
-        <CursorFollower
-         framerAtts={{
-            initial: { opacity: 0, y: 60 },
-            animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 },
-            transition: { duration: 0.8, delay: 0.6 }
-
-          }}
-          gradientFrom='rgba(67, 97, 238, 0.2)'
-          gradientTo='rgba(67, 97, 238, 0.1)'
-          circleSize={200}
-          
-          className="w-full bg-gradient-to-r from-blue-50 to-orange-50 border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 text-center shadow-xl"
+        <div
+          className="w-full  p-6 sm:p-8 lg:p-12 xl:p-16 text-center"
         >
           <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 lg:mb-8">
             Ready to Experience the Shift Protocol?
@@ -156,7 +145,7 @@ const ShiftProtocol = () => {
             <span>Begin Your Shift</span>
             <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
           </motion.button>
-        </CursorFollower>
+        </div>
       </div>
     </section>
   );

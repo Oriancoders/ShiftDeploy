@@ -6,11 +6,8 @@ import CursorFollower from '../../../utils/CursorFollower';
 
 const Hero = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex items-center pt-16 sm:pt-20">
-      {/* Background elements */}
-      <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-32 sm:w-48 lg:w-80 xl:w-96 h-32 sm:h-48 lg:h-80 xl:h-96 bg-gradient-to-br from-blue-200/30 to-blue-300/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 sm:bottom-20 left-10 sm:left-20 w-24 sm:w-40 lg:w-64 xl:w-80 h-24 sm:h-40 lg:h-64 xl:h-80 bg-gradient-to-br from-orange-200/30 to-orange-300/20 rounded-full blur-3xl" />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 sm:w-64 lg:w-96 xl:w-[600px] h-48 sm:h-64 lg:h-96 xl:h-[600px] bg-gradient-to-br from-blue-100/20 to-orange-100/20 rounded-full blur-3xl" />
+    <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex items-center pt-16 sm:py-24">
+
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
@@ -59,7 +56,7 @@ const Hero = () => {
 
             <motion.p
               variants={fadeInUp}
-              className="text-sm sm:text-base md:text-sm xl:text-lg text-gray-600 mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto lg:mx-0 leading-relaxed px-4 sm:px-0"
+              className="text-sm sm:text-base md:text-sm xl:text-lg text-textColor mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto lg:mx-0 leading-relaxed px-4 sm:px-0"
             >
               “Empowering businesses with web development, cloud solutions & DevOps to drive your digital growth.”
 
@@ -70,8 +67,8 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center lg:justify-start mb-8 sm:mb-10 lg:mb-12 xl:mb-16 px-4 sm:px-0"
             >
 
-              <motion.button className="bg-gradient-to-r from-primaryOrange to-[#D83A21] text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:gap-x-6 text-sm transition-all duration-500"
-              
+              <motion.button className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
+
               >
                 Launch Your Project
                 <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
@@ -79,9 +76,8 @@ const Hero = () => {
               </motion.button>
 
               <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white border-2 border-blue-200 text-primaryBlue px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold hover:bg-blue-50 hover:border-toBlue transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg"
+
+                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  hover:border-toBlue  shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg"
               >
                 <Play className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
                 <span>View Demo</span>
@@ -97,9 +93,9 @@ const Hero = () => {
               className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 text-center lg:text-left px-4 sm:px-0"
             >
               {[
-                { icon: Zap, number: "500+", label: "Projects Deployed", color: "from-yellow-500 to-orange-500" },
-                { icon: Shield, number: "99.9%", label: "Uptime Guarantee", color: "from-green-500 to-emerald-500" },
-                { icon: Rocket, number: "24/7", label: "Support Available", color: "from-primaryBlue to-toBlue" }
+                { icon: Zap, number: "500+", label: "Projects Deployed", },
+                { icon: Shield, number: "99.9%", label: "Uptime Guarantee", },
+                { icon: Rocket, number: "24/7", label: "Support Available", }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
@@ -107,22 +103,14 @@ const Hero = () => {
 
                   className="text-center lg:text-left"
                 >
-                  <div className="flex justify-center lg:justify-start mb-2 sm:mb-3">
-                    <motion.div
-                      whileHover={{
-                        y: -7,
-                        rotateZ: -15,
-                      }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 15,
-                      }}
-
-                      className={`w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 bg-gradient-to-br ${stat.color} rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg`}>
-                      <stat.icon className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 text-white" />
-                    </motion.div>
-                  </div>
+                  <CursorFollower
+                    className='flex justify-center  mb-2 sm:mb-3 w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 bg-gradient-to-br from-secondaryBlue to-toSecBlue rounded-lg sm:rounded-xl  items-center shadow-lg'
+                    gradientFrom="#0C1F3A"
+                    gradientTo="#0B1D30"
+                    circleSize={50}
+                  >
+                    <stat.icon className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 text-white" />
+                  </CursorFollower>
                   <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1">{stat.number}</div>
                   <div className="text-xs sm:text-sm font-medium text-gray-600">{stat.label}</div>
                 </motion.div>

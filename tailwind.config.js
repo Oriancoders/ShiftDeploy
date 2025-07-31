@@ -10,7 +10,8 @@ export default {
         secondaryBlue : '#4361EE',
         toSecBlue : '#1D4eD8',
         primaryOrange : '#F76707',
-        textColor : '#231F20'
+        toOrange : '#D83A21',
+        textColor : '#231F20',
       }
     },
   },
