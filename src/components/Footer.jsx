@@ -50,7 +50,7 @@ const Footer = () => {
           <motion.div variants={fadeInUp} className="sm:col-span-2 lg:col-span-1">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="max-w-60"
+              className="lg:max-w-60 sm:max-w-48 max-w-36"
             >
 
               <img src="https://res.cloudinary.com/dycwtnjbi/image/upload/v1753335542/white-v_gjd0eu.png" alt="" />

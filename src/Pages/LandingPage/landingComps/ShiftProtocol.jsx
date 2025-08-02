@@ -47,18 +47,18 @@ const ShiftProtocol = () => {
   ];
 
   return (
-    <section id="the-shift-protocol" className="py-16 sm:py-20 lg:py-24 ">
+    <section id="the-shift-protocol" className="py-8 sm:py-12 text-textColor ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
+          className="text-center mb-8"
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 lg:mb-8"
+            className="text-3xl xl:text-4xl font-bold mb-4 sm:mb-8 "
           >
             <span className="text-primaryBlue">
               The
@@ -69,7 +69,7 @@ const ShiftProtocol = () => {
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-sm sm:text-base md:text-lg  text-gray-600 max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0"
+            className="text-sm sm:text-base md:text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-10  leading-relaxed px-4 sm:px-0"
           >
             Our proven 5-step methodology ensures successful project delivery from 
             concept to deployment and beyond.
@@ -84,8 +84,7 @@ const ShiftProtocol = () => {
 
         {/* Process visualization */}
         <div className="relative mb-6  lg:mb-10">
-          {/* Connection line */}
-          <div className="absolute top-1/2 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-blue-200 via-orange-200 to-blue-200 transform -translate-y-1/2 hidden lg:block rounded-full" />
+
           
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {steps.map((step, index) => (
@@ -109,14 +108,14 @@ const ShiftProtocol = () => {
                     <step.icon className="w-5 sm:w-6 lg:w-7 xl:w-8 h-5 sm:h-6 lg:h-7 xl:h-8 text-white" />
                   </div>
                   
-                  <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-primaryBlue mb-2 sm:mb-3 lg:mb-4 text-center">{step.title}</h3>
-                  <p className="text-gray-600 mb-3 sm:mb-4 lg:mb-6 text-center leading-relaxed text-xs sm:text-sm lg:text-base">{step.description}</p>
+                  <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-primaryBlue mb-2 sm:mb-3 lg:mb-4 text-center">{index + 1 }: {step.title}</h3>
+                  <p className=" mb-3 sm:mb-4 lg:mb-6 text-center leading-relaxed text-xs sm:text-sm lg:text-base">{step.description}</p>
                   
                   <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
                     {step.details.map((detail, detailIndex) => (
                       <li key={detailIndex} className="flex items-center space-x-2 sm:space-x-3">
-                        <div className="w-1 sm:w-1.5 lg:w-2 h-1 sm:h-1.5 lg:h-2 bg-blue-500 rounded-full flex-shrink-0" />
-                        <span className="text-gray-700 text-xs sm:text-sm font-medium">{detail}</span>
+                        <div className="w-1 sm:w-1.5 lg:w-2 h-1 sm:h-1.5 lg:h-2 bg-secondaryBlue rounded-full flex-shrink-0" />
+                        <span className=" text-xs sm:text-sm font-medium">{detail}</span>
                       </li>
                     ))}
                   </ul>
@@ -131,18 +130,16 @@ const ShiftProtocol = () => {
           className="w-full  p-6 sm:p-8 lg:p-12 xl:p-16 text-center"
         >
           <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 lg:mb-8">
-            Ready to Experience the Shift Protocol?
+            Our 5-step protocol is designed to eliminate cloud chaos. Full control. Zero vendor lock.
           </h3>
           <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-gray-600 mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
             Let's start your transformation journey. Our proven methodology ensures 
             your project's success from day one.
           </p>
           <motion.button
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 sm:px-8 lg:px-10 xl:px-12 py-2.5 sm:py-3 lg:py-4 xl:py-5 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg mx-auto shadow-xl hover:shadow-2xl transition-all duration-300"
+            className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm mx-auto"
           >
-            <span>Begin Your Shift</span>
+            <span>Let’s Walk You Through It</span>
             <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
           </motion.button>
         </div>

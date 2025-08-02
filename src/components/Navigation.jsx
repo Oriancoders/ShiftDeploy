@@ -33,11 +33,11 @@ const Navigation = () => {
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 sm:h-20">
+        <div className="flex justify-between items-center h-14 sm:h-20">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="2xl:max-w-60 max-w-48"
+            className="2xl:max-w-60 sm:max-w-48  max-w-36"
           >
 
 
@@ -95,42 +95,33 @@ const Navigation = () => {
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: '100vh' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="lg:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200"
           >
-            <div className="px-4 sm:px-6 py-4 sm:py-6 space-y-3 sm:space-y-4">
-              {navItems.map(({ label, path } , index) => (
-                <motion.div
-                  key={index}
-                  // href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  onClick={() => setIsOpen(false)}
-                  className="block text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2 sm:py-3 font-medium text-base sm:text-lg"
-                >
-                  <Link to={path}>
-                    {label}
-                  </Link>
-                </motion.div>
-              ))}
+            <div className="px-4 sm:px-6 py-4 sm:py-6 space-y-3 sm:space-y-4 flex flex-col justify-between h-full ">
+              <div className=' space-y-3'>
+                {navItems.map(({ label, path }, index) => (
+                  <motion.div
+                    key={index}
+                    // href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    onClick={() => setIsOpen(false)}
+                    className="block text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2 sm:py-3 font-medium text-base sm:text-lg"
+                  >
+                    <Link to={path}>
+                      {label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
 
-              <CursorFollower
-
-                text="Get Started"
-                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
-                gradientFrom="#0C1F3A"
-                gradientTo="#0B1D30"
-                circleSize={100}
-                framerAtts={{
-                  initial: { opacity: 0, x: -20 },
-                  animate: { opacity: 1, x: 0 },
-                  transition: { delay: navItems.length * 0.1 }
-                }}
-
-              />
+              <button className='w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg '>
+                Get Started
+              </button>
 
             </div>
           </motion.div>

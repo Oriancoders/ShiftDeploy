@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Star, Quote, Building } from 'lucide-react';
+import { Star, Quote, Building, ArrowRight } from 'lucide-react';
 import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
 
 const FlightLogs = () => {
@@ -74,24 +74,24 @@ const FlightLogs = () => {
   };
 
   return (
-    <section id="flight-logs" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-primaryBlue">
+    <section id="flight-logs" className="py-4 sm:py-12  text-textColor bg-gradient-to-b from-white to-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
         <motion.div
           ref={ref}
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
+          className="text-center mb-12 "
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 lg:mb-8"
+            className="text-3xl xl:text-4xl font-bold mb-4 sm:mb-6 lg:mb-8"
           >
             <h1>Flight <span className='text-secondaryBlue'>Logs</span></h1>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-600 max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0"
+            className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  leading-relaxed px-4 sm:px-0"
           >
             Hear from our clients about their transformation journey and the results 
             they've achieved with ShiftDeploy.
@@ -109,12 +109,10 @@ const FlightLogs = () => {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
-              variants={scaleOnHover}
-              whileHover="whileHover"
               initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300 hover:shadow-2xl transition-all duration-300 group"
+              className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300 hover:shadow-sm transition-all duration-300 group"
             >
               <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4 mb-3 sm:mb-4 lg:mb-6">
                 <div className="w-10 sm:w-12 lg:w-16 h-10 sm:h-12 lg:h-16 rounded-full overflow-hidden shadow-lg flex-shrink-0">
@@ -140,13 +138,13 @@ const FlightLogs = () => {
 
               <div className="relative mb-3 sm:mb-4 lg:mb-6">
                 <Quote className="absolute -top-0.5 sm:-top-1 lg:-top-2 -left-0.5 sm:-left-1 w-4 sm:w-6 lg:w-8 h-4 sm:h-6 lg:h-8 text-blue-200" />
-                <p className="text-gray-700 leading-relaxed pl-4 sm:pl-6 lg:pl-8 text-xs sm:text-sm lg:text-base">
+                <p className="text-gray-700 leading-relaxed pl-4 sm:pl-6 lg:pl-8 text-sm">
                   {testimonial.review}
                 </p>
               </div>
 
               <div className="pt-2 sm:pt-3 lg:pt-4 border-t border-gray-200">
-                <p className="text-orange-600 font-semibold text-xs sm:text-sm">
+                <p className="text-orange-600 font-semibold text-sm">
                   Project: {testimonial.project}
                 </p>
               </div>
@@ -182,7 +180,17 @@ const FlightLogs = () => {
               <div className="text-gray-600 font-medium text-xs sm:text-sm lg:text-base">Average performance improvement</div>
             </div>
           </div>
+
+          <motion.button className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm mx-auto mt-12"
+
+              >
+                Join Our Trusted Clients
+                <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+
+              </motion.button>
         </motion.div>
+
+        
       </div>
     </section>
   );

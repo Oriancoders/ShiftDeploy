@@ -11,11 +11,8 @@ const Hero = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
-          {/* Left content */}
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            animate="animate"
+
+          <div
             className="text-center lg:text-left"
           >
 
@@ -32,8 +29,7 @@ const Hero = () => {
             />
 
 
-            <motion.h1
-              variants={fadeInUp}
+            <h1
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight"
             >
               <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
@@ -52,18 +48,17 @@ const Hero = () => {
               <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
                 Under Pressure
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
+            <p
               variants={fadeInUp}
               className="text-sm sm:text-base md:text-sm xl:text-lg text-textColor mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto lg:mx-0 leading-relaxed px-4 sm:px-0"
             >
               “Empowering businesses with web development, cloud solutions & DevOps to drive your digital growth.”
 
-            </motion.p>
+            </p>
 
-            <motion.div
-              variants={fadeInUp}
+            <div
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center lg:justify-start mb-8 sm:mb-10 lg:mb-12 xl:mb-16 px-4 sm:px-0"
             >
 
@@ -85,7 +80,7 @@ const Hero = () => {
               </motion.button>
 
 
-            </motion.div>
+            </div>
 
             {/* Stats */}
             <motion.div
@@ -116,7 +111,7 @@ const Hero = () => {
                 </motion.div>
               ))}
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* Right content - Enhanced 3D Material Prototype */}
           <motion.div
@@ -204,5 +199,6 @@ const Hero = () => {
     </section>
   );
 };
+
 
 export default Hero;

@@ -12,6 +12,10 @@ export default {
         primaryOrange : '#F76707',
         toOrange : '#D83A21',
         textColor : '#231F20',
+      },
+      fontSize : {
+        '3xl' : '2rem',
+        '4xl' : '2.5rem',
       }
     },
   },
