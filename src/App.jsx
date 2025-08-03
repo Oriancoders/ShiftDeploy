@@ -7,10 +7,12 @@ import Toolkit_Landing from './Pages/DeployToolkit/Toolkit_Landing';
 import Landing_Protocol from './Pages/ShiftProtocol/Landing_Protocol';
 import Mission_Landing from './Pages/MissionCompleted/Mission_Landing';
 import Flight_Landing from './Pages/FlighLogs/Flight_Landing';
+import GlobalProvider from './GlobalProvider/GlobalProvider';
 
 function App() {
   return (
-    <div className="bg-white min-h-screen">
+    <GlobalProvider>
+      <div className="bg-white min-h-screen">
       <Routes>
         <Route path='/' element={<Landing/>}/>
         <Route path='/insideShiftDeploy' element={<InSide_Landing/>}/>
@@ -24,6 +26,7 @@ function App() {
 
       </Routes>
     </div>
+    </GlobalProvider>
   );
 }
 

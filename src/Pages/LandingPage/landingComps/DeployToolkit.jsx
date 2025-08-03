@@ -102,23 +102,23 @@ const DeployToolkit = () => {
               variants={scaleOnHover}
             >
               <div
-                className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300  transition-all duration-300 group"
+                className="bg-white border sm:border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md  transition-all duration-300 group "
  
               >
-                <div className={`w-12 sm:w-14 lg:w-16 h-12 sm:h-14 lg:h-16 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 lg:mb-6  shadow-lg mx-auto sm:mx-0`}>
+                <div className={`w-12 sm:w-14 lg:w-16 h-12 sm:h-14 lg:h-16 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 lg:mb-6  shadow-lg `}>
                   <tool.icon className="w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 text-white" />
                 </div>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4 text-center sm:text-left">{tool.title}</h3>
-                <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed text-center sm:text-left text-sm sm:text-base">{tool.description}</p>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4 ">{tool.title}</h3>
+                <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed  text-sm sm:text-base">{tool.description}</p>
 
                 <div className="space-y-1.5 sm:space-y-2 lg:space-y-3">
-                  <div className="flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3">
+                  <div className="flex items-center  space-x-2 sm:space-x-3">
                     <div className="w-2 sm:w-2.5 lg:w-3 h-2 sm:h-2.5 lg:h-3 bg-red-600 rounded-full flex-shrink-0" />
                     <span className="text-xs sm:text-sm ">
                       <span className="text-red-600 font-semibold">Problem:</span> {tool.problem}
                     </span>
                   </div>
-                  <div className="flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3">
+                  <div className="flex items-center  space-x-2 sm:space-x-3">
                     <div className="w-2 sm:w-2.5 lg:w-3 h-2 sm:h-2.5 lg:h-3 bg-green-600 rounded-full flex-shrink-0" />
                     <span className="text-xs sm:text-sm ">
                       <span className="text-green-600 font-semibold">Solution:</span> {tool.solution}
@@ -143,7 +143,7 @@ const DeployToolkit = () => {
             gradientFrom='rgba(67, 97, 238, 0.2)'
             gradientTo='rgba(67, 97, 238, 0.1)'
             circleSize={150}
-            className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
+            className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white py-8 px-6 sm:px-0 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
           >
             <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
               Whether it's containers, CI/CD, or observability <br/> we’ve done it for teams like yours.

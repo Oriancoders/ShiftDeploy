@@ -1,12 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ExternalLink, Download, Star, Calendar, Users, TrendingUp } from 'lucide-react';
 import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
+import { ContextAPI } from '../../../GlobalProvider/ContextAPI';
 
 const MissionsCompleted = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
+  const {scrwidth} = useContext(ContextAPI);
   const projects = [
     {
       title: "E-commerce Platform Transformation",
@@ -106,11 +107,11 @@ const MissionsCompleted = () => {
                   stiffness: 300,
                   damping: 15,
                 }}
-                className={`w-10 sm:w-12 lg:w-14 xl:w-16 h-10 sm:h-12 lg:h-14 xl:h-16 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-lg`}>
-                <stat.icon className="w-5 sm:w-6 lg:w-7 xl:w-8 h-5 sm:h-6 lg:h-7 xl:h-8 text-white" />
+                className={`w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-lg`}>
+                <stat.icon className="w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 text-white" />
               </motion.div>
-              <div className="sm:text-2xl  xl:text-3xl font-bold  mb-1 sm:mb-2">{stat.value}</div>
-              <div className=" font-medium text-xs sm:text-sm lg:text-base">{stat.label}</div>
+              <div className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">{stat.value}</div>
+              <div className=" font-medium text-center">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>
@@ -127,7 +128,7 @@ const MissionsCompleted = () => {
             >
 
               
-                <div className={`relative h-48 sm:h-64 lg:h-full ${index % 2 == 0 ? 'order-2' : 'order-1'}`}>
+                <div className={`relative h-48 sm:h-64 lg:h-full ${ scrwidth > 768 && index % 2 == 0 ? 'order-2' : 'order-1'} ${scrwidth < 768 && 'order-2'}`}>
                   <img
                     src={project.image}
                     alt={project.title}
@@ -138,7 +139,7 @@ const MissionsCompleted = () => {
                   </div>
                 </div>
 
-                <div className={`p-4 sm:p-6 lg:p-8 xl:p-10 ${index % 2 == 0 ? 'order-1' : 'order-2'}`}>
+                <div className={`p-4 sm:p-6 lg:p-8 xl:p-10 ${scrwidth > 768 && index % 2 == 0 ? 'order-1' : 'order-2'} ${scrwidth < 768 && 'order-1'}`}>
                   <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 mb-1 sm:mb-2 lg:mb-3">{project.title}</h3>
                   <p className="text-blue-600 font-semibold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">{project.client}</p>
                   <p className=" mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed">{project.description}</p>

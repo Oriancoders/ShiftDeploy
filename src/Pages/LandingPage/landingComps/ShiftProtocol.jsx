@@ -92,35 +92,32 @@ const ShiftProtocol = () => {
                 key={index}
                 initial={{ opacity: 0, y: 60 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="relative md:col-span-1 lg:col-span-1"
+                variants={scaleOnHover}
+                transition={{ duration: 0.6, delay: index * 0.2 , once: false}}
+                className="relative md:col-span-1 lg:col-span-1 bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300  transition-all duration-200 group h-full pt-6 sm:pt-8 lg:pt-8 sm:space-y-6 space-y-4"
               >
                 {/* Step number */}
                 {/* <div className="absolute -top-3 sm:-top-4  left-1/2 transform -translate-x-1/2 w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold text-sm sm:text-base lg:text-lg z-10 lg:relative lg:top-0 lg:left-0 lg:transform-none lg:mx-auto lg:mb-4 xl:mb-6 shadow-lg">
                   {index + 1}
                 </div> */}
 
-                <motion.div
-                  variants={scaleOnHover}
-                  className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300  transition-all duration-200 group h-full pt-6 sm:pt-8 lg:pt-8"
-                >
-                  <div className={`w-10 sm:w-12 lg:w-14 xl:w-16 h-10 sm:h-12 lg:h-14 xl:h-16 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 lg:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    <step.icon className="w-5 sm:w-6 lg:w-7 xl:w-8 h-5 sm:h-6 lg:h-7 xl:h-8 text-white" />
+ 
+                  <div className={`w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center  mx-auto sm:group-hover:scale-110 transition-transform duration-200 shadow-lg`}>
+                    <step.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
                   </div>
 
-                  <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold text-primaryBlue mb-2 sm:mb-3 lg:mb-4 text-center">{index + 1}: {step.title}</h3>
-                  <p className=" mb-3 sm:mb-4 lg:mb-6 text-center leading-relaxed text-xs sm:text-sm lg:text-base">{step.description}</p>
+                  <h3 className="text-lg lg:text-xl xl:text-2xl font-bold text-primaryBlue   text-center">{index + 1}: {step.title}</h3>
+                  <p className="  text-center sm:leading-relaxed text-lg">{step.description}</p>
 
-                  <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
+                  <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3  grid sm:grid-cols-1 grid-cols-2">
                     {step.details.map((detail, detailIndex) => (
                       <li key={detailIndex} className="flex items-center space-x-2 sm:space-x-3">
-                        <div className="w-1 sm:w-1.5 lg:w-2 h-1 sm:h-1.5 lg:h-2 bg-secondaryBlue rounded-full flex-shrink-0" />
-                        <span className=" text-xs sm:text-sm font-medium">{detail}</span>
+                        <div className="w-2 h-2 bg-secondaryBlue rounded-full flex-shrink-0" />
+                        <span className=" text-md font-medium">{detail}</span>
                       </li>
                     ))}
                   </ul>
                 </motion.div>
-              </motion.div>
             ))}
           </div>
         </div>

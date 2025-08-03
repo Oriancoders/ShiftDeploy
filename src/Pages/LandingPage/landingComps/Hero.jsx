@@ -6,31 +6,26 @@ import CursorFollower from '../../../utils/CursorFollower';
 
 const Hero = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex sm:items-center py-16 sm:py-24">
+    <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex sm:items-center py-16 sm:py-24 text-textColor">
 
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 sm:items-center">
 
           <div
-            className="text-left"
+            className="flex flex-col lg:items-start sm:items-center"
           >
-
-
             <CursorFollower
-
               text="Deploy -> Scale -> Succeed"
-              className="bg-gradient-to-r from-secondaryBlue to-blue-700 px-3 lg:px-4 py-2 mb-6 rounded-full"
+              className="bg-gradient-to-r w-fit from-secondaryBlue to-blue-700 px-3 lg:px-4 py-2 mb-6 rounded-full"
               textClassName='text-white font-semibold text-sm lg:text-base'
               gradientFrom="#0C1F3A"
               gradientTo="#0B1D30"
               circleSize={100}
-
             />
 
-
             <h1
-              className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight"
+              className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left"
             >
               <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
                 Launch Products
@@ -52,7 +47,7 @@ const Hero = () => {
 
             <p
               variants={fadeInUp}
-              className="text-xl    text-textColor mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0"
+              className="text-xl    text-textColor mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0 lg:text-left sm:text-center text-left"
             >
               Empowering businesses with web development, cloud solutions & DevOps to drive your digital growth.
 
@@ -106,8 +101,8 @@ const Hero = () => {
                   >
                     <stat.icon className="w-5 lg:w-6 h-5 lg:h-6 text-white" />
                   </CursorFollower>
-                  <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1">{stat.number}</div>
-                  <div className=" font-medium text-center">{stat.label}</div>
+                  <div className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1">{stat.number}</div>
+                  <div className=" font-medium text-center text-md">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>

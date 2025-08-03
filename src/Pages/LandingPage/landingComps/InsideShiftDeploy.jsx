@@ -81,9 +81,9 @@ const InsideShiftDeploy = () => {
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
-              className="bg-white border border-gray-200 rounded-xl md:rounded-2xl p-4 sm:p-6 lg:p-6 hover:border-blue-300 hover:shadow-md transition-all  group col-span-1"            // whileHover="whileHover"
+              className="bg-white border sm:border-gray-200 rounded-xl md:rounded-2xl p-6 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md transition-all  group col-span-1"            // whileHover="whileHover"
             >
-              <div className="flex flex-col  sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6">
+              <div className="flex flex-col  sm:flex-row items-start space-y-6 sm:space-y-0 sm:space-x-4 lg:space-x-6">
                 <motion.div
                   whileHover={{
                     y: -7,
@@ -94,17 +94,17 @@ const InsideShiftDeploy = () => {
                     stiffness: 300,
                     damping: 15,
                   }}
-                  className={` w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0  shadow-lg mx-auto sm:mx-0`}>
+                  className={` w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0  shadow-lg mx-0`}>
                   <solution.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
                 </motion.div>
-                <div className="flex-1 text-center sm:text-left">
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4">{solution.title}</h3>
-                  <p className=" mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed">{solution.description}</p>
+                <div className="flex-1 text-left">
+                  <h3 className="text-xl lg:text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4">{solution.title}</h3>
+                  <p className=" mb-4 sm:mb-6 lg:mb-8 text-lg leading-relaxed">{solution.description}</p>
                   <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
                     {solution.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3">
-                        <CheckCircle className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-green-500 flex-shrink-0" />
-                        <span className=" font-medium text-xs sm:text-sm lg:text-base">{feature}</span>
+                      <li key={featureIndex} className="flex items-center justify-start space-x-2 sm:space-x-3">
+                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                        <span className=" font-medium text-lg">{feature}</span>
                       </li>
                     ))}
                   </ul>
