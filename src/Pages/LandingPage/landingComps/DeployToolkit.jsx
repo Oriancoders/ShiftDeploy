@@ -73,10 +73,10 @@ const DeployToolkit = () => {
             variants={fadeInUp}
             className="text-3xl xl:text-4xl font-bold mb-4 sm:mb-6 "
           >
-            <span className="text-textColor">
+            <span className="text-primaryBlue">
               What We
             </span>{" "}
-            <span className="bg-secondaryBlue bg-clip-text text-transparent">
+            <span className="text-secondaryBlue">
               Launch
             </span>
           </motion.h2>

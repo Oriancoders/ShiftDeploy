@@ -43,7 +43,7 @@ const InsideShiftDeploy = () => {
 
   return (
     <section id="inside-shiftdeploy" className="py-4 sm:py-12  text-textColor bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+      <div className=" mx-auto flex flex-col justify-center items-center ">
         <motion.div
           ref={ref}
           variants={staggerContainer}
@@ -54,8 +54,8 @@ const InsideShiftDeploy = () => {
           <motion.h2
             variants={fadeInUp}
             className="text-3xl xl:text-4xl font-bold mb-4 sm:mb-6 "
-          > 
-            <span className="text-textColor">
+          >
+            <span className="text-primaryBlue">
               Inside
             </span>{" "}
             <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
@@ -77,45 +77,46 @@ const InsideShiftDeploy = () => {
           </motion.div>
         </motion.div>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl">
           {solutions.map((solution, index) => (
             <motion.div
-              key={index}  
+              key={index}
               className="bg-white border border-gray-200 rounded-xl md:rounded-2xl p-4 sm:p-6 lg:p-6 hover:border-blue-300 hover:shadow-md transition-all  group col-span-1"            // whileHover="whileHover"
             >
-                <div className="flex flex-col  sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6">
-                  <motion.div
-                    whileHover={{
-                      y: -7,
-                      rotateZ: -15,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 15,
-                    }}
-                    className={` w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0  shadow-lg mx-auto sm:mx-0`}>
-                    <solution.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
-                  </motion.div>
-                  <div className="flex-1 text-center sm:text-left">
-                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4">{solution.title}</h3>
-                    <p className=" mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed">{solution.description}</p>
-                    <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
-                      {solution.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3">
-                          <CheckCircle className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-green-500 flex-shrink-0" />
-                          <span className=" font-medium text-xs sm:text-sm lg:text-base">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+              <div className="flex flex-col  sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6">
+                <motion.div
+                  whileHover={{
+                    y: -7,
+                    rotateZ: -15,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 15,
+                  }}
+                  className={` w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0  shadow-lg mx-auto sm:mx-0`}>
+                  <solution.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
+                </motion.div>
+                <div className="flex-1 text-center sm:text-left">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4">{solution.title}</h3>
+                  <p className=" mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed">{solution.description}</p>
+                  <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
+                    {solution.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3">
+                        <CheckCircle className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-green-500 flex-shrink-0" />
+                        <span className=" font-medium text-xs sm:text-sm lg:text-base">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-             
+              </div>
+
             </motion.div>
           ))}
         </div>
 
         {/* Growth-focused messaging */}
+
         <div className='w-full flex justify-center items-center'>
           <CursorFollower
             framerAtts={{
@@ -127,9 +128,9 @@ const InsideShiftDeploy = () => {
             gradientFrom='rgba(67, 97, 238, 0.2)'
             gradientTo='rgba(67, 97, 238, 0.1)'
             circleSize={150}
-            className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
+            className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
           >
-            <h3 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold  mb-4 sm:mb-6 lg:mb-8">
+            <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
               Ready to Accelerate Your Growth?
             </h3>
             <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
@@ -139,9 +140,9 @@ const InsideShiftDeploy = () => {
             </p>
 
 
-            <button 
+            <button
 
-            className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
             >
 
               Why We’re Different

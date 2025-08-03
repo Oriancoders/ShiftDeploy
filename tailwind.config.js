@@ -14,6 +14,7 @@ export default {
         textColor : '#231F20',
       },
       fontSize : {
+        'md' : '16px',
         '3xl' : '2rem',
         '4xl' : '2.5rem',
       }

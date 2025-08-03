@@ -6,22 +6,22 @@ import CursorFollower from '../../../utils/CursorFollower';
 
 const Hero = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex items-center pt-16 sm:py-24">
+    <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex sm:items-center py-16 sm:py-24">
 
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 sm:items-center">
 
           <div
-            className="text-center lg:text-left"
+            className="text-left"
           >
 
 
             <CursorFollower
 
-              text="Deploy -> Scale -> Succeed."
-              className="bg-gradient-to-r from-secondaryBlue to-blue-700 px-2 sm:px-3 lg:px-4 py-1 sm:py-1.5 lg:py-2 mb-6 rounded-full"
-              textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base'
+              text="Deploy -> Scale -> Succeed"
+              className="bg-gradient-to-r from-secondaryBlue to-blue-700 px-3 lg:px-4 py-2 mb-6 rounded-full"
+              textClassName='text-white font-semibold text-sm lg:text-base'
               gradientFrom="#0C1F3A"
               gradientTo="#0B1D30"
               circleSize={100}
@@ -30,7 +30,7 @@ const Hero = () => {
 
 
             <h1
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight"
+              className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight"
             >
               <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
                 Launch Products
@@ -52,9 +52,9 @@ const Hero = () => {
 
             <p
               variants={fadeInUp}
-              className="text-sm sm:text-base md:text-sm xl:text-lg text-textColor mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto lg:mx-0 leading-relaxed px-4 sm:px-0"
+              className="text-xl    text-textColor mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0"
             >
-              “Empowering businesses with web development, cloud solutions & DevOps to drive your digital growth.”
+              Empowering businesses with web development, cloud solutions & DevOps to drive your digital growth.
 
             </p>
 
@@ -62,7 +62,7 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center lg:justify-start mb-8 sm:mb-10 lg:mb-12 xl:mb-16 px-4 sm:px-0"
             >
 
-              <motion.button className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
+              <motion.button className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
 
               >
                 Launch Your Project
@@ -72,7 +72,7 @@ const Hero = () => {
 
               <motion.button
 
-                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  hover:border-toBlue  shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg"
+                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:hover:border-toBlue  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
               >
                 <Play className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
                 <span>View Demo</span>
@@ -85,7 +85,7 @@ const Hero = () => {
             {/* Stats */}
             <motion.div
               variants={staggerContainer}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 text-center lg:text-left px-4 sm:px-0"
+              className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 sm:text-center lg:text-left px-4 sm:px-0"
             >
               {[
                 { icon: Zap, number: "500+", label: "Projects Deployed", },
@@ -96,18 +96,18 @@ const Hero = () => {
                   key={index}
                   variants={fadeInUp}
 
-                  className="text-center lg:text-left"
+                  className="flex flex-col justify-center items-center"
                 >
                   <CursorFollower
-                    className='flex justify-center  mb-2 sm:mb-3 w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 bg-gradient-to-br from-secondaryBlue to-toSecBlue rounded-lg sm:rounded-xl  items-center shadow-lg'
+                    className='flex justify-center   mb-2 sm:mb-3 w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-br from-secondaryBlue to-toSecBlue rounded-lg sm:rounded-xl  items-center shadow-lg'
                     gradientFrom="#0C1F3A"
                     gradientTo="#0B1D30"
                     circleSize={50}
                   >
-                    <stat.icon className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 text-white" />
+                    <stat.icon className="w-5 lg:w-6 h-5 lg:h-6 text-white" />
                   </CursorFollower>
                   <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-gray-900 mb-1">{stat.number}</div>
-                  <div className="text-xs sm:text-sm font-medium text-gray-600">{stat.label}</div>
+                  <div className=" font-medium text-center">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
