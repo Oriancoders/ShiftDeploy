@@ -82,10 +82,10 @@ function OriginStorySection() {
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Cinematic Header */}
         <div className="text-center mb-20">
-          <h1 className="text-6xl md:text-7xl font-black text-textColor mb-4 leading-[1.3]">
-            Built in chaos.
+          <h1 className="text-6xl md:text-7xl font-bold text-textColor mb-4 leading-[1.3]">
+            Built in chaos
             <span className="block bg-gradient-to-r from-primaryOrange to-orange-600 bg-clip-text text-transparent pb-5">
-              Deployed for clarity.
+              Deployed for clarity
             </span>
           </h1>
           <CursorFollower

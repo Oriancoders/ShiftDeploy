@@ -15,7 +15,7 @@ function PhilosophySection() {
         "Rushed code is expensive code. We'd rather deliver something solid next week than something broken today.",
       icon: <Target className="w-6 h-6" />,
       gradient: "from-blue-500 via-blue-600 to-indigo-600",
-      hoverGradient: "from-blue-600 via-indigo-600 to-purple-600",
+      hoverGradient: "from-secondaryBlue to-toSecBlue",
     },
     {
       title: "Communication = architecture",
@@ -73,8 +73,8 @@ function PhilosophySection() {
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            The principles that ship
-            <span className="block bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+            The principles that ship <br/>
+            <span className="text-secondaryBlue">
               with every project
             </span>
           </h2>
@@ -106,7 +106,7 @@ function PhilosophySection() {
                   ></div>
 
                   <div
-                    className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${item.gradient} mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6`}
+                    className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-secondaryBlue mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6`}
                   >
                     <div className="text-white">{item.icon}</div>
                   </div>

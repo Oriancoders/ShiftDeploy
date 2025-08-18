@@ -60,16 +60,16 @@ function StoryInFramesSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white overflow-x-hidden">
+    <section ref={sectionRef} className="py-24 bg-white overflow-x-hidden text-textColor">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            From concept to deployment:
-            <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            From concept to deployment <br/>
+            <span className="text-toSecBlue">
               A real story
             </span>
           </h2>
-          <p className="text-xl text-gray-600">Project Spotlight: E-Commerce Platform Scale-Up</p>
+          <p className="text-xl ">Project Spotlight: E-Commerce Platform Scale-Up</p>
         </div>
 
         {/* Timeline */}
@@ -85,17 +85,17 @@ function StoryInFramesSection() {
             {projectFrames.map((frame, index) => (
               <div
                 key={index}
-                className={`relative transition-all duration-700 transform ${
+                className={`relative transition-all duration-700 transform group ${
                   visibleFrames.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
                 }`}
               >
                 {/* Timeline Node */}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-gray-300 rounded-full z-10 hidden md:block"></div>
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-gray-300 group-hover:border-toSecBlue rounded-full z-10 hidden md:block"></div>
 
                 <div className="bg-gray-50 rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 h-full">
                   {/* Icon */}
                   <div
-                    className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${frame.color} mb-6`}
+                    className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-secondaryBlue mb-6`}
                   >
                     <div className="text-white">{frame.icon}</div>
                   </div>
@@ -103,14 +103,14 @@ function StoryInFramesSection() {
                   {/* Content */}
                   <div className="mb-4">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">{frame.title}</h3>
-                    <h4 className="text-lg text-gray-600 mb-4">{frame.subtitle}</h4>
+                    <h4 className="text-lg  mb-4">{frame.subtitle}</h4>
                   </div>
 
-                  <blockquote className="text-lg text-gray-700 italic mb-6 border-l-4 border-gray-300 pl-4">
+                  <blockquote className="text-lg  italic mb-6 border-l-4 border-gray-300 pl-4">
                     "{frame.description}"
                   </blockquote>
 
-                  <p className="text-gray-600 leading-relaxed">{frame.details}</p>
+                  <p className=" leading-relaxed">{frame.details}</p>
                 </div>
               </div>
             ))}

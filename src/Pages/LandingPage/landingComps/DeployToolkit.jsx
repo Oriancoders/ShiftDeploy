@@ -1,10 +1,19 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Wrench, Zap, Shield, Globe, Server, Database, ArrowRight } from 'lucide-react';
 import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
 import CursorFollower from '../../../utils/CursorFollower';
 
 const DeployToolkit = () => {
+   const [activeIndex , setActiveIndex] = useState(0)
+    const [mouseOverIndex , setMouseOverIndex] = useState(null)
+
+    const handleIndex = (index) =>{
+        setActiveIndex(index)
+    }
+    const handleMouseOver = (index) => {
+        setMouseOverIndex(index != activeIndex ? index : null)
+    }
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -59,6 +68,16 @@ const DeployToolkit = () => {
     }
   ];
 
+  const builtToScale = [
+    { heading: "CommerceAI", icon: <Globe sx={{ fontSize: 30 }} />, para: "Know what your customers want before they do. CommerceAI tracks shopping trends, predicts demand, and helps you stock the right products at the right time. It also personalizes recommendations, increasing sales without extra effort. Less guesswork, fewer dead stocks, and more revenue—automated.",},
+
+    { heading: "ScaleCloud", icon: <Globe sx={{ fontSize: 30 }} />, para: "Forget scattered systems. ScaleCloud automates tasks across your entire business, from handling leads and sending follow-ups to managing orders and customer support. You get a single, connected platform that removes bottlenecks, saves time, and lets your business grow without adding extra work.", },
+
+    { heading: "LaunchPad", icon: <Globe sx={{ fontSize: 30 }} />, para: "Your website isn’t just a page—it’s your best salesperson. LaunchPad builds sites that load fast, look great, and turn visitors into paying customers. It also connects to AI-powered ads that target the right people at the right time, so you get higher conversions and lower ad costs.", },
+
+    { heading: "EliteScale", icon: <Globe sx={{ fontSize: 30 }} />, para: "Big businesses win by running everything at scale—now you can too. EliteScale gives you enterprise-grade automation, AI-driven marketing, and multi-channel advertising in one package. Instead of juggling agencies and tools, you get a fully optimized system that grows your business across every platform.",  },
+  ]
+
   return (
     <section id="deploy-toolkit" className="py-4 sm:py-12  text-textColor bg-gradient-to-b from-white to-gray-50">
       <div className=" mx-auto flex flex-col justify-center items-center ">
@@ -103,7 +122,7 @@ const DeployToolkit = () => {
             >
               <div
                 className="bg-white border sm:border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md  transition-all duration-300 group "
- 
+
               >
                 <div className={`w-12 sm:w-14 lg:w-16 h-12 sm:h-14 lg:h-16 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 lg:mb-6  shadow-lg `}>
                   <tool.icon className="w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 text-white" />
@@ -130,8 +149,40 @@ const DeployToolkit = () => {
           ))}
         </div>
 
+        {/* starting for big screen  */}
+        <div className='w-full flex gap-20 justify-between items-center  sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl '>
+          <div className='min-w-[30%] flex flex-col gap-8'>
+            {builtToScale.map((item, idx) => (
+              <span
+                onMouseEnter={() => handleMouseOver(idx)}
+                onMouseLeave={() => handleMouseOver(null)}
+                onClick={() => handleIndex(idx)} key={idx}
+
+                style={{
+
+                  color: activeIndex == idx ? '#0c1f3a' : '',
+                  boxShadow: activeIndex == idx && "0px 0px 5px rgba(0, 0, 0, 0.2)",
+                }} className={`py-4 px-8 text-2xl rounded-xl items-center transition-all flex gap-x-4 cursor-pointer bg-primaryBlue text-white ${idx == mouseOverIndex && 'hover:bg-primaryBlue text-white'}`}>
+                <span>{item.icon}</span>
+                <h1 className=' font-semibold'>{item.heading}</h1>
+
+              </span>
+            ))}
+          </div>
+
+          <div className='flex-1 p-6 rounded-xl bg-darkBlue text-left relative'>
+            <h1 className='font-bold text-4xl '>{builtToScale[0].heading}</h1>
+
+            <p className='font-bold absolute bottom-5 left-5 inline text-left  text-lg py-2 cursor-pointer  bg-greenButton px-4 rounded'>
+              Know More
+            </p>
+
+
+          </div>
+        </div>
+
         {/* Problem-solving CTA */}
-        
+
         <div className='w-full flex justify-center items-center'>
           <CursorFollower
             framerAtts={{
@@ -146,12 +197,12 @@ const DeployToolkit = () => {
             className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white py-8 px-6 sm:px-0 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
           >
             <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
-              Whether it's containers, CI/CD, or observability <br/> we’ve done it for teams like yours.
+              Whether it's containers, CI/CD, or observability <br /> we’ve done it for teams like yours.
             </h3>
             <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             >
               Our Deploy Toolkit is designed to solve the most common problems businesses face
-            when building and scaling digital products. Let us help you overcome technical barriers.
+              when building and scaling digital products. Let us help you overcome technical barriers.
             </p>
 
 

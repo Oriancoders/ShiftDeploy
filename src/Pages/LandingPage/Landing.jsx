@@ -7,6 +7,7 @@ import ShiftProtocol from './landingComps/ShiftProtocol'
 import MissionsCompleted from './landingComps/MissionsCompleted'
 import FlightLogs from './landingComps/FlightLogs'
 import Footer from '../../components/Footer'
+import GroundControlTeam from './landingComps/GroundControlTeam'
 
 const Landing = () => {
     return (
@@ -17,6 +18,7 @@ const Landing = () => {
             <DeployToolkit />
             <ShiftProtocol />
             <MissionsCompleted />
+            <GroundControlTeam />
             <FlightLogs />
             <Footer />
         </div>
