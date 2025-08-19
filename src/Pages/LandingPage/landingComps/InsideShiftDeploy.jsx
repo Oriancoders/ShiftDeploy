@@ -42,18 +42,18 @@ const InsideShiftDeploy = () => {
   ];
 
   return (
-    <section id="inside-shiftdeploy" className="py-4 sm:py-12  text-textColor bg-gradient-to-b from-white to-gray-50">
+    <section id="inside-shiftdeploy" className="pt-4 sm:pt-12  text-textColor bg-gradient-to-b from-white to-gray-50">
       <div className=" mx-auto flex flex-col justify-center items-center ">
         <motion.div
           ref={ref}
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="text-center mb-8 lg:mb-10"
+          className="text-center mb-8 "
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-3xl xl:text-4xl font-bold mb-4 sm:mb-6 "
+            className="text-3xl xl:text-4xl font-bold mb-6 "
           >
             <span className="text-primaryBlue">
               Inside
@@ -64,7 +64,7 @@ const InsideShiftDeploy = () => {
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-lg max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 leading-relaxed px-4 sm:px-0"
+            className="text-lg max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 leading-relaxed px-4 sm:px-0  text-gray-600"
           >
             We provide comprehensive technology solutions that help businesses scale,
             optimize performance, and achieve sustainable growth in today's digital landscape.
@@ -81,7 +81,7 @@ const InsideShiftDeploy = () => {
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
-              className="bg-white border sm:border-gray-200 rounded-xl md:rounded-2xl p-6 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md transition-all  group col-span-1"            // whileHover="whileHover"
+              className="bg-white border sm:border-gray-200 rounded-xl md:rounded-2xl p-6 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md transition-all  group col-span-1 h-full"            // whileHover="whileHover"
             >
               <div className="flex flex-col  sm:flex-row items-start space-y-6 sm:space-y-0 sm:space-x-4 lg:space-x-6">
                 <motion.div
@@ -94,22 +94,24 @@ const InsideShiftDeploy = () => {
                     stiffness: 300,
                     damping: 15,
                   }}
-                  className={` w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0  shadow-lg mx-0`}>
+                  className={` w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0   mx-0`}>
                   <solution.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
                 </motion.div>
-                <div className="flex-1 text-left">
-                  <h3 className="text-xl lg:text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4">{solution.title}</h3>
-                  <p className=" mb-4 sm:mb-6 lg:mb-8 text-lg leading-relaxed">{solution.description}</p>
+                <div className="flex-1 text-left space-y-4">
+                  <h3 className="text-xl lg:text-2xl font-bold   text-primaryBlue">{solution.title}</h3>
+                  <p className="  text-lg leading-relaxed text-gray-600">{solution.description}</p>
                   <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
                     {solution.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center justify-start space-x-2 sm:space-x-3">
                         <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                        <span className=" font-medium text-lg">{feature}</span>
+                        <span className="text-gray-700 font-medium text-lg">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
+{/* 
+              <div className='w-full text-right translate-y-3 translate-x-3 cursor-pointer group-hover:opacity-100 opacity-0 text-primaryBlue font-bold'>Know More -{">"} </div> */}
 
             </motion.div>
           ))}

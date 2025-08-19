@@ -42,9 +42,9 @@ const MissionsCompleted = () => {
   ];
 
   const stats = [
-    { icon: Users, value: "500+", label: "Successful Projects", gradient: "from-blue-500 to-indigo-600" },
-    { icon: TrendingUp, value: "250%", label: "Avg. Performance Boost", gradient: "from-green-500 to-emerald-600" },
-    { icon: Calendar, value: "5 Years", label: "Industry Experience", gradient: "from-purple-500 to-indigo-600" },
+    { icon: Users, value: "100+", label: "Successful Projects", gradient: "from-blue-500 to-indigo-600" },
+    { icon: TrendingUp, value: "200%", label: "Avg. Performance Boost", gradient: "from-green-500 to-emerald-600" },
+    { icon: Calendar, value: "3 Years +", label: "Industry Experience", gradient: "from-purple-500 to-indigo-600" },
     { icon: Star, value: "4.9/5", label: "Client Satisfaction", gradient: "from-yellow-500 to-orange-600" }
   ];
 

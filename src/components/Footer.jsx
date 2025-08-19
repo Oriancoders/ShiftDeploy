@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Rocket, Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
-
+import whiteV from '../Assets/Images/whiteV.png'
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -53,7 +53,7 @@ const Footer = () => {
               className="lg:max-w-60 sm:max-w-48 max-w-36"
             >
 
-              <img src="https://res.cloudinary.com/dycwtnjbi/image/upload/v1753335542/white-v_gjd0eu.png" alt="" />
+              <img src={whiteV} alt="" />
             </motion.div>
             <p className="text-gray-300 mb-4 sm:mb-6 lg:mb-8 leading-relaxed text-xs sm:text-sm lg:text-base">
               Transforming digital visions into reality through cutting-edge web development,

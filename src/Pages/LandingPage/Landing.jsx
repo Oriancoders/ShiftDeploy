@@ -8,6 +8,7 @@ import MissionsCompleted from './landingComps/MissionsCompleted'
 import FlightLogs from './landingComps/FlightLogs'
 import Footer from '../../components/Footer'
 import GroundControlTeam from './landingComps/GroundControlTeam'
+import ProblemSolutionCards from './landingComps/ProblemsolCard'
 
 const Landing = () => {
     return (
@@ -15,6 +16,7 @@ const Landing = () => {
             <Navigation />
             <Hero />
             <InsideShiftDeploy />
+            {/* <ProblemSolutionCards/> */}
             <DeployToolkit />
             <ShiftProtocol />
             <MissionsCompleted />

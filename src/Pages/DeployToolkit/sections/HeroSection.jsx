@@ -13,7 +13,7 @@ function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden pt-32 py-10"
+      className="relative  flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden pt-32 py-10"
     >
       {/* Background Animation */}
       <div className="absolute inset-0 opacity-30">

@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Rocket } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CursorFollower from '../utils/CursorFollower';
+
+import coloredV from '../Assets/Images/coloredV.png'
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -42,7 +45,7 @@ const Navigation = () => {
 
 
             <Link to="/">
-              <img src="https://res.cloudinary.com/dycwtnjbi/image/upload/v1753335541/colored-v_y7jkzd.png" alt="" />
+              <img src={coloredV} alt="" />
             </Link>
           </motion.div>
 

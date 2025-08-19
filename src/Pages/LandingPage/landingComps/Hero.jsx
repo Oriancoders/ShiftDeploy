@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, Shield, Rocket, Play } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Rocket, Play, Headset, CheckCheck } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../../../utils/animations';
 import CursorFollower from '../../../utils/CursorFollower';
 
 const Hero = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex sm:items-center py-16 sm:py-24 text-textColor">
+    <section className=" bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-8">
 
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -27,11 +27,8 @@ const Hero = () => {
             <h1
               className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left"
             >
-              <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
                 Launch Products
-                {/* From Shift
-                To Deploy
-                Zero Stress */}
 
               </span>
               <br />
@@ -40,37 +37,35 @@ const Hero = () => {
 
               </span>
               <br />
-              <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
                 Under Pressure
               </span>
             </h1>
 
             <p
               variants={fadeInUp}
-              className="text-xl    text-textColor mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0 lg:text-left sm:text-center text-left"
+              className="text-xl   mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0 lg:text-left sm:text-center text-left text-gray-600"
             >
               Empowering businesses with web development, cloud solutions & DevOps to drive your digital growth.
 
             </p>
 
             <div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center lg:justify-start mb-8 sm:mb-10 lg:mb-12 xl:mb-16 px-4 sm:px-0"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 sm:mb-16 px-4 sm:px-0"
             >
 
               <motion.button className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
 
               >
                 Launch Your Project
-                <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
 
               </motion.button>
 
               <motion.button
 
-                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:hover:border-toBlue  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
               >
-                <Play className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
-                <span>View Demo</span>
+                <span>View Missions Completed</span>
 
               </motion.button>
 
@@ -80,29 +75,35 @@ const Hero = () => {
             {/* Stats */}
             <motion.div
               variants={staggerContainer}
-              className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 sm:text-center lg:text-left px-4 sm:px-0"
+              className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 text-center lg:text-left px-4 sm:px-0"
             >
               {[
-                { icon: Zap, number: "500+", label: "Projects Deployed", },
+                { icon: CheckCheck, number: "100+", label: "Projects Deployed", },
                 { icon: Shield, number: "99.9%", label: "Uptime Guarantee", },
-                { icon: Rocket, number: "24/7", label: "Support Available", }
+                { icon: Headset, number: "24/7", label: "Support Available", }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
                   variants={fadeInUp}
 
-                  className="flex flex-col justify-center items-center"
+                  className="flex flex-col "
                 >
-                  <CursorFollower
-                    className='flex justify-center   mb-2 sm:mb-3 w-10 lg:w-12 h-10 lg:h-12 bg-gradient-to-br from-secondaryBlue to-toSecBlue rounded-lg sm:rounded-xl  items-center shadow-lg'
-                    gradientFrom="#0C1F3A"
-                    gradientTo="#0B1D30"
-                    circleSize={50}
-                  >
-                    <stat.icon className="w-5 lg:w-6 h-5 lg:h-6 text-white" />
-                  </CursorFollower>
-                  <div className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1">{stat.number}</div>
-                  <div className=" font-medium text-center text-md">{stat.label}</div>
+                  <motion.div
+                    whileHover={{
+                      y: -7,
+                      rotateZ: -15,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 15,
+                    }}
+                    className={`  w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0   mx-0 mb-3`}>
+                    <stat.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
+                  </motion.div>
+                 
+                  <div className="text-lg sm:text-2xl  font-bold mb-1 text-primaryBlue">{stat.number}</div>
+                  <div className=" font-medium text-center text-md text-gray-600">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>

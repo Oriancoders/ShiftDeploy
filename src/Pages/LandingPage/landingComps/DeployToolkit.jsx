@@ -1,19 +1,19 @@
 import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Wrench, Zap, Shield, Globe, Server, Database, ArrowRight } from 'lucide-react';
+import { Wrench, Zap, Shield, Globe, Server, Database, ArrowRight, MoveLeft } from 'lucide-react';
 import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
 import CursorFollower from '../../../utils/CursorFollower';
-
 const DeployToolkit = () => {
-   const [activeIndex , setActiveIndex] = useState(0)
-    const [mouseOverIndex , setMouseOverIndex] = useState(null)
+  const [activeIndex, setActiveIndex] = useState(null)
+  const [mouseOverIndex, setMouseOverIndex] = useState(null)
 
-    const handleIndex = (index) =>{
-        setActiveIndex(index)
-    }
-    const handleMouseOver = (index) => {
-        setMouseOverIndex(index != activeIndex ? index : null)
-    }
+
+  const handleIndex = (index) => {
+    setActiveIndex(index)
+  }
+  const handleMouseOver = (index) => {
+    setMouseOverIndex(index != activeIndex ? index : null)
+  }
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -22,60 +22,84 @@ const DeployToolkit = () => {
       icon: Globe,
       title: "Global CDN",
       description: "Lightning-fast content delivery worldwide with 99.9% uptime guarantee",
-      problem: "Slow loading times",
-      solution: "Global edge locations",
-      gradient: "from-green-500 to-emerald-600"
+      problem: "Slow loading times due to centralized servers and long-distance data travel. This frustrates users and hurts SEO rankings.",
+      solution: "Distributing content across multiple global edge locations drastically reduces latency, ensures faster load times, and improves SEO performance.",
+      result: "40% faster loads"
     },
     {
       icon: Server,
       title: "Auto-Scaling Infrastructure",
       description: "Dynamically adjust resources based on demand to optimize performance",
-      problem: "Traffic spikes",
-      solution: "Intelligent scaling",
-      gradient: "from-blue-500 to-cyan-600"
+      problem: "Traffic spikes can overwhelm fixed servers, causing downtime and slow response.",
+      solution: "Our system automatically adjusts capacity in real time, ensuring smooth scaling during peak loads.",
+      result: "99.9% uptime"
     },
     {
       icon: Database,
       title: "Database Optimization",
       description: "High-performance database solutions with automated backups",
-      problem: "Data bottlenecks",
-      solution: "Optimized queries",
-      gradient: "from-purple-500 to-indigo-600"
+      problem: "Unoptimized queries and slow retrieval bottleneck applications.",
+      solution: "We apply indexing, caching, and optimized queries for faster data access.",
+      result: "2x faster queries"
     },
     {
       icon: Shield,
       title: "Security Hardening",
       description: "Enterprise-grade security measures to protect your applications",
-      problem: "Security vulnerabilities",
-      solution: "Multi-layer protection",
-      gradient: "from-red-500 to-pink-600"
+      problem: "Apps face risks like SQL injection, DDoS, and data leaks.",
+      solution: "We deploy multi-layered firewalls, encryption, and audits for strong protection.",
+      result: "70% fewer risks"
     },
     {
       icon: Zap,
       title: "Performance Monitoring",
       description: "Real-time monitoring and alerting for optimal application health",
-      problem: "Performance issues",
-      solution: "Proactive monitoring",
-      gradient: "from-yellow-500 to-orange-600"
+      problem: "Issues stay hidden until customers complain.",
+      solution: "We use dashboards + instant alerts for proactive fixes.",
+      result: "90% faster fixes"
     },
     {
       icon: Wrench,
       title: "DevOps Automation",
       description: "Streamlined workflows with CI/CD pipelines and automated testing",
-      problem: "Manual processes",
-      solution: "Full automation",
-      gradient: "from-indigo-500 to-purple-600"
+      problem: "Manual deployment is slow and error-prone.",
+      solution: "Automated pipelines & testing enable fast and reliable delivery.",
+      result: "60% faster deploys"
     }
   ];
 
+
+
   const builtToScale = [
-    { heading: "CommerceAI", icon: <Globe sx={{ fontSize: 30 }} />, para: "Know what your customers want before they do. CommerceAI tracks shopping trends, predicts demand, and helps you stock the right products at the right time. It also personalizes recommendations, increasing sales without extra effort. Less guesswork, fewer dead stocks, and more revenue—automated.",},
+    {
+      heading: "DevOps Automation", icon: <Globe sx={{ fontSize: 30 }} />, description: "Streamlined workflows with CI/CD pipelines and automated testing", problem: "Manual processes",
+      solution: "Full automation",
+    },
 
-    { heading: "ScaleCloud", icon: <Globe sx={{ fontSize: 30 }} />, para: "Forget scattered systems. ScaleCloud automates tasks across your entire business, from handling leads and sending follow-ups to managing orders and customer support. You get a single, connected platform that removes bottlenecks, saves time, and lets your business grow without adding extra work.", },
+    {
+      heading: "DevOps Automation", icon: <Globe sx={{ fontSize: 30 }} />, description: "Streamlined workflows with CI/CD pipelines and automated testing", problem: "Manual processes",
+      solution: "Full automation",
+    },
 
-    { heading: "LaunchPad", icon: <Globe sx={{ fontSize: 30 }} />, para: "Your website isn’t just a page—it’s your best salesperson. LaunchPad builds sites that load fast, look great, and turn visitors into paying customers. It also connects to AI-powered ads that target the right people at the right time, so you get higher conversions and lower ad costs.", },
+    {
+      heading: "DevOps Automation", icon: <Globe sx={{ fontSize: 30 }} />, description: "Streamlined workflows with CI/CD pipelines and automated testing", problem: "Manual processes",
+      solution: "Full automation",
+    },
 
-    { heading: "EliteScale", icon: <Globe sx={{ fontSize: 30 }} />, para: "Big businesses win by running everything at scale—now you can too. EliteScale gives you enterprise-grade automation, AI-driven marketing, and multi-channel advertising in one package. Instead of juggling agencies and tools, you get a fully optimized system that grows your business across every platform.",  },
+    {
+      heading: "DevOps Automation", icon: <Globe sx={{ fontSize: 30 }} />, description: "Streamlined workflows with CI/CD pipelines and automated testing", problem: "Manual processes",
+      solution: "Full automation",
+    },
+
+    {
+      heading: "DevOps Automation", icon: <Globe sx={{ fontSize: 30 }} />, description: "Streamlined workflows with CI/CD pipelines and automated testing", problem: "Manual processes",
+      solution: "Full automation",
+    },
+
+    {
+      heading: "DevOps Automation", icon: <Globe sx={{ fontSize: 30 }} />, description: "Streamlined workflows with CI/CD pipelines and automated testing", problem: "Manual processes",
+      solution: "Full automation",
+    },
   ]
 
   return (
@@ -101,7 +125,7 @@ const DeployToolkit = () => {
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  leading-relaxed px-4 sm:px-0"
+            className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  leading-relaxed px-4 sm:px-0 text-gray-600"
           >
             Our comprehensive Deploy Toolkit includes everything you need to build,
             deploy, and scale modern applications with confidence.
@@ -117,69 +141,67 @@ const DeployToolkit = () => {
         <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl ">
           {tools.map((tool, index) => (
             <motion.div
+              onMouseEnter={() => handleMouseOver(index)}
               key={index}
               variants={scaleOnHover}
             >
               <div
-                className="bg-white border sm:border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md  transition-all duration-300 group "
+                className="bg-white min-h-[380px] sm:min-h-[420px] lg:min-h-[380px] border sm:border-gray-200 rounded-3xl p-6 pb-12 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden"
 
               >
-                <div className={`w-12 sm:w-14 lg:w-16 h-12 sm:h-14 lg:h-16 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mb-3 sm:mb-4 lg:mb-6  shadow-lg `}>
-                  <tool.icon className="w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 text-white" />
-                </div>
-                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4 ">{tool.title}</h3>
-                <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed  text-sm sm:text-base">{tool.description}</p>
+                <motion.div
+                  whileHover={{
+                    y: -7,
+                    rotateZ: -15,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 15,
+                  }}
+                  className={` w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0  mx-0 mb-4`}>
+                  <tool.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
+                </motion.div>
+                <h3 className="text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4 text-gray-900">{tool.title}</h3>
+                <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed   text-base text-gray-600">{tool.description}</p>
 
                 <div className="space-y-1.5 sm:space-y-2 lg:space-y-3">
-                  <div className="flex items-center  space-x-2 sm:space-x-3">
-                    <div className="w-2 sm:w-2.5 lg:w-3 h-2 sm:h-2.5 lg:h-3 bg-red-600 rounded-full flex-shrink-0" />
-                    <span className="text-xs sm:text-sm ">
-                      <span className="text-red-600 font-semibold">Problem:</span> {tool.problem}
+                  <div className="flex items-center  space-x-2 sm:space-x-3 ">
+                    <div className="w-3 h-3 bg-red-600 rounded-full flex-shrink-0" />
+                    <span className="text-md ">
+                      <span className="text-red-600 font-semibold">Problem:</span>
                     </span>
                   </div>
-                  <div className="flex items-center  space-x-2 sm:space-x-3">
-                    <div className="w-2 sm:w-2.5 lg:w-3 h-2 sm:h-2.5 lg:h-3 bg-green-600 rounded-full flex-shrink-0" />
-                    <span className="text-xs sm:text-sm ">
-                      <span className="text-green-600 font-semibold">Solution:</span> {tool.solution}
+                  <span className='text-gray-600 text-base'>
+                    
+                    {tool.problem}
                     </span>
+
+                </div>
+                {/* this one card animation  */}
+                <div className={`w-full   absolute sm:-bottom-20 sm:left-20 bottom-0 left-0 group-hover:left-0 group-hover:bottom-0 text-white text-right ${activeIndex == index && '-bottom-20 left-20'}  transition-all duration-500`} style={{
+                }}>
+                  <span className={` font-bold bg-green-600 sm:px-2 px-4 py-2 inline-block rounded-tl-2xl cursor-pointer ${activeIndex == index && 'translate-y-16 translate-x-1/2'}transition-all duration-500`} onClick={() => handleIndex(index)}>Reveal Solution </span>
+                </div>
+                {/* explanation card  */}
+                <div className={`w-full h-full bg-green-600  absolute  px-6 py-4 text-white rounded-2xl  ${activeIndex == index ? 'top-0 left-0' : '-top-96 -left-96'} transition-all duration-500 flex flex-col justify-between`} style={{
+                }}>
+                  <div className='flex flex-col gap-y-2'>
+                    <h1 className={` font-bold   inline-block  cursor-pointer`} onClick={() => handleIndex(null)}> <MoveLeft /></h1>
+
+                    <span className=" font-bold text-xl">Solution</span>
+                    {tool.solution}
+
                   </div>
+
+                  <div className='w-full text-right text-xl font-bold '>{tool.result}</div>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* starting for big screen  */}
-        <div className='w-full flex gap-20 justify-between items-center  sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl '>
-          <div className='min-w-[30%] flex flex-col gap-8'>
-            {builtToScale.map((item, idx) => (
-              <span
-                onMouseEnter={() => handleMouseOver(idx)}
-                onMouseLeave={() => handleMouseOver(null)}
-                onClick={() => handleIndex(idx)} key={idx}
 
-                style={{
-
-                  color: activeIndex == idx ? '#0c1f3a' : '',
-                  boxShadow: activeIndex == idx && "0px 0px 5px rgba(0, 0, 0, 0.2)",
-                }} className={`py-4 px-8 text-2xl rounded-xl items-center transition-all flex gap-x-4 cursor-pointer bg-primaryBlue text-white ${idx == mouseOverIndex && 'hover:bg-primaryBlue text-white'}`}>
-                <span>{item.icon}</span>
-                <h1 className=' font-semibold'>{item.heading}</h1>
-
-              </span>
-            ))}
-          </div>
-
-          <div className='flex-1 p-6 rounded-xl bg-darkBlue text-left relative'>
-            <h1 className='font-bold text-4xl '>{builtToScale[0].heading}</h1>
-
-            <p className='font-bold absolute bottom-5 left-5 inline text-left  text-lg py-2 cursor-pointer  bg-greenButton px-4 rounded'>
-              Know More
-            </p>
-
-
-          </div>
-        </div>
 
         {/* Problem-solving CTA */}
 
@@ -206,14 +228,17 @@ const DeployToolkit = () => {
             </p>
 
 
-            <button
+            <div className='flex justify-center items-center bg-white rounded-2xl '>
+              <input type="text" placeholder='Enter your website' className='px-4 outline-none border-none text-textColor' />
+              <button
 
-              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
-            >
+                className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-r-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
+              >
 
-              Build Your Stack With Us
-              <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
-            </button>
+                Send me free audit
+                <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+              </button>
+            </div>
 
           </CursorFollower>
         </div>

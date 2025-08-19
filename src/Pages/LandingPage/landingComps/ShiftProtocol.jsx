@@ -47,7 +47,7 @@ const ShiftProtocol = () => {
   ];
 
   return (
-    <section id="the-shift-protocol" className="py-4 sm:py-12  text-textColor bg-gradient-to-b from-white to-gray-50">
+    <section id="the-shift-protocol" className="py-4 sm:py-12  bg-gradient-to-b from-white to-gray-50">
       <div className="mx-auto flex flex-col justify-center items-center ">
         <motion.div
           ref={ref}
@@ -69,7 +69,7 @@ const ShiftProtocol = () => {
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  leading-relaxed px-4 sm:px-0"
+            className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  text-gray-600 leading-relaxed px-4 sm:px-0"
           >
             Our proven 5-step methodology ensures successful project delivery from
             concept to deployment and beyond.
@@ -93,7 +93,7 @@ const ShiftProtocol = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
                 variants={scaleOnHover}
-                transition={{ duration: 0.6, delay: index * 0.2 , once: false}}
+                transition={{ duration: 0.6, delay: index * 0.2, once: false }}
                 className="relative md:col-span-1 lg:col-span-1 bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300  transition-all duration-200 group h-full pt-6 sm:pt-8 lg:pt-8 sm:space-y-6 space-y-4"
               >
                 {/* Step number */}
@@ -101,23 +101,33 @@ const ShiftProtocol = () => {
                   {index + 1}
                 </div> */}
 
- 
-                  <div className={`w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center  mx-auto sm:group-hover:scale-110 transition-transform duration-200 shadow-lg`}>
-                    <step.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
-                  </div>
 
-                  <h3 className="text-lg lg:text-xl xl:text-2xl font-bold text-primaryBlue   text-center">{index + 1}: {step.title}</h3>
-                  <p className="  text-center sm:leading-relaxed text-lg">{step.description}</p>
-
-                  <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3  grid sm:grid-cols-1 grid-cols-2">
-                    {step.details.map((detail, detailIndex) => (
-                      <li key={detailIndex} className="flex items-center space-x-2 sm:space-x-3">
-                        <div className="w-2 h-2 bg-secondaryBlue rounded-full flex-shrink-0" />
-                        <span className=" text-md font-medium">{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <motion.div
+                  whileHover={{
+                    y: -7,
+                    rotateZ: -15,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 15,
+                  }}
+                  className={` w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 mx-auto bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0  mx-0 mb-4`}>
+                  <step.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
                 </motion.div>
+
+                <h3 className="text-lg lg:text-xl xl:text-2xl font-bold text-gray-900  text-center">{index + 1}: {step.title}</h3>
+                <p className="  text-center sm:leading-relaxed text-lg text-gray-600">{step.description}</p>
+
+                <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3  grid sm:grid-cols-1 grid-cols-2">
+                  {step.details.map((detail, detailIndex) => (
+                    <li key={detailIndex} className="flex items-center space-x-2 sm:space-x-3 ">
+                      <div className="w-2 h-2 bg-secondaryBlue rounded-full flex-shrink-0" />
+                      <span className="text-gray-700 text-md font-medium">{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -139,12 +149,12 @@ const ShiftProtocol = () => {
             className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
           >
             <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
-             Our 5-step protocol is designed to eliminate cloud chaos. Full control. Zero vendor lock.
+              Our 5-step protocol is designed to eliminate cloud chaos. Full control. Zero vendor lock.
             </h3>
             <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             >
               Let's start your transformation journey. Our proven methodology ensures
-            your project's success from day one.
+              your project's success from day one.
             </p>
 
 
