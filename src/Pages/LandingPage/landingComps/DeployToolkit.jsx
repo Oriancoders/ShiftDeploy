@@ -173,9 +173,9 @@ const DeployToolkit = () => {
                     </span>
                   </div>
                   <span className='text-gray-600 text-base'>
-                    
+
                     {tool.problem}
-                    </span>
+                  </span>
 
                 </div>
                 {/* this one card animation  */}
@@ -205,42 +205,41 @@ const DeployToolkit = () => {
 
         {/* Problem-solving CTA */}
 
-        <div className='w-full flex justify-center items-center'>
-          <CursorFollower
-            framerAtts={{
-              initial: { opacity: 0, y: 60 },
-              animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 },
-              transition: { duration: 0.8, delay: 0.6 }
+        <div className='w-full  bg-gradient-to-br from-primaryBlue to-toBlue text-white '>
+          <div
 
-            }}
-            gradientFrom='rgba(67, 97, 238, 0.2)'
-            gradientTo='rgba(67, 97, 238, 0.1)'
-            circleSize={150}
-            className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white py-8 px-6 sm:px-0 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
+            className="w-full  py-8 px-6 sm:px-0 sm:p-8 lg:p-12 xl:p-16  drop-shadow-sm flex   max-w-7xl mx-auto gap-6"
           >
-            <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
-              Whether it's containers, CI/CD, or observability <br /> we’ve done it for teams like yours.
-            </h3>
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
-            >
-              Our Deploy Toolkit is designed to solve the most common problems businesses face
-              when building and scaling digital products. Let us help you overcome technical barriers.
-            </p>
-
-
-            <div className='flex justify-center items-center bg-white rounded-2xl '>
-              <input type="text" placeholder='Enter your website' className='px-4 outline-none border-none text-textColor' />
-              <button
-
-                className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-r-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
+            <div className='flex-1 '>
+              <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
+                Whether it's containers, CI/CD, or observability <br /> we’ve done it for teams like yours.
+              </h3>
+              <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12  mx-auto leading-relaxed"
               >
+                Our Deploy Toolkit is designed to solve the most common problems businesses face
+                when building and scaling digital products. Let us help you overcome technical barriers.
+              </p>
 
-                Send me free audit
-                <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
-              </button>
+
+              
             </div>
 
-          </CursorFollower>
+            <div className='flex-1 space-y-8'>
+              <img src="https://seranking.com/blog/wp-content/uploads/2022/12/Open-Website-Audit-Settings.png" alt="" className='w-full h-[300px]' />
+
+              <div className='flex justify-between items-center bg-white  rounded-2xl w-full'>
+                <input type="text" placeholder='Enter your website' className='px-4 outline-none border-none text-textColor h-full' />
+                <button
+
+                  className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-r-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
+                >
+
+                  Send me free audit
+                  <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,12 +1,24 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { ArrowRight, Zap, Shield, Rocket, Play, Headset, CheckCheck } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../../../utils/animations';
 import CursorFollower from '../../../utils/CursorFollower';
 
 const Hero = () => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const moveX = useTransform(x, [0, window.innerWidth], [-50, 50]);
+  const moveY = useTransform(y, [0, window.innerHeight], [-50, 50]);
+
+  const handleMouseMove = (e) => {
+    x.set(e.clientX);
+    y.set(e.clientY);
+  };
   return (
-    <section className=" bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-8">
+    <section
+      onMouseMove={handleMouseMove}
+      className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-8">
 
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -101,7 +113,7 @@ const Hero = () => {
                     className={`  w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0   mx-0 mb-3`}>
                     <stat.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
                   </motion.div>
-                 
+
                   <div className="text-lg sm:text-2xl  font-bold mb-1 text-primaryBlue">{stat.number}</div>
                   <div className=" font-medium text-center text-md text-gray-600">{stat.label}</div>
                 </motion.div>
@@ -115,6 +127,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative mt-8 lg:mt-0 px-4 sm:px-0"
+            style={{ x: moveX, y: moveY }}
           >
             <div className="relative">
               {/* Main card */}
