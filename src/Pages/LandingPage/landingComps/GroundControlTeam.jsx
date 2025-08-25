@@ -85,7 +85,7 @@ const GroundControlTeam = () => {
         </motion.div>
 
         {/* Team Grid */}
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2  gap-6 sm:gap-8 lg:gap-10">
           {teamMembers.map((member, index) => (
             <motion.div
               key={index}

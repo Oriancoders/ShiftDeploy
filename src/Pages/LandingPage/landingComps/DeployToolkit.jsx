@@ -146,10 +146,10 @@ const DeployToolkit = () => {
               variants={scaleOnHover}
             >
               <div
-                className="bg-white min-h-[380px] sm:min-h-[420px] lg:min-h-[380px] border sm:border-gray-200 rounded-3xl p-6 pb-12 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden"
+                className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[300px] border sm:border-gray-200 rounded-3xl p-6 pb-12 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden"
 
               >
-                <motion.div
+                {/* <motion.div
                   whileHover={{
                     y: -7,
                     rotateZ: -15,
@@ -161,7 +161,7 @@ const DeployToolkit = () => {
                   }}
                   className={` w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0  mx-0 mb-4`}>
                   <tool.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
-                </motion.div>
+                </motion.div> */}
                 <h3 className="text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4 text-gray-900">{tool.title}</h3>
                 <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed   text-base text-gray-600">{tool.description}</p>
 
@@ -208,7 +208,7 @@ const DeployToolkit = () => {
         <div className='w-full  bg-gradient-to-br from-primaryBlue to-toBlue text-white '>
           <div
 
-            className="w-full  py-8 px-6 sm:px-0 sm:p-8 lg:p-12 xl:p-16  drop-shadow-sm flex   max-w-7xl mx-auto gap-6"
+            className="w-full  py-8 px-6 sm:px-0 sm:p-8 lg:p-12 xl:p-16  drop-shadow-sm flex md:flex-row flex-col   max-w-7xl mx-auto gap-6"
           >
             <div className='flex-1 '>
               <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">

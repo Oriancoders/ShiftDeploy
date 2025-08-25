@@ -93,7 +93,7 @@ const FlightLogs = () => {
             variants={fadeInUp}
             className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  leading-relaxed px-4 sm:px-0"
           >
-            Hear from our clients about their transformation journey and the results 
+            Hear from our clients about their transformation journey and the results
             they've achieved with ShiftDeploy.
           </motion.p>
           <motion.div
@@ -112,35 +112,37 @@ const FlightLogs = () => {
               initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300 hover:shadow-sm transition-all duration-300 group"
+              className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300 hover:shadow-sm transition-all duration-300 group flex flex-col justify-between"
             >
-              <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4 mb-3 sm:mb-4 lg:mb-6">
-                <div className="w-10 sm:w-12 lg:w-16 h-10 sm:h-12 lg:h-16 rounded-full overflow-hidden shadow-lg flex-shrink-0">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-gray-900 font-bold text-sm sm:text-base lg:text-lg">{testimonial.name}</h4>
-                  <p className="text-gray-600 font-medium text-xs sm:text-sm lg:text-base">{testimonial.title}</p>
-                  <div className="flex items-center space-x-1.5 sm:space-x-2 text-blue-600 font-medium text-xs sm:text-sm lg:text-base">
-                    <Building className="w-2.5 sm:w-3 lg:w-4 h-2.5 sm:h-3 lg:h-4" />
-                    <span className="truncate">{testimonial.company}</span>
+              <div>
+                <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4 mb-3 sm:mb-4 lg:mb-6">
+                  <div className="w-10 sm:w-12 lg:w-16 h-10 sm:h-12 lg:h-16 rounded-full overflow-hidden shadow-lg flex-shrink-0">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-gray-900 font-bold text-sm sm:text-base lg:text-lg">{testimonial.name}</h4>
+                    <p className="text-gray-600 font-medium text-xs sm:text-sm lg:text-base">{testimonial.title}</p>
+                    <div className="flex items-center space-x-1.5 sm:space-x-2 text-blue-600 font-medium text-xs sm:text-sm lg:text-base">
+                      <Building className="w-2.5 sm:w-3 lg:w-4 h-2.5 sm:h-3 lg:h-4" />
+                      <span className="truncate">{testimonial.company}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="flex items-center space-x-0.5 sm:space-x-1 mb-2 sm:mb-3 lg:mb-4">
-                {renderStars(testimonial.rating)}
-              </div>
+                <div className="flex items-center space-x-0.5 sm:space-x-1 mb-2 sm:mb-3 lg:mb-4">
+                  {renderStars(testimonial.rating)}
+                </div>
 
-              <div className="relative mb-3 sm:mb-4 lg:mb-6">
-                <Quote className="absolute -top-0.5 sm:-top-1 lg:-top-2 -left-0.5 sm:-left-1 w-4 sm:w-6 lg:w-8 h-4 sm:h-6 lg:h-8 text-blue-200" />
-                <p className="text-gray-700 leading-relaxed pl-4 sm:pl-6 lg:pl-8 text-sm">
-                  {testimonial.review}
-                </p>
+                <div className="relative mb-3 sm:mb-4 lg:mb-6">
+                  <Quote className="absolute -top-0.5 sm:-top-1 lg:-top-2 -left-0.5 sm:-left-1 w-4 sm:w-6 lg:w-8 h-4 sm:h-6 lg:h-8 text-blue-200" />
+                  <p className="text-gray-700 leading-relaxed pl-4 sm:pl-6 lg:pl-8 text-sm">
+                    {testimonial.review}
+                  </p>
+                </div>
               </div>
 
               <div className="pt-2 sm:pt-3 lg:pt-4 border-t border-gray-200">
@@ -183,14 +185,14 @@ const FlightLogs = () => {
 
           <motion.button className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm mx-auto mt-12"
 
-              >
-                Join Our Trusted Clients
-                <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+          >
+            Join Our Trusted Clients
+            <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
 
-              </motion.button>
+          </motion.button>
         </motion.div>
 
-        
+
       </div>
     </section>
   );

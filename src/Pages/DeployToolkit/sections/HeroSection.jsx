@@ -22,7 +22,6 @@ function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      onMouseMove={handleMouseMove}
       className="relative  flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden pt-32 py-10"
     >
       {/* Background Animation */}
@@ -33,8 +32,9 @@ function HeroSection() {
 
       <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
         <div
-          className={`transition-all duration-1000 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            }`}
+          className={`transition-all duration-1000 transform ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          }`}
         >
           {/* Trust Indicator */}
           <div className="mb-6">
@@ -54,8 +54,9 @@ function HeroSection() {
 
           {/* Subheadline */}
           <div
-            className={`transition-all duration-1000 delay-300 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-              }`}
+            className={`transition-all duration-1000 delay-300 transform ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}
           >
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
               The Deploy Toolkit is your on-demand team of engineers, DevOps pros, and product specialists — solving the
@@ -66,8 +67,9 @@ function HeroSection() {
 
           {/* Supporting Copy */}
           <div
-            className={`transition-all duration-1000 delay-500 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-              }`}
+            className={`transition-all duration-1000 delay-500 transform ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}
           >
             <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
               <div className="text-center">
@@ -86,8 +88,9 @@ function HeroSection() {
 
           {/* CTA */}
           <div
-            className={`transition-all duration-1000 delay-700 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-              }`}
+            className={`transition-all duration-1000 delay-700 transform ${
+              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}
           >
             <button className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xl font-semibold px-12 py-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 mb-6">
               <span className="flex items-center">
