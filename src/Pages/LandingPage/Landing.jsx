@@ -20,7 +20,7 @@ const Landing = () => {
             <DeployToolkit />
             <ShiftProtocol />
             <MissionsCompleted />
-            <GroundControlTeam />
+            {/* <GroundControlTeam /> */}
             <FlightLogs />
             <Footer />
         </div>

@@ -45,10 +45,7 @@ const InsideShiftDeploy = () => {
     <section id="inside-shiftdeploy" className="pt-4 sm:pt-12  text-textColor bg-gradient-to-b from-gray-50 to-gray-100">
       <div className=" mx-auto flex flex-col justify-center items-center ">
         <motion.div
-          ref={ref}
-          variants={staggerContainer}
-          initial="initial"
-          animate={isInView ? "animate" : "initial"}
+   
           className="text-center mb-8 "
         >
           <motion.h2
@@ -81,22 +78,10 @@ const InsideShiftDeploy = () => {
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
-              className="bg-white border sm:border-gray-200 rounded-xl md:rounded-2xl p-6 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md transition-all  group col-span-1 h-full"            // whileHover="whileHover"
+              className="bg-white border sm:border-gray-200 rounded-xl md:rounded-2xl p-6 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md transition-all  group col-span-1 h-full relative"            // whileHover="whileHover"
             >
-              <div className="flex flex-col  sm:flex-row items-start space-y-6 sm:space-y-0 sm:space-x-4 lg:space-x-6">
-                {/* <motion.div
-                  whileHover={{
-                    y: -7,
-                    rotateZ: -15,
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 15,
-                  }}
-                  className={` w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0   mx-0`}>
-                  <solution.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
-                </motion.div> */}
+              <div className="flex flex-col  sm:flex-row items-start space-y-6 sm:space-y-0 sm:space-x-4 lg:space-x-6 ">
+
                 <div className="flex-1 text-left space-y-4">
                   <h3 className="text-xl lg:text-2xl font-bold   text-primaryBlue">{solution.title}</h3>
                   <p className="  text-lg leading-relaxed text-gray-600">{solution.description}</p>
@@ -111,7 +96,7 @@ const InsideShiftDeploy = () => {
                 </div>
               </div>
   
-              <div className='w-full text-right translate-y-3 translate-x-3 cursor-pointer group-hover:opacity-100 opacity-0 text-primaryOrange '>Know More -{">"} </div>
+              {/* <div className='absolue bottom-0 right-0 text-right translate-y-3 translate-x-3 cursor-pointer group-hover:opacity-100 opacity-0 text-white bg-primaryOrange w-fit transition-all duration-300 flex fap-x-6'>Know More <ArrowRight/> </div> */}
               
             </motion.div>
           ))}
@@ -121,12 +106,7 @@ const InsideShiftDeploy = () => {
 
         <div className='w-full flex justify-center items-center'>
           <CursorFollower
-            framerAtts={{
-              initial: { opacity: 0, y: 60 },
-              animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 },
-              transition: { duration: 0.8, delay: 0.6 }
 
-            }}
             gradientFrom='rgba(67, 97, 238, 0.2)'
             gradientTo='rgba(67, 97, 238, 0.1)'
             circleSize={150}

@@ -159,7 +159,7 @@ const FlightLogs = () => {
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="bg-gradient-to-r from-orange-50 to-blue-50 border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-6 sm:p-8 lg:p-12 text-center shadow-xl"
+          className="  rounded-xl sm:rounded-2xl  text-center"
         >
           <div className="flex items-center justify-center space-x-1.5 sm:space-x-2 lg:space-x-3 mb-3 sm:mb-4 lg:mb-6">
             {renderStars(5)}

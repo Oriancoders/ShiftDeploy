@@ -42,7 +42,7 @@ const MissionsCompleted = () => {
   ];
 
   const stats = [
-    { icon: Users, value: "100+", label: "Successful Projects", gradient: "from-blue-500 to-indigo-600" },
+    { icon: Users, value: "10+", label: "Successful Projects", gradient: "from-blue-500 to-indigo-600" },
     { icon: TrendingUp, value: "200%", label: "Avg. Performance Boost", gradient: "from-green-500 to-emerald-600" },
     { icon: Calendar, value: "3 Years +", label: "Industry Experience", gradient: "from-purple-500 to-indigo-600" },
     { icon: Star, value: "4.9/5", label: "Client Satisfaction", gradient: "from-yellow-500 to-orange-600" }
@@ -53,10 +53,8 @@ const MissionsCompleted = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
-          variants={staggerContainer}
-          initial="initial"
-          animate={isInView ? "animate" : "initial"}
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
+          
+          className="text-center mb-12 sm:mb-16 "
         >
           <motion.h2
             variants={fadeInUp}
@@ -94,22 +92,9 @@ const MissionsCompleted = () => {
           {stats.map((stat, index) => (
             <motion.div
               key={index}
-              variants={fadeInUp}
               className="text-center"
             >
-              <motion.div
-                whileHover={{
-                  y: -7,
-                  rotateZ: -15,
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 15,
-                }}
-                className={`w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 lg:mb-6 shadow-lg`}>
-                <stat.icon className="w-6 sm:w-7 lg:w-8 h-6 sm:h-7 lg:h-8 text-white" />
-              </motion.div>
+              
               <div className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">{stat.value}</div>
               <div className=" font-medium text-center">{stat.label}</div>
             </motion.div>

@@ -103,7 +103,7 @@ const DeployToolkit = () => {
   ]
 
   return (
-    <section id="deploy-toolkit" className="py-4 sm:py-12  text-textColor bg-gradient-to-b from-white to-gray-50">
+    <section id="deploy-toolkit" className="pt-4 sm:pt-12  text-textColor bg-gradient-to-b from-white to-gray-50">
       <div className=" mx-auto flex flex-col justify-center items-center ">
         <motion.div
           ref={ref}

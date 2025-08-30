@@ -103,7 +103,7 @@ function OriginStorySection() {
         {/* Timeline */}
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-yellow-500 via-primaryOrange to-secondaryBlue rounded-full"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primaryBlue to-secondaryBlue rounded-full"></div>
 
           {/* Stages */}
           <div className="space-y-32">
@@ -119,11 +119,11 @@ function OriginStorySection() {
                   {/* Content */}
                   <div className={`${index % 2 === 1 ? "md:col-start-2" : ""}`}>
                     <div className="relative">
-                      <div
+                      {/* <div
                         className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-secondaryBlue to-toSecBlue mb-6`}
                       >
                         <div className="text-white">{stage.icon}</div>
-                      </div>
+                      </div> */}
                       <h3 className="text-5xl font-bold text-textColor mb-2">{stage.title}</h3>
                       <h4 className="text-xl text-textColor mb-6">{stage.subtitle}</h4>
                       <p className="text-lg text-textColor leading-relaxed">{stage.description}</p>

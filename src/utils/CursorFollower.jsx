@@ -47,7 +47,6 @@ export default function CursorFollower({
         setHovered(false);
         setTextHovered(false);
       }}
-      variants={fadeInUp}
       {...framerAtts}
     >
       {/* Absolutely positioned container for the glow */}

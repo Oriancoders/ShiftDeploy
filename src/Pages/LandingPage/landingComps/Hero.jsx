@@ -18,7 +18,7 @@ const Hero = () => {
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-orange-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-8">
+      className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-8">
 
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -34,9 +34,19 @@ const Hero = () => {
               gradientFrom="#0C1F3A"
               gradientTo="#0B1D30"
               circleSize={100}
+              framerAtts={{
+                initial: { opacity: 0, y: -60 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 1, delay: 0.2 },
+              }
+              }
+
             />
 
-            <h1
+            <motion.h1
+              initial={{ opacity: 0, x: -60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left"
             >
               <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
@@ -52,21 +62,27 @@ const Hero = () => {
               <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
                 Under Pressure
               </span>
-            </h1>
+            </motion.h1>
 
-            <p
-              variants={fadeInUp}
+            <motion.p
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="text-xl   mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0 lg:text-left sm:text-center text-left text-gray-600"
             >
               Empowering businesses with web development, cloud solutions & DevOps to drive your digital growth.
 
-            </p>
+            </motion.p>
 
             <div
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 sm:mb-16 px-4 sm:px-0"
             >
 
-              <motion.button className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+              <motion.button
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
 
               >
                 Launch Your Project
@@ -74,7 +90,9 @@ const Hero = () => {
               </motion.button>
 
               <motion.button
-
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
                 className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
               >
                 <span>View Missions Completed</span>
@@ -84,41 +102,7 @@ const Hero = () => {
 
             </div>
 
-            {/* Stats */}
-            <motion.div
-              variants={staggerContainer}
-              className="grid grid-cols-3 gap-4 sm:gap-6 lg:gap-8 text-center lg:text-left px-4 sm:px-0"
-            >
-              {[
-                { icon: CheckCheck, number: "100+", label: "Projects Deployed", },
-                { icon: Shield, number: "99.9%", label: "Uptime Guarantee", },
-                { icon: Headset, number: "24/7", label: "Support Available", }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-
-                  className="flex flex-col "
-                >
-                  <motion.div
-                    whileHover={{
-                      y: -7,
-                      rotateZ: -15,
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 15,
-                    }}
-                    className={`  w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0   mx-0 mb-3`}>
-                    <stat.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
-                  </motion.div>
-
-                  <div className="text-lg sm:text-2xl  font-bold mb-1 text-primaryBlue">{stat.number}</div>
-                  <div className=" font-medium text-center text-md text-gray-600">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
+     
           </div>
 
           {/* Right content - Enhanced 3D Material Prototype */}
