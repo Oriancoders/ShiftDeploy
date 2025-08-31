@@ -1,6 +1,6 @@
 import { BarChart3, Clock, Code, Target, TrendingUp } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-
+import { motion } from "framer-motion"
 // Section 4: Process
 function ProcessSection() {
   const [visibleSteps, setVisibleSteps] = useState([])
@@ -129,13 +129,41 @@ function ProcessSection() {
         </div>
 
         {/* Process Promise */}
-        <div className="text-center mt-16">
-          <div className="bg-blue-50 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-xl font-semibold text-blue-900 mb-4">Process Promise:</h3>
-            <p className="text-blue-800 leading-relaxed">
-              Every step includes regular check-ins, progress updates, and your approval before moving forward.{" "}
+
+
+        <div className="text-center mt-16 space-y-4">
+            <p className="text-3xl text-primaryBlue font-semibold ">Process Promise</p>
+            <p className="text-xl text-gray-600 italic ">
+              Every step includes regular check-ins, progress updates, and your approval before moving forward.<br/>
               <span className="font-semibold">Your project, your timeline, your success.</span>
             </p>
+
+            <div
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto "
+            >
+
+              <motion.button
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+
+              >
+                Launch Your Project
+
+              </motion.button>
+
+              {/* <motion.button
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+              >
+                <span>View Case Study</span>
+
+              </motion.button> */}
+
+
           </div>
         </div>
       </div>

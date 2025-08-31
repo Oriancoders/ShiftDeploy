@@ -118,7 +118,7 @@ function FAQSection() {
 
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-6">Still have questions?</p>
-          <button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-8 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105">
+          <button className="bg-primaryOrange  text-white font-semibold px-8 py-4 rounded-2xl hover:bg-toOrange">
             Book a Strategy Call
           </button>
           <p className="text-sm text-gray-500 mt-4">

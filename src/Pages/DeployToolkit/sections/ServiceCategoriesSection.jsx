@@ -13,10 +13,10 @@ function ServiceCategoriesSection() {
       subtitle: "For early-stage founders who need to ship fast",
       headline: "From idea to production in weeks, not months.",
       services: [
-        "MVP Development — Ship your core product with clean, scalable code",
-        "Product Strategy — Validate features before you build them",
-        "UX/UI Design — Interfaces that users actually want to use",
-        "Technical Architecture — Build it right the first time",
+        "MVP Development : Ship your core product with clean, scalable code",
+        "Product Strategy : Validate features before you build them",
+        "UX/UI Design : Interfaces that users actually want to use",
+        "Technical Architecture : Build it right the first time",
       ],
       painPoint: "We're burning runway on features nobody wants.",
       solution: "Validated development that ships what users need.",
@@ -29,10 +29,10 @@ function ServiceCategoriesSection() {
       subtitle: "For growing teams drowning in deployment complexity",
       headline: "Infrastructure that scales with you, not against you.",
       services: [
-        "Cloud Architecture — AWS, GCP, Azure setups that actually work",
-        "CI/CD Pipelines — Deploy with confidence, not crossed fingers",
-        "Monitoring & Alerts — Know about problems before your users do",
-        "Performance Optimization — Fast apps = happy users = more revenue",
+        "Cloud Architecture : AWS, GCP, Azure setups that actually work",
+        "CI/CD Pipelines : Deploy with confidence, not crossed fingers",
+        "Monitoring & Alerts : Know about problems before your users do",
+        "Performance Optimization : Fast apps = happy users = more revenue",
       ],
       painPoint: "Our app crashes every time we get traffic.",
       solution: "Bulletproof infrastructure that handles your success.",
@@ -45,10 +45,10 @@ function ServiceCategoriesSection() {
       subtitle: "For scale-ups with integration nightmares",
       headline: "Connect everything. Break nothing.",
       services: [
-        "Database Optimization — Queries that fly, not crawl",
-        "API Development — Integrations that work the first time",
-        "Third-party Connections — Stripe, Slack, Salesforce — we speak their language",
-        "Data Pipeline Architecture — Turn data chaos into business intelligence",
+        "Database Optimization : Queries that fly, not crawl",
+        "API Development : Integrations that work the first time",
+        "Third-party Connections : Stripe, Slack, Salesforce ",
+        "Data Pipeline Architecture : Turn data chaos into business intelligence",
       ],
       painPoint: "Our database is slower than our growth.",
       solution: "Optimized systems that accelerate, not bottleneck.",
@@ -61,10 +61,10 @@ function ServiceCategoriesSection() {
       subtitle: "For companies that can't afford to get hacked",
       headline: "Sleep soundly. We've got your back(end).",
       services: [
-        "Security Audits — Find vulnerabilities before hackers do",
-        "Compliance Setup — SOC2, GDPR, HIPAA without the headaches",
-        "Penetration Testing — Stress-test your defenses",
-        "Incident Response — When things go wrong, we make them right",
+        "Security Audits : Find vulnerabilities before hackers do",
+        "Compliance Setup : SOC2, GDPR, HIPAA without the headaches",
+        "Penetration Testing : Stress-test your defenses",
+        "Incident Response : When things go wrong, we make them right",
       ],
       painPoint: "One security breach could kill our company.",
       solution: "Enterprise-grade security without enterprise complexity.",
@@ -124,7 +124,7 @@ function ServiceCategoriesSection() {
 
             >
               <div
-                className={`relative bg-white rounded-3xl p-8 transition-all duration-500 transform  h-full border border-white/50`}
+                className={`relative  bg-white rounded-3xl p-8 transition-all duration-500 transform  h-full border border-gray-300`}
               >
                 {/* Icon */}
                 {/* <div
@@ -155,11 +155,11 @@ function ServiceCategoriesSection() {
                 {/* Pain Point & Solution */}
                 <div className="border-t border-gray-200 pt-6">
                   <div className="mb-4">
-                    <p className="text-sm text-gray-500 mb-2">Pain Point:</p>
+                    <p className="text-sm text-red-500 font-semibold mb-2">Pain Point:</p>
                     <p className="text-gray-700 italic">"{service.painPoint}"</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500 mb-2">Our Fix:</p>
+                    <p className="text-sm text-green-500 font-semibold mb-2">Our Fix:</p>
                     <p className="text-gray-800 font-medium">{service.solution}</p>
                   </div>
                 </div>

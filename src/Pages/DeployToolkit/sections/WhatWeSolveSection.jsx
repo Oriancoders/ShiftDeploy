@@ -120,7 +120,7 @@ function WhatWeSolveSection() {
         <div className="text-center mt-20">
           <p className="text-2xl text-gray-600 italic">
             Sound familiar? You're not alone.{" "}
-            <span className="text-blue-600 font-semibold">And you don't have to solve this alone.</span>
+            <span className="text-primaryOrange font-semibold">And you don't have to solve this alone.</span>
           </p>
         </div>
       </div>
