@@ -1,6 +1,6 @@
 import { Code, Rocket, Target } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-
+import { motion } from "framer-motion"
 //Section 7: Story in Frames
 function StoryInFramesSection() {
   const [currentFrame, setCurrentFrame] = useState(0)
@@ -21,7 +21,7 @@ function StoryInFramesSection() {
       title: "Our Approach",
       subtitle: "Surgical Precision",
       description:
-        "Instead of rebuilding everything, we identified the three bottlenecks that mattered. Surgical precision over wholesale replacement.",
+        "Instead of rebuilding everything, we identified the three bottlenecks that mattered.",
       details:
         "We analyzed the entire system, found the critical performance bottlenecks, and implemented targeted optimizations rather than expensive rewrites.",
       icon: <Code className="w-8 h-8" />,
@@ -65,11 +65,11 @@ function StoryInFramesSection() {
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             From concept to deployment <br/>
-            <span className="text-toSecBlue">
+            <span className="text-primaryOrange">
               A real story
             </span>
           </h2>
-          <p className="text-xl ">Project Spotlight: E-Commerce Platform Scale-Up</p>
+          <p className="text-xl text-gray-900">Project Spotlight: E-Commerce Platform Scale-Up</p>
         </div>
 
         {/* Timeline */}
@@ -90,12 +90,12 @@ function StoryInFramesSection() {
                 }`}
               >
                 {/* Timeline Node */}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-gray-300 group-hover:border-toSecBlue rounded-full z-10 hidden md:block"></div>
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-gray-300 group-hover:border-primaryOrange rounded-full z-10 hidden md:block"></div>
 
-                <div className="bg-gray-50 rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 h-full">
+                <div className="bg-white rounded-3xl p-8 border border-gray-300 transition-all duration-300 h-full">
                   {/* Icon */}
                   <div
-                    className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-secondaryBlue mb-6`}
+                    className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6`}
                   >
                     <div className="text-white">{frame.icon}</div>
                   </div>
@@ -106,7 +106,7 @@ function StoryInFramesSection() {
                     <h4 className="text-lg  mb-4">{frame.subtitle}</h4>
                   </div>
 
-                  <blockquote className="text-lg  italic mb-6 border-l-4 border-gray-300 pl-4">
+                  <blockquote className="text-lg  italic mb-6 border-l-4 border-primaryBlue pl-4">
                     "{frame.description}"
                   </blockquote>
 
@@ -117,12 +117,38 @@ function StoryInFramesSection() {
           </div>
         </div>
 
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8">
-            <p className="text-2xl text-gray-700 font-semibold">The Lesson:</p>
-            <p className="text-xl text-gray-600 italic mt-2">
+        <div className="text-center mt-8 space-y-6">
+            <p className="text-5xl text-primaryBlue font-semibold">The Lesson</p>
+            <p className="text-xl text-gray-600 italic ">
               Sometimes the best solution is the one that doesn't require starting over.
             </p>
+
+            <div
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto "
+            >
+
+              <motion.button
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+
+              >
+                Launch Your Project
+
+              </motion.button>
+
+              <motion.button
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+              >
+                <span>View Case Study</span>
+
+              </motion.button>
+
+
           </div>
         </div>
       </div>

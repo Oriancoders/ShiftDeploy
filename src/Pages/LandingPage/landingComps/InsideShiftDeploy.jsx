@@ -78,7 +78,7 @@ const InsideShiftDeploy = () => {
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
-              className="bg-white border sm:border-gray-200 rounded-xl md:rounded-2xl p-6 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md transition-all  group col-span-1 h-full relative"            // whileHover="whileHover"
+              className="bg-white border sm:border-gray-200 rounded-xl md:rounded-2xl p-6  sm:hover:shadow-md transition-all  group col-span-1 h-full relative"            // whileHover="whileHover"
             >
               <div className="flex flex-col  sm:flex-row items-start space-y-6 sm:space-y-0 sm:space-x-4 lg:space-x-6 ">
 

@@ -50,9 +50,9 @@ function TestimonialsSection() {
   ]
 
   const trustIndicators = [
-    { metric: "200+", description: "successful deployments" },
+    { metric: "100+", description: "successful deployments" },
     { metric: "99.9%", description: "uptime average across client projects" },
-    { metric: "$50M+", description: "in client funding raised after our optimizations" },
+    { metric: "Thousands+", description: "in client funding raised after our optimizations" },
     { metric: "Zero", description: "security breaches in 3+ years" },
   ]
 
@@ -85,9 +85,9 @@ function TestimonialsSection() {
     <section ref={sectionRef} className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            What founders
-            <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            What founders <br/>
+            <span className="text-primaryOrange">
               are saying
             </span>
           </h2>
@@ -101,7 +101,7 @@ function TestimonialsSection() {
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
               }`}
             >
-              <blockquote className="text-2xl md:text-3xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl">
+              <blockquote className="text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl">
                 "{testimonials[currentTestimonial].quote}"
               </blockquote>
               <div className="flex items-center justify-center">
@@ -127,7 +127,7 @@ function TestimonialsSection() {
                 key={index}
                 onClick={() => setCurrentTestimonial(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentTestimonial ? "bg-blue-600 w-8" : "bg-gray-300"
+                  index === currentTestimonial ? "bg-primaryBlue w-8" : "bg-gray-300"
                 }`}
               />
             ))}

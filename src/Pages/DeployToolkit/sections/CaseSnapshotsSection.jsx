@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react"
 // Section 5: Case Snapshots
 function CaseSnapshotsSection() {
   const [visibleCases, setVisibleCases] = useState([])
-  const [hoveredCase, setHoveredCase] = useState(null)
   const sectionRef = useRef(null)
 
   const cases = [
@@ -72,8 +71,8 @@ function CaseSnapshotsSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Real problems. Real solutions.
-            <span className="block bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+            Real problems. Real solutions. <br/>
+            <span className="text-primaryOrange">
               Real results.
             </span>
           </h2>
@@ -86,16 +85,15 @@ function CaseSnapshotsSection() {
               className={`group transition-all duration-700 transform ${
                 visibleCases.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
               }`}
-              onMouseEnter={() => setHoveredCase(index)}
-              onMouseLeave={() => setHoveredCase(null)}
+
             >
-              <div className="bg-gray-50 rounded-3xl p-8 hover:bg-white hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-full">
+              <div className="bg-white rounded-3xl p-8 transition-all duration-500 transform h-full border-2 border-gray-100">
                 {/* Icon */}
-                <div
+                {/* <div
                   className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${caseStudy.gradient} mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
                 >
                   <div className="text-white">{caseStudy.icon}</div>
-                </div>
+                </div> */}
 
                 {/* Title */}
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">{caseStudy.title}</h3>
@@ -131,9 +129,7 @@ function CaseSnapshotsSection() {
                 </div>
 
                 {/* Hover Effect */}
-                <div
-                  className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${caseStudy.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
-                ></div>
+
               </div>
             </div>
           ))}

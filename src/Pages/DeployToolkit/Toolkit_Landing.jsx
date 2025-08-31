@@ -20,7 +20,7 @@ const Toolkit_Landing = () => {
         <WhatWeSolveSection/>
         <ProcessSection/>
         <CaseSnapshotsSection/>
-        <PricingSection/>
+        {/* <PricingSection/> */}
         <TestimonialsSection/>
         <FAQSection/>
         <FinalCTASection/>

@@ -146,7 +146,7 @@ const DeployToolkit = () => {
               variants={scaleOnHover}
             >
               <div
-                className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[300px] border sm:border-gray-200 rounded-3xl p-6 pb-12 sm:hover:border-blue-300  border-toSecBlue sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden"
+                className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[300px] border sm:border-gray-200 rounded-3xl p-6 pb-12   border-toSecBlue sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden"
 
               >
                 {/* <motion.div
@@ -189,7 +189,7 @@ const DeployToolkit = () => {
                   <div className='flex flex-col gap-y-2'>
                     <h1 className={` font-bold   inline-block  cursor-pointer`} onClick={() => handleIndex(null)}> <MoveLeft /></h1>
 
-                    <span className=" font-bold text-xl">Solution</span>
+                    <span className=" font-bold text-xl">Our Solution</span>
                     {tool.solution}
 
                   </div>

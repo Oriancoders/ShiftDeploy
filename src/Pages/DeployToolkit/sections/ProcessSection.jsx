@@ -70,9 +70,9 @@ function ProcessSection() {
     <section ref={sectionRef} className="py-24 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            How we turn chaos
-            <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            How we turn chaos <br/>
+            <span className="text-primaryOrange">
               into clarity
             </span>
           </h2>
@@ -99,23 +99,17 @@ function ProcessSection() {
                 }`}
               >
                 {/* Step Number */}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white border-4 border-gray-300 rounded-full z-10 hidden lg:flex items-center justify-center">
-                  <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white border-4 border-primaryOrange rounded-full z-10 hidden lg:flex items-center justify-center">
+                  <div className="w-3 h-3 bg-primaryOrange rounded-full"></div>
                 </div>
 
-                <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                <div className="bg-white rounded-3xl p-8 shadow-md transition-all duration-300 h-full">
                   {/* Icon & Number */}
-                  <div className="flex items-center mb-6">
-                    <div
-                      className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center mr-4`}
-                    >
-                      <div className="text-white">{step.icon}</div>
-                    </div>
-                    <div className="text-3xl font-bold text-gray-300">{step.number}</div>
-                  </div>
+                    
+                    <div className="text-3xl font-bold  mb-4 text-primaryBlue">{step.number}</div>
 
                   {/* Content */}
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{step.title}</h3>
+                  <h3 className="text-2xl font-bold text-primaryBlue mb-4">{step.title}</h3>
                   <p className="text-gray-600 mb-6 leading-relaxed">{step.description}</p>
 
                   <div className="border-t border-gray-200 pt-4">
@@ -124,7 +118,7 @@ function ProcessSection() {
                       <p className="text-gray-700">{step.outcome}</p>
                     </div>
                     <div className="flex items-center">
-                      <Clock className="w-4 h-4 text-gray-400 mr-2" />
+                      <Clock className="w-4 h-4 text-primaryOrange mr-2" />
                       <span className="text-sm text-gray-500">{step.timeline}</span>
                     </div>
                   </div>

@@ -75,8 +75,8 @@ function FAQSection() {
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Questions?
-            <span className="block bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+            Questions? <br/>
+            <span className="text-primaryOrange">
               We've got answers.
             </span>
           </h2>

@@ -62,8 +62,8 @@ function WhatWeSolveSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            The problems keeping you
-            <span className="block bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+            The problems keeping you <br/>
+            <span className="text-primaryOrange">
               up at night
             </span>
           </h2>

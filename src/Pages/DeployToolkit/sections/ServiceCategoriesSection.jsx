@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react"
 // Section 2: Service Categories
 function ServiceCategoriesSection() {
   const [visibleCards, setVisibleCards] = useState([])
-  const [hoveredCard, setHoveredCard] = useState(null)
   const sectionRef = useRef(null)
   const cardRefs = useRef([])
 
@@ -101,15 +100,15 @@ function ServiceCategoriesSection() {
     <section ref={sectionRef} className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Your technical challenges,
-            <span className="block bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            Your technical challenges, <br/>
+            <span className="text-primaryOrange">
               solved.
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
             Whether you're launching your MVP or scaling to millions of users, we've got the specialized expertise you
-            need — without the full-time hire headaches.
+            need without the full-time hire headaches.
           </p>
         </div>
 
@@ -122,22 +121,21 @@ function ServiceCategoriesSection() {
               className={`group transition-all duration-700 transform ${
                 visibleCards.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
               }`}
-              onMouseEnter={() => setHoveredCard(index)}
-              onMouseLeave={() => setHoveredCard(null)}
+
             >
               <div
-                className={`relative bg-gradient-to-br ${service.bgGradient} rounded-3xl p-8 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-full border border-white/50`}
+                className={`relative bg-white rounded-3xl p-8 transition-all duration-500 transform  h-full border border-white/50`}
               >
                 {/* Icon */}
-                <div
+                {/* <div
                   className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
                 >
                   <div className="text-white">{service.icon}</div>
-                </div>
+                </div> */}
 
                 {/* Category & Subtitle */}
                 <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{service.category}</h3>
+                  <h3 className="text-2xl font-bold text-primaryBlue mb-2">{service.category}</h3>
                   <p className="text-gray-600 italic">{service.subtitle}</p>
                 </div>
 
@@ -166,19 +164,16 @@ function ServiceCategoriesSection() {
                   </div>
                 </div>
 
-                {/* Hover Effect */}
-                <div
-                  className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
-                ></div>
+                
 
-                {/* Hover Arrow */}
+                {/* Hover Arrow
                 <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
                   <div
-                    className={`w-10 h-10 rounded-full bg-gradient-to-br ${service.gradient} flex items-center justify-center`}
+                    className={`w-10 h-10 rounded-full bg-primaryBlue flex items-center justify-center`}
                   >
                     <ChevronRight className="w-5 h-5 text-white" />
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
