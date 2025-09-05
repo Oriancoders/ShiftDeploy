@@ -24,11 +24,7 @@ function HeroSection() {
       ref={sectionRef}
       className="relative  flex items-center justify-center bg-gradient-to-br from-gray-100 via-white to-gray-100 overflow-hidden pt-32 py-10"
     >
-      {/* Background Animation */}
-      {/* <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-200 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div> */}
+ 
 
       <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
         <div

@@ -25,7 +25,7 @@ const Toolkit_Landing = () => {
         <FAQSection/>
         <FinalCTASection/>
         
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   )
 }

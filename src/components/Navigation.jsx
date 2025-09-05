@@ -67,18 +67,10 @@ const Navigation = () => {
 
 
 
-            <CursorFollower
-              text="Get Started"
-              className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-sm xl:text-base"
-              gradientFrom="#0C1F3A"
-              gradientTo="#0B1D30"
-              circleSize={100}
-              framerAtts={{
-                whileHover: { scale: 1.05 },
-                whileTap: { scale: 0.95 },
-              }}
-
-            />
+            <Link to="/ContactUs"
+            
+              className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg  text-sm xl:text-base"
+            >Get Started</Link>
           </div>
 
           {/* Mobile menu button */}

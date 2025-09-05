@@ -42,10 +42,13 @@ const InsideShiftDeploy = () => {
   ];
 
   return (
-    <section id="inside-shiftdeploy" className="pt-4 sm:pt-12  text-textColor bg-gradient-to-b from-gray-50 to-gray-100">
+    <section id="inside-shiftdeploy" className="pt-4 sm:pt-12  text-textColor bg-gradient-to-b from-gray-50 to-gray-50">
       <div className=" mx-auto flex flex-col justify-center items-center ">
         <motion.div
-   
+             ref={ref}
+             variants={staggerContainer}
+             initial="initial"
+             animate={isInView ? "animate" : "initial"}
           className="text-center mb-8 "
         >
           <motion.h2
