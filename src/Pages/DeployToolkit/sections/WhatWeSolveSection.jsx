@@ -1,5 +1,6 @@
 import { BarChart3, CheckCircle, Globe, Rocket, TrendingUp, Zap } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import CursorFollower from "../../../utils/CursorFollower"
 
 // Section 3: What We Solve
 function WhatWeSolveSection() {
@@ -62,7 +63,7 @@ function WhatWeSolveSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            The problems keeping you <br/>
+            The problems keeping you <br />
             <span className="text-primaryOrange">
               up at night
             </span>
@@ -78,9 +79,8 @@ function WhatWeSolveSection() {
               key={index}
               ref={(el) => (problemRefs.current[index] = el)}
               data-index={index}
-              className={`transition-all duration-700 transform ${
-                visibleProblems.includes(index) ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"
-              }`}
+              className={`transition-all duration-700 transform ${visibleProblems.includes(index) ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"
+                }`}
             >
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 {/* Pain Point */}
@@ -118,10 +118,18 @@ function WhatWeSolveSection() {
         </div>
 
         <div className="text-center mt-20">
-          <p className="text-2xl text-gray-600 italic">
-            Sound familiar? You're not alone.{" "}
-            <span className="text-primaryOrange font-semibold">And you don't have to solve this alone.</span>
-          </p>
+
+
+          <CursorFollower
+
+            text="Sound familiar? You're not alone. And you don't have to solve this alone."
+            className="   max-w-2xl mx-auto bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-4 rounded-full text-white italic"
+            textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base'
+            gradientFrom="#0C1F3A"
+            gradientTo="#0B1D30"
+            circleSize={100}
+
+          />
         </div>
       </div>
     </section>

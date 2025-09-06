@@ -71,7 +71,7 @@ function FAQSection() {
   }
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className=" bg-gray-50">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
@@ -95,7 +95,7 @@ function FAQSection() {
                   onClick={() => toggleFAQ(index)}
                   className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
                 >
-                  <h3 className="text-lg font-semibold text-gray-900 pr-4">{faq.question}</h3>
+                  <h3 className="text-lg font-semibold text-primaryBlue pr-4">{faq.question}</h3>
                   <ChevronDown
                     className={`w-5 h-5 text-gray-500 transition-transform duration-300 flex-shrink-0 ${
                       openFAQ === index ? "rotate-180" : ""

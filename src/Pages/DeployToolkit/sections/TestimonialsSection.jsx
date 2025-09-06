@@ -82,7 +82,7 @@ function TestimonialsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-24 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
@@ -95,7 +95,7 @@ function TestimonialsSection() {
 
         {/* Testimonial Carousel */}
         <div className="relative mb-20">
-          <div className="bg-gray-50 rounded-3xl p-12 text-center min-h-[300px] flex items-center justify-center">
+          <div className="bg-white rounded-3xl p-12 text-center min-h-[300px] flex items-center justify-center">
             <div
               className={`transition-all duration-500 transform ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
@@ -143,7 +143,7 @@ function TestimonialsSection() {
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
               }`}
             >
-              <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">{indicator.metric}</div>
+              <div className="text-4xl md:text-5xl font-bold text-primaryOrange mb-2">{indicator.metric}</div>
               <div className="text-gray-600">{indicator.description}</div>
             </div>
           ))}

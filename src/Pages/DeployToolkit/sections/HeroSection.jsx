@@ -22,7 +22,7 @@ function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative  flex items-center justify-center bg-gradient-to-br from-gray-100 via-white to-gray-100 overflow-hidden pt-32 py-10"
+      className="relative  flex items-center justify-center bg-gradient-to-br from-gray-100 via-white to-gray-100 overflow-hidden pt-32 "
     >
  
 
@@ -33,12 +33,12 @@ function HeroSection() {
           }`}
         >
           {/* Trust Indicator */}
-          <div className="mb-6">
+          {/* <div className="mb-6">
             <div className="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 border border-gray-200">
               <Star className="w-4 h-4 text-yellow-500 mr-2" />
               <span className="text-sm text-gray-600">Trusted by 200+ startups from seed to Series B</span>
             </div>
-          </div>
+          </div> */}
 
           {/* Main Headline */}
           <h1 className="text-5xl md:text-7xl font-bold text-primaryBlue mb-8 leading-tight">
@@ -98,7 +98,7 @@ function HeroSection() {
                 Launch Your Project
 
               </motion.button>
-            <p className="text-gray-500">No contracts. No overhead. Just results.</p>
+            {/* <p className="text-gray-500">No contracts. No overhead. Just results.</p> */}
           </div>
         </div>
       </div>

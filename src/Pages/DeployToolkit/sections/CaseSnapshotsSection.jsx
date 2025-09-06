@@ -1,5 +1,6 @@
 import { BarChart3, CheckCircle, Shield, TrendingUp } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import CursorFollower from "../../../utils/CursorFollower"
 
 // Section 5: Case Snapshots
 function CaseSnapshotsSection() {
@@ -67,11 +68,11 @@ function CaseSnapshotsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className=" bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Real problems. Real solutions. <br/>
+            Real problems. Real solutions. <br />
             <span className="text-primaryOrange">
               Real results.
             </span>
@@ -82,9 +83,8 @@ function CaseSnapshotsSection() {
           {cases.map((caseStudy, index) => (
             <div
               key={index}
-              className={`group transition-all duration-700 transform ${
-                visibleCases.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-              }`}
+              className={`group transition-all duration-700 transform ${visibleCases.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+                }`}
 
             >
               <div className="bg-white rounded-3xl p-8 transition-all duration-500 transform h-full border-2 border-gray-100">
@@ -136,15 +136,18 @@ function CaseSnapshotsSection() {
         </div>
 
         <div className="text-center">
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8 max-w-4xl mx-auto">
-            <p className="text-2xl text-gray-700 font-semibold mb-2">Bottom Line:</p>
-            <p className="text-xl text-gray-600">
-              These aren't just our wins —{" "}
-              <span className="text-blue-600 font-semibold">
-                they're your competitive advantages waiting to happen.
-              </span>
-            </p>
-          </div>
+
+
+          <CursorFollower
+
+            text="These aren't just our wins, they're your competitive advantages waiting to happen."
+            className="   max-w-2xl mx-auto bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-4 rounded-full text-white italic"
+            textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base'
+            gradientFrom="#0C1F3A"
+            gradientTo="#0B1D30"
+            circleSize={100}
+
+          />
         </div>
       </div>
     </section>
