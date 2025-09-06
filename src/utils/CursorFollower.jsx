@@ -40,7 +40,7 @@ export default function CursorFollower({
   return (
     <motion.button
       ref={buttonRef}
-      className={`relative overflow-hidden cursor-none group ${className}`}
+      className={`relative overflow-hidden cursor-none group text-center${className}`}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => {
@@ -81,7 +81,7 @@ export default function CursorFollower({
 
       {/* Content wrapper to isolate text+icon from animation layout */}
       {children || (
-        <div className="relative z-20 flex items-center justify-center space-x-2">
+        <div className="relative z-20 flex items-center justify-center ">
         <span
           ref={textRef}
           className={`transition-colors duration-150 ${textClassName}`}

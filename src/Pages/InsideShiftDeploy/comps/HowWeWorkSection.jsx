@@ -1,5 +1,6 @@
 import { CheckCircle, Code, Rocket, Shield } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import CursorFollower from "../../../utils/CursorFollower"
 
 // Section 4: How We Work
 function HowWeWorkSection() {
@@ -22,7 +23,7 @@ function HowWeWorkSection() {
       tools: ["Continuous deployment", "Feature flags", "Real-time monitoring", "User feedback loops"],
     },
     {
-      title: "We don't chase trends—we build foundations",
+      title: "We don't chase trends, we build foundations",
       description:
         "While others pivot to the framework-of-the-month, we're mastering the fundamentals that will matter in five years.",
       icon: <Shield className="w-6 h-6" />,
@@ -60,9 +61,9 @@ function HowWeWorkSection() {
     <section ref={sectionRef} className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Inside our
-            <span className="block bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            Inside our <br />
+            <span className="text-primaryOrange">
               operating system
             </span>
           </h2>
@@ -72,18 +73,17 @@ function HowWeWorkSection() {
           {workPrinciples.map((principle, index) => (
             <div
               key={index}
-              className={`transition-all duration-800 transform ${
-                visiblePrinciples.includes(index) ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"
-              }`}
+              className={`transition-all duration-800 transform ${visiblePrinciples.includes(index) ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"
+                }`}
             >
               <div className="bg-gray-50 rounded-3xl p-8 hover:bg-gray-100 transition-colors duration-300">
                 <div className="grid md:grid-cols-3 gap-8 items-center">
                   <div className="md:col-span-2">
                     <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mr-4">
+                      {/* <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mr-4">
                         <div className="text-white">{principle.icon}</div>
-                      </div>
-                      <h3 className="text-3xl font-bold text-gray-900">{principle.title}</h3>
+                      </div> */}
+                      <h3 className="text-3xl font-bold text-primaryBlue">{principle.title}</h3>
                     </div>
                     <p className="text-lg text-gray-600 leading-relaxed mb-6">{principle.description}</p>
                   </div>
@@ -104,8 +104,19 @@ function HowWeWorkSection() {
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <p className="text-xl text-gray-600 italic">This is how we work. This is how we win.</p>
+
+
+        <div className="w-full flex justify-center items-center mt-20">
+          <CursorFollower
+
+            text="This is how we work. This is how we win."
+            className="   max-w-2xl mx-auto bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-4 rounded-full text-white italic"
+            textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base'
+            gradientFrom="#0C1F3A"
+            gradientTo="#0B1D30"
+            circleSize={100}
+
+          />
         </div>
       </div>
     </section>

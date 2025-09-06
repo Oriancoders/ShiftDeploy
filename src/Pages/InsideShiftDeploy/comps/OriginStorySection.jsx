@@ -60,7 +60,7 @@ function OriginStorySection() {
   return (
     <section
       ref={sectionRef}
-      className="pt-32   text-textColor relative overflow-hidden"
+      className="pt-20  text-textColor relative overflow-hidden"
     >
       {/* Background Pattern */}
       {/* <div className="absolute inset-0 opacity-10">
@@ -92,7 +92,7 @@ function OriginStorySection() {
           <CursorFollower
 
             text="Every great system starts with a problem worth solving"
-            className="  max-w-2xl mx-auto bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-4 rounded-full text-white"
+            className="   max-w-2xl mx-auto bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-4 rounded-full text-white italic"
             textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base'
             gradientFrom="#0C1F3A"
             gradientTo="#0B1D30"
@@ -104,7 +104,7 @@ function OriginStorySection() {
         {/* Timeline */}
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primaryBlue to-toBlue rounded-full"></div>
+          <div className="absolute lg:block hidden left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primaryBlue to-toBlue rounded-full"></div>
 
           {/* Stages */}
           <div className="space-y-32">
@@ -145,7 +145,7 @@ function OriginStorySection() {
                   </div>
 
                   {/* Timeline Node */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-white rounded-full border-4 border-gray-800 z-10"></div>
+                  <div className="absolute lg:block hidden  left-1/2 transform -translate-x-1/2 w-6 h-6 bg-white rounded-full border-4 border-gray-800 z-10"></div>
                 </div>
               </div>
             ))}

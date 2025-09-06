@@ -42,15 +42,15 @@ function CTASection() {
         >
           {/* Header */}
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
-            Want to build
-            <span className="block bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+            Want to build <br/>
+            <span className="text-primaryOrange">
               with us?
             </span>
           </h2>
 
           {/* Description */}
           <div className="max-w-3xl mx-auto mb-12">
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-6">
+            <p className="text-xl  text-gray-300 leading-relaxed mb-6">
               We're not for everyone. We're for teams who value substance over speed, foundations over facades, and
               partnerships over transactions.
             </p>
@@ -59,7 +59,7 @@ function CTASection() {
 
           {/* CTA Button */}
           <div className="mb-12">
-            <button className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xl font-semibold px-12 py-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25">
+            <button className="group bg-primaryOrange hover:bg-toOrange text-white text-xl font-semibold px-12 py-6 rounded-2xl transition-all duration-300 transform  hover:shadow-blue-500/25">
               <span className="flex items-center">
                 Let's Discuss Your Project
                 <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
@@ -68,11 +68,11 @@ function CTASection() {
           </div>
 
           {/* Supporting Text */}
-          <div className="text-gray-400">
-            <p className="mb-4">
+          <div className="text-gray-200">
+            {/* <p className="mb-4">
               No sales pitch. No generic proposals. Just an honest conversation about whether we're the right fit for
               what you're building.
-            </p>
+            </p> */}
             <div className="flex items-center justify-center space-x-6 text-sm">
               <div className="flex items-center">
                 <Clock className="w-4 h-4 mr-2" />
@@ -94,7 +94,7 @@ function CTASection() {
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
               <Calendar className="w-8 h-8 text-orange-400 mx-auto mb-4" />
-              <h3 className="text-white font-semibold mb-2">Schedule a Call</h3>
+              <h3 className="text-white font-semibold mb-2">Schedule a Chat</h3>
               <p className="text-gray-300 text-sm">Book a 30-minute chat</p>
             </div>
           </div>

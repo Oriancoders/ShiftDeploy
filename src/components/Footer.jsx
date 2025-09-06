@@ -37,7 +37,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-toBlue text-white">
+    <footer className="bg-primaryBlue text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-6 sm:py-8 lg:py-10">
         <motion.div
           variants={staggerContainer}
@@ -61,15 +61,15 @@ const Footer = () => {
             </p>
             <div className="space-y-2 sm:space-y-3 lg:space-y-4">
               <div className="flex items-center space-x-2 sm:space-x-3">
-                <Mail className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-blue-400 flex-shrink-0" />
+                <Mail className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">hello@shiftdeploy.com</span>
               </div>
               <div className="flex items-center space-x-2 sm:space-x-3">
-                <Phone className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-blue-400 flex-shrink-0" />
+                <Phone className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center space-x-2 sm:space-x-3">
-                <MapPin className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-blue-400 flex-shrink-0" />
+                <MapPin className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">San Francisco, CA</span>
               </div>
             </div>
