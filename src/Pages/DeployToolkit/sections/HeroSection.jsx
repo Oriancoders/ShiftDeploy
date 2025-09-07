@@ -83,11 +83,7 @@ function HeroSection() {
           </div>
 
           {/* CTA */}
-          <div
-            className={`transition-all duration-1000 delay-700 transform ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            }`}
-          >
+          
             <motion.button
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -95,11 +91,10 @@ function HeroSection() {
                 className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto mb-6 font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
 
               >
-                Launch Your Project
+                Discuss Your Project
 
               </motion.button>
             {/* <p className="text-gray-500">No contracts. No overhead. Just results.</p> */}
-          </div>
         </div>
       </div>
     </section>

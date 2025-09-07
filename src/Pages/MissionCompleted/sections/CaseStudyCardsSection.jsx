@@ -9,8 +9,8 @@ function CaseStudyCardsSection() {
 
   const caseStudies = [
     {
-      brand: "StreamlineHQ",
-      category: "SaaS Scaling",
+      brand: "Slacker IOT",
+      category: "SaaS Development",
       outcome: "Reduced server costs by 60% while handling 10x traffic",
       visual: "/placeholder.svg?height=300&width=400",
       metrics: { users: "1M+", uptime: "99.9%", savings: "$50K/mo" },
@@ -35,33 +35,7 @@ function CaseStudyCardsSection() {
       color: "from-purple-500 to-pink-600",
       bgColor: "from-purple-50 to-pink-50",
     },
-    {
-      brand: "SecureAPI",
-      category: "Security & Compliance",
-      outcome: "SOC2 certified in 4 months, closed first enterprise deal",
-      visual: "/placeholder.svg?height=300&width=400",
-      metrics: { compliance: "SOC2", timeline: "4 months", deal: "$500K" },
-      color: "from-red-500 to-orange-600",
-      bgColor: "from-red-50 to-orange-50",
-    },
-    {
-      brand: "UserFlow",
-      category: "UI/UX Optimization",
-      outcome: "Increased conversion rates by 340% with redesigned onboarding",
-      visual: "/placeholder.svg?height=300&width=400",
-      metrics: { conversion: "+340%", retention: "+85%", satisfaction: "4.9/5" },
-      color: "from-teal-500 to-cyan-600",
-      bgColor: "from-teal-50 to-cyan-50",
-    },
-    {
-      brand: "ScaleUp",
-      category: "Performance",
-      outcome: "Page load times reduced by 85%, user engagement up 200%",
-      visual: "/placeholder.svg?height=300&width=400",
-      metrics: { speed: "85% faster", engagement: "+200%", bounce: "-60%" },
-      color: "from-orange-500 to-red-600",
-      bgColor: "from-orange-50 to-red-50",
-    },
+   
   ]
 
   useEffect(() => {
@@ -87,9 +61,9 @@ function CaseStudyCardsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="pt-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Success stories that
             <span className="block bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
@@ -114,7 +88,7 @@ function CaseStudyCardsSection() {
               onMouseLeave={() => setHoveredCard(null)}
             >
               <div
-                className={`relative bg-gradient-to-br ${study.bgColor} rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-4 border border-white/50`}
+                className={`relative bg-white rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-500 transform hover:-translate-y-2 border border-white/50`}
               >
                 {/* Visual */}
                 <div className="relative h-48 overflow-hidden">
@@ -123,9 +97,7 @@ function CaseStudyCardsSection() {
                     alt={`${study.brand} case study`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t ${study.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}
-                  ></div>
+
                   <div className="absolute top-4 left-4">
                     <span className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
                       {study.category}
@@ -150,20 +122,13 @@ function CaseStudyCardsSection() {
 
                   {/* CTA */}
                   <button
-                    className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform group-hover:scale-105 ${
-                      hoveredCard === index
-                        ? `bg-gradient-to-r ${study.color} text-white shadow-lg`
-                        : "bg-white text-gray-700 border border-gray-200 hover:border-gray-300"
-                    }`}
+                    className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform group-hover:scale-105 bg-primaryBlue text-white shadow-lg `}
                   >
                     Read Full Mission Report
                   </button>
                 </div>
 
-                {/* Glow Effect */}
-                <div
-                  className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${study.color} opacity-0 group-hover:opacity-10 blur-xl transition-all duration-500 -z-10`}
-                ></div>
+
               </div>
             </div>
           ))}

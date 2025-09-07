@@ -41,13 +41,34 @@ function CommunicationRitualsSection() {
     },
   ]
 
-  const tools = [
-    { name: "Slack", purpose: "Real-time communication", icon: <MessageSquare className="w-5 h-5" /> },
-    { name: "Notion", purpose: "Project documentation and progress", icon: <FileText className="w-5 h-5" /> },
-    { name: "Linear", purpose: "Task tracking and sprint planning", icon: <Target className="w-5 h-5" /> },
-    { name: "GitHub", purpose: "Code repository access", icon: <GitBranch className="w-5 h-5" /> },
-    { name: "Figma", purpose: "Design files and prototypes", icon: <Settings className="w-5 h-5" /> },
-  ]
+ const tools = [
+  { 
+    name: "Slack", 
+    purpose: "Real-time communication", 
+    icon: "https://w7.pngwing.com/pngs/642/135/png-transparent-slack-new-hd-logo-thumbnail.png" 
+  },
+  { 
+    name: "Notion", 
+    purpose: "Project documentation and progress", 
+    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkfgoU8tVx-aUbyBH-_UcNuV0Y4mTaTixIKA&s" 
+  },
+  { 
+    name: "ClickUp", 
+    purpose: "Task tracking and sprint planning", 
+    icon: "https://images.seeklogo.com/logo-png/38/2/clickup-symbol-logo-png_seeklogo-389754.png" 
+  },
+  { 
+    name: "GitHub", 
+    purpose: "Code repository access", 
+    icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png" 
+  },
+  { 
+    name: "Figma", 
+    purpose: "Design files and prototypes", 
+    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1365px-Figma-logo.svg.png" 
+  },
+];
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -73,10 +94,10 @@ function CommunicationRitualsSection() {
   return (
     <section ref={sectionRef} className="py-24 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            How we stay
-            <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <div className="text-center mb-12">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            How we stay <br/>
+            <span className="text-primaryOrange">
               connected
             </span>
           </h2>
@@ -94,12 +115,8 @@ function CommunicationRitualsSection() {
             >
               <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
                 {/* Header */}
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mr-4">
-                    <div className="text-white">{ritual.icon}</div>
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900">{ritual.title}</h3>
-                </div>
+ 
+                  <h3 className="text-2xl font-bold text-primaryBlue mb-6">{ritual.title}</h3>
 
                 {/* Fear */}
                 <div className="mb-6">
@@ -119,7 +136,7 @@ function CommunicationRitualsSection() {
                   <ul className="space-y-2">
                     {ritual.tools.map((tool, toolIndex) => (
                       <li key={toolIndex} className="flex items-center text-gray-600">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-primaryOrange mr-2 flex-shrink-0" />
                         <span className="text-sm">{tool}</span>
                       </li>
                     ))}
@@ -139,7 +156,7 @@ function CommunicationRitualsSection() {
             {tools.map((tool, index) => (
               <div key={index} className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center mx-auto mb-4 hover:from-blue-50 hover:to-indigo-50 transition-colors duration-300">
-                  <div className="text-gray-600">{tool.icon}</div>
+                   <img src={tool.icon} alt={tool.name} className="w-10 h-10 object-contain" />
                 </div>
                 <h4 className="font-semibold text-gray-900 mb-2">{tool.name}</h4>
                 <p className="text-sm text-gray-600">{tool.purpose}</p>

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-
+import { motion } from "framer-motion"
 // Section 4: Client Quote Wall
 function ClientQuoteWallSection() {
   const [currentQuote, setCurrentQuote] = useState(0)
@@ -85,35 +85,35 @@ function ClientQuoteWallSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            What clients
-            <span className="block bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+        <div className="text-center mb-12">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            What clients <br/>
+            <span className="text-primaryOrange">
               really say
             </span>
           </h2>
-          <p className="text-xl text-gray-600">The pattern is clear: we deliver what we promise, when we promise it.</p>
+          <p className="text-xl text-gray-600">The pattern is clear: we deliver what we promise, when we promise it</p>
         </div>
 
         {/* Quote Carousel */}
         <div className="relative mb-12">
-          <div className="bg-white rounded-3xl p-12 shadow-lg min-h-[400px] flex items-center justify-center">
+          <div className="bg-white rounded-3xl p-8 shadow-lg min-h-[400px] flex items-center justify-center">
             <div
               className={`text-center transition-all duration-500 transform ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
               }`}
             >
               {/* Quote */}
-              <blockquote className="text-2xl md:text-3xl text-gray-700 leading-relaxed mb-8 max-w-4xl">
+              <blockquote className="text-2xl  text-gray-700 leading-relaxed mb-8 max-w-4xl">
                 <span className="text-6xl text-gray-300 leading-none">"</span>
                 We needed{" "}
-                <span className="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent font-semibold">
+                <span className="">
                   {quotes[currentQuote].need}
                 </span>
                 . ShiftDeploy delivered{" "}
-                <span className="bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent font-semibold">
+                <span className="font-semibold">
                   {quotes[currentQuote].delivered}
                 </span>{" "}
                 — faster and cleaner than expected.
@@ -144,7 +144,7 @@ function ClientQuoteWallSection() {
                 key={index}
                 onClick={() => setCurrentQuote(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentQuote ? "bg-blue-600 w-8" : "bg-gray-300"
+                  index === currentQuote ? "bg-primaryBlue w-8" : "bg-gray-300"
                 }`}
               />
             ))}
@@ -152,14 +152,42 @@ function ClientQuoteWallSection() {
         </div>
 
         {/* Pattern Recognition */}
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">The ShiftDeploy Pattern</h3>
-            <p className="text-xl text-gray-700">
-              <span className="text-red-600 font-semibold">Problem identified</span> →{" "}
-              <span className="text-blue-600 font-semibold">Solution delivered</span> →{" "}
-              <span className="text-green-600 font-semibold">Results exceeded</span>
+
+
+         <div className="text-center mt-12 space-y-6">
+            <p className="text-5xl text-primaryBlue font-semibold">The ShiftDeploy Pattern</p>
+            <p className="text-xl text-gray-600 italic ">
+              <span className=" font-semibold">Problem identified</span> →{" "}
+              <span className=" font-semibold">Solution delivered</span> →{" "}
+              <span className=" font-semibold">Results exceeded</span>
             </p>
+
+            <div
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto "
+            >
+
+              <motion.button
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+
+              >
+                Launch Your Project
+
+              </motion.button>
+
+              <motion.button
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+              >
+                <span>View Case Study</span>
+
+              </motion.button>
+
+
           </div>
         </div>
       </div>

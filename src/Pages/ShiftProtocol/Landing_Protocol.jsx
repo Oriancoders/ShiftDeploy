@@ -18,8 +18,8 @@ const Landing_Protocol = () => {
             <GuaranteesSection/>
             <CommunicationRitualsSection/>
             <TransparencySystemsSection/>
-            <ClientControlSection/>
             <FinalCTASection/>
+            <ClientControlSection/>
         <Footer/>
     </div>
   )

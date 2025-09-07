@@ -1,6 +1,7 @@
 import { ArrowRight, CheckCircle, Filter } from "lucide-react"
 import { useEffect, useRef, useState, } from "react"
-
+import { motion } from "framer-motion"
+import CursorFollower from "../../../utils/CursorFollower"
 // Section 1: Hero Section
 function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -16,7 +17,7 @@ function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden pt-32"
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-gray-50 overflow-hidden pt-20"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
@@ -33,34 +34,32 @@ function HeroSection() {
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
         <div
-          className={`transition-all duration-1000 transform ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-          }`}
+          className={`transition-all duration-1000 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}
         >
-          {/* Trust Badge */}
+          {/* Trust Badge
           <div className="mb-8">
             <div className="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-200 shadow-sm">
               <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-              <span className="text-sm text-gray-700 font-medium">50+ missions completed • 100% success rate</span>
+              <span className="text-sm text-gray-700 font-medium"></span>
             </div>
-          </div>
+          </div> */}
 
           {/* Main Headlines */}
-          <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-6 leading-tight">
-            Missions That Made
-            <span className="block bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-bold text-primaryBlue mb-6 leading-tight">
+            Missions That Made <br />
+            <span className="text-primaryOrange">
               the Shift
             </span>
           </h1>
 
           {/* Subheadline */}
           <div
-            className={`transition-all duration-1000 delay-300 transform ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            }`}
+            className={`transition-all duration-1000 delay-300 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              }`}
           >
-            <p className="text-2xl md:text-3xl text-gray-600 max-w-4xl mx-auto mb-4 leading-relaxed">
-              See how our clients scaled, shipped, and succeeded — the ShiftDeploy way.
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-4 leading-relaxed">
+              See how our clients scaled, shipped, and succeeded the ShiftDeploy way.
             </p>
             <p className="text-xl text-gray-500 max-w-3xl mx-auto mb-12">
               Here's how we brought clarity, speed, and scale to high-stakes tech teams.
@@ -68,7 +67,7 @@ function HeroSection() {
           </div>
 
           {/* Filter Toggle */}
-          <div
+          {/* <div
             className={`transition-all duration-1000 delay-500 transform ${
               isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
@@ -93,20 +92,34 @@ function HeroSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* CTA */}
           <div
-            className={`transition-all duration-1000 delay-700 transform ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            }`}
+            className={`transition-all duration-1000 delay-700 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+              }`}
           >
-            <button className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xl font-semibold px-12 py-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 animate-pulse">
-              <span className="flex items-center">
-                Explore Success Stories
-                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
-            </button>
+            {/* CTA */}
+            <motion.button
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto  font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+
+            >
+              Explore Success Stories
+
+
+            </motion.button>
+
+            <CursorFollower
+              text="50+ missions completed • 100% success rate"
+              className="  max-w-2xl mt-12 bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-4 rounded-full text-white mx-auto"
+              textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base italic'
+              gradientFrom="#0C1F3A"
+              gradientTo="#0B1D30"
+              circleSize={100}
+            />
           </div>
         </div>
       </div>

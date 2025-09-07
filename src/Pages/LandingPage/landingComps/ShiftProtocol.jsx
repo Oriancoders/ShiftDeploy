@@ -9,42 +9,43 @@ const ShiftProtocol = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const steps = [
-    {
-      icon: Search,
-      title: "Problem Understanding",
-      description: "Deep dive into your business challenges and technical requirements",
-      details: ["Stakeholder interviews", "Technical audit", "Requirement gathering", "Goal definition"],
-      gradient: "from-blue-500 to-indigo-600"
-    },
-    {
-      icon: BarChart3,
-      title: "Analysis & Planning",
-      description: "Comprehensive analysis of your current state and future needs",
-      details: ["Architecture review", "Performance analysis", "Resource planning", "Risk assessment"],
-      gradient: "from-purple-500 to-indigo-600"
-    },
-    {
-      icon: Lightbulb,
-      title: "Solution Design",
-      description: "Custom solution preferences tailored to your specific needs",
-      details: ["Technology selection", "System architecture", "UI/UX design", "Integration planning"],
-      gradient: "from-yellow-500 to-orange-600"
-    },
-    {
-      icon: CheckCircle,
-      title: "Issue Resolution",
-      description: "Systematic implementation and resolution of identified issues",
-      details: ["Development sprints", "Testing protocols", "Quality assurance", "Performance optimization"],
-      gradient: "from-green-500 to-emerald-600"
-    },
-    {
-      icon: Rocket,
-      title: "Final Delivery",
-      description: "Deployment and launch with ongoing support and monitoring",
-      details: ["Production deployment", "Performance monitoring", "User training", "Ongoing support"],
-      gradient: "from-orange-500 to-red-600"
-    }
-  ];
+  {
+    icon: Search,
+    title: "Discovery & Alignment",
+    description: "We start by understanding your vision, challenges, and priorities to set a clear direction.",
+    details: ["Business deep-dive", "Stakeholder alignment", "Technical assessment", "Success criteria"],
+    gradient: "from-blue-500 to-indigo-600"
+  },
+  {
+    icon: BarChart3,
+    title: "Strategic Planning",
+    description: "Every project needs a strong foundation. We map out risks, resources, and the best path forward.",
+    details: ["Architecture planning", "Scalability review", "Resource mapping", "Risk management"],
+    gradient: "from-purple-500 to-indigo-600"
+  },
+  {
+    icon: Lightbulb,
+    title: "Design & Blueprint",
+    description: "We design tailored solutions that balance innovation, security, and long-term sustainability.",
+    details: ["Technology stack selection", "System architecture", "UX-driven design", "Integration plan"],
+    gradient: "from-yellow-500 to-orange-600"
+  },
+  {
+    icon: CheckCircle,
+    title: "Build & Validate",
+    description: "With agile sprints, we deliver secure, tested, and reliable solutions—step by step.",
+    details: ["Development cycles", "Automated testing", "Quality validation", "Performance tuning"],
+    gradient: "from-green-500 to-emerald-600"
+  },
+  {
+    icon: Rocket,
+    title: "Deployment & Beyond",
+    description: "We launch with confidence and continue to monitor, support, and scale as your needs grow.",
+    details: ["Seamless deployment", "Live monitoring", "User onboarding", "Ongoing support"],
+    gradient: "from-orange-500 to-red-600"
+  }
+];
+
 
   return (
     <section id="the-shift-protocol" className="py-4 sm:py-12  bg-gradient-to-b from-white to-gray-50">
@@ -149,7 +150,7 @@ const ShiftProtocol = () => {
             className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
           >
             <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
-              Our 5-step protocol is designed to eliminate cloud chaos. Full control. Zero vendor lock.
+              The Shift Protocol gives you clarity, control, and confidence without compromise.
             </h3>
             <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             >

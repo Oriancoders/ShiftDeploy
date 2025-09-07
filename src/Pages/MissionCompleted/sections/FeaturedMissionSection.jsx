@@ -8,7 +8,7 @@ function FeaturedMissionSection() {
   const sectionRef = useRef(null)
 
   const mission = {
-    client: "StreamlineHQ",
+    client: "Slacker IOT",
     category: "SaaS Infrastructure Scaling",
     timeline: "12 weeks",
     team: "3 engineers + 1 DevOps specialist",
@@ -71,12 +71,12 @@ function FeaturedMissionSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Mission spotlight:
-            <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <div className="text-center mb-12">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            Mission spotlight <br/>
+            <span className="text-primaryOrange">
               {mission.client}
             </span>
           </h2>
@@ -95,26 +95,26 @@ function FeaturedMissionSection() {
               <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Before → After</h3>
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Before */}
-                <div className="bg-red-50 border-l-4 border-red-500 rounded-r-2xl p-6">
-                  <h4 className="text-lg font-semibold text-red-800 mb-4">Before ShiftDeploy</h4>
+                <div className="bg-primaryOrange/10 border-l-4 border-primaryOrange rounded-r-2xl p-6">
+                  <h4 className="text-lg font-semibold text-primaryOrange mb-4">Before ShiftDeploy</h4>
                   <div className="space-y-3">
                     {Object.entries(mission.before).map(([key, value]) => (
                       <div key={key} className="flex justify-between">
-                        <span className="text-red-700 capitalize">{key}:</span>
-                        <span className="font-medium text-red-800">{value}</span>
+                        <span className="text-primaryOrange capitalize">{key}:</span>
+                        <span className="font-medium text-primaryOrange">{value}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* After */}
-                <div className="bg-green-50 border-l-4 border-green-500 rounded-r-2xl p-6">
-                  <h4 className="text-lg font-semibold text-green-800 mb-4">After ShiftDeploy</h4>
+                <div className="bg-primaryBlue/5 border-l-4 border-primaryBlue rounded-r-2xl p-6">
+                  <h4 className="text-lg font-semibold text-primaryBlue  mb-4">After ShiftDeploy</h4>
                   <div className="space-y-3">
                     {Object.entries(mission.after).map(([key, value]) => (
                       <div key={key} className="flex justify-between">
-                        <span className="text-green-700 capitalize">{key}:</span>
-                        <span className="font-medium text-green-800">{value}</span>
+                        <span className="text-primaryBlue  capitalize">{key}:</span>
+                        <span className="font-medium text-primaryBlue ">{value}</span>
                       </div>
                     ))}
                   </div>
@@ -123,23 +123,23 @@ function FeaturedMissionSection() {
             </div>
 
             {/* Impact Metrics */}
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8">
+            <div className="bg-white shadow-md rounded-2xl p-8">
               <h4 className="text-xl font-bold text-gray-900 mb-6 text-center">Mission Impact</h4>
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-6 text-primaryBlue">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600">10x</div>
+                  <div className="text-3xl font-bold ">10x</div>
                   <div className="text-sm text-gray-600">Traffic Capacity</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-green-600">60%</div>
+                  <div className="text-3xl font-bold ">60%</div>
                   <div className="text-sm text-gray-600">Cost Reduction</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-purple-600">99.9%</div>
+                  <div className="text-3xl font-bold">99.9%</div>
                   <div className="text-sm text-gray-600">Uptime</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-600">7x</div>
+                  <div className="text-3xl font-bold">7x</div>
                   <div className="text-sm text-gray-600">Deploy Speed</div>
                 </div>
               </div>

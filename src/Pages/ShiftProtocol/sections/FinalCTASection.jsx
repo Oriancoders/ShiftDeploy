@@ -35,7 +35,7 @@ function FinalCTASection() {
   return (
     <section
       ref={sectionRef}
-      className="py-32 bg-gradient-to-br from-primaryBlue to-toBlue relative overflow-hidden"
+      className="py-20 bg-primaryBlue relative overflow-hidden"
     >
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
@@ -51,16 +51,16 @@ function FinalCTASection() {
         >
           {/* Header */}
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
-            Ready to eliminate
-            <span className="block bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+            Ready to eliminate <br/>
+            <span className="text-primaryOrange">
               technical project risk?
             </span>
           </h2>
 
           {/* Supporting Copy */}
           <div className="max-w-4xl mx-auto mb-12">
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
-              The Shift Protocol isn't just our internal process—it's your roadmap to technical project success.
+            <p className="text-xl text-gray-300 leading-relaxed mb-8">
+              The Shift Protocol isn't just our internal process, it's your roadmap to technical project success.
               Download the complete methodology guide or book a 30-minute walkthrough to see exactly how we'll execute
               your project.
             </p>
@@ -72,7 +72,7 @@ function FinalCTASection() {
             <div className="grid md:grid-cols-2 gap-4 text-left">
               {briefIncludes.map((item, index) => (
                 <div key={index} className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-400 mr-3 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" />
                   <span className="text-white">{item}</span>
                 </div>
               ))}
@@ -85,36 +85,26 @@ function FinalCTASection() {
             expect.
           </p>
 
-          {/* Dual CTAs */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-12">
-            <button className="group bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold px-8 py-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25">
-              <span className="flex items-center justify-center">
-                <Download className="mr-3 w-6 h-6" />
-                Download Protocol Brief
-              </span>
-              <span className="block text-sm opacity-90 mt-1">Get the complete methodology guide instantly</span>
-            </button>
+  
 
-            <button className="group bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold px-8 py-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25">
-              <span className="flex items-center justify-center">
-                <Calendar className="mr-3 w-6 h-6" />
-                Book Process Walkthrough
-              </span>
-              <span className="block text-sm opacity-90 mt-1">
+          {/* Contact Options */}
+          <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
+              <Download className="w-8 h-8 text-blue-400 mx-auto mb-4" />
+              <h3 className="text-white font-semibold mb-2">Download Protocol Brief</h3>
+              <p className="text-gray-300 text-sm">Get the complete methodology guide instantly</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
+              <Calendar className="w-8 h-8 text-orange-400 mx-auto mb-4" />
+              <h3 className="text-white font-semibold mb-2">Book Process Walkthrough</h3>
+              <p className="text-gray-300 text-sm">
                 See the protocol in action with real project examples
-              </span>
-            </button>
-          </div>
 
-          {/* Final Reassurance */}
-          <div className="max-w-3xl mx-auto">
-            <div className="inline-flex items-center bg-green-500/20 backdrop-blur-sm rounded-full px-6 py-3 border border-green-400/30">
-              <Shield className="w-5 h-5 text-green-400 mr-2" />
-              <span className="text-green-200 font-medium">
-                Used by 200+ startups from seed to Series B. Zero project failures in 3+ years.
-              </span>
+              </p>
             </div>
           </div>
+
+   
         </div>
       </div>
     </section>

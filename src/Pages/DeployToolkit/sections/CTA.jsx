@@ -26,7 +26,7 @@ function FinalCTASection() {
   return (
     <section
       ref={sectionRef}
-      className="py-32 bg-gradient-to-br from-primaryBlue  to-toBlue relative overflow-hidden"
+      className="py-20 bg-gradient-to-br from-primaryBlue  to-toBlue relative overflow-hidden"
     >
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
@@ -42,17 +42,17 @@ function FinalCTASection() {
         >
           {/* Header */}
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
-            Ready to deploy
-            <span className="block bg-gradient-to-r from-primaryOrange to-orange-700 bg-clip-text text-transparent">
+            Ready to deploy <br/>
+            <span className="text-primaryOrange">
               with confidence?
             </span>
           </h2>
 
           {/* Main Copy */}
           <div className="max-w-4xl mx-auto mb-12">
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
+            <p className="text-xl text-gray-200 leading-relaxed mb-8">
               This is for serious builders who refuse to let technical debt slow down their growth. If you're tired of
-              infrastructure headaches, scaling nightmares, and deployment anxiety — let's fix it.
+              infrastructure headaches, scaling nightmares, and deployment anxiety. let's fix it.
             </p>
           </div>
 
@@ -107,10 +107,10 @@ function FinalCTASection() {
 
           {/* Primary CTA */}
           <div className="mb-12">
-            <button className="group bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-2xl font-bold px-16 py-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25">
+             <button className="group bg-primaryOrange hover:bg-toOrange text-white text-xl font-semibold px-12 py-6 rounded-2xl transition-all duration-300 transform  hover:shadow-blue-500/25">
               <span className="flex items-center">
-                Book Your Strategy Call
-                <ArrowRight className="ml-4 w-8 h-8 group-hover:translate-x-2 transition-transform duration-300" />
+                Schedule Your Free Strategy Call
+                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
             </button>
           </div>
@@ -145,7 +145,7 @@ function FinalCTASection() {
               Your competition is scaling. Your users are waiting. Your technical challenges aren't going to solve
               themselves.
             </p>
-            <p className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+            <p className="text-2xl font-bold text-primaryOrange">
               Let's deploy together.
             </p>
           </div>

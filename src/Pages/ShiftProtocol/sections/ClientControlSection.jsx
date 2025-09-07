@@ -1,18 +1,18 @@
 import { CheckCircle, Star } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-
+import { motion } from "framer-motion"
 // Section 6: Client-Led Case Confirmation
 function ClientControlSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
 
   const approvalGates = [
-    "Discovery Phase: Complete technical audit and project plan",
-    "Design Phase: User experience flows and system architecture",
-    "Development Milestones: 25%, 50%, 75% completion reviews",
-    "Pre-Launch: Full system testing and deployment plan",
-    "Launch: Production deployment authorization",
-    "Handover: Final documentation and knowledge transfer",
+    { point: "Discovery Phase", description: "Complete technical audit and project plan" },
+    { point: "Design Phase", description: "User experience flows and system architecture" },
+    { point: "Development Milestones", description: "25%, 50%, 75% completion reviews" },
+    { point: "Pre-Launch", description: "Full system testing and deployment plan" },
+    { point: "Launch", description: "Production deployment authorization" },
+    { point: "Handover", description: "Final documentation and knowledge transfer" },
   ]
 
   const controlPoints = [
@@ -42,49 +42,36 @@ function ClientControlSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            You approve
-            <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        <div className="text-center mb-12">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            You approve <br />
+            <span className="text-primaryOrange">
               everything
             </span>
           </h2>
           <p className="text-xl text-gray-600">Client control at every critical decision point</p>
         </div>
 
-        {/* Core Promise */}
-        <div
-          className={`transition-all duration-1000 transform ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-          }`}
-        >
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-3xl p-12 text-center mb-16 border border-blue-100">
-            <h3 className="text-3xl font-bold text-gray-900 mb-6">Core Promise</h3>
-            <p className="text-2xl text-gray-700 leading-relaxed">
-              Every step reviewed by you. Every delivery approved by you. Every major decision requires your explicit
-              sign-off before we proceed.
-            </p>
-          </div>
-        </div>
+
 
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Approval Gates */}
           <div
-            className={`transition-all duration-1000 delay-300 transform ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-            }`}
+            className={`transition-all duration-1000 delay-300 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+              }`}
           >
             <div className="bg-white rounded-3xl p-8 shadow-lg h-full">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Approval Gates</h3>
               <ul className="space-y-4">
                 {approvalGates.map((gate, index) => (
                   <li key={index} className="flex items-start">
-                    <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
-                      <CheckCircle className="w-5 h-5 text-white" />
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                    <div>
+                      <span className="font-semibold text-gray-900">{gate.point}:</span>
+                      <span className="text-gray-700 ml-2">{gate.description}</span>
                     </div>
-                    <span className="text-gray-700 leading-relaxed">{gate}</span>
                   </li>
                 ))}
               </ul>
@@ -93,16 +80,15 @@ function ClientControlSection() {
 
           {/* Control Points */}
           <div
-            className={`transition-all duration-1000 delay-500 transform ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-            }`}
+            className={`transition-all duration-1000 delay-500 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+              }`}
           >
             <div className="bg-white rounded-3xl p-8 shadow-lg h-full">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Your Control Points</h3>
               <ul className="space-y-4">
                 {controlPoints.map((control, index) => (
                   <li key={index} className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
                     <div>
                       <span className="font-semibold text-gray-900">{control.point}:</span>
                       <span className="text-gray-700 ml-2">{control.description}</span>
@@ -113,12 +99,46 @@ function ClientControlSection() {
             </div>
           </div>
         </div>
+        {/* Core Promise */}
+        <div className="text-center my-8 space-y-6">
+          <p className="text-5xl text-primaryBlue font-semibold">Core Promise</p>
+          <p className="text-xl text-gray-600 italic ">
+            Every step reviewed by you. Every delivery approved by you. Every major decision requires your explicit
+            sign-off before we proceed.
+          </p>
 
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto "
+          >
+
+            <motion.button
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+
+            >
+              Launch Your Project
+
+            </motion.button>
+
+            <motion.button
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+            >
+              <span>View ToolKit</span>
+
+            </motion.button>
+
+
+          </div>
+        </div>
         {/* Client Testimonial */}
         <div
-          className={`transition-all duration-1000 delay-700 transform ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-          }`}
+          className={`transition-all duration-1000 delay-700 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+            }`}
         >
           <div className="bg-white rounded-3xl p-12 shadow-lg text-center">
             <div className="flex justify-center mb-6">

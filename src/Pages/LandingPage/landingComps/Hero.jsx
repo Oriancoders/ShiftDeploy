@@ -29,18 +29,11 @@ const Hero = () => {
           >
             <CursorFollower
               text="Deploy -> Scale -> Succeed"
-              className="bg-gradient-to-r w-fit from-secondaryBlue to-blue-700 px-3 lg:px-4 py-2 mb-6 rounded-full"
-              textClassName='text-white font-semibold text-sm lg:text-base'
+              className="  max-w-2xl mb-8 bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-2 rounded-full text-white"
+              textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base italic'
               gradientFrom="#0C1F3A"
               gradientTo="#0B1D30"
               circleSize={100}
-              framerAtts={{
-                initial: { opacity: 0, y: -60 },
-                animate: { opacity: 1, y: 0 },
-                transition: { duration: 1, delay: 0.2 },
-              }
-              }
-
             />
 
             <motion.h1
@@ -102,7 +95,7 @@ const Hero = () => {
 
             </div>
 
-     
+
           </div>
 
           {/* Right content - Enhanced 3D Material Prototype */}

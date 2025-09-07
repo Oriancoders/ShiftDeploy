@@ -1,6 +1,6 @@
 import { CheckCircle, DollarSign, FileText, Lock, Shield } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-
+import { motion } from "framer-motion"
 // Section 3: What We Guarantee
 function GuaranteesSection() {
   const [visibleGuarantees, setVisibleGuarantees] = useState([])
@@ -72,12 +72,12 @@ function GuaranteesSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="pt-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Our non-negotiable
-            <span className="block bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+        <div className="text-center mb-12">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            Our non-negotiable <br/>
+            <span className="text-primaryOrange">
               commitments
             </span>
           </h2>
@@ -92,10 +92,10 @@ function GuaranteesSection() {
                 visibleGuarantees.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
               } ${index === 4 ? "md:col-span-2 lg:col-span-1 lg:col-start-2" : ""}`}
             >
-              <div className="bg-gray-50 rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 h-full">
+              <div className="bg-white rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 h-full border border-gray-300">
                 {/* Icon */}
                 <div
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${guarantee.color} mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
+                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
                 >
                   <div className="text-white">{guarantee.icon}</div>
                 </div>
@@ -115,14 +115,22 @@ function GuaranteesSection() {
                   <p className="text-gray-700 leading-relaxed">{guarantee.guarantee}</p>
                 </div>
 
-                {/* Hover Effect */}
-                <div
-                  className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${guarantee.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
-                ></div>
+ 
               </div>
             </div>
           ))}
         </div>
+
+<motion.button
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md mx-auto mt-20"
+
+            >
+              Launch Your Project
+
+            </motion.button>
       </div>
     </section>
   )

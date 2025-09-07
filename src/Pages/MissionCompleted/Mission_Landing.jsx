@@ -16,8 +16,8 @@ const Mission_Landing = () => {
             <CaseStudyCardsSection/>
             <FeaturedMissionSection/>
             <ClientQuoteWallSection/>
-            <ImpactAnalyticsSection/>
             <CallToActionSection/>
+            <ImpactAnalyticsSection/>
         <Footer/>
     </div>
   )

@@ -22,10 +22,10 @@ const Toolkit_Landing = () => {
         <CaseSnapshotsSection/>
         {/* <PricingSection/> */}
         <TestimonialsSection/>
-        <FAQSection/>
         <FinalCTASection/>
+        <FAQSection/>
         
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   )
 }

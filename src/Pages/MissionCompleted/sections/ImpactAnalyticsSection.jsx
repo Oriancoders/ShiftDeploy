@@ -89,12 +89,12 @@ function ImpactAnalyticsSection() {
   }
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            The numbers
-            <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            The numbers <br/>
+            <span className="text-primaryOrange">
               don't lie
             </span>
           </h2>
@@ -112,11 +112,11 @@ function ImpactAnalyticsSection() {
             >
               <div className="bg-gray-50 rounded-3xl p-8 text-center hover:bg-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
                 <div
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${metric.color} mb-6`}
+                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6`}
                 >
                   <div className="text-white">{metric.icon}</div>
                 </div>
-                <div className="text-4xl md:text-5xl font-bold text-gray-900 mb-2">
+                <div className="text-4xl font-bold text-gray-900 mb-2">
                   {animatedNumbers[index] || 0}
                   {metric.suffix}
                 </div>
@@ -133,7 +133,7 @@ function ImpactAnalyticsSection() {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
           }`}
         >
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8">
+          <div className="bg-white rounded-3xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Mission Statistics</h3>
             <div className="grid md:grid-cols-4 gap-8">
               {additionalStats.map((stat, index) => (

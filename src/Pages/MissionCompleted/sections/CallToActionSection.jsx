@@ -26,12 +26,12 @@ function CallToActionSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-32 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 relative overflow-hidden"
+      className="py-20 bg-gray-900 relative overflow-hidden"
     >
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primaryOrange/50 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondaryBlue/50 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="max-w-5xl mx-auto px-6 relative text-center">
@@ -42,20 +42,20 @@ function CallToActionSection() {
         >
           {/* Header */}
           <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
-            Your growth story starts
-            <span className="block bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+            Your growth story starts <br/>
+            <span className="text-primaryOrange">
               with the next shift.
             </span>
           </h2>
 
           {/* Subheadline */}
           <div className="max-w-4xl mx-auto mb-12">
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
-              You've seen what we can do. You've read the success stories. You know the results we deliver.
+            <p className="text-xl  text-gray-300 leading-relaxed mb-8">
+              You've seen what we can do. You've read the success stories. You know the results we deliver.<br/>
+              The question isn't whether we can solve your challenges, it's when you're ready to begin your mission.
+
             </p>
-            <p className="text-lg text-gray-400">
-              The question isn't whether we can solve your challenges — it's when you're ready to begin your mission.
-            </p>
+
           </div>
 
           {/* Social Proof */}
@@ -89,10 +89,10 @@ function CallToActionSection() {
 
           {/* Primary CTA */}
           <div className="mb-12">
-            <button className="group bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-2xl font-bold px-16 py-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25 animate-pulse">
+             <button className="group bg-primaryOrange hover:bg-toOrange text-white text-xl font-semibold px-12 py-6 rounded-2xl transition-all duration-300 transform  hover:shadow-blue-500/25">
               <span className="flex items-center">
-                Book a Strategy Call
-                <ArrowRight className="ml-4 w-8 h-8 group-hover:translate-x-2 transition-transform duration-300" />
+                Book  Your Free Strategy Call
+                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
             </button>
           </div>
@@ -110,7 +110,7 @@ function CallToActionSection() {
               Your competitors are scaling. Your users are waiting. Your technical challenges aren't going to solve
               themselves.
             </p>
-            <p className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+            <p className="text-2xl font-bold text-primaryOrange">
               Let's begin your mission.
             </p>
           </div>

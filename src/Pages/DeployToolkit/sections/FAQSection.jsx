@@ -71,7 +71,7 @@ function FAQSection() {
   }
 
   return (
-    <section ref={sectionRef} className=" bg-gray-50">
+    <section ref={sectionRef} className=" bg-gray-50 py-20">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
@@ -97,7 +97,8 @@ function FAQSection() {
                 >
                   <h3 className="text-lg font-semibold text-primaryBlue pr-4">{faq.question}</h3>
                   <ChevronDown
-                    className={`w-5 h-5 text-gray-500 transition-transform duration-300 flex-shrink-0 ${
+                    className={`w-5 h-5 text-gray-500 transition-transform duration-300 flex-shrink-0 
+                    ${
                       openFAQ === index ? "rotate-180" : ""
                     }`}
                   />
@@ -121,9 +122,7 @@ function FAQSection() {
           <button className="bg-primaryOrange  text-white font-semibold px-8 py-4 rounded-2xl hover:bg-toOrange">
             Book a Strategy Call
           </button>
-          <p className="text-sm text-gray-500 mt-4">
-            We'll answer everything and assess if we're a good fit for your challenges.
-          </p>
+
         </div>
       </div>
     </section>

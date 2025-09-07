@@ -71,12 +71,12 @@ function TransparencySystemsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Complete project
-            <span className="block bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+        <div className="text-center mb-12">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            Complete project <br/>
+            <span className=" text-primaryOrange">
               visibility
             </span>
           </h2>
@@ -91,12 +91,12 @@ function TransparencySystemsSection() {
                 visibleSystems.includes(index) ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"
               }`}
             >
-              <div className="bg-gray-50 rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300">
+              <div className="bg-white rounded-3xl p-8  hover:shadow-lg shadow-md transition-all duration-300">
                 <div className="grid md:grid-cols-4 gap-8 items-center">
                   {/* Icon */}
                   <div className="md:col-span-1">
                     <div
-                      className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br ${system.color} mb-4`}
+                      className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-primaryBlue mb-4`}
                     >
                       <div className="text-white">{system.icon}</div>
                     </div>
