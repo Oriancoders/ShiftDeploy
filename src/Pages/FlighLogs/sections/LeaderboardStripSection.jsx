@@ -62,7 +62,7 @@ function LeaderboardStripSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-to-r from-gray-900 to-blue-900 relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 bg-gray-50 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div
@@ -76,14 +76,14 @@ function LeaderboardStripSection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            The numbers
-            <span className="block bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+        <div className="text-center mb-12">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            The numbers <br/>
+            <span className="text-primaryOrange">
               speak volumes
             </span>
           </h2>
-          <p className="text-xl text-gray-300">Consistent results across every mission we complete.</p>
+          <p className="text-xl text-gray-700">Consistent results across every mission we complete.</p>
         </div>
 
         <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-8">
@@ -96,13 +96,13 @@ function LeaderboardStripSection() {
             >
               <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/15 transition-colors duration-300">
                 <div
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${stat.color} mb-6`}
+                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6`}
                 >
                   <div className="text-white">{stat.icon}</div>
                 </div>
-                <div className="text-4xl font-bold text-white mb-2">{stat.value}</div>
-                <div className="text-lg font-semibold text-gray-200 mb-2">{stat.metric}</div>
-                <div className="text-gray-400 text-sm">{stat.description}</div>
+                <div className="text-4xl font-bold text-primaryBlue mb-2">{stat.value}</div>
+                <div className="text-lg font-semibold text-gray-800 mb-2">{stat.metric}</div>
+                <div className="text-gray-500 text-sm">{stat.description}</div>
               </div>
             </div>
           ))}
@@ -111,9 +111,9 @@ function LeaderboardStripSection() {
         {/* Bottom Message */}
         <div className="text-center mt-16">
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-4xl mx-auto">
-            <p className="text-2xl text-white font-medium">
+            <p className="text-2xl text-gray-900 font-medium">
               These aren't just numbers —{" "}
-              <span className="text-orange-400">they're promises kept to teams who trusted us</span> with their
+              <span className="text-primaryOrange">they're promises kept to teams who trusted us</span> with their
               mission-critical projects.
             </p>
           </div>

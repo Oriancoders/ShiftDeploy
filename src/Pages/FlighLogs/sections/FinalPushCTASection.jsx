@@ -24,11 +24,11 @@ function FinalPushCTASection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-32 bg-white relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 bg-gray-900 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-200 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primaryOrange/50 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondaryBlue/50 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="max-w-5xl mx-auto px-6 relative text-center">
@@ -38,9 +38,9 @@ function FinalPushCTASection() {
           }`}
         >
           {/* Header */}
-          <h2 className="text-5xl md:text-7xl font-bold text-gray-900 mb-8 leading-tight">
-            Ready to join
-            <span className="block bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+            Ready to join <br/>
+            <span className="text-primaryOrange">
               the flight logs?
             </span>
           </h2>
@@ -56,19 +56,19 @@ function FinalPushCTASection() {
           </div>
 
           {/* Trust Reinforcement */}
-          <div className="bg-gray-50 rounded-3xl p-8 mb-12 max-w-4xl mx-auto">
+          <div className=" rounded-3xl p-8 mb-12 max-w-4xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold text-blue-600 mb-2">Reliable</div>
-                <div className="text-gray-600">100% on-time delivery</div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300  text-white">
+                <div className="text-3xl font-bold mb-2">Reliable</div>
+                <div className="text-gray-100">100% on-time delivery</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-green-600 mb-2">Understood</div>
-                <div className="text-gray-600">We get your challenges</div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300  text-white">
+                <div className="text-3xl font-bold  mb-2">Understood</div>
+                <div className="text-gray-100">We get your challenges</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-orange-600 mb-2">Proven</div>
-                <div className="text-gray-600">50+ successful missions</div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300  text-white">
+                <div className="text-3xl font-bold 0 mb-2">Proven</div>
+                <div className="text-gray-100">50+ successful missions</div>
               </div>
             </div>
           </div>
@@ -84,16 +84,16 @@ function FinalPushCTASection() {
           </div>
 
           {/* Risk Reversal */}
-          <p className="text-lg text-gray-500 mb-8">
+          <p className="text-lg text-gray-200 mb-8">
             30-minute call. No commitment. Just an honest conversation about your challenges.
           </p>
 
           {/* Secondary Options */}
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            <button className="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold px-8 py-4 rounded-2xl transition-all duration-300">
+            <button className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300  text-white">
               See Our Process
             </button>
-            <button className="bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold px-8 py-4 rounded-2xl transition-all duration-300">
+            <button className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300  text-white">
               View Case Studies
             </button>
           </div>

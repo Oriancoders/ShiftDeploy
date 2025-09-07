@@ -1,6 +1,6 @@
 import { Quote, Star } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-
+import { motion } from "framer-motion"
 // Section 2: Quote Wall
 function QuoteWallSection() {
   const [visibleQuotes, setVisibleQuotes] = useState([])
@@ -99,9 +99,9 @@ function QuoteWallSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12">
           <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             What they really
             <span className="block bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
@@ -119,15 +119,14 @@ function QuoteWallSection() {
               key={index}
               ref={(el) => (quoteRefs.current[index] = el)}
               data-index={index}
-              className={`group transition-all duration-700 transform ${
-                visibleQuotes.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-              }`}
+              className={`group transition-all duration-700 transform ${visibleQuotes.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+                }`}
             >
               <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full">
                 {/* Quote Icon */}
                 <div className="flex items-start mb-6">
                   <div
-                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${testimonial.color} flex items-center justify-center mr-4 flex-shrink-0`}
+                    className={`w-12 h-12 rounded-xl bg-primaryBlue flex items-center justify-center mr-4 flex-shrink-0`}
                   >
                     <Quote className="w-6 h-6 text-white" />
                   </div>
@@ -138,7 +137,7 @@ function QuoteWallSection() {
                       ))}
                     </div>
                     <span
-                      className={`ml-4 px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r ${testimonial.color} text-white`}
+                      className={`ml-4 px-3 py-1 rounded-full text-sm font-medium bg-primaryBlue text-white`}
                     >
                       {testimonial.tag}
                     </span>
@@ -174,15 +173,42 @@ function QuoteWallSection() {
           ))}
         </div>
 
-        {/* Reinforcement Message */}
-        <div className="text-center mt-16">
-          <div className="bg-white rounded-2xl p-8 max-w-4xl mx-auto shadow-sm border border-gray-200">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">The Pattern is Clear</h3>
-            <p className="text-xl text-gray-600">
-              <span className="text-blue-600 font-semibold">Reliable</span> delivery.{" "}
-              <span className="text-green-600 font-semibold">On time</span> execution.{" "}
-              <span className="text-orange-600 font-semibold">Understood</span> completely.
-            </p>
+
+
+        <div className="text-center mt-12 space-y-6">
+          <p className="text-5xl text-primaryBlue font-semibold">The Pattern is Clear</p>
+          <p className="text-xl text-gray-600 italic ">
+            <span className=" font-semibold"></span> delivery.{" "}
+              <span className="font-semibold">On time</span> execution.{" "}
+              <span className="font-semibold">Understood</span> completely.
+          </p>
+
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto "
+          >
+
+            <motion.button
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+
+            >
+              Launch Your Project
+
+            </motion.button>
+
+            <motion.button
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+            >
+              <span>View Case Study</span>
+
+            </motion.button>
+
+
           </div>
         </div>
       </div>

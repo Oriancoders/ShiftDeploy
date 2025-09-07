@@ -13,9 +13,9 @@ const Flight_Landing = () => {
       <Navigation/>
         <HeroSection/>
         <QuoteWallSection/>
-        <VideoWallSection/>
-        <LeaderboardStripSection/>
+        {/* <VideoWallSection/> */}
         <FinalPushCTASection/>
+        <LeaderboardStripSection/>
       <Footer/>
     </div>
   )
