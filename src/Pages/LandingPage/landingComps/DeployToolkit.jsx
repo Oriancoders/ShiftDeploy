@@ -114,31 +114,24 @@ const DeployToolkit = () => {
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-3xl xl:text-4xl font-bold mb-4 sm:mb-6 "
+            className="text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
           >
-            <span className="text-primaryBlue">
-              What We
-            </span>{" "}
-            <span className="text-secondaryBlue">
-              Launch
+            Our
+            <span className="text-primaryOrange pl-4">
+              Deploy ToolKit
             </span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  leading-relaxed px-4 sm:px-0 text-gray-600"
+            className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  leading-relaxed px-4 sm:px-0 text-gray-700"
           >
             Our comprehensive Deploy Toolkit includes everything you need to build,
             deploy, and scale modern applications with confidence.
           </motion.p>
-          <motion.div
-            variants={fadeInUp}
-            className="flex justify-center"
-          >
-            <div className="w-24 sm:w-32 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full" />
-          </motion.div>
+
         </motion.div>
 
-        <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl ">
+        <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 px-4 sm:px-6 lg:px-8 max-w-7xl ">
           {tools.map((tool, index) => (
             <motion.div
               onMouseEnter={() => handleMouseOver(index)}
@@ -149,30 +142,18 @@ const DeployToolkit = () => {
                 className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[300px] border sm:border-gray-200 rounded-3xl p-6 pb-12   border-toSecBlue sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden"
 
               >
-                {/* <motion.div
-                  whileHover={{
-                    y: -7,
-                    rotateZ: -15,
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 15,
-                  }}
-                  className={` w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 bg-secondaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0  mx-0 mb-4`}>
-                  <tool.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
-                </motion.div> */}
+
                 <h3 className="text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4 text-gray-900">{tool.title}</h3>
-                <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed   text-base text-gray-600">{tool.description}</p>
+                <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed   text-base text-gray-700">{tool.description}</p>
 
                 <div className="space-y-1.5 sm:space-y-2 lg:space-y-3">
                   <div className="flex items-center  space-x-2 sm:space-x-3 ">
-                    <div className="w-3 h-3 bg-red-600 rounded-full flex-shrink-0" />
+                    <div className="w-3 h-3 bg-primaryOrange rounded-full flex-shrink-0" />
                     <span className="text-md ">
-                      <span className="text-red-600 font-semibold">Problem:</span>
+                      <span className="text-primaryOrange font-semibold">Problem:</span>
                     </span>
                   </div>
-                  <span className='text-gray-600 text-base'>
+                  <span className='text-gray-700 text-base'>
 
                     {tool.problem}
                   </span>
@@ -181,10 +162,10 @@ const DeployToolkit = () => {
                 {/* this one card animation  */}
                 <div className={`w-full   absolute sm:-bottom-20 sm:left-20 bottom-0 left-0 group-hover:left-0 group-hover:bottom-0 text-white text-right ${activeIndex == index && '-bottom-20 left-20'}  transition-all duration-500`} style={{
                 }}>
-                  <span className={` font-bold bg-green-600 sm:px-2 px-4 py-2 inline-block rounded-tl-2xl cursor-pointer ${activeIndex == index && 'translate-y-16 translate-x-1/2'}transition-all duration-500`} onClick={() => handleIndex(index)}>Reveal Solution </span>
+                  <span className={` font-bold bg-primaryBlue sm:px-2 px-4 py-2 inline-block rounded-tl-2xl cursor-pointer ${activeIndex == index && 'translate-y-16 translate-x-1/2'}transition-all duration-500`} onClick={() => handleIndex(index)}>Reveal Solution </span>
                 </div>
                 {/* explanation card  */}
-                <div className={`w-full h-full bg-green-600  absolute  px-6 py-4 text-white rounded-2xl  ${activeIndex == index ? 'top-0 left-0' : '-top-96 -left-96'} transition-all duration-500 flex flex-col justify-between`} style={{
+                <div className={`w-full h-full bg-primaryBlue  absolute  px-6 py-4 text-white rounded-2xl  ${activeIndex == index ? 'top-0 left-0' : '-top-96 -left-96'} transition-all duration-500 flex flex-col justify-between`} style={{
                 }}>
                   <div className='flex flex-col gap-y-2'>
                     <h1 className={` font-bold   inline-block  cursor-pointer`} onClick={() => handleIndex(null)}> <MoveLeft /></h1>
@@ -201,7 +182,14 @@ const DeployToolkit = () => {
           ))}
         </div>
 
+        <button
 
+          className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm mb-12"
+        >
+
+          Why We’re Different
+          <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+        </button>
 
         {/* Problem-solving CTA */}
 
@@ -221,7 +209,7 @@ const DeployToolkit = () => {
               </p>
 
 
-              
+
             </div>
 
             <div className='flex-1 space-y-8'>

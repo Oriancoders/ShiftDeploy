@@ -45,22 +45,20 @@ const InsideShiftDeploy = () => {
     <section id="inside-shiftdeploy" className="pt-4 sm:pt-12  text-textColor bg-gradient-to-b from-gray-50 to-gray-50">
       <div className=" mx-auto flex flex-col justify-center items-center ">
         <motion.div
-             ref={ref}
-             variants={staggerContainer}
-             initial="initial"
-             animate={isInView ? "animate" : "initial"}
+          ref={ref}
+          variants={staggerContainer}
+          initial="initial"
+          animate={isInView ? "animate" : "initial"}
           className="text-center mb-8 "
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-3xl xl:text-4xl font-bold mb-6 "
+            className="text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
           >
-            <span className="text-primaryBlue">
-              Inside
-            </span>{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
-              ShiftDeploy
-            </span>
+                Inside
+                <span className="text-primaryOrange pl-4">
+                  ShiftDeploy
+                </span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
@@ -69,19 +67,14 @@ const InsideShiftDeploy = () => {
             We provide comprehensive technology solutions that help businesses scale,
             optimize performance, and achieve sustainable growth in today's digital landscape.
           </motion.p>
-          <motion.div
-            variants={fadeInUp}
-            className="flex justify-center"
-          >
-            <div className="w-24 sm:w-32 h-1 sm:h-1.5 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full" />
-          </motion.div>
+  
         </motion.div>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl">
           {solutions.map((solution, index) => (
             <motion.div
               key={index}
-              className="bg-white border sm:border-gray-200 rounded-xl md:rounded-2xl p-6  sm:hover:shadow-md transition-all  group col-span-1 h-full relative"            // whileHover="whileHover"
+              className="bg-white border sm:border-gray-200 rounded-xl md:rounded-2xl p-6  sm:hover:shadow-md transition-all duration-300  group col-span-1 h-full relative"            // whileHover="whileHover"
             >
               <div className="flex flex-col  sm:flex-row items-start space-y-6 sm:space-y-0 sm:space-x-4 lg:space-x-6 ">
 
@@ -91,16 +84,16 @@ const InsideShiftDeploy = () => {
                   <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
                     {solution.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center justify-start space-x-2 sm:space-x-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                        <span className="text-gray-700 font-medium text-lg">{feature}</span>
+                        <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-green-500 flex-shrink-0" />
+                        <span className="text-gray-700 font-medium sm:text-lg">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
-  
+
               {/* <div className='absolue bottom-0 right-0 text-right translate-y-3 translate-x-3 cursor-pointer group-hover:opacity-100 opacity-0 text-white bg-primaryOrange w-fit transition-all duration-300 flex fap-x-6'>Know More <ArrowRight/> </div> */}
-              
+
             </motion.div>
           ))}
         </div>
@@ -108,11 +101,8 @@ const InsideShiftDeploy = () => {
         {/* Growth-focused messaging */}
 
         <div className='w-full flex justify-center items-center'>
-          <CursorFollower
+          <div
 
-            gradientFrom='rgba(67, 97, 238, 0.2)'
-            gradientTo='rgba(67, 97, 238, 0.1)'
-            circleSize={150}
             className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
           >
             <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
@@ -134,7 +124,7 @@ const InsideShiftDeploy = () => {
               <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
             </button>
 
-          </CursorFollower>
+          </div>
         </div>
       </div>
     </section>

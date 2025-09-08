@@ -85,9 +85,12 @@ const FlightLogs = () => {
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-3xl xl:text-4xl font-bold mb-4 sm:mb-6 lg:mb-8"
+            className="text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
           >
-            <h1>Flight <span className='text-secondaryBlue'>Logs</span></h1>
+            Flight
+            <span className="text-primaryOrange pl-4">
+              Logs
+            </span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
@@ -96,12 +99,7 @@ const FlightLogs = () => {
             Hear from our clients about their transformation journey and the results
             they've achieved with ShiftDeploy.
           </motion.p>
-          <motion.div
-            variants={fadeInUp}
-            className="flex justify-center"
-          >
-            <div className="w-24 sm:w-32 h-1 sm:h-1.5 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full" />
-          </motion.div>
+
         </motion.div>
 
         {/* Testimonials grid */}
@@ -159,7 +157,7 @@ const FlightLogs = () => {
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="  rounded-xl sm:rounded-2xl  text-center"
+          className="  rounded-xl sm:rounded-2xl  text-center bg-white p-12 shadow-lg"
         >
           <div className="flex items-center justify-center space-x-1.5 sm:space-x-2 lg:space-x-3 mb-3 sm:mb-4 lg:mb-6">
             {renderStars(5)}

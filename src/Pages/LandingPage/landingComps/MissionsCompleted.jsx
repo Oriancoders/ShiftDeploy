@@ -86,52 +86,55 @@ const MissionsCompleted = () => {
   ];
 
   return (
-    <section id="missions-completed" className="py-8 bg-white text-primaryBlue">
+    <section id="missions-completed" className="py-12 bg-white text-primaryBlue">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-       <div className="w-full flex sm:flex-row flex-col justify-between items-center mb-8 ">
-         <motion.div ref={ref} 
-                  variants={staggerContainer}
-                  initial="initial"
-                  animate={isInView ? "animate" : "initial"} 
-                  className="sm:text-center mb-12 sm:mb-16 sm:flex-1 border-r border-gray-400">
-          <motion.h2 variants={fadeInUp} className="text-3xl xl:text-4xl font-bold mb-4 sm:mb-6 text-left ">
-            <span className="text-primaryBlue">Missions</span>{" "}
-            <span className="text-secondaryBlue">Completed</span>
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0 text-left"
-          >
-            Explore our portfolio of successful projects and see how we've helped
-            businesses transform their digital presence.
-          </motion.p>
-          <motion.div variants={fadeInUp} className="flex ">
-            <div className="w-24 sm:w-32 h-1 sm:h-1.5 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full" />
+        <div className="w-full flex sm:flex-row flex-col justify-between items-center mb-8 ">
+          <motion.div ref={ref}
+            variants={staggerContainer}
+            initial="initial"
+            animate={isInView ? "animate" : "initial"}
+            className=" mb-12 sm:mb-16 sm:flex-1 border-r border-gray-400">
+            <motion.h2
+              variants={fadeInUp}
+              className="text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
+            >
+              Missions We've <br/>
+              <span className="text-primaryOrange ">
+                Completed
+              </span>
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0 text-left"
+            >
+              Explore our portfolio of successful projects and see how we've helped
+              businesses transform their digital presence.
+            </motion.p>
+
           </motion.div>
-        </motion.div>
 
-        {/* Stats */}
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          animate={isInView ? "animate" : "initial"}
-          className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 sm:flex-1"
-        >
-          {stats.map((stat, index) => {
-            const { number, suffix } = splitValue(stat.value + (stat.suffix || ""));
-            return (
-              <motion.div key={index} className="text-center">
-                <div className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">
-                  {animatedNumbers[index] || 0}
-                  {suffix}
-                </div>
-                <div className=" font-medium text-center">{stat.label}</div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+          {/* Stats */}
+          <motion.div
+            variants={staggerContainer}
+            initial="initial"
+            animate={isInView ? "animate" : "initial"}
+            className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 sm:flex-1"
+          >
+            {stats.map((stat, index) => {
+              const { number, suffix } = splitValue(stat.value + (stat.suffix || ""));
+              return (
+                <motion.div key={index} className="text-center">
+                  <div className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">
+                    {animatedNumbers[index] || 0}
+                    {suffix}
+                  </div>
+                  <div className=" font-medium text-center">{stat.label}</div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
 
-       </div>
+        </div>
         {/* Projects showcase (same as before) */}
         <div className="space-y-6 sm:space-y-8 lg:space-y-12 ">
           {projects.map((project, index) => (
@@ -140,13 +143,12 @@ const MissionsCompleted = () => {
               initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-white border border-gray-200 rounded-3xl overflow-hidden hover:border-blue-300  transition-all duration-100 group grid lg:grid-cols-2 gap-0"
+              className="bg-white border border-gray-300 rounded-3xl overflow-hidden  transition-all duration-100 group grid lg:grid-cols-2 gap-0"
             >
               {/* Left: Image */}
               <div
-                className={`relative h-48 sm:h-64 lg:h-full ${
-                  scrwidth > 768 && index % 2 === 0 ? "order-2" : "order-1"
-                } ${scrwidth < 768 && "order-2"}`}
+                className={`relative h-48 sm:h-64 lg:h-full ${scrwidth > 768 && index % 2 === 0 ? "order-2" : "order-1"
+                  } ${scrwidth < 768 && "order-2"}`}
               >
                 <img
                   src={project.image}
@@ -158,14 +160,13 @@ const MissionsCompleted = () => {
 
               {/* Right: Content */}
               <div
-                className={`p-4 sm:p-6 lg:p-8 xl:p-10 ${
-                  scrwidth > 768 && index % 2 === 0 ? "order-1" : "order-2"
-                } ${scrwidth < 768 && "order-1"}`}
+                className={`p-4 sm:p-6 lg:p-8 xl:p-10 ${scrwidth > 768 && index % 2 === 0 ? "order-1" : "order-2"
+                  } ${scrwidth < 768 && "order-1"}`}
               >
                 <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 mb-1 sm:mb-2 lg:mb-3">
                   {project.title}
                 </h3>
-                <p className="text-blue-600 font-semibold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
+                <p className="text-primaryOrange font-semibold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
                   {project.client}
                 </p>
                 <p className=" mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed">
