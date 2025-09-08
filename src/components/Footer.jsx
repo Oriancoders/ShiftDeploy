@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 import whiteV from '../Assets/Images/whiteV.png'
 const Footer = () => {
+  
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
@@ -21,6 +22,7 @@ const Footer = () => {
       { name: 'Deployment Services', href: '#' },
       { name: 'Consulting', href: '#' }
     ],
+
     support: [
       { name: 'Documentation', href: '#' },
       { name: 'Help Center', href: '#' },
@@ -66,11 +68,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <Phone className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
-                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">+1 (555) 123-4567</span>
+                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">www.x.com/shiftdeploy</span>
               </div>
               <div className="flex items-center space-x-2 sm:space-x-3">
                 <MapPin className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
-                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">San Francisco, CA</span>
+                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">slack.com/shiftdeploy</span>
               </div>
             </div>
           </motion.div>
@@ -133,7 +135,7 @@ const Footer = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="mt-8 sm:mt-12 lg:mt-16  border-t border-gray-700 flex flex-col md:flex-row justify-between items-center  space-y-3 sm:space-y-4 lg:space-y-6 md:space-y-0"
+          className="mt-8 sm:mt-12 lg:mt-16  border-t border-gray-700 flex flex-col md:flex-row justify-center pt-6 items-center  space-y-3 sm:space-y-4 lg:space-y-6 md:space-y-0"
         >
           <div className="flex flex-col sm:flex-row  items-center space-y-3 sm:space-y-0 sm:space-x-4 lg:space-x-6 xl:space-x-8 text-center sm:text-left">
             <p className="text-gray-300 text-xs sm:text-sm lg:text-base">
@@ -149,7 +151,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
+          {/* <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
             {socialLinks.map((social, index) => (
               <motion.a
                 key={index}
@@ -162,7 +164,7 @@ const Footer = () => {
                 <social.icon className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
               </motion.a>
             ))}
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </footer>

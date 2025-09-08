@@ -68,10 +68,10 @@ function CaseSnapshotsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className=" bg-gray-50">
+    <section ref={sectionRef} className="pt-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             Real problems. Real solutions. <br />
             <span className="text-primaryOrange">
               Real results.
@@ -87,7 +87,7 @@ function CaseSnapshotsSection() {
                 }`}
 
             >
-              <div className="bg-white rounded-3xl p-8 transition-all duration-500 transform h-full border-2 border-gray-100">
+              <div className="bg-white rounded-3xl p-8 transition-all duration-500 transform h-full border-2 border-gray-100 shadow-lg">
                 {/* Icon */}
                 {/* <div
                   className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${caseStudy.gradient} mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
@@ -100,21 +100,21 @@ function CaseSnapshotsSection() {
 
                 {/* Challenge */}
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-red-600 mb-2 uppercase tracking-wide">The Challenge:</h4>
-                  <blockquote className="text-gray-700 italic border-l-4 border-red-200 pl-4">
+                  <h4 className="text-sm font-semibold text-gray-900 mb-2 uppercase tracking-wide">The Challenge:</h4>
+                  <blockquote className="text-gray-700 italic border-l-4 border-primaryOrange pl-4 bg-primaryOrange/5 py-3">
                     "{caseStudy.challenge}"
                   </blockquote>
                 </div>
 
                 {/* Solution */}
                 <div className="mb-8">
-                  <h4 className="text-sm font-semibold text-blue-600 mb-2 uppercase tracking-wide">Our Solution:</h4>
+                  <h4 className="text-sm font-semibold text-gray-900 mb-2 uppercase tracking-wide">Our Solution:</h4>
                   <p className="text-gray-700">{caseStudy.solution}</p>
                 </div>
 
                 {/* Results */}
                 <div>
-                  <h4 className="text-sm font-semibold text-green-600 mb-4 uppercase tracking-wide">The Result:</h4>
+                  <h4 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">The Result:</h4>
                   <div className="space-y-3">
                     {caseStudy.results.map((result, resultIndex) => (
                       <div key={resultIndex} className="flex items-start">

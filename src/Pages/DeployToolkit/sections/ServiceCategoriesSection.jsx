@@ -145,8 +145,8 @@ function ServiceCategoriesSection() {
                 {/* Services List */}
                 <ul className="space-y-3 mb-8">
                   {service.services.map((item, serviceIndex) => (
-                    <li key={serviceIndex} className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                    <li key={serviceIndex} className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-700">{item}</span>
                     </li>
                   ))}
@@ -155,11 +155,11 @@ function ServiceCategoriesSection() {
                 {/* Pain Point & Solution */}
                 <div className="border-t border-gray-200 pt-6">
                   <div className="mb-4">
-                    <p className="text-sm text-red-500 font-semibold mb-2">Pain Point:</p>
+                    <p className="text-sm text-primaryOrange font-semibold mb-2">Pain Point:</p>
                     <p className="text-gray-700 italic">"{service.painPoint}"</p>
                   </div>
                   <div>
-                    <p className="text-sm text-green-500 font-semibold mb-2">Our Fix:</p>
+                    <p className="text-sm text-primaryBlue font-semibold mb-2">Our Fix:</p>
                     <p className="text-gray-800 font-medium">{service.solution}</p>
                   </div>
                 </div>

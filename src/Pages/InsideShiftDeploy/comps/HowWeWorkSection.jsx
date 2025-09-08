@@ -58,7 +58,7 @@ function HowWeWorkSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-24 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
@@ -73,10 +73,10 @@ function HowWeWorkSection() {
           {workPrinciples.map((principle, index) => (
             <div
               key={index}
-              className={`transition-all duration-800 transform ${visiblePrinciples.includes(index) ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"
+              className={`transition-all duration-800 transform bg-white p-10 rounded-2xl shadow-md hover:shadow-lg ${visiblePrinciples.includes(index) ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"
                 }`}
             >
-              <div className="bg-gray-50 rounded-3xl p-8 hover:bg-gray-100 transition-colors duration-300">
+              <div className=" transition-colors duration-300">
                 <div className="grid md:grid-cols-3 gap-8 items-center">
                   <div className="md:col-span-2">
                     <div className="flex items-center mb-4">

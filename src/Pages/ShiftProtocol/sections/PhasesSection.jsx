@@ -110,7 +110,7 @@ function PhasesSection() {
           if (entry.isIntersecting) {
             setTimeout(() => {
               setVisiblePhases((prev) => [...new Set([...prev, index])])
-            }, index * 200)
+            }, index * 20)
           }
         })
       },
@@ -147,7 +147,7 @@ function PhasesSection() {
               data-index={index}
               initial={{ opacity: 0, y: 50 }}
               animate={visiblePhases.includes(index) ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: index * 0.2 }}
+              transition={{ duration: 0.7, delay: index * 0.1 }}
               className="relative"
             >
   
@@ -173,13 +173,13 @@ function PhasesSection() {
                 </div>
                 {/* What Happens */}
                 <div className="mb-4">
-                  <h4 className="text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                  <h4 className="text-lg font-semibold text-gray-500 mb-2 uppercase tracking-wide">
                     What Happens
                   </h4>
                   <ul className="space-y-2">
                     {phase.whatHappens.map((item, itemIndex) => (
                       <li key={itemIndex} className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-primaryOrange mr-2 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-700 text-sm">{item}</span>
                       </li>
                     ))}
@@ -187,35 +187,36 @@ function PhasesSection() {
                 </div>
                 </div>
                 {/* Right side: Fear & Promise, Approval */}
-                <div className="border-l border-gray-200 px-10 flex flex-col justify-between">
+                <div className="border-l border-gray-200 px-10 flex flex-col space-y-6">
                   {/* Approval */}
                 <div className=" pt-3 mb-4">
-                  <p className="text-xs text-gray-500 mb-1">Client Approval Required:</p>
+                  <p className="text-lg text-gray-500 mb-1">Client Approval Required:</p>
                   <p className="text-gray-800 font-semibold text-sm">{phase.approval}</p>
                 </div>
                 {/* Fear & Promise */}
-                  <div className="flex items-start bg-red-50 rounded-lg p-3">
-                    <span>
-                      <svg className="w-5 h-5 text-red-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-1.414 1.414A9 9 0 105.636 18.364l1.414-1.414A7 7 0 1116.95 7.05z" /></svg>
-                    </span>
+                  <div className="flex items-start  rounded-lg ">
+   
                     <div>
-                      <h4 className="text-xs font-semibold text-red-600 uppercase mb-1">Your Fear</h4>
-                      <p className="text-red-700 italic text-sm">"{phase.fear}"</p>
+                      <h4 className="text-lg font-semibold text-primaryOrange uppercase mb-1">Your Fear</h4>
+                      <p className="text-primaryOrange italic text-sm">"{phase.fear}"</p>
                     </div>
                   </div>
-                  <div className="flex items-start bg-green-50 rounded-lg p-3">
-                    <span>
+                  <div className="flex items-start rounded-lg ">
+                    {/* <span>
                       <svg className="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                    </span>
+                    </span> */}
                     <div>
-                      <h4 className="text-xs font-semibold text-green-600 uppercase mb-1">Our Promise</h4>
-                      <p className="text-green-700 font-medium text-sm">{phase.promise}</p>
+                      <h4 className="text-lg font-semibold text-gray-900 uppercase mb-1">Our Promise</h4>
+                      <p className="text-primaryBlue font-medium text-sm">{phase.promise}</p>
                     </div>
                   </div>
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+        <div className="">
+
         </div>
       </div>
     </section>

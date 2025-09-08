@@ -24,8 +24,7 @@ function HeroSection() {
       ref={sectionRef}
       className="relative  flex items-center justify-center bg-gradient-to-br from-gray-100 via-white to-gray-100 overflow-hidden pt-32 "
     >
- 
-
+      
       <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
         <div
           className={`transition-all duration-1000 transform ${
@@ -54,7 +53,7 @@ function HeroSection() {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
+            <p className="text-xl  text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
               The Deploy Toolkit is your on-demand team of engineers, DevOps pros, and product specialists solving the
               toughest backend, infra, and UX challenges so you can focus on what matters:{" "}
               <span className="text-orange-600 font-semibold">growing your business</span>.

@@ -60,7 +60,7 @@ function StoryInFramesSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white overflow-x-hidden text-textColor">
+    <section ref={sectionRef} className="py-24 bg-gray-50 overflow-x-hidden text-textColor">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
@@ -77,7 +77,7 @@ function StoryInFramesSection() {
           {/* Progress Line */}
           <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 transform -translate-y-1/2 hidden md:block"></div>
           <div
-            className="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-red-500 via-blue-500 to-green-500 transform -translate-y-1/2 transition-all duration-1000 hidden md:block"
+            className="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-primaryBlue to-primaryOrange transform -translate-y-1/2 transition-all duration-1000 hidden md:block"
             style={{ width: `${(visibleFrames.length / projectFrames.length) * 100}%` }}
           ></div>
 
@@ -92,7 +92,7 @@ function StoryInFramesSection() {
                 {/* Timeline Node */}
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-gray-300 group-hover:border-primaryOrange rounded-full z-10 hidden md:block"></div>
 
-                <div className="bg-white rounded-3xl p-8 border border-gray-300 transition-all duration-300 h-full">
+                <div className="bg-white rounded-3xl p-8 border border-gray-300 transition-all duration-300 h-full shadow-md hover:shadow-xl">
                   {/* Icon */}
                   <div
                     className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6`}
@@ -117,7 +117,7 @@ function StoryInFramesSection() {
           </div>
         </div>
 
-        <div className="text-center mt-8 space-y-6">
+        <div className="text-center mt-20 space-y-6">
             <p className="text-5xl text-primaryBlue font-semibold">The Lesson</p>
             <p className="text-xl text-gray-600 italic ">
               Sometimes the best solution is the one that doesn't require starting over.

@@ -43,7 +43,7 @@ function ProtocolManifestoSection() {
           {/* Main Headline */}
           <h1 className="text-5xl md:text-7xl font-bold text-primaryBlue mb-8 leading-tight">
             The Shift Protocol <br />
-            <span className="text-primaryOrange md:text-5xl">
+            <span className="text-primaryOrange ">
               Your guarantee against technical chaos
             </span>
           </h1>
@@ -86,28 +86,22 @@ function ProtocolManifestoSection() {
           </div>
 
           {/* CTA */}
-          <div
-            className={`transition-all duration-1000 delay-900 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-              }`}
-          >
-
-
+ 
             <motion.button
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto mb-6 font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto mb-6 font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md group"
 
             >
 
-              View Our Complete Process
-              <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+              View Deploy Toolkit
+              <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
 
             </motion.button>
-          </div>
 
           {/* Closing Statement */}
-          <div className="text-center mt-20">
+          <div className="text-center mt-16">
             <CursorFollower
 
               text="We've Shifted many successfull deployments • Zero project failures"

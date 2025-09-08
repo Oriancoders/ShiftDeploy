@@ -1,4 +1,4 @@
-import { CheckCircle, DollarSign, FileText, Lock, Shield } from "lucide-react"
+import { CheckCircle, DollarSign, FileText, Lock, Shield, Users } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 // Section 3: What We Guarantee
@@ -6,49 +6,52 @@ function GuaranteesSection() {
   const [visibleGuarantees, setVisibleGuarantees] = useState([])
   const sectionRef = useRef(null)
 
-  const guarantees = [
-    {
-      title: "No Vendor Lock-In",
-      fear: "We'll be trapped with them forever",
-      guarantee:
-        "You own everything. Full source code, documentation, and system access from day one. Leave anytime with everything you need to continue independently.",
-      icon: <Lock className="w-8 h-8" />,
-      
-      color: "from-green-500 to-emerald-600",
-    },
-    {
-      title: "Transparent Billing",
-      fear: "Hidden costs will blow up our budget",
-      guarantee:
-        "Fixed-price projects with detailed scope documentation. Any changes require your written approval with updated pricing before work begins.",
-      icon: <DollarSign className="w-8 h-8" />,
-      color: "from-blue-500 to-indigo-600",
-    },
-    {
-      title: "Fully Documented Deliverables",
-      fear: "We'll get working code but no understanding of how it works",
-      guarantee:
-        "Every system comes with comprehensive documentation, architectural diagrams, and team training materials. Your team can maintain and extend everything we build.",
-      icon: <FileText className="w-8 h-8" />,
-      color: "from-purple-500 to-pink-600",
-    },
-    {
-      title: "Quality Checkpoints",
-      fear: "We won't know if it's working until it's too late",
-      guarantee:
-        "Mandatory quality reviews at 25%, 50%, 75%, and 100% completion. Nothing moves forward without your explicit approval.",
-      icon: <CheckCircle className="w-8 h-8" />,
-      color: "from-orange-500 to-red-600",
-    },
-    {
-      title: "30-Day Money-Back Promise",
-      fear: "What if they can't actually deliver what they promised?",
-      guarantee:
-        "If you're not completely satisfied with our work within 30 days, we'll refund your investment. No questions asked.",
-      icon: <Shield className="w-8 h-8" />,
-      color: "from-teal-500 to-cyan-600",
-    },
-  ]
+ const guarantees = [
+  {
+    title: "No Lock-In",
+    fear: "We might get stuck with them forever",
+    guarantee:
+      "You fully own the source code, docs, and access from day one. You can walk away anytime without losing control.",
+    icon: <Lock className="w-8 h-8" />,
+  },
+  {
+    title: "Clear Billing",
+    fear: "Hidden charges could blow up our budget",
+    guarantee:
+      "We work on fixed-price scopes. Any change requires your written approval, so costs stay predictable and safe.",
+    icon: <DollarSign className="w-8 h-8" />,
+  },
+  {
+    title: "Full Docs",
+    fear: "We'll get code but no clear instructions",
+    guarantee:
+      "Every delivery includes full documentation, diagrams, and handover notes, so your team can run it smoothly.",
+    icon: <FileText className="w-8 h-8" />,
+  },
+  {
+    title: "Quality Gates",
+    fear: "We may discover issues too late in the build",
+    guarantee:
+      "We stop at 25%, 50%, 75%, and 100% to run quality reviews. Nothing advances without your explicit approval.",
+    icon: <CheckCircle className="w-8 h-8" />,
+  },
+  {
+    title: "Money-Back",
+    fear: "What if they fail to deliver what we need?",
+    guarantee:
+      "If you’re not satisfied within the first 30 days, we refund your investment in full—no questions, no delays.",
+    icon: <Shield className="w-8 h-8" />,
+  },
+  {
+    title: "Direct Access",
+    fear: "We might only deal with sales, not builders",
+    guarantee:
+      "You always speak with the engineers and designers working on your project—no middle layers, just real experts.",
+    icon: <Users className="w-8 h-8" />,
+  },
+];
+
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -92,10 +95,10 @@ function GuaranteesSection() {
                 visibleGuarantees.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
               } ${index === 4 ? "md:col-span-2 lg:col-span-1 lg:col-start-2" : ""}`}
             >
-              <div className="bg-white rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 h-full border border-gray-300">
+              <div className="bg-white rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 transform  h-full border border-gray-300">
                 {/* Icon */}
                 <div
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
+                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6 transform transition-all duration-500 `}
                 >
                   <div className="text-white">{guarantee.icon}</div>
                 </div>
@@ -105,13 +108,13 @@ function GuaranteesSection() {
 
                 {/* Fear */}
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-red-600 mb-2 uppercase tracking-wide">Your Fear:</h4>
+                  <h4 className="text-sm font-semibold text-primaryOrange mb-2 uppercase tracking-wide">Your Fear:</h4>
                   <p className="text-gray-700 italic">"{guarantee.fear}"</p>
                 </div>
 
                 {/* Guarantee */}
                 <div>
-                  <h4 className="text-sm font-semibold text-green-600 mb-2 uppercase tracking-wide">Our Guarantee:</h4>
+                  <h4 className="text-sm font-semibold text-primaryBlue mb-2 uppercase tracking-wide">Our Guarantee:</h4>
                   <p className="text-gray-700 leading-relaxed">{guarantee.guarantee}</p>
                 </div>
 

@@ -11,7 +11,7 @@ function CommunicationRitualsSection() {
       title: "Daily Transparency",
       fear: "I'll have no idea what's happening day-to-day",
       ritual:
-        "Daily progress updates via Slack with screenshots, code commits, and next-day priorities. No need to ask—you'll always know.",
+        "Daily progress updates via Slack with screenshots, code commits, and next-day priorities. No need to ask, you'll always know.",
       icon: <MessageSquare className="w-6 h-6" />,
       tools: ["Slack updates", "Code commits", "Progress screenshots", "Next-day priorities"],
     },
@@ -19,7 +19,7 @@ function CommunicationRitualsSection() {
       title: "Weekly Deep Dives",
       fear: "Technical updates will be meaningless jargon",
       ritual:
-        "30-minute weekly calls with live demos, plain-English progress reports, and open Q&A. Technical details available but never required.",
+        "Weekly calls or chats with live demos, plain-English progress reports, and open Q&A.",
       icon: <Users className="w-6 h-6" />,
       tools: ["Live demos", "Plain-English reports", "Open Q&A", "Technical deep-dives (optional)"],
     },
@@ -35,7 +35,7 @@ function CommunicationRitualsSection() {
       title: "Timezone Alignment",
       fear: "Time zone differences will slow everything down",
       ritual:
-        "Minimum 4-hour overlap with your core business hours. All meetings scheduled in your timezone. Async updates for maximum efficiency.",
+        "Minimum 4-hour overlap with your core business hours. All meetings scheduled in your timezone.",
       icon: <Clock className="w-6 h-6" />,
       tools: ["4-hour overlap minimum", "Your timezone priority", "Async communication", "Flexible scheduling"],
     },
@@ -120,19 +120,19 @@ function CommunicationRitualsSection() {
 
                 {/* Fear */}
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-red-600 mb-2 uppercase tracking-wide">Your Fear:</h4>
+                  <h4 className="text-sm font-semibold text-primaryOrange mb-2 uppercase tracking-wide">Your Fear:</h4>
                   <p className="text-gray-700 italic">"{ritual.fear}"</p>
                 </div>
 
                 {/* Ritual */}
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-green-600 mb-2 uppercase tracking-wide">Our Ritual:</h4>
+                  <h4 className="text-sm font-semibold text-primaryBlue mb-2 uppercase tracking-wide">Our Ritual:</h4>
                   <p className="text-gray-700 leading-relaxed">{ritual.ritual}</p>
                 </div>
 
                 {/* Tools */}
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-500 mb-3 uppercase tracking-wide">Includes:</h4>
+                  <h4 className="text-sm font-semibold text-gray-900 mb-3 uppercase tracking-wide">Includes:</h4>
                   <ul className="space-y-2">
                     {ritual.tools.map((tool, toolIndex) => (
                       <li key={toolIndex} className="flex items-center text-gray-600">

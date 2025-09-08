@@ -62,7 +62,7 @@ function LeaderboardStripSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50 relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 bg-gray-50 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div
@@ -109,10 +109,10 @@ function LeaderboardStripSection() {
         </div>
 
         {/* Bottom Message */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-8">
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-4xl mx-auto">
             <p className="text-2xl text-gray-900 font-medium">
-              These aren't just numbers —{" "}
+              These aren't just numbers {" "}
               <span className="text-primaryOrange">they're promises kept to teams who trusted us</span> with their
               mission-critical projects.
             </p>

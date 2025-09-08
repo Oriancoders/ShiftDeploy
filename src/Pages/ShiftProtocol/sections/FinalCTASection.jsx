@@ -72,7 +72,7 @@ function FinalCTASection() {
             <div className="grid md:grid-cols-2 gap-4 text-left">
               {briefIncludes.map((item, index) => (
                 <div key={index} className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-primaryOrange mr-3 mt-1 flex-shrink-0" />
                   <span className="text-white">{item}</span>
                 </div>
               ))}
@@ -80,7 +80,7 @@ function FinalCTASection() {
           </div>
 
           {/* Risk Reversal */}
-          <p className="text-lg text-gray-400 mb-12">
+          <p className="text-lg text-gray-200 mb-12">
             No commitment required. No sales pressure. Just complete transparency about how we work and what you can
             expect.
           </p>
@@ -90,12 +90,12 @@ function FinalCTASection() {
           {/* Contact Options */}
           <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
-              <Download className="w-8 h-8 text-blue-400 mx-auto mb-4" />
+              <Download className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
               <h3 className="text-white font-semibold mb-2">Download Protocol Brief</h3>
               <p className="text-gray-300 text-sm">Get the complete methodology guide instantly</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
-              <Calendar className="w-8 h-8 text-orange-400 mx-auto mb-4" />
+              <Calendar className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
               <h3 className="text-white font-semibold mb-2">Book Process Walkthrough</h3>
               <p className="text-gray-300 text-sm">
                 See the protocol in action with real project examples

@@ -23,3 +23,7 @@ html{
 p{
   color: '#4b5563';
 }
+
+input , textarea, select, button {
+  outline: none;
+}

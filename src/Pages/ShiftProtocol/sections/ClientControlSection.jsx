@@ -67,7 +67,7 @@ function ClientControlSection() {
               <ul className="space-y-4">
                 {approvalGates.map((gate, index) => (
                   <li key={index} className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-primaryOrange mr-3 mt-1 flex-shrink-0" />
                     <div>
                       <span className="font-semibold text-gray-900">{gate.point}:</span>
                       <span className="text-gray-700 ml-2">{gate.description}</span>
@@ -88,7 +88,7 @@ function ClientControlSection() {
               <ul className="space-y-4">
                 {controlPoints.map((control, index) => (
                   <li key={index} className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-primaryOrange mr-3 mt-1 flex-shrink-0" />
                     <div>
                       <span className="font-semibold text-gray-900">{control.point}:</span>
                       <span className="text-gray-700 ml-2">{control.description}</span>
@@ -100,9 +100,9 @@ function ClientControlSection() {
           </div>
         </div>
         {/* Core Promise */}
-        <div className="text-center my-8 space-y-6">
+        <div className="text-center my-16 space-y-6">
           <p className="text-5xl text-primaryBlue font-semibold">Core Promise</p>
-          <p className="text-xl text-gray-600 italic ">
+          <p className="text-lg max-w-4xl text-center mx-auto text-gray-600 italic ">
             Every step reviewed by you. Every delivery approved by you. Every major decision requires your explicit
             sign-off before we proceed.
           </p>
@@ -126,7 +126,7 @@ function ClientControlSection() {
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
             >
               <span>View ToolKit</span>
 
@@ -146,7 +146,7 @@ function ClientControlSection() {
                 <Star key={i} className="w-6 h-6 text-yellow-500 fill-current" />
               ))}
             </div>
-            <blockquote className="text-2xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl mx-auto">
+            <blockquote className="text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl mx-auto">
               "The Shift Protocol gave us something we'd never experienced with a technical partner: complete
               confidence. We knew exactly what was happening, when it would be done, and that we could trust the
               outcome. No surprises, no vendor lock-in, no regrets."

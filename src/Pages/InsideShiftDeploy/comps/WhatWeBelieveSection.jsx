@@ -67,7 +67,7 @@ function WhatWeBelieveSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
@@ -86,9 +86,9 @@ function WhatWeBelieveSection() {
                 className={`group transition-all duration-600 transform ${visibleBeliefs.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
                   }`}
               >
-                <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                <div className="bg-white rounded-3xl p-8 shadow-md hover:shadow-xl transition-all duration-300 h-full">
                   <div
-                    className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6 group-hover:scale-110 transition-transform duration-300`}
+                    className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6  transition-transform duration-300`}
                   >
                     <div className="text-white">{belief.icon}</div>
                   </div>

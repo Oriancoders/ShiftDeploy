@@ -47,11 +47,11 @@ function FinalPushCTASection() {
 
           {/* Supporting Copy */}
           <div className="max-w-4xl mx-auto mb-12">
-            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8">
+            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed mb-8">
               You've read the stories. You've seen the results. You know what we deliver.
             </p>
-            <p className="text-lg text-gray-500">
-              The question isn't whether we can solve your challenges — it's when you're ready to get started.
+            <p className="text-lg text-gray-200">
+              The question isn't whether we can solve your challenges, it's when you're ready to get started.
             </p>
           </div>
 
@@ -75,7 +75,7 @@ function FinalPushCTASection() {
 
           {/* Primary CTA */}
           <div className="mb-8">
-            <button className="group bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white text-2xl font-bold px-16 py-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/25">
+            <button className="group bg-primaryOrange hover:bg-toOrange text-white text-2xl font-bold px-16 py-6 rounded-2xl transition-all duration-300 transform  hover:shadow-2xl ">
               <span className="flex items-center">
                 Book Your Strategy Call
                 <ArrowRight className="ml-4 w-8 h-8 group-hover:translate-x-2 transition-transform duration-300" />
@@ -100,7 +100,7 @@ function FinalPushCTASection() {
 
           {/* Final Message */}
           <div className="mt-16 max-w-3xl mx-auto">
-            <p className="text-xl text-gray-600 italic">
+            <p className="text-xl text-gray-200 italic">
               Join the teams who chose reliability, understanding, and results.{" "}
               <span className="text-orange-600 font-semibold">Your success story starts here.</span>
             </p>

@@ -59,10 +59,10 @@ function WhatWeSolveSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-white">
+    <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             The problems keeping you <br />
             <span className="text-primaryOrange">
               up at night
@@ -85,31 +85,31 @@ function WhatWeSolveSection() {
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 {/* Pain Point */}
                 <div className={`${index % 2 === 1 ? "md:order-2" : ""}`}>
-                  <div className="bg-red-50 border-l-4 border-red-500 rounded-r-2xl p-8">
+                  <div className="bg-primaryOrange/5 border-l-4 border-primaryOrange rounded-r-2xl p-8">
                     <div className="flex items-start mb-4">
-                      <div className="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                      <div className="w-12 h-12 bg-primaryOrange rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
                         <div className="text-white">{problem.icon}</div>
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-red-800 mb-2">Your Pain:</h3>
+                        <h3 className="text-lg font-semibold text-primaryOrange mb-2">Your Pain:</h3>
                       </div>
                     </div>
-                    <blockquote className="text-xl text-red-700 italic leading-relaxed">"{problem.pain}"</blockquote>
+                    <blockquote className="text-lg text-primaryOrange italic leading-relaxed">"{problem.pain}"</blockquote>
                   </div>
                 </div>
 
                 {/* Solution */}
                 <div className={`${index % 2 === 1 ? "md:order-1" : ""}`}>
-                  <div className="bg-green-50 border-l-4 border-green-500 rounded-r-2xl p-8">
+                  <div className="bg-primaryBlue/5 border-l-4 border-primaryBlue rounded-r-2xl p-8">
                     <div className="flex items-start mb-4">
-                      <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                      <div className="w-12 h-12 bg-primaryBlue rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
                         <CheckCircle className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-green-800 mb-2">Our Fix:</h3>
+                        <h3 className="text-lg font-semibold text-primaryBlue mb-2">Our Fix:</h3>
                       </div>
                     </div>
-                    <p className="text-xl text-green-700 leading-relaxed font-medium">{problem.fix}</p>
+                    <p className="text-xl text-primaryBlue leading-relaxed font-medium">{problem.fix}</p>
                   </div>
                 </div>
               </div>

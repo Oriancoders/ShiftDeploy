@@ -67,7 +67,7 @@ function ProcessSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="pb-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
@@ -86,7 +86,7 @@ function ProcessSection() {
           {/* Progress Line */}
           <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 transform -translate-y-1/2 hidden lg:block"></div>
           <div
-            className="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-blue-500  via-green-500 to-orange-500 transform -translate-y-1/2 transition-all duration-2000 hidden lg:block"
+            className="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-primaryBlue to-primaryOrange transform -translate-y-1/2 transition-all duration-2000 hidden lg:block"
             style={{ width: `${(visibleSteps.length / steps.length) * 100}%` }}
           ></div>
 
