@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { 
-  ArrowRight, 
-  AlertTriangle, 
-  Target, 
-  CheckCircle, 
+import { m, motion, useInView } from 'framer-motion';
+import {
+  ArrowRight,
+  AlertTriangle,
+  Target,
+  CheckCircle,
   TrendingUp,
   Zap,
   Shield,
@@ -29,6 +29,7 @@ import {
 import { fadeInUp, staggerContainer } from '../../utils/animations';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
+import { Link } from 'react-router-dom';
 
 const SlackerIOT = () => {
   const ref = useRef(null);
@@ -223,7 +224,7 @@ const SlackerIOT = () => {
     },
     {
       phase: "Phase 2: Backend Development",
-      duration: "3 weeks", 
+      duration: "3 weeks",
       description: "Spring Boot API and database architecture",
       deliverables: ["RESTful API endpoints", "MongoDB schema design", "Authentication system"]
     },
@@ -244,6 +245,9 @@ const SlackerIOT = () => {
       duration: "1 week",
       description: "System testing and production deployment",
       deliverables: ["End-to-end testing", "Performance optimization", "Production deployment"]
+    },
+    {
+      phase: "phase 6"
     }
   ];
 
@@ -268,476 +272,503 @@ const SlackerIOT = () => {
 
   return (
     <>
-    <Navigation isDarkBg={true}/>
-    <div className="bg-gray-100 min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-screen bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-primaryOrange rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-80 h-80 bg-secondaryBlue rounded-full blur-3xl" />
-        </div>
+      <Navigation isDarkBg={true} />
+      <div className="bg-gray-50 min-h-screen">
+        {/* Hero Section */}
+        <section className="relative min-h-screen bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-20 left-20 w-96 h-96 bg-primaryOrange rounded-full blur-3xl" />
+            <div className="absolute bottom-20 right-20 w-80 h-80 bg-secondaryBlue rounded-full blur-3xl" />
+          </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-40">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
+          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-40">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center space-x-2 bg-orange-500/20 backdrop-blur-sm border border-orange-500/30 rounded-full px-6 py-3 mb-8"
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
             >
-              <span className="text-orange-300 font-semibold text-lg">Detailed Case Study - Slacker IOT</span>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="inline-flex items-center space-x-2 bg-primaryOrange backdrop-blur-sm rounded-full px-6 py-3 mb-8"
+              >
+                <span className="text-white font-semibold text-lg">Detailed Case Study - Slacker IOT</span>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight"
+              >
+                Smart EV Charger{" "}
+                <span className="text-primaryOrange">
+                  IoT Platform
+                </span>
+                <br />
+                Deep Dive Analysis
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-xl sm:text-2xl  text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+              >
+                A comprehensive technical breakdown of the full-stack IoT solution developed for{" "}
+                <span className="text-primaryOrange font-semibold">Slacker IoT</span>{" "}
+                by ShiftDeploy
+              </motion.p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Project Overview */}
+        <section className="pt-20  bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              ref={ref}
+              initial={{ opacity: 0, y: 60 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
+                Project Overview
+              </h2>
+              <div className="max-w-4xl mx-auto">
+                <p className="text-xl text-gray-700 leading-relaxed mb-12">
+                  ShiftDeploy was tasked with developing a comprehensive IoT platform for Slacker IoT,
+                  enabling smart EV charging with real-time monitoring, remote control capabilities,
+                  and integrated payment processing. This project required expertise across embedded
+                  systems, cloud infrastructure, web development, and payment integration.
+                </p>
+              </div>
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight"
-            >
-              Smart EV Charger{" "}
-              <span className="text-primaryOrange">
-                IoT Platform
-              </span>
-              <br />
-              Deep Dive Analysis
-            </motion.h1>
+            <div className="grid lg:grid-cols-2 gap-16  mb-20">
+              <motion.div
+                initial={{ opacity: 0, x: -60 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <h3 className="text-2xl font-bold text-primaryBlue mb-6">Project Scope</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
+                    <p className="text-gray-700">Full-stack IoT platform development from hardware to user interface</p>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
+                    <p className="text-gray-700">Real-time telemetry system with MQTT communication protocol</p>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
+                    <p className="text-gray-700">Secure cloud backend with scalable database architecture</p>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
+                    <p className="text-gray-700">Payment processing integration with automated billing</p>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
+                    <p className="text-gray-700">Responsive web dashboard with real-time monitoring</p>
+                  </div>
+                </div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl sm:text-2xl lg:text-3xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
-            >
-              A comprehensive technical breakdown of the full-stack IoT solution developed for{" "}
-              <span className="text-primaryOrange font-semibold">Slacker IoT</span>{" "}
-              by ShiftDeploy
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+                <div className="grid grid-cols-4 gap-6 mt-6 ">
+                  <div className="text-center">
+                    <div className="text-lg sm:text-xl xl:text-2xl font-bold text-primaryOrange mb-2">9 weeks</div>
+                    <div className="text-gray-600">Development Time</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg sm:text-xl xl:text-2xl font-bold text-slate-800 mb-2">5 phases</div>
+                    <div className="text-gray-600">Implementation</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg sm:text-xl xl:text-2xl font-bold text-primaryOrange mb-2">99.9%</div>
+                    <div className="text-gray-600">System Uptime</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg sm:text-xl xl:text-2xl font-bold text-slate-800 mb-2">24/7</div>
+                    <div className="text-gray-600">Monitoring</div>
+                  </div>
+                </div>
+              </motion.div>
 
-      {/* Project Overview */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            ref={ref}
-            initial={{ opacity: 0, y: 60 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
-              Project Overview
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <p className="text-xl text-gray-600 leading-relaxed mb-12">
-                ShiftDeploy was tasked with developing a comprehensive IoT platform for Slacker IoT, 
-                enabling smart EV charging with real-time monitoring, remote control capabilities, 
-                and integrated payment processing. This project required expertise across embedded 
-                systems, cloud infrastructure, web development, and payment integration.
+              <motion.div
+                initial={{ opacity: 0, x: 60 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className=""
+              >
+                <h3 className="text-2xl font-bold text-slate-800 mb-6">Key Statistics</h3>
+                <div className="image-placeholder w-full h-64 bg-gray-200 rounded-xl mb-6 flex items-center justify-center text-gray-500">
+                  Overview Graphic
+                </div>
+
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Technical Architecture */}
+        <section className="py-10 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
+                Technical Architecture Deep Dive
+              </h2>
+              <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                Our solution leverages cutting-edge technologies across the entire stack,
+                from embedded hardware to cloud infrastructure and user interfaces.
               </p>
-            </div>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-            <motion.div
-              initial={{ opacity: 0, x: -60 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <h3 className="text-2xl font-bold text-slate-800 mb-6">Project Scope</h3>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-gray-700">Full-stack IoT platform development from hardware to user interface</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-gray-700">Real-time telemetry system with MQTT communication protocol</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-gray-700">Secure cloud backend with scalable database architecture</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-gray-700">Payment processing integration with automated billing</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                  <p className="text-gray-700">Responsive web dashboard with real-time monitoring</p>
-                </div>
-              </div>
             </motion.div>
 
+            <div className="space-y-16">
+              {techDetails.map((category, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className="bg-white rounded-2xl p-8 shadow-lg"
+                >
+                  {/* Image Placeholder */}
+
+                  <div className="flex items-center space-x-4 mb-8">
+                    <div className="w-16 h-16 bg-primaryBlue rounded-xl flex items-center justify-center">
+                      <category.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-primaryBlue">{category.category}</h3>
+                  </div>
+
+                  <div className="image-placeholder w-full h-56 bg-gray-200 rounded-xl mb-6 flex items-center justify-center text-gray-500">
+                    {category.category} Diagram
+                  </div>
+
+                  <div className="space-y-6">
+                    {category.technologies.map((tech, techIndex) => (
+                      <div key={techIndex} className="border-l-4 border-orange-500 pl-6">
+                        <h4 className="text-xl font-semibold text-primaryBlue mb-3">{tech.name}</h4>
+                        <p className="text-gray-600 leading-relaxed">{tech.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Detailed Features */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
+                Feature Deep Dive
+              </h2>
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                Each feature was carefully designed and implemented to provide maximum value
+                and reliability for both end-users and system administrators.
+              </p>
+            </motion.div>
+
+            <div className="space-y-16">
+              {detailedFeatures.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className="bg-white shadow-md rounded-2xl p-8"
+                >
+                  <div className="flex items-start space-x-6">
+
+                    <div className="w-16 h-16 bg-primaryBlue rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <feature.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-primaryBlue mb-4">{feature.title}</h3>
+                      <p className="text-xl text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
+
+                      <div className="grid md:grid-cols-2 gap-4">
+                        {feature.details.map((detail, detailIndex) => (
+                          <div key={detailIndex} className="flex items-start space-x-3">
+                            <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
+                            <p className="text-gray-700">{detail}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Implementation Timeline */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
+                Implementation Timeline
+              </h2>
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                Our structured approach ensured timely delivery while maintaining high quality
+                standards throughout the development process.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-2 gap-6">
+              {implementationPhases.map((phase, index) => (
+                <>
+                  {index == 5 ? (
+                    <div className='bg-primaryBlue rounded-2xl p-8 shadow-lg text-white'>
+                      <h1 className='text-4xl font-bold'>Now thats on maintenence</h1>
+
+                    </div>
+                  ) : (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: index * 0.1 }}
+                      className="bg-white rounded-2xl p-8 shadow-lg"
+                    >
+                      <div className="space-y-6">
+                        <div className='flex justify-between items-center'>
+                          <div className="w-12 h-12 bg-primaryOrange rounded-xl flex items-center justify-center flex-shrink-0">
+                            <span className="text-white font-bold text-lg">{index + 1}</span>
+                          </div>
+                          <span className="text-primaryOrange font-semibold text-lg">{phase.duration}</span>
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <h3 className="text-2xl font-bold text-primaryBlue">{phase.phase}</h3>
+                          </div>
+                          <p className="text-xl text-gray-600 mb-6">{phase.description}</p>
+
+                          <div className="space-y-2">
+                            <h4 className="text-lg font-semibold text-primaryBlue mb-3">Key Deliverables:</h4>
+                            {phase.deliverables.map((deliverable, deliverableIndex) => (
+                              <div key={deliverableIndex} className="flex items-start space-x-3">
+                                <CheckCircle className="w-5 h-5 text-primaryOrange mt-0.5 flex-shrink-0" />
+                                <p className="text-gray-700">{deliverable}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Challenges & Solutions */}
+        <section className="py-20 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
+                Challenges & Solutions
+              </h2>
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                Every complex project presents unique challenges. Here's how we overcame
+                the key technical and business obstacles during development.
+              </p>
+            </motion.div>
+
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+              {challenges.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: index * 0.1 }}
+                  className="bg-white rounded-2xl p-8 shadow-md"
+                >
+                  <div className="space-y-6">
+                    <div>
+                      <div className="flex items-center space-x-3 mb-2">
+                        <AlertTriangle className="w-6 h-6 text-primaryOrange" />
+                        <h3 className="text-xl font-bold text-primaryBlue">Challenge</h3>
+                      </div>
+                      <p className="text-gray-700 text-lg leading-relaxed">{item.challenge}</p>
+                    </div>
+                    <div>
+                      <div className="flex items-center space-x-3 mb-2">
+                        <CheckCircle className="w-6 h-6 text-primaryBlue" />
+                        <h3 className="text-xl font-bold text-primaryBlue">Solution</h3>
+                      </div>
+                      <p className="text-gray-700 text-lg leading-relaxed">{item.solution}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
+        {/* Results & Impact */}
+        <section className="py-20 bg-primaryBlue">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              {/* Image Placeholder for Results Graphic */}
+              <div className="image-placeholder w-full h-64 bg-gray-200/30 rounded-xl mb-10 flex items-center justify-center text-white">
+                Results Infographic
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">
+                Results & Impact
+              </h2>
+              <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                The delivered solution exceeded expectations, providing Slacker IoT with a
+                robust, scalable platform that supports their business growth and customer satisfaction.
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+              {[
+                { metric: "99.9%", label: "System Uptime", icon: TrendingUp },
+                { metric: "< 100ms", label: "Response Time", icon: Zap },
+                { metric: "100%", label: "Payment Success", icon: CreditCard },
+                { metric: "24/7", label: "Monitoring", icon: Shield }
+              ].map((result, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="text-center bg-slate-700/50 rounded-2xl p-6"
+                >
+                  <div className="w-16 h-16 bg-primaryOrange rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <result.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-3xl font-bold text-white mb-2">{result.metric}</div>
+                  <div className="text-gray-300">{result.label}</div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="bg-gray-50 rounded-2xl p-8"
+              className="bg-slate-700/50 rounded-2xl p-8"
             >
-              <h3 className="text-2xl font-bold text-slate-800 mb-6">Key Statistics</h3>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-500 mb-2">9 weeks</div>
-                  <div className="text-gray-600">Development Time</div>
+              <h3 className="text-2xl font-bold text-white mb-6">Business Impact</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="text-xl font-semibold text-white mb-4">For Slacker IoT</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <p className="text-gray-300">Reduced operational costs by 40% through automation</p>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <p className="text-gray-300">Increased customer satisfaction with real-time monitoring</p>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <p className="text-gray-300">Scalable platform supporting business growth</p>
+                    </li>
+                  </ul>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-slate-800 mb-2">5 phases</div>
-                  <div className="text-gray-600">Implementation</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-orange-500 mb-2">99.9%</div>
-                  <div className="text-gray-600">System Uptime</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-slate-800 mb-2">24/7</div>
-                  <div className="text-gray-600">Monitoring</div>
+                <div>
+                  <h4 className="text-xl font-semibold text-white mb-4">For End Users</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <p className="text-gray-300">Seamless charging experience with mobile control</p>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <p className="text-gray-300">Transparent billing and automated payments</p>
+                    </li>
+                    <li className="flex items-start space-x-3">
+                      <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <p className="text-gray-300">Real-time charging status and notifications</p>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Technical Architecture */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
-              Technical Architecture Deep Dive
-            </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Our solution leverages cutting-edge technologies across the entire stack, 
-              from embedded hardware to cloud infrastructure and user interfaces.
-            </p>
-          </motion.div>
-
-          <div className="space-y-16">
-            {techDetails.map((category, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-lg"
-              >
-                <div className="flex items-center space-x-4 mb-8">
-                  <div className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center">
-                    <category.icon className="w-6 h-6 text-orange-400" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-slate-800">{category.category}</h3>
-                </div>
-                
-                <div className="space-y-6">
-                  {category.technologies.map((tech, techIndex) => (
-                    <div key={techIndex} className="border-l-4 border-orange-500 pl-6">
-                      <h4 className="text-xl font-semibold text-slate-800 mb-3">{tech.name}</h4>
-                      <p className="text-gray-600 leading-relaxed">{tech.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Detailed Features */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
-              Feature Deep Dive
-            </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Each feature was carefully designed and implemented to provide maximum value 
-              and reliability for both end-users and system administrators.
-            </p>
-          </motion.div>
-
-          <div className="space-y-16">
-            {detailedFeatures.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-gray-50 rounded-2xl p-8"
-              >
-                <div className="flex items-start space-x-6">
-                  <div className="w-16 h-16 bg-slate-800 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <feature.icon className="w-8 h-8 text-orange-400" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-slate-800 mb-4">{feature.title}</h3>
-                    <p className="text-xl text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
-                    
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {feature.details.map((detail, detailIndex) => (
-                        <div key={detailIndex} className="flex items-start space-x-3">
-                          <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                          <p className="text-gray-700">{detail}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Implementation Timeline */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
-              Implementation Timeline
-            </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Our structured approach ensured timely delivery while maintaining high quality 
-              standards throughout the development process.
-            </p>
-          </motion.div>
-
-          <div className="space-y-8">
-            {implementationPhases.map((phase, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-lg"
-              >
-                <div className="flex items-start space-x-6">
-                  <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-lg">{index + 1}</span>
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <h3 className="text-2xl font-bold text-slate-800">{phase.phase}</h3>
-                      <span className="text-orange-500 font-semibold text-lg">{phase.duration}</span>
-                    </div>
-                    <p className="text-xl text-gray-600 mb-6">{phase.description}</p>
-                    
-                    <div className="space-y-2">
-                      <h4 className="text-lg font-semibold text-slate-800 mb-3">Key Deliverables:</h4>
-                      {phase.deliverables.map((deliverable, deliverableIndex) => (
-                        <div key={deliverableIndex} className="flex items-start space-x-3">
-                          <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                          <p className="text-gray-700">{deliverable}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Challenges & Solutions */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
-              Challenges & Solutions
-            </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Every complex project presents unique challenges. Here's how we overcame 
-              the key technical and business obstacles during development.
-            </p>
-          </motion.div>
-
-          <div className="space-y-8">
-            {challenges.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="bg-gray-50 rounded-2xl p-8"
-              >
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <div className="flex items-center space-x-3 mb-4">
-                      <AlertTriangle className="w-6 h-6 text-orange-500" />
-                      <h3 className="text-xl font-bold text-slate-800">Challenge</h3>
-                    </div>
-                    <p className="text-gray-700 text-lg leading-relaxed">{item.challenge}</p>
-                  </div>
-                  <div>
-                    <div className="flex items-center space-x-3 mb-4">
-                      <CheckCircle className="w-6 h-6 text-slate-800" />
-                      <h3 className="text-xl font-bold text-slate-800">Solution</h3>
-                    </div>
-                    <p className="text-gray-700 text-lg leading-relaxed">{item.solution}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Results & Impact */}
-      <section className="py-20 bg-slate-800">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">
-              Results & Impact
-            </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              The delivered solution exceeded expectations, providing Slacker IoT with a 
-              robust, scalable platform that supports their business growth and customer satisfaction.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {[
-              { metric: "99.9%", label: "System Uptime", icon: TrendingUp },
-              { metric: "< 100ms", label: "Response Time", icon: Zap },
-              { metric: "100%", label: "Payment Success", icon: CreditCard },
-              { metric: "24/7", label: "Monitoring", icon: Shield }
-            ].map((result, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center bg-slate-700/50 rounded-2xl p-6"
-              >
-                <div className="w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <result.icon className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-white mb-2">{result.metric}</div>
-                <div className="text-gray-300">{result.label}</div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="bg-slate-700/50 rounded-2xl p-8"
-          >
-            <h3 className="text-2xl font-bold text-white mb-6">Business Impact</h3>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h4 className="text-xl font-semibold text-orange-400 mb-4">For Slacker IoT</h4>
-                <ul className="space-y-3">
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-gray-300">Reduced operational costs by 40% through automation</p>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-gray-300">Increased customer satisfaction with real-time monitoring</p>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-gray-300">Scalable platform supporting business growth</p>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-xl font-semibold text-orange-400 mb-4">For End Users</h4>
-                <ul className="space-y-3">
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-gray-300">Seamless charging experience with mobile control</p>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-gray-300">Transparent billing and automated payments</p>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-gray-300">Real-time charging status and notifications</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-20 bg-gray-100">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="bg-white rounded-3xl p-12 text-center shadow-xl"
-          >
-            <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
-              Ready to Build Your IoT Platform?
-            </h2>
-            <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Let ShiftDeploy transform your IoT vision into reality. Our team of experts 
-              specializes in building scalable, secure, and innovative IoT solutions that 
-              drive business growth and customer satisfaction.
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-12 py-5 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg mx-auto shadow-xl hover:shadow-2xl transition-all duration-300"
+        {/* Call to Action */}
+        <section className="py-20 bg-gray-100">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className=" p-12 text-center "
             >
-              <span>Start Your Project</span>
-              <ArrowRight className="w-6 h-6" />
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
-    </div>
-    <Footer/>
+              <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
+                Ready to Build Your IoT Platform?
+              </h2>
+              <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                Let ShiftDeploy transform your IoT vision into reality. Our team of experts
+                specializes in building scalable, secure, and innovative IoT solutions that
+                drive business growth and customer satisfaction.
+              </p>
+              <Link to={"/ContactUs"}
+
+                className="bg-primaryOrange hover:bg-toOrange text-white px-12 py-5 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg mx-auto shadow-xl hover:shadow-2xl transition-all duration-300 w-fit"
+              >
+                <span>Start Your Project</span>
+                <ArrowRight className="w-6 h-6" />
+              </Link >
+            </motion.div>
+          </div>
+        </section>
+      </div>
+      <Footer />
     </>
   );
 };

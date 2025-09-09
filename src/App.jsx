@@ -10,6 +10,7 @@ import Flight_Landing from './Pages/FlighLogs/Flight_Landing';
 import GlobalProvider from './GlobalProvider/GlobalProvider';
 import ContactUs from './Pages/ContactUsPage/ContactUs';
 import SlackerIOT from './Pages/CaseStudies/SlackerIOT';
+import BullsEyesCase from './Pages/CaseStudies/BullsEyesCase';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
         <Route path='/flight-logs' element= { <Flight_Landing/>}/>
         <Route path='/ContactUs' element= { <ContactUs/>}/>
         <Route path='/CaseStudies/SlackerIOT' element= { <SlackerIOT/>}/>
+        <Route path='/CaseStudies/BullseyesCase' element= { <BullsEyesCase/>}/>
+
 
 
 

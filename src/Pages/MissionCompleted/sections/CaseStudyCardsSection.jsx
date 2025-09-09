@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
 
 // Section 2: Case Study Cards Grid
 function CaseStudyCardsSection() {
@@ -9,33 +10,33 @@ function CaseStudyCardsSection() {
 
   const caseStudies = [
     {
-      brand: "Slacker IOT",
-      category: "SaaS Development",
-      outcome: "Reduced server costs by 60% while handling 10x traffic",
-      visual: "/placeholder.svg?height=300&width=400",
-      metrics: { users: "1M+", uptime: "99.9%", savings: "$50K/mo" },
-      color: "from-blue-500 to-indigo-600",
-      bgColor: "from-blue-50 to-indigo-50",
+      brand: "Slacker IoT",
+      category: "IoT & SaaS Platform",
+      outcome: "Built a scalable EV charging platform with real-time telemetry and automated billing",
+      visual: "https://images.unsplash.com/photo-1704475289650-6ab9fc4a0a5b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      metrics: { users: "5K+", uptime: "99.9%", costReduction: "40%" },
+      url : "/CaseStudies/SlackerIOT"
     },
     {
-      brand: "DataFlow",
-      category: "Infrastructure",
-      outcome: "Achieved zero-downtime deployments with 90% faster releases",
-      visual: "/placeholder.svg?height=300&width=400",
-      metrics: { deployments: "500+", downtime: "0 hrs", speed: "90% faster" },
-      color: "from-green-500 to-emerald-600",
-      bgColor: "from-green-50 to-emerald-50",
+      brand: "Bullseye Investments",
+      category: "FinTech Infrastructure",
+      outcome: "Delivered a live stock market dashboard integrated with APIs and Google Sheets",
+      visual: "https://images.unsplash.com/photo-1620266757065-5814239881fd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGZpbmFuY2V8ZW58MHx8MHx8fDA%3D",
+      metrics: { dataFeeds: "50+", downtime: "0 hrs", engagement: "3x higher" },
+      url : '/CaseStudies/BullseyesCase'
     },
+
     {
       brand: "GrowthLabs",
       category: "MVP Development",
       outcome: "Launched in 8 weeks, raised $2M Series A within 6 months",
-      visual: "/placeholder.svg?height=300&width=400",
+      visual: "https://images.unsplash.com/photo-1704475289650-6ab9fc4a0a5b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       metrics: { timeline: "8 weeks", funding: "$2M", users: "50K+" },
       color: "from-purple-500 to-pink-600",
       bgColor: "from-purple-50 to-pink-50",
+      url : '/CaseStudies/BullseyesCase'
     },
-   
+
   ]
 
   useEffect(() => {
@@ -81,25 +82,24 @@ function CaseStudyCardsSection() {
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
               data-index={index}
-              className={`group transition-all duration-700 transform ${
-                visibleCards.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-              }`}
+              className={`group transition-all duration-700 transform ${visibleCards.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+                }`}
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
             >
               <div
-                className={`relative bg-white rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-500 transform hover:-translate-y-2 border border-white/50`}
+                className={`relative bg-white rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-500 transform hover:-translate-y-2 border border-white/50 shadow-md`}
               >
                 {/* Visual */}
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={study.visual || "/placeholder.svg"}
                     alt={`${study.brand} case study`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 "
                   />
 
                   <div className="absolute top-4 left-4">
-                    <span className="bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-primaryBlue backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
                       {study.category}
                     </span>
                   </div>
@@ -121,11 +121,11 @@ function CaseStudyCardsSection() {
                   </div>
 
                   {/* CTA */}
-                  <button
-                    className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform group-hover:scale-105 bg-primaryBlue text-white shadow-lg `}
+                  <Link to={study.url}
+                    className={` py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform  bg-primaryBlue text-white shadow-lg  `}
                   >
                     Read Full Mission Report
-                  </button>
+                  </Link>
                 </div>
 
 

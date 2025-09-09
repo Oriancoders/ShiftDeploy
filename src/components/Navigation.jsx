@@ -64,7 +64,7 @@ const Navigation = ({ isDarkBg = false }) => {
                     {label}
                   </Link>
                   <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300
+                    className={`absolute -bottom-1 left-0 h-0.5 bg-primaryOrange transition-all duration-300
                       ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}
                     `}
                   ></span>
