@@ -9,6 +9,7 @@ import Mission_Landing from './Pages/MissionCompleted/Mission_Landing';
 import Flight_Landing from './Pages/FlighLogs/Flight_Landing';
 import GlobalProvider from './GlobalProvider/GlobalProvider';
 import ContactUs from './Pages/ContactUsPage/ContactUs';
+import SlackerIOT from './Pages/CaseStudies/SlackerIOT';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path='/missions' element= { <Mission_Landing/>}/>
         <Route path='/flight-logs' element= { <Flight_Landing/>}/>
         <Route path='/ContactUs' element= { <ContactUs/>}/>
+        <Route path='/CaseStudies/SlackerIOT' element= { <SlackerIOT/>}/>
+
 
 
 
