@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { ArrowRight, Zap, Shield, Rocket, Play, Headset, CheckCheck } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../../../utils/animations';
 import CursorFollower from '../../../utils/CursorFollower';
 import { Link } from 'react-router-dom';
+import { ContextAPI } from '../../../GlobalProvider/ContextAPI';
 
 const Hero = () => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  const {scrwidth} = useContext(ContextAPI)
 
   const moveX = useTransform(x, [0, window.innerWidth], [-50, 50]);
   const moveY = useTransform(y, [0, window.innerHeight], [-50, 50]);
@@ -19,7 +21,7 @@ const Hero = () => {
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-8">
+      className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12">
 
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -30,8 +32,8 @@ const Hero = () => {
           >
             <CursorFollower
               text="Deploy -> Scale -> Succeed"
-              className="  max-w-2xl mb-8 bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-2 rounded-full text-white"
-              textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base italic'
+              className=" w-fit mb-4 sm:mb-6 md:mb-8 bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-2 rounded-full text-white"
+              textClassName='text-white font-semibold text-sm lg:text-base italic'
               gradientFrom="#0C1F3A"
               gradientTo="#0B1D30"
               circleSize={100}
@@ -103,7 +105,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative mt-8 lg:mt-0 px-4 sm:px-0"
-            style={{ x: moveX, y: moveY }}
+            style={{ x: scrwidth > 660 ? moveX : 0, y: scrwidth > 660 ? moveY : 0}}
           >
             <div className="relative">
               {/* Main card */}

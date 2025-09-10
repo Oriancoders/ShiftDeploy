@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { Wrench, Zap, Shield, Globe, Server, Database, ArrowRight, MoveLeft } from 'lucide-react';
 import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
 import CursorFollower from '../../../utils/CursorFollower';
+import { Link } from 'react-router-dom';
 const DeployToolkit = () => {
   const [activeIndex, setActiveIndex] = useState(null)
   const [mouseOverIndex, setMouseOverIndex] = useState(null)
@@ -103,7 +104,7 @@ const DeployToolkit = () => {
   ]
 
   return (
-    <section id="deploy-toolkit" className="pt-4 sm:pt-12  text-textColor bg-gradient-to-b from-gray-50 to-gray-50">
+    <section id="deploy-toolkit" className="pt-12  text-textColor bg-gradient-to-b from-gray-50 to-gray-50">
       <div className=" mx-auto flex flex-col justify-center items-center ">
         <motion.div
           ref={ref}
@@ -114,10 +115,10 @@ const DeployToolkit = () => {
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
+            className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
           >
             Our
-            <span className="text-primaryOrange pl-4">
+            <span className="text-primaryOrange pl-3">
               Deploy ToolKit
             </span>
           </motion.h2>
@@ -139,7 +140,7 @@ const DeployToolkit = () => {
               variants={scaleOnHover}
             >
               <div
-                className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[300px] border sm:border-gray-200 rounded-3xl p-6 pb-12   border-toSecBlue sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden"
+                className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[300px] border sm:border-gray-200 rounded-3xl p-6 pb-12   sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden"
 
               >
 
@@ -182,21 +183,21 @@ const DeployToolkit = () => {
           ))}
         </div>
 
-        <button
+        <Link to={"/shift-protocol"}
 
           className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm mb-12"
         >
 
           Why We’re Different
           <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
-        </button>
+        </Link>
 
         {/* Problem-solving CTA */}
 
         <div className='w-full  bg-gradient-to-br from-primaryBlue to-toBlue text-white '>
           <div
 
-            className="w-full  py-8 px-6 sm:px-0 sm:p-8 lg:p-12 xl:p-16  drop-shadow-sm flex md:flex-row flex-col   max-w-7xl mx-auto gap-6"
+            className="w-full  py-8 px-6 sm:px-0 sm:p-8 lg:p-12 xl:p-16  drop-shadow-sm flex md:flex-row flex-col   max-w-7xl mx-auto gap-4 sm:gap-6"
           >
             <div className='flex-1 '>
               <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
@@ -208,20 +209,16 @@ const DeployToolkit = () => {
                 when building and scaling digital products. Let us help you overcome technical barriers.
               </p>
 
-
-
             </div>
 
             <div className='flex-1 space-y-8'>
-              <img src="https://seranking.com/blog/wp-content/uploads/2022/12/Open-Website-Audit-Settings.png" alt="" className='w-full h-[300px]' />
+              <img src="https://seranking.com/blog/wp-content/uploads/2022/12/Open-Website-Audit-Settings.png" alt="" className='w-full h-[200px] sm:h-[300px]' />
 
-              <div className='flex justify-between items-center bg-white  rounded-2xl w-full'>
-                <input type="text" placeholder='Enter your website' className='px-4 outline-none border-none text-textColor h-full' />
+              <div className='flex flex-col sm:flex-row justify-between sm:items-center sm:bg-white  rounded-lg sm:rounded-2xl w-full overflow-hidden gap-y-6'>
+                <input type="text" placeholder='Enter your website' className='p-4 outline-none border-none text-textColor h-full sm:rounded-none rounded-lg' />
                 <button
-
-                  className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-r-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
+                  className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-4 rounded-lg sm:rounded-none sm:rounded-r-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm sm:w-fit w-full"
                 >
-
                   Send me free audit
                   <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
                 </button>

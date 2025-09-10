@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { ExternalLink, Download, Star, Calendar, Users, TrendingUp } from "lucide-react";
 import { fadeInUp, staggerContainer } from "../../../utils/animations";
 import { ContextAPI } from "../../../GlobalProvider/ContextAPI";
+import { Link } from "react-router-dom";
 
 const MissionsCompleted = () => {
   const ref = useRef(null);
@@ -54,36 +55,69 @@ const MissionsCompleted = () => {
 
   const projects = [
     {
+      title: "Smart EV Charging Platform",
+      client: "Slacker IoT",
+      category: "IoT & Cloud",
+      description:
+        "Developed a full-stack IoT-enabled EV charging solution with real-time telemetry, Stripe billing, and admin dashboard.",
+      image:
+        "https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&cs=tinysrgb&w=800",
+      results: [
+        "Real-time telemetry & alerts",
+        "Automated Stripe billing",
+        "24/7 monitoring & control",
+      ],
+      technologies: [
+        { name: "ESP32", icon: "🔌" },
+        { name: "Spring Boot", icon: "☕" },
+        { name: "MongoDB", icon: "🟢" },
+        { name: "React", icon: "⚛️" },
+        { name: "MQTT", icon: "📡" },
+        { name: "Stripe", icon: "💳" },
+      ],
+      gradient: "from-green-500 to-emerald-700",
+      url: "/CaseStudies/SlackerIOT",
+    },
+    {
       title: "E-commerce Platform Transformation",
       client: "K2 Traders",
       category: "Web Development",
-      description: "Complete redesign and optimization of e-commerce platform resulting in 340% increase in conversions",
-      image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800",
+      description:
+        "Complete redesign and optimization of e-commerce platform, boosting conversions and improving customer experience.",
+      image:
+        "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800",
       results: ["340% conversion increase", "50% faster loading", "Mobile-first design"],
-      technologies: ["React", "Node.js", "AWS", "MongoDB"],
+      technologies: [
+        { name: "React", icon: "⚛️" },
+        { name: "Node.js", icon: "🟩" },
+        { name: "MongoDB", icon: "🟢" },
+        { name: "AWS", icon: "☁️" },
+        { name: "TailwindCSS", icon: "🎨" },
+      ],
       gradient: "from-blue-500 to-indigo-600",
+      url: "/CaseStudies/K2TradersCase",
     },
     {
       title: "Cloud Infrastructure Migration",
       client: "Bullseyes Investments",
       category: "Cloud Services",
-      description: "Migrated legacy systems to cloud infrastructure with 99.9% uptime guarantee",
-      image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
+      description:
+        "Migrated legacy financial systems to AWS cloud with high availability, security, and auto-scaling infrastructure.",
+      image:
+        "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
       results: ["99.9% uptime", "60% cost reduction", "Auto-scaling enabled"],
-      technologies: ["AWS", "Docker", "Kubernetes", "Terraform"],
-      gradient: "from-cyan-500 to-blue-600",
-    },
-    {
-      title: "DevOps Pipeline Automation",
-      client: "InnovateHub",
-      category: "DevOps",
-      description: "Implemented CI/CD pipelines reducing deployment time from hours to minutes",
-      image: "https://images.pexels.com/photos/1181472/pexels-photo-1181472.jpeg?auto=compress&cs=tinysrgb&w=800",
-      results: ["95% faster deployments", "Zero-downtime releases", "Automated testing"],
-      technologies: ["Jenkins", "GitLab CI", "Docker", "Monitoring"],
-      gradient: "from-purple-500 to-indigo-600",
+      technologies: [
+        { name: "AWS", icon: "☁️" },
+        { name: "Docker", icon: "🐳" },
+        { name: "Kubernetes", icon: "⚓" },
+        { name: "Terraform", icon: "📐" },
+        { name: "CI/CD", icon: "🚀" },
+      ],
+      gradient: "from-orange-500 to-yellow-600",
+      url: "/CaseStudies/BullseyesCase",
     },
   ];
+
 
   return (
     <section id="missions-completed" className="py-12 bg-white text-primaryBlue">
@@ -96,16 +130,16 @@ const MissionsCompleted = () => {
             className=" mb-12 sm:mb-16 sm:flex-1 border-r border-gray-400">
             <motion.h2
               variants={fadeInUp}
-              className="text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
+              className="text-3xl sm:text-left text-center sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
             >
-              Missions We've <br/>
+              Missions We've <br />
               <span className="text-primaryOrange ">
                 Completed
               </span>
             </motion.h2>
             <motion.p
               variants={fadeInUp}
-              className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0 text-left"
+              className="text-lg sm:text-left text-center  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0 "
             >
               Explore our portfolio of successful projects and see how we've helped
               businesses transform their digital presence.
@@ -195,10 +229,10 @@ const MissionsCompleted = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 lg:space-x-4">
-                  <motion.button className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm ">
+                  <Link to={project.url} className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm ">
                     <ExternalLink className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
-                    <span>View Project</span>
-                  </motion.button>
+                    <span>View Project Report</span>
+                  </Link >
                   <motion.button className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  hover:border-toBlue  shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg">
                     <Download className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
                     <span>Case Study</span>

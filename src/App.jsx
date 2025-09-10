@@ -11,6 +11,7 @@ import GlobalProvider from './GlobalProvider/GlobalProvider';
 import ContactUs from './Pages/ContactUsPage/ContactUs';
 import SlackerIOT from './Pages/CaseStudies/SlackerIOT';
 import BullsEyesCase from './Pages/CaseStudies/BullsEyesCase';
+import K2TradersCase from './Pages/CaseStudies/K2Traders';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
         <Route path='/ContactUs' element= { <ContactUs/>}/>
         <Route path='/CaseStudies/SlackerIOT' element= { <SlackerIOT/>}/>
         <Route path='/CaseStudies/BullseyesCase' element= { <BullsEyesCase/>}/>
+        <Route path='/CaseStudies/K2TradersCase' element= { <K2TradersCase/>}/>
+
 
 
 

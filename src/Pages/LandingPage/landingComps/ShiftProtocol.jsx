@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { Search, BarChart3, Lightbulb, CheckCircle, Rocket, ArrowRight } from 'lucide-react';
 import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
 import CursorFollower from '../../../utils/CursorFollower';
-import { Link } from 'react-router-dom';
+import { Link, Links } from 'react-router-dom';
 
 const ShiftProtocol = () => {
   const ref = useRef(null);
@@ -53,18 +53,18 @@ const ShiftProtocol = () => {
 
 
   return (
-    <section id="the-shift-protocol" className="pt-4 sm:pt-12  bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+    <section id="the-shift-protocol" className="pt-12  bg-gradient-to-b from-white to-gray-50 overflow-hidden">
       <div className="mx-auto flex flex-col justify-center items-center ">
         <motion.div
           ref={ref}
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="text-center mb-8"
+          className="text-center mb-6 sm:mb-8"
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
+            className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
           >
             The
             <span className="text-primaryOrange pl-4">
@@ -136,7 +136,7 @@ const ShiftProtocol = () => {
                     <h3 className="text-lg lg:text-xl xl:text-2xl font-bold text-gray-900  text-center">{index + 1}: {step.title}</h3>
                     <p className="  text-center sm:leading-relaxed text-lg text-gray-600">{step.description}</p>
 
-                    <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3  grid sm:grid-cols-1 grid-cols-2">
+                    <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3  grid grid-cols-1 ">
                       {step.details.map((detail, detailIndex) => (
                         <li key={detailIndex} className="flex items-center space-x-2 sm:space-x-3 ">
                           <div className="w-2 h-2 bg-primaryOrange rounded-full flex-shrink-0" />
@@ -177,14 +177,14 @@ const ShiftProtocol = () => {
             </p>
 
 
-            <button
+            <Link to={"/shift-protocol"}
 
               className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
             >
 
               Let’s Walk You Through It
               <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
-            </button>
+            </Link >
 
           </div>
         </div>

@@ -15,7 +15,7 @@ function CaseStudyCardsSection() {
       outcome: "Built a scalable EV charging platform with real-time telemetry and automated billing",
       visual: "https://images.unsplash.com/photo-1704475289650-6ab9fc4a0a5b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       metrics: { users: "5K+", uptime: "99.9%", costReduction: "40%" },
-      url : "/CaseStudies/SlackerIOT"
+      url: "/CaseStudies/SlackerIOT"
     },
     {
       brand: "Bullseye Investments",
@@ -23,19 +23,18 @@ function CaseStudyCardsSection() {
       outcome: "Delivered a live stock market dashboard integrated with APIs and Google Sheets",
       visual: "https://images.unsplash.com/photo-1620266757065-5814239881fd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGZpbmFuY2V8ZW58MHx8MHx8fDA%3D",
       metrics: { dataFeeds: "50+", downtime: "0 hrs", engagement: "3x higher" },
-      url : '/CaseStudies/BullseyesCase'
+      url: '/CaseStudies/BullseyesCase'
     },
 
     {
-      brand: "GrowthLabs",
-      category: "MVP Development",
-      outcome: "Launched in 8 weeks, raised $2M Series A within 6 months",
-      visual: "https://images.unsplash.com/photo-1704475289650-6ab9fc4a0a5b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      metrics: { timeline: "8 weeks", funding: "$2M", users: "50K+" },
-      color: "from-purple-500 to-pink-600",
-      bgColor: "from-purple-50 to-pink-50",
-      url : '/CaseStudies/BullseyesCase'
+      brand: "K2 Traders",
+      category: "eCommerce Development",
+      outcome: "Zero recurring fees with a fully optimized React-based store",
+      visual: "https://images.unsplash.com/photo-1586880244406-556ebe35f282?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      metrics: { savings: "$1000s/year", hosting: "Vercel Free ", maintenance: "One-time" },
+      url: "/CaseStudies/K2TradersCase"
     },
+
 
   ]
 
@@ -84,11 +83,10 @@ function CaseStudyCardsSection() {
               data-index={index}
               className={`group transition-all duration-700 transform ${visibleCards.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
                 }`}
-              onMouseEnter={() => setHoveredCard(index)}
-              onMouseLeave={() => setHoveredCard(null)}
+
             >
               <div
-                className={`relative bg-white rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-500 transform hover:-translate-y-2 border border-white/50 shadow-md`}
+                className={`relative bg-white rounded-3xl overflow-hidden hover:shadow-xl shadow-md transition-all duration-300`}
               >
                 {/* Visual */}
                 <div className="relative h-48 overflow-hidden">
@@ -106,7 +104,7 @@ function CaseStudyCardsSection() {
                 </div>
 
                 {/* Content */}
-                <div className="p-8">
+                <div className="p-8 flex flex-col">
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">{study.brand}</h3>
                   <p className="text-gray-700 leading-relaxed mb-6">{study.outcome}</p>
 
@@ -122,7 +120,7 @@ function CaseStudyCardsSection() {
 
                   {/* CTA */}
                   <Link to={study.url}
-                    className={` py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform  bg-primaryBlue text-white shadow-lg  `}
+                    className={` py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform  bg-primaryBlue text-white shadow-lg  mx-auto mt-6`}
                   >
                     Read Full Mission Report
                   </Link>

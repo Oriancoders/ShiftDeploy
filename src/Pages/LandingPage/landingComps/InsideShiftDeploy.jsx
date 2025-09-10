@@ -5,6 +5,7 @@ import { useRef } from 'react';
 import { Code, Cloud, Settings, Rocket, ArrowRight, CheckCircle } from 'lucide-react';
 import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
 import CursorFollower from '../../../utils/CursorFollower';
+import { Link } from 'react-router-dom';
 
 const InsideShiftDeploy = () => {
   const ref = useRef(null);
@@ -42,7 +43,7 @@ const InsideShiftDeploy = () => {
   ];
 
   return (
-    <section id="inside-shiftdeploy" className="pt-4 sm:pt-12  text-textColor bg-gradient-to-b from-gray-50 to-gray-50">
+    <section id="inside-shiftdeploy" className="pt-8 sm:pt-12  text-textColor bg-gradient-to-b from-gray-50 to-gray-50">
       <div className=" mx-auto flex flex-col justify-center items-center ">
         <motion.div
           ref={ref}
@@ -53,7 +54,7 @@ const InsideShiftDeploy = () => {
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
+            className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
           >
                 Inside
                 <span className="text-primaryOrange pl-4">
@@ -62,7 +63,7 @@ const InsideShiftDeploy = () => {
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-lg max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 leading-relaxed px-4 sm:px-0  text-gray-600"
+            className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 leading-relaxed px-4 sm:px-0  text-gray-600"
           >
             We provide comprehensive technology solutions that help businesses scale,
             optimize performance, and achieve sustainable growth in today's digital landscape.
@@ -115,14 +116,14 @@ const InsideShiftDeploy = () => {
             </p>
 
 
-            <button
+            <Link to={"shift-protocol"}
 
               className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
             >
 
               Why We’re Different
               <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
-            </button>
+            </Link>
 
           </div>
         </div>
