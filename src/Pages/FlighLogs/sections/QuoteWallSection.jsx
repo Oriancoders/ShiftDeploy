@@ -102,14 +102,14 @@ function QuoteWallSection() {
     <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            What they really
-            <span className="block bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            What they really<br/>
+            <span className="text-primaryOrange">
               think of us
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Unfiltered feedback from teams who needed results — and got them.
+          <p className="sm:first-letter:text-xl text-gray-600 max-w-3xl mx-auto">
+            Unfiltered feedback from teams who needed results and got them.
           </p>
         </div>
 
@@ -119,10 +119,9 @@ function QuoteWallSection() {
               key={index}
               ref={(el) => (quoteRefs.current[index] = el)}
               data-index={index}
-              className={`group transition-all duration-700 transform ${visibleQuotes.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-                }`}
+              className={`group `}
             >
-              <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full">
+              <div className="bg-white rounded-3xl p-8 shadow-md sm:hover:shadow-xl transition-all duration-300 transform  h-full">
                 {/* Quote Icon */}
                 <div className="flex items-start mb-6">
                   <div
@@ -165,9 +164,7 @@ function QuoteWallSection() {
                 </div>
 
                 {/* Hover Effect */}
-                <div
-                  className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${testimonial.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
-                ></div>
+    
               </div>
             </div>
           ))}
@@ -176,8 +173,8 @@ function QuoteWallSection() {
 
 
         <div className="text-center mt-12 space-y-6">
-          <p className="text-5xl text-primaryBlue font-semibold">The Pattern is Clear</p>
-          <p className="text-xl text-gray-600 italic ">
+          <p className="text-3xl sm:text-5xl text-primaryBlue font-semibold">The Pattern is Clear</p>
+          <p className="sm:text-xl text-gray-600 italic ">
             <span className=" font-semibold"></span> delivery.{" "}
               <span className="font-semibold">On time</span> execution.{" "}
               <span className="font-semibold">Understood</span> completely.

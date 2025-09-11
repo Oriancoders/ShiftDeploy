@@ -77,13 +77,13 @@ function LeaderboardStripSection() {
 
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="text-center mb-12">
-          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             The numbers <br/>
             <span className="text-primaryOrange">
               speak volumes
             </span>
           </h2>
-          <p className="text-xl text-gray-700">Consistent results across every mission we complete.</p>
+          <p className="sm:text-xl text-gray-700">Consistent results across every mission we complete.</p>
         </div>
 
         <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-8">
@@ -111,7 +111,7 @@ function LeaderboardStripSection() {
         {/* Bottom Message */}
         <div className="text-center mt-8">
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-4xl mx-auto">
-            <p className="text-2xl text-gray-900 font-medium">
+            <p className="text-xl sm:text-2xl text-gray-900 font-medium">
               These aren't just numbers {" "}
               <span className="text-primaryOrange">they're promises kept to teams who trusted us</span> with their
               mission-critical projects.

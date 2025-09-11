@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
 
 // Section 5: Final Push CTA
 function FinalPushCTASection() {
@@ -38,7 +39,7 @@ function FinalPushCTASection() {
           }`}
         >
           {/* Header */}
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
             Ready to join <br/>
             <span className="text-primaryOrange">
               the flight logs?
@@ -47,10 +48,10 @@ function FinalPushCTASection() {
 
           {/* Supporting Copy */}
           <div className="max-w-4xl mx-auto mb-12">
-            <p className="text-xl md:text-2xl text-gray-200 leading-relaxed mb-8">
+            <p className="sm:text-xl md:text-2xl text-gray-200 leading-relaxed mb-8">
               You've read the stories. You've seen the results. You know what we deliver.
             </p>
-            <p className="text-lg text-gray-200">
+            <p className="sm:text-lg text-gray-200">
               The question isn't whether we can solve your challenges, it's when you're ready to get started.
             </p>
           </div>
@@ -74,35 +75,36 @@ function FinalPushCTASection() {
           </div>
 
           {/* Primary CTA */}
-          <div className="mb-8">
-            <button className="group bg-primaryOrange hover:bg-toOrange text-white text-2xl font-bold px-16 py-6 rounded-2xl transition-all duration-300 transform  hover:shadow-2xl ">
-              <span className="flex items-center">
-                Book Your Strategy Call
-                <ArrowRight className="ml-4 w-8 h-8 group-hover:translate-x-2 transition-transform duration-300" />
-              </span>
-            </button>
-          </div>
+           {/* Primary CTA */}
+           <Link to={"/ContactUs"}
+
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit mb-12 mx-auto"
+            >
+              Let's Solve Your Problem Together
+              <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+            </Link >
+
 
           {/* Risk Reversal */}
-          <p className="text-lg text-gray-200 mb-8">
+          <p className="sm:text-lg text-gray-200 mb-8">
             30-minute call. No commitment. Just an honest conversation about your challenges.
           </p>
 
           {/* Secondary Options */}
           <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-            <button className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300  text-white">
+            <Link to={"/shift-protocol"} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300  text-white">
               See Our Process
-            </button>
-            <button className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300  text-white">
-              View Case Studies
-            </button>
+            </Link>
+            <Link to={"/missions"}  className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300  text-white">
+              View Portfolio
+            </Link>
           </div>
 
           {/* Final Message */}
           <div className="mt-16 max-w-3xl mx-auto">
-            <p className="text-xl text-gray-200 italic">
+            <p className="sm:text-xl text-gray-200 italic">
               Join the teams who chose reliability, understanding, and results.{" "}
-              <span className="text-orange-600 font-semibold">Your success story starts here.</span>
+              <span className="text-primaryOrange font-semibold">Your success story starts here.</span>
             </p>
           </div>
         </div>
