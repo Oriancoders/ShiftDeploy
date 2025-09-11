@@ -1,6 +1,7 @@
 import { ArrowRight, Star } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
 // Section 1: Hero + Value Propositions
 function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -22,7 +23,7 @@ function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative  flex items-center justify-center bg-gradient-to-br from-gray-100 via-white to-gray-100 overflow-hidden pt-32 "
+      className="relative  flex items-center justify-center bg-gradient-to-br from-gray-100 via-white to-gray-100 overflow-hidden pt-28 sm:pt-32 "
     >
       
       <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
@@ -40,10 +41,10 @@ function HeroSection() {
           </div> */}
 
           {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold text-primaryBlue mb-8 leading-tight">
+          <h1 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-primaryBlue mb-8 leading-tight">
             Build, optimize, and scale <br/>
             <span className="text-primaryOrange">
-              with confidence.
+              with confidence
             </span>
           </h1>
 
@@ -53,7 +54,7 @@ function HeroSection() {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            <p className="text-xl  text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
+            <p className="sm:text-xl  text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
               The Deploy Toolkit is your on-demand team of engineers, DevOps pros, and product specialists solving the
               toughest backend, infra, and UX challenges so you can focus on what matters:{" "}
               <span className="text-orange-600 font-semibold">growing your business</span>.
@@ -68,13 +69,13 @@ function HeroSection() {
           >
             <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-6">
               <div className="text-center">
-                <div className="text-gray-500 line-through text-lg mb-2">Stop wrestling with infrastructure</div>
+                <div className="text-gray-500 line-through sm:text-lg mb-2">Stop wrestling with infrastructure</div>
               </div>
               <div className="text-center">
-                <div className="text-gray-500 line-through text-lg mb-2">Stop losing sleep over scaling issues</div>
+                <div className="text-gray-500 line-through sm:text-lg mb-2">Stop losing sleep over scaling issues</div>
               </div>
               <div className="text-center">
-                <div className="text-gray-500 line-through text-lg mb-2">
+                <div className="text-gray-500 line-through sm:text-lg mb-2">
                   Stop hiring full-time for part-time problems
                 </div>
               </div>
@@ -83,16 +84,14 @@ function HeroSection() {
 
           {/* CTA */}
           
-            <motion.button
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto mb-6 font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+            <Link to={"/ContactUs"}
+
+                className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit"
 
               >
                 Discuss Your Project
 
-              </motion.button>
+              </Link>
             {/* <p className="text-gray-500">No contracts. No overhead. Just results.</p> */}
         </div>
       </div>

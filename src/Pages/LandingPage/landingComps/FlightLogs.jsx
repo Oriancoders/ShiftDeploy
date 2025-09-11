@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Star, Quote, Building, ArrowRight } from 'lucide-react';
 import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
+import { Link } from 'react-router-dom';
 
 const FlightLogs = () => {
   const ref = useRef(null);
@@ -85,7 +86,7 @@ const FlightLogs = () => {
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
+            className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-4 sm:mb-6 leading-tight  "
           >
             Flight
             <span className="text-primaryOrange pl-4">
@@ -94,7 +95,7 @@ const FlightLogs = () => {
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  leading-relaxed px-4 sm:px-0"
+            className="sm:text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  leading-relaxed px-4 sm:px-0"
           >
             Hear from our clients about their transformation journey and the results
             they've achieved with ShiftDeploy.
@@ -103,14 +104,14 @@ const FlightLogs = () => {
         </motion.div>
 
         {/* Testimonials grid */}
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-16 lg:mb-20">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 hover:border-blue-300 hover:shadow-sm transition-all duration-300 group flex flex-col justify-between"
+              className="bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 sm:hover:shadow-lg transition-all duration-300 group flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4 mb-3 sm:mb-4 lg:mb-6">
@@ -157,7 +158,7 @@ const FlightLogs = () => {
           initial={{ opacity: 0, y: 60 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="  rounded-xl sm:rounded-2xl  text-center bg-white p-12 shadow-lg"
+          className="  rounded-xl sm:rounded-2xl  text-center sm:bg-white p-8 sm:p-12 sm:shadow-lg"
         >
           <div className="flex items-center justify-center space-x-1.5 sm:space-x-2 lg:space-x-3 mb-3 sm:mb-4 lg:mb-6">
             {renderStars(5)}
@@ -181,13 +182,12 @@ const FlightLogs = () => {
             </div>
           </div>
 
-          <motion.button className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm mx-auto mt-12"
-
+          <Link to={"/ContactUs"} className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm mx-auto mt-12 w-fit"
           >
             Join Our Trusted Clients
             <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
 
-          </motion.button>
+          </Link>
         </motion.div>
 
 

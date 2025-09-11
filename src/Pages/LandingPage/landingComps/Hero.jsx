@@ -25,7 +25,7 @@ const Hero = () => {
 
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 sm:items-center">
+        <div className="grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 xl:gap-16 sm:items-center">
 
           <div
             className="flex flex-col lg:items-start sm:items-center"
@@ -89,7 +89,7 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
                 
               >
-                <Link to={"/missions"} className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md">View Missions Completed</Link>
+                <Link to={"/missions"} className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md">View Missions Completed</Link>
 
               </motion.div>
 
@@ -119,7 +119,7 @@ const Hero = () => {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 xl:p-10 shadow-2xl"
+                className="bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 xl:p-10 sm:shadow-2xl"
               >
                 <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6 lg:mb-8">
                   <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-4 lg:p-6 backdrop-blur-sm">
@@ -127,7 +127,7 @@ const Hero = () => {
                     <div className="w-3/4 h-1.5 sm:h-2 lg:h-3 bg-gray-300 rounded-full" />
                   </div>
                   <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-4 lg:p-6 backdrop-blur-sm">
-                    <div className="w-full h-1.5 sm:h-2 lg:h-3 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full mb-1.5 sm:mb-2 lg:mb-3" />
+                    <div className="w-full h-1.5 sm:h-2 lg:h-3 bg-primaryOrange rounded-full mb-1.5 sm:mb-2 lg:mb-3" />
                     <div className="w-2/3 h-1.5 sm:h-2 lg:h-3 bg-gray-300 rounded-full" />
                   </div>
                 </div>

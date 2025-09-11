@@ -1,5 +1,6 @@
 import { CheckCircle, ChevronRight, Database, Rocket, Server, Shield } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
 
 // Section 2: Service Categories
 function ServiceCategoriesSection() {
@@ -97,57 +98,52 @@ function ServiceCategoriesSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="pt-10 pb-5 sm:pt-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
-            Your technical challenges, <br/>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            Your technical challenges <br />
             <span className="text-primaryOrange">
-              solved.
+              solved
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+          <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto">
             Whether you're launching your MVP or scaling to millions of users, we've got the specialized expertise you
             need without the full-time hire headaches.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
           {services.map((service, index) => (
             <div
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
               data-index={index}
-              className={`group transition-all duration-700 transform ${
-                visibleCards.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-              }`}
+              className={`group transition-all duration-300 transform ${visibleCards.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+                }`}
 
             >
               <div
-                className={`relative  bg-white rounded-3xl p-8 transition-all duration-500 transform  h-full border border-gray-300`}
+                className={`relative  bg-white rounded-3xl p-6 sm:p-8 transition-all duration-300 transform  h-full border sm:shadow-sm sm:hover:shadow-lg`}
               >
                 {/* Icon */}
-                {/* <div
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}
-                >
-                  <div className="text-white">{service.icon}</div>
-                </div> */}
+
 
                 {/* Category & Subtitle */}
                 <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-primaryBlue mb-2">{service.category}</h3>
-                  <p className="text-gray-600 italic">{service.subtitle}</p>
+                  <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-2">{service.category}</h3>
+                  <p className="text-xs sm:text-lg text-gray-600 italic">{service.subtitle}</p>
                 </div>
 
                 {/* Headline */}
-                <h4 className="text-xl font-semibold text-gray-800 mb-6">{service.headline}</h4>
+                <h4 className="sm:text-xl font-semibold text-gray-800 mb-6">{service.headline}</h4>
 
                 {/* Services List */}
                 <ul className="space-y-3 mb-8">
                   {service.services.map((item, serviceIndex) => (
-                    <li key={serviceIndex} className="flex items-center">
-                      <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700">{item}</span>
+                    <li key={serviceIndex} className="flex items-start">
+                      <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="text-xs sm:text-md text-gray-700">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -156,28 +152,31 @@ function ServiceCategoriesSection() {
                 <div className="border-t border-gray-200 pt-6">
                   <div className="mb-4">
                     <p className="text-sm text-primaryOrange font-semibold mb-2">Pain Point:</p>
-                    <p className="text-gray-700 italic">"{service.painPoint}"</p>
+                    <p className="text-xs sm:text-md text-gray-700 italic">"{service.painPoint}"</p>
                   </div>
                   <div>
                     <p className="text-sm text-primaryBlue font-semibold mb-2">Our Fix:</p>
-                    <p className="text-gray-800 font-medium">{service.solution}</p>
+                    <p className="text-xs sm:text-md text-gray-800 font-medium">{service.solution}</p>
                   </div>
                 </div>
 
-                
 
-                {/* Hover Arrow
-                <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                  <div
-                    className={`w-10 h-10 rounded-full bg-primaryBlue flex items-center justify-center`}
-                  >
-                    <ChevronRight className="w-5 h-5 text-white" />
-                  </div>
-                </div> */}
+
               </div>
             </div>
           ))}
         </div>
+
+        {/* CTA */}
+
+        <Link to={"/ContactUs"}
+
+          className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit"
+
+        >
+          Lets Solve Your Problem
+
+        </Link>
       </div>
     </section>
   )

@@ -59,16 +59,16 @@ function WhatWeSolveSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-20 bg-gray-50">
+    <section ref={sectionRef} className=" pb-5 sm:pt-12 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+        <div className="text-center mb-12 sm:mb-20">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-4 sm:mb-6">
             The problems keeping you <br />
             <span className="text-primaryOrange">
               up at night
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
             We've seen it all. Here are the technical nightmares we turn into competitive advantages.
           </p>
         </div>
@@ -82,34 +82,34 @@ function WhatWeSolveSection() {
               className={`transition-all duration-700 transform ${visibleProblems.includes(index) ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"
                 }`}
             >
-              <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="grid md:grid-cols-2  gap-4 sm:gap-8 md:gap-12 items-center">
                 {/* Pain Point */}
                 <div className={`${index % 2 === 1 ? "md:order-2" : ""}`}>
-                  <div className="bg-primaryOrange/5 border-l-4 border-primaryOrange rounded-r-2xl p-8">
+                  <div className="bg-primaryOrange/5 border-l-4 border-primaryOrange rounded-r-2xl p-4 sm:p-8">
                     <div className="flex items-start mb-4">
-                      <div className="w-12 h-12 bg-primaryOrange rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                      <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primaryOrange rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
                         <div className="text-white">{problem.icon}</div>
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-primaryOrange mb-2">Your Pain:</h3>
                       </div>
                     </div>
-                    <blockquote className="text-lg text-primaryOrange italic leading-relaxed">"{problem.pain}"</blockquote>
+                    <blockquote className="sm:text-lg text-primaryOrange italic leading-relaxed">"{problem.pain}"</blockquote>
                   </div>
                 </div>
 
                 {/* Solution */}
                 <div className={`${index % 2 === 1 ? "md:order-1" : ""}`}>
-                  <div className="bg-primaryBlue/5 border-l-4 border-primaryBlue rounded-r-2xl p-8">
+                  <div className="bg-primaryBlue/5 border-l-4 border-primaryBlue rounded-r-2xl p-4 sm:p-8">
                     <div className="flex items-start mb-4">
-                      <div className="w-12 h-12 bg-primaryBlue rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                      <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primaryBlue rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
                         <CheckCircle className="w-6 h-6 text-white" />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-primaryBlue mb-2">Our Fix:</h3>
                       </div>
                     </div>
-                    <p className="text-xl text-primaryBlue leading-relaxed font-medium">{problem.fix}</p>
+                    <p className="sm:text-xl text-primaryBlue leading-relaxed font-medium">{problem.fix}</p>
                   </div>
                 </div>
               </div>
@@ -123,8 +123,8 @@ function WhatWeSolveSection() {
           <CursorFollower
 
             text="Sound familiar? You're not alone. And you don't have to solve this alone."
-            className="   max-w-2xl mx-auto bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-4 rounded-full text-white italic"
-            textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base'
+            className="   max-w-2xl mx-auto bg-secondaryBlue px-6 py-4 rounded-full text-white italic"
+            textClassName='text-white font-semibold text-sm lg:text-base'
             gradientFrom="#0C1F3A"
             gradientTo="#0B1D30"
             circleSize={100}

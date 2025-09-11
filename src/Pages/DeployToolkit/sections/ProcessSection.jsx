@@ -67,16 +67,16 @@ function ProcessSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="pb-20 bg-gray-50">
+    <section ref={sectionRef} className="pb-5 pt-12 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+        <div className="text-center mb-12 sm:mb-20">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             How we turn chaos <br/>
             <span className="text-primaryOrange">
               into clarity
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
             No guesswork. No surprises. Just a proven process that gets results.
           </p>
         </div>
@@ -94,7 +94,7 @@ function ProcessSection() {
             {steps.map((step, index) => (
               <div
                 key={index}
-                className={`relative transition-all duration-700 transform ${
+                className={`relative transition-all duration-300 transform ${
                   visibleSteps.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
                 }`}
               >
@@ -103,10 +103,10 @@ function ProcessSection() {
                   <div className="w-3 h-3 bg-primaryOrange rounded-full"></div>
                 </div>
 
-                <div className="bg-white rounded-3xl p-8 shadow-md transition-all duration-300 h-full">
+                <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-md transition-all duration-300 h-full">
                   {/* Icon & Number */}
                     
-                    <div className="text-3xl font-bold  mb-4 text-primaryBlue">{step.number}</div>
+                    {/* <div className="text-3xl font-bold  mb-4 text-primaryBlue">{step.number}</div> */}
 
                   {/* Content */}
                   <h3 className="text-2xl font-bold text-primaryBlue mb-4">{step.title}</h3>
@@ -153,15 +153,7 @@ function ProcessSection() {
 
               </motion.button>
 
-              {/* <motion.button
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
-              >
-                <span>View Case Study</span>
-
-              </motion.button> */}
+        
 
 
           </div>

@@ -1,5 +1,6 @@
-import { ChevronDown } from "lucide-react"
+import { ArrowRight, ChevronDown } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
 
 // Section 8: FAQ
 function FAQSection() {
@@ -71,10 +72,10 @@ function FAQSection() {
   }
 
   return (
-    <section ref={sectionRef} className=" bg-gray-50 py-20">
+    <section ref={sectionRef} className=" bg-gray-50 py-10 sm:py-20">
       <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+        <div className="text-center mb-12 sm:mb-20">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Questions? <br/>
             <span className="text-primaryOrange">
               We've got answers.
@@ -93,7 +94,7 @@ function FAQSection() {
               <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full px-4 sm:px-8 py-4 sm:py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
                 >
                   <h3 className="text-lg font-semibold text-primaryBlue pr-4">{faq.question}</h3>
                   <ChevronDown
@@ -108,7 +109,7 @@ function FAQSection() {
                     openFAQ === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <div className="px-8 pb-6">
+                  <div className="sm:px-8 px-4 pb-6">
                     <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
                   </div>
                 </div>
@@ -119,9 +120,14 @@ function FAQSection() {
 
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-6">Still have questions?</p>
-          <button className="bg-primaryOrange  text-white font-semibold px-8 py-4 rounded-2xl hover:bg-toOrange">
-            Book a Strategy Call
-          </button>
+          <Link to={"/ContactUs"}
+
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit mb-12 mx-auto"
+            >
+
+              Can't Find an Answer? Ask Us
+              <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+            </Link >
 
         </div>
       </div>

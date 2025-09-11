@@ -102,7 +102,7 @@ const Navigation = ({ isDarkBg = false }) => {
             transition={{ duration: 0.3 }}
             className="lg:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200"
           >
-            <div className="px-4 sm:px-6 py-4 sm:py-6 space-y-3 sm:space-y-4 flex flex-col justify-between h-full ">
+            <div className="px-4 sm:px-6 py-4 sm:py-6 space-y-3 sm:space-y-4 flex flex-col justify-between h-[90dvh] ">
               <div className="space-y-3">
                 {navItems.map(({ label, path }, index) => {
                   const isActive = location.pathname === path;

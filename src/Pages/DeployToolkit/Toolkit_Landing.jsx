@@ -18,8 +18,8 @@ const Toolkit_Landing = () => {
         <HeroSection/>
         <ServiceCategoriesSection/>
         <WhatWeSolveSection/>
-        <ProcessSection/>
-        <CaseSnapshotsSection/>
+        {/* <ProcessSection/> */}
+        {/* <CaseSnapshotsSection/> */}
         {/* <PricingSection/> */}
         <TestimonialsSection/>
         <FinalCTASection/>

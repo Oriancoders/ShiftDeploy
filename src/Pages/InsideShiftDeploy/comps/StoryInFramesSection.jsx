@@ -1,7 +1,8 @@
-import { Code, Rocket, Target } from "lucide-react"
+import { Cpu, Zap, Battery } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
-//Section 7: Story in Frames
+import { Link } from "react-router-dom"
+
 function StoryInFramesSection() {
   const [currentFrame, setCurrentFrame] = useState(0)
   const [visibleFrames, setVisibleFrames] = useState([])
@@ -10,30 +11,30 @@ function StoryInFramesSection() {
   const projectFrames = [
     {
       title: "The Challenge",
-      subtitle: "Client Scaling Crisis",
-      description: "We need to scale from 1,000 to 100,000 users without breaking the bank or the system.",
+      subtitle: "Unstable Infrastructure",
+      description: "We needed to collect real-time EV charger data reliably — without constant breakdowns.",
       details:
-        "A growing SaaS platform was hitting performance walls. Database queries were slowing down, server costs were skyrocketing, and user complaints were mounting.",
-      icon: <Target className="w-8 h-8" />,
+        "Our early prototype could barely handle basic telemetry. MQTT packets were dropping, temperature spikes went unnoticed, and there was no session tracking. Scaling this for public deployment seemed impossible.",
+      icon: <Cpu className="w-8 h-8" />,
       color: "from-red-500 to-pink-600",
     },
     {
       title: "Our Approach",
-      subtitle: "Surgical Precision",
+      subtitle: "IoT + Cloud Architecture",
       description:
-        "Instead of rebuilding everything, we identified the three bottlenecks that mattered.",
+        "We built a robust pipeline from edge to cloud with full session and payment handling.",
       details:
-        "We analyzed the entire system, found the critical performance bottlenecks, and implemented targeted optimizations rather than expensive rewrites.",
-      icon: <Code className="w-8 h-8" />,
+        "We rewrote the ESP32 firmware for stable MQTT publishing, implemented a Spring Boot backend to process and store telemetry, added WebSockets for real-time updates, and connected Stripe to handle charging session payments.",
+      icon: <Zap className="w-8 h-8" />,
       color: "from-blue-500 to-indigo-600",
     },
     {
       title: "The Result",
-      subtitle: "Mission Accomplished",
-      description: "99.9% uptime during their biggest launch. 40% reduction in server costs. One very happy client.",
+      subtitle: "Live and Scalable",
+      description: "A production-ready EV charging platform with live telemetry and remote control.",
       details:
-        "The optimized system handled the traffic surge flawlessly, costs went down instead of up, and the client's biggest product launch was their smoothest ever.",
-      icon: <Rocket className="w-8 h-8" />,
+        "The system now streams continuous voltage, current, and temperature data from chargers to the dashboard, supports multiple users, logs full session history, and processes payments automatically — ready to scale to a commercial network.",
+      icon: <Battery className="w-8 h-8" />,
       color: "from-green-500 to-emerald-600",
     },
   ]
@@ -62,93 +63,67 @@ function StoryInFramesSection() {
   return (
     <section ref={sectionRef} className="py-24 bg-gray-50 overflow-x-hidden text-textColor">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
-            From concept to deployment <br/>
+        <div className="text-center mb-12 sm:mb-20">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            From prototype to public-ready <br/>
             <span className="text-primaryOrange">
-              A real story
+              The EV Charger Journey
             </span>
           </h2>
-          <p className="text-xl text-gray-900">Project Spotlight: E-Commerce Platform Scale-Up</p>
+          <p className="sm:text-xl text-gray-900">Project Spotlight: Smart EV Charging Platform</p>
         </div>
 
-        {/* Timeline */}
+        {/* timeline map code stays same */}
         <div className="relative">
-          {/* Progress Line */}
-          <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 transform -translate-y-1/2 hidden md:block"></div>
-          <div
-            className="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-primaryBlue to-primaryOrange transform -translate-y-1/2 transition-all duration-1000 hidden md:block"
-            style={{ width: `${(visibleFrames.length / projectFrames.length) * 100}%` }}
-          ></div>
+
 
           <div className="grid md:grid-cols-3 gap-8">
             {projectFrames.map((frame, index) => (
               <div
                 key={index}
-                className={`relative transition-all duration-700 transform group ${
-                  visibleFrames.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-                }`}
               >
-                {/* Timeline Node */}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white border-4 border-gray-300 group-hover:border-primaryOrange rounded-full z-10 hidden md:block"></div>
-
-                <div className="bg-white rounded-3xl p-8 border border-gray-300 transition-all duration-300 h-full shadow-md hover:shadow-xl">
-                  {/* Icon */}
-                  <div
-                    className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6`}
-                  >
+          
+                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-300 transition-all duration-300 h-full shadow-md sm:hover:shadow-xl">
+                  <div className="inline-flex items-center justify-center w-12 sm:w-16 h-12 sm:h-16 rounded-2xl bg-primaryBlue mb-4 sm:mb-6">
                     <div className="text-white">{frame.icon}</div>
                   </div>
 
-                  {/* Content */}
                   <div className="mb-4">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{frame.title}</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">{frame.title}</h3>
                     <h4 className="text-lg  mb-4">{frame.subtitle}</h4>
                   </div>
 
-                  <blockquote className="text-lg  italic mb-6 border-l-4 border-primaryBlue pl-4">
+                  <blockquote className="sm:text-lg italic mb-4 sm:mb-6 border-l-4 border-primaryBlue pl-4">
                     "{frame.description}"
                   </blockquote>
 
-                  <p className=" leading-relaxed">{frame.details}</p>
+                  <p className="leading-relaxed">{frame.details}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="text-center mt-20 space-y-6">
-            <p className="text-5xl text-primaryBlue font-semibold">The Lesson</p>
-            <p className="text-xl text-gray-600 italic ">
-              Sometimes the best solution is the one that doesn't require starting over.
-            </p>
+        <div className="text-center mt-16 sm:mt-20 space-y-4 sm:space-y-6">
+          <p className="text-3xl sm:text-5xl text-primaryBlue font-semibold">The Lesson</p>
+          <p className="sm:text-xl text-gray-600 italic">
+            Innovation happens when hardware, software, and users all work in sync.
+          </p>
 
-            <div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto "
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto ">
+            <Link to={"/ContactUs"}
+
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md"
             >
+              Launch Your Project
+            </Link >
 
-              <motion.button
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+            <Link to={"/missions"}
 
-              >
-                Launch Your Project
-
-              </motion.button>
-
-              <motion.button
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
-              >
-                <span>View Case Study</span>
-
-              </motion.button>
-
-
+              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+            >
+              <span>View Missions Completed</span>
+            </Link>
           </div>
         </div>
       </div>

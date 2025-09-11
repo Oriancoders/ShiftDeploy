@@ -62,18 +62,6 @@ function OriginStorySection() {
       ref={sectionRef}
       className="pt-20  text-textColor relative overflow-hidden"
     >
-      {/* Background Pattern */}
-      {/* <div className="absolute inset-0 opacity-10">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 20% 80%, #4361EE 1px, transparent 1px),
-                           radial-gradient(circle at 80% 20%, #F76707 1px, transparent 1px),
-                           radial-gradient(circle at 40% 40%, #4361EE 1px, transparent 1px)`,
-            backgroundSize: "100px 100px",
-          }}
-        ></div>
-      </div> */}
 
       {/* Background elements */}
       <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-32 sm:w-48 lg:w-80 xl:w-96 h-32 sm:h-48 lg:h-80 xl:h-96 bg-gradient-to-br from-blue-200/30 to-blue-300/20 rounded-full blur-3xl" />
@@ -83,7 +71,7 @@ function OriginStorySection() {
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Cinematic Header */}
         <div className="text-center mb-20">
-          <h1 className="text-6xl md:text-7xl font-bold text-primaryBlue mb-4 leading-[1.3]">
+          <h1 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-primaryBlue mb-4 leading-[1.3]">
             Built in chaos
             <span className="block bg-gradient-to-r from-primaryOrange to-orange-600 bg-clip-text text-transparent pb-5">
               Deployed for clarity
@@ -93,7 +81,7 @@ function OriginStorySection() {
 
             text="Every great system starts with a problem worth solving"
             className="   max-w-2xl mx-auto bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-4 rounded-full text-white italic"
-            textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base'
+            textClassName='text-white font-semibold  sm:text-sm lg:text-base'
             gradientFrom="#0C1F3A"
             gradientTo="#0B1D30"
             circleSize={100}
@@ -109,13 +97,9 @@ function OriginStorySection() {
           {/* Stages */}
           <div className="space-y-32">
             {stages.map((stage, index) => (
-              <div
-                key={index}
-                className={`relative transition-all duration-1000 transform ${visibleStages.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-                  }`}
-              >
+     
                 <div
-                  className={`grid md:grid-cols-2 gap-16 items-center ${index % 2 === 1 ? "md:grid-flow-col-dense" : ""}`}
+                  className={`grid md:grid-cols-2 gap-8 sm:gap-16 items-center ${index % 2 === 1 ? "md:grid-flow-col-dense" : ""}`}
                 >
                   {/* Content */}
                   <div className={`${index % 2 === 1 ? "md:col-start-2" : ""}`}>
@@ -134,7 +118,7 @@ function OriginStorySection() {
 
                   {/* Visual */}
                   <div className={`${index % 2 === 1 ? "md:col-start-1" : ""}`}>
-                    <div className="relative h-80 rounded-3xl overflow-hidden bg-slate-400" style={{
+                    <div className="relative h-52 sm:h-80 rounded-3xl overflow-hidden bg-slate-400" style={{
                       backgroundImage : `url(${stage.image})`,
                       backgroundSize : 'cover' ,
                       backgroundRepeat : 'no-repeat'
@@ -147,7 +131,6 @@ function OriginStorySection() {
                   {/* Timeline Node */}
                   <div className="absolute lg:block hidden  left-1/2 transform -translate-x-1/2 w-6 h-6 bg-white rounded-full border-4 border-gray-800 z-10"></div>
                 </div>
-              </div>
             ))}
           </div>
         </div>
@@ -157,8 +140,8 @@ function OriginStorySection() {
           <CursorFollower
 
             text="Some agencies chase trends. We chase fundamentals."
-            className="  max-w-2xl mx-auto bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-4 rounded-full text-white"
-            textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base italic'
+            className="  max-w-2xl mx-auto bg-secondaryBlue px-6 py-4 rounded-full text-white"
+            textClassName='text-white font-semibold sm:text-sm lg:text-base italic'
             gradientFrom="#0C1F3A"
             gradientTo="#0B1D30"
             circleSize={100}

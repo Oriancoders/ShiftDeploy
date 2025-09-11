@@ -54,69 +54,67 @@ const MissionsCompleted = () => {
   }, [isInView]);
 
   const projects = [
-    {
-      title: "Smart EV Charging Platform",
-      client: "Slacker IoT",
-      category: "IoT & Cloud",
-      description:
-        "Developed a full-stack IoT-enabled EV charging solution with real-time telemetry, Stripe billing, and admin dashboard.",
-      image:
-        "https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&cs=tinysrgb&w=800",
-      results: [
-        "Real-time telemetry & alerts",
-        "Automated Stripe billing",
-        "24/7 monitoring & control",
-      ],
-      technologies: [
-        { name: "ESP32", icon: "🔌" },
-        { name: "Spring Boot", icon: "☕" },
-        { name: "MongoDB", icon: "🟢" },
-        { name: "React", icon: "⚛️" },
-        { name: "MQTT", icon: "📡" },
-        { name: "Stripe", icon: "💳" },
-      ],
-      gradient: "from-green-500 to-emerald-700",
-      url: "/CaseStudies/SlackerIOT",
-    },
-    {
-      title: "E-commerce Platform Transformation",
-      client: "K2 Traders",
-      category: "Web Development",
-      description:
-        "Complete redesign and optimization of e-commerce platform, boosting conversions and improving customer experience.",
-      image:
-        "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800",
-      results: ["340% conversion increase", "50% faster loading", "Mobile-first design"],
-      technologies: [
-        { name: "React", icon: "⚛️" },
-        { name: "Node.js", icon: "🟩" },
-        { name: "MongoDB", icon: "🟢" },
-        { name: "AWS", icon: "☁️" },
-        { name: "TailwindCSS", icon: "🎨" },
-      ],
-      gradient: "from-blue-500 to-indigo-600",
-      url: "/CaseStudies/K2TradersCase",
-    },
-    {
-      title: "Cloud Infrastructure Migration",
-      client: "Bullseyes Investments",
-      category: "Cloud Services",
-      description:
-        "Migrated legacy financial systems to AWS cloud with high availability, security, and auto-scaling infrastructure.",
-      image:
-        "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800",
-      results: ["99.9% uptime", "60% cost reduction", "Auto-scaling enabled"],
-      technologies: [
-        { name: "AWS", icon: "☁️" },
-        { name: "Docker", icon: "🐳" },
-        { name: "Kubernetes", icon: "⚓" },
-        { name: "Terraform", icon: "📐" },
-        { name: "CI/CD", icon: "🚀" },
-      ],
-      gradient: "from-orange-500 to-yellow-600",
-      url: "/CaseStudies/BullseyesCase",
-    },
-  ];
+  {
+    title: "Smart EV Charging Platform",
+    client: "Slacker IoT",
+    category: "IoT & Cloud",
+    description:
+      "Developed a full-stack IoT-enabled EV charging solution with real-time telemetry, Stripe billing, and an admin dashboard.",
+    image:
+      "https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&cs=tinysrgb&w=800",
+    results: [
+      "Real-time telemetry & alerts",
+      "Automated Stripe billing",
+      "24/7 monitoring & control",
+    ],
+    technologies: [
+      { name: "ESP32", icon: "SiEspressif" },
+      { name: "Spring Boot", icon: "SiSpringboot" },
+      { name: "MongoDB", icon: "SiMongodb" },
+      { name: "React", icon: "SiReact" },
+      { name: "MQTT", icon: "SiMqtt" },
+      { name: "Stripe", icon: "SiStripe" },
+    ],
+    url: "/CaseStudies/SlackerIOT",
+  },
+  {
+    title: "E-commerce Platform Transformation",
+    client: "K2 Traders",
+    category: "Web Development",
+    description:
+      "Complete redesign and optimization of an e-commerce platform, boosting conversions and improving customer experience.",
+    image:
+      "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800",
+    results: ["340% conversion increase", "50% faster loading", "Mobile-first design"],
+    technologies: [
+      { name: "React", icon: "SiReact" },
+      { name: "Node.js", icon: "SiNodedotjs" },
+      { name: "MongoDB", icon: "SiMongodb" },
+      { name: "AWS", icon: "SiAmazonaws" },
+      { name: "TailwindCSS", icon: "SiTailwindcss" },
+    ],
+    url: "/CaseStudies/K2TradersCase",
+  },
+  {
+    title: "DevOps Pipeline Automation",
+    client: "Bullseyes Investments",
+    category: "DevOps",
+    description:
+      "Implemented fully automated CI/CD pipelines reducing deployment time from hours to minutes while ensuring zero-downtime releases.",
+    image:
+      "https://images.pexels.com/photos/1181472/pexels-photo-1181472.jpeg?auto=compress&cs=tinysrgb&w=800",
+    results: ["95% faster deployments", "Zero-downtime releases", "Automated testing"],
+    technologies: [
+      { name: "Docker", icon: "SiDocker" },
+      { name: "Kubernetes", icon: "SiKubernetes" },
+      { name: "Jenkins", icon: "SiJenkins" },
+      { name: "GitLab CI", icon: "SiGitlab" },
+      { name: "Terraform", icon: "SiTerraform" },
+    ],
+    url: "/CaseStudies/BullseyesCase",
+  },
+];
+
 
 
   return (

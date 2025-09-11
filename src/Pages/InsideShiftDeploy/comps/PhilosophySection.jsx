@@ -59,20 +59,15 @@ function PhilosophySection() {
 
   return (
     <section ref={sectionRef} className="py-24 bg-gray-900 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, #4361EE 2px, transparent 2px),
-                           radial-gradient(circle at 75% 75%, #F76707 2px, transparent 2px)`,
-            backgroundSize: "60px 60px",
-          }}
-        ></div>
+     {/* Background Effects */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-toSecBlue/50 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primaryOrange/50 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="text-center mb-8">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
             The principles that ship <br/>
             <span className="text-primaryOrange">
               with every project
@@ -86,25 +81,19 @@ function PhilosophySection() {
               key={index}
               ref={(el) => (itemRefs.current[index] = el)}
               data-index={index}
-              className={`group cursor-pointer transition-all duration-700 transform ${
+              className={`group cursor-pointer transition-all duration-300 transform ${
                 visibleItems.includes(index) ? "translate-y-0 opacity-100" : "translate-y-32 opacity-0"
               }`}
-              onMouseEnter={() => setHoveredItem(index)}
-              onMouseLeave={() => setHoveredItem(null)}
+
             >
               <div className="relative h-full">
                 <div
-                  className={`relative p-8 rounded-3xl border border-gray-700 bg-gray-800/50 backdrop-blur-sm h-full transition-all duration-500 transform group-hover:border-gray-600 `}
+                  className={`relative p-6 sm:p-8 rounded-3xl border border-gray-700 bg-gray-800/50 backdrop-blur-sm h-full transition-all duration-500 transform group-hover:border-gray-600 `}
                 >
     
 
-                  {/* <div
-                    className={`inline-flex items-center justify-center w-14 h-14 rounded-xl bg-secondaryBlue mb-6 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6`}
-                  >
-                    <div className="text-white">{item.icon}</div>
-                  </div> */}
 
-                  <h3 className="text-2xl font-bold text-white mb-4 transition-colors duration-300">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 transition-colors duration-300">
                     {item.title}
                   </h3>
 
@@ -122,7 +111,7 @@ function PhilosophySection() {
 
         <div className="text-center">
           <div className="max-w-4xl mx-auto">
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed italic font-light">
+            <p className="sm:text-xl md:text-2xl text-gray-300 leading-relaxed italic font-light">
               These aren't just nice words on a wall. They're the non-negotiables that guide every decision,
               <span className="text-orange-400 font-medium"> every line of code</span>,
               <span className="text-white font-medium"> every client conversation</span>.
