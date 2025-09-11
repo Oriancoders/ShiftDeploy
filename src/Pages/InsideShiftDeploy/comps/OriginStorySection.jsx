@@ -60,7 +60,7 @@ function OriginStorySection() {
   return (
     <section
       ref={sectionRef}
-      className="pt-20  text-textColor relative overflow-hidden"
+      className="pt-28 sm:pt-32  text-textColor relative overflow-hidden"
     >
 
       {/* Background elements */}

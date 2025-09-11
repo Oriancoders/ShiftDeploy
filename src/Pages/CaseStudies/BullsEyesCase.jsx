@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { m, motion, useInView } from 'framer-motion';
 import {
     ArrowRight,
@@ -36,6 +36,9 @@ const BullsEyesCase = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, []);
     const techDetails = [
         {
             category: "Market Data & APIs",

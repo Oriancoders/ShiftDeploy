@@ -1,25 +1,55 @@
-import React from 'react'
+import React, { Suspense, lazy, useEffect, useState } from 'react'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
-import HeroSection from './sections/HeroSection'
-import CaseStudyCardsSection from './sections/CaseStudyCardsSection'
-import FeaturedMissionSection from './sections/FeaturedMissionSection'
-import ClientQuoteWallSection from './sections/ClientQuoteWallSection'
-import ImpactAnalyticsSection from './sections/ImpactAnalyticsSection'
-import CallToActionSection from './sections/CallToActionSection'
+import ShiftDeployLoader from '../../components/ShiftDeployLoader'
+
+// ✅ Lazy load all sections
+const HeroSection = lazy(() => import('./sections/HeroSection'))
+const CaseStudyCardsSection = lazy(() => import('./sections/CaseStudyCardsSection'))
+const FeaturedMissionSection = lazy(() => import('./sections/FeaturedMissionSection'))
+const ClientQuoteWallSection = lazy(() => import('./sections/ClientQuoteWallSection'))
+const CallToActionSection = lazy(() => import('./sections/CallToActionSection'))
+const ImpactAnalyticsSection = lazy(() => import('./sections/ImpactAnalyticsSection'))
 
 const Mission_Landing = () => {
+  const [showLoader, setShowLoader] = useState(true)
+
+  // ✅ Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  // ✅ Hide loader when scrollY === 0
+  useEffect(() => {
+    const checkScroll = () => {
+      if (window.scrollY === 0) {
+        setShowLoader(false)
+        window.removeEventListener('scroll', checkScroll)
+      }
+    }
+    window.addEventListener('scroll', checkScroll)
+    checkScroll()
+    return () => window.removeEventListener('scroll', checkScroll)
+  }, [])
+
   return (
-    <div>
-        <Navigation/>
-            <HeroSection/>
-            <CaseStudyCardsSection/>
-            <FeaturedMissionSection/>
-            <ClientQuoteWallSection/>
-            <CallToActionSection/>
-            <ImpactAnalyticsSection/>
-        <Footer/>
-    </div>
+    <>
+      {showLoader && <ShiftDeployLoader />}
+      {!showLoader && (
+        <div className="w-full">
+          <Navigation />
+          <Suspense fallback={<ShiftDeployLoader />}>
+            <HeroSection />
+            <CaseStudyCardsSection />
+            <FeaturedMissionSection />
+            <ClientQuoteWallSection />
+            <CallToActionSection />
+            <ImpactAnalyticsSection />
+            <Footer />
+          </Suspense>
+        </div>
+      )}
+    </>
   )
 }
 

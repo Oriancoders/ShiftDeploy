@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
@@ -10,14 +10,19 @@ const ContactUs = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  // 🟢 Page load hone par scroll top
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
     message: '',
-    phone: '',      // new field
-    budget: '',     // new field
-    timeline: ''    // new field
+    phone: '',
+    budget: '',
+    timeline: ''
   });
 
   const [formStatus, setFormStatus] = useState(null); // 'success', 'error', or null

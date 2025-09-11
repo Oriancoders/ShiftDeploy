@@ -1,32 +1,63 @@
-import React from 'react'
+import React, { Suspense, lazy, useEffect, useState } from 'react'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
-import HeroSection from './sections/HeroSection'
-import ServiceCategoriesSection from './sections/ServiceCategoriesSection'
-import WhatWeSolveSection from './sections/WhatWeSolveSection'
-import ProcessSection from './sections/ProcessSection'
-import CaseSnapshotsSection from './sections/CaseSnapshotsSection'
-import PricingSection from './sections/PricingSection'
-import TestimonialsSection from './sections/TestimonialsSection'
-import FAQSection from './sections/FAQSection'
-import FinalCTASection from './sections/CTA'
+import ShiftDeployLoader from '../../components/ShiftDeployLoader';
+
+// ✅ Lazy load all major sections
+const HeroSection = lazy(() => import('./sections/HeroSection'))
+const ServiceCategoriesSection = lazy(() => import('./sections/ServiceCategoriesSection'))
+const WhatWeSolveSection = lazy(() => import('./sections/WhatWeSolveSection'))
+// const ProcessSection = lazy(() => import('./sections/ProcessSection'))
+// const CaseSnapshotsSection = lazy(() => import('./sections/CaseSnapshotsSection'))
+// const PricingSection = lazy(() => import('./sections/PricingSection'))
+const TestimonialsSection = lazy(() => import('./sections/TestimonialsSection'))
+const FinalCTASection = lazy(() => import('./sections/CTA'))
+const FAQSection = lazy(() => import('./sections/FAQSection'))
+
+
 
 const Toolkit_Landing = () => {
+  const [showLoader, setShowLoader] = useState(true)
+
+  // ✅ Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  // ✅ Hide loader when scrollY === 0
+  useEffect(() => {
+    const checkScroll = () => {
+      if (window.scrollY === 0) {
+        setShowLoader(false)
+        window.removeEventListener('scroll', checkScroll)
+      }
+    }
+    window.addEventListener('scroll', checkScroll)
+    checkScroll()
+    return () => window.removeEventListener('scroll', checkScroll)
+  }, [])
+
   return (
-    <div className='w-full overflow-x-hidden'>
-      <Navigation/>
-        <HeroSection/>
-        <ServiceCategoriesSection/>
-        <WhatWeSolveSection/>
-        {/* <ProcessSection/> */}
-        {/* <CaseSnapshotsSection/> */}
-        {/* <PricingSection/> */}
-        <TestimonialsSection/>
-        <FinalCTASection/>
-        <FAQSection/>
-        
-      <Footer/>
-    </div>
+    <>
+      {showLoader && <ShiftDeployLoader />}
+      {!showLoader && (
+        <div className="w-full overflow-x-hidden">
+          <Navigation />
+          <Suspense fallback={<ShiftDeployLoader />}>
+            <HeroSection />
+            <ServiceCategoriesSection />
+            <WhatWeSolveSection />
+            {/* <ProcessSection /> */}
+            {/* <CaseSnapshotsSection /> */}
+            {/* <PricingSection /> */}
+            <TestimonialsSection />
+            <FinalCTASection />
+            <FAQSection />
+            <Footer />
+          </Suspense>
+        </div>
+      )}
+    </>
   )
 }
 
