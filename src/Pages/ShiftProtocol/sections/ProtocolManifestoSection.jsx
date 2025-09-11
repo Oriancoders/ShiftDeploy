@@ -2,6 +2,7 @@ import { ArrowRight, Shield } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import CursorFollower from "../../../utils/CursorFollower"
+import { Link } from "react-router-dom"
 // Section 1: Protocol Manifesto (Hero)
 function ProtocolManifestoSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -14,8 +15,20 @@ function ProtocolManifestoSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-gray-50 overflow-hidden pt-32 "
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden pt-28 sm:pt-32 "
     >
+       {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 20% 80%, #4361EE 1px, transparent 1px),
+                           radial-gradient(circle at 80% 20%, #F76707 1px, transparent 1px),
+                           radial-gradient(circle at 40% 40%, #4361EE 1px, transparent 1px)`,
+            backgroundSize: "100px 100px",
+          }}
+        ></div>
+      </div>
       {/* Background Animation */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200 rounded-full blur-3xl animate-pulse"></div>
@@ -24,10 +37,8 @@ function ProtocolManifestoSection() {
 
       <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
         <div
-          className={`transition-all duration-1000 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            }`}
+
         >
-          {/* Trust Badge */}
           {/* <div className="mb-8">
             <div className="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-200 shadow-sm">
               <Shield className="w-5 h-5 text-green-500 mr-2" />
@@ -35,13 +46,13 @@ function ProtocolManifestoSection() {
                 200+ 
               </span>
             </div>
-          </div> */}
+          </div>  */}
 
 
 
 
           {/* Main Headline */}
-          <h1 className="text-5xl md:text-7xl font-bold text-primaryBlue mb-8 leading-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-primaryBlue mb-8 leading-tight">
             The Shift Protocol <br />
             <span className="text-primaryOrange ">
               Your guarantee against technical chaos
@@ -53,7 +64,7 @@ function ProtocolManifestoSection() {
             className={`transition-all duration-1000 delay-300 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
               }`}
           >
-            <p className="text-xl  text-gray-700 max-w-4xl mx-auto mb-8 leading-relaxed">
+            <p className="sm:text-xl  text-gray-700 max-w-4xl mx-auto mb-8 leading-relaxed">
               Our battle-tested methodology transforms complex technical challenges into predictable, client-controlled
               outcomes.
               <span className="text-gray-900 font-semibold"> No surprises. No abandonment. No confusion.</span>
@@ -65,53 +76,31 @@ function ProtocolManifestoSection() {
             className={`transition-all duration-1000 delay-500 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
               }`}
           >
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="sm:text-lg text-gray-600 max-w-3xl mx-auto mb-8">
               After 200+ successful deployments, we've codified exactly how to build, optimize, and scale technical
               systems without the typical agency nightmares. The Shift Protocol isn't just our process, it's your
               insurance policy against project failure.
             </p>
           </div>
 
-          {/* Key Promise */}
-          <div
-            className={`transition-all duration-1000 delay-700 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-              }`}
-          >
-            {/* <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 max-w-4xl mx-auto mb-12 border border-green-100">
-              <p className="text-xl text-gray-800 italic font-medium">
-                Every decision transparent. Every milestone client-approved. Every deliverable fully documented and
-                owned by you.
-              </p>
-            </div> */}
-          </div>
+
 
           {/* CTA */}
  
-            <motion.button
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto mb-6 font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md group"
+            <Link to={"/deploy-toolkit"}
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md group mx-auto w-fit"
 
             >
 
               View Deploy Toolkit
               <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
 
-            </motion.button>
+            </Link>
 
           {/* Closing Statement */}
           <div className="text-center mt-16">
-            <CursorFollower
-
-              text="We've Shifted many successfull deployments • Zero project failures"
-              className="  max-w-2xl mx-auto bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-4 rounded-full text-white"
-              textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base italic'
-              gradientFrom="#0C1F3A"
-              gradientTo="#0B1D30"
-              circleSize={100}
-
-            />
+            <h1 className="sm:text-xl  text-gray-700 max-w-4xl mx-auto mb-8 leading-relaxed italic">Every decision transparent. Every milestone client-approved. Every deliverable fully documented and
+                owned by you.</h1>
           </div>
         </div>
       </div>

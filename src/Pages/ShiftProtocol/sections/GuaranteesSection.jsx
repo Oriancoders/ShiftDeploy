@@ -1,55 +1,56 @@
-import { CheckCircle, DollarSign, FileText, Lock, Shield, Users } from "lucide-react"
+import { ArrowRight, CheckCircle, DollarSign, FileText, Lock, Shield, Users } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
 // Section 3: What We Guarantee
 function GuaranteesSection() {
   const [visibleGuarantees, setVisibleGuarantees] = useState([])
   const sectionRef = useRef(null)
 
- const guarantees = [
-  {
-    title: "No Lock-In",
-    fear: "We might get stuck with them forever",
-    guarantee:
-      "You fully own the source code, docs, and access from day one. You can walk away anytime without losing control.",
-    icon: <Lock className="w-8 h-8" />,
-  },
-  {
-    title: "Clear Billing",
-    fear: "Hidden charges could blow up our budget",
-    guarantee:
-      "We work on fixed-price scopes. Any change requires your written approval, so costs stay predictable and safe.",
-    icon: <DollarSign className="w-8 h-8" />,
-  },
-  {
-    title: "Full Docs",
-    fear: "We'll get code but no clear instructions",
-    guarantee:
-      "Every delivery includes full documentation, diagrams, and handover notes, so your team can run it smoothly.",
-    icon: <FileText className="w-8 h-8" />,
-  },
-  {
-    title: "Quality Gates",
-    fear: "We may discover issues too late in the build",
-    guarantee:
-      "We stop at 25%, 50%, 75%, and 100% to run quality reviews. Nothing advances without your explicit approval.",
-    icon: <CheckCircle className="w-8 h-8" />,
-  },
-  {
-    title: "Money-Back",
-    fear: "What if they fail to deliver what we need?",
-    guarantee:
-      "If you’re not satisfied within the first 30 days, we refund your investment in full—no questions, no delays.",
-    icon: <Shield className="w-8 h-8" />,
-  },
-  {
-    title: "Direct Access",
-    fear: "We might only deal with sales, not builders",
-    guarantee:
-      "You always speak with the engineers and designers working on your project—no middle layers, just real experts.",
-    icon: <Users className="w-8 h-8" />,
-  },
-];
+  const guarantees = [
+    {
+      title: "No Lock-In",
+      fear: "We might get stuck with them forever",
+      guarantee:
+        "You fully own the source code, docs, and access from day one. You can walk away anytime without losing control.",
+      icon: <Lock className="w-6 sm:w-8 h-6 sm:h-8" />,
+    },
+    {
+      title: "Clear Billing",
+      fear: "Hidden charges could blow up our budget",
+      guarantee:
+        "We work on fixed-price scopes. Any change requires your written approval, so costs stay predictable and safe.",
+      icon: <DollarSign className="w-6 sm:w-8 h-6 sm:h-8" />,
+    },
+    {
+      title: "Full Docs",
+      fear: "We'll get code but no clear instructions",
+      guarantee:
+        "Every delivery includes full documentation, diagrams, and handover notes, so your team can run it smoothly.",
+      icon: <FileText className="w-6 sm:w-8 h-6 sm:h-8" />,
+    },
+    {
+      title: "Quality Gates",
+      fear: "We may discover issues too late in the build",
+      guarantee:
+        "We stop at 25%, 50%, 75%, and 100% to run quality reviews. Nothing advances without your explicit approval.",
+      icon: <CheckCircle className="w-6 sm:w-8 h-6 sm:h-8" />,
+    },
+    {
+      title: "Money-Back",
+      fear: "What if they fail to deliver what we need?",
+      guarantee:
+        "If you’re not satisfied within the first 30 days, we refund your investment in full.",
+      icon: <Shield className="w-6 sm:w-8 h-6 sm:h-8" />,
+    },
+    {
+      title: "Direct Access",
+      fear: "We might only deal with sales, not builders",
+      guarantee:
+        "You always speak with the engineers and designers working on your project—no middle layers, just real experts.",
+      icon: <Users className="w-6 sm:w-8 h-6 sm:h-8" />,
+    },
+  ];
 
 
 
@@ -75,11 +76,11 @@ function GuaranteesSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="pt-20 bg-gray-50">
+    <section ref={sectionRef} className="pt-5 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
-            Our non-negotiable <br/>
+        <div className="text-center mb-12 sm:mb-20">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            Our non-negotiable <br />
             <span className="text-primaryOrange">
               commitments
             </span>
@@ -91,49 +92,46 @@ function GuaranteesSection() {
           {guarantees.map((guarantee, index) => (
             <div
               key={index}
-              className={`group transition-all duration-700 transform ${
-                visibleGuarantees.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-              } ${index === 4 ? "md:col-span-2 lg:col-span-1 lg:col-start-2" : ""}`}
+              className={`group transition-all duration-700 transform ${index === 4 ? "md:col-span-2 lg:col-span-1 lg:col-start-2" : ""}`}
             >
-              <div className="bg-white rounded-3xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 transform  h-full border border-gray-300">
+              <div className="bg-white rounded-3xl p-6 sm:p-8  sm:hover:shadow-xl transition-all duration-300 transform  h-full border border-gray-300">
                 {/* Icon */}
                 <div
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6 transform transition-all duration-500 `}
+                  className={`inline-flex items-center justify-center w-12 sm:w-16 h-12 sm:h-16 rounded-2xl bg-primaryBlue mb-4 sm:mb-6 transform transition-all duration-500 `}
                 >
                   <div className="text-white">{guarantee.icon}</div>
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">{guarantee.title}</h3>
+                <h3 className="text-2xl font-bold text-gray-900  mb-4 sm:mb-6">{guarantee.title}</h3>
 
                 {/* Fear */}
-                <div className="mb-6">
+                <div className=" mb-4 sm:mb-6">
                   <h4 className="text-sm font-semibold text-primaryOrange mb-2 uppercase tracking-wide">Your Fear:</h4>
-                  <p className="text-gray-700 italic">"{guarantee.fear}"</p>
+                  <p className="text-xs sm:text-md text-gray-700 italic">"{guarantee.fear}"</p>
                 </div>
 
                 {/* Guarantee */}
                 <div>
                   <h4 className="text-sm font-semibold text-primaryBlue mb-2 uppercase tracking-wide">Our Guarantee:</h4>
-                  <p className="text-gray-700 leading-relaxed">{guarantee.guarantee}</p>
+                  <p className="text-xs sm:text-md text-gray-700 leading-relaxed">{guarantee.guarantee}</p>
                 </div>
 
- 
+
               </div>
             </div>
           ))}
         </div>
 
-<motion.button
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md mx-auto mt-20"
+        <Link to={"/ContactUs"}
+          className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md group mx-auto w-fit mt-12"
 
-            >
-              Launch Your Project
+        >
 
-            </motion.button>
+          Lets Deploy Your Project
+          <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+
+        </Link>
       </div>
     </section>
   )

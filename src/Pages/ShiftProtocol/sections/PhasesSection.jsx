@@ -1,6 +1,7 @@
-import { CheckCircle, Clock, Code, Lightbulb, Monitor, Target, TrendingUp } from "lucide-react"
+import { ArrowRight, CheckCircle, Clock, Code, Lightbulb, Monitor, Target, TrendingUp } from "lucide-react"
 import { motion } from "framer-motion"
 import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
 
 // Section 2: The Phases
 function PhasesSection() {
@@ -23,9 +24,7 @@ function PhasesSection() {
       "Clear success criteria definition",
     ],
     approval: "Discovery blueprint sign-off",
-    icon: <Target className="w-8 h-8" />,
-    color: "from-blue-500 to-indigo-600",
-    bgColor: "from-blue-50 to-indigo-50",
+    icon: <Target className="w-6 sm:w-8 h-6 sm:h-8" />,
   },
   {
     number: "02",
@@ -41,9 +40,7 @@ function PhasesSection() {
       "Integration strategy planning",
     ],
     approval: "Solution design document",
-    icon: <Lightbulb className="w-8 h-8" />,
-    color: "from-yellow-500 to-orange-600",
-    bgColor: "from-yellow-50 to-orange-50",
+    icon: <Lightbulb className="w-6 sm:w-8 h-6 sm:h-8" />,
   },
   {
     number: "03",
@@ -59,9 +56,7 @@ function PhasesSection() {
       "Quality checks at 25%, 50%, 75% completion",
     ],
     approval: "Each milestone demo",
-    icon: <Code className="w-8 h-8" />,
-    color: "from-purple-500 to-pink-600",
-    bgColor: "from-purple-50 to-pink-50",
+    icon: <Code className="w-6 sm:w-8 h-6 sm:h-8" />,
   },
   {
     number: "04",
@@ -77,9 +72,7 @@ function PhasesSection() {
       "30-day intensive post-launch support",
     ],
     approval: "Production deployment sign-off",
-    icon: <Monitor className="w-8 h-8" />,
-    color: "from-green-500 to-emerald-600",
-    bgColor: "from-green-50 to-emerald-50",
+    icon: <Monitor className="w-6 sm:w-8 h-6 sm:h-8" />,
   },
   {
     number: "05",
@@ -95,9 +88,7 @@ function PhasesSection() {
       "Full source code and ownership transfer",
     ],
     approval: "Support plan agreement",
-    icon: <TrendingUp className="w-8 h-8" />,
-    color: "from-orange-500 to-red-600",
-    bgColor: "from-orange-50 to-red-50",
+    icon: <TrendingUp className="w-6 sm:w-8 h-6 sm:h-8" />,
   },
 ];
 
@@ -125,16 +116,16 @@ function PhasesSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-to-br from-white via-gray-50 to-gray-50">
+    <section ref={sectionRef} className="pb-12 pt-12 sm:pt-24 bg-gradient-to-br from-white via-gray-50 to-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+        <div className="text-center mb-12 sm:mb-20">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             Five phases <br/>
             <span className="text-primaryOrange">
               Zero surprises
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
             The methodology that eliminates technical project anxiety
           </p>
         </div>
@@ -151,12 +142,12 @@ function PhasesSection() {
               className="relative"
             >
   
-              <div className={`relative z-10 flex justify-between rounded-3xl p-6 shadow-lg border border-gray-100 bg-white transition-all`}>
+              <div className={`relative z-10 flex md:flex-row flex-col justify-between rounded-3xl p-6 shadow-md sm:hover:shadow-lg border border-gray-100 bg-white transition-all`}>
                 {/* Header */}
                 {/* Left side: Phase number, title, timeline, what happens */}
                 <div className="min-w-[40%]">
-                  <div className="flex items-center mb-6">
-                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center mr-4 bg-primaryBlue shadow`}>
+                  <div className="flex items-center mb-4 sm:mb-6">
+                  <div className={`w-12 md:w-14 h-12 md:h-14 rounded-xl flex items-center justify-center mr-4 bg-primaryBlue shadow`}>
                     <span className="text-white">{phase.icon}</span>
                   </div>
                   <div>
@@ -173,32 +164,32 @@ function PhasesSection() {
                 </div>
                 {/* What Happens */}
                 <div className="mb-4">
-                  <h4 className="text-lg font-semibold text-gray-500 mb-2 uppercase tracking-wide">
+                  <h4 className="sm:text-lg font-semibold text-gray-500 mb-2 uppercase tracking-wide">
                     What Happens
                   </h4>
                   <ul className="space-y-2">
                     {phase.whatHappens.map((item, itemIndex) => (
                       <li key={itemIndex} className="flex items-start">
-                        <CheckCircle className="w-4 h-4 text-primaryOrange mr-2 mt-0.5 flex-shrink-0" />
-                        <span className="text-gray-700 text-sm">{item}</span>
+                        <CheckCircle className="w-3 sm:w-4 h-3 sm:h-4 text-primaryOrange mr-2 mt-0.5 flex-shrink-0" />
+                        <span className="text-gray-700 text-xs sm:text-sm">{item}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 </div>
                 {/* Right side: Fear & Promise, Approval */}
-                <div className="border-l border-gray-200 px-10 flex flex-col space-y-6">
+                <div className="md:border-l border-gray-200 md:px-10 flex flex-col space-y-4 md:space-y-6">
                   {/* Approval */}
                 <div className=" pt-3 mb-4">
                   <p className="text-lg text-gray-500 mb-1">Client Approval Required:</p>
-                  <p className="text-gray-800 font-semibold text-sm">{phase.approval}</p>
+                  <p className="text-gray-800 font-semibold text-xs sm:text-sm">{phase.approval}</p>
                 </div>
                 {/* Fear & Promise */}
                   <div className="flex items-start  rounded-lg ">
    
                     <div>
-                      <h4 className="text-lg font-semibold text-primaryOrange uppercase mb-1">Your Fear</h4>
-                      <p className="text-primaryOrange italic text-sm">"{phase.fear}"</p>
+                      <h4 className="sm:text-lg font-semibold text-primaryOrange uppercase mb-1">Your Fear</h4>
+                      <p className="text-primaryOrange italic text-xs sm:text-sm">"{phase.fear}"</p>
                     </div>
                   </div>
                   <div className="flex items-start rounded-lg ">
@@ -206,8 +197,8 @@ function PhasesSection() {
                       <svg className="w-5 h-5 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                     </span> */}
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-900 uppercase mb-1">Our Promise</h4>
-                      <p className="text-primaryBlue font-medium text-sm">{phase.promise}</p>
+                      <h4 className="sm:text-lg font-semibold text-gray-900 uppercase mb-1">Our Promise</h4>
+                      <p className="text-primaryBlue font-medium text-xs sm:text-sm">{phase.promise}</p>
                     </div>
                   </div>
                 </div>
@@ -215,9 +206,17 @@ function PhasesSection() {
             </motion.div>
           ))}
         </div>
-        <div className="">
+        {/* CTA */}
+ 
+            <Link to={"/deploy-toolkit"}
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md group mx-auto w-fit mt-12"
 
-        </div>
+            >
+
+              View Deploy Toolkit
+              <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+
+            </Link>
       </div>
     </section>
   )

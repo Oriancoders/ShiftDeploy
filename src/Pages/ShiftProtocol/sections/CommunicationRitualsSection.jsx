@@ -92,16 +92,16 @@ function CommunicationRitualsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-50">
+    <section ref={sectionRef} className="sm:py-12 py-6 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+        <div className="text-center sm:mb-20 mb-12">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             How we stay <br/>
             <span className="text-primaryOrange">
               connected
             </span>
           </h2>
-          <p className="text-xl text-gray-600">Communication protocols that eliminate project anxiety</p>
+          <p className="sm:text-xl text-gray-600">Communication protocols that eliminate project anxiety</p>
         </div>
 
         {/* Communication Rituals */}
@@ -109,11 +109,9 @@ function CommunicationRitualsSection() {
           {rituals.map((ritual, index) => (
             <div
               key={index}
-              className={`transition-all duration-700 transform ${
-                visibleRituals.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-              }`}
+              className={`transition-all duration-700 transform `}
             >
-              <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-md sm:hover:shadow-xl transition-all duration-300 h-full">
                 {/* Header */}
  
                   <h3 className="text-2xl font-bold text-primaryBlue mb-6">{ritual.title}</h3>
@@ -121,13 +119,13 @@ function CommunicationRitualsSection() {
                 {/* Fear */}
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-primaryOrange mb-2 uppercase tracking-wide">Your Fear:</h4>
-                  <p className="text-gray-700 italic">"{ritual.fear}"</p>
+                  <p className="sm:text-md text-xs text-gray-700 italic">"{ritual.fear}"</p>
                 </div>
 
                 {/* Ritual */}
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-primaryBlue mb-2 uppercase tracking-wide">Our Ritual:</h4>
-                  <p className="text-gray-700 leading-relaxed">{ritual.ritual}</p>
+                  <p className="sm:text-md text-xs text-gray-700 leading-relaxed">{ritual.ritual}</p>
                 </div>
 
                 {/* Tools */}
@@ -136,8 +134,8 @@ function CommunicationRitualsSection() {
                   <ul className="space-y-2">
                     {ritual.tools.map((tool, toolIndex) => (
                       <li key={toolIndex} className="flex items-center text-gray-600">
-                        <CheckCircle className="w-4 h-4 text-primaryOrange mr-2 flex-shrink-0" />
-                        <span className="text-sm">{tool}</span>
+                        <CheckCircle className="w-3 sm:w-4 h-3 sm:h-4 text-primaryOrange mr-2 flex-shrink-0" />
+                        <span className="sm:text-md text-xs">{tool}</span>
                       </li>
                     ))}
                   </ul>

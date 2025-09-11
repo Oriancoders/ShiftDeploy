@@ -50,7 +50,7 @@ export default function CursorFollower({
       {...framerAtts}
     >
       {/* Absolutely positioned container for the glow */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none sm:block hidden">
         <AnimatePresence>
           {hovered && (
             <motion.div

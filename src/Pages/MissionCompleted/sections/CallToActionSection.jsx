@@ -1,5 +1,6 @@
 import { ArrowRight, Clock } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
 
 // Section 6: Call to Action
 function CallToActionSection() {
@@ -26,7 +27,7 @@ function CallToActionSection() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 bg-gray-900 relative overflow-hidden"
+      className="py-20 bg-primaryBlue relative overflow-hidden"
     >
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
@@ -36,12 +37,10 @@ function CallToActionSection() {
 
       <div className="max-w-5xl mx-auto px-6 relative text-center">
         <div
-          className={`transition-all duration-1000 transform ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-          }`}
+          className={`transition-all duration-1000 transform `}
         >
           {/* Header */}
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
             Your growth story starts <br/>
             <span className="text-primaryOrange">
               with the next shift.
@@ -50,7 +49,7 @@ function CallToActionSection() {
 
           {/* Subheadline */}
           <div className="max-w-4xl mx-auto mb-12">
-            <p className="text-xl  text-gray-300 leading-relaxed mb-8">
+            <p className="sm:text-xl  text-gray-300 leading-relaxed mb-8">
               You've seen what we can do. You've read the success stories. You know the results we deliver.<br/>
               The question isn't whether we can solve your challenges, it's when you're ready to begin your mission.
 
@@ -59,7 +58,7 @@ function CallToActionSection() {
           </div>
 
           {/* Social Proof */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 mb-12 max-w-4xl mx-auto">
+          <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 sm:p-8 mb-12 max-w-4xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 text-center">
               <div>
                 <div className="text-3xl font-bold text-white mb-2">50+</div>
@@ -77,7 +76,7 @@ function CallToActionSection() {
           </div>
 
           {/* Urgency */}
-          <div className="mb-8">
+          {/* <div className="mb-8">
             <div className="inline-flex items-center bg-orange-500/20 backdrop-blur-sm rounded-full px-6 py-3 border border-orange-400/30 mb-6">
               <Clock className="w-5 h-5 text-orange-400 mr-2" />
               <span className="text-orange-200">
@@ -85,34 +84,32 @@ function CallToActionSection() {
                 remaining.
               </span>
             </div>
-          </div>
+          </div> */}
 
           {/* Primary CTA */}
-          <div className="mb-12">
-             <button className="group bg-primaryOrange hover:bg-toOrange text-white text-xl font-semibold px-12 py-6 rounded-2xl transition-all duration-300 transform  hover:shadow-blue-500/25">
-              <span className="flex items-center">
-                Book  Your Free Strategy Call
-                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
-            </button>
-          </div>
+           <Link to={"/ContactUs"}
+
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit mb-12 mx-auto"
+            >
+
+              Let's Explore Your Problem Together
+              <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+            </Link >
 
           {/* Secondary CTA */}
           <div className="mb-12">
-            <button className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-12 py-4 rounded-2xl hover:bg-white/20 transition-all duration-300">
+            <Link to={"/insideShiftdeploy"} className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-12 py-4 rounded-2xl hover:bg-white/20 transition-all duration-300">
               See The Shift Protocol
-            </button>
+            </Link>
           </div>
 
           {/* Final Message */}
           <div className="max-w-3xl mx-auto">
-            <p className="text-xl text-gray-300 leading-relaxed mb-6">
+            <p className="sm:text-xl text-gray-300 leading-relaxed mb-6">
               Your competitors are scaling. Your users are waiting. Your technical challenges aren't going to solve
               themselves.
             </p>
-            <p className="text-2xl font-bold text-primaryOrange">
-              Let's begin your mission.
-            </p>
+
           </div>
         </div>
       </div>

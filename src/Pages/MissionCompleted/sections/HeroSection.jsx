@@ -2,10 +2,10 @@ import { ArrowRight, CheckCircle, Filter } from "lucide-react"
 import { useEffect, useRef, useState, } from "react"
 import { motion } from "framer-motion"
 import CursorFollower from "../../../utils/CursorFollower"
+import { Link } from "react-router-dom"
 // Section 1: Hero Section
 function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
-  const [activeFilter, setActiveFilter] = useState("All")
   const sectionRef = useRef(null)
 
   const filters = ["All", "SaaS", "Infra", "UI/UX", "MVPs"]
@@ -17,7 +17,7 @@ function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-gray-50 overflow-hidden pt-20"
+      className="relative pb-10 min-h-screen flex justify-center items-center  bg-gradient-to-br from-blue-50 via-white to-gray-50 overflow-hidden sm:pt-28"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
@@ -37,16 +37,10 @@ function HeroSection() {
           className={`transition-all duration-1000 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
         >
-          {/* Trust Badge
-          <div className="mb-8">
-            <div className="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-200 shadow-sm">
-              <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-              <span className="text-sm text-gray-700 font-medium"></span>
-            </div>
-          </div> */}
+
 
           {/* Main Headlines */}
-          <h1 className="text-5xl md:text-7xl font-bold text-primaryBlue mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-primaryBlue mb-6 leading-tight">
             Missions That Made <br />
             <span className="text-primaryOrange">
               the Shift
@@ -58,10 +52,10 @@ function HeroSection() {
             className={`transition-all duration-1000 delay-300 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
               }`}
           >
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-4 leading-relaxed">
+            <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto mb-4 leading-relaxed">
               See how our clients scaled, shipped, and succeeded the ShiftDeploy way.
             </p>
-            <p className="text-xl text-gray-500 max-w-3xl mx-auto mb-12">
+            <p className="sm:text-xl text-gray-500 max-w-3xl mx-auto mb-12">
               Here's how we brought clarity, speed, and scale to high-stakes tech teams.
             </p>
           </div>
@@ -100,23 +94,25 @@ function HeroSection() {
               }`}
           >
             {/* CTA */}
-            <motion.button
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto  font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+            <a 
+            onClick={() => {
+              const el = document.getElementById("casestudy")
+              const y = el.getBoundingClientRect().top + window.scrollY - 40 // 96px offset (~6rem)
+              window.scrollTo({ top: y, behavior: "smooth" })
+            }}
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto  font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md w-fit"
 
             >
               Explore Success Stories
 
 
-            </motion.button>
+            </a>
 
             <CursorFollower
-              text="50+ missions completed • 100% success rate"
-              className="  max-w-2xl mt-12 bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-4 rounded-full text-white mx-auto"
-              textClassName='text-white font-semibold text-xs sm:text-sm lg:text-base italic'
-              gradientFrom="#0C1F3A"
+              text="“Every line of code is a promise of excellence — crafted with care, tested with precision, and delivered with unwavering commitment to quality.”"
+              className="  max-w-2xl mt-12 bg-primaryBlue px-10 sm:px-6 py-4 rounded-3xl sm:rounded-full text-white mx-auto"
+              textClassName='text-white font-semibold  sm:text-sm lg:text-base italic'
+              gradientFrom="#F76707"
               gradientTo="#0B1D30"
               circleSize={100}
             />

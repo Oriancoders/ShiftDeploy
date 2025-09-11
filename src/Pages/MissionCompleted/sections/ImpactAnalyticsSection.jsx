@@ -13,32 +13,28 @@ function ImpactAnalyticsSection() {
       suffix: "+",
       label: "Total Hours Saved",
       description: "Across all client projects",
-      icon: <Clock className="w-8 h-8" />,
-      color: "from-blue-500 to-indigo-600",
+      icon: <Clock className="w-5 sm:w-8 h-5 sm:h-8" />,
     },
     {
       value: 99.9,
       suffix: "%",
       label: "Average Uptime",
       description: "Post-optimization",
-      icon: <TrendingUp className="w-8 h-8" />,
-      color: "from-green-500 to-emerald-600",
+      icon: <TrendingUp className="w-5 sm:w-8 h-5 sm:h-8" />,
     },
     {
       value: 75,
       suffix: "%",
       label: "Faster Deployments",
       description: "Average improvement",
-      icon: <Rocket className="w-8 h-8" />,
-      color: "from-purple-500 to-pink-600",
+      icon: <Rocket className="w-5 sm:w-8 h-5 sm:h-8" />,
     },
     {
       value: 10,
       suffix: "x",
       label: "Scale Capacity",
       description: "Average increase",
-      icon: <BarChart3 className="w-8 h-8" />,
-      color: "from-orange-500 to-red-600",
+      icon: <BarChart3 className="w-5 sm:w-8 h-5 sm:h-8" />,
     },
   ]
 
@@ -92,17 +88,17 @@ function ImpactAnalyticsSection() {
     <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             The numbers <br/>
             <span className="text-primaryOrange">
               don't lie
             </span>
           </h2>
-          <p className="text-xl text-gray-600">Measurable impact across every mission we complete.</p>
+          <p className="sm:text-xl text-gray-600">Measurable impact across every mission we complete.</p>
         </div>
 
         {/* Main Metrics */}
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid lg:grid-cols-4 grid-cols-2 gap-4 sm:gap-8 mb-16">
           {metrics.map((metric, index) => (
             <div
               key={index}
@@ -110,18 +106,18 @@ function ImpactAnalyticsSection() {
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
               }`}
             >
-              <div className="bg-gray-50 rounded-3xl p-8 text-center hover:bg-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <div className=" bg-white sm:bg-gray-50 rounded-3xl p-4 sm:h-auto h-full sm:p-8 text-center sm:hover:bg-white sm:shadow-none shadow-md sm:hover:shadow-xl transition-all duration-300 transform ">
                 <div
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6`}
+                  className={`inline-flex items-center justify-center w-10 sm:w-16 h-10 sm:h-16 rounded-2xl bg-primaryBlue mb-2 sm:mb-6`}
                 >
                   <div className="text-white">{metric.icon}</div>
                 </div>
-                <div className="text-4xl font-bold text-gray-900 mb-2">
+                <div className="text-lg sm:text-4xl font-bold text-gray-900 mb-2">
                   {animatedNumbers[index] || 0}
                   {metric.suffix}
                 </div>
-                <div className="text-xl font-semibold text-gray-800 mb-2">{metric.label}</div>
-                <div className="text-gray-600">{metric.description}</div>
+                <div className="text-md sm:text-xl font-semibold text-gray-800 mb-2">{metric.label}</div>
+                <div className="text-xs sm:text-md text-gray-600">{metric.description}</div>
               </div>
             </div>
           ))}
@@ -151,8 +147,8 @@ function ImpactAnalyticsSection() {
 
         {/* Bottom Message */}
         <div className="text-center mt-16">
-          <p className="text-2xl text-gray-600 italic">
-            Every number represents a team that trusted us with their mission-critical challenges.
+          <p className="text-xl sm:text-2xl text-gray-600 italic">
+            Every number represents a team that trusted us with their critical challenges
           </p>
         </div>
       </div>

@@ -74,13 +74,13 @@ function FeaturedMissionSection() {
     <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             Mission spotlight <br/>
             <span className="text-primaryOrange">
               {mission.client}
             </span>
           </h2>
-          <p className="text-xl text-gray-600">{mission.category}</p>
+          <p className="sm:text-xl text-gray-600">{mission.category}</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
@@ -95,7 +95,7 @@ function FeaturedMissionSection() {
               <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Before → After</h3>
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Before */}
-                <div className="bg-primaryOrange/10 border-l-4 border-primaryOrange rounded-r-2xl p-6">
+                <div className="bg-primaryOrange/10 border-l-4 border-primaryOrange rounded-r-2xl p-6 sm:max-w-auto max-w-[90vw]">
                   <h4 className="text-lg font-semibold text-primaryOrange mb-4">Before ShiftDeploy</h4>
                   <div className="space-y-3">
                     {Object.entries(mission.before).map(([key, value]) => (
@@ -108,7 +108,7 @@ function FeaturedMissionSection() {
                 </div>
 
                 {/* After */}
-                <div className="bg-primaryBlue/5 border-l-4 border-primaryBlue rounded-r-2xl p-6">
+                <div className="bg-primaryBlue/5 border-l-4 border-primaryBlue rounded-r-2xl p-6  sm:max-w-auto max-w-[90vw]">
                   <h4 className="text-lg font-semibold text-primaryBlue  mb-4">After ShiftDeploy</h4>
                   <div className="space-y-3">
                     {Object.entries(mission.after).map(([key, value]) => (
@@ -123,7 +123,7 @@ function FeaturedMissionSection() {
             </div>
 
             {/* Impact Metrics */}
-            <div className="bg-white shadow-md rounded-2xl p-8">
+            <div className="bg-white shadow-md rounded-2xl p-8  sm:max-w-auto max-w-[90vw]">
               <h4 className="text-xl font-bold text-gray-900 mb-6 text-center">Mission Impact</h4>
               <div className="grid grid-cols-2 gap-6 text-primaryBlue">
                 <div className="text-center">
@@ -148,17 +148,15 @@ function FeaturedMissionSection() {
 
           {/* Right Side: Challenges/Solutions & Timeline */}
           <div
-            className={`transition-all duration-1000 delay-300 transform ${
-              isVisible ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"
-            }`}
+            className={`transition-all duration-1000 delay-300 transform`}
           >
             {/* Tab Navigation */}
-            <div className="flex bg-gray-100 rounded-2xl p-2 mb-8">
+            <div className="flex bg-gray-100 rounded-2xl p-2 mb-4 sm:mb-8">
               {["challenge", "solution", "timeline"].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`flex-1 py-3 px-6 rounded-xl font-medium transition-all duration-300 capitalize ${
+                  className={`sm:text-md text-xs flex-1 py-3 px-6 rounded-xl font-medium transition-all duration-300 capitalize ${
                     activeTab === tab ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
@@ -171,11 +169,11 @@ function FeaturedMissionSection() {
             <div className="min-h-[400px]">
               {activeTab === "challenge" && (
                 <div className="space-y-4">
-                  <h4 className="text-xl font-bold text-gray-900 mb-6">The Challenges We Faced</h4>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4 sm:mb-6">The Challenges We Faced</h4>
                   {mission.challenges.map((challenge, index) => (
-                    <div key={index} className="flex items-start bg-red-50 rounded-xl p-4">
-                      <Target className="w-5 h-5 text-red-500 mr-3 mt-1 flex-shrink-0" />
-                      <p className="text-gray-700">{challenge}</p>
+                    <div key={index} className="flex sm:items-center items-start bg-red-50 rounded-xl p-4">
+                      <Target className="w-4 sm:w-5 h-4 sm:h-5 text-red-500 mr-3 mt-1 flex-shrink-0" />
+                      <p className="sm:text-md text-xs text-gray-700">{challenge}</p>
                     </div>
                   ))}
                 </div>
@@ -183,20 +181,20 @@ function FeaturedMissionSection() {
 
               {activeTab === "solution" && (
                 <div className="space-y-6">
-                  <h4 className="text-xl font-bold text-gray-900 mb-6">How We Solved It</h4>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4 sm:mb-6">How We Solved It</h4>
                   <div className="space-y-4">
                     {mission.solutions.map((solution, index) => (
-                      <div key={index} className="flex items-start bg-green-50 rounded-xl p-4">
-                        <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                        <p className="text-gray-700">{solution}</p>
+                      <div key={index} className="flex sm:items-center items-start bg-green-50 rounded-xl p-4">
+                        <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                        <p className="sm:text-md text-xs text-gray-700">{solution}</p>
                       </div>
                     ))}
                   </div>
 
                   {/* Tools Used */}
                   <div className="mt-8">
-                    <h5 className="text-lg font-semibold text-gray-900 mb-4">Tools & Technologies</h5>
-                    <div className="grid grid-cols-3 gap-4">
+                    <h5 className="text-lg font-semibold text-gray-900 mb-4 sm:mb-6">Tools & Technologies</h5>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                       {mission.tools.map((tool, index) => (
                         <div key={index} className="flex items-center bg-white rounded-xl p-3 shadow-sm">
                           <div className="text-gray-600 mr-2">{tool.icon}</div>
@@ -213,13 +211,13 @@ function FeaturedMissionSection() {
                   <h4 className="text-xl font-bold text-gray-900 mb-6">Project Timeline</h4>
                   <div className="space-y-4">
                     {mission.phases.map((phase, index) => (
-                      <div key={index} className="flex items-center bg-gray-50 rounded-xl p-4">
-                        <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mr-4">
-                          <CheckCircle className="w-5 h-5 text-white" />
+                      <div key={index} className="flex items-center bg-gray-50 rounded-xl p-3 sm:p-4 bg-primaryBlue/5">
+                        <div className="w-6 sm:w-8 h-6 sm:h-8 bg-primaryBlue rounded-full flex items-center justify-center mr-4">
+                          <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-white" />
                         </div>
                         <div className="flex-1">
-                          <div className="flex justify-between items-center">
-                            <span className="font-medium text-gray-900">{phase.phase}</span>
+                          <div className="flex justify-between items-center ">
+                            <span className="sm:text-md text-xs font-medium text-gray-900">{phase.phase}</span>
                             <span className="text-sm text-gray-500">{phase.duration}</span>
                           </div>
                         </div>
@@ -227,10 +225,10 @@ function FeaturedMissionSection() {
                     ))}
                   </div>
 
-                  <div className="mt-6 bg-blue-50 rounded-xl p-4">
-                    <div className="flex items-center justify-between">
-                      <span className="font-semibold text-blue-900">Total Duration:</span>
-                      <span className="text-xl font-bold text-blue-600">{mission.timeline}</span>
+                  <div className="mt-6 bg-primaryBlue/5  rounded-xl p-4">
+                    <div className="flex items-center text-primaryBlue justify-between">
+                      <span className="font-semibold ">Total Duration:</span>
+                      <span className="text-xl font-bold ">{mission.timeline}</span>
                     </div>
                   </div>
                 </div>

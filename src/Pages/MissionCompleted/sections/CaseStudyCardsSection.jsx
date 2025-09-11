@@ -31,7 +31,7 @@ function CaseStudyCardsSection() {
       category: "eCommerce Development",
       outcome: "Zero recurring fees with a fully optimized React-based store",
       visual: "https://images.unsplash.com/photo-1586880244406-556ebe35f282?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      metrics: { savings: "$1000s/year", hosting: "Vercel Free ", maintenance: "One-time" },
+      metrics: { savings: "$1000s", hosting: " Free ", maintenance: "One-time" },
       url: "/CaseStudies/K2TradersCase"
     },
 
@@ -61,16 +61,16 @@ function CaseStudyCardsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="pt-10 bg-gray-50">
+    <section id="casestudy" ref={sectionRef} className="pt-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Success stories that
-            <span className="block bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-              speak for themselves
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+            Success Stories That <br/>
+            <span className="text-primaryOrange">
+              Speak For Themselves
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
             From scaling challenges to breakthrough launches, here's how we've helped teams achieve the impossible.
           </p>
         </div>
@@ -81,12 +81,12 @@ function CaseStudyCardsSection() {
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
               data-index={index}
-              className={`group transition-all duration-700 transform ${visibleCards.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+              className={`group transition-all duration-300 transform ${visibleCards.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
                 }`}
 
             >
               <div
-                className={`relative bg-white rounded-3xl overflow-hidden hover:shadow-xl shadow-md transition-all duration-300`}
+                className={`relative bg-white rounded-3xl overflow-hidden sm:hover:shadow-xl shadow-md transition-all duration-300`}
               >
                 {/* Visual */}
                 <div className="relative h-48 overflow-hidden">
@@ -104,12 +104,12 @@ function CaseStudyCardsSection() {
                 </div>
 
                 {/* Content */}
-                <div className="p-8 flex flex-col">
+                <div className="p-6 sm:p-8 flex flex-col">
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">{study.brand}</h3>
                   <p className="text-gray-700 leading-relaxed mb-6">{study.outcome}</p>
 
                   {/* Metrics */}
-                  <div className="grid grid-cols-3 gap-4 mb-6">
+                  <div className="grid grid-cols-3 gap-4 mb-4 sm:mb-6">
                     {Object.entries(study.metrics).map(([key, value], metricIndex) => (
                       <div key={metricIndex} className="text-center">
                         <div className="text-lg font-bold text-gray-900">{value}</div>
