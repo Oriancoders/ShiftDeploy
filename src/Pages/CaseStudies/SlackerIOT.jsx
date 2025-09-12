@@ -26,10 +26,10 @@ import {
   Cpu,
   Activity
 } from 'lucide-react';
-import { fadeInUp, staggerContainer } from '../../utils/animations';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
 import { Link } from 'react-router-dom';
+import bannertry1 from '../../Assets/Images/casestudies/evImage/bannertry1.png'
 
 const SlackerIOT = () => {
   const ref = useRef(null);
@@ -55,7 +55,8 @@ const SlackerIOT = () => {
           name: "Temperature Monitoring",
           description: "Thermal sensors integrated throughout the charging system to prevent overheating and ensure optimal performance under various environmental conditions."
         }
-      ]
+      ],
+      image :  bannertry1
     },
     {
       category: "Communication Protocol",
@@ -73,7 +74,9 @@ const SlackerIOT = () => {
           name: "WebSocket Integration",
           description: "Real-time bidirectional communication enabling instant updates between the web dashboard and charging stations without polling delays."
         }
-      ]
+      ],
+      image :  bannertry1
+
     },
     {
       category: "Backend Infrastructure",
@@ -91,7 +94,9 @@ const SlackerIOT = () => {
           name: "RESTful API Design",
           description: "Well-structured API endpoints following REST principles, enabling seamless integration with frontend applications and third-party services."
         }
-      ]
+      ],
+      image :  bannertry1
+
     },
     {
       category: "Frontend & User Interface",
@@ -109,7 +114,9 @@ const SlackerIOT = () => {
           name: "Real-time Dashboard",
           description: "Live monitoring interface displaying charging status, energy consumption, user activity, and system health metrics with automatic updates."
         }
-      ]
+      ],
+      image :  bannertry1
+
     },
     {
       category: "Payment & Security",
@@ -127,7 +134,9 @@ const SlackerIOT = () => {
           name: "Role-based Access Control",
           description: "Granular permission system allowing different access levels for administrators, operators, and end-users with comprehensive audit trails."
         }
-      ]
+      ],
+      image :  bannertry1
+
     }
   ];
 
@@ -455,7 +464,11 @@ const SlackerIOT = () => {
                     <h3 className="text-2xl font-bold text-primaryBlue">{category.category}</h3>
                   </div>
 
-                  <div className="image-placeholder w-full h-56 bg-gray-200 rounded-xl mb-6 flex items-center justify-center text-gray-500">
+                  <div style={{
+                    backgroundImage : `url(${category.image})`,
+                    backgroundSize : 'cover',
+                    backgroundPosition : 'center',
+                  }} className="image-placeholder w-full h-56 bg-gray-200 rounded-xl mb-6 flex items-center justify-center text-gray-500">
                     {category.category} Diagram
                   </div>
 

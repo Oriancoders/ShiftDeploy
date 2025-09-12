@@ -200,9 +200,9 @@ const ContactUs = () => {
               initial={{ opacity: 0, x: 60 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-8 lg:mt-0"
+              className="mt-8 lg:mt-0  sm:order-2 order-1 "
             >
-              <div className="bg-white rounded-2xl sm:shadow-xl border border-slate-200 p-6 ">
+              <div className="bg-white rounded-2xl sm:shadow-xl border border-slate-200 p-6">
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 ">
                   {/* Name Field */}
                   <div>

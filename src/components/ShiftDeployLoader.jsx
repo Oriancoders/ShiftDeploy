@@ -1,6 +1,6 @@
 export default function ShiftDeployLoader() {
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0A1930] text-white">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-primaryBlue text-white">
       <div className="relative w-24 h-24">
         {[...Array(4)].map((_, i) => (
           <div
