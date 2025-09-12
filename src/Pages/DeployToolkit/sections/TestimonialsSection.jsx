@@ -54,7 +54,7 @@ function TestimonialsSection() {
   return (
     <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center sm:mb-20">
+        <div className="text-center  sm:mb-20">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             What founders <br/>
             <span className="text-primaryOrange">
@@ -65,7 +65,7 @@ function TestimonialsSection() {
 
         {/* Testimonial Carousel */}
         <div className="relative mb-12 sm:mb-20">
-          <div className="bg-white rounded-3xl p-6 sm:p-12 text-center min-h-[300px] flex items-center justify-center">
+          <div className="sm:bg-white sm:shadow-lg rounded-3xl  sm:p-12 text-center sm:min-h-[300px] flex items-center justify-center">
             <div
             >
               <blockquote className="sm:text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl">

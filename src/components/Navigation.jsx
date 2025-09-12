@@ -107,6 +107,7 @@ const Navigation = ({ isDarkBg = false }) => {
                 {navItems.map(({ label, path }, index) => {
                   const isActive = location.pathname === path;
                   return (
+              <Link to={path}>
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
@@ -117,17 +118,16 @@ const Navigation = ({ isDarkBg = false }) => {
                         ${isActive ? 'text-primaryBlue' : 'text-gray-700 hover:text-blue-600'}
                       `}
                     >
-                      <Link to={path}>
                         {label}
-                      </Link>
                     </motion.div>
+                      </Link>
                   );
                 })}
               </div>
 
-              <button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg ">
+              <Link to={"/ContactUs"} className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg ">
                 Get Started
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}

@@ -90,7 +90,7 @@ function HowWeWorkSection() {
                     <ul className="space-y-2">
                       {principle.tools.map((tool, toolIndex) => (
                         <li key={toolIndex} className="flex items-center text-gray-700">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                          <CheckCircle className="w-4 h-4 text-primaryOrange mr-2 flex-shrink-0" />
                           <span className="text-sm">{tool}</span>
                         </li>
                       ))}

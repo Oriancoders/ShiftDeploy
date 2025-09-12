@@ -95,17 +95,17 @@ function FinalCTASection() {
             </div> */}
 
           {/* Risk Reversal */}
-          <p className="sm:text-lg text-gray-400 mb-8">
+          <p className="sm:text-lg text-gray-200 mb-8">
             Zero commitment. Zero cost. Just clarity on your technical roadmap.
           </p>
 
           {/* Primary CTA */}
-           <Link to={"/shift-protocol"}
+           <Link to={"/ContactUs"}
 
               className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit mb-12 mx-auto"
             >
 
-              Let's Explore Your Problem Together
+              Let's Solve Your Problem Together
               <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
             </Link >
 
@@ -115,12 +115,12 @@ function FinalCTASection() {
           {/* Contact Information */}
           <div className="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto mb-12">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
-              <Mail className="w-8 h-8 text-blue-400 mx-auto mb-4" />
-              <h3 className="text-white font-semibold mb-2">Questions? Email us:</h3>
-              <p className="text-gray-300">hello@deploytoolkit.com</p>
+              <Mail className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
+              <h3 className="text-white font-semibold mb-2">Questions? Email us</h3>
+              <p className="text-gray-300">contact@shiftdeploy.com</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
-              <Download className="w-8 h-8 text-orange-400 mx-auto mb-4" />
+              <Download className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
               <h3 className="text-white font-semibold mb-2">Download</h3>
               <p className="text-gray-300"> Technical Audit Checklist</p>
             </div>

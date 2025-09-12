@@ -8,62 +8,64 @@ const FlightLogs = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      title: "CTO",
-      company: "TechGear Solutions",
-      image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300",
-      rating: 5,
-      review: "ShiftDeploy transformed our entire e-commerce infrastructure. The team's expertise in React and AWS helped us achieve a 340% increase in conversions. Their attention to detail and proactive communication made the entire process seamless.",
-      project: "E-commerce Platform Transformation"
-    },
-    {
-      name: "Michael Chen",
-      title: "CEO",
-      company: "FinanceFlow Corp",
-      image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300",
-      rating: 5,
-      review: "The cloud migration project exceeded all expectations. We went from constant downtime issues to 99.9% uptime, and our infrastructure costs dropped by 60%. The team's DevOps expertise is unmatched.",
-      project: "Cloud Infrastructure Migration"
-    },
-    {
-      name: "Emily Rodriguez",
-      title: "Product Manager",
-      company: "InnovateHub",
-      image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=300",
-      rating: 5,
-      review: "ShiftDeploy's CI/CD implementation revolutionized our development process. Deployment time went from hours to minutes, and we haven't had a single failed release since going live. Absolutely incredible work!",
-      project: "DevOps Pipeline Automation"
-    },
-    {
-      name: "David Park",
-      title: "Founder",
-      company: "StartupVision",
-      image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300",
-      rating: 5,
-      review: "As a startup, we needed a partner who understood our constraints and growth ambitions. ShiftDeploy delivered a scalable solution that grew with us. Their strategic guidance was invaluable.",
-      project: "Scalable Web Application"
-    },
-    {
-      name: "Lisa Thompson",
-      title: "IT Director",
-      company: "RetailMax",
-      image: "https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&w=300",
-      rating: 5,
-      review: "The security hardening and performance optimization ShiftDeploy provided gave us peace of mind and improved user experience. Our page load times improved by 70%, and we've had zero security incidents.",
-      project: "Security & Performance Optimization"
-    },
-    {
-      name: "Robert Kim",
-      title: "VP of Technology",
-      company: "DataDriven Inc",
-      image: "https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?auto=compress&cs=tinysrgb&w=300",
-      rating: 5,
-      review: "ShiftDeploy's expertise in database optimization and cloud architecture helped us handle 10x traffic growth without any performance issues. Their monitoring setup gives us complete visibility into our systems.",
-      project: "Database & Infrastructure Scaling"
-    }
-  ];
+ const testimonials = [
+  {
+    name: "Mohammed Cameron",
+    title: "CEO",
+    company: "Bullseye Investment",
+    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300",
+    rating: 5,
+    review: "ShiftDeploy completely revamped our investment platform. Their deep knowledge of React and cloud infrastructure increased our user engagement by over 300%. Communication and delivery were flawless.",
+    project: "Investment Platform Revamp"
+  },
+  {
+    name: "Fatima Wells",
+    title: "CTO",
+    company: "Slacker IOT",
+    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300",
+    rating: 5,
+    review: "The IoT integration project was seamless thanks to ShiftDeploy. From device connectivity to real-time data dashboards, everything was delivered on time and exceeded expectations.",
+    project: "IoT Device & Dashboard Integration"
+  },
+  {
+  name: "Alex Turner",
+  title: "Founder",
+  company: "K2 Traders",
+  image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=300",
+  rating: 5,
+  review: "ShiftDeploy delivered a full-featured e-commerce solution for K2 Traders with **zero deployment costs** and **no ongoing maintenance fees**. The platform was ready to launch immediately and exceeded our expectations in usability and performance.",
+  project: "One-Time Payment E-Commerce Solution"
+},
+
+  // {
+  //   name: "Sophie Clarke",
+  //   title: "Product Manager",
+  //   company: "GreenLeaf Foods",
+  //   image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300",
+  //   rating: 5,
+  //   review: "From supply chain automation to real-time reporting, ShiftDeploy transformed our operations. The results were immediate and measurable, making our processes much more efficient.",
+  //   project: "Supply Chain Automation"
+  // },
+  // {
+  //   name: "Ryan Foster",
+  //   title: "CTO",
+  //   company: "UrbanNest",
+  //   image: "https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&w=300",
+  //   rating: 5,
+  //   review: "ShiftDeploy delivered an outstanding web platform that enhanced our property management system. Their UI/UX expertise made the app intuitive and easy to adopt.",
+  //   project: "Property Management Platform"
+  // },
+  // {
+  //   name: "Clara Hughes",
+  //   title: "VP of Technology",
+  //   company: "NextGen Analytics",
+  //   image: "https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?auto=compress&cs=tinysrgb&w=300",
+  //   rating: 5,
+  //   review: "The analytics dashboard ShiftDeploy created gave us insights we never had before. Data visualization and system performance were top-notch, empowering our business decisions.",
+  //   project: "Advanced Analytics Dashboard"
+  // }
+];
+
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (

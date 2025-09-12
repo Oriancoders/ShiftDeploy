@@ -5,19 +5,19 @@ import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animati
 import CursorFollower from '../../../utils/CursorFollower';
 import { Link } from 'react-router-dom';
 const DeployToolkit = () => {
-  const [activeIndex, setActiveIndex] = useState(null)
-  const [mouseOverIndex, setMouseOverIndex] = useState(null)
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [mouseOverIndex, setMouseOverIndex] = useState(null);
+  const [websiteInput, setWebsiteInput] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
+  const formRef = useRef();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const handleIndex = (index) => {
     setActiveIndex(index)
   }
-  const handleMouseOver = (index) => {
-    setMouseOverIndex(index != activeIndex ? index : null)
-  }
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   const tools = [
     {
       icon: Globe,
@@ -69,39 +69,43 @@ const DeployToolkit = () => {
     }
   ];
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setMessage('');
+
+    // Remove https:// or http:// then validate domain
+    const domain = websiteInput.replace(/^https?:\/\//, '').trim();
+    const domainRegex = /^[a-zA-Z0-9.-]+\.(com|pk|net|org|io|co|dev|app)$/i;
+
+    if (!domainRegex.test(domain)) {
+      setMessage('Please enter a valid domain (like example.com or example.pk)');
+      return;
+    }
+
+    setLoading(true);
+
+    emailjs.send(
+      'service_tvail12',      // 🔹 replace
+      'template_u2xr93k',     // 🔹 replace
+      {
+        website: domain
+      },
+      'QvcGHkk74en4u55cN'       // 🔹 replace
+    )
+      .then(() => {
+        setMessage('✅ Website audit request sent successfully!');
+        setLoading(false)
+        setWebsiteInput('');
+      })
+      .catch(() => {
+        setMessage('❌ Failed to send. Please try again.');
+      })
+      .finally(() => setLoading(false));
+  };
 
 
-  const builtToScale = [
-    {
-      heading: "DevOps Automation", icon: <Globe sx={{ fontSize: 30 }} />, description: "Streamlined workflows with CI/CD pipelines and automated testing", problem: "Manual processes",
-      solution: "Full automation",
-    },
 
-    {
-      heading: "DevOps Automation", icon: <Globe sx={{ fontSize: 30 }} />, description: "Streamlined workflows with CI/CD pipelines and automated testing", problem: "Manual processes",
-      solution: "Full automation",
-    },
 
-    {
-      heading: "DevOps Automation", icon: <Globe sx={{ fontSize: 30 }} />, description: "Streamlined workflows with CI/CD pipelines and automated testing", problem: "Manual processes",
-      solution: "Full automation",
-    },
-
-    {
-      heading: "DevOps Automation", icon: <Globe sx={{ fontSize: 30 }} />, description: "Streamlined workflows with CI/CD pipelines and automated testing", problem: "Manual processes",
-      solution: "Full automation",
-    },
-
-    {
-      heading: "DevOps Automation", icon: <Globe sx={{ fontSize: 30 }} />, description: "Streamlined workflows with CI/CD pipelines and automated testing", problem: "Manual processes",
-      solution: "Full automation",
-    },
-
-    {
-      heading: "DevOps Automation", icon: <Globe sx={{ fontSize: 30 }} />, description: "Streamlined workflows with CI/CD pipelines and automated testing", problem: "Manual processes",
-      solution: "Full automation",
-    },
-  ]
 
   return (
     <section id="deploy-toolkit" className="pt-12  text-textColor bg-gradient-to-b from-gray-50 to-gray-50">
@@ -124,7 +128,7 @@ const DeployToolkit = () => {
           </motion.h2>
           <motion.p
             variants={fadeInUp}
-            className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  leading-relaxed px-4 sm:px-0 text-gray-700"
+            className="sm:text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  leading-relaxed px-4 sm:px-0 text-gray-700"
           >
             Our comprehensive Deploy Toolkit includes everything you need to build,
             deploy, and scale modern applications with confidence.
@@ -145,7 +149,7 @@ const DeployToolkit = () => {
               >
 
                 <h3 className="text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4 text-gray-900">{tool.title}</h3>
-                <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed   text-base text-gray-700">{tool.description}</p>
+                <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed   sm:text-lg text-gray-700">{tool.description}</p>
 
                 <div className="space-y-1.5 sm:space-y-2 lg:space-y-3">
                   <div className="flex items-center  space-x-2 sm:space-x-3 ">
@@ -154,7 +158,7 @@ const DeployToolkit = () => {
                       <span className="text-primaryOrange font-semibold">Problem:</span>
                     </span>
                   </div>
-                  <span className='text-gray-700 text-base'>
+                  <span className='text-gray-700 text-xs sm:text-base'>
 
                     {tool.problem}
                   </span>
@@ -200,7 +204,7 @@ const DeployToolkit = () => {
             className="w-full  py-8 px-6 sm:px-0 sm:p-8 lg:p-12 xl:p-16  drop-shadow-sm flex md:flex-row flex-col   max-w-7xl mx-auto gap-4 sm:gap-6"
           >
             <div className='flex-1 '>
-              <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
+              <h3 className="text-2xl sm:text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
                 Whether it's containers, CI/CD, or observability <br /> we’ve done it for teams like yours.
               </h3>
               <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12  mx-auto leading-relaxed"
@@ -211,18 +215,39 @@ const DeployToolkit = () => {
 
             </div>
 
-            <div className='flex-1 space-y-8'>
+            <div className='flex flex-col gap-6'>
+             <form
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className='flex-1 space-y-8'>
               <img src="https://seranking.com/blog/wp-content/uploads/2022/12/Open-Website-Audit-Settings.png" alt="" className='w-full h-[200px] sm:h-[300px]' />
 
-              <div className='flex flex-col sm:flex-row justify-between sm:items-center sm:bg-white  rounded-lg sm:rounded-2xl w-full overflow-hidden gap-y-6'>
-                <input type="text" placeholder='Enter your website' className='p-4 outline-none border-none text-textColor h-full sm:rounded-none rounded-lg' />
+              <div className='flex flex-col sm:flex-row justify-between sm:items-center sm:bg-white  rounded-lg sm:rounded-2xl w-full overflow-hidden gap-y-4'>
+                <input name='websiteInput'
+                  type="text"
+                  value={websiteInput}
+                  onChange={(e) => setWebsiteInput(e.target.value)}
+                  placeholder='Enter your website'
+                  className='p-4 outline-none border-none text-textColor h-full sm:rounded-none rounded-lg' />
                 <button
-                  className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-4 rounded-lg sm:rounded-none sm:rounded-r-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm sm:w-fit w-full"
+                  disabled={loading}
+                  className="bg-primaryOrange disabled:bg-gray-600 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-4 rounded-lg sm:rounded-none sm:rounded-r-2xl font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-sm sm:w-fit w-full"
                 >
-                  Send me free audit
-                  <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+                  {loading ? (
+                    <>
+                    Sending request
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      Send me free audit
+                      <ArrowRight className="w-5 h-5" />
+                    </>
+                  )}
                 </button>
               </div>
+            </form>
+                {message && <div className='text-md mt-2'>{message}</div>}
             </div>
           </div>
         </div>

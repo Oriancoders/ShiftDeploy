@@ -32,9 +32,9 @@ const Hero = () => {
           >
             <CursorFollower
               text="Deploy -> Scale -> Succeed"
-              className=" w-fit mb-4 sm:mb-6 md:mb-8 bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-2 rounded-full text-white"
+              className=" w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue  px-6 py-2 rounded-full text-white"
               textClassName='text-white font-semibold text-sm lg:text-base italic'
-              gradientFrom="#0C1F3A"
+              gradientFrom="#f76707"
               gradientTo="#0B1D30"
               circleSize={100}
             />
@@ -50,7 +50,7 @@ const Hero = () => {
 
               </span>
               <br />
-              <span className="bg-gradient-to-r from-secondaryBlue to-toSecBlue bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primaryOrange to-toOrange bg-clip-text text-transparent">
                 That Perform
 
               </span>

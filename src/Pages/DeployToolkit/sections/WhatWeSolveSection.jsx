@@ -11,28 +11,28 @@ function WhatWeSolveSection() {
   const problems = [
     {
       pain: "Our app is slow and users are complaining, but we don't know why.",
-      fix: "Performance Forensics — We find the bottlenecks, fix the code, and monitor the metrics that matter.",
-      icon: <BarChart3 className="w-6 h-6" />,
+      fix: "Performance Forensics: We find the bottlenecks, fix the code, and monitor the metrics that matter.",
+      icon: <BarChart3 className="w-4 sm:w-6 h-4 sm:h-6" />,
     },
     {
       pain: "We're spending more on servers than salaries, and it's getting worse.",
-      fix: "Cost Optimization — Right-size your infrastructure and cut cloud bills by 40-60% without sacrificing performance.",
-      icon: <TrendingUp className="w-6 h-6" />,
+      fix: "Cost Optimization: Right-size your infrastructure and cut cloud bills by 40-60% without sacrificing performance.",
+      icon: <TrendingUp className="w-4 sm:w-6 h-4 sm:h-6" />,
     },
     {
       pain: "Every deployment is a gamble. Sometimes it works, sometimes it doesn't.",
       fix: "Bulletproof CI/CD — Automated testing, staged rollouts, and instant rollbacks. Deploy with confidence.",
-      icon: <Rocket className="w-6 h-6" />,
+      icon: <Rocket className="w-4 sm:w-6 h-4 sm:h-6" />,
     },
     {
       pain: "We need to integrate with [insert API here] but our team has never done it.",
       fix: "Integration Specialists — We've connected everything to everything. Your integration works on day one.",
-      icon: <Globe className="w-6 h-6" />,
+      icon: <Globe className="w-4 sm:w-6 h-4 sm:h-6" />,
     },
     {
       pain: "We're growing fast but our systems aren't. Everything's breaking.",
       fix: "Scale-Ready Architecture — Systems designed to handle 10x growth without 10x complexity.",
-      icon: <Zap className="w-6 h-6" />,
+      icon: <Zap className="w-4 sm:w-6 h-4 sm:h-6" />,
     },
   ]
 
@@ -87,14 +87,14 @@ function WhatWeSolveSection() {
                 <div className={`${index % 2 === 1 ? "md:order-2" : ""}`}>
                   <div className="bg-primaryOrange/5 border-l-4 border-primaryOrange rounded-r-2xl p-4 sm:p-8">
                     <div className="flex items-start mb-4">
-                      <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primaryOrange rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                      <div className="w-8 sm:w-12 h-8 sm:h-12 bg-primaryOrange rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
                         <div className="text-white">{problem.icon}</div>
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-primaryOrange mb-2">Your Pain:</h3>
                       </div>
                     </div>
-                    <blockquote className="sm:text-lg text-primaryOrange italic leading-relaxed">"{problem.pain}"</blockquote>
+                    <blockquote className=" sm:text-lg text-primaryOrange italic leading-relaxed">"{problem.pain}"</blockquote>
                   </div>
                 </div>
 
@@ -102,14 +102,14 @@ function WhatWeSolveSection() {
                 <div className={`${index % 2 === 1 ? "md:order-1" : ""}`}>
                   <div className="bg-primaryBlue/5 border-l-4 border-primaryBlue rounded-r-2xl p-4 sm:p-8">
                     <div className="flex items-start mb-4">
-                      <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primaryBlue rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
-                        <CheckCircle className="w-6 h-6 text-white" />
+                      <div className="w-8 sm:w-12 h-8 sm:h-12 bg-primaryBlue rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                        <CheckCircle className="w-4 sm:w-6 h-4 sm:h-6 text-white" />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold text-primaryBlue mb-2">Our Fix:</h3>
                       </div>
                     </div>
-                    <p className="sm:text-xl text-primaryBlue leading-relaxed font-medium">{problem.fix}</p>
+                    <p className="sm:text-lg text-primaryBlue leading-relaxed font-medium">{problem.fix}</p>
                   </div>
                 </div>
               </div>
@@ -123,11 +123,11 @@ function WhatWeSolveSection() {
           <CursorFollower
 
             text="Sound familiar? You're not alone. And you don't have to solve this alone."
-            className="   max-w-2xl mx-auto bg-secondaryBlue px-6 py-4 rounded-full text-white italic"
+            className="  max-w-2xl mt-12 bg-primaryBlue  px-10 sm:px-6 py-4 rounded-3xl sm:rounded-full text-white mx-auto"
             textClassName='text-white font-semibold text-sm lg:text-base'
-            gradientFrom="#0C1F3A"
+            gradientFrom="#f76707"
             gradientTo="#0B1D30"
-            circleSize={100}
+            circleSize={200}
 
           />
         </div>

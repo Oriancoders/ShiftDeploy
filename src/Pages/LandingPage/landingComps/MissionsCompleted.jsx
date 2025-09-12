@@ -125,7 +125,7 @@ const MissionsCompleted = () => {
             variants={staggerContainer}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            className=" mb-12 sm:mb-16 sm:flex-1 border-r border-gray-400">
+            className=" mb-12 sm:mb-16 sm:flex-1 sm:border-r border-gray-400">
             <motion.h2
               variants={fadeInUp}
               className="text-3xl sm:text-left text-center sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
@@ -231,7 +231,7 @@ const MissionsCompleted = () => {
                     <ExternalLink className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
                     <span>View Project Report</span>
                   </Link >
-                  <motion.button className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  hover:border-toBlue  shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg">
+                  <motion.button className="bg-white sm:hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  hover:border-toBlue  sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg">
                     <Download className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
                     <span>Case Study</span>
                   </motion.button>

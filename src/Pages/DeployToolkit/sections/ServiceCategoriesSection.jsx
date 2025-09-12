@@ -100,7 +100,7 @@ function ServiceCategoriesSection() {
   return (
     <section ref={sectionRef} className="pt-10 pb-5 sm:pt-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 sm:mb-20">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             Your technical challenges <br />
             <span className="text-primaryOrange">
@@ -130,16 +130,16 @@ function ServiceCategoriesSection() {
 
 
                 {/* Category & Subtitle */}
-                <div className="mb-6">
+                <div className="mb-4 sm:mb-6">
                   <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-2">{service.category}</h3>
                   <p className="text-xs sm:text-lg text-gray-600 italic">{service.subtitle}</p>
                 </div>
 
                 {/* Headline */}
-                <h4 className="sm:text-xl font-semibold text-gray-800 mb-6">{service.headline}</h4>
+                <h4 className="sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6">{service.headline}</h4>
 
                 {/* Services List */}
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-4 sm:mb-6">
                   {service.services.map((item, serviceIndex) => (
                     <li key={serviceIndex} className="flex items-start">
                       <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange mr-3 mt-0.5 flex-shrink-0" />
@@ -149,7 +149,7 @@ function ServiceCategoriesSection() {
                 </ul>
 
                 {/* Pain Point & Solution */}
-                <div className="border-t border-gray-200 pt-6">
+                <div className="border-t border-gray-200 pt-4">
                   <div className="mb-4">
                     <p className="text-sm text-primaryOrange font-semibold mb-2">Pain Point:</p>
                     <p className="text-xs sm:text-md text-gray-700 italic">"{service.painPoint}"</p>

@@ -47,11 +47,11 @@ function CTASection() {
 
           {/* Description */}
           <div className="max-w-3xl mx-auto mb-12">
-            <p className="sm:text-xl  text-gray-300 leading-relaxed mb-6">
+            <p className="sm:text-xl  text-gray-200 leading-relaxed mb-6">
               We're not for everyone. We're for teams who value substance over speed, foundations over facades, and
               partnerships over transactions.
             </p>
-            <p className="text-lg text-gray-400">If that sounds like you, let's talk.</p>
+            <p className="sm:text-lg text-gray-300">If that sounds like you, let's talk.</p>
           </div>
 
           {/* CTA Button */}
@@ -88,15 +88,15 @@ function CTASection() {
           {/* Contact Options */}
           <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
-              <Mail className="w-8 h-8 text-blue-400 mx-auto mb-4" />
+              <Mail className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
               <h3 className="text-white font-semibold mb-2">Email Us</h3>
-              <p className="text-gray-300 text-sm">hello@shiftdeploy.com</p>
+              <p className="text-gray-300 text-sm">contact@shiftdeploy.com</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
-              <Calendar className="w-8 h-8 text-orange-400 mx-auto mb-4" />
-              <h3 className="text-white font-semibold mb-2">Schedule a Chat</h3>
-              <p className="text-gray-300 text-sm">Book a 30-minute chat</p>
-            </div>
+            <Link to={"/ContactUs"} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
+              <Calendar className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
+              <h3 className="text-white font-semibold mb-2">Schedule a Conversation</h3>
+              <p className="text-gray-300 text-sm">Submit your problem and we reach you with solution</p>
+            </Link>
           </div>
     
       </div>

@@ -62,6 +62,18 @@ function OriginStorySection() {
       ref={sectionRef}
       className="pt-28 sm:pt-32  text-textColor relative overflow-hidden"
     >
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-30">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 20% 80%, #4361EE 1px, transparent 1px),
+                           radial-gradient(circle at 80% 20%, #F76707 1px, transparent 1px),
+                           radial-gradient(circle at 40% 40%, #4361EE 1px, transparent 1px)`,
+            backgroundSize: "100px 100px",
+          }}
+        ></div>
+      </div>
 
       {/* Background elements */}
       <div className="absolute top-10 sm:top-20 right-10 sm:right-20 w-32 sm:w-48 lg:w-80 xl:w-96 h-32 sm:h-48 lg:h-80 xl:h-96 bg-gradient-to-br from-blue-200/30 to-blue-300/20 rounded-full blur-3xl" />
@@ -80,11 +92,11 @@ function OriginStorySection() {
           <CursorFollower
 
             text="Every great system starts with a problem worth solving"
-            className="   max-w-2xl mx-auto bg-gradient-to-r from-secondaryBlue to-toSecBlue px-6 py-4 rounded-full text-white italic"
-            textClassName='text-white font-semibold  sm:text-sm lg:text-base'
-            gradientFrom="#0C1F3A"
+            className="  max-w-2xl sm:mt-12 bg-primaryBlue  px-10 sm:px-6 py-4 rounded-xl sm:rounded-full text-white mx-auto"
+            textClassName='text-white font-semibold text-sm lg:text-base'
+            gradientFrom="#f76707"
             gradientTo="#0B1D30"
-            circleSize={100}
+            circleSize={200}
 
           />
         </div>
@@ -140,11 +152,11 @@ function OriginStorySection() {
           <CursorFollower
 
             text="Some agencies chase trends. We chase fundamentals."
-            className="  max-w-2xl mx-auto bg-secondaryBlue px-6 py-4 rounded-full text-white"
-            textClassName='text-white font-semibold sm:text-sm lg:text-base italic'
-            gradientFrom="#0C1F3A"
+           className="  max-w-2xl sm:mt-12 bg-primaryBlue  px-10 sm:px-6 py-4 rounded-xl sm:rounded-full text-white mx-auto"
+            textClassName='text-white font-semibold text-sm lg:text-base'
+            gradientFrom="#f76707"
             gradientTo="#0B1D30"
-            circleSize={100}
+            circleSize={200}
 
           />
         </div>

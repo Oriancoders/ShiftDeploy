@@ -81,12 +81,12 @@ const InsideShiftDeploy = () => {
 
                 <div className="flex-1 text-left space-y-4">
                   <h3 className="text-xl lg:text-2xl font-bold   text-primaryBlue">{solution.title}</h3>
-                  <p className="  text-lg leading-relaxed text-gray-600">{solution.description}</p>
+                  <p className="  sm:text-lg leading-relaxed text-gray-600">{solution.description}</p>
                   <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
                     {solution.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center justify-start space-x-2 sm:space-x-3">
-                        <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-green-500 flex-shrink-0" />
-                        <span className="text-gray-700 font-medium sm:text-lg">{feature}</span>
+                        <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange flex-shrink-0" />
+                        <span className="text-gray-700 font-medium text-xs sm:text-lg">{feature}</span>
                       </li>
                     ))}
                   </ul>

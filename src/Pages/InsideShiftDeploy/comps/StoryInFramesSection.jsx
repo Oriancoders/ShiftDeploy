@@ -15,8 +15,7 @@ function StoryInFramesSection() {
       description: "We needed to collect real-time EV charger data reliably — without constant breakdowns.",
       details:
         "Our early prototype could barely handle basic telemetry. MQTT packets were dropping, temperature spikes went unnoticed, and there was no session tracking. Scaling this for public deployment seemed impossible.",
-      icon: <Cpu className="w-8 h-8" />,
-      color: "from-red-500 to-pink-600",
+      icon: <Cpu className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
     {
       title: "Our Approach",
@@ -25,8 +24,7 @@ function StoryInFramesSection() {
         "We built a robust pipeline from edge to cloud with full session and payment handling.",
       details:
         "We rewrote the ESP32 firmware for stable MQTT publishing, implemented a Spring Boot backend to process and store telemetry, added WebSockets for real-time updates, and connected Stripe to handle charging session payments.",
-      icon: <Zap className="w-8 h-8" />,
-      color: "from-blue-500 to-indigo-600",
+      icon: <Zap className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
     {
       title: "The Result",
@@ -34,8 +32,7 @@ function StoryInFramesSection() {
       description: "A production-ready EV charging platform with live telemetry and remote control.",
       details:
         "The system now streams continuous voltage, current, and temperature data from chargers to the dashboard, supports multiple users, logs full session history, and processes payments automatically — ready to scale to a commercial network.",
-      icon: <Battery className="w-8 h-8" />,
-      color: "from-green-500 to-emerald-600",
+      icon: <Battery className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
   ]
 
@@ -65,7 +62,7 @@ function StoryInFramesSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
-            From prototype to public-ready <br/>
+            From prototype to production ready <br/>
             <span className="text-primaryOrange">
               The EV Charger Journey
             </span>
@@ -84,7 +81,7 @@ function StoryInFramesSection() {
               >
           
                 <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-300 transition-all duration-300 h-full shadow-md sm:hover:shadow-xl">
-                  <div className="inline-flex items-center justify-center w-12 sm:w-16 h-12 sm:h-16 rounded-2xl bg-primaryBlue mb-4 sm:mb-6">
+                  <div className="inline-flex items-center justify-center w-10 sm:w-16 h-10 sm:h-16 rounded-2xl bg-primaryBlue mb-4 sm:mb-6">
                     <div className="text-white">{frame.icon}</div>
                   </div>
 

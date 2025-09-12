@@ -95,7 +95,7 @@ const ShiftProtocol = () => {
                 {index == 5 ? (
                   <div
                     key={index}
-                    className="relative md:col-span-1 lg:col-span-1 bg-primaryBlue border rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-md hover:shadow-lg transition-all duration-200 group h-full pt-6 text-white flex flex-col text-left"
+                    className="relative md:col-span-1 lg:col-span-1 bg-primaryBlue border rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-md sm:hover:shadow-lg transition-all duration-200 group h-full pt-6 text-white flex flex-col text-left"
                   >
                     {/* Heading */}
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 leading-snug ">
@@ -104,7 +104,7 @@ const ShiftProtocol = () => {
                     </h2>
 
                     {/* Description */}
-                    <p className="text-base sm:text-lg text-gray-200 mb-6 max-w-md">
+                    <p className=" sm:text-lg text-gray-200 mb-6 max-w-md">
                       Let’s build, launch, and scale your vision into reality.
                       Our team is ready to deliver results—step into the future with confidence.
                     </p>
@@ -124,7 +124,7 @@ const ShiftProtocol = () => {
                     initial={{ opacity: 0, y: 60 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
                     transition={{ duration: 0.6, delay: index * 0.2, once: false }}
-                    className="relative md:col-span-1 lg:col-span-1 bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-md hover:shadow-lg  transition-all duration-200 group h-full pt-6 sm:pt-8 lg:pt-8 sm:space-y-6 space-y-4"
+                    className="relative md:col-span-1 lg:col-span-1 bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-md sm:hover:shadow-lg  transition-all duration-200 group h-full pt-6 sm:pt-8 lg:pt-8 sm:space-y-6 space-y-4"
                   >
 
 
@@ -134,13 +134,13 @@ const ShiftProtocol = () => {
                     </motion.div>
 
                     <h3 className="text-lg lg:text-xl xl:text-2xl font-bold text-gray-900  text-center">{index + 1}: {step.title}</h3>
-                    <p className="  text-center sm:leading-relaxed text-lg text-gray-600">{step.description}</p>
+                    <p className="  text-center sm:leading-relaxed sm:text-lg text-gray-600">{step.description}</p>
 
                     <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3  grid grid-cols-1 ">
                       {step.details.map((detail, detailIndex) => (
                         <li key={detailIndex} className="flex items-center space-x-2 sm:space-x-3 ">
                           <div className="w-2 h-2 bg-primaryOrange rounded-full flex-shrink-0" />
-                          <span className="text-gray-700 text-md font-medium">{detail}</span>
+                          <span className="text-gray-700  sm:text-md font-medium">{detail}</span>
                         </li>
                       ))}
                     </ul>
@@ -167,8 +167,8 @@ const ShiftProtocol = () => {
             circleSize={150}
             className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
           >
-            <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
-              The Shift Protocol gives you clarity, control, and confidence without compromise.
+            <h3 className="text-2xl sm:text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
+              The Shift Protocol gives you clarity, control, and confidence without compromise
             </h3>
             <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             >

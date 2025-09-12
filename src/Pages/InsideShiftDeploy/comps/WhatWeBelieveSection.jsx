@@ -12,22 +12,19 @@ function WhatWeBelieveSection() {
     {
       title: "Ethical tech",
       description: "Your users' data isn't our product. Privacy isn't a feature request.",
-      icon: <Shield className="w-8 h-8" />,
-      color: "from-green-500 to-emerald-600",
+      icon: <Shield className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
     {
       title: "Clear communication",
       description:
         "No technical jargon to hide behind. If we can't explain it simply, we don't understand it well enough.",
-      icon: <MessageSquare className="w-8 h-8" />,
-      color: "from-blue-500 to-indigo-600",
+        icon: <MessageSquare className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
     {
       title: "Building long-term",
       description:
         "We're not here for quick wins. We're here for sustainable growth and systems that scale with your success.",
-      icon: <Clock className="w-8 h-8" />,
-      color: "from-purple-500 to-pink-600",
+      icon: <Clock className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
   ]
 
@@ -88,7 +85,7 @@ function WhatWeBelieveSection() {
               >
                 <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-md hover:shadow-xl transition-all duration-300 h-full">
                   <div
-                    className={`inline-flex items-center justify-center w-14 sm:w-16 h-14 sm:h-16 rounded-2xl bg-primaryBlue mb-6  transition-transform duration-300`}
+                    className={`inline-flex items-center justify-center w-10 sm:w-16 h-10 sm:h-16 rounded-2xl bg-primaryBlue mb-6  transition-transform duration-300`}
                   >
                     <div className="text-white text-xs">{belief.icon}</div>
                   </div>

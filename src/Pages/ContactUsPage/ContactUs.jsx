@@ -110,14 +110,14 @@ const ContactUs = () => {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-400 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  py-20 lg:py-24">
           {/* Header Section */}
           <motion.div
             ref={ref}
             variants={staggerContainer}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            className="text-center mb-12 sm:mb-16 lg:mb-20"
+            className="text-center mb-6 sm:mb-16 lg:mb-20"
           >
             <motion.h1
               variants={fadeInUp}
@@ -140,7 +140,7 @@ const ContactUs = () => {
               initial={{ opacity: 0, x: -60 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="space-y-8 sm:space-y-10 lg:space-y-12"
+              className="space-y-8 sm:space-y-10 lg:space-y-12 sm:order-1 order-2"
             >
               <div>
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-6 sm:mb-8">
@@ -152,7 +152,7 @@ const ContactUs = () => {
               </div>
 
               <h2 className="text-2xl sm:text-3xl lg:text-3xl font-bold text-primaryBlue mb-6 sm:mb-8 leading-10">
-                Or Contact Via Other Platforms
+                 Contact Via Other Platforms
               </h2>
               {/* Contact Information */}
               <div className="space-y-6 sm:space-y-8">
@@ -202,7 +202,7 @@ const ContactUs = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mt-8 lg:mt-0"
             >
-              <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 ">
+              <div className="bg-white rounded-2xl sm:shadow-xl border border-slate-200 p-6 ">
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 ">
                   {/* Name Field */}
                   <div>
