@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 import whiteV from '../Assets/Images/whiteV.png'
 const Footer = () => {
@@ -32,11 +32,6 @@ const Footer = () => {
     ]
   };
 
-  const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' }
-  ];
 
   return (
     <footer className="bg-primaryBlue text-white">

@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from 'react';
-import { m, motion, useInView } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import {
     ArrowRight,
     AlertTriangle,
-    Target,
     CheckCircle,
     TrendingUp,
     Zap,
@@ -11,33 +10,26 @@ import {
     Smartphone,
     CreditCard,
     Bell,
-    Wifi,
     Server,
-    ExternalLink,
-    Code,
-    Database,
-    Cloud,
     Monitor,
-    Settings,
-    Users,
     BarChart3,
-    Lock,
-    Globe,
     Cpu,
     Activity
 } from 'lucide-react';
-import { fadeInUp, staggerContainer } from '../../utils/animations';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
 import { Link } from 'react-router-dom';
+// importing images here 
+import frontend from '../../Assets/Images/casestudies/k2traders/frontend.png'
+import backend from '../../Assets/Images/casestudies/k2traders/backend.png'
+import deployment from '../../Assets/Images/casestudies/k2traders/deployment.png'
+import keystatic from '../../Assets/Images/casestudies/k2traders/keystatic.png'
 
 const K2TradersCase = () => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-      useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, []);
+    // useEffect(() => {
+    //     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // }, []);
 
     const techDetails = [
         {
@@ -59,7 +51,8 @@ const K2TradersCase = () => {
                     description:
                         "Streamlined cart and checkout process to reduce friction, ensuring a smooth purchase experience for customers."
                 }
-            ]
+            ],
+            image: frontend
         },
         {
             category: "Backend & Data Management",
@@ -80,7 +73,8 @@ const K2TradersCase = () => {
                     description:
                         "No traditional backend servers required, minimizing upkeep and ensuring stability over time."
                 }
-            ]
+            ],
+            image: backend
         },
         {
             category: "Deployment & Hosting",
@@ -101,7 +95,8 @@ const K2TradersCase = () => {
                     description:
                         "Cost-efficient solution with no recurring monthly fees, unlike Shopify or WordPress hosting."
                 }
-            ]
+            ],
+            image: deployment
         },
         {
             category: "Security & Reliability",
@@ -122,7 +117,9 @@ const K2TradersCase = () => {
                     description:
                         "K2 Traders holds 100% ownership of the platform, eliminating reliance on third-party SaaS vendors."
                 }
-            ]
+            ],
+            image: deployment
+
         }
     ];
 
@@ -299,9 +296,23 @@ const K2TradersCase = () => {
     return (
         <>
             <Navigation isDarkBg={true} />
+
             <div className="bg-gray-50 min-h-screen">
+
                 {/* Hero Section */}
-                <section className="relative min-h-screen bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center">
+                <section className="relative  bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center">
+                    {/* Background Pattern */}
+                    <div className="absolute inset-0 opacity-30">
+                        <div
+                            className="absolute inset-0"
+                            style={{
+                                backgroundImage: `radial-gradient(circle at 20% 80%, #4361EE 1px, transparent 1px),
+                           radial-gradient(circle at 80% 20%, #F76707 1px, transparent 1px),
+                           radial-gradient(circle at 40% 40%, #4361EE 1px, transparent 1px)`,
+                                backgroundSize: "100px 100px",
+                            }}
+                        ></div>
+                    </div>
                     <div className="absolute inset-0 opacity-10">
                         <div className="absolute top-20 left-20 w-96 h-96 bg-primaryOrange rounded-full blur-3xl" />
                         <div className="absolute bottom-20 right-20 w-80 h-80 bg-secondaryBlue rounded-full blur-3xl" />
@@ -320,14 +331,14 @@ const K2TradersCase = () => {
                                 transition={{ duration: 0.6, delay: 0.2 }}
                                 className="inline-flex items-center space-x-2 bg-primaryOrange backdrop-blur-sm rounded-full px-6 py-3 mb-8"
                             >
-                                <span className="text-white font-semibold text-lg">Detailed Case Study - K2 Traders</span>
+                                <span className="text-white font-semibold text-xs sm:text-lg">Detailed Case Study - K2 Traders</span>
                             </motion.div>
 
                             <motion.h1
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.3 }}
-                                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight"
+                                className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight"
                             >
                                 Smart eCommerce{" "}
                                 <span className="text-primaryOrange">
@@ -341,7 +352,7 @@ const K2TradersCase = () => {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.4 }}
-                                className="text-xl sm:text-2xl  text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+                                className="text-lg sm:text-2xl  text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
                             >
                                 A cutting-edge eCommerce platform built for{" "}
                                 <span className="text-primaryOrange font-semibold">K2 Traders</span>{" "}
@@ -357,38 +368,35 @@ const K2TradersCase = () => {
                 <section className=" pt-10 sm:pt-20 bg-gray-50 ">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <motion.div
-                            ref={ref}
                             initial={{ opacity: 0, y: 60 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-                            transition={{ duration: 0.8 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3 }}
                             className="text-center mb-8 sm:mb-16"
                         >
                             <h2 className="text-3xl lg:text-5xl font-bold text-primaryBlue mb-4 sm:mb-8">
                                 Project Overview
                             </h2>
-                            <div className="max-w-4xl mx-auto">
-                                <p className="sm:text-xl text-gray-700 leading-relaxed mb-12">
+                                <p className="sm:text-xl text-gray-700 leading-relaxed p-2">
                                     ShiftDeploy partnered with{" "}
                                     <span className="font-semibold text-primaryOrange">K2 Traders</span> to
                                     build a lightweight, fully optimized{" "}
                                     <span className="font-semibold">eCommerce platform</span>.
                                     The solution includes a modern ReactJS frontend deployed on Vercel,
                                     a seamless cart & checkout flow, and Google Sheets integration for
-                                    order management — eliminating hosting costs and heavy maintenance.
+                                    order management. Eliminating hosting costs and heavy maintenance.
                                     This project was designed to give startups an affordable,
                                     scalable alternative to Shopify or WordPress.
                                 </p>
-                            </div>
                         </motion.div>
 
-                        <div className="grid lg:grid-cols-2 gap-16 mb-8 sm:mb-16">
+                        <div className="grid lg:grid-cols-2 gap-16 mb-8 sm:mb-16 p-2">
                             {/* Project Scope */}
                             <motion.div
-                                initial={{ opacity: 0, x: -60 }}
-                                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
+                                initial={{ opacity: 0, y: -60 }}
+                                animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
                             >
-                                <h3 className="text-2xl font-bold text-primaryBlue mb-6">Project Scope</h3>
+                                <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">Project Scope</h3>
                                 <div className="space-y-4">
                                     <div className="flex items-start space-x-3">
                                         <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
@@ -435,12 +443,17 @@ const K2TradersCase = () => {
                             {/* Key Statistics Graphic Placeholder */}
                             <motion.div
                                 initial={{ opacity: 0, x: 60 }}
-                                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }}
+                                animate={{ opacity: 1, x: 0 }}
                                 transition={{ duration: 0.8, delay: 0.4 }}
                             >
-                                <h3 className="text-2xl font-bold text-slate-800 mb-6">Key Statistics</h3>
-                                <div className="image-placeholder w-full h-64 bg-gray-200 rounded-xl mb-6 flex items-center justify-center text-gray-500">
-                                    eCommerce Overview Graphic
+                                <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">Key Statistics</h3>
+                                <div style={{
+                                    backgroundImage: `url(${keystatic})`,
+                                    backgroundSize: 'contain',
+                                    backgroundPosition: 'left',
+                                    backgroundRepeat: 'no-repeat',
+                                }} className="image-placeholder w-full h-52 sm:h-64 mb-6 flex items-center justify-center text-gray-500">
+
                                 </div>
                             </motion.div>
                         </div>
@@ -487,17 +500,21 @@ const K2TradersCase = () => {
                                         <div className="w-10 sm:w-12 md:w-16 h-10 sm:h-12 md:h-16 bg-primaryBlue rounded-xl flex items-center justify-center">
                                             <category.icon className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
                                         </div>
-                                        <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue">{category.category}</h3>
+                                        <h3 className="text-lg sm:text-2xl font-bold text-primaryBlue">{category.category}</h3>
                                     </div>
 
-                                    <div className="image-placeholder w-full h-56 bg-gray-200 rounded-xl mb-6 flex items-center justify-center text-gray-500">
-                                        {category.category} Diagram
+                                    <div style={{
+                                        backgroundImage: `url(${category.image})`,
+                                        backgroundSize: `${category.size || 'cover'}`,
+                                        backgroundPosition: 'center',
+                                    }} className="image-placeholder w-full h-32 sm:h-60 md:h-80  rounded-xl mb-6 flex items-center justify-center text-gray-500">
+
                                     </div>
 
                                     <div className="space-y-6">
                                         {category.technologies.map((tech, techIndex) => (
                                             <div key={techIndex} className="border-l-4 border-orange-500 pl-6">
-                                                <h4 className="text-xl font-semibold text-primaryBlue mb-3">{tech.name}</h4>
+                                                <h4 className="sm:text-xl font-semibold text-primaryBlue mb-3">{tech.name}</h4>
                                                 <p className="text-gray-600 leading-relaxed">{tech.description}</p>
                                             </div>
                                         ))}
@@ -527,7 +544,7 @@ const K2TradersCase = () => {
                             </p>
                         </motion.div>
 
-                        <div className="space-y-16">
+                        <div className="space-y-10 sm:space-y-16">
                             {detailedFeatures.map((feature, index) => (
                                 <motion.div
                                     key={index}
@@ -544,14 +561,14 @@ const K2TradersCase = () => {
                                         </div>
 
                                         <div className="flex-1">
-                                            <h3 className="text-2xl font-bold text-primaryBlue mb-4">{feature.title}</h3>
+                                            <h3 className="text-lg sm:text-2xl font-bold text-primaryBlue mb-4">{feature.title}</h3>
                                             <p className="sm:text-xl text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
 
                                             <div className="grid md:grid-cols-2 gap-4">
                                                 {feature.details.map((detail, detailIndex) => (
                                                     <div key={detailIndex} className="flex items-start space-x-3">
                                                         <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
-                                                        <p className="text-gray-700">{detail}</p>
+                                                        <p className="text-sm sm:text-md text-gray-700">{detail}</p>
                                                     </div>
                                                 ))}
                                             </div>
@@ -590,7 +607,7 @@ const K2TradersCase = () => {
                                             <h2 className="text-3xl md:text-4xl font-bold">
                                                 Ongoing Store Maintenance & Support
                                             </h2>
-                                            <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
+                                            <p className=" md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
                                                 Keep your eCommerce platform fast, secure, and up to date with continuous
                                                 monitoring, bug fixes, and feature enhancements. Focus on growth while
                                                 we handle the maintenance.
@@ -605,39 +622,31 @@ const K2TradersCase = () => {
                                         </div>
 
                                     ) : (
-                                        <motion.div
-                                            key={index}
-                                            initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 0.8, delay: index * 0.1 }}
-                                            className="bg-white rounded-2xl p-6 sm:p-8 shadow-md sm:hover:shadow-xl transition-all duration-300"
-                                        >
-                                            <div className="space-y-6">
-                                                <div className='flex justify-between items-center'>
-                                                    <div className="w-12 h-12 bg-primaryOrange rounded-xl flex items-center justify-center flex-shrink-0">
-                                                        <span className="text-white font-bold text-lg">{index + 1}</span>
-                                                    </div>
-                                                    <span className="text-primaryOrange font-semibold text-lg">{phase.duration}</span>
-                                                </div>
-                                                <div className="flex-1">
-                                                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                                                        <h3 className="text-2xl font-bold text-primaryBlue">{phase.phase}</h3>
-                                                    </div>
-                                                    <p className="sm:text-xl text-gray-600 mb-6">{phase.description}</p>
 
-                                                    <div className="space-y-2">
-                                                        <h4 className="text-lg font-semibold text-primaryBlue mb-3">Key Deliverables:</h4>
-                                                        {phase.deliverables.map((deliverable, deliverableIndex) => (
-                                                            <div key={deliverableIndex} className="flex items-start space-x-3">
-                                                                <CheckCircle className="w-5 h-5 text-primaryOrange mt-0.5 flex-shrink-0" />
-                                                                <p className="text-gray-700">{deliverable}</p>
-                                                            </div>
-                                                        ))}
-                                                    </div>
+                                        <div className="space-y-6 bg-white rounded-2xl p-6 sm:p-8 shadow-md sm:hover:shadow-xl transition-all duration-300">
+                                            <div className='flex justify-between items-center'>
+                                                <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primaryOrange rounded-xl flex items-center justify-center flex-shrink-0">
+                                                    <span className="text-white font-bold text-lg">{index + 1}</span>
+                                                </div>
+                                                <span className="text-primaryOrange font-semibold text-lg">{phase.duration}</span>
+                                            </div>
+                                            <div className="flex-1">
+                                                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                                    <h3 className="text-lg sm:text-2xl font-bold text-primaryBlue">{phase.phase}</h3>
+                                                </div>
+                                                <p className="sm:text-xl text-gray-600 mb-6">{phase.description}</p>
+
+                                                <div className="space-y-2">
+                                                    <h4 className="text-lg font-semibold text-primaryBlue mb-3">Key Deliverables:</h4>
+                                                    {phase.deliverables.map((deliverable, deliverableIndex) => (
+                                                        <div key={deliverableIndex} className="flex items-start space-x-3">
+                                                            <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange mt-0.5 flex-shrink-0" />
+                                                            <p className="text-sm sm:text-md text-gray-700">{deliverable}</p>
+                                                        </div>
+                                                    ))}
                                                 </div>
                                             </div>
-                                        </motion.div>
+                                        </div>
                                     )}
                                 </>
                             ))}
@@ -677,17 +686,17 @@ const K2TradersCase = () => {
                                     <div className="space-y-6">
                                         <div>
                                             <div className="flex items-center space-x-3 mb-2">
-                                                <AlertTriangle className="w-5 h-5 text-primaryOrange" />
-                                                <h3 className="text-xl font-bold text-primaryBlue">Challenge</h3>
+                                                <AlertTriangle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange" />
+                                                <h3 className="text-lg sm:text-xl font-bold text-primaryBlue">Challenge</h3>
                                             </div>
-                                            <p className="text-gray-700 text-lg leading-relaxed">{item.challenge}</p>
+                                            <p className="text-gray-700 sm:text-lg leading-relaxed">{item.challenge}</p>
                                         </div>
                                         <div>
                                             <div className="flex items-center space-x-3 mb-2">
-                                                <CheckCircle className="w-5 h-5 text-primaryBlue" />
-                                                <h3 className="text-xl font-bold text-primaryBlue">Solution</h3>
+                                                <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryBlue" />
+                                                <h3 className="text-lg sm:text-xl font-bold text-primaryBlue">Solution</h3>
                                             </div>
-                                            <p className="text-gray-700 text-lg leading-relaxed">{item.solution}</p>
+                                            <p className="text-gray-700 sm:text-lg leading-relaxed">{item.solution}</p>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -752,39 +761,39 @@ const K2TradersCase = () => {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="bg-slate-700/50 rounded-2xl p-8"
                         >
-                            <h3 className="text-2xl font-bold text-white mb-6">Business Impact</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">Business Impact</h3>
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div>
-                                    <h4 className="text-xl font-semibold text-white mb-4">For K2 Traders</h4>
+                                    <h4 className="text-lg sm:text-xl font-semibold text-white mb-4">For K2 Traders</h4>
                                     <ul className="space-y-3">
                                         <li className="flex items-start space-x-3">
                                             <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                                            <p className="text-gray-300">Eliminated recurring hosting and maintenance costs</p>
+                                            <p className="text-sm sm:text-md text-gray-300">Eliminated recurring hosting and maintenance costs</p>
                                         </li>
                                         <li className="flex items-start space-x-3">
                                             <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                                            <p className="text-gray-300">Fast and smooth launch with React + Vercel stack</p>
+                                            <p className="text-sm sm:text-md text-gray-300">Fast and smooth launch with React + Vercel stack</p>
                                         </li>
                                         <li className="flex items-start space-x-3">
                                             <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                                            <p className="text-gray-300">Scalable solution ready for future payment integration</p>
+                                            <p className="text-sm sm:text-md text-gray-300">Scalable solution ready for future payment integration</p>
                                         </li>
                                     </ul>
                                 </div>
                                 <div>
-                                    <h4 className="text-xl font-semibold text-white mb-4">For Customers</h4>
+                                    <h4 className="text-lg sm:text-xl font-semibold text-white mb-4">For Customers</h4>
                                     <ul className="space-y-3">
                                         <li className="flex items-start space-x-3">
                                             <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                                            <p className="text-gray-300">Simple cart and checkout flow with instant confirmation</p>
+                                            <p className="text-sm sm:text-md text-gray-300">Simple cart and checkout flow with instant confirmation</p>
                                         </li>
                                         <li className="flex items-start space-x-3">
                                             <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                                            <p className="text-gray-300">Downloadable invoices for complete transparency</p>
+                                            <p className="text-sm sm:text-md text-gray-300">Downloadable invoices for complete transparency</p>
                                         </li>
                                         <li className="flex items-start space-x-3">
                                             <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                                            <p className="text-gray-300">24/7 access to browse and place orders anytime</p>
+                                            <p className="text-sm sm:text-md text-gray-300">24/7 access to browse and place orders anytime</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -813,13 +822,23 @@ const K2TradersCase = () => {
                                 maintenance. Just a fast, scalable, and cost-efficient online store
                                 that grows with you.
                             </p>
-                            <Link
-                                to={"/ContactUs"}
-                                className="bg-primaryOrange hover:bg-toOrange text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg mx-auto shadow-lg transition-all duration-300 w-fit"
-                            >
-                                <span>Start Your eCommerce Project</span>
-                                <ArrowRight className="w-6 h-6" />
-                            </Link>
+
+                            <div className='flex justify-center items-center sm:flex-row flex-col gap-6 w-full'>
+                                <Link
+                                    to={"/ContactUs"}
+                                    className="bg-primaryOrange hover:bg-toOrange text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit"
+                                >
+                                    <span>Start Your eCommerce Project</span>
+                                    <ArrowRight className="w-6 h-6" />
+                                </Link>
+                                <Link
+                                    to={"/missions"}
+                                    className="bg-white sm:hover:bg-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg  sm:shadow-lg transition-all duration-300 w-fit border border-primaryBlue"
+                                >
+                                    <span>View More Projects</span>
+                                    <ArrowRight className="w-6 h-6" />
+                                </Link>
+                            </div>
                         </motion.div>
                     </div>
                 </section>
