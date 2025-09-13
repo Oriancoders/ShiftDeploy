@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, } from 'lucide-react';
+import { Mail, Phone, MapPin, Slack, Twitter, } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 import whiteV from '../Assets/Images/whiteV.png'
 const Footer = () => {
@@ -57,18 +57,18 @@ const Footer = () => {
               cloud solutions, and deployment excellence.
             </p>
             <div className="space-y-2 sm:space-y-3 lg:space-y-4">
-              <div className="flex items-center space-x-2 sm:space-x-3">
+              <a href='mailto:contact@shiftdeploy.com' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
                 <Mail className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
-                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">hello@shiftdeploy.com</span>
-              </div>
-              <div className="flex items-center space-x-2 sm:space-x-3">
-                <Phone className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
-                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">www.x.com/shiftdeploy</span>
-              </div>
-              <div className="flex items-center space-x-2 sm:space-x-3">
-                <MapPin className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
-                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">slack.com/shiftdeploy</span>
-              </div>
+                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">contact@shiftdeploy.com</span>
+              </a>
+              <a href='https://x.com/shiftdeploy' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
+                <Twitter className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
+                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on twitter</span>
+              </a>
+              <a href='https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3dej8l23q-m2S_MrlF7zvL2F~9jwK6iA' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
+                <Slack  className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
+                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on slack</span>
+              </a>
             </div>
           </motion.div>
 

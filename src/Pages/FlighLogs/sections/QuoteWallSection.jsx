@@ -1,6 +1,7 @@
 import { Quote, Star } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
 // Section 2: Quote Wall
 function QuoteWallSection() {
   const [visibleQuotes, setVisibleQuotes] = useState([])
@@ -184,18 +185,15 @@ function QuoteWallSection() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto "
           >
 
-            <motion.button
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+            <Link to={"/ContactUs"}
               className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
 
             >
               Launch Your Project
 
-            </motion.button>
+            </Link>
 
-            <motion.button
+            <Link to={"/missions"}
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -203,7 +201,7 @@ function QuoteWallSection() {
             >
               <span>View Case Study</span>
 
-            </motion.button>
+            </Link>
 
 
           </div>

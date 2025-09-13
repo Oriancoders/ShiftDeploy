@@ -1,5 +1,6 @@
 import { ArrowRight, Star } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom"
 
 // Section 1: Hero Section
 function HeroSection() {
@@ -13,7 +14,7 @@ function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden pt-32 "
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden pt-32 pb-10"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-20">
@@ -91,12 +92,10 @@ function HeroSection() {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            <button className="group bg-primaryOrange hover:bg-toOrange text-white text-xl font-semibold px-8 sm:px-12 py-4 rounded-2xl transition-all duration-300 transform  hover:shadow-2xl hover:shadow-blue-500/25">
-              <span className="flex items-center">
+            <Link to={"/missions"} className="flex w-fit mx-auto items-center group bg-primaryOrange hover:bg-toOrange text-white text-xl font-semibold px-8 sm:px-12 py-4 rounded-2xl transition-all duration-300 transform  hover:shadow-2xl hover:shadow-blue-500/25">
                 Read Their Stories
                 <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
