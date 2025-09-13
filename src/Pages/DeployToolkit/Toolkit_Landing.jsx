@@ -76,23 +76,21 @@ const Toolkit_Landing = () => {
         {/* <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" /> */}
       </Helmet>
       {showLoader && <ShiftDeployLoader />}
+      <Navigation />
       {!showLoader && (
         <div className="w-full overflow-x-hidden">
-          <Navigation />
           <Suspense fallback={<ShiftDeployLoader />}>
             <HeroSection />
             <ServiceCategoriesSection />
             <WhatWeSolveSection />
-            {/* <ProcessSection /> */}
-            {/* <CaseSnapshotsSection /> */}
-            {/* <PricingSection /> */}
+
             <TestimonialsSection />
             <FinalCTASection />
             <FAQSection />
-            <Footer />
           </Suspense>
         </div>
       )}
+      <Footer />
     </>
   )
 }
