@@ -1,44 +1,39 @@
 import React, { useEffect, useRef } from 'react';
-import { m, motion, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import {
     ArrowRight,
     AlertTriangle,
-    Target,
     CheckCircle,
     TrendingUp,
     Zap,
     Shield,
-    Smartphone,
     CreditCard,
     Bell,
-    Wifi,
     Server,
-    ExternalLink,
-    Code,
-    Database,
-    Cloud,
     Monitor,
-    Settings,
     Users,
     BarChart3,
-    Lock,
-    Globe,
     Cpu,
     Activity,
     FileText
 } from 'lucide-react';
-import { fadeInUp, staggerContainer } from '../../utils/animations';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
 import { Link } from 'react-router-dom';
+// importing images here 
+import frontend from '../../Assets/Images/casestudies/bullseyes/frontend.png'
+import backend from '../../Assets/Images/casestudies/bullseyes/backend.png'
+import apis from '../../Assets/Images/casestudies/bullseyes/apis.png'
+import keystatic from '../../Assets/Images/casestudies/bullseyes/keystatic.png'
 
 const BullsEyesCase = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, []);
+    // useEffect(() => {
+    //     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // }, []);
+
     const techDetails = [
         {
             category: "Market Data & APIs",
@@ -56,7 +51,9 @@ const BullsEyesCase = () => {
                     name: "Custom Watchlists",
                     description: "Users can create watchlists powered by live API updates, ensuring accurate portfolio monitoring."
                 }
-            ]
+            ],
+            image : apis
+
         },
         {
             category: "Backend & Data Storage",
@@ -70,7 +67,8 @@ const BullsEyesCase = () => {
                     name: "API Layer",
                     description: "Custom connectors handle secure push-pull of structured data between the React frontend and Google Sheets backend."
                 }
-            ]
+            ],
+            image : backend
         },
         {
             category: "Frontend & User Experience",
@@ -88,7 +86,8 @@ const BullsEyesCase = () => {
                     name: "Interactive Dashboards",
                     description: "Dynamic stock charts, real-time updates, and portfolio visualizations built using charting libraries integrated with live APIs."
                 }
-            ]
+            ],
+            image : frontend
         }
     ];
 
@@ -272,14 +271,27 @@ const BullsEyesCase = () => {
         <>
             <Navigation isDarkBg={true} />
             <div className="bg-gray-50 min-h-screen">
-                {/* Hero Section */}
-                <section className="relative min-h-screen bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center">
+
+                {/* Hero Section  */}
+                <section className="relative  bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center py-20">
+                    {/* Background Pattern */}
+                    <div className="absolute inset-0 opacity-30">
+                        <div
+                            className="absolute inset-0"
+                            style={{
+                                backgroundImage: `radial-gradient(circle at 20% 80%, #4361EE 1px, transparent 1px),
+                                           radial-gradient(circle at 80% 20%, #F76707 1px, transparent 1px),
+                                           radial-gradient(circle at 40% 40%, #4361EE 1px, transparent 1px)`,
+                                backgroundSize: "100px 100px",
+                            }}
+                        ></div>
+                    </div>
                     <div className="absolute inset-0 opacity-10">
                         <div className="absolute top-20 left-20 w-96 h-96 bg-primaryOrange rounded-full blur-3xl" />
                         <div className="absolute bottom-20 right-20 w-80 h-80 bg-secondaryBlue rounded-full blur-3xl" />
                     </div>
 
-                    <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-40">
+                    <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-20 pt-28 sm:pt-32  md:pt-40">
                         <motion.div
                             initial={{ opacity: 0, y: 60 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -292,14 +304,14 @@ const BullsEyesCase = () => {
                                 transition={{ duration: 0.6, delay: 0.2 }}
                                 className="inline-flex items-center space-x-2 bg-primaryOrange backdrop-blur-sm rounded-full px-6 py-3 mb-8"
                             >
-                                <span className="text-white font-semibold text-lg">Detailed Case Study - Bullseye Investments</span>
+                                <span className="text-white font-semibold text-xs sm:text-lg">Detailed Case Study - Bullseye Investments</span>
                             </motion.div>
 
                             <motion.h1
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.3 }}
-                                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight"
+                                className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight"
                             >
                                 Building a{" "}
                                 <span className="text-primaryOrange">
@@ -313,7 +325,7 @@ const BullsEyesCase = () => {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.4 }}
-                                className="text-xl sm:text-2xl  text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+                                className="text-lg sm:text-2xl  text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
                             >
                                 A comprehensive corporate website designed and developed for{" "}
                                 <span className="text-primaryOrange font-semibold">Bullseye Investments Pvt. Ltd.</span>{" "},
@@ -322,7 +334,6 @@ const BullsEyesCase = () => {
                         </motion.div>
                     </div>
                 </section>
-
 
                 {/* Project Overview */}
                 <section className="pt-20  bg-gray-50">
@@ -334,28 +345,26 @@ const BullsEyesCase = () => {
                             transition={{ duration: 0.8 }}
                             className="text-center mb-16"
                         >
-                            <h2 className="text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
+                            <h2 className="text-3xl lg:text-5xl font-bold text-primaryBlue mb-4 sm:mb-8">
                                 Project Overview
                             </h2>
-                            <div className="max-w-4xl mx-auto">
-                                <p className="text-xl text-gray-700 leading-relaxed mb-12">
-                                    ShiftDeploy partnered with{" "}
-                                    <span className="text-primaryOrange font-semibold">Bullseye Investments Pvt. Ltd.</span>{" "}
-                                    — a licensed member of PMEX and applicant for PSX Trading Rights — to design and develop a modern,
-                                    responsive corporate website. The project aimed to establish digital credibility, simplify
-                                    client onboarding, and showcase the company’s diversified financial services across Investments,
-                                    Realtors, and Insurance verticals.
-                                </p>
-                            </div>
+                            <p className="sm:text-xl text-gray-700 leading-relaxed p-2">
+                                ShiftDeploy partnered with{" "}
+                                <span className="text-primaryOrange font-semibold">Bullseye Investments Pvt. Ltd.</span>{" "}
+                                — a licensed member of PMEX and applicant for PSX Trading Rights — to design and develop a modern,
+                                responsive corporate website. The project aimed to establish digital credibility, simplify
+                                client onboarding, and showcase the company’s diversified financial services across Investments,
+                                Realtors, and Insurance verticals.
+                            </p>
                         </motion.div>
 
-                        <div className="grid lg:grid-cols-2 gap-16  mb-20">
+                        <div className="grid lg:grid-cols-2 gap-16 mb-8 sm:mb-16 p-2">
                             <motion.div
                                 initial={{ opacity: 0, x: -60 }}
                                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
                                 transition={{ duration: 0.8, delay: 0.2 }}
                             >
-                                <h3 className="text-2xl font-bold text-primaryBlue mb-6">Project Scope</h3>
+                                <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">Project Scope</h3>
                                 <div className="space-y-4">
                                     <div className="flex items-start space-x-3">
                                         <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
@@ -379,7 +388,7 @@ const BullsEyesCase = () => {
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-4 gap-6 mt-6 ">
+                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8">
                                     <div className="text-center">
                                         <div className="text-lg sm:text-xl xl:text-2xl font-bold text-primaryOrange mb-2">6 weeks</div>
                                         <div className="text-gray-600">Development Time</div>
@@ -405,9 +414,14 @@ const BullsEyesCase = () => {
                                 transition={{ duration: 0.8, delay: 0.4 }}
                                 className=""
                             >
-                                <h3 className="text-2xl font-bold text-slate-800 mb-6">Key Statistics</h3>
-                                <div className="image-placeholder w-full h-64 bg-gray-200 rounded-xl mb-6 flex items-center justify-center text-gray-500">
-                                    Overview Graphic
+                                <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-6">Key Statistics</h3>
+                                <div style={{
+                                    backgroundImage: `url(${keystatic})`,
+                                    backgroundSize: 'contain',
+                                    backgroundPosition: 'left',
+                                    backgroundRepeat: 'no-repeat',
+                                }} className="image-placeholder w-full h-52 sm:h-64 mb-6 flex items-center justify-center text-gray-500">
+
                                 </div>
                             </motion.div>
                         </div>
@@ -426,10 +440,10 @@ const BullsEyesCase = () => {
                             transition={{ duration: 0.8 }}
                             className="text-center mb-16"
                         >
-                            <h2 className="text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
                                 Technical Architecture Deep Dive
                             </h2>
-                            <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+                            <p className="sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
                                 Bullseye Investments leverages advanced financial APIs, AI-driven analytics, and
                                 modern cloud infrastructure to deliver a real-time, intelligent investing experience.
                             </p>
@@ -443,26 +457,28 @@ const BullsEyesCase = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.8, delay: index * 0.1 }}
-                                    className="bg-white rounded-2xl p-8 shadow-lg"
+                                    className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg"
                                 >
-                                    {/* Icon + Title */}
-                                    <div className="flex items-center space-x-4 mb-8">
-                                        <div className="w-16 h-16 bg-primaryBlue rounded-xl flex items-center justify-center">
-                                            <category.icon className="w-8 h-8 text-white" />
+                                    {/* Image Placeholder */}
+
+                                    <div className="flex items-center space-x-4 mb-4 sm:mb-8">
+                                        <div className="w-10 sm:w-12 md:w-16 h-10 sm:h-12 md:h-16 bg-primaryBlue rounded-xl flex items-center justify-center">
+                                            <category.icon className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
                                         </div>
-                                        <h3 className="text-2xl font-bold text-primaryBlue">{category.category}</h3>
+                                        <h3 className="text-lg sm:text-2xl font-bold text-primaryBlue">{category.category}</h3>
                                     </div>
 
-                                    {/* Placeholder for diagrams */}
-                                    <div className="image-placeholder w-full h-56 bg-gray-200 rounded-xl mb-6 flex items-center justify-center text-gray-500">
-                                        {category.category} Diagram
+                                    <div style={{
+                                        backgroundImage: `url(${category.image})`,
+                                        backgroundSize: `${category.size || 'cover'}`,
+                                        backgroundPosition: 'center',
+                                    }} className="image-placeholder w-full h-32 sm:h-60 md:h-80  rounded-xl mb-6 flex items-center justify-center text-gray-500">
                                     </div>
 
-                                    {/* Technology List */}
                                     <div className="space-y-6">
                                         {category.technologies.map((tech, techIndex) => (
                                             <div key={techIndex} className="border-l-4 border-orange-500 pl-6">
-                                                <h4 className="text-xl font-semibold text-primaryBlue mb-3">{tech.name}</h4>
+                                                <h4 className="sm:text-xl font-semibold text-primaryBlue mb-3">{tech.name}</h4>
                                                 <p className="text-gray-600 leading-relaxed">{tech.description}</p>
                                             </div>
                                         ))}
@@ -483,16 +499,16 @@ const BullsEyesCase = () => {
                             transition={{ duration: 0.8 }}
                             className="text-center mb-16"
                         >
-                            <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
                                 Feature Deep Dive
                             </h2>
-                            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                            <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                                 Each feature was carefully designed and implemented to provide maximum value
                                 and reliability for both end-users and system administrators.
                             </p>
                         </motion.div>
 
-                        <div className="space-y-16">
+                        <div className="space-y-10 sm:space-y-16">
                             {detailedFeatures.map((feature, index) => (
                                 <motion.div
                                     key={index}
@@ -500,22 +516,23 @@ const BullsEyesCase = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.8, delay: index * 0.1 }}
-                                    className="bg-white shadow-md rounded-2xl p-8"
+                                    className="bg-white shadow-md rounded-2xl p-6 sm:p-8"
                                 >
-                                    <div className="flex items-start space-x-6">
+                                    <div className="flex items-start sm:space-x-6">
 
-                                        <div className="w-16 h-16 bg-primaryBlue rounded-2xl flex items-center justify-center flex-shrink-0">
-                                            <feature.icon className="w-8 h-8 text-white" />
+                                        <div className="w-10 sm:w-12 md:w-16 h-10 md:h-16 sm:h-12 bg-primaryBlue rounded-2xl sm:flex items-center justify-center flex-shrink-0  hidden">
+                                            <feature.icon className="w-5 sm:w-8 h-5 sm:h-8 text-white" />
                                         </div>
+
                                         <div className="flex-1">
-                                            <h3 className="text-2xl font-bold text-primaryBlue mb-4">{feature.title}</h3>
-                                            <p className="text-xl text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
+                                            <h3 className="text-lg sm:text-2xl font-bold text-primaryBlue mb-4">{feature.title}</h3>
+                                            <p className="sm:text-xl text-gray-600 mb-6 leading-relaxed">{feature.description}</p>
 
                                             <div className="grid md:grid-cols-2 gap-4">
                                                 {feature.details.map((detail, detailIndex) => (
                                                     <div key={detailIndex} className="flex items-start space-x-3">
                                                         <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
-                                                        <p className="text-gray-700">{detail}</p>
+                                                        <p className="text-sm sm:text-md text-gray-700">{detail}</p>
                                                     </div>
                                                 ))}
                                             </div>
@@ -537,57 +554,63 @@ const BullsEyesCase = () => {
                             transition={{ duration: 0.8 }}
                             className="text-center mb-16"
                         >
-                            <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
                                 Implementation Timeline
                             </h2>
-                            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                            <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                                 Our structured approach ensured timely delivery while maintaining high quality
                                 standards throughout the development process.
                             </p>
                         </motion.div>
 
-                        <div className="grid grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             {implementationPhases.map((phase, index) => (
                                 <>
                                     {index == 5 ? (
-                                        <div className='bg-primaryBlue rounded-2xl p-8 shadow-lg text-white'>
-                                            <h1 className='text-4xl font-bold'>Now thats on maintenence</h1>
-
+                                        <div className="bg-primaryBlue rounded-2xl p-6 sm:p-10 shadow-xl text-left text-white space-y-6">
+                                            <h2 className="text-3xl md:text-4xl font-bold">
+                                                Ongoing Store Maintenance & Support
+                                            </h2>
+                                            <p className=" md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
+                                                Keep your eCommerce platform fast, secure, and up to date with continuous
+                                                monitoring, bug fixes, and feature enhancements. Focus on growth while
+                                                we handle the maintenance.
+                                            </p>
+                                            <Link
+                                                to="/ContactUs"
+                                                className="inline-flex items-center px-4 sm:px-8 py-4 rounded-xl font-semibold bg-primaryOrange hover:bg-toOrange text-white sm:text-lg shadow-lg hover:shadow-2xl transition-all duration-300"
+                                            >
+                                                <span>Let’s Maintain Your Store</span>
+                                                <ArrowRight className="w-6 h-6 ml-2" />
+                                            </Link>
                                         </div>
-                                    ) : (
-                                        <motion.div
-                                            key={index}
-                                            initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 0.8, delay: index * 0.1 }}
-                                            className="bg-white rounded-2xl p-8 shadow-lg"
-                                        >
-                                            <div className="space-y-6">
-                                                <div className='flex justify-between items-center'>
-                                                    <div className="w-12 h-12 bg-primaryOrange rounded-xl flex items-center justify-center flex-shrink-0">
-                                                        <span className="text-white font-bold text-lg">{index + 1}</span>
-                                                    </div>
-                                                    <span className="text-primaryOrange font-semibold text-lg">{phase.duration}</span>
-                                                </div>
-                                                <div className="flex-1">
-                                                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                                                        <h3 className="text-2xl font-bold text-primaryBlue">{phase.phase}</h3>
-                                                    </div>
-                                                    <p className="text-xl text-gray-600 mb-6">{phase.description}</p>
 
-                                                    <div className="space-y-2">
-                                                        <h4 className="text-lg font-semibold text-primaryBlue mb-3">Key Deliverables:</h4>
-                                                        {phase.deliverables.map((deliverable, deliverableIndex) => (
-                                                            <div key={deliverableIndex} className="flex items-start space-x-3">
-                                                                <CheckCircle className="w-5 h-5 text-primaryOrange mt-0.5 flex-shrink-0" />
-                                                                <p className="text-gray-700">{deliverable}</p>
-                                                            </div>
-                                                        ))}
-                                                    </div>
+                                    ) : (
+
+                                        <div className="space-y-6 bg-white rounded-2xl p-6 sm:p-8 shadow-md sm:hover:shadow-xl transition-all duration-300">
+                                            <div className='flex justify-between items-center'>
+                                                <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primaryOrange rounded-xl flex items-center justify-center flex-shrink-0">
+                                                    <span className="text-white font-bold text-lg">{index + 1}</span>
+                                                </div>
+                                                <span className="text-primaryOrange font-semibold text-lg">{phase.duration}</span>
+                                            </div>
+                                            <div className="flex-1">
+                                                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                                    <h3 className="text-lg sm:text-2xl font-bold text-primaryBlue">{phase.phase}</h3>
+                                                </div>
+                                                <p className="sm:text-xl text-gray-600 mb-6">{phase.description}</p>
+
+                                                <div className="space-y-2">
+                                                    <h4 className="text-lg font-semibold text-primaryBlue mb-3">Key Deliverables:</h4>
+                                                    {phase.deliverables.map((deliverable, deliverableIndex) => (
+                                                        <div key={deliverableIndex} className="flex items-start space-x-3">
+                                                            <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange mt-0.5 flex-shrink-0" />
+                                                            <p className="text-sm sm:text-md text-gray-700">{deliverable}</p>
+                                                        </div>
+                                                    ))}
                                                 </div>
                                             </div>
-                                        </motion.div>
+                                        </div>
                                     )}
                                 </>
                             ))}
@@ -605,10 +628,10 @@ const BullsEyesCase = () => {
                             transition={{ duration: 0.8 }}
                             className="text-center mb-16"
                         >
-                            <h2 className="text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
                                 Challenges & Solutions
                             </h2>
-                            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                            <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                                 Every complex project presents unique challenges. Here's how we overcame
                                 the key technical and business obstacles during development.
                             </p>
@@ -622,22 +645,22 @@ const BullsEyesCase = () => {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.8, delay: index * 0.1 }}
-                                    className="bg-white rounded-2xl p-8 shadow-md"
+                                    className="bg-white rounded-2xl p-6 sm:p-8 shadow-md"
                                 >
                                     <div className="space-y-6">
                                         <div>
                                             <div className="flex items-center space-x-3 mb-2">
-                                                <AlertTriangle className="w-6 h-6 text-primaryOrange" />
-                                                <h3 className="text-xl font-bold text-primaryBlue">Challenge</h3>
+                                                <AlertTriangle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange" />
+                                                <h3 className="text-lg sm:text-xl font-bold text-primaryBlue">Challenge</h3>
                                             </div>
-                                            <p className="text-gray-700 text-lg leading-relaxed">{item.challenge}</p>
+                                            <p className="text-gray-700 sm:text-lg leading-relaxed">{item.challenge}</p>
                                         </div>
                                         <div>
                                             <div className="flex items-center space-x-3 mb-2">
-                                                <CheckCircle className="w-6 h-6 text-primaryBlue" />
-                                                <h3 className="text-xl font-bold text-primaryBlue">Solution</h3>
+                                                <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryBlue" />
+                                                <h3 className="text-lg sm:text-xl font-bold text-primaryBlue">Solution</h3>
                                             </div>
-                                            <p className="text-gray-700 text-lg leading-relaxed">{item.solution}</p>
+                                            <p className="text-gray-700 sm:text-lg leading-relaxed">{item.solution}</p>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -660,10 +683,10 @@ const BullsEyesCase = () => {
                             <div className="image-placeholder w-full h-64 bg-gray-200/30 rounded-xl mb-10 flex items-center justify-center text-white">
                                 Results Infographic
                             </div>
-                            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-8">
+                            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-8">
                                 Results & Impact
                             </h2>
-                            <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                            <p className="sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
                                 The new Bullseye Investments website strengthened digital trust,
                                 simplified client onboarding, and provided investors with transparent,
                                 real-time access to financial markets.
@@ -701,10 +724,10 @@ const BullsEyesCase = () => {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="bg-slate-700/50 rounded-2xl p-8"
                         >
-                            <h3 className="text-2xl font-bold text-white mb-6">Business Impact</h3>
+                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">Business Impact</h3>
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div>
-                                    <h4 className="text-xl font-semibold text-white mb-4">For Bullseye Investments</h4>
+                                    <h4 className="text-lg sm:text-xl font-semibold text-white mb-4">For Bullseye Investments</h4>
                                     <ul className="space-y-3">
                                         <li className="flex items-start space-x-3">
                                             <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
@@ -721,7 +744,7 @@ const BullsEyesCase = () => {
                                     </ul>
                                 </div>
                                 <div>
-                                    <h4 className="text-xl font-semibold text-white mb-4">For Investors</h4>
+                                    <h4 className="text-lg sm:text-xl font-semibold text-white mb-4">For Investors</h4>
                                     <ul className="space-y-3">
                                         <li className="flex items-start space-x-3">
                                             <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
@@ -751,9 +774,9 @@ const BullsEyesCase = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="p-12 text-center"
+                            className="sm:p-12 text-center"
                         >
-                            <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
                                 Ready to Elevate Your Financial Platform?
                             </h2>
                             <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
@@ -761,13 +784,22 @@ const BullsEyesCase = () => {
                                 investment platforms. From seamless client onboarding to real-time market data
                                 integration, we build solutions that empower financial organizations and their investors.
                             </p>
-                            <Link
-                                to={"/ContactUs"}
-                                className="bg-primaryOrange hover:bg-toOrange text-white px-12 py-5 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg mx-auto shadow-xl hover:shadow-2xl transition-all duration-300 w-fit"
-                            >
-                                <span>Start Your Project</span>
-                                <ArrowRight className="w-6 h-6" />
-                            </Link>
+                            <div className='flex justify-center items-center sm:flex-row flex-col gap-6 w-full'>
+                                <Link
+                                    to={"/ContactUs"}
+                                    className="bg-primaryOrange hover:bg-toOrange text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit"
+                                >
+                                    <span>Lets deploy your problem</span>
+                                    <ArrowRight className="w-6 h-6" />
+                                </Link>
+                                <Link
+                                    to={"/missions"}
+                                    className="bg-white sm:hover:bg-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg  sm:shadow-lg transition-all duration-300 w-fit border border-primaryBlue"
+                                >
+                                    <span>View More Projects</span>
+                                    <ArrowRight className="w-6 h-6" />
+                                </Link>
+                            </div>
                         </motion.div>
                     </div>
                 </section>

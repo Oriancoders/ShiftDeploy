@@ -23,6 +23,8 @@ import { Link } from 'react-router-dom';
 import frontend from '../../Assets/Images/casestudies/k2traders/frontend.png'
 import backend from '../../Assets/Images/casestudies/k2traders/backend.png'
 import deployment from '../../Assets/Images/casestudies/k2traders/deployment.png'
+import security from '../../Assets/Images/casestudies/k2traders/security.png'
+
 import keystatic from '../../Assets/Images/casestudies/k2traders/keystatic.png'
 
 const K2TradersCase = () => {
@@ -118,7 +120,7 @@ const K2TradersCase = () => {
                         "K2 Traders holds 100% ownership of the platform, eliminating reliance on third-party SaaS vendors."
                 }
             ],
-            image: deployment
+            image: security
 
         }
     ];
@@ -805,18 +807,17 @@ const K2TradersCase = () => {
 
                 {/* Call to Action */}
                 <section className="py-10 sm:py-20 bg-gray-50">
-                    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <motion.div
                             initial={{ opacity: 0, y: 60 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
-                            className="sm:p-12 text-center"
+                            className="sm:p-12 text-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
                         >
-                            <h2 className="text-3xl lg:text-5xl font-bold text-slate-800 mb-8">
+                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
                                 Ready to Launch Your Smart eCommerce Store?
                             </h2>
-                            <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                            <p className="sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
                                 ShiftDeploy helps businesses like K2 Traders save thousands by building
                                 optimized, one-time-pay eCommerce solutions. No monthly fees, no heavy
                                 maintenance. Just a fast, scalable, and cost-efficient online store
@@ -840,7 +841,6 @@ const K2TradersCase = () => {
                                 </Link>
                             </div>
                         </motion.div>
-                    </div>
                 </section>
 
             </div>
