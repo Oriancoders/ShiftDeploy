@@ -5,6 +5,7 @@ import { fadeInUp, staggerContainer } from '../../utils/animations';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
 import emailjs from "@emailjs/browser";
+import { Helmet } from 'react-helmet-async';
 
 const ContactUs = () => {
   const ref = useRef(null);
@@ -101,6 +102,37 @@ const ContactUs = () => {
 
   return (
     <>
+      <Helmet>
+        {/* ✅ Basic SEO Meta */}
+        <title>Contact ShiftDeploy | Start Your Deployment Journey</title>
+        <meta
+          name="description"
+          content="Get in touch with ShiftDeploy to solve your CI/CD, cloud, and DevOps challenges. Let's turn your amazing product into a successful deployment."
+        />
+        <meta
+          name="keywords"
+          content="contact ShiftDeploy, DevOps consultation, cloud deployment help, CI/CD experts, talk to DevOps team"
+        />
+
+        {/* ✅ Open Graph / Social Preview */}
+        <meta property="og:title" content="Contact ShiftDeploy | Start Your Deployment Journey" />
+        <meta
+          property="og:description"
+          content="Get in touch with ShiftDeploy to solve your CI/CD, cloud, and DevOps challenges. Let's turn your amazing product into a successful deployment."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.shiftdeploy.com/contact" />
+        <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
+
+        {/* ✅ Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact ShiftDeploy | Start Your Deployment Journey" />
+        <meta
+          name="twitter:description"
+          content="Reach out to our team for expert guidance in CI/CD, DevOps, and cloud deployment."
+        />
+        <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
+      </Helmet>
       <Navigation />
       <section id="contact-us" className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
         {/* Background Pattern */}
@@ -152,7 +184,7 @@ const ContactUs = () => {
               </div>
 
               <h2 className="text-2xl sm:text-3xl lg:text-3xl font-bold text-primaryBlue mb-6 sm:mb-8 leading-10">
-                 Contact Via Other Platforms
+                Contact Via Other Platforms
               </h2>
               {/* Contact Information */}
               <div className="space-y-6 sm:space-y-8">
@@ -342,7 +374,7 @@ const ContactUs = () => {
                   <motion.button
                     type="submit"
                     disabled={formStatus === 'loading'}
-   
+
                     className="w-full bg-primaryOrange hover:bg-toOrange text-white font-semibold py-4 sm:py-5 px-6 sm:px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-3 text-base sm:text-lg disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {formStatus === 'loading' ? (

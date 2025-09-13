@@ -25,14 +25,15 @@ import frontend from '../../Assets/Images/casestudies/bullseyes/frontend.png'
 import backend from '../../Assets/Images/casestudies/bullseyes/backend.png'
 import apis from '../../Assets/Images/casestudies/bullseyes/apis.png'
 import keystatic from '../../Assets/Images/casestudies/bullseyes/keystatic.png'
+import { Helmet } from 'react-helmet-async';
 
 const BullsEyesCase = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-    // useEffect(() => {
-    //     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // }, []);
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
 
     const techDetails = [
         {
@@ -52,7 +53,7 @@ const BullsEyesCase = () => {
                     description: "Users can create watchlists powered by live API updates, ensuring accurate portfolio monitoring."
                 }
             ],
-            image : apis
+            image: apis
 
         },
         {
@@ -68,7 +69,7 @@ const BullsEyesCase = () => {
                     description: "Custom connectors handle secure push-pull of structured data between the React frontend and Google Sheets backend."
                 }
             ],
-            image : backend
+            image: backend
         },
         {
             category: "Frontend & User Experience",
@@ -87,7 +88,7 @@ const BullsEyesCase = () => {
                     description: "Dynamic stock charts, real-time updates, and portfolio visualizations built using charting libraries integrated with live APIs."
                 }
             ],
-            image : frontend
+            image: frontend
         }
     ];
 
@@ -269,11 +270,42 @@ const BullsEyesCase = () => {
 
     return (
         <>
+            <Helmet>
+                {/* ✅ Basic SEO Meta */}
+                <title>Bullseyes Investments Case Study | Brokerage Platform by ShiftDeploy</title>
+                <meta
+                    name="description"
+                    content="Learn how ShiftDeploy built a fast, reliable, and secure brokerage platform for Bullseyes Investments, a leading PSX stockbroker."
+                />
+                <meta
+                    name="keywords"
+                    content="Bullseyes Investments, PSX broker, brokerage website, stock trading platform, ShiftDeploy case study"
+                />
+
+                {/* ✅ Open Graph / Social Preview */}
+                <meta property="og:title" content="Bullseyes Investments Case Study | Brokerage Platform by ShiftDeploy" />
+                <meta
+                    property="og:description"
+                    content="Learn how ShiftDeploy built a fast, reliable, and secure brokerage platform for Bullseyes Investments, a leading PSX stockbroker."
+                />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content="https://www.shiftdeploy.com/CaseStudies/BullseyesInvestmentsCase" />
+                <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
+
+                {/* ✅ Twitter Card */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Bullseyes Investments Case Study | Brokerage Platform by ShiftDeploy" />
+                <meta
+                    name="twitter:description"
+                    content="Discover how ShiftDeploy created a modern, secure brokerage platform for Bullseyes Investments to serve PSX traders efficiently."
+                />
+                <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
+            </Helmet>
             <Navigation isDarkBg={true} />
             <div className="bg-gray-50 min-h-screen">
 
                 {/* Hero Section  */}
-                <section className="relative  bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center py-20">
+                <section className="relative  bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center py-20 sm:py-10">
                     {/* Background Pattern */}
                     <div className="absolute inset-0 opacity-30">
                         <div

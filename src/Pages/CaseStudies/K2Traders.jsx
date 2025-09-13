@@ -26,12 +26,13 @@ import deployment from '../../Assets/Images/casestudies/k2traders/deployment.png
 import security from '../../Assets/Images/casestudies/k2traders/security.png'
 
 import keystatic from '../../Assets/Images/casestudies/k2traders/keystatic.png'
+import { Helmet } from 'react-helmet-async';
 
 const K2TradersCase = () => {
 
-    // useEffect(() => {
-    //     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // }, []);
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
 
     const techDetails = [
         {
@@ -297,12 +298,43 @@ const K2TradersCase = () => {
 
     return (
         <>
+            <Helmet>
+                {/* ✅ Basic SEO Meta */}
+                <title>K2 Traders Case Study | E-Commerce Platform by ShiftDeploy</title>
+                <meta
+                    name="description"
+                    content="Discover how ShiftDeploy helped K2 Traders build and deploy a robust e-commerce platform with scalable cloud infrastructure and automated CI/CD pipelines."
+                />
+                <meta
+                    name="keywords"
+                    content="K2 Traders, e-commerce platform, cloud deployment, CI/CD pipelines, ShiftDeploy case study"
+                />
+
+                {/* ✅ Open Graph / Social Preview */}
+                <meta property="og:title" content="K2 Traders Case Study | E-Commerce Platform by ShiftDeploy" />
+                <meta
+                    property="og:description"
+                    content="Discover how ShiftDeploy helped K2 Traders build and deploy a robust e-commerce platform with scalable cloud infrastructure and automated CI/CD pipelines."
+                />
+                <meta property="og:type" content="article" />
+                <meta property="og:url" content="https://www.shiftdeploy.com/CaseStudies/K2TradersCase" />
+                <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
+
+                {/* ✅ Twitter Card */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="K2 Traders Case Study | E-Commerce Platform by ShiftDeploy" />
+                <meta
+                    name="twitter:description"
+                    content="See how ShiftDeploy helped K2 Traders launch a secure and scalable e-commerce platform with full cloud integration."
+                />
+                <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
+            </Helmet>
             <Navigation isDarkBg={true} />
 
             <div className="bg-gray-50 min-h-screen">
 
                 {/* Hero Section */}
-                <section className="relative  bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center">
+                <section className="relative  bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center py-20 sm:py-10">
                     {/* Background Pattern */}
                     <div className="absolute inset-0 opacity-30">
                         <div
@@ -378,17 +410,17 @@ const K2TradersCase = () => {
                             <h2 className="text-3xl lg:text-5xl font-bold text-primaryBlue mb-4 sm:mb-8">
                                 Project Overview
                             </h2>
-                                <p className="sm:text-xl text-gray-700 leading-relaxed p-2">
-                                    ShiftDeploy partnered with{" "}
-                                    <span className="font-semibold text-primaryOrange">K2 Traders</span> to
-                                    build a lightweight, fully optimized{" "}
-                                    <span className="font-semibold">eCommerce platform</span>.
-                                    The solution includes a modern ReactJS frontend deployed on Vercel,
-                                    a seamless cart & checkout flow, and Google Sheets integration for
-                                    order management. Eliminating hosting costs and heavy maintenance.
-                                    This project was designed to give startups an affordable,
-                                    scalable alternative to Shopify or WordPress.
-                                </p>
+                            <p className="sm:text-xl text-gray-700 leading-relaxed p-2">
+                                ShiftDeploy partnered with{" "}
+                                <span className="font-semibold text-primaryOrange">K2 Traders</span> to
+                                build a lightweight, fully optimized{" "}
+                                <span className="font-semibold">eCommerce platform</span>.
+                                The solution includes a modern ReactJS frontend deployed on Vercel,
+                                a seamless cart & checkout flow, and Google Sheets integration for
+                                order management. Eliminating hosting costs and heavy maintenance.
+                                This project was designed to give startups an affordable,
+                                scalable alternative to Shopify or WordPress.
+                            </p>
                         </motion.div>
 
                         <div className="grid lg:grid-cols-2 gap-16 mb-8 sm:mb-16 p-2">
@@ -807,40 +839,40 @@ const K2TradersCase = () => {
 
                 {/* Call to Action */}
                 <section className="py-10 sm:py-20 bg-gray-50">
-                        <motion.div
-                            initial={{ opacity: 0, y: 60 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="sm:p-12 text-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
-                        >
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
-                                Ready to Launch Your Smart eCommerce Store?
-                            </h2>
-                            <p className="sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-                                ShiftDeploy helps businesses like K2 Traders save thousands by building
-                                optimized, one-time-pay eCommerce solutions. No monthly fees, no heavy
-                                maintenance. Just a fast, scalable, and cost-efficient online store
-                                that grows with you.
-                            </p>
+                    <motion.div
+                        initial={{ opacity: 0, y: 60 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="sm:p-12 text-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+                    >
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
+                            Ready to Launch Your Smart eCommerce Store?
+                        </h2>
+                        <p className="sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
+                            ShiftDeploy helps businesses like K2 Traders save thousands by building
+                            optimized, one-time-pay eCommerce solutions. No monthly fees, no heavy
+                            maintenance. Just a fast, scalable, and cost-efficient online store
+                            that grows with you.
+                        </p>
 
-                            <div className='flex justify-center items-center sm:flex-row flex-col gap-6 w-full'>
-                                <Link
-                                    to={"/ContactUs"}
-                                    className="bg-primaryOrange hover:bg-toOrange text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit"
-                                >
-                                    <span>Start Your eCommerce Project</span>
-                                    <ArrowRight className="w-6 h-6" />
-                                </Link>
-                                <Link
-                                    to={"/missions"}
-                                    className="bg-white sm:hover:bg-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg  sm:shadow-lg transition-all duration-300 w-fit border border-primaryBlue"
-                                >
-                                    <span>View More Projects</span>
-                                    <ArrowRight className="w-6 h-6" />
-                                </Link>
-                            </div>
-                        </motion.div>
+                        <div className='flex justify-center items-center sm:flex-row flex-col gap-6 w-full'>
+                            <Link
+                                to={"/ContactUs"}
+                                className="bg-primaryOrange hover:bg-toOrange text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit"
+                            >
+                                <span>Start Your eCommerce Project</span>
+                                <ArrowRight className="w-6 h-6" />
+                            </Link>
+                            <Link
+                                to={"/missions"}
+                                className="bg-white sm:hover:bg-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg  sm:shadow-lg transition-all duration-300 w-fit border border-primaryBlue"
+                            >
+                                <span>View More Projects</span>
+                                <ArrowRight className="w-6 h-6" />
+                            </Link>
+                        </div>
+                    </motion.div>
                 </section>
 
             </div>

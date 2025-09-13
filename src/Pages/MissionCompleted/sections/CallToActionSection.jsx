@@ -98,7 +98,7 @@ function CallToActionSection() {
 
           {/* Secondary CTA */}
           <div className="mb-12">
-            <Link to={"/insideShiftdeploy"} className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-12 py-4 rounded-2xl hover:bg-white/20 transition-all duration-300">
+            <Link to={"/shift-protocol"} className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-12 py-4 rounded-2xl hover:bg-white/20 transition-all duration-300">
               See The Shift Protocol
             </Link>
           </div>
