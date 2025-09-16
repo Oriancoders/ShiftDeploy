@@ -80,7 +80,7 @@ function HowWeWorkSection() {
                 <div className="grid md:grid-cols-3 gap-8 items-center">
                   <div className="md:col-span-2">
                     <div className="flex items-center mb-4">
-    
+
                       <h3 className="text-xl sm:text-3xl font-bold text-primaryBlue">{principle.title}</h3>
                     </div>
                     <p className="sm:text-lg text-gray-600 leading-relaxed ">{principle.description}</p>
@@ -105,19 +105,29 @@ function HowWeWorkSection() {
 
 
 
+        <div className="text-center mt-16 sm:mt-20 space-y-4 sm:space-y-6">
+          <p className="text-3xl sm:text-5xl text-primaryBlue font-semibold">The Legacy</p>
+          <p className="sm:text-lg text-gray-600 italic">
+                This is how we work. This is how we win.
+          </p>
 
-        <div className="w-full block mt-10 sm:mt-20  text-center ">
-          <h1 className="text-lg italic">
-            This is how we work. This is how we win.
-          </h1>
-        </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto ">
+            <Link to={"/ContactUs"}
 
-        <Link to={"/ContactUs"}
-
-              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md mt-6 w-fit mx-auto"
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md"
             >
               Launch Your Project
             </Link >
+
+            <Link to={"/shift-protocol"}
+
+              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+            >
+              <span>View Shift Protocol</span>
+            </Link>
+          </div>
+        </div>
+ 
 
       </div>
     </section>

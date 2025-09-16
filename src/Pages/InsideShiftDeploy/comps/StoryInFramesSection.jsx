@@ -12,7 +12,7 @@ function StoryInFramesSection() {
     {
       title: "The Challenge",
       subtitle: "Unstable Infrastructure",
-      description: "We needed to collect real-time EV charger data reliably — without constant breakdowns.",
+      description: "We needed to collect real-time EV charger data reliably without constant breakdowns.",
       details:
         "Our early prototype could barely handle basic telemetry. MQTT packets were dropping, temperature spikes went unnoticed, and there was no session tracking. Scaling this for public deployment seemed impossible.",
       icon: <Cpu className="w-6 sm:w-8 h-6 sm:h-8" />,
@@ -31,7 +31,7 @@ function StoryInFramesSection() {
       subtitle: "Live and Scalable",
       description: "A production-ready EV charging platform with live telemetry and remote control.",
       details:
-        "The system now streams continuous voltage, current, and temperature data from chargers to the dashboard, supports multiple users, logs full session history, and processes payments automatically — ready to scale to a commercial network.",
+        "The system now streams continuous voltage, current, and temperature data from chargers to the dashboard, supports multiple users, logs full session history, and processes payments automatically ready to scale to a commercial network.",
       icon: <Battery className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
   ]
@@ -103,7 +103,7 @@ function StoryInFramesSection() {
 
         <div className="text-center mt-16 sm:mt-20 space-y-4 sm:space-y-6">
           <p className="text-3xl sm:text-5xl text-primaryBlue font-semibold">The Lesson</p>
-          <p className="sm:text-xl text-gray-600 italic">
+          <p className="sm:text-lg text-gray-600 italic">
             Innovation happens when hardware, software, and users all work in sync.
           </p>
 

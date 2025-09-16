@@ -14,7 +14,7 @@ function OriginStorySection() {
       title: "Spark",
       subtitle: "The Problem",
       description:
-        "We started in the trenches—debugging someone else's nightmare at 3 AM, watching 'quick fixes' compound into technical debt mountains. The industry was full of builders who moved fast and broke everything, including trust.",
+        "We started in the trenches, debugging someone else's nightmare at 3 AM, watching 'quick fixes' compound into technical debt mountains. The industry was full of builders who moved fast and broke everything, including trust.",
       icon: <Zap className="w-8 h-8" />,
       image : 'https://images.pexels.com/photos/6963098/pexels-photo-6963098.jpeg'
     },
@@ -30,7 +30,7 @@ function OriginStorySection() {
       title: "System",
       subtitle: "The Solution",
       description:
-        "ShiftDeploy was born from that rebellion against rushed code and empty promises. We became the agency we wished existed—one that treats your project like our own legacy.",
+        "ShiftDeploy was born from that rebellion against rushed code and empty promises. We became the agency we wished existed that treats your project like our own legacy.",
       icon: <Rocket className="w-8 h-8" />,
       image : 'https://images.pexels.com/photos/6963098/pexels-photo-6963098.jpeg'
     },

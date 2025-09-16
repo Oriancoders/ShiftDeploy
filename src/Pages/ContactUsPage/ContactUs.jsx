@@ -175,7 +175,7 @@ const ContactUs = () => {
               className="space-y-8 sm:space-y-10 lg:space-y-12 sm:order-1 order-2"
             >
               <div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primaryBlue mb-6 sm:mb-8">
                   Let's Start a Conversation
                 </h2>
                 <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10">
