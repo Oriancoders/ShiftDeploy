@@ -7,7 +7,7 @@ import { Link, Links } from 'react-router-dom';
 
 const ShiftProtocol = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, });
 
   const steps = [
     {
@@ -91,7 +91,7 @@ const ShiftProtocol = () => {
 
           <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl ">
             {steps.map((step, index) => (
-              <>
+              <div key={index}>
                 {index == 5 ? (
                   <div
                     key={index}
@@ -106,7 +106,7 @@ const ShiftProtocol = () => {
                     {/* Description */}
                     <p className=" sm:text-lg text-gray-200 mb-6 max-w-md">
                       Let’s build, launch, and scale your vision into reality.
-                      Our team is ready to deliver results—step into the future with confidence.
+                      Our team is ready to deliver results that let step into the future with confidence.
                     </p>
 
                     {/* CTA Button */}
@@ -140,13 +140,13 @@ const ShiftProtocol = () => {
                       {step.details.map((detail, detailIndex) => (
                         <li key={detailIndex} className="flex items-center space-x-2 sm:space-x-3 ">
                           <div className="w-2 h-2 bg-primaryOrange rounded-full flex-shrink-0" />
-                          <span className="text-gray-700  sm:text-md font-medium">{detail}</span>
+                          <span className="text-gray-700  sm:text-md ">{detail}</span>
                         </li>
                       ))}
                     </ul>
                   </motion.div>
                 )}
-              </>
+              </div>
             ))}
           </div>
         </div>
@@ -156,15 +156,7 @@ const ShiftProtocol = () => {
 
         <div className='w-full flex justify-center items-center'>
           <div
-            framerAtts={{
-              initial: { opacity: 0, y: 60 },
-              animate: isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 },
-              transition: { duration: 0.8, delay: 0.6 }
 
-            }}
-            gradientFrom='rgba(67, 97, 238, 0.2)'
-            gradientTo='rgba(67, 97, 238, 0.1)'
-            circleSize={150}
             className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
           >
             <h3 className="text-2xl sm:text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">

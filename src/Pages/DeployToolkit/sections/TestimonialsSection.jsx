@@ -7,7 +7,7 @@ function TestimonialsSection() {
   const sectionRef = useRef(null)
 
   const testimonials = [
- 
+
     {
       quote:
         "",
@@ -16,7 +16,7 @@ function TestimonialsSection() {
       stage: "",
       avatar: "/placeholder.svg?height=80&width=80",
     },
-   
+
   ]
 
   const trustIndicators = [
@@ -56,7 +56,7 @@ function TestimonialsSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center  sm:mb-20">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
-            What founders <br/>
+            What founders <br />
             <span className="text-primaryOrange">
               are saying
             </span>
@@ -65,22 +65,23 @@ function TestimonialsSection() {
 
         {/* Testimonial Carousel */}
         <div className="relative mb-12 sm:mb-20">
-          <div className="sm:bg-white sm:shadow-lg rounded-3xl  sm:p-12 text-center sm:min-h-[300px] flex items-center justify-center">
+          <div className="bg-white shadow-md sm:shadow-lg rounded-3xl p-6 sm:p-12 text-center sm:min-h-[300px] flex items-center justify-center">
             <div
             >
               <blockquote className="sm:text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl">
-                "I was skeptical about outsourcing our infrastructure, but these guys know their stuff. Our AWS costs dropped 60% and performance actually improved. Best investment we've made."
+                "We were spending a fortune every month just to keep our old store running. Their team built us a modern, high-performance e-commerce platform and deployed it on Vercel with a smart one-time setup. Now our platform runs flawlessly without monthly server bills, it’s been a game-changer for us."
               </blockquote>
+
               <div className="flex items-center justify-center">
                 <img
-                  src={"/placeholder.svg"}
-                  alt={"Marcus Rodriguez"}
+                  src={"https://cdn-icons-png.flaticon.com/512/9203/9203764.png"}
+                  alt={"Mohammad Ali"}
                   className="w-10 sm:w-16 h-10 sm:h-16 rounded-full mr-4"
                 />
                 <div className="text-left">
-                  <div className="font-semibold text-gray-900 text-lg">SADIA</div>
+                  <div className="font-semibold text-gray-900 text-lg">Muhammad Ali</div>
                   <div className="text-gray-600">
-                    CTO Seed
+                    CEO K2Traders
                   </div>
                 </div>
               </div>
@@ -95,9 +96,8 @@ function TestimonialsSection() {
           {trustIndicators.map((indicator, index) => (
             <div
               key={index}
-              className={`text-center transition-all duration-700 delay-${index * 100} transform ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-              }`}
+              className={`text-center transition-all duration-700 delay-${index * 100} transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                }`}
             >
               <div className="text-3xl md:text-5xl font-bold text-primaryOrange mb-2">{indicator.metric}</div>
               <div className="text-gray-600">{indicator.description}</div>

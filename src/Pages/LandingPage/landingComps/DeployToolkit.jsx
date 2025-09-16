@@ -2,11 +2,10 @@ import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Wrench, Zap, Shield, Globe, Server, Database, ArrowRight, MoveLeft } from 'lucide-react';
 import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
-import CursorFollower from '../../../utils/CursorFollower';
+import emailjs from "@emailjs/browser";
 import { Link } from 'react-router-dom';
 const DeployToolkit = () => {
   const [activeIndex, setActiveIndex] = useState(null);
-  const [mouseOverIndex, setMouseOverIndex] = useState(null);
   const [websiteInput, setWebsiteInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -82,6 +81,8 @@ const DeployToolkit = () => {
       return;
     }
 
+    console.log("output domain " , domain)
+
     setLoading(true);
 
     emailjs.send(
@@ -93,12 +94,12 @@ const DeployToolkit = () => {
       'QvcGHkk74en4u55cN'       // 🔹 replace
     )
       .then(() => {
-        setMessage('✅ Website audit request sent successfully!');
+        setMessage('Website audit request sent successfully!');
         setLoading(false)
         setWebsiteInput('');
       })
       .catch(() => {
-        setMessage('❌ Failed to send. Please try again.');
+        setMessage('Failed to send. Please try again.');
       })
       .finally(() => setLoading(false));
   };
@@ -139,7 +140,6 @@ const DeployToolkit = () => {
         <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 px-4 sm:px-6 lg:px-8 max-w-7xl ">
           {tools.map((tool, index) => (
             <motion.div
-              onMouseEnter={() => handleMouseOver(index)}
               key={index}
               variants={scaleOnHover}
             >
@@ -189,11 +189,11 @@ const DeployToolkit = () => {
 
         <Link to={"/deploy-toolkit"}
 
-          className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm mb-12"
+          className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm mb-12 group "
         >
 
           Why We’re Different
-          <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+          <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 group-hover:ml-3 transition-all duration-300" />
         </Link>
 
         {/* Problem-solving CTA */}
@@ -201,10 +201,10 @@ const DeployToolkit = () => {
         <div className='w-full  bg-gradient-to-br from-primaryBlue to-toBlue text-white '>
           <div
 
-            className="w-full  py-8 px-6 sm:px-0 sm:p-8 lg:p-12 xl:p-16  drop-shadow-sm flex md:flex-row flex-col   max-w-7xl mx-auto gap-4 sm:gap-6"
+            className="w-full  p-4 sm:p-8 lg:p-16  drop-shadow-sm flex lg:flex-row flex-col   max-w-7xl mx-auto gap-4 sm:gap-6"
           >
             <div className='flex-1 '>
-              <h3 className="text-2xl sm:text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
+              <h3 className="text-2xl sm:text-3xl xl:text-4xl font-bold  mb-4 sm:mb-6 lg:mb-8 leading-normal">
                 Whether it's containers, CI/CD, or observability <br /> we’ve done it for teams like yours.
               </h3>
               <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12  mx-auto leading-relaxed"
@@ -231,7 +231,7 @@ const DeployToolkit = () => {
                   className='p-4 outline-none border-none text-textColor h-full sm:rounded-none rounded-lg' />
                 <button
                   disabled={loading}
-                  className="bg-primaryOrange disabled:bg-gray-600 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-4 rounded-lg sm:rounded-none sm:rounded-r-2xl font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-sm sm:w-fit w-full"
+                  className="bg-primaryOrange disabled:bg-gray-600 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-4 rounded-lg sm:rounded-none sm:rounded-r-2xl font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange disabled:hover:bg-slate-600 text-sm sm:w-fit w-full"
                 >
                   {loading ? (
                     <>

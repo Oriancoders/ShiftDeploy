@@ -3,8 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Code, Cloud, Settings, Rocket, ArrowRight, CheckCircle } from 'lucide-react';
-import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
-import CursorFollower from '../../../utils/CursorFollower';
+import { fadeInUp, staggerContainer, } from '../../../utils/animations';
 import { Link } from 'react-router-dom';
 
 const InsideShiftDeploy = () => {
@@ -17,28 +16,24 @@ const InsideShiftDeploy = () => {
       title: "Deployment Solutions",
       description: "Fast, reliable deployment strategies that minimize downtime",
       features: ["Zero-downtime Deployment", "Rollback Strategies", "Performance Monitoring", "Global CDN"],
-      gradient: "from-orange-500 to-red-600"
     },
     {
       icon: Cloud,
       title: "Cloud Services",
       description: "Scalable cloud infrastructure solutions for modern businesses",
       features: ["AWS & Google Cloud", "Auto-scaling", "Database Management", "Security First"],
-      gradient: "from-cyan-500 to-blue-600"
     },
     {
       icon: Settings,
       title: "DevOps Excellence",
       description: "Streamlined development workflows and automation",
       features: ["CI/CD Pipelines", "Container Orchestration", "Monitoring & Logging", "Infrastructure as Code"],
-      gradient: "from-purple-500 to-indigo-600"
     },
     {
       icon: Code,
       title: "Web Development",
       description: "Custom websites and applications built with cutting-edge technologies",
-      features: ["React & Next.js", "TypeScript", "Mobile-First Design", "Performance Optimization"],
-      gradient: "from-blue-500 to-indigo-600"
+      features: ["React & Next.js", "JavaScript & TypeScript", "Mobile-First Design", "Performance Optimization"],
     },
   ];
 
@@ -56,10 +51,10 @@ const InsideShiftDeploy = () => {
             variants={fadeInUp}
             className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
           >
-                Inside
-                <span className="text-primaryOrange pl-4">
-                  ShiftDeploy
-                </span>
+            Inside
+            <span className="text-primaryOrange pl-4">
+              ShiftDeploy
+            </span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
@@ -68,7 +63,7 @@ const InsideShiftDeploy = () => {
             We provide comprehensive technology solutions that help businesses scale,
             optimize performance, and achieve sustainable growth in today's digital landscape.
           </motion.p>
-  
+
         </motion.div>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -116,14 +111,11 @@ const InsideShiftDeploy = () => {
             </p>
 
 
-            <Link to={"/insideShiftDeploy"}
-
-              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
+            <div
             >
+              <Link to={"/ContactUs"} className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md ">Launch Your Project</Link>
 
-              Whats Inside ShiftDeploy
-              <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
-            </Link>
+            </div>
 
           </div>
         </div>

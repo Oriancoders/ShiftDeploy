@@ -21,17 +21,17 @@ function WhatWeSolveSection() {
     },
     {
       pain: "Every deployment is a gamble. Sometimes it works, sometimes it doesn't.",
-      fix: "Bulletproof CI/CD — Automated testing, staged rollouts, and instant rollbacks. Deploy with confidence.",
+      fix: "Bulletproof CI/CD: Automated testing, staged rollouts, and instant rollbacks. Deploy with confidence.",
       icon: <Rocket className="w-4 sm:w-6 h-4 sm:h-6" />,
     },
     {
-      pain: "We need to integrate with [insert API here] but our team has never done it.",
-      fix: "Integration Specialists — We've connected everything to everything. Your integration works on day one.",
+      pain: "We need to integrate with (example api) but our team has never done it.",
+      fix: "Integration Specialists: We've connected everything to everything. Your integration works on day one.",
       icon: <Globe className="w-4 sm:w-6 h-4 sm:h-6" />,
     },
     {
       pain: "We're growing fast but our systems aren't. Everything's breaking.",
-      fix: "Scale-Ready Architecture — Systems designed to handle 10x growth without 10x complexity.",
+      fix: "Scale-Ready Architecture: Systems designed to handle 10x growth without 10x complexity.",
       icon: <Zap className="w-4 sm:w-6 h-4 sm:h-6" />,
     },
   ]
@@ -91,10 +91,10 @@ function WhatWeSolveSection() {
                         <div className="text-white">{problem.icon}</div>
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-primaryOrange mb-2">Your Pain:</h3>
+                        <h3 className="text-md text-lg font-semibold text-primaryOrange mb-2">Your Pain:</h3>
                       </div>
                     </div>
-                    <blockquote className=" sm:text-lg text-primaryOrange italic leading-relaxed">"{problem.pain}"</blockquote>
+                    <blockquote className="text-sm sm:text-lg text-primaryOrange italic leading-relaxed font-medium">"{problem.pain}"</blockquote>
                   </div>
                 </div>
 
@@ -106,10 +106,10 @@ function WhatWeSolveSection() {
                         <CheckCircle className="w-4 sm:w-6 h-4 sm:h-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-lg font-semibold text-primaryBlue mb-2">Our Fix:</h3>
+                        <h3 className="text-md sm:text-lg font-semibold text-primaryBlue mb-2">Our Fix:</h3>
                       </div>
                     </div>
-                    <p className="sm:text-lg text-primaryBlue leading-relaxed font-medium">{problem.fix}</p>
+                    <p className="text-sm sm:text-lg text-primaryBlue leading-relaxed ">{problem.fix}</p>
                   </div>
                 </div>
               </div>

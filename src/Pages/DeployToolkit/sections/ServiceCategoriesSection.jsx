@@ -132,18 +132,18 @@ function ServiceCategoriesSection() {
                 {/* Category & Subtitle */}
                 <div className="mb-4 sm:mb-6">
                   <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-2">{service.category}</h3>
-                  <p className="text-xs sm:text-lg text-gray-600 italic">{service.subtitle}</p>
+                  <p className="text-sm sm:text-lg text-gray-600 ">{service.subtitle}</p>
                 </div>
 
                 {/* Headline */}
-                <h4 className="sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6">{service.headline}</h4>
+                <h4 className="text-sm sm:text-xl font-semibold text-gray-800 mb-4 sm:mb-6">{service.headline}</h4>
 
                 {/* Services List */}
                 <ul className="space-y-3 mb-4 sm:mb-6">
                   {service.services.map((item, serviceIndex) => (
                     <li key={serviceIndex} className="flex items-start">
                       <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-xs sm:text-md text-gray-700">{item}</span>
+                      <span className="text-sm sm:text-md text-gray-700">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -151,12 +151,12 @@ function ServiceCategoriesSection() {
                 {/* Pain Point & Solution */}
                 <div className="border-t border-gray-200 pt-4">
                   <div className="mb-4">
-                    <p className="text-sm text-primaryOrange font-semibold mb-2">Pain Point:</p>
-                    <p className="text-xs sm:text-md text-gray-700 italic">"{service.painPoint}"</p>
+                    <p className="text-md text-primaryOrange font-semibold mb-2">Pain Point:</p>
+                    <p className="text-sm text-gray-700 italic font-medium">"{service.painPoint}"</p>
                   </div>
                   <div>
-                    <p className="text-sm text-primaryBlue font-semibold mb-2">Our Fix:</p>
-                    <p className="text-xs sm:text-md text-gray-800 font-medium">{service.solution}</p>
+                    <p className="text-md text-primaryBlue font-semibold mb-2">Our Fix:</p>
+                    <p className="text-sm text-gray-800 ">{service.solution}</p>
                   </div>
                 </div>
 
