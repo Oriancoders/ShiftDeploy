@@ -12,29 +12,30 @@ function OriginStorySection() {
   const stages = [
     {
       title: "Spark",
-      subtitle: "The Problem",
+      subtitle: "The Insight",
       description:
-        "We started in the trenches, debugging someone else's nightmare at 3 AM, watching 'quick fixes' compound into technical debt mountains. The industry was full of builders who moved fast and broke everything, including trust.",
+        "It started with a simple realization, too many digital projects fail not from lack of vision, but from chaotic execution. We saw businesses struggle to bridge the gap between big ideas and reliable delivery.",
       icon: <Zap className="w-8 h-8" />,
-      image : 'https://images.pexels.com/photos/6963098/pexels-photo-6963098.jpeg'
+      image: "https://images.unsplash.com/photo-1681949215173-fe0d15c790c1?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
       title: "Struggle",
-      subtitle: "The Question",
+      subtitle: "The Turning Point",
       description:
-        "So we asked a dangerous question: What if we slowed down to speed up? What if we built things right the first time instead of patching them forever?",
+        "We knew there had to be a better way. Instead of rushing code and praying it scales, what if we built with intention of combining design, engineering, and DevOps from day one?",
       icon: <Target className="w-8 h-8" />,
-      image : 'https://images.pexels.com/photos/27349270/pexels-photo-27349270.jpeg'
+      image: "https://images.pexels.com/photos/6963098/pexels-photo-6963098.jpeg"
     },
     {
       title: "System",
-      subtitle: "The Solution",
+      subtitle: "The ShiftDeploy Way",
       description:
-        "ShiftDeploy was born from that rebellion against rushed code and empty promises. We became the agency we wished existed that treats your project like our own legacy.",
+        "That question became ShiftDeploy, where strategy meets execution. We build digital systems that are scalable, resilient, and designed to evolve with your business.",
       icon: <Rocket className="w-8 h-8" />,
-      image : 'https://images.pexels.com/photos/6963098/pexels-photo-6963098.jpeg'
+      image: "https://www.asaecenter.org/-/media/ASAE/Images/Resources/Articles/Foundation/2016/foundation_tech-success/foundation_tech-success_39x22.ashx?h=440&w=780&la=en&hash=97505370E022E17E0C10D1FF1512BF691F09AAE2"
     },
   ]
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -107,42 +108,42 @@ function OriginStorySection() {
           <div className="absolute lg:block hidden left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primaryBlue to-toBlue rounded-full"></div>
 
           {/* Stages */}
-          <div className="space-y-32">
+          <div className="space-y-16 sm:space-y-32">
             {stages.map((stage, index) => (
-     
-                <div
-                  className={`grid md:grid-cols-2 gap-8 sm:gap-16 items-center ${index % 2 === 1 ? "md:grid-flow-col-dense" : ""}`}
-                >
-                  {/* Content */}
-                  <div className={`${index % 2 === 1 ? "md:col-start-2" : ""}`}>
-                    <div className="relative">
-                      {/* <div
+
+              <div
+                className={`grid md:grid-cols-2 gap-8 sm:gap-16 items-center ${index % 2 === 1 ? "md:grid-flow-col-dense" : ""}`}
+              >
+                {/* Content */}
+                <div className={`${index % 2 === 1 ? "md:col-start-2" : ""}`}>
+                  <div className="relative">
+                    {/* <div
                         className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-secondaryBlue to-toSecBlue mb-6`}
                       >
                         <div className="text-white">{stage.icon}</div>
                       </div> */}
-                      <h3 className="text-5xl font-bold text-primaryBlue mb-2">{stage.title}</h3>
-                      <h4 className="text-xl text-gray-800 font-semibold mb-6">{stage.subtitle}</h4>
-                      <p className="text-lg text-gray-800 leading-relaxed">{stage.description}</p>
-                      
-                    </div>
-                  </div>
+                    <h3 className="text-5xl font-bold text-primaryBlue mb-2">{stage.title}</h3>
+                    <h4 className="text-xl text-gray-800 font-semibold mb-6">{stage.subtitle}</h4>
+                    <p className="text-lg text-gray-800 leading-relaxed">{stage.description}</p>
 
-                  {/* Visual */}
-                  <div className={`${index % 2 === 1 ? "md:col-start-1" : ""}`}>
-                    <div className="relative h-52 sm:h-80 rounded-3xl overflow-hidden bg-slate-400" style={{
-                      backgroundImage : `url(${stage.image})`,
-                      backgroundSize : 'cover' ,
-                      backgroundRepeat : 'no-repeat'
-                      
-                    }}>
-                      
-                    </div>
                   </div>
-
-                  {/* Timeline Node */}
-                  <div className="absolute lg:block hidden  left-1/2 transform -translate-x-1/2 w-6 h-6 bg-white rounded-full border-4 border-gray-800 z-10"></div>
                 </div>
+
+                {/* Visual */}
+                <div className={`${index % 2 === 1 ? "md:col-start-1" : ""}`}>
+                  <div className="relative h-52 sm:h-80 rounded-3xl overflow-hidden bg-slate-400" style={{
+                    backgroundImage: `url(${stage.image})`,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat'
+
+                  }}>
+
+                  </div>
+                </div>
+
+                {/* Timeline Node */}
+                <div className="absolute lg:block hidden  left-1/2 transform -translate-x-1/2 w-6 h-6 bg-white rounded-full border-4 border-gray-800 z-10"></div>
+              </div>
             ))}
           </div>
         </div>
@@ -152,7 +153,7 @@ function OriginStorySection() {
           <CursorFollower
 
             text="Some agencies chase trends. We chase fundamentals."
-           className="  max-w-2xl sm:mt-12 bg-primaryBlue  px-10 sm:px-6 py-4 rounded-xl sm:rounded-full text-white mx-auto"
+            className="  max-w-2xl sm:mt-12 bg-primaryBlue  px-10 sm:px-6 py-4 rounded-xl sm:rounded-full text-white mx-auto"
             textClassName='text-white font-semibold text-sm lg:text-base'
             gradientFrom="#f76707"
             gradientTo="#0B1D30"

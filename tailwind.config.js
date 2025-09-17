@@ -4,7 +4,6 @@ export default {
   theme: {
     extend: {
       colors : {
-       
         primaryBlue : '#0C1F3A',
         toBlue : '#0B1D30',
         secondaryBlue : '#4361EE',
@@ -13,6 +12,7 @@ export default {
         toOrange : '#D83A21',
         textColor : '#231F20',
       },
+
       fontSize : {
         'md' : '16px',
         '3xl' : '2rem',
