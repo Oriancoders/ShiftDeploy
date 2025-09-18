@@ -1,8 +1,5 @@
-import { ArrowRight, CheckCircle, Filter } from "lucide-react"
 import { useEffect, useRef, useState, } from "react"
-import { motion } from "framer-motion"
 import CursorFollower from "../../../utils/CursorFollower"
-import { Link } from "react-router-dom"
 // Section 1: Hero Section
 function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)

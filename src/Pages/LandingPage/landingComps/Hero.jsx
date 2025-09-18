@@ -1,15 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { ArrowRight, Zap, Shield, Rocket, Play, Headset, CheckCheck } from 'lucide-react';
-import { fadeInUp, staggerContainer } from '../../../utils/animations';
 import CursorFollower from '../../../utils/CursorFollower';
 import { Link } from 'react-router-dom';
 import { ContextAPI } from '../../../GlobalProvider/ContextAPI';
 
+
+
 const Hero = () => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const {scrwidth} = useContext(ContextAPI)
+  const { scrwidth } = useContext(ContextAPI)
+
 
   const moveX = useTransform(x, [0, window.innerWidth], [-50, 50]);
   const moveY = useTransform(y, [0, window.innerHeight], [-50, 50]);
@@ -22,7 +24,22 @@ const Hero = () => {
     <section
       onMouseMove={handleMouseMove}
       className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12">
+      <motion.div
+        style={{ x: scrwidth > 660 ? moveX : 0, y: scrwidth > 660 ? moveY : 0 }}
+        className="absolute inset-0 opacity-30">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 20% 80%, #4361EE 1px, transparent 1px),
+                           radial-gradient(circle at 80% 20%, #F76707 1px, transparent 1px),
+                           radial-gradient(circle at 40% 40%, #4361EE 1px, transparent 1px)`,
+            backgroundSize: "100px 100px",
+            transform: scrwidth > 660 ? moveX : 0,
+            y: scrwidth > 660 ? moveY : 0
 
+          }}
+        ></div>
+      </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 xl:gap-16 sm:items-center">
@@ -31,9 +48,11 @@ const Hero = () => {
             className="flex flex-col lg:items-start sm:items-center"
           >
             <CursorFollower
-              text="Deploy -> Scale -> Succeed"
+              text={<p className='flex items-center justify-center gap-x-2 italic'>
+                Deploy <ArrowRight size={16} /> Scale <ArrowRight size={16} />  Succeed
+              </p>}
               className=" w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue  px-6 py-2 rounded-full text-white"
-              textClassName='text-white font-semibold text-sm lg:text-base italic'
+              textClassName='text-white font-semibold text-sm lg:text-base '
               gradientFrom="#f76707"
               gradientTo="#0B1D30"
               circleSize={100}
@@ -87,7 +106,7 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                
+
               >
                 <Link to={"/missions"} className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md">View Missions Completed</Link>
 
@@ -105,7 +124,7 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative mt-8 lg:mt-0 px-4 sm:px-0"
-            style={{ x: scrwidth > 660 ? moveX : 0, y: scrwidth > 660 ? moveY : 0}}
+          // style={{ x: scrwidth > 660 ? moveX : 0, y: scrwidth > 660 ? moveY : 0}}
           >
             <div className="relative">
               {/* Main card */}
@@ -119,7 +138,7 @@ const Hero = () => {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 xl:p-10 sm:shadow-2xl"
+                className="bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 xl:p-10 sm:shadow-xl"
               >
                 <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6 lg:mb-8">
                   <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-4 lg:p-6 backdrop-blur-sm">

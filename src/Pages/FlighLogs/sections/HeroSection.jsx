@@ -56,7 +56,7 @@ function HeroSection() {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            <p className="sm:text-xl  text-gray-700 max-w-4xl mx-auto mb-4 leading-relaxed">
+            <p className="sm:text-xl  text-gray-700 max-w-4xl mx-auto mb-4 sm:mb-12 leading-relaxed">
               Hear from the founders, CTOs, and tech teams who trusted us with their mission-critical projects.
               No sales copy. No fluff. Just honest feedback from teams who needed results and got them.
 
@@ -72,15 +72,15 @@ function HeroSection() {
           >
             <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12">
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 shadow-sm">
-                <div className="text-xl sm:text-3xl font-bold mb-2">99%</div>
+                <div className="text-xl text-primaryBlue sm:text-3xl font-bold mb-2">99%</div>
                 <div className="text-gray-600">On-time delivery</div>
               </div>
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 shadow-sm">
-                <div className="text-xl sm:text-3xl font-bold  mb-2">95%</div>
+                <div className="text-xl text-primaryBlue sm:text-3xl font-bold  mb-2">95%</div>
                 <div className="text-gray-600">Client retention</div>
               </div>
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 shadow-sm">
-                <div className="text-xl sm:text-3xl font-bold mb-2">4.9/5</div>
+                <div className="text-xl  text-primaryBlue sm:text-3xl font-bold mb-2">4.9/5</div>
                 <div className="text-gray-600">Average rating</div>
               </div>
             </div>
