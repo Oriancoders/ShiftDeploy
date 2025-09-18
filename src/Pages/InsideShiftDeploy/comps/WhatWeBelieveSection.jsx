@@ -18,7 +18,7 @@ function WhatWeBelieveSection() {
       title: "Clear communication",
       description:
         "No technical jargon to hide behind. If we can't explain it simply, we don't understand it well enough.",
-        icon: <MessageSquare className="w-6 sm:w-8 h-6 sm:h-8" />,
+      icon: <MessageSquare className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
     {
       title: "Building long-term",
@@ -116,8 +116,18 @@ function WhatWeBelieveSection() {
           </div>
         </div>
 
+        
         <div className="text-center">
-          <h1>These boundaries aren't limitations, they're the foundation of trust.</h1>
+          <CursorFollower
+
+          text="These boundaries aren't limitations, they're the foundation of trust."
+          className="  max-w-2xl sm:mt-12 bg-primaryBlue  px-10 sm:px-6 py-4 rounded-xl sm:rounded-full text-white mx-auto"
+          textClassName='text-white font-semibold text-sm lg:text-base'
+          gradientFrom="#f76707"
+          gradientTo="#0B1D30"
+          circleSize={200}
+
+        />
         </div>
 
         {/*  */}

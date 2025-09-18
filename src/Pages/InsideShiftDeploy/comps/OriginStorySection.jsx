@@ -61,7 +61,7 @@ function OriginStorySection() {
   return (
     <section
       ref={sectionRef}
-      className="pt-28 sm:pt-32  text-textColor relative overflow-hidden"
+      className="pt-28 sm:pt-32 pb-20  text-textColor relative overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
@@ -149,7 +149,7 @@ function OriginStorySection() {
         </div>
 
         {/* Closing Statement */}
-        <div className="text-center mt-32">
+        <div className="text-center mt-16">
           <CursorFollower
 
             text="Some agencies chase trends. We chase fundamentals."

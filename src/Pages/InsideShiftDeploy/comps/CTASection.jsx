@@ -87,11 +87,11 @@ function CTASection() {
 
           {/* Contact Options */}
           <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
+            <a href="https://mail.google.com/mail/u/0/" target="_blank" className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
               <Mail className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
               <h3 className="text-white font-semibold mb-2">Email Us</h3>
               <p className="text-gray-300 text-sm">contact@shiftdeploy.com</p>
-            </div>
+            </a>
             <Link to={"/ContactUs"} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
               <Calendar className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
               <h3 className="text-white font-semibold mb-2">Schedule a Conversation</h3>

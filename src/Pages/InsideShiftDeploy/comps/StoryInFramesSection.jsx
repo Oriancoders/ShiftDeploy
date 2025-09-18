@@ -115,11 +115,11 @@ function StoryInFramesSection() {
               Launch Your Project
             </Link >
 
-            <Link to={"/missions"}
+            <Link to={"/CaseStudies/SlackerIOT"}
 
               className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
             >
-              <span>View Missions Completed</span>
+              <span>View Full Case Study</span>
             </Link>
           </div>
         </div>
