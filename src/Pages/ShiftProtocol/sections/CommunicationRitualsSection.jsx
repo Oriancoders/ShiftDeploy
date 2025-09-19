@@ -1,9 +1,10 @@
-import { CheckCircle, Clock, FileText, GitBranch, MessageSquare, Settings, Target, Users, Zap } from "lucide-react"
+import { CheckCircle, Clock, MessageSquare, Users, Zap } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router-dom";
 
 // Section 4: Communication Rituals
 function CommunicationRitualsSection() {
-  const [visibleRituals, setVisibleRituals] = useState([])
+  // const [visibleRituals, setVisibleRituals] = useState([])
   const sectionRef = useRef(null)
 
   const rituals = [
@@ -41,62 +42,62 @@ function CommunicationRitualsSection() {
     },
   ]
 
- const tools = [
-  { 
-    name: "Slack", 
-    purpose: "Real-time communication", 
-    icon: "https://w7.pngwing.com/pngs/642/135/png-transparent-slack-new-hd-logo-thumbnail.png" 
-  },
-  { 
-    name: "Notion", 
-    purpose: "Project documentation and progress", 
-    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkfgoU8tVx-aUbyBH-_UcNuV0Y4mTaTixIKA&s" 
-  },
-  { 
-    name: "ClickUp", 
-    purpose: "Task tracking and sprint planning", 
-    icon: "https://images.seeklogo.com/logo-png/38/2/clickup-symbol-logo-png_seeklogo-389754.png" 
-  },
-  { 
-    name: "GitHub", 
-    purpose: "Code repository access", 
-    icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png" 
-  },
-  { 
-    name: "Figma", 
-    purpose: "Design files and prototypes", 
-    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1365px-Figma-logo.svg.png" 
-  },
-];
+  const tools = [
+    {
+      name: "Slack",
+      purpose: "Real-time communication",
+      icon: "https://w7.pngwing.com/pngs/642/135/png-transparent-slack-new-hd-logo-thumbnail.png"
+    },
+    {
+      name: "Notion",
+      purpose: "Project documentation and progress",
+      icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkfgoU8tVx-aUbyBH-_UcNuV0Y4mTaTixIKA&s"
+    },
+    {
+      name: "ClickUp",
+      purpose: "Task tracking and sprint planning",
+      icon: "https://images.seeklogo.com/logo-png/38/2/clickup-symbol-logo-png_seeklogo-389754.png"
+    },
+    {
+      name: "GitHub",
+      purpose: "Code repository access",
+      icon: "https://cdn-icons-png.flaticon.com/512/25/25231.png"
+    },
+    {
+      name: "Figma",
+      purpose: "Design files and prototypes",
+      icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1365px-Figma-logo.svg.png"
+    },
+  ];
 
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          rituals.forEach((_, index) => {
-            setTimeout(() => {
-              setVisibleRituals((prev) => [...prev, index])
-            }, index * 200)
-          })
-        }
-      },
-      { threshold: 0.2 },
-    )
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       if (entries[0].isIntersecting) {
+  //         rituals.forEach((_, index) => {
+  //           setTimeout(() => {
+  //             setVisibleRituals((prev) => [...prev, index])
+  //           }, index * 200)
+  //         })
+  //       }
+  //     },
+  //     { threshold: 0.2 },
+  //   )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
+  //   if (sectionRef.current) {
+  //     observer.observe(sectionRef.current)
+  //   }
 
-    return () => observer.disconnect()
-  }, [])
+  //   return () => observer.disconnect()
+  // }, [])
 
   return (
     <section ref={sectionRef} className="sm:py-12 py-6 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center sm:mb-20 mb-12">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
-            How we stay <br/>
+            How we stay <br />
             <span className="text-primaryOrange">
               connected
             </span>
@@ -113,8 +114,8 @@ function CommunicationRitualsSection() {
             >
               <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-md sm:hover:shadow-xl transition-all duration-300 h-full">
                 {/* Header */}
- 
-                  <h3 className="text-2xl font-bold text-primaryBlue mb-6">{ritual.title}</h3>
+
+                <h3 className="text-2xl font-bold text-primaryBlue mb-6">{ritual.title}</h3>
 
                 {/* Fear */}
                 <div className="mb-6">
@@ -148,21 +149,38 @@ function CommunicationRitualsSection() {
         {/* Tool Transparency */}
         <div className="bg-white rounded-3xl p-8 shadow-lg">
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Tool Transparency</h3>
-          <p className="text-gray-600 text-center mb-8">Full access to all project tools from day one:</p>
+          <p className="text-gray-600 text-center mb-8">Full access to all project tools from day one</p>
 
           <div className="grid md:grid-cols-5 gap-6">
             {tools.map((tool, index) => (
               <div key={index} className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center mx-auto mb-4 hover:from-blue-50 hover:to-indigo-50 transition-colors duration-300">
-                   <img src={tool.icon} alt={tool.name} className="w-10 h-10 object-contain" />
+                  <img src={tool.icon} alt={tool.name} className="w-10 h-10 object-contain" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">{tool.name}</h4>
+                <h4 className="font-semibold text-primaryBlue mb-2">{tool.name}</h4>
                 <p className="text-sm text-gray-600">{tool.purpose}</p>
               </div>
             ))}
           </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto mt-16">
+            <a target="_blacnk" href="https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3dej8l23q-m2S_MrlF7zvL2F~9jwK6iA"
+
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md"
+            >
+              Join Us On Slack 
+            </a >
+
+            <Link to={"/shift-protocol"}
+
+              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+            >
+              <span>View Shitft Protocol</span>
+            </Link>
+          </div>
         </div>
+
       </div>
     </section>
   )
-}export default CommunicationRitualsSection
+} export default CommunicationRitualsSection

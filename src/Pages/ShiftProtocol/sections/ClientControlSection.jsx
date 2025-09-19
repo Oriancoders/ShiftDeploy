@@ -101,7 +101,7 @@ function ClientControlSection() {
         {/* Core Promise */}
         <div className="text-center my-16 space-y-6 bg-primaryBlue sm:py-16 py-6 w-full">
           <p className="text-3xl sm:text-5xl text-white font-semibold">Core Promise</p>
-          <p className="text-lg max-w-4xl text-center mx-auto text-gray-100 italic ">
+          <p className="text-lg max-w-4xl text-center mx-auto text-gray-100  ">
             Every step reviewed by you. Every delivery approved by you. Every major decision requires your explicit
             sign-off before we proceed.
           </p>
@@ -145,7 +145,7 @@ function ClientControlSection() {
               outcome. No surprises, no vendor lock-in, no regrets."
             </blockquote>
             <div className="flex items-center justify-center">
-              <img src="/placeholder.svg?height=60&width=60" alt="Sarah Chen" className="w-12 sm:w-15 h-12 sm:h-15 rounded-full mr-4" />
+              <img src="https://i.pravatar.cc/80?img=28" alt="Sarah Chen" className="w-12 sm:w-15 h-12 sm:h-15 rounded-full mr-4" />
               <div className="text-left">
                 <div className="font-semibold text-gray-900 sm:text-lg">Sarah Chen</div>
                 <div className="text-gray-600">CTO @ GrowthLabs (Series A)</div>

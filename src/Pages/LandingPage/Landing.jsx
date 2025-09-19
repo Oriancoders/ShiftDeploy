@@ -10,8 +10,6 @@ const DeployToolkit = lazy(() => import('./landingComps/DeployToolkit'));
 const ShiftProtocol = lazy(() => import('./landingComps/ShiftProtocol'));
 const MissionsCompleted = lazy(() => import('./landingComps/MissionsCompleted'));
 const FlightLogs = lazy(() => import('./landingComps/FlightLogs'));
-// const GroundControlTeam = lazy(() => import('./landingComps/GroundControlTeam'));
-// const ProblemSolutionCards = lazy(() => import('./landingComps/ProblemsolCard'));
 
 const Landing = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,7 +37,7 @@ const Landing = () => {
   }, []);
 
   if (isLoading) {
-    return <ShiftDeployLoader />; // full-screen loader
+    return <ShiftDeployLoader />; 
   }
 
   return (
@@ -68,11 +66,9 @@ const Landing = () => {
         <Suspense fallback={<ShiftDeployLoader />}>
           <Hero />
           <InsideShiftDeploy />
-          {/* <ProblemSolutionCards /> */}
           <DeployToolkit />
           <ShiftProtocol />
           <MissionsCompleted />
-          {/* <GroundControlTeam /> */}
           <FlightLogs />
         </Suspense>
         <Footer />

@@ -4,8 +4,6 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 
 function StoryInFramesSection() {
-  const [currentFrame, setCurrentFrame] = useState(0)
-  const [visibleFrames, setVisibleFrames] = useState([])
   const sectionRef = useRef(null)
 
   const projectFrames = [
@@ -36,26 +34,7 @@ function StoryInFramesSection() {
     },
   ]
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          projectFrames.forEach((_, index) => {
-            setTimeout(() => {
-              setVisibleFrames((prev) => [...prev, index])
-            }, index * 400)
-          })
-        }
-      },
-      { threshold: 0.3 },
-    )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
 
   return (
     <section ref={sectionRef} className="py-24 bg-gray-50 overflow-x-hidden text-textColor">

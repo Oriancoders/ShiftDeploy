@@ -3,32 +3,32 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Slack, Twitter, } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 import whiteV from '../Assets/Images/whiteV.png'
+import { Link } from 'react-router-dom';
 const Footer = () => {
   
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     company: [
-      { name: 'Inside ShiftDeploy', href: '#inside-shiftdeploy' },
-      { name: 'Deploy Toolkit', href: '#deploy-toolkit' },
-      { name: 'The Shift Protocol', href: '#the-shift-protocol' },
-      { name: 'Missions Completed', href: '#missions-completed' },
-      { name: 'Flight Logs', href: '#flight-logs' }
+      { name: 'Inside ShiftDeploy', href: '/insideShiftDeploy' },
+      { name: 'Deploy Toolkit', href: '/deploy-toolkit' },
+      { name: 'The Shift Protocol', href: '/shift-protocol' },
+      { name: 'Missions Completed', href: '/missions' },
+      { name: 'Flight Logs', href: '/flight-logs' }
     ],
     services: [
-      { name: 'Web Development', href: '#' },
-      { name: 'Cloud Services', href: '#' },
-      { name: 'DevOps Solutions', href: '#' },
-      { name: 'Deployment Services', href: '#' },
-      { name: 'Consulting', href: '#' }
+      { name: 'Cloud Services', href: '/deploy-toolkit' },
+      { name: 'DevOps Solutions', href: '/deploy-toolkit' },
+      { name: 'Web Development', href: '/deploy-toolkit' },
+      { name: 'Deployment Services', href: '/deploy-toolkit' },
+      { name: 'Consulting', href: '/deploy-toolkit' }
     ],
 
-    support: [
-      { name: 'Documentation', href: '#' },
-      { name: 'Help Center', href: '#' },
-      { name: 'Community', href: '#' },
-      { name: 'Contact Support', href: '#' },
-      { name: 'System Status', href: '#' }
+    caseStudies: [
+      { name: 'Slacker IOT', href: '/CaseStudies/SlackerIOT' },
+      { name: 'K2 Traders', href: '/CaseStudies/K2TradersCase' },
+      { name: 'BullsEyes Investments', href: '/CaseStudies/BullseyesCase' },
+
     ]
   };
 
@@ -65,6 +65,7 @@ const Footer = () => {
                 <Twitter className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on twitter</span>
               </a>
+              
               <a href='https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3dej8l23q-m2S_MrlF7zvL2F~9jwK6iA' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
                 <Slack  className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on slack</span>
@@ -73,17 +74,17 @@ const Footer = () => {
           </motion.div>
 
           {/* Company links */}
-          <motion.div variants={fadeInUp} className="sm:col-span-1 lg:col-span-1">
-            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">Company</h4>
+          <motion.div variants={fadeInUp} className="sm:col-span-1 lg:col-span-1 ">
+            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">Explore ShiftDeploy</h4>
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
+                  <Link
+                    to={link.href}
+                    className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -95,12 +96,12 @@ const Footer = () => {
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
+                  <Link
+                    to={link.href}
+                    className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -108,16 +109,16 @@ const Footer = () => {
 
           {/* Support links */}
           <motion.div variants={fadeInUp} className="sm:col-span-2 lg:col-span-1">
-            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">Support</h4>
+            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">Case Studies</h4>
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
-              {footerLinks.support.map((link, index) => (
+              {footerLinks.caseStudies.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
+                  <Link
+                    to={link.href}
+                    className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

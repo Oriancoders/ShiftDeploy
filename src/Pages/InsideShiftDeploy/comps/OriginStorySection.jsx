@@ -1,12 +1,9 @@
 import { Rocket, Target, Zap } from "lucide-react"
-import { useEffect, useRef, useState } from "react"
+import {  useRef,  } from "react"
 import CursorFollower from "../../../utils/CursorFollower"
-import { image } from "framer-motion/client"
 
 // Section 1: Origin Story
 function OriginStorySection() {
-  const [currentStage, setCurrentStage] = useState(0)
-  const [visibleStages, setVisibleStages] = useState([])
   const sectionRef = useRef(null)
 
   const stages = [
@@ -37,26 +34,7 @@ function OriginStorySection() {
   ]
 
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          stages.forEach((_, index) => {
-            setTimeout(() => {
-              setVisibleStages((prev) => [...prev, index])
-            }, index * 800)
-          })
-        }
-      },
-      { threshold: 0.3 },
-    )
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
 
   return (
     <section
@@ -117,11 +95,7 @@ function OriginStorySection() {
                 {/* Content */}
                 <div className={`${index % 2 === 1 ? "md:col-start-2" : ""}`}>
                   <div className="relative">
-                    {/* <div
-                        className={`inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-secondaryBlue to-toSecBlue mb-6`}
-                      >
-                        <div className="text-white">{stage.icon}</div>
-                      </div> */}
+
                     <h3 className="text-5xl font-bold text-primaryBlue mb-2">{stage.title}</h3>
                     <h4 className="text-xl text-gray-800 font-semibold mb-6">{stage.subtitle}</h4>
                     <p className="text-lg text-gray-800 leading-relaxed">{stage.description}</p>

@@ -49,12 +49,11 @@ function HeroSection() {
             className={`transition-all duration-1000 delay-300 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
               }`}
           >
-            <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto mb-4 leading-relaxed">
+            <p className="sm:text-xl text-gray-700 max-w-4xl mx-auto mb-8 leading-relaxed">
               See how our clients scaled, shipped, and succeeded the ShiftDeploy way.
+               Here's how we brought clarity, speed, and scale to high-stakes tech teams.
             </p>
-            <p className="sm:text-xl text-gray-500 max-w-3xl mx-auto mb-12">
-              Here's how we brought clarity, speed, and scale to high-stakes tech teams.
-            </p>
+
           </div>
 
           {/* Filter Toggle */}
@@ -106,9 +105,9 @@ function HeroSection() {
             </a>
 
             <CursorFollower
-              text="“Every line of code is a promise of excellence — crafted with care, tested with precision, and delivered with unwavering commitment to quality.”"
+              text="“Every line of code is a promise of excellence crafted with care, tested with precision, and delivered with unwavering commitment to quality.”"
               className="  max-w-2xl mt-12 bg-primaryBlue px-10 sm:px-6 py-4 rounded-3xl sm:rounded-full text-white mx-auto"
-              textClassName='text-white font-semibold  sm:text-sm lg:text-base italic'
+              textClassName='text-white font-semibold  sm:text-sm lg:text-base '
               gradientFrom="#F76707"
               gradientTo="#0B1D30"
               circleSize={100}

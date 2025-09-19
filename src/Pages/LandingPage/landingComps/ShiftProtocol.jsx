@@ -1,9 +1,8 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Search, BarChart3, Lightbulb, CheckCircle, Rocket, ArrowRight } from 'lucide-react';
-import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
-import CursorFollower from '../../../utils/CursorFollower';
-import { Link, Links } from 'react-router-dom';
+import { fadeInUp, staggerContainer } from '../../../utils/animations';
+import { Link } from 'react-router-dom';
 
 const ShiftProtocol = () => {
   const ref = useRef(null);

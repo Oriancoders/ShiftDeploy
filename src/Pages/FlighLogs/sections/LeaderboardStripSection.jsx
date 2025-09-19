@@ -9,38 +9,33 @@ function LeaderboardStripSection() {
   const leaderboardStats = [
     {
       metric: "Projects Delivered",
-      value: "50+",
+      value: "30+",
       description: "On time, every time",
       icon: <CheckCircle className="w-8 h-8" />,
-      color: "from-green-500 to-emerald-600",
     },
     {
       metric: "Client Satisfaction",
       value: "4.9/5",
       description: "Average rating",
       icon: <Star className="w-8 h-8" />,
-      color: "from-yellow-500 to-orange-600",
     },
     {
       metric: "Success Rate",
       value: "100%",
       description: "Mission completion",
       icon: <Target className="w-8 h-8" />,
-      color: "from-blue-500 to-indigo-600",
     },
     {
       metric: "Client Retention",
       value: "95%",
       description: "Come back for more",
       icon: <Users className="w-8 h-8" />,
-      color: "from-purple-500 to-pink-600",
     },
     {
       metric: "Average Timeline",
       value: "8 weeks",
       description: "From start to launch",
       icon: <Clock className="w-8 h-8" />,
-      color: "from-teal-500 to-cyan-600",
     },
   ]
 
@@ -78,9 +73,9 @@ function LeaderboardStripSection() {
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
-            The numbers <br/>
+            The Numbers <br/>
             <span className="text-primaryOrange">
-              speak volumes
+              Speak Volumes
             </span>
           </h2>
           <p className="sm:text-xl text-gray-700">Consistent results across every mission we complete.</p>

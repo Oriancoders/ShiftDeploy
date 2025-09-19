@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
     ArrowRight,
@@ -27,12 +27,30 @@ import security from '../../Assets/Images/casestudies/k2traders/security.png'
 
 import keystatic from '../../Assets/Images/casestudies/k2traders/keystatic.png'
 import { Helmet } from 'react-helmet-async';
+import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 
 const K2TradersCase = () => {
 
-    useEffect(() => {
+    const [showLoader, setShowLoader] = useState(true)
+    
+    
+      useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, []);
+      }, []);
+    
+    
+      // ✅ Hide loader when scrollY === 0
+      useEffect(() => {
+        const checkScroll = () => {
+          if (window.scrollY === 0) {
+            setShowLoader(false)
+            window.removeEventListener('scroll', checkScroll)
+          }
+        }
+        window.addEventListener('scroll', checkScroll)
+        checkScroll()
+        return () => window.removeEventListener('scroll', checkScroll)
+      }, [])
 
     const techDetails = [
         {
@@ -331,6 +349,7 @@ const K2TradersCase = () => {
             </Helmet>
             <Navigation isDarkBg={true} />
 
+           {showLoader ? <ShiftDeployLoader/> : (
             <div className="bg-gray-50 min-h-screen">
 
                 {/* Hero Section */}
@@ -876,6 +895,7 @@ const K2TradersCase = () => {
                 </section>
 
             </div>
+           )} 
             <Footer />
         </>
     );

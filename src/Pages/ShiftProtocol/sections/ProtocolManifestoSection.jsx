@@ -1,8 +1,7 @@
-import { ArrowRight, Shield } from "lucide-react"
+import { ArrowRight, } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
-import CursorFollower from "../../../utils/CursorFollower"
 import { Link } from "react-router-dom"
+import CursorFollower from "../../../utils/CursorFollower"
 // Section 1: Protocol Manifesto (Hero)
 function ProtocolManifestoSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -17,7 +16,7 @@ function ProtocolManifestoSection() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden pt-28 sm:pt-32 "
     >
-       {/* Background Pattern */}
+      {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <div
           className="absolute inset-0"
@@ -39,17 +38,6 @@ function ProtocolManifestoSection() {
         <div
 
         >
-          {/* <div className="mb-8">
-            <div className="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-200 shadow-sm">
-              <Shield className="w-5 h-5 text-green-500 mr-2" />
-              <span className="text-sm text-gray-700 font-medium">
-                200+ 
-              </span>
-            </div>
-          </div>  */}
-
-
-
 
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-primaryBlue mb-8 leading-tight">
@@ -67,7 +55,7 @@ function ProtocolManifestoSection() {
             <p className="sm:text-xl  text-gray-700 max-w-4xl mx-auto mb-8 leading-relaxed">
               Our battle-tested methodology transforms complex technical challenges into predictable, client-controlled
               outcomes.
-              <span className="text-gray-900 font-semibold"> No surprises. No abandonment. No confusion.</span>
+              <span className="text-primaryBlue font-semibold"> No surprises. No abandonment. No confusion.</span>
             </p>
           </div>
 
@@ -86,22 +74,29 @@ function ProtocolManifestoSection() {
 
 
           {/* CTA */}
- 
-            <Link to={"/deploy-toolkit"}
-              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md group mx-auto w-fit"
 
-            >
+          <Link to={"/deploy-toolkit"}
+            className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md group mx-auto w-fit"
 
-              View Deploy Toolkit
-              <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+          >
 
-            </Link>
+            View Deploy Toolkit
+            <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
 
-          {/* Closing Statement */}
-          <div className="text-center mt-16">
-            <h1 className="sm:text-xl  text-gray-700 max-w-4xl mx-auto mb-8 leading-relaxed italic">Every decision transparent. Every milestone client-approved. Every deliverable fully documented and
-                owned by you.</h1>
-          </div>
+          </Link>
+
+          <CursorFollower
+
+            text="Every decision transparent. Every milestone client-approved. Every deliverable fully documented and
+                owned by you."
+            className="  max-w-2xl sm:mt-12 bg-primaryBlue  px-10 sm:px-6 py-4 rounded-xl sm:rounded-full text-white mx-auto"
+            textClassName='text-white font-semibold text-sm lg:text-base'
+            gradientFrom="#f76707"
+            gradientTo="#0B1D30"
+            circleSize={200}
+
+          />
+
         </div>
       </div>
     </section>

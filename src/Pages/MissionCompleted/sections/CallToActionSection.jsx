@@ -61,7 +61,7 @@ function CallToActionSection() {
           <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 sm:p-8 mb-12 max-w-4xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 text-center">
               <div>
-                <div className="text-3xl font-bold text-white mb-2">50+</div>
+                <div className="text-3xl font-bold text-white mb-2">30+</div>
                 <div className="text-gray-300">Missions Completed</div>
               </div>
               <div>
@@ -75,16 +75,7 @@ function CallToActionSection() {
             </div>
           </div>
 
-          {/* Urgency */}
-          {/* <div className="mb-8">
-            <div className="inline-flex items-center bg-orange-500/20 backdrop-blur-sm rounded-full px-6 py-3 border border-orange-400/30 mb-6">
-              <Clock className="w-5 h-5 text-orange-400 mr-2" />
-              <span className="text-orange-200">
-                We only take on 6 new missions per month to ensure quality results. Current availability: 2 spots
-                remaining.
-              </span>
-            </div>
-          </div> */}
+
 
           {/* Primary CTA */}
            <Link to={"/ContactUs"}
@@ -98,8 +89,8 @@ function CallToActionSection() {
 
           {/* Secondary CTA */}
           <div className="mb-12">
-            <Link to={"/shift-protocol"} className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-12 py-4 rounded-2xl hover:bg-white/20 transition-all duration-300">
-              See The Shift Protocol
+            <Link to={"/deploy-toolkit"} className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-12 py-4 rounded-2xl hover:bg-white/20 transition-all duration-300">
+              See Deploy ToolKit
             </Link>
           </div>
 

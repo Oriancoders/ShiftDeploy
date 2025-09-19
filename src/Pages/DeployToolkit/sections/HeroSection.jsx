@@ -1,6 +1,4 @@
-import { ArrowRight, Star } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 // Section 1: Hero + Value Propositions
 function HeroSection() {
@@ -11,14 +9,7 @@ function HeroSection() {
     setIsVisible(true)
   }, [])
 
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    setPos({
-      x: e.clientX, // mouse position X (from left)
-      y: e.clientY, // mouse position Y (from top)
-    });
-  };
+  
 
   return (
     <section
@@ -32,13 +23,6 @@ function HeroSection() {
             isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           }`}
         >
-          {/* Trust Indicator */}
-          {/* <div className="mb-6">
-            <div className="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-2 border border-gray-200">
-              <Star className="w-4 h-4 text-yellow-500 mr-2" />
-              <span className="text-sm text-gray-600">Trusted by 200+ startups from seed to Series B</span>
-            </div>
-          </div> */}
 
           {/* Main Headline */}
           <h1 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-primaryBlue mb-8 leading-tight">
@@ -92,7 +76,6 @@ function HeroSection() {
                 Discuss Your Project
 
               </Link>
-            {/* <p className="text-gray-500">No contracts. No overhead. Just results.</p> */}
         </div>
       </div>
     </section>

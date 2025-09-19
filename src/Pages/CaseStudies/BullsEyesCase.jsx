@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
     ArrowRight,
@@ -26,14 +26,32 @@ import backend from '../../Assets/Images/casestudies/bullseyes/backend.png'
 import apis from '../../Assets/Images/casestudies/bullseyes/apis.png'
 import keystatic from '../../Assets/Images/casestudies/bullseyes/keystatic.png'
 import { Helmet } from 'react-helmet-async';
+import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 
 const BullsEyesCase = () => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, []);
+    const [showLoader, setShowLoader] = useState(true)
+        
+        
+          useEffect(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }, []);
+        
+        
+          // ✅ Hide loader when scrollY === 0
+          useEffect(() => {
+            const checkScroll = () => {
+              if (window.scrollY === 0) {
+                setShowLoader(false)
+                window.removeEventListener('scroll', checkScroll)
+              }
+            }
+            window.addEventListener('scroll', checkScroll)
+            checkScroll()
+            return () => window.removeEventListener('scroll', checkScroll)
+          }, [])
 
     const techDetails = [
         {
@@ -302,7 +320,8 @@ const BullsEyesCase = () => {
                 <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
             </Helmet>
             <Navigation isDarkBg={true} />
-            <div className="bg-gray-50 min-h-screen">
+            {showLoader ? <ShiftDeployLoader/> : (
+                <div className="bg-gray-50 min-h-screen">
 
                 {/* Hero Section  */}
                 <section className="relative  bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center py-20 sm:py-10">
@@ -383,7 +402,7 @@ const BullsEyesCase = () => {
                             <p className="sm:text-xl text-gray-700 leading-relaxed p-2">
                                 ShiftDeploy partnered with{" "}
                                 <span className="text-primaryOrange font-semibold">Bullseye Investments Pvt. Ltd.</span>{" "}
-                                — a licensed member of PMEX and applicant for PSX Trading Rights — to design and develop a modern,
+                                 A licensed member of PMEX and applicant for PSX Trading Rights to design and develop a modern,
                                 responsive corporate website. The project aimed to establish digital credibility, simplify
                                 client onboarding, and showcase the company’s diversified financial services across Investments,
                                 Realtors, and Insurance verticals.
@@ -837,6 +856,7 @@ const BullsEyesCase = () => {
                 </section>
 
             </div>
+            )} 
             <Footer />
         </>
     );

@@ -1,10 +1,9 @@
-import { ChevronRight, Layers, MessageSquare, Target } from "lucide-react"
+import {  Layers, MessageSquare, Target } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 // Section 5: Philosophy
 function PhilosophySection() {
   const [visibleItems, setVisibleItems] = useState([])
-  const [hoveredItem, setHoveredItem] = useState(null)
   const sectionRef = useRef(null)
   const itemRefs = useRef([])
 
@@ -58,11 +57,11 @@ function PhilosophySection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gray-900 relative overflow-hidden">
+    <section ref={sectionRef} className="py-24 bg-primaryBlue relative overflow-hidden">
      {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-toSecBlue/50 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primaryOrange/50 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-toSecBlue/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primaryOrange/20 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 relative">
@@ -88,7 +87,7 @@ function PhilosophySection() {
             >
               <div className="relative h-full">
                 <div
-                  className={`relative p-6 sm:p-8 rounded-3xl border border-gray-700 bg-gray-800/50 backdrop-blur-sm h-full transition-all duration-500 transform group-hover:border-gray-600 `}
+                  className={`relative p-6 sm:p-8 rounded-3xl border border-gray-700 bg-primaryBlue/50 backdrop-blur-sm h-full transition-all duration-500 transform group-hover:border-gray-600 `}
                 >
     
 
@@ -111,9 +110,9 @@ function PhilosophySection() {
 
         <div className="text-center">
           <div className="max-w-4xl mx-auto">
-            <p className="sm:text-xl md:text-2xl text-gray-300 leading-relaxed italic font-light">
+            <p className="sm:text-xl md:text-2xl text-gray-200 leading-relaxed italic font-light">
               These aren't just nice words on a wall. They're the non-negotiables that guide every decision,
-              <span className="text-orange-400 font-medium"> every line of code</span>,
+              <span className="text-primaryOrange font-medium"> every line of code</span>,
               <span className="text-white font-medium"> every client conversation</span>.
             </p>
           </div>
