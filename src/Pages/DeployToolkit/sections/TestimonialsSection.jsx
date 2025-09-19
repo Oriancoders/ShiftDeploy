@@ -2,28 +2,15 @@ import { useEffect, useRef, useState } from "react"
 
 // Section 7: Testimonials
 function TestimonialsSection() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef(null)
 
-  const testimonials = [
-
-    {
-      quote:
-        "",
-      author: "Marcus Rodriguez",
-      title: "Founder @ DataFlow",
-      stage: "",
-      avatar: "/placeholder.svg?height=80&width=80",
-    },
-
-  ]
 
   const trustIndicators = [
-    { metric: "100+", description: "successful deployments" },
+    { metric: "50+", description: "successful deployments" },
     { metric: "99.9%", description: "uptime average across client projects" },
     { metric: "Thousands+", description: "in client funding raised after our optimizations" },
-    { metric: "Zero", description: "security breaches in 3+ years" },
+    { metric: "Zero", description: "security breaches in 2+ years" },
   ]
 
   useEffect(() => {
@@ -43,13 +30,7 @@ function TestimonialsSection() {
     return () => observer.disconnect()
   }, [])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
 
-    return () => clearInterval(interval)
-  }, [])
 
   return (
     <section ref={sectionRef} className="py-12 bg-gray-50">
@@ -74,12 +55,12 @@ function TestimonialsSection() {
 
               <div className="flex items-center justify-center">
                 <img
-                  src={"https://cdn-icons-png.flaticon.com/512/9203/9203764.png"}
+                  src={"https://i.pravatar.cc/80?img=12"}
                   alt={"Mohammad Ali"}
                   className="w-10 sm:w-16 h-10 sm:h-16 rounded-full mr-4"
                 />
                 <div className="text-left">
-                  <div className="font-semibold text-gray-900 text-lg">Muhammad Ali</div>
+                  <div className="font-semibold text-gray-900 text-lg">Ahmed Khan</div>
                   <div className="text-gray-600">
                     CEO K2Traders
                   </div>

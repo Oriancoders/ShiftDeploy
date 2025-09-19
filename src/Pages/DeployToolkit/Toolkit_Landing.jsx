@@ -8,9 +8,6 @@ import { Helmet } from 'react-helmet-async';
 const HeroSection = lazy(() => import('./sections/HeroSection'))
 const ServiceCategoriesSection = lazy(() => import('./sections/ServiceCategoriesSection'))
 const WhatWeSolveSection = lazy(() => import('./sections/WhatWeSolveSection'))
-// const ProcessSection = lazy(() => import('./sections/ProcessSection'))
-// const CaseSnapshotsSection = lazy(() => import('./sections/CaseSnapshotsSection'))
-// const PricingSection = lazy(() => import('./sections/PricingSection'))
 const TestimonialsSection = lazy(() => import('./sections/TestimonialsSection'))
 const FinalCTASection = lazy(() => import('./sections/CTA'))
 const FAQSection = lazy(() => import('./sections/FAQSection'))
@@ -64,7 +61,6 @@ const Toolkit_Landing = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.shiftdeploy.com/deploy-toolkit" />
-        {/* <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" /> */}
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -73,7 +69,6 @@ const Toolkit_Landing = () => {
           name="twitter:description"
           content="Solve your CI/CD, cloud, and DevOps deployment challenges with ShiftDeploy's expert toolkit."
         />
-        {/* <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" /> */}
       </Helmet>
       {showLoader && <ShiftDeployLoader />}
       <Navigation />

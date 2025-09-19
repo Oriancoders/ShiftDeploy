@@ -90,7 +90,7 @@ function ClientQuoteWallSection() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
-            What clients <br/>
+            What clients <br />
             <span className="text-primaryOrange">
               really say
             </span>
@@ -108,7 +108,7 @@ function ClientQuoteWallSection() {
               </blockquote>
               <div className="flex items-center justify-center">
                 <img
-                  src={"/placeholder.svg"}
+                  src={"https://i.pravatar.cc/80?img=26"}
                   alt={"Marcus Rodriguez"}
                   className="w-10 sm:w-16 h-10 sm:h-16 rounded-full mr-4"
                 />
@@ -127,37 +127,32 @@ function ClientQuoteWallSection() {
 
         {/* Pattern Recognition */}
 
+        <div className="text-center mt-16 sm:mt-20 space-y-4 sm:space-y-6">
+          <h3 className="text-3xl sm:text-5xl text-primaryBlue font-semibold">The ShiftDeploy Pattern</h3>
+          <p className="sm:text-lg text-gray-600 italic">
+            <span className="">Problem identified</span> →{" "}
+            <span className="">Solution delivered</span> →{" "}
+            <span className="">Results exceeded</span>
+          </p>
 
-         <div className="text-center mt-12 space-y-6">
-            <p className="text-3xl sm:text-5xl text-primaryBlue font-semibold">The ShiftDeploy Pattern</p>
-            <p className="sm:text-xl text-gray-600 italic ">
-              <span className=" font-semibold">Problem identified</span> →{" "}
-              <span className=" font-semibold">Solution delivered</span> →{" "}
-              <span className=" font-semibold">Results exceeded</span>
-            </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto ">
+            <Link to={"/ContactUs"}
 
-            <div
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto "
+              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md"
             >
+              Launch Your Project
+            </Link >
 
-              <Link to={"/ContactUs"}
-                className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+            <Link to={"/shift-protocol"}
 
-              >
-                Launch Your Project
-
-              </Link>
-
-              <Link to={"/shift-protocol"}
-                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
-              >
-                <span>View Shift Protocol</span>
-
-              </Link>
-
-
+              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+            >
+              <span>View Shift Protocol</span>
+            </Link>
           </div>
         </div>
+
+
       </div>
     </section>
   )

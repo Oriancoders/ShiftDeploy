@@ -7,7 +7,6 @@ import { Helmet } from 'react-helmet-async';
 // ✅ Lazy imports
 const OriginStorySection = lazy(() => import('./comps/OriginStorySection'))
 // const MindsetSection = lazy(() => import('./comps/MindsetSection'))
-// const TeamSection = lazy(() => import('./comps/TeamSection'))
 const StoryInFramesSection = lazy(() => import('./comps/StoryInFramesSection'))
 const PhilosophySection = lazy(() => import('./comps/PhilosophySection'))
 const HowWeWorkSection = lazy(() => import('./comps/HowWeWorkSection'))
@@ -60,7 +59,6 @@ const InSide_Landing = () => {
           <Suspense fallback={<ShiftDeployLoader />}>
             <OriginStorySection />
             {/* <MindsetSection/> */}
-            {/* <TeamSection/> */}
             <StoryInFramesSection />
             <PhilosophySection />
             <HowWeWorkSection />

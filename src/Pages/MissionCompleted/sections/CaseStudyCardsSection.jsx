@@ -105,14 +105,14 @@ function CaseStudyCardsSection() {
 
                 {/* Content */}
                 <div className="p-6 sm:p-8 flex flex-col">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">{study.brand}</h3>
+                  <h3 className="text-2xl font-bold text-primaryBlue mb-4">{study.brand}</h3>
                   <p className="text-gray-700 leading-relaxed mb-6">{study.outcome}</p>
 
                   {/* Metrics */}
                   <div className="grid grid-cols-3 gap-4 mb-4 sm:mb-6">
                     {Object.entries(study.metrics).map(([key, value], metricIndex) => (
                       <div key={metricIndex} className="text-center">
-                        <div className="text-lg font-bold text-gray-900">{value}</div>
+                        <div className="text-lg font-bold text-primaryBlue">{value}</div>
                         <div className="text-xs text-gray-500 capitalize">{key}</div>
                       </div>
                     ))}

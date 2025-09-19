@@ -25,7 +25,7 @@ function FinalPushCTASection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-20 bg-gray-900 relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 bg-primaryBlue relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primaryOrange/50 rounded-full blur-3xl animate-pulse"></div>
@@ -34,9 +34,7 @@ function FinalPushCTASection() {
 
       <div className="max-w-5xl mx-auto px-6 relative text-center">
         <div
-          className={`transition-all duration-1000 transform ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-          }`}
+          className={`transition-all duration-2000 transform `}
         >
           {/* Header */}
           <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
@@ -69,13 +67,12 @@ function FinalPushCTASection() {
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300  text-white">
                 <div className="text-3xl font-bold 0 mb-2">Proven</div>
-                <div className="text-gray-100">50+ successful missions</div>
+                <div className="text-gray-100">30+ successful missions</div>
               </div>
             </div>
           </div>
 
           {/* Primary CTA */}
-           {/* Primary CTA */}
            <Link to={"/ContactUs"}
 
               className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit mb-12 mx-auto"

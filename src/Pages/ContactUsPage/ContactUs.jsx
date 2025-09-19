@@ -77,28 +77,20 @@ const ContactUs = () => {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      value: 'hello@shiftdeploy.com',
+      value: 'www.linkedin.com/company/shiftdeploy',
 
-      href: '#',
+      href: 'https://www.linkedin.com/company/shiftdeploy',
     },
     {
       icon: Twitter,
       label: 'Twitter',
-      value: 'hello@shiftdeploy.com',
-      href: '#',
+      value: 'x.com/ShiftDeploy',
+      href: 'https://x.com/ShiftDeploy',
     }
 
   ];
 
-  const socialLinks = [
-    {
-      icon: Linkedin,
-      label: 'LinkedIn',
-      href: '#',
-      color: 'hover:bg-blue-600'
-    },
 
-  ];
 
   return (
     <>
@@ -206,10 +198,8 @@ const ContactUs = () => {
                       {info.href ? (
                         <a
                           href={info.href}
-                          className={`text-base sm:text-lg transition-colors duration-300 ${info.primary
-                            ? 'text-blue-600 hover:text-blue-700 font-medium'
-                            : 'text-slate-600 hover:text-slate-900'
-                            }`}
+                          target='_blank'
+                          className={`text-base sm:text-lg transition-colors duration-300 text-gray-600 hover:text-gray-800`}
                         >
                           {info.value}
                         </a>

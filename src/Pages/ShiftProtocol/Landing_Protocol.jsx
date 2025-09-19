@@ -9,7 +9,6 @@ const ProtocolManifestoSection = lazy(() => import('./sections/ProtocolManifesto
 const PhasesSection = lazy(() => import('./sections/PhasesSection'))
 const GuaranteesSection = lazy(() => import('./sections/GuaranteesSection'))
 const CommunicationRitualsSection = lazy(() => import('./sections/CommunicationRitualsSection'))
-// const TransparencySystemsSection = lazy(() => import('./sections/TransparencySystemsSection'))
 const FinalCTASection = lazy(() => import('./sections/FinalCTASection'))
 const ClientControlSection = lazy(() => import('./sections/ClientControlSection'))
 
@@ -81,7 +80,6 @@ const Landing_Protocol = () => {
             <PhasesSection />
             <GuaranteesSection />
             <CommunicationRitualsSection />
-            {/* <TransparencySystemsSection /> */}
             <FinalCTASection />
             <ClientControlSection />
             <Footer />

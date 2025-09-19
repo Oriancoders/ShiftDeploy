@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Code, Cloud, Settings, Rocket, ArrowRight, CheckCircle } from 'lucide-react';
+import { Code, Cloud, Settings, Rocket,  CheckCircle } from 'lucide-react';
 import { fadeInUp, staggerContainer, } from '../../../utils/animations';
 import { Link } from 'react-router-dom';
 
@@ -88,7 +88,7 @@ const InsideShiftDeploy = () => {
                 </div>
               </div>
 
-              {/* <div className='absolue bottom-0 right-0 text-right translate-y-3 translate-x-3 cursor-pointer group-hover:opacity-100 opacity-0 text-white bg-primaryOrange w-fit transition-all duration-300 flex fap-x-6'>Know More <ArrowRight/> </div> */}
+           
 
             </motion.div>
           ))}

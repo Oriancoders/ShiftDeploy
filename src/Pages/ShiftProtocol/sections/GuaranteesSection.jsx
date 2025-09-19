@@ -4,7 +4,6 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 // Section 3: What We Guarantee
 function GuaranteesSection() {
-  const [visibleGuarantees, setVisibleGuarantees] = useState([])
   const sectionRef = useRef(null)
 
   const guarantees = [
@@ -54,29 +53,10 @@ function GuaranteesSection() {
 
 
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          guarantees.forEach((_, index) => {
-            setTimeout(() => {
-              setVisibleGuarantees((prev) => [...prev, index])
-            }, index * 150)
-          })
-        }
-      },
-      { threshold: 0.2 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
+  
 
   return (
-    <section ref={sectionRef} className="pt-5 bg-gray-50">
+    <section ref={sectionRef} className="pt-10 bg-gray-50 pb-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">

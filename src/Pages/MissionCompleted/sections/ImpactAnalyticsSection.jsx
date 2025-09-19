@@ -1,5 +1,6 @@
 import { BarChart3, Calendar, CheckCircle, Clock, Rocket, Target, TrendingUp, Users } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import CursorFollower from "../../../utils/CursorFollower"
 
 // Section 5: Impact Analytics
 function ImpactAnalyticsSection() {
@@ -39,7 +40,7 @@ function ImpactAnalyticsSection() {
   ]
 
   const additionalStats = [
-    { label: "Projects Completed", value: "50+", icon: <CheckCircle className="w-6 h-6" /> },
+    { label: "Projects Completed", value: "30+", icon: <CheckCircle className="w-6 h-6" /> },
     { label: "Success Rate", value: "100%", icon: <Target className="w-6 h-6" /> },
     { label: "Client Retention", value: "95%", icon: <Users className="w-6 h-6" /> },
     { label: "Average Timeline", value: "8 weeks", icon: <Calendar className="w-6 h-6" /> },
@@ -89,7 +90,7 @@ function ImpactAnalyticsSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
-            The numbers <br/>
+            The numbers <br />
             <span className="text-primaryOrange">
               don't lie
             </span>
@@ -102,9 +103,8 @@ function ImpactAnalyticsSection() {
           {metrics.map((metric, index) => (
             <div
               key={index}
-              className={`transition-all duration-700 delay-${index * 100} transform ${
-                isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-              }`}
+              className={`transition-all duration-700 delay-${index * 100} transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+                }`}
             >
               <div className=" bg-white sm:bg-gray-50 rounded-3xl p-4 sm:h-auto h-full sm:p-8 text-center sm:hover:bg-white sm:shadow-none shadow-md sm:hover:shadow-xl transition-all duration-300 transform ">
                 <div
@@ -112,7 +112,7 @@ function ImpactAnalyticsSection() {
                 >
                   <div className="text-white">{metric.icon}</div>
                 </div>
-                <div className="text-lg sm:text-4xl font-bold text-gray-900 mb-2">
+                <div className="text-lg sm:text-4xl font-bold text-primaryBlue mb-2">
                   {animatedNumbers[index] || 0}
                   {metric.suffix}
                 </div>
@@ -125,12 +125,11 @@ function ImpactAnalyticsSection() {
 
         {/* Additional Stats */}
         <div
-          className={`transition-all duration-1000 delay-500 transform ${
-            isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-          }`}
+          className={`transition-all duration-1000 delay-500 transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
+            }`}
         >
-          <div className="bg-white rounded-3xl p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Mission Statistics</h3>
+          <div className="bg-white rounded-3xl p-8 sm:shadow-lg">
+            <h3 className="text-4xl font-bold text-primaryBlue mb-8 text-center">Mission Statistics</h3>
             <div className="grid md:grid-cols-4 gap-8">
               {additionalStats.map((stat, index) => (
                 <div key={index} className="text-center">
@@ -145,11 +144,17 @@ function ImpactAnalyticsSection() {
           </div>
         </div>
 
+
         {/* Bottom Message */}
-        <div className="text-center mt-16">
-          <p className="text-xl sm:text-2xl text-gray-600 italic">
-            Every number represents a team that trusted us with their critical challenges
-          </p>
+        <div className="text-center">
+          <CursorFollower
+            text="Every number represents a team that trusted us with their critical challenges"
+            className="  max-w-2xl mt-12 bg-primaryBlue px-10 sm:px-6 py-4 rounded-3xl sm:rounded-full text-white mx-auto"
+            textClassName='text-white font-semibold  sm:text-sm lg:text-base '
+            gradientFrom="#F76707"
+            gradientTo="#0B1D30"
+            circleSize={100}
+          />
         </div>
       </div>
     </section>

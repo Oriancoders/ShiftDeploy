@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { ArrowRight, Zap, Shield, Rocket, Play, Headset, CheckCheck } from 'lucide-react';
+import { ArrowRight, Zap, Shield,} from 'lucide-react';
 import CursorFollower from '../../../utils/CursorFollower';
 import { Link } from 'react-router-dom';
 import { ContextAPI } from '../../../GlobalProvider/ContextAPI';
@@ -124,7 +124,6 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative mt-8 lg:mt-0 px-4 sm:px-0"
-          // style={{ x: scrwidth > 660 ? moveX : 0, y: scrwidth > 660 ? moveY : 0}}
           >
             <div className="relative">
               {/* Main card */}

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Star, Quote, Building, ArrowRight } from 'lucide-react';
-import { fadeInUp, staggerContainer, scaleOnHover } from '../../../utils/animations';
+import { fadeInUp, staggerContainer, } from '../../../utils/animations';
 import { Link } from 'react-router-dom';
 
 const FlightLogs = () => {
@@ -10,60 +10,34 @@ const FlightLogs = () => {
 
  const testimonials = [
   {
-    name: "Mohammed Cameron",
+    name: "Kamran Abbas",
     title: "CEO",
     company: "Bullseye Investment",
-    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300",
+    image: "https://i.pravatar.cc/80?img=14",
     rating: 5,
     review: "ShiftDeploy completely revamped our investment platform. Their deep knowledge of React and cloud infrastructure increased our user engagement by over 300%. Communication and delivery were flawless.",
     project: "Investment Platform Revamp"
   },
   {
-    name: "Fatima Wells",
+    name: "Sara Wells",
     title: "CTO",
     company: "Slacker IOT",
-    image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300",
+    image: "https://i.pravatar.cc/80?img=32",
     rating: 5,
     review: "The IoT integration project was seamless thanks to ShiftDeploy. From device connectivity to real-time data dashboards, everything was delivered on time and exceeded expectations.",
     project: "IoT Device & Dashboard Integration"
   },
   {
-  name: "Alex Turner",
+  name: "Ahmed Khan",
   title: "Founder",
   company: "K2 Traders",
-  image: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=300",
+  image: "https://i.pravatar.cc/80?img=12",
   rating: 5,
   review: "ShiftDeploy delivered a full-featured e-commerce solution for K2 Traders with **zero deployment costs** and **no ongoing maintenance fees**. The platform was ready to launch immediately and exceeded our expectations in usability and performance.",
   project: "One-Time Payment E-Commerce Solution"
 },
 
-  // {
-  //   name: "Sophie Clarke",
-  //   title: "Product Manager",
-  //   company: "GreenLeaf Foods",
-  //   image: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300",
-  //   rating: 5,
-  //   review: "From supply chain automation to real-time reporting, ShiftDeploy transformed our operations. The results were immediate and measurable, making our processes much more efficient.",
-  //   project: "Supply Chain Automation"
-  // },
-  // {
-  //   name: "Ryan Foster",
-  //   title: "CTO",
-  //   company: "UrbanNest",
-  //   image: "https://images.pexels.com/photos/1239288/pexels-photo-1239288.jpeg?auto=compress&cs=tinysrgb&w=300",
-  //   rating: 5,
-  //   review: "ShiftDeploy delivered an outstanding web platform that enhanced our property management system. Their UI/UX expertise made the app intuitive and easy to adopt.",
-  //   project: "Property Management Platform"
-  // },
-  // {
-  //   name: "Clara Hughes",
-  //   title: "VP of Technology",
-  //   company: "NextGen Analytics",
-  //   image: "https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?auto=compress&cs=tinysrgb&w=300",
-  //   rating: 5,
-  //   review: "The analytics dashboard ShiftDeploy created gave us insights we never had before. Data visualization and system performance were top-notch, empowering our business decisions.",
-  //   project: "Advanced Analytics Dashboard"
-  // }
+
 ];
 
 
