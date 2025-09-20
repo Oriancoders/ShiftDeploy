@@ -357,22 +357,16 @@ const SlackerIOT = () => {
                 }}
               ></div>
             </div>
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-20 left-20 w-96 h-96 bg-primaryOrange rounded-full blur-3xl" />
-              <div className="absolute bottom-20 right-20 w-80 h-80 bg-secondaryBlue rounded-full blur-3xl" />
-            </div>
+  
 
-            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-20 pt-28 sm:pt-32  md:pt-40">
-              <motion.div
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-20 pt-28 sm:pt-32  md:pt-32">
+              <div
                 className="text-center"
               >
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
                   className="inline-flex items-center space-x-2 bg-primaryOrange backdrop-blur-sm rounded-full px-6 py-3 mb-8"
                 >
                   <span className="text-white font-semibold text-xs sm:text-lg">Detailed Case Study - Slacker IOT</span>
@@ -381,7 +375,7 @@ const SlackerIOT = () => {
                 <motion.h1
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
+                  transition={{ duration: 0.3, delay: 0.3 }}
                   className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight"
                 >
                   Smart EV Charger{" "}
@@ -395,25 +389,22 @@ const SlackerIOT = () => {
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
+                  transition={{ duration: 0.3, delay: 0.4 }}
                   className="text-lg sm:text-2xl  text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
                 >
                   A comprehensive technical breakdown of the full-stack IoT solution developed for{" "}
                   <span className="text-primaryOrange font-semibold">Slacker IoT</span>{" "}
                   by ShiftDeploy
                 </motion.p>
-              </motion.div>
+              </div>
             </div>
           </section>
 
           {/* Project Overview */}
-          <section className="pb-20 pt-20  bg-gray-50">
+          <section className=" pt-10 sm:pt-20 bg-gray-50">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                ref={ref}
-                initial={{ opacity: 0, y: 60 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-                transition={{ duration: 0.8 }}
+              <div
+                
                 className="text-center mb-10 sm:mb-16"
               >
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
@@ -425,13 +416,10 @@ const SlackerIOT = () => {
                   and integrated payment processing. This project required expertise across embedded
                   systems, cloud infrastructure, web development, and payment integration.
                 </p>
-              </motion.div>
+              </div>
 
               <div className="grid lg:grid-cols-2 gap-16  mb-20 p-2">
-                <motion.div
-                  initial={{ opacity: 0, x: -60 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
+                <div
                 >
                   <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">Project Scope</h3>
                   <div className="space-y-4">
@@ -475,12 +463,9 @@ const SlackerIOT = () => {
                       <div className="text-gray-600">Monitoring</div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
 
-                <motion.div
-                  initial={{ opacity: 0, x: 60 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
+                <div
                   className="h-fit "
                 >
                   <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">Key Statistics</h3>
@@ -495,7 +480,7 @@ const SlackerIOT = () => {
 
                   </div>
 
-                </motion.div>
+                </div>
               </div>
             </div>
           </section>
@@ -507,7 +492,7 @@ const SlackerIOT = () => {
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.3 }}
                 className="text-center mb-16"
               >
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
@@ -521,12 +506,8 @@ const SlackerIOT = () => {
 
               <div className="space-y-16">
                 {techDetails.map((category, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    initial={{ opacity: 0, y: 60 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
                     className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg"
                   >
                     {/* Image Placeholder */}
@@ -554,7 +535,7 @@ const SlackerIOT = () => {
                         </div>
                       ))}
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -568,7 +549,7 @@ const SlackerIOT = () => {
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.3 }}
                 className="text-center mb-16"
               >
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
@@ -582,12 +563,9 @@ const SlackerIOT = () => {
 
               <div className="space-y-10 sm:space-y-16">
                 {detailedFeatures.map((feature, index) => (
-                  <motion.div
+                  <div
                     key={index}
-                    initial={{ opacity: 0, y: 60 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
+         
                     className="bg-white shadow-md rounded-2xl p-6 sm:p-8"
                   >
                     <div className="flex items-start sm:space-x-6">
@@ -610,7 +588,7 @@ const SlackerIOT = () => {
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -622,7 +600,7 @@ const SlackerIOT = () => {
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.3 }}
               className="text-center mb-16"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
@@ -697,7 +675,7 @@ const SlackerIOT = () => {
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.3 }}
                 className="text-center mb-16"
               >
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
@@ -716,7 +694,7 @@ const SlackerIOT = () => {
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
                     className="bg-white rounded-2xl p-6 sm:p-8 shadow-md"
                   >
                     <div className="space-y-6">
@@ -749,7 +727,7 @@ const SlackerIOT = () => {
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.3 }}
                 className="text-center mb-16"
               >
                 {/* Image Placeholder for Results Graphic */}
@@ -777,7 +755,7 @@ const SlackerIOT = () => {
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
                     className="text-center bg-slate-700/50 rounded-2xl p-6"
                   >
                     <div className="w-16 h-16 bg-primaryOrange rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -793,7 +771,7 @@ const SlackerIOT = () => {
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.3, delay: 0.4 }}
                 className="bg-slate-700/50 rounded-2xl p-8"
               >
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">Business Impact</h3>
@@ -844,7 +822,7 @@ const SlackerIOT = () => {
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.3 }}
                 className=" sm:p-12 text-center"
               >
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-8">

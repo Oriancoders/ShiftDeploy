@@ -366,22 +366,16 @@ const K2TradersCase = () => {
                             }}
                         ></div>
                     </div>
-                    <div className="absolute inset-0 opacity-10">
-                        <div className="absolute top-20 left-20 w-96 h-96 bg-primaryOrange rounded-full blur-3xl" />
-                        <div className="absolute bottom-20 right-20 w-80 h-80 bg-secondaryBlue rounded-full blur-3xl" />
-                    </div>
+          
 
-                    <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-20 pt-28 sm:pt-32  md:pt-40">
-                        <motion.div
-                            initial={{ opacity: 0, y: 60 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
+                    <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-20 pt-28 sm:pt-32  md:pt-32">
+                        <div
                             className="text-center"
                         >
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.6, delay: 0.2 }}
+                                transition={{ duration: 0.3, delay: 0.2 }}
                                 className="inline-flex items-center space-x-2 bg-primaryOrange backdrop-blur-sm rounded-full px-6 py-3 mb-8"
                             >
                                 <span className="text-white font-semibold text-xs sm:text-lg">Detailed Case Study - K2 Traders</span>
@@ -390,7 +384,7 @@ const K2TradersCase = () => {
                             <motion.h1
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.3 }}
+                                transition={{ duration: 0.3, delay: 0.3 }}
                                 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight"
                             >
                                 Smart eCommerce{" "}
@@ -412,7 +406,7 @@ const K2TradersCase = () => {
                                 by ShiftDeploy, delivering zero deployment costs, effortless maintenance,
                                 and a seamless shopping experience powered by React and Google Sheets.
                             </motion.p>
-                        </motion.div>
+                        </div>
                     </div>
                 </section>
 
@@ -420,10 +414,7 @@ const K2TradersCase = () => {
                 {/* Project Overview */}
                 <section className=" pt-10 sm:pt-20 bg-gray-50 ">
                     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <motion.div
-                            initial={{ opacity: 0, y: 60 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3 }}
+                        <div
                             className="text-center mb-8 sm:mb-16"
                         >
                             <h2 className="text-3xl lg:text-5xl font-bold text-primaryBlue mb-4 sm:mb-8">
@@ -440,14 +431,11 @@ const K2TradersCase = () => {
                                 This project was designed to give startups an affordable,
                                 scalable alternative to Shopify or WordPress.
                             </p>
-                        </motion.div>
+                        </div>
 
                         <div className="grid lg:grid-cols-2 gap-16 mb-8 sm:mb-16 p-2">
                             {/* Project Scope */}
-                            <motion.div
-                                initial={{ opacity: 0, y: -60 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.8, delay: 0.2 }}
+                            <div
                             >
                                 <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">Project Scope</h3>
                                 <div className="space-y-4">
@@ -491,13 +479,10 @@ const K2TradersCase = () => {
                                         <div className="text-gray-600">Ownership</div>
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
 
                             {/* Key Statistics Graphic Placeholder */}
-                            <motion.div
-                                initial={{ opacity: 0, x: 60 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.8, delay: 0.4 }}
+                            <div
                             >
                                 <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">Key Statistics</h3>
                                 <div style={{
@@ -508,7 +493,7 @@ const K2TradersCase = () => {
                                 }} className="image-placeholder w-full h-52 sm:h-64 mb-6 flex items-center justify-center text-gray-500">
 
                                 </div>
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -521,7 +506,7 @@ const K2TradersCase = () => {
                             initial={{ opacity: 0, y: 60 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.3 }}
                             className="text-center mb-16"
                         >
                             <h2 className="text-3xl lg:text-5xl font-bold text-primaryBlue mb-8">
@@ -539,12 +524,8 @@ const K2TradersCase = () => {
 
                         <div className="space-y-16">
                             {techDetails.map((category, index) => (
-                                <motion.div
+                                <div
                                     key={index}
-                                    initial={{ opacity: 0, y: 60 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.8, delay: index * 0.1 }}
                                     className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg"
                                 >
                                     {/* Image Placeholder */}
@@ -572,7 +553,7 @@ const K2TradersCase = () => {
                                             </div>
                                         ))}
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -585,7 +566,7 @@ const K2TradersCase = () => {
                             initial={{ opacity: 0, y: 60 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.3 }}
                             className="text-center mb-16"
                         >
                             <h2 className="text-3xl lg:text-5xl font-bold text-slate-800 mb-4 sm:mb-8">
@@ -599,12 +580,8 @@ const K2TradersCase = () => {
 
                         <div className="space-y-10 sm:space-y-16">
                             {detailedFeatures.map((feature, index) => (
-                                <motion.div
+                                <div
                                     key={index}
-                                    initial={{ opacity: 0, y: 60 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.8, delay: index * 0.1 }}
                                     className="bg-white shadow-md rounded-2xl p-6 sm:p-8"
                                 >
                                     <div className="flex items-start sm:space-x-6">
@@ -627,7 +604,7 @@ const K2TradersCase = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -640,7 +617,7 @@ const K2TradersCase = () => {
                             initial={{ opacity: 0, y: 60 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.3 }}
                             className="text-center mb-16"
                         >
                             <h2 className="text-3xl lg:text-5xl font-bold text-slate-800 mb-4 sm:mb-8">
@@ -714,7 +691,7 @@ const K2TradersCase = () => {
                             initial={{ opacity: 0, y: 60 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.3 }}
                             className="text-center mb-16"
                         >
                             <h2 className="text-3xl lg:text-5xl font-bold text-primaryBlue mb-4 sm:mb-8">
@@ -733,7 +710,7 @@ const K2TradersCase = () => {
                                     initial={{ opacity: 0, y: 60 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                                    transition={{ duration: 0.3, delay: index * 0.1 }}
                                     className="bg-white rounded-2xl p-6 sm:p-8 shadow-md"
                                 >
                                     <div className="space-y-6">
@@ -766,7 +743,7 @@ const K2TradersCase = () => {
                             initial={{ opacity: 0, y: 60 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
+                            transition={{ duration: 0.3 }}
                             className="text-center mb-16"
                         >
                             {/* Image Placeholder for Results Graphic */}
@@ -795,7 +772,7 @@ const K2TradersCase = () => {
                                     initial={{ opacity: 0, y: 60 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
                                     className="text-center bg-slate-700/50 rounded-2xl p-6"
                                 >
                                     <div className="w-16 h-16 bg-primaryOrange rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -811,7 +788,7 @@ const K2TradersCase = () => {
                             initial={{ opacity: 0, y: 60 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
+                            transition={{ duration: 0.3, delay: 0.4 }}
                             className="bg-slate-700/50 rounded-2xl p-8"
                         >
                             <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">Business Impact</h3>
@@ -862,7 +839,7 @@ const K2TradersCase = () => {
                         initial={{ opacity: 0, y: 60 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 0.3 }}
                         className="sm:p-12 text-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
                     >
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
