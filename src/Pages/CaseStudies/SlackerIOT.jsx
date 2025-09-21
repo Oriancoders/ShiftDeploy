@@ -731,9 +731,9 @@ const SlackerIOT = () => {
                 className="text-center mb-16"
               >
                 {/* Image Placeholder for Results Graphic */}
-                <div className="image-placeholder w-full h-64 bg-gray-200/30 rounded-xl mb-10 flex items-center justify-center text-white">
+                {/* <div className="image-placeholder w-full h-64 bg-gray-200/30 rounded-xl mb-10 flex items-center justify-center text-white">
                   Results Infographic
-                </div>
+                </div> */}
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8">
                   Results & Impact
                 </h2>
