@@ -12,7 +12,8 @@ import ContactUs from './Pages/ContactUsPage/ContactUs';
 import SlackerIOT from './Pages/CaseStudies/SlackerIOT';
 import BullsEyesCase from './Pages/CaseStudies/BullsEyesCase';
 import K2TradersCase from './Pages/CaseStudies/K2Traders';
-import ShiftDeployLoader from './components/ShiftDeployLoader';
+import ThankYouPage from './Pages/ContactUsPage/ThankYouPage';
+// import ShiftDeployLoader from './components/ShiftDeployLoader';
 
 function App() {
   return (
@@ -26,9 +27,14 @@ function App() {
           <Route path='/missions' element={<Mission_Landing />} />
           <Route path='/flight-logs' element={<Flight_Landing />} />
           <Route path='/ContactUs' element={<ContactUs />} />
+
+          {/* case studies  */}
           <Route path='/CaseStudies/SlackerIOT' element={<SlackerIOT />} />
           <Route path='/CaseStudies/BullseyesCase' element={<BullsEyesCase />} />
           <Route path='/CaseStudies/K2TradersCase' element={<K2TradersCase />} />
+
+          {/* thank you page  */}
+          <Route path='/thankyou' element={<ThankYouPage/>} />
         </Routes>
       </div>
     </GlobalProvider>
