@@ -7,6 +7,7 @@ import Footer from "../../components/Footer";
 import Navigation from "../../components/Navigation";
 import { ContextAPI } from "../../GlobalProvider/ContextAPI";
 import whiteV from '../../Assets/Images/whiteV.png'
+import thankBG from '../../Assets/Images/thankBG.png'
 
 const ThankYouPage = () => {
     // 🟢 Page load hone par scroll top
@@ -27,107 +28,23 @@ const ThankYouPage = () => {
     y.set(e.clientY);
   };
   return (
-    // <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#0C1F3A] to-[#0B1D30] text-white relative overflow-hidden">
-    //   {/* Futuristic glowing background grid */}
-    //   <div className="absolute inset-0 -z-10">
-    //     <div className="w-full h-full bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.1),transparent_50%)] animate-pulse" />
-    //   </div>
-
-    //   {/* Content */}
-    //   <motion.div
-    //     initial={{ opacity: 0, y: 30 }}
-    //     animate={{ opacity: 1, y: 0 }}
-    //     transition={{ duration: 0.8 }}
-    //     className="text-center px-6 sm:px-10 max-w-2xl"
-    //   >
-    //     {/* Icon or Illustration */}
-    //     <motion.div
-    //       initial={{ scale: 0.8, opacity: 0 }}
-    //       animate={{ scale: 1, opacity: 1 }}
-    //       transition={{ delay: 0.3, duration: 0.6 }}
-    //       className="flex justify-center mb-6"
-    //     >
-    //       <div className="p-6 bg-white/10 rounded-full border border-white/20 shadow-lg">
-    //         <Handshake className="w-14 h-14 text-primaryOrange" />
-    //       </div>
-    //     </motion.div>
-
-    //     {/* Heading */}
-    //     <h1 className="text-4xl sm:text-6xl font-extrabold">
-    //       <span className="text-white">Thank</span>{" "}
-    //       <span className="text-primaryOrange">You!</span>
-    //     </h1>
-
-    //     {/* Subtext */}
-    //     <p className="mt-4 text-lg sm:text-xl text-gray-300">
-    //       We’ve received your request. Our engineers will connect with you soon
-    //       to accelerate your mission with <span className="text-primaryOrange font-semibold">ShiftDeploy</span>.
-    //     </p>
-
-    //     {/* CTA Buttons */}
-    //     <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-    //       <Link
-    //         to="/"
-    //         className="bg-gradient-to-r from-[#F76707] to-[#D83A21] px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all"
-    //       >
-    //         Back to Home
-    //       </Link>
-    //       <Link
-    //         to="/missions"
-    //         className="border-2 border-primaryOrange text-primaryOrange px-6 py-3 rounded-xl font-semibold hover:bg-primaryOrange hover:text-white transition-all"
-    //       >
-    //         Explore Our Work
-    //       </Link>
-    //     </div>
-    //   </motion.div>
-    // </div>
 
     <>
       <Navigation isDarkBg={true}/>
       <div 
       onMouseMove={handleMouseMove}
-       className="min-h-screen bg-primaryBlue relative overflow-hidden flex items-center justify-center pt-32 pb-10">
-        {/* Elegant Futuristic Background Pattern */}
-        <motion.div
-          style={{ x: scrwidth > 660 ? moveX : 0, y: scrwidth > 660 ? moveY : 0 }}
-          className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 20% 80%, #4361EE 1px, transparent 1px),
-                                 radial-gradient(circle at 80% 20%, #F76707 1px, transparent 1px),
-                                 radial-gradient(circle at 40% 40%, #4361EE 1px, transparent 1px)`,
-              backgroundSize: "100px 100px",
-              transform: scrwidth > 660 ? moveX : 0,
-              y: scrwidth > 660 ? moveY : 0
+      style={{
+        backgroundImage : `url(${thankBG})`,
+        backgroundSize : 'cover',
+        backgroundRepeat : 'no-repeat',
+        backgroundPosition : 'center'
+      }}
+       className="min-h-screen bg-primaryBlue overflow-hidden flex items-center justify-center pt-32 pb-10 relative">
+        <div className="absolute w-full h-full inset-0 bg-primaryBlue/80 z-10">
 
-            }}
-          ></div>
-        </motion.div>
-        <div className="absolute inset-0 opacity-5">
-
-
-          {/* Geometric Lines */}
-          {/* <div className="absolute inset-0" style={{
-          backgroundImage: `
-            linear-gradient(45deg, transparent 40%, rgba(12, 31, 58, 0.3) 50%, transparent 60%),
-            linear-gradient(-45deg, transparent 40%, rgba(247, 103, 7, 0.3) 50%, transparent 60%)
-          `,
-          backgroundSize: '200px 200px'
-        }} /> */}
-
-          {/* Circuit Board Pattern */}
-          <div className="absolute top-0 left-0 w-full h-full" style={{
-            backgroundImage: `
-            linear-gradient(90deg, rgba(12, 31, 58, 0.2) 1px, transparent 1px),
-            linear-gradient(rgba(12, 31, 58, 0.2) 1px, transparent 1px)
-          `,
-            backgroundSize: '50px 50px'
-          }} />
         </div>
 
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative  max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-20">
           <motion.div
             variants={staggerContainer}
             initial="initial"

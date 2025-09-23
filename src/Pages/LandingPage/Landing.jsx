@@ -3,6 +3,7 @@ import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 import { Helmet } from 'react-helmet-async';
+import TrustStrip from '../../components/TrustStrip';
 
 const Hero = lazy(() => import('./landingComps/Hero'));
 const InsideShiftDeploy = lazy(() => import('./landingComps/InsideShiftDeploy'));
@@ -65,6 +66,7 @@ const Landing = () => {
         <Navigation />
         <Suspense fallback={<ShiftDeployLoader />}>
           <Hero />
+          <TrustStrip/>
           <InsideShiftDeploy />
           <DeployToolkit />
           <ShiftProtocol />
