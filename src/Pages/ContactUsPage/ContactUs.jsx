@@ -6,10 +6,12 @@ import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
 import emailjs from "@emailjs/browser";
 import { Helmet } from 'react-helmet-async';
+import { useNavigate } from 'react-router-dom';
 
 const ContactUs = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const navigate = useNavigate()
 
   // 🟢 Page load hone par scroll top
   useEffect(() => {
@@ -55,6 +57,9 @@ const ContactUs = () => {
       .then(
         () => {
           setFormStatus("success");
+          setTimeout(() => {
+            navigate("/thankyou")
+          }, 1000)
           console.log("form data yera ", formData)
           setFormData({ name: "", email: "", company: "", message: "", phone: "", budget: "", timeline: "" });
           setTimeout(() => setFormStatus(null), 15000);
@@ -279,51 +284,7 @@ const ContactUs = () => {
                     </div>
                   </div>
 
-                  <div className='grid grid-cols-1 md:grid-cols-2 gap-6 '>
-                    {/* Budget Field */}
-                    <div>
-                      <label htmlFor="budget" className="block text-slate-900 font-semibold text-base sm:text-lg mb-3">
-                        Estimated Budget
-                      </label>
-                      <input
-                        type="text"
-                        id="budget"
-                        name="budget"
-                        value={formData.budget}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-slate-300 rounded-xl text-slate-900 
-               placeholder-slate-500 focus:ring-2 focus:ring-primaryBlue transition-all duration-300 text-base sm:text-lg"
-                        placeholder="Your budget (optional)"
-                      />
-                    </div>
-
-                    {/* Timeline / Urgency Field */}
-                    <div>
-                      <label
-                        htmlFor="timeline"
-                        className="block text-slate-900 font-semibold text-base sm:text-lg mb-3"
-                      >
-                        Project Urgency *
-                      </label>
-                      <select
-                        id="timeline"
-                        name="timeline"
-                        value={formData.timeline}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-2 border border-slate-300 rounded-xl text-slate-900 
-               focus:ring-2 focus:ring-primaryBlue
-               transition-all duration-300 text-base sm:text-lg"
-                      >
-                        <option value="">Select urgency level...</option>
-                        <option value="Urgent (ASAP)">Urgent (ASAP)</option>
-                        <option value="Within 1 month">Within 1 Week</option>
-                        <option value="1-3 months">Within 1 months</option>
-                        <option value="3-6 months">1-2 months</option>
-                        <option value="No rush (Flexible)">No rush (Flexible)</option>
-                      </select>
-                    </div>
-                  </div>
+   
 
                   {/* Company Field */}
                   <div>
