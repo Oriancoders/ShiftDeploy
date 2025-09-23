@@ -18,12 +18,12 @@ const Hero = () => {
 
   const handleMouseMove = (e) => {
     x.set(e.clientX);
-    y.set(e.clientY);
+    y.set(e.clientY); 
   };
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12">
+      className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12">
       <motion.div
         style={{ x: scrwidth > 660 ? moveX : 0, y: scrwidth > 660 ? moveY : 0 }}
         className="absolute inset-0 opacity-30">
@@ -69,7 +69,7 @@ const Hero = () => {
 
               </span>
               <br />
-              <span className="bg-gradient-to-r from-primaryOrange to-toOrange bg-clip-text text-transparent">
+              <span className="text-primaryOrange">
                 That Perform
 
               </span>
@@ -83,9 +83,9 @@ const Hero = () => {
               initial={{ opacity: 0, x: 60 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl   mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0 lg:text-left sm:text-center text-left text-gray-600"
+              className="text-xl   mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0 lg:text-left sm:text-center text-left text-gray-700"
             >
-              Empowering businesses with web development, cloud solutions & DevOps to drive your digital growth.
+              From MVPs to enterprise infra, we deploy software that’s built to last, not patched to survive.
 
             </motion.p>
 
