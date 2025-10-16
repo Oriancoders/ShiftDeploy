@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { ArrowRight, Zap, Shield,} from 'lucide-react';
+import { ArrowRight, Zap, Shield, } from 'lucide-react';
 import CursorFollower from '../../../utils/CursorFollower';
 import { Link } from 'react-router-dom';
 import { ContextAPI } from '../../../GlobalProvider/ContextAPI';
-
 
 
 const Hero = () => {
@@ -18,7 +17,7 @@ const Hero = () => {
 
   const handleMouseMove = (e) => {
     x.set(e.clientX);
-    y.set(e.clientY); 
+    y.set(e.clientY);
   };
   return (
     <section
@@ -58,31 +57,33 @@ const Hero = () => {
               circleSize={100}
             />
 
-            <motion.h1
-              initial={{ opacity: 0, x: -60 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+            <motion.div
+              initial={{ opacity: 0, }}
+              animate={{ opacity: 1, }}
+              transition={{ duration: 0.3, delay: 0.2 }}
               className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left"
             >
-              <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                Launch Products
+              <h1>
+                <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
+                  Launch Products
 
-              </span>
-              <br />
-              <span className="text-primaryOrange">
-                That Perform
+                </span>
+                <br />
+                <span className="text-primaryOrange">
+                  That Perform
 
-              </span>
-              <br />
-              <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                Under Pressure
-              </span>
-            </motion.h1>
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
+                  Under Pressure
+                </span>
+              </h1>
+            </motion.div>
 
             <motion.p
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              initial={{ opacity: 0, }}
+              animate={{ opacity: 1, }}
+              transition={{ duration: 0.3, delay: 0.2 }}
               className="text-xl   mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0 lg:text-left sm:text-center text-left text-gray-700"
             >
               From MVPs to enterprise infra, we deploy software that’s built to last, not patched to survive.
@@ -96,7 +97,7 @@ const Hero = () => {
               <motion.div
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                transition={{ duration: 0.3, delay: 0.3 }}
               >
                 <Link to={"/ContactUs"} className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md ">Launch Your Project</Link>
 
@@ -105,7 +106,7 @@ const Hero = () => {
               <motion.div
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+                transition={{ duration: 0.3, delay: 0.6 }}
 
               >
                 <Link to={"/missions"} className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md">View Missions Completed</Link>
@@ -122,7 +123,7 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
             className="relative mt-8 lg:mt-0 px-4 sm:px-0"
           >
             <div className="relative">

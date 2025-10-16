@@ -1,19 +1,19 @@
 export const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" }
+  transition: { duration: 0.3, ease: "easeOut" }
 };
 
 export const fadeInLeft = {
   initial: { opacity: 0, x: -60 },
   animate: { opacity: 1, x: 0 },
-  transition: { duration: 0.6, ease: "easeOut" }
+  transition: { duration: 0.3, ease: "easeOut" }
 };
 
 export const fadeInRight = {
   initial: { opacity: 0, x: 60 },
   animate: { opacity: 1, x: 0 },
-  transition: { duration: 0.6, ease: "easeOut" }
+  transition: { duration: 0.3, ease: "easeOut" }
 };
 
 export const staggerContainer = {
@@ -37,7 +37,7 @@ export const buttonHover = {
   whileHover: { 
     scale: 1.05, 
     backgroundColor: "#e63e00",
-    transition: { duration: 0.2 }
+    transition: { duration: 0.3 }
   },
   whileTap: { scale: 0.95 }
 };

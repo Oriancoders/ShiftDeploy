@@ -27,11 +27,11 @@ function QuoteWallSection() {
     company: "Bullseyes Investments",
     tag: "Web Development",
     rating: 5,
-    avatar: "https://i.pravatar.cc/80?img=27",
+    avatar: "https://i.pravatar.cc/80?img=14",
   },
   {
     quote:
-      "They built our entire EV charging platform from scratch — hardware, software, billing, everything. The real-time telemetry and admin controls are rock solid, and the Stripe billing runs automatically. It’s rare to find a team that can handle full-stack plus IoT this well.",
+      "They built our entire EV charging platform from scratch. Hardware, software, billing, everything. The real-time telemetry and admin controls are rock solid, and the Stripe billing runs automatically. It’s rare to find a team that can handle full-stack plus IoT this well.",
     author: "Sara Wells",
     role: "CTO",
     company: "Slacker IoT",
@@ -47,7 +47,7 @@ function QuoteWallSection() {
     company: "Buildly",
     tag: "DevOps",
     rating: 5,
-    avatar: "https://i.pravatar.cc/80?img=42",
+    avatar: "https://i.pravatar.cc/80?img=43",
   },
   {
     quote:
@@ -67,7 +67,7 @@ function QuoteWallSection() {
     company: "PeakOps",
     tag: "Infra",
     rating: 5,
-    avatar: "https://i.pravatar.cc/80?img=62",
+    avatar: "https://i.pravatar.cc/80?img=51",
   },
 ];
 

@@ -1,12 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Twitter, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import {  Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
 import emailjs from "@emailjs/browser";
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
+import { FaXTwitter } from 'react-icons/fa6';
+import { FaLinkedin,  } from 'react-icons/fa';
+import { IoMail } from 'react-icons/io5';
 
 const ContactUs = () => {
   const ref = useRef(null);
@@ -74,20 +77,20 @@ const ContactUs = () => {
 
   const contactInfo = [
     {
-      icon: Mail,
+      icon: <IoMail  className="w-6 sm:w-7 h-6 sm:h-7"/>,
       label: 'Email',
       value: 'hello@shiftdeploy.com',
       href: 'mailto:hello@shiftdeploy.com',
     },
     {
-      icon: Linkedin,
+      icon: <FaLinkedin className="w-6 sm:w-7 h-6 sm:h-7"/>,
       label: 'LinkedIn',
       value: 'www.linkedin.com/company/shiftdeploy',
 
       href: 'https://www.linkedin.com/company/shiftdeploy',
     },
     {
-      icon: Twitter,
+      icon: <FaXTwitter className="w-6 sm:w-7 h-6 sm:h-7"/>,
       label: 'Twitter',
       value: 'x.com/ShiftDeploy',
       href: 'https://x.com/ShiftDeploy',
@@ -194,7 +197,7 @@ const ContactUs = () => {
                     className="flex items-start space-x-4 sm:space-x-5"
                   >
                     <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-xl flex items-center justify-center flex-shrink-0 bg-primaryBlue text-white">
-                      <info.icon className="w-6 sm:w-7 h-6 sm:h-7" />
+                      {info.icon}
                     </div>
                     <div className="flex-1">
                       <h3 className="text-slate-900 font-semibold text-base sm:text-lg mb-1">
