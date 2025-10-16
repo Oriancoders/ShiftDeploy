@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Slack, Twitter, } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 import whiteV from '../Assets/Images/whiteV.png'
 import { Link } from 'react-router-dom';
+import { FaXTwitter } from 'react-icons/fa6';
 const Footer = () => {
   
   const currentYear = new Date().getFullYear();
@@ -62,7 +63,7 @@ const Footer = () => {
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">contact@shiftdeploy.com</span>
               </a>
               <a href='https://x.com/shiftdeploy' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
-                <Twitter className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
+                <FaXTwitter className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on twitter</span>
               </a>
               

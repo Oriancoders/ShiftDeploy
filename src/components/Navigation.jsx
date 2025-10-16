@@ -7,7 +7,7 @@ import coloredV from '../Assets/Images/coloredV.png';
 const Navigation = ({ isDarkBg = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation(); // 👈 current path
+  const location = useLocation();  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +21,9 @@ const Navigation = ({ isDarkBg = false }) => {
     { label: 'Deploy Toolkit', path: '/deploy-toolkit' },
     { label: 'Inside ShiftDeploy', path: '/insideShiftDeploy' },
     { label: 'The Shift Protocol', path: '/shift-protocol' },
-    { label: 'Missions Completed', path: '/missions' },
+    { label: 'Missions Completed', path: '/missions' , subPaths : [
+      '/CaseStudies/SlackerIOT' , '/CaseStudies/BullseyesCase' , '/CaseStudies/K2TradersCase'
+    ]},
     { label: 'Flight Logs', path: '/flight-logs' },
   ];
 

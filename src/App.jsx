@@ -13,7 +13,6 @@ import SlackerIOT from './Pages/CaseStudies/SlackerIOT';
 import BullsEyesCase from './Pages/CaseStudies/BullsEyesCase';
 import K2TradersCase from './Pages/CaseStudies/K2Traders';
 import ThankYouPage from './Pages/ContactUsPage/ThankYouPage';
-// import ShiftDeployLoader from './components/ShiftDeployLoader';
 
 function App() {
   return (
