@@ -3,11 +3,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import coloredV from '../Assets/Images/coloredV.png';
+import { FaArrowDown } from 'react-icons/fa6';
+import { IoIosArrowDown } from 'react-icons/io';
 
 const Navigation = ({ isDarkBg = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();  
+
+  const [hoveredPath , setHoveredPath] = useState(null)
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,7 +57,7 @@ const Navigation = ({ isDarkBg = false }) => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-6 xl:space-x-10">
-            {navItems.map(({ label, path }) => {
+            {navItems.map(({ label, path , subPaths }) => {
               const isActive = location.pathname === path;
               return (
                 <motion.div
@@ -62,14 +68,32 @@ const Navigation = ({ isDarkBg = false }) => {
                     ${isActive ? 'text-primaryBlue' : 'text-gray-700 hover:text-primaryBlue'}
                   `}
                 >
-                  <Link to={path}>
+                  <div onMouseEnter={() => setHoveredPath(label)}  className='flex items-center gap-2 relative group'>
+                    <Link to={path}>
                     {label}
                   </Link>
+                    {/* {subPaths && <IoIosArrowDown />} */}
+                    
+                  </div>
                   <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-primaryOrange transition-all duration-300
+                    className={`absolute  h-0.5 bg-primaryOrange transition-all duration-300
                       ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}
                     `}
                   ></span>
+
+                  {/* {subPaths  && <div className={`absolute top-12 -left-2  bg-white  w-48 `} style={{ display: hoveredPath === label ? 'block' : 'none' }} onMouseLeave={() => setHoveredPath(null)}>
+                      {subPaths.map((subPath) => (
+                        <Link 
+                          to={subPath}
+                          key={subPath}
+                          className="block px-2 py-2 text-gray-700 hover:bg-gray-100 text-md"
+                        >
+                          {subPath === '/CaseStudies/SlackerIOT' && 'Slacker IOT'}
+                          {subPath === '/CaseStudies/BullseyesCase' && 'BullsEyes Investments'}
+                          {subPath === '/CaseStudies/K2TradersCase' && 'K2 Traders'}
+                        </Link>
+                      ))}
+                    </div>} */}
                 </motion.div>
               );
             })}

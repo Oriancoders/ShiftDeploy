@@ -67,7 +67,7 @@ const Footer = () => {
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on twitter</span>
               </a>
               
-              <a href='https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3dej8l23q-m2S_MrlF7zvL2F~9jwK6iA' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
+              <a href='https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3gan3ow0g-OW0s3OJIJKIzQwQ0tB1V6A' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
                 <Slack  className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on slack</span>
               </a>
