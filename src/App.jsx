@@ -13,6 +13,7 @@ import SlackerIOT from './Pages/CaseStudies/SlackerIOT';
 import BullsEyesCase from './Pages/CaseStudies/BullsEyesCase';
 import K2TradersCase from './Pages/CaseStudies/K2Traders';
 import ThankYouPage from './Pages/ContactUsPage/ThankYouPage';
+import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 
 function App() {
   return (
@@ -34,6 +35,10 @@ function App() {
 
           {/* thank you page  */}
           <Route path='/thankyou' element={<ThankYouPage/>} />
+
+          {/* policy pages  */}
+          <Route path='/privacy-policy' element={<PrivacyPolicy/>} />
+          
         </Routes>
       </div>
     </GlobalProvider>
