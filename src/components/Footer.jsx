@@ -67,7 +67,7 @@ const Footer = () => {
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on twitter</span>
               </a>
               
-              <a href='https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3gan3ow0g-OW0s3OJIJKIzQwQ0tB1V6A' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
+              <a href='https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3gan3ow0g-OW0s3OJIJKIzQwQ0tB1V6A1' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
                 <Slack  className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on slack</span>
               </a>
@@ -139,12 +139,12 @@ const Footer = () => {
               © {currentYear} ShiftDeploy. All rights reserved.
             </p>
             <div className="flex space-x-3 sm:space-x-4 lg:space-x-6">
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base">
+              <Link to="/privacy-policy" className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base">
+              </Link>
+              <Link to="/privacy-policy" className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base">
                 Terms of Service
-              </a>
+              </Link>
             </div>
           </div>
 
