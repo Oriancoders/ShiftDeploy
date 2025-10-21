@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
+import ev_dashboard from "../../../Assets/Images/profilecard/ev_dashboard.png"
+import k2_traders from "../../../Assets/Images/profilecard/k2_traders.png"
+import bullseyes from "../../../Assets/Images/profilecard/bullseyes.png"
 
 // Section 2: Case Study Cards Grid
 function CaseStudyCardsSection() {
@@ -13,7 +16,7 @@ function CaseStudyCardsSection() {
       brand: "Slacker IoT",
       category: "IoT & SaaS Platform",
       outcome: "Built a scalable EV charging platform with real-time telemetry and automated billing",
-      visual: "https://images.unsplash.com/photo-1704475289650-6ab9fc4a0a5b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      visual: ev_dashboard,
       metrics: { users: "5K+", uptime: "99.9%", costReduction: "40%" },
       url: "/CaseStudies/SlackerIOT"
     },
@@ -21,7 +24,7 @@ function CaseStudyCardsSection() {
       brand: "Bullseye Investments",
       category: "FinTech Infrastructure",
       outcome: "Delivered a live stock market dashboard integrated with APIs and Google Sheets",
-      visual: "https://images.unsplash.com/photo-1620266757065-5814239881fd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGZpbmFuY2V8ZW58MHx8MHx8fDA%3D",
+      visual: bullseyes,
       metrics: { dataFeeds: "50+", downtime: "0 hrs", engagement: "3x higher" },
       url: '/CaseStudies/BullseyesCase'
     },
@@ -30,7 +33,7 @@ function CaseStudyCardsSection() {
       brand: "K2 Traders",
       category: "eCommerce Development",
       outcome: "Zero recurring fees with a fully optimized React-based store",
-      visual: "https://images.unsplash.com/photo-1586880244406-556ebe35f282?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      visual: k2_traders,
       metrics: { savings: "$1000s", hosting: " Free ", maintenance: "One-time" },
       url: "/CaseStudies/K2TradersCase"
     },
