@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react'
-import HeroPolicy from './sections/HeroPolicy'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
-import Detailed from './sections/Detailed'
+import HeroTerms from './sections/HeroTerms'
 
-const PrivacyPolicy = () => {
+const Terms_Of_Services = () => {
     // ✅ Scroll to top on mount
       useEffect(() => {
         window.scrollTo(0, 0)
@@ -12,12 +11,11 @@ const PrivacyPolicy = () => {
     return (
         <div className='w-full'>
             <Navigation />
-            <HeroPolicy />
-            <Detailed />
+            <HeroTerms/>
             <Footer />
 
         </div>
     )
 }
 
-export default PrivacyPolicy
+export default Terms_Of_Services
