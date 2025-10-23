@@ -18,6 +18,7 @@ import {
 import Footer from '../components/Footer';
 import coloredV from '../Assets/Images/coloredV.png';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 
 function Shiftify_Landing() {
@@ -41,6 +42,31 @@ function Shiftify_Landing() {
     };
 
     return (
+        <>
+              <Helmet>
+        <title>Shiftify — Build Your Store at Half the Shopify Cost</title>
+        <meta
+          name="description"
+          content="Shiftify helps startups and small businesses launch full-stack eCommerce stores at 50% lower cost than Shopify — with modern dashboards, free hosting, and complete control."
+        />
+        <meta
+          name="keywords"
+          content="Shiftify, Shopify alternative, eCommerce builder, online store, affordable ecommerce, Supabase, Vercel, ShiftDeploy"
+        />
+        <meta property="og:title" content="Shiftify — The Smart Shopify Alternative" />
+        <meta
+          property="og:description"
+          content="Launch your online store in minutes with Shiftify. Full control, zero coding, and half the cost of Shopify."
+        />
+        {/* <meta property="og:image" content="https://shiftdeploy.com/og-image.jpg" />
+        <meta property="og:url" content="https://shiftify.shiftdeploy.com" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://shiftify.shiftdeploy.com" /> */}
+        <meta name="theme-color" content="#0C1F3A" />
+      </Helmet>
+
+
+        
         <div className="min-h-screen bg-white">
             {/* Navbar */}
             <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-md' : 'bg-white/70 backdrop-blur-sm'
@@ -477,6 +503,7 @@ function Shiftify_Landing() {
             {/* Footer */}
             <Footer />
         </div>
+        </>
     );
 }
 
