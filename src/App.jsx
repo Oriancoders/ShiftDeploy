@@ -15,6 +15,7 @@ import K2TradersCase from './Pages/CaseStudies/K2Traders';
 import ThankYouPage from './Pages/ContactUsPage/ThankYouPage';
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import Terms_Of_Services from './Pages/Terms_Of_Services/Terms_Of_Services';
+import Shiftify_Landing from './Shiftify_Landing/Shiftify_Landing';
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
           <Route path='/privacy-policy' element={<PrivacyPolicy/>} />
 
           <Route path='/terms-of-services' element={<Terms_Of_Services/>} />
+
+          {/* shiftify Landing  */}
+          <Route path='/shiftify-landing-page' element={<Shiftify_Landing />} />
 
 
           
