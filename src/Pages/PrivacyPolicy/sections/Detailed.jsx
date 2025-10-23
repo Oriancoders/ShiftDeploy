@@ -288,6 +288,7 @@ const Detailed = () => {
 
 
                 </section>
+                
                 <hr className="border-t border-gray-200 my-8" />
 
                 <p className="text-sm text-gray-500 mt-2 text-center">
