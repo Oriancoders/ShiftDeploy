@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
 import HeroTerms from './sections/HeroTerms'
+import DetailedTerms from './sections/DetailedTerms'
 
 const Terms_Of_Services = () => {
     // ✅ Scroll to top on mount
@@ -12,6 +13,7 @@ const Terms_Of_Services = () => {
         <div className='w-full'>
             <Navigation />
             <HeroTerms/>
+            <DetailedTerms />
             <Footer />
 
         </div>
