@@ -4,6 +4,7 @@ import { ArrowRight, Zap, Shield, } from 'lucide-react';
 import CursorFollower from '../../../utils/CursorFollower';
 import { Link } from 'react-router-dom';
 import { ContextAPI } from '../../../GlobalProvider/ContextAPI';
+import hero_1 from '../../../Assets/Images/hero_1.png'
 
 
 const Hero = () => {
@@ -120,85 +121,18 @@ const Hero = () => {
           </div>
 
           {/* Right content - Enhanced 3D Material Prototype */}
+          
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: 0.3 }}
             className="relative mt-8 lg:mt-0 px-4 sm:px-0"
           >
-            <div className="relative">
-              {/* Main card */}
-              <motion.div
-                animate={{
-                  rotateY: [0, 5, 0],
-                  rotateX: [0, 2, 0]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="bg-white/80 backdrop-blur-xl border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 xl:p-10 sm:shadow-xl"
-              >
-                <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6 lg:mb-8">
-                  <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-4 lg:p-6 backdrop-blur-sm">
-                    <div className="w-full h-1.5 sm:h-2 lg:h-3 bg-gradient-to-r from-primaryBlue to-toBlue rounded-full mb-1.5 sm:mb-2 lg:mb-3" />
-                    <div className="w-3/4 h-1.5 sm:h-2 lg:h-3 bg-gray-300 rounded-full" />
-                  </div>
-                  <div className="bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg sm:rounded-xl lg:rounded-2xl p-3 sm:p-4 lg:p-6 backdrop-blur-sm">
-                    <div className="w-full h-1.5 sm:h-2 lg:h-3 bg-primaryOrange rounded-full mb-1.5 sm:mb-2 lg:mb-3" />
-                    <div className="w-2/3 h-1.5 sm:h-2 lg:h-3 bg-gray-300 rounded-full" />
-                  </div>
-                </div>
-
-                <div className="space-y-2 sm:space-y-3 lg:space-y-4">
-                  <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
-                    <div className="w-2 sm:w-3 lg:w-4 h-2 sm:h-3 lg:h-4 bg-gradient-to-br from-primaryBlue to-toBlue rounded-full shadow-sm" />
-                    <div className="flex-1 h-1.5 sm:h-2 lg:h-3 bg-gray-200 rounded-full" />
-                  </div>
-                  <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
-                    <div className="w-2 sm:w-3 lg:w-4 h-2 sm:h-3 lg:h-4 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full shadow-sm" />
-                    <div className="flex-1 h-1.5 sm:h-2 lg:h-3 bg-gray-200 rounded-full" />
-                  </div>
-                  <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
-                    <div className="w-2 sm:w-3 lg:w-4 h-2 sm:h-3 lg:h-4 bg-gradient-to-br from-green-500 to-green-600 rounded-full shadow-sm" />
-                    <div className="flex-1 h-1.5 sm:h-2 lg:h-3 bg-gray-200 rounded-full" />
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Floating elements */}
-              <motion.div
-                animate={{
-                  y: [-10, 10, -10],
-                  rotate: [0, 5, 0]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="absolute -top-3 sm:-top-4 lg:-top-6 xl:-top-8 -right-3 sm:-right-4 lg:-right-6 xl:-right-8 w-8 sm:w-10 lg:w-14 xl:w-16 h-8 sm:h-10 lg:h-14 xl:h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-xl"
-              >
-                <Zap className="w-4 sm:w-5 lg:w-7 xl:w-8 h-4 sm:h-5 lg:h-7 xl:h-8 text-white" />
-              </motion.div>
-
-              <motion.div
-                animate={{
-                  y: [10, -10, 10],
-                  rotate: [0, -5, 0]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1.5
-                }}
-                className="absolute -bottom-3 sm:-bottom-4 lg:-bottom-6 xl:-bottom-8 -left-3 sm:-left-4 lg:-left-6 xl:-left-8 w-8 sm:w-10 lg:w-14 xl:w-16 h-8 sm:h-10 lg:h-14 xl:h-16 bg-gradient-to-br from-primaryBlue to-toBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center shadow-xl"
-              >
-                <Shield className="w-4 sm:w-5 lg:w-7 xl:w-8 h-4 sm:h-5 lg:h-7 xl:h-8 text-white" />
-              </motion.div>
-            </div>
+            <img
+              src={hero_1}
+              alt="3D Material Prototype Illustration"
+              className="w-full h-auto rounded-xl"
+            />
           </motion.div>
         </div>
       </div>

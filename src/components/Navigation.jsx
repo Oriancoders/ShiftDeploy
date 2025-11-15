@@ -3,17 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import coloredV from '../Assets/Images/coloredV.png';
-import { FaArrowDown } from 'react-icons/fa6';
 import { IoIosArrowDown } from 'react-icons/io';
 
 const Navigation = ({ isDarkBg = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();  
-
-  const [hoveredPath , setHoveredPath] = useState(null)
-
-
+  const [hoveredPath, setHoveredPath] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,9 +23,15 @@ const Navigation = ({ isDarkBg = false }) => {
     { label: 'Deploy Toolkit', path: '/deploy-toolkit' },
     { label: 'Inside ShiftDeploy', path: '/insideShiftDeploy' },
     { label: 'The Shift Protocol', path: '/shift-protocol' },
-    { label: 'Missions Completed', path: '/missions' , subPaths : [
-      '/CaseStudies/SlackerIOT' , '/CaseStudies/BullseyesCase' , '/CaseStudies/K2TradersCase'
-    ]},
+    {
+      label: 'Missions Completed',
+      path: '/missions',
+      subPaths: [
+        { label: 'Slacker IOT', path: '/CaseStudies/SlackerIOT' },
+        { label: 'BullsEyes Investments', path: '/CaseStudies/BullseyesCase' },
+        { label: 'K2 Traders', path: '/CaseStudies/K2TradersCase' },
+      ],
+    },
     { label: 'Flight Logs', path: '/flight-logs' },
   ];
 
@@ -57,47 +59,57 @@ const Navigation = ({ isDarkBg = false }) => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-6 xl:space-x-10">
-            {navItems.map(({ label, path , subPaths }) => {
-              const isActive = location.pathname === path;
-              return (
-                <motion.div
-                  key={label}
-                  whileHover={{ y: -2 }}
-                  transition={{ duration: 0.2 }}
-                  className={`cursor-pointer font-medium relative group text-sm xl:text-base
-                    ${isActive ? 'text-primaryBlue' : 'text-gray-700 hover:text-primaryBlue'}
-                  `}
-                >
-                  <div onMouseEnter={() => setHoveredPath(label)}  className='flex items-center gap-2 relative group'>
-                    <Link to={path}>
-                    {label}
-                  </Link>
-                    {/* {subPaths && <IoIosArrowDown />} */}
-                    
-                  </div>
-                  <span
-                    className={`absolute  h-0.5 bg-primaryOrange transition-all duration-300
-                      ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}
-                    `}
-                  ></span>
+            {navItems.map(({ label, path, subPaths }) => {
+              const isActive = location.pathname === path || (subPaths && subPaths.some(sub => sub.path === location.pathname));
+              const hasSubPaths = subPaths && subPaths.length > 0;
 
-                  {/* {subPaths  && <div className={`absolute top-12 -left-2  bg-white  w-48 `} style={{ display: hoveredPath === label ? 'block' : 'none' }} onMouseLeave={() => setHoveredPath(null)}>
-                      {subPaths.map((subPath) => (
-                        <Link 
-                          to={subPath}
-                          key={subPath}
-                          className="block px-2 py-2 text-gray-700 hover:bg-gray-100 text-md"
+              return (
+                <div
+                  key={label}
+                  className="relative"
+                  onMouseEnter={() => hasSubPaths && setHoveredPath(label)}
+                  onMouseLeave={() => setHoveredPath(null)}
+                >
+                  <motion.div
+                    whileHover={{ y: -2 }}
+                    transition={{ duration: 0.2 }}
+                    className={`cursor-pointer font-medium relative group text-sm xl:text-base
+                      ${isActive ? 'text-primaryBlue' : 'text-gray-700 hover:text-primaryBlue'}
+                    `}
+                  >
+                    <Link to={path} className="flex items-center gap-2">
+                      {label}
+                      {hasSubPaths && <IoIosArrowDown />}
+                    </Link>
+                    <span
+                      className={`absolute bottom-0 left-0 h-0.5 bg-primaryOrange transition-all duration-300
+                        ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}
+                      `}
+                    ></span>
+                  </motion.div>
+                  {hasSubPaths && hoveredPath === label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md w-48 py-2"
+                    >
+                      {subPaths.map((subItem) => (
+                        <Link
+                          key={subItem.label}
+                          to={subItem.path}
+                          className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                          onClick={() => setHoveredPath(null)}
                         >
-                          {subPath === '/CaseStudies/SlackerIOT' && 'Slacker IOT'}
-                          {subPath === '/CaseStudies/BullseyesCase' && 'BullsEyes Investments'}
-                          {subPath === '/CaseStudies/K2TradersCase' && 'K2 Traders'}
+                          {subItem.label}
                         </Link>
                       ))}
-                    </div>} */}
-                </motion.div>
+                    </motion.div>
+                  )}
+                </div>
               );
             })}
-
             <Link
               to="/ContactUs"
               className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base"
@@ -128,30 +140,58 @@ const Navigation = ({ isDarkBg = false }) => {
             transition={{ duration: 0.3 }}
             className="lg:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200"
           >
-            <div className="px-4 sm:px-6 py-4 sm:py-6 space-y-3 sm:space-y-4 flex flex-col justify-between h-[90dvh] ">
+            <div className="px-4 sm:px-6 py-4 sm:py-6 space-y-3 sm:space-y-4 flex flex-col justify-between h-[90dvh]">
               <div className="space-y-3">
-                {navItems.map(({ label, path }, index) => {
-                  const isActive = location.pathname === path;
-                  return (
-              <Link to={path}>
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      onClick={() => setIsOpen(false)}
-                      className={`py-2 sm:py-3 font-medium text-base sm:text-lg 
-                        ${isActive ? 'text-primaryBlue' : 'text-gray-700 hover:text-blue-600'}
-                      `}
-                    >
+                {navItems.map(({ label, path, subPaths }, index) => (
+                  <div key={index}>
+                    <Link to={path}>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        onClick={() => {
+                          if (!subPaths) setIsOpen(false);
+                        }}
+                        className={`py-2 sm:py-3 font-medium text-base sm:text-lg 
+                          ${
+                            location.pathname === path || (subPaths && subPaths.some(sub => sub.path === location.pathname))
+                              ? 'text-primaryBlue'
+                              : 'text-gray-700 hover:text-blue-600'
+                          }
+                        `}
+                      >
                         {label}
-                    </motion.div>
-                      </Link>
-                  );
-                })}
+                      </motion.div>
+                    </Link>
+                    {subPaths && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        transition={{ duration: 0.2 }}
+                        className="pl-4 border-l border-gray-200 ml-4 space-y-2"
+                      >
+                        {subPaths.map((subItem, subIndex) => (
+                          <Link key={subIndex} to={subItem.path} onClick={() => setIsOpen(false)}>
+                            <motion.div
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: (index + subIndex) * 0.1 }}
+                              className="py-1 text-sm text-gray-600 hover:text-primaryBlue"
+                            >
+                              {subItem.label}
+                            </motion.div>
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </div>
+                ))}
               </div>
-
-              <Link to={"/ContactUs"} className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg ">
+              <Link
+                to="/ContactUs"
+                onClick={() => setIsOpen(false)}
+                className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
+              >
                 Get Started
               </Link>
             </div>
