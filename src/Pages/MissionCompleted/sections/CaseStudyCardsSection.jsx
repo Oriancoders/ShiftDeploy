@@ -1,13 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
-import ev_dashboard from "../../../Assets/Images/profilecard/ev_dashboard.png"
-import k2_traders from "../../../Assets/Images/profilecard/k2_traders.png"
-import bullseyes from "../../../Assets/Images/profilecard/bullseyes.png"
 
 // Section 2: Case Study Cards Grid
 function CaseStudyCardsSection() {
   const [visibleCards, setVisibleCards] = useState([])
-  const [hoveredCard, setHoveredCard] = useState(null)
   const sectionRef = useRef(null)
   const cardRefs = useRef([])
 
@@ -16,7 +12,7 @@ function CaseStudyCardsSection() {
       brand: "Slacker IoT",
       category: "IoT & SaaS Platform",
       outcome: "Built a scalable EV charging platform with real-time telemetry and automated billing",
-      visual: ev_dashboard,
+      visual: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764978775/ev_dashboard_lak5oh.png',
       metrics: { users: "5K+", uptime: "99.9%", costReduction: "40%" },
       url: "/CaseStudies/SlackerIOT"
     },
@@ -24,7 +20,7 @@ function CaseStudyCardsSection() {
       brand: "Bullseye Investments",
       category: "FinTech Infrastructure",
       outcome: "Delivered a live stock market dashboard integrated with APIs and Google Sheets",
-      visual: bullseyes,
+      visual: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764978786/bullseyes_x1ifpw.png',
       metrics: { dataFeeds: "50+", downtime: "0 hrs", engagement: "3x higher" },
       url: '/CaseStudies/BullseyesCase'
     },
@@ -33,7 +29,7 @@ function CaseStudyCardsSection() {
       brand: "K2 Traders",
       category: "eCommerce Development",
       outcome: "Zero recurring fees with a fully optimized React-based store",
-      visual: k2_traders,
+      visual: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979152/k2_traders_vj05aq.png',
       metrics: { savings: "$1000s", hosting: " Free ", maintenance: "One-time" },
       url: "/CaseStudies/K2TradersCase"
     },

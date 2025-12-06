@@ -23,12 +23,7 @@ import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
 import { Link } from 'react-router-dom';
 // importing images here 
-import bannertry1 from '../../Assets/Images/casestudies/evImage/bannertry1.png'
-import key_stats from '../../Assets/Images/casestudies/evImage/key_stats.png'
-import backend from '../../Assets/Images/casestudies/evImage/backend.png'
-import frontend from '../../Assets/Images/casestudies/evImage/frontend.png'
-import payment from '../../Assets/Images/casestudies/evImage/payment.png'
-import esp32 from '../../Assets/Images/casestudies/evImage/esp32.png'
+
 import { Helmet } from 'react-helmet-async';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 
@@ -75,7 +70,7 @@ const SlackerIOT = () => {
           description: "Thermal sensors integrated throughout the charging system to prevent overheating and ensure optimal performance under various environmental conditions."
         }
       ],
-      image: bannertry1,
+      image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979458/bannertry1_vyytu5.png',
 
     },
     {
@@ -95,7 +90,7 @@ const SlackerIOT = () => {
           description: "Real-time bidirectional communication enabling instant updates between the web dashboard and charging stations without polling delays."
         }
       ],
-      image: esp32
+      image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979310/esp32_nkvzfi.png'
 
     },
     {
@@ -115,7 +110,7 @@ const SlackerIOT = () => {
           description: "Well-structured API endpoints following REST principles, enabling seamless integration with frontend applications and third-party services."
         }
       ],
-      image: backend
+      image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979379/backend_q5d5v9.png'
 
     },
     {
@@ -135,7 +130,7 @@ const SlackerIOT = () => {
           description: "Live monitoring interface displaying charging status, energy consumption, user activity, and system health metrics with automatic updates."
         }
       ],
-      image: frontend,
+      image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979388/frontend_bwsf2d.png',
       size: '90%'
 
 
@@ -157,7 +152,7 @@ const SlackerIOT = () => {
           description: "Granular permission system allowing different access levels for administrators, operators, and end-users with comprehensive audit trails."
         }
       ],
-      image: payment,
+      image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979517/payment_oasj8l.png',
 
     }
   ];
@@ -472,8 +467,8 @@ const SlackerIOT = () => {
 
 
                   <div style={{
-                    backgroundImage: `url(${key_stats})`,
-                    backgroundSize: 'contain',
+                    backgroundImage: `url('https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979478/key_stats_u8ych3.png')`,
+                    backgroundSize: 'cover',
                     backgroundPosition: 'left',
                     backgroundRepeat: 'no-repeat',
                   }} className="image-placeholder w-full h-52 sm:h-64 mb-6 flex items-center justify-center text-gray-500">
