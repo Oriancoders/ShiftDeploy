@@ -1,39 +1,25 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react'
-import Navigation from '../../components/Navigation'
-import Footer from '../../components/Footer'
+import React, { Suspense, lazy, useEffect } from 'react';
+import Navigation from '../../components/Navigation';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 import { Helmet } from 'react-helmet-async';
 
-// ✅ Lazy load all major sections
-const HeroSection = lazy(() => import('./sections/HeroSection'))
-const ServiceCategoriesSection = lazy(() => import('./sections/ServiceCategoriesSection'))
-const WhatWeSolveSection = lazy(() => import('./sections/WhatWeSolveSection'))
-const TestimonialsSection = lazy(() => import('./sections/TestimonialsSection'))
-const FinalCTASection = lazy(() => import('./sections/CTA'))
-const FAQSection = lazy(() => import('./sections/FAQSection'))
+// ✅ EAGER IMPORT (Load immediately for LCP)
+import HeroSection from './sections/HeroSection';
 
-
+// ✅ LAZY IMPORTS (Load in background)
+const ServiceCategoriesSection = lazy(() => import('./sections/ServiceCategoriesSection'));
+const WhatWeSolveSection = lazy(() => import('./sections/WhatWeSolveSection'));
+const TestimonialsSection = lazy(() => import('./sections/TestimonialsSection'));
+const FinalCTASection = lazy(() => import('./sections/CTA'));
+const FAQSection = lazy(() => import('./sections/FAQSection'));
+const Footer = lazy(() => import('../../components/Footer')); // Lazy loading footer saves initial bytes
 
 const Toolkit_Landing = () => {
-  const [showLoader, setShowLoader] = useState(true)
-
-  // ✅ Scroll to top on mount
+  
+  // ✅ Simple Scroll to Top on mount
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
-  // ✅ Hide loader when scrollY === 0
-  useEffect(() => {
-    const checkScroll = () => {
-      if (window.scrollY === 0) {
-        setShowLoader(false)
-        window.removeEventListener('scroll', checkScroll)
-      }
-    }
-    window.addEventListener('scroll', checkScroll)
-    checkScroll()
-    return () => window.removeEventListener('scroll', checkScroll)
-  }, [])
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   return (
     <>
@@ -70,24 +56,26 @@ const Toolkit_Landing = () => {
           content="Solve your CI/CD, cloud, and DevOps deployment challenges with ShiftDeploy's expert toolkit."
         />
       </Helmet>
-      {showLoader && <ShiftDeployLoader />}
-      <Navigation />
-      {!showLoader && (
-        <div className="w-full overflow-x-hidden">
-          <Suspense fallback={<ShiftDeployLoader />}>
-            <HeroSection />
+
+      <div className="w-full overflow-x-hidden">
+        {/* 1. Navigation loads instantly */}
+        <Navigation />
+
+        {/* 2. Hero loads instantly (No Spinner) */}
+        <HeroSection />
+
+        {/* 3. The rest loads in background */}
+        <Suspense fallback={<ShiftDeployLoader />}>
             <ServiceCategoriesSection />
             <WhatWeSolveSection />
-
             <TestimonialsSection />
             <FinalCTASection />
             <FAQSection />
-          </Suspense>
-        </div>
-      )}
-      <Footer />
+            <Footer />
+        </Suspense>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Toolkit_Landing
+export default Toolkit_Landing;

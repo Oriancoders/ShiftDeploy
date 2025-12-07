@@ -16,7 +16,6 @@ import {
     Linkedin
 } from 'lucide-react';
 import Footer from '../components/Footer';
-import coloredV from '../Assets/Images/coloredV.png';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
@@ -78,7 +77,7 @@ function Shiftify_Landing() {
                             className="2xl:max-w-60 sm:max-w-48 max-w-36"
                         >
                             <Link to="/">
-                                <img src={coloredV} alt="ShiftDeploy Logo" />
+                                <img src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145802/coloredV_zxupgq.png" alt="ShiftDeploy Logo" />
                             </Link>
                         </motion.div>
 

@@ -3,7 +3,6 @@ import { motion, useInView } from 'framer-motion';
 import {
   ArrowRight,
   AlertTriangle,
-  Target,
   CheckCircle,
   TrendingUp,
   Zap,

@@ -1,54 +1,67 @@
-import React from 'react';
-
-import Landing from './Pages/LandingPage/Landing';
-import InSide_Landing from './Pages/InsideShiftDeploy/InSide_Landing';
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Toolkit_Landing from './Pages/DeployToolkit/Toolkit_Landing';
-import Landing_Protocol from './Pages/ShiftProtocol/Landing_Protocol';
-import Mission_Landing from './Pages/MissionCompleted/Mission_Landing';
-import Flight_Landing from './Pages/FlighLogs/Flight_Landing';
 import GlobalProvider from './GlobalProvider/GlobalProvider';
-import ContactUs from './Pages/ContactUsPage/ContactUs';
-import SlackerIOT from './Pages/CaseStudies/SlackerIOT';
-import BullsEyesCase from './Pages/CaseStudies/BullsEyesCase';
-import K2TradersCase from './Pages/CaseStudies/K2Traders';
-import ThankYouPage from './Pages/ContactUsPage/ThankYouPage';
-import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
-import Terms_Of_Services from './Pages/Terms_Of_Services/Terms_Of_Services';
-import Shiftify_Landing from './Shiftify_Landing/Shiftify_Landing';
+
+// Non-Lazy Imports (Things needed immediately)
+import ShiftDeployLoader from './components/ShiftDeployLoader'; // Ensure this path is correct based on your folder structure
+import ScrollToTop from './components/ScrollToTop'; // The new path you mentioned
+
+// ✅ LAZY LOADED PAGES (Paths kept exactly as provided)
+const Landing = lazy(() => import('./Pages/LandingPage/Landing'));
+const InSide_Landing = lazy(() => import('./Pages/InsideShiftDeploy/InSide_Landing'));
+const Toolkit_Landing = lazy(() => import('./Pages/DeployToolkit/Toolkit_Landing'));
+const Landing_Protocol = lazy(() => import('./Pages/ShiftProtocol/Landing_Protocol'));
+const Mission_Landing = lazy(() => import('./Pages/MissionCompleted/Mission_Landing'));
+const Flight_Landing = lazy(() => import('./Pages/FlighLogs/Flight_Landing'));
+const ContactUs = lazy(() => import('./Pages/ContactUsPage/ContactUs'));
+
+// Case Studies
+const SlackerIOT = lazy(() => import('./Pages/CaseStudies/SlackerIOT'));
+const BullsEyesCase = lazy(() => import('./Pages/CaseStudies/BullsEyesCase'));
+const K2TradersCase = lazy(() => import('./Pages/CaseStudies/K2Traders'));
+
+// Misc Pages
+const ThankYouPage = lazy(() => import('./Pages/ContactUsPage/ThankYouPage'));
+const PrivacyPolicy = lazy(() => import('./Pages/PrivacyPolicy/PrivacyPolicy'));
+const Terms_Of_Services = lazy(() => import('./Pages/Terms_Of_Services/Terms_Of_Services'));
+const Shiftify_Landing = lazy(() => import('./Shiftify_Landing/Shiftify_Landing'));
 
 function App() {
   return (
     <GlobalProvider>
       <div className="bg-white min-h-screen">
-        <Routes>
-          <Route path='/' element={<Landing />} />
-          <Route path='/insideShiftDeploy' element={<InSide_Landing />} />
-          <Route path='/deploy-toolkit' element={<Toolkit_Landing />} />
-          <Route path='/shift-protocol' element={<Landing_Protocol />} />
-          <Route path='/missions' element={<Mission_Landing />} />
-          <Route path='/flight-logs' element={<Flight_Landing />} />
-          <Route path='/ContactUs' element={<ContactUs />} />
+        
+        {/* Helper to scroll to top on route change */}
+        <ScrollToTop />
 
-          {/* case studies  */}
-          <Route path='/CaseStudies/SlackerIOT' element={<SlackerIOT />} />
-          <Route path='/CaseStudies/BullseyesCase' element={<BullsEyesCase />} />
-          <Route path='/CaseStudies/K2TradersCase' element={<K2TradersCase />} />
+        {/* Suspense handles the loading state while the lazy file is fetched */}
+        <Suspense fallback={<ShiftDeployLoader />}>
+          <Routes>
+            <Route path='/' element={<Landing />} />
+            <Route path='/insideShiftDeploy' element={<InSide_Landing />} />
+            <Route path='/deploy-toolkit' element={<Toolkit_Landing />} />
+            <Route path='/shift-protocol' element={<Landing_Protocol />} />
+            <Route path='/missions' element={<Mission_Landing />} />
+            <Route path='/flight-logs' element={<Flight_Landing />} />
+            <Route path='/ContactUs' element={<ContactUs />} />
 
-          {/* thank you page  */}
-          <Route path='/thankyou' element={<ThankYouPage/>} />
+            {/* case studies */}
+            <Route path='/CaseStudies/SlackerIOT' element={<SlackerIOT />} />
+            <Route path='/CaseStudies/BullseyesCase' element={<BullsEyesCase />} />
+            <Route path='/CaseStudies/K2TradersCase' element={<K2TradersCase />} />
 
-          {/* policy pages  */}
-          <Route path='/privacy-policy' element={<PrivacyPolicy/>} />
+            {/* thank you page */}
+            <Route path='/thankyou' element={<ThankYouPage/>} />
 
-          <Route path='/terms-of-services' element={<Terms_Of_Services/>} />
+            {/* policy pages */}
+            <Route path='/privacy-policy' element={<PrivacyPolicy/>} />
+            <Route path='/terms-of-services' element={<Terms_Of_Services/>} />
 
-          {/* shiftify Landing  */}
-          <Route path='/shiftify-landing-page' element={<Shiftify_Landing />} />
-
-
-          
-        </Routes>
+            {/* shiftify Landing */}
+            <Route path='/shiftify-landing-page' element={<Shiftify_Landing />} />
+            
+          </Routes>
+        </Suspense>
       </div>
     </GlobalProvider>
   );

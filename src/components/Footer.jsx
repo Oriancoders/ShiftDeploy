@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Slack, Twitter, } from 'lucide-react';
+import { Mail,  Slack,  } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
-import whiteV from '../Assets/Images/whiteV.png'
 import { Link } from 'react-router-dom';
 import { FaXTwitter } from 'react-icons/fa6';
 const Footer = () => {
@@ -51,7 +50,7 @@ const Footer = () => {
               className="lg:max-w-60 sm:max-w-48 max-w-36"
             >
 
-              <img src={whiteV} alt="" />
+              <img src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145802/whiteV_vzhhvi.png" alt="" />
             </motion.div>
             <p className="text-gray-300 mb-4 sm:mb-6 lg:mb-8 leading-relaxed text-xs sm:text-sm lg:text-base">
               Transforming digital visions into reality through cutting-edge web development,

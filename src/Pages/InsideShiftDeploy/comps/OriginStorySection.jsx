@@ -13,7 +13,7 @@ function OriginStorySection() {
       description:
         "It started with a simple realization, too many digital projects fail not from lack of vision, but from chaotic execution. We saw businesses struggle to bridge the gap between big ideas and reliable delivery.",
       icon: <Zap className="w-8 h-8" />,
-      image: "https://images.unsplash.com/photo-1681949215173-fe0d15c790c1?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      image: "https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145684/spark_wmkexc.avif"
     },
     {
       title: "Struggle",
@@ -21,7 +21,7 @@ function OriginStorySection() {
       description:
         "We knew there had to be a better way. Instead of rushing code and praying it scales, what if we built with intention of combining design, engineering, and DevOps from day one?",
       icon: <Target className="w-8 h-8" />,
-      image: "https://images.pexels.com/photos/6963098/pexels-photo-6963098.jpeg"
+      image: "https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145716/struggle_kodvee.jpg"
     },
     {
       title: "System",
@@ -29,7 +29,7 @@ function OriginStorySection() {
       description:
         "That question became ShiftDeploy, where strategy meets execution. We build digital systems that are scalable, resilient, and designed to evolve with your business.",
       icon: <Rocket className="w-8 h-8" />,
-      image: "https://www.asaecenter.org/-/media/ASAE/Images/Resources/Articles/Foundation/2016/foundation_tech-success/foundation_tech-success_39x22.ashx?h=440&w=780&la=en&hash=97505370E022E17E0C10D1FF1512BF691F09AAE2"
+      image: "https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145681/system_musz7d.jpg"
     },
   ]
 

@@ -1,36 +1,24 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react'
-import Navigation from '../../components/Navigation'
-import Footer from '../../components/Footer'
-import ShiftDeployLoader from '../../components/ShiftDeployLoader'
-import { Helmet } from 'react-helmet-async'
+import React, { Suspense, lazy, useEffect } from 'react';
+import Navigation from '../../components/Navigation';
+import ShiftDeployLoader from '../../components/ShiftDeployLoader';
+import { Helmet } from 'react-helmet-async';
 
-// ✅ Lazy load all sections
-const HeroSection = lazy(() => import('./sections/HeroSection'))
-const QuoteWallSection = lazy(() => import('./sections/QuoteWallSection'))
+// ✅ EAGER IMPORT (Load immediately)
+import HeroSection from './sections/HeroSection';
+
+// ✅ LAZY IMPORTS (Load in background)
+const QuoteWallSection = lazy(() => import('./sections/QuoteWallSection'));
 // const VideoWallSection = lazy(() => import('./sections/VideoWallSection'))
-const FinalPushCTASection = lazy(() => import('./sections/FinalPushCTASection'))
-const LeaderboardStripSection = lazy(() => import('./sections/LeaderboardStripSection'))
+const FinalPushCTASection = lazy(() => import('./sections/FinalPushCTASection'));
+const LeaderboardStripSection = lazy(() => import('./sections/LeaderboardStripSection'));
+const Footer = lazy(() => import('../../components/Footer'));
 
 const Flight_Landing = () => {
-  const [showLoader, setShowLoader] = useState(true)
 
-  // ✅ Scroll to top on mount
+  // ✅ Simple Scroll to Top on mount
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
-  // ✅ Hide loader when scrollY === 0
-  useEffect(() => {
-    const checkScroll = () => {
-      if (window.scrollY === 0) {
-        setShowLoader(false)
-        window.removeEventListener('scroll', checkScroll)
-      }
-    }
-    window.addEventListener('scroll', checkScroll)
-    checkScroll()
-    return () => window.removeEventListener('scroll', checkScroll)
-  }, [])
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   return (
     <>
@@ -58,7 +46,7 @@ const Flight_Landing = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.shiftdeploy.com/flightLogs" />
-        <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
+        {/* <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" /> */}
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -67,24 +55,27 @@ const Flight_Landing = () => {
           name="twitter:description" 
           content="Discover how builders rate their journey with ShiftDeploy. Honest feedback from clients we've helped deploy their amazing creations." 
         />
-        <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
+        {/* <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" /> */}
       </Helmet>
-      {showLoader && <ShiftDeployLoader />}
-      {!showLoader && (
-        <div className="w-full">
-          <Navigation />
-          <Suspense fallback={<ShiftDeployLoader />}>
-            <HeroSection />
-            <QuoteWallSection />
-            {/* <VideoWallSection /> */}
-            <FinalPushCTASection />
-            <LeaderboardStripSection />
-            <Footer />
-          </Suspense>
-        </div>
-      )}
-    </>
-  )
-}
 
-export default Flight_Landing
+      <div className="w-full">
+        {/* 1. Navigation loads instantly */}
+        <Navigation />
+
+        {/* 2. Hero loads instantly */}
+        <HeroSection />
+
+        {/* 3. The rest loads in background via Suspense */}
+        <Suspense fallback={<ShiftDeployLoader />}>
+          <QuoteWallSection />
+          {/* <VideoWallSection /> */}
+          <FinalPushCTASection />
+          <LeaderboardStripSection />
+          <Footer />
+        </Suspense>
+      </div>
+    </>
+  );
+};
+
+export default Flight_Landing;

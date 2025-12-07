@@ -19,13 +19,7 @@ import {
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
 import { Link } from 'react-router-dom';
-// importing images here 
-import frontend from '../../Assets/Images/casestudies/k2traders/frontend.png'
-import backend from '../../Assets/Images/casestudies/k2traders/backend.png'
-import deployment from '../../Assets/Images/casestudies/k2traders/deployment.png'
-import security from '../../Assets/Images/casestudies/k2traders/security.png'
 
-import keystatic from '../../Assets/Images/casestudies/k2traders/keystatic.png'
 import { Helmet } from 'react-helmet-async';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 
@@ -73,7 +67,7 @@ const K2TradersCase = () => {
                         "Streamlined cart and checkout process to reduce friction, ensuring a smooth purchase experience for customers."
                 }
             ],
-            image: frontend
+            image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979341/frontend_ga5dm7.png'
         },
         {
             category: "Backend & Data Management",
@@ -95,7 +89,7 @@ const K2TradersCase = () => {
                         "No traditional backend servers required, minimizing upkeep and ensuring stability over time."
                 }
             ],
-            image: backend
+            image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979310/backend_ebvrtp.png'
         },
         {
             category: "Deployment & Hosting",
@@ -117,7 +111,7 @@ const K2TradersCase = () => {
                         "Cost-efficient solution with no recurring monthly fees, unlike Shopify or WordPress hosting."
                 }
             ],
-            image: deployment
+            image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979318/deployment_etllcf.png'
         },
         {
             category: "Security & Reliability",
@@ -139,7 +133,7 @@ const K2TradersCase = () => {
                         "K2 Traders holds 100% ownership of the platform, eliminating reliance on third-party SaaS vendors."
                 }
             ],
-            image: security
+            image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979308/security_zhevwq.png'
 
         }
     ];
@@ -486,7 +480,7 @@ const K2TradersCase = () => {
                             >
                                 <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">Key Statistics</h3>
                                 <div style={{
-                                    backgroundImage: `url(${keystatic})`,
+                                    backgroundImage: `url('https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979448/keystatic_ccac5h.png')`,
                                     backgroundSize: 'contain',
                                     backgroundPosition: 'left',
                                     backgroundRepeat: 'no-repeat',

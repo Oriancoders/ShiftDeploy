@@ -1,41 +1,29 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react'
-import Navigation from '../../components/Navigation'
-import Footer from '../../components/Footer'
-import ShiftDeployLoader from '../../components/ShiftDeployLoader'
-import { Helmet } from 'react-helmet-async'
+import React, { Suspense, lazy, useEffect } from 'react';
+import Navigation from '../../components/Navigation';
+import ShiftDeployLoader from '../../components/ShiftDeployLoader';
+import { Helmet } from 'react-helmet-async';
 
-// ✅ Lazy load all sections
-const ProtocolManifestoSection = lazy(() => import('./sections/ProtocolManifestoSection'))
-const PhasesSection = lazy(() => import('./sections/PhasesSection'))
-const GuaranteesSection = lazy(() => import('./sections/GuaranteesSection'))
-const CommunicationRitualsSection = lazy(() => import('./sections/CommunicationRitualsSection'))
-const FinalCTASection = lazy(() => import('./sections/FinalCTASection'))
-const ClientControlSection = lazy(() => import('./sections/ClientControlSection'))
+// ✅ EAGER IMPORT (Load immediately for LCP)
+import ProtocolManifestoSection from './sections/ProtocolManifestoSection';
+
+// ✅ LAZY IMPORTS (Load in background)
+const PhasesSection = lazy(() => import('./sections/PhasesSection'));
+const GuaranteesSection = lazy(() => import('./sections/GuaranteesSection'));
+const CommunicationRitualsSection = lazy(() => import('./sections/CommunicationRitualsSection'));
+const FinalCTASection = lazy(() => import('./sections/FinalCTASection'));
+const ClientControlSection = lazy(() => import('./sections/ClientControlSection'));
+const Footer = lazy(() => import('../../components/Footer'));
 
 const Landing_Protocol = () => {
-  const [showLoader, setShowLoader] = useState(true)
 
-  // ✅ Scroll to top on mount
+  // ✅ Simple Scroll to Top on mount
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
-  // ✅ Hide loader when scrollY === 0
-  useEffect(() => {
-    const checkScroll = () => {
-      if (window.scrollY === 0) {
-        setShowLoader(false)
-        window.removeEventListener('scroll', checkScroll)
-      }
-    }
-    window.addEventListener('scroll', checkScroll)
-    checkScroll()
-    return () => window.removeEventListener('scroll', checkScroll)
-  }, [])
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   return (
     <>
-     <Helmet>
+      <Helmet>
         {/* Basic SEO */}
         <title>Shift Protocol | ShiftDeploy</title>
         <meta 
@@ -71,23 +59,25 @@ const Landing_Protocol = () => {
         <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
       </Helmet>
 
-      {showLoader && <ShiftDeployLoader />}
-      {!showLoader && (
-        <div className="w-full">
-          <Navigation />
-          <Suspense fallback={<ShiftDeployLoader />}>
-            <ProtocolManifestoSection />
-            <PhasesSection />
-            <GuaranteesSection />
-            <CommunicationRitualsSection />
-            <FinalCTASection />
-            <ClientControlSection />
-            <Footer />
-          </Suspense>
-        </div>
-      )}
-    </>
-  )
-}
+      <div className="w-full">
+        {/* 1. Navigation loads instantly */}
+        <Navigation />
 
-export default Landing_Protocol
+        {/* 2. Hero loads instantly (Critical for Speed) */}
+        <ProtocolManifestoSection />
+
+        {/* 3. The rest loads in background via Suspense */}
+        <Suspense fallback={<ShiftDeployLoader />}>
+          <PhasesSection />
+          <GuaranteesSection />
+          <CommunicationRitualsSection />
+          <FinalCTASection />
+          <ClientControlSection />
+          <Footer />
+        </Suspense>
+      </div>
+    </>
+  );
+};
+
+export default Landing_Protocol;

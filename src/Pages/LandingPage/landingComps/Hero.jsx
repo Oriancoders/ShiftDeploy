@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext,  } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { ArrowRight, Zap, Shield, } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import CursorFollower from '../../../utils/CursorFollower';
 import { Link } from 'react-router-dom';
 import { ContextAPI } from '../../../GlobalProvider/ContextAPI';
-import hero_1 from '../../../Assets/Images/hero_1.png'
+
 
 
 const Hero = () => {
@@ -129,7 +129,7 @@ const Hero = () => {
             className="relative mt-8 lg:mt-0 px-4 sm:px-0"
           >
             <img
-              src={hero_1}
+              src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145810/hero_1_idhbea.png"
               alt="3D Material Prototype Illustration"
               className="w-full h-auto rounded-xl"
             />

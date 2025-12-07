@@ -1,41 +1,29 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react'
-import Navigation from '../../components/Navigation'
-import Footer from '../../components/Footer'
-import ShiftDeployLoader from '../../components/ShiftDeployLoader'
-import { Helmet } from 'react-helmet-async'
+import React, { Suspense, lazy, useEffect } from 'react';
+import Navigation from '../../components/Navigation';
+import ShiftDeployLoader from '../../components/ShiftDeployLoader';
+import { Helmet } from 'react-helmet-async';
 
-// ✅ Lazy load all sections
-const HeroSection = lazy(() => import('./sections/HeroSection'))
-const CaseStudyCardsSection = lazy(() => import('./sections/CaseStudyCardsSection'))
-const FeaturedMissionSection = lazy(() => import('./sections/FeaturedMissionSection'))
-const ClientQuoteWallSection = lazy(() => import('./sections/ClientQuoteWallSection'))
-const CallToActionSection = lazy(() => import('./sections/CallToActionSection'))
-const ImpactAnalyticsSection = lazy(() => import('./sections/ImpactAnalyticsSection'))
+// ✅ EAGER IMPORT (Load immediately for LCP)
+import HeroSection from './sections/HeroSection';
+
+// ✅ LAZY IMPORTS (Load in background)
+const CaseStudyCardsSection = lazy(() => import('./sections/CaseStudyCardsSection'));
+const FeaturedMissionSection = lazy(() => import('./sections/FeaturedMissionSection'));
+const ClientQuoteWallSection = lazy(() => import('./sections/ClientQuoteWallSection'));
+const CallToActionSection = lazy(() => import('./sections/CallToActionSection'));
+const ImpactAnalyticsSection = lazy(() => import('./sections/ImpactAnalyticsSection'));
+const Footer = lazy(() => import('../../components/Footer'));
 
 const Mission_Landing = () => {
-  const [showLoader, setShowLoader] = useState(true)
 
-  // ✅ Scroll to top on mount
+  // ✅ Simple Scroll to Top on mount
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
-  // ✅ Hide loader when scrollY === 0
-  useEffect(() => {
-    const checkScroll = () => {
-      if (window.scrollY === 0) {
-        setShowLoader(false)
-        window.removeEventListener('scroll', checkScroll)
-      }
-    }
-    window.addEventListener('scroll', checkScroll)
-    checkScroll()
-    return () => window.removeEventListener('scroll', checkScroll)
-  }, [])
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   return (
     <>
-     <Helmet>
+      <Helmet>
         {/* Basic SEO */}
         <title>Missions Completed | ShiftDeploy</title>
         <meta 
@@ -59,8 +47,7 @@ const Mission_Landing = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.shiftdeploy.com/missions" />
-        {/* <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" /> */}
-
+        
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Missions Completed | ShiftDeploy" />
@@ -68,26 +55,27 @@ const Mission_Landing = () => {
           name="twitter:description" 
           content="Explore real-world missions completed by ShiftDeploy — delivering reliable CI/CD, cloud, and DevOps solutions to builders worldwide." 
         />
-        {/* <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" /> */}
       </Helmet>
 
-      {showLoader && <ShiftDeployLoader />}
-      {!showLoader && (
-        <div className="w-full">
-          <Navigation />
-          <Suspense fallback={<ShiftDeployLoader />}>
-            <HeroSection />
-            <CaseStudyCardsSection />
-            <FeaturedMissionSection />
-            <ClientQuoteWallSection />
-            <CallToActionSection />
-            <ImpactAnalyticsSection />
-            <Footer />
-          </Suspense>
-        </div>
-      )}
-    </>
-  )
-}
+      <div className="w-full">
+        {/* 1. Navigation loads instantly */}
+        <Navigation />
 
-export default Mission_Landing
+        {/* 2. Hero loads instantly */}
+        <HeroSection />
+
+        {/* 3. The rest loads in background via Suspense */}
+        <Suspense fallback={<ShiftDeployLoader />}>
+          <CaseStudyCardsSection />
+          <FeaturedMissionSection />
+          <ClientQuoteWallSection />
+          <CallToActionSection />
+          <ImpactAnalyticsSection />
+          <Footer />
+        </Suspense>
+      </div>
+    </>
+  );
+};
+
+export default Mission_Landing;
