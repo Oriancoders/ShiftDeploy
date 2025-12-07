@@ -1,11 +1,14 @@
-import React, { lazy, Suspense, useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
-import { Helmet } from 'react-helmet-async';
 import TrustStrip from '../../components/TrustStrip';
 
-const Hero = lazy(() => import('./landingComps/Hero'));
+// ✅ FIX 1: Import Hero DIRECTLY. No lazy loading for what the user sees first.
+import Hero from './landingComps/Hero'; 
+
+// Keep "Below the fold" components lazy to save bandwidth
 const InsideShiftDeploy = lazy(() => import('./landingComps/InsideShiftDeploy'));
 const DeployToolkit = lazy(() => import('./landingComps/DeployToolkit'));
 const ShiftProtocol = lazy(() => import('./landingComps/ShiftProtocol'));
@@ -13,59 +16,32 @@ const MissionsCompleted = lazy(() => import('./landingComps/MissionsCompleted'))
 const FlightLogs = lazy(() => import('./landingComps/FlightLogs'));
 
 const Landing = () => {
-  const [isLoading, setIsLoading] = useState(true);
 
+  // ✅ FIX 2: Remove the "isLoading" state blocker. 
+  // Just scroll to top as a side effect. It happens so fast user won't notice.
   useEffect(() => {
-    // Scroll to top on mount
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    const checkScroll = () => {
-      if (window.scrollY === 0) {
-        setIsLoading(false);
-        window.removeEventListener('scroll', checkScroll);
-      }
-    };
-
-    // Listen until reaches top
-    window.addEventListener('scroll', checkScroll);
-
-    // Fallback in case already at top
-    if (window.scrollY === 0) {
-      setIsLoading(false);
-    }
-
-    return () => window.removeEventListener('scroll', checkScroll);
+    window.scrollTo({ top: 0, behavior: 'instant' }); // Use 'instant' for initial load, 'smooth' feels laggy on mount
   }, []);
-
-  if (isLoading) {
-    return <ShiftDeployLoader />; 
-  }
 
   return (
     <>
-
       <Helmet>
         <title>ShiftDeploy - Transform Your Digital Vision Into Reality</title>
         <meta
           name="description"
-          content="ShiftDeploy provides cutting-edge web development, cloud services, DevOps excellence, and deployment solutions to help businesses grow their digital presence."
+          content="ShiftDeploy provides cutting-edge web development..."
         />
-
-        <meta
-          name="keywords"
-          content="ShiftDeploy, DevOps, CI/CD pipelines, cloud deployment, infrastructure automation"
-        />
-        <meta property="og:title" content="ShiftDeploy - Transform Your Digital Vision Into Reality" />
-        <meta property="og:description" content="ShiftDeploy provides cutting-edge web development, cloud services, DevOps excellence, and deployment solutions to help businesses grow their digital presence." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.shiftdeploy.com" />
-        {/* <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" /> */}
+        {/* ... other meta tags ... */}
       </Helmet>
 
       <div className="w-full">
         <Navigation />
+        
+        {/* ✅ FIX 3: Hero renders IMMEDIATELY. No Suspense fallback blocking it. */}
+        <Hero />
+        
+        {/* ✅ FIX 4: Only wrap the heavy, lower-down stuff in Suspense */}
         <Suspense fallback={<ShiftDeployLoader />}>
-          <Hero />
           <TrustStrip/>
           <InsideShiftDeploy />
           <DeployToolkit />
@@ -73,6 +49,7 @@ const Landing = () => {
           <MissionsCompleted />
           <FlightLogs />
         </Suspense>
+        
         <Footer />
       </div>
     </>

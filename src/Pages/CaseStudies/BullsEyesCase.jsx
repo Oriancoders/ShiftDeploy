@@ -20,11 +20,6 @@ import {
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
 import { Link } from 'react-router-dom';
-// importing images here 
-import frontend from '../../Assets/Images/casestudies/bullseyes/frontend.png'
-import backend from '../../Assets/Images/casestudies/bullseyes/backend.png'
-import apis from '../../Assets/Images/casestudies/bullseyes/apis.png'
-import keystatic from '../../Assets/Images/casestudies/bullseyes/keystatic.png'
 import { Helmet } from 'react-helmet-async';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 
@@ -71,7 +66,7 @@ const BullsEyesCase = () => {
                     description: "Users can create watchlists powered by live API updates, ensuring accurate portfolio monitoring."
                 }
             ],
-            image: apis
+            image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979374/apis_vbzb3u.png'
 
         },
         {
@@ -87,7 +82,7 @@ const BullsEyesCase = () => {
                     description: "Custom connectors handle secure push-pull of structured data between the React frontend and Google Sheets backend."
                 }
             ],
-            image: backend
+            image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979462/backend_zy8vp9.png'
         },
         {
             category: "Frontend & User Experience",
@@ -106,7 +101,7 @@ const BullsEyesCase = () => {
                     description: "Dynamic stock charts, real-time updates, and portfolio visualizations built using charting libraries integrated with live APIs."
                 }
             ],
-            image: frontend
+            image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979388/frontend_repbfv.png'
         }
     ];
 
@@ -450,7 +445,7 @@ const BullsEyesCase = () => {
                                 >
                                     <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-6">Key Statistics</h3>
                                     <div style={{
-                                        backgroundImage: `url(${keystatic})`,
+                                        backgroundImage: `url('https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979474/keystatic_elynmv.png')`,
                                         backgroundSize: '110%',
                                         backgroundPosition: 'center',
                                         backgroundRepeat: 'no-repeat',

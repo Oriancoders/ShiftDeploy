@@ -6,8 +6,7 @@ import { fadeInUp, staggerContainer } from "../../utils/animations";
 import Footer from "../../components/Footer";
 import Navigation from "../../components/Navigation";
 import { ContextAPI } from "../../GlobalProvider/ContextAPI";
-import whiteV from '../../Assets/Images/whiteV.png'
-import thankBG from '../../Assets/Images/thankBG.png'
+
 
 const ThankYouPage = () => {
     // 🟢 Page load hone par scroll top
@@ -34,7 +33,7 @@ const ThankYouPage = () => {
       <div 
       onMouseMove={handleMouseMove}
       style={{
-        backgroundImage : `url(${thankBG})`,
+        backgroundImage : `url("https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145825/thankBG_wrvqxj.png")`,
         backgroundSize : 'cover',
         backgroundRepeat : 'no-repeat',
         backgroundPosition : 'center'
@@ -69,7 +68,7 @@ const ThankYouPage = () => {
               className="text-3xl sm:text-4xl lg:text-6xl  font-bold text-white mb-4 sm:mb-8"
             >
               Thank You For Choosing 
-              <img src={whiteV} alt="ShiftDeploy" className=" w-60 sm:w-72 lg:w-96 mx-auto mt-4 sm:mt-5 lg:mt-6" />
+              <img src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145802/whiteV_vzhhvi.png" alt="ShiftDeploy" className=" w-60 sm:w-72 lg:w-96 mx-auto mt-4 sm:mt-5 lg:mt-6" />
             </motion.h1>
 
             {/* Subtext */}
@@ -110,7 +109,7 @@ const ThankYouPage = () => {
                 <ArrowRight className="w-5 sm:w-6 h-5 sm:h-6 sm:group-hover:ml-6 transition-all duration-200 " />
               </Link>
 
-              <Link to={"/mission"}
+              <Link to={"/missions"}
                 className="bg-white border-2 border-slate-300 text-slate-700 px-8 sm:px-10  py-4 sm:py-5  rounded-xl sm:rounded-2xl font-bold hover:bg-slate-50 hover:border-slate-400 transition-all duration-200 text-lg "
               >
                 Explore Our Work

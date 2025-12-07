@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
-import coloredV from '../Assets/Images/coloredV.png';
 import { IoIosArrowDown } from 'react-icons/io';
 
 const Navigation = ({ isDarkBg = false }) => {
@@ -53,7 +52,7 @@ const Navigation = ({ isDarkBg = false }) => {
             className="2xl:max-w-60 sm:max-w-48 max-w-36"
           >
             <Link to="/">
-              <img src={coloredV} alt="ShiftDeploy Logo" />
+              <img src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145802/coloredV_zxupgq.png" alt="ShiftDeploy Logo" />
             </Link>
           </motion.div>
 
