@@ -75,7 +75,7 @@ const InsideShiftDeploy = () => {
               <div className="flex flex-col  sm:flex-row items-start space-y-6 sm:space-y-0 sm:space-x-4 lg:space-x-6 ">
 
                 <div className="flex-1 text-left space-y-4">
-                  <h3 className="text-xl lg:text-2xl font-bold   text-primaryBlue">{solution.title}</h3>
+                  <h1 className="text-xl lg:text-2xl font-bold   text-primaryBlue">{solution.title}</h1>
                   <p className="  sm:text-lg leading-relaxed text-gray-600">{solution.description}</p>
                   <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
                     {solution.features.map((feature, featureIndex) => (
@@ -101,9 +101,9 @@ const InsideShiftDeploy = () => {
 
             className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
           >
-            <h3 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
+            <h1 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
               Ready to Accelerate Your Growth?
-            </h3>
+            </h1>
             <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             >
               Join hundreds of successful businesses that have transformed their digital presence
