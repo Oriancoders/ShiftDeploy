@@ -177,9 +177,9 @@ const DeployToolkit = () => {
           {tools.map((tool, index) => (
             <motion.div key={index} variants={scaleOnHover}>
               <div className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[300px] border sm:border-gray-200 rounded-3xl p-6 pb-12   sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden">
-                <h3 className="text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4 text-gray-900">
+                <h1 className="text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4 text-gray-900">
                   {tool.title}
-                </h3>
+                </h1>
                 <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed   sm:text-lg text-gray-700">
                   {tool.description}
                 </p>
@@ -255,10 +255,10 @@ const DeployToolkit = () => {
         <div className="w-full  bg-gradient-to-br from-primaryBlue to-toBlue text-white ">
           <div className="w-full  p-4 sm:p-8 lg:p-16  drop-shadow-sm flex lg:flex-row flex-col   max-w-7xl mx-auto gap-4 sm:gap-6">
             <div className="flex-1 ">
-              <h3 className="text-2xl sm:text-3xl xl:text-4xl font-bold  mb-4 sm:mb-6 lg:mb-8 leading-normal">
+              <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold  mb-4 sm:mb-6 lg:mb-8 leading-normal">
                 Whether it's containers, CI/CD, or observability <br /> we’ve
                 done it for teams like yours.
-              </h3>
+              </h1>
               <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12  mx-auto leading-relaxed">
                 Our Deploy Toolkit is designed to solve the most common problems
                 businesses face when building and scaling digital products. Let
@@ -304,6 +304,7 @@ const DeployToolkit = () => {
                     <button
                       disabled={loading}
                       className="bg-primaryOrange disabled:bg-gray-600 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-4 rounded-lg sm:rounded-none sm:rounded-r-2xl font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange disabled:hover:bg-slate-600 text-sm sm:w-fit w-full"
+                      aria-label="Audit Request Sending Button"
                     >
                       {loading ? (
                         <>

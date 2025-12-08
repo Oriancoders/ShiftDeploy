@@ -231,7 +231,7 @@ const MissionsCompleted = () => {
                     <ExternalLink className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
                     <span>View Project Report</span>
                   </Link >
-                  <motion.button className="bg-white sm:hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  hover:border-toBlue  sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg">
+                  <motion.button aria-label="Download Case Study Button" className="bg-white sm:hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  hover:border-toBlue  sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg">
                     <Download className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
                     <span>Case Study</span>
                   </motion.button>
