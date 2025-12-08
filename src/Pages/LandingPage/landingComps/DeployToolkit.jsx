@@ -273,9 +273,20 @@ const DeployToolkit = () => {
                 className="flex-1 space-y-8"
               >
                 <img
-                  src="https://seranking.com/blog/wp-content/uploads/2022/12/Open-Website-Audit-Settings.png"
-                  alt=""
-                  className="w-full lg:h-[350px] aspect-video object-cover"
+                  // 1. Cloudinary Optimization (Mobile vs Desktop)
+                  srcSet={`
+    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_600/v1765189190/shiftdeploy_audit_ht8dlu.png 600w,
+    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1765189190/shiftdeploy_audit_ht8dlu.png 1200w
+  `}
+                  // 2. Sizes Attribute
+                  // "Full width on mobile, but cap it at 1200px wide on desktop"
+                  sizes="(max-width: 768px) 100vw, 1200px"
+                  // 3. Fallback
+                  src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1765189190/shiftdeploy_audit_ht8dlu.png"
+                  alt="ShiftDeploy Audit Report"
+                  className="w-full lg:h-[350px] aspect-video object-cover rounded-lg"
+                  // 4. Performance Setting (Lazy because it's below the fold)
+                  loading="lazy"
                 />
 
                 <div className="flex flex-col gap-4">

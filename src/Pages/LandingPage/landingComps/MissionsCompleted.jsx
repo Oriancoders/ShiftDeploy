@@ -61,7 +61,7 @@ const MissionsCompleted = () => {
     description:
       "Developed a full-stack IoT-enabled EV charging solution with real-time telemetry, Stripe billing, and an admin dashboard.",
     image:
-      "https://images.pexels.com/photos/110844/pexels-photo-110844.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,/v1765189441/pexels-photo-110844_k1hftn.jpg",
     results: [
       "Real-time telemetry & alerts",
       "Automated Stripe billing",
@@ -84,7 +84,7 @@ const MissionsCompleted = () => {
     description:
       "Complete redesign and optimization of an e-commerce platform, boosting conversions and improving customer experience.",
     image:
-      "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1765189459/pexels-photo-230544_i6mjcv.jpg",
     results: ["340% conversion increase", "50% faster loading", "Mobile-first design"],
     technologies: [
       { name: "React", icon: "SiReact" },
@@ -102,7 +102,7 @@ const MissionsCompleted = () => {
     description:
       "Implemented fully automated CI/CD pipelines reducing deployment time from hours to minutes while ensuring zero-downtime releases.",
     image:
-      "https://images.pexels.com/photos/1181472/pexels-photo-1181472.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1765189477/pexels-photo-1181472_bmrhta.jpg",
     results: ["95% faster deployments", "Zero-downtime releases", "Automated testing"],
     technologies: [
       { name: "Docker", icon: "SiDocker" },
