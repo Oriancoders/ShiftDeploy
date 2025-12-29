@@ -123,6 +123,14 @@ function CaseStudyCardsSection() {
                   >
                     Read Full Mission Report
                   </Link>
+
+                  {index == 1 && (
+                    <a href="https://www.bullseyesinvestment.com/" target="_blank"
+                    className={` py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform  text-primaryBlue bg-white border-2 border-primaryBlue  mx-auto mt-3`}
+                  >
+                    Visit Bullseye Investments Website
+                  </a>
+                  )}
                 </div>
 
 

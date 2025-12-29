@@ -26,7 +26,7 @@ const Landing = () => {
   return (
     <>
       <Helmet>
-        <title>ShiftDeploy - Transform Your Digital Vision Into Reality</title>
+        <title>ShiftDeploy - Transform Your Vision Into High-Performance Reality</title>
         <meta
           name="description"
           content="ShiftDeploy provides cutting-edge web development..."
