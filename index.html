@@ -9,6 +9,19 @@
       type="image/png"
       href="/src/Assets/Images/icon.png"
     />
+    <!-- n8n Chat widget -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css"
+      rel="stylesheet"
+    />
+    <script type="module">
+      import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
+
+      createChat({
+        webhookUrl: "https://shiftdeployn8n.work.gd/webhook/4b810dee-64b4-4cc3-8fc9-cf40f92f1b69/chat",
+      });
+    </script>
+     <!-- n8n Chat widget end-->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ShiftDeploy - Transform Your Digital Vision Into Reality</title>
@@ -33,7 +46,6 @@
     </script>
 
     <!-- End Google Tag Manager -->
-    
 
     <!-- Organization Schema  -->
     <script type="application/ld+json">
