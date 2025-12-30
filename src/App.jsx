@@ -63,7 +63,7 @@ function App() {
             
           </Routes>
         </Suspense>
-        {/* <Chatbot /> */}
+        <Chatbot />
       </div>
     </GlobalProvider>
   );
