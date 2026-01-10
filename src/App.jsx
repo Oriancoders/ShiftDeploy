@@ -5,7 +5,7 @@ import GlobalProvider from './GlobalProvider/GlobalProvider';
 // Non-Lazy Imports (Things needed immediately)
 import ShiftDeployLoader from './components/ShiftDeployLoader'; // Ensure this path is correct based on your folder structure
 import ScrollToTop from './components/ScrollToTop'; // The new path you mentioned
-import { Chatbot } from './components/Chatbot';
+// import { Chatbot } from './components/Chatbot';
 
 // ✅ LAZY LOADED PAGES (Paths kept exactly as provided)
 const Landing = lazy(() => import('./Pages/LandingPage/Landing'));
@@ -63,7 +63,7 @@ function App() {
             
           </Routes>
         </Suspense>
-        <Chatbot />
+        {/* <Chatbot /> */}
       </div>
     </GlobalProvider>
   );
