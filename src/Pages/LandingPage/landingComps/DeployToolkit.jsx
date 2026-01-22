@@ -133,7 +133,7 @@ const DeployToolkit = () => {
       )
       .then(() => {
         setMessage(
-          "Website audit request sent successfully! Check your email for the report in 2 hours"
+          "Website audit request sent successfully! Check your email for the report within 24 hours"
         );
         setLoading(false);
         setWebsiteInput("");
@@ -252,7 +252,7 @@ const DeployToolkit = () => {
 
         {/* Problem-solving CTA */}
 
-        <div className="w-full  bg-gradient-to-br from-primaryBlue to-toBlue text-white ">
+        <section id="problem-solving" className="w-full  bg-gradient-to-br from-primaryBlue to-toBlue text-white ">
           <div className="w-full  p-4 sm:p-8 lg:p-16  drop-shadow-sm flex lg:flex-row flex-col   max-w-7xl mx-auto gap-4 sm:gap-6">
             <div className="flex-1 ">
               <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold  mb-4 sm:mb-6 lg:mb-8 leading-normal">
@@ -359,7 +359,7 @@ const DeployToolkit = () => {
               )}
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </section>
   );
