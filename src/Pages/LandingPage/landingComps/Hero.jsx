@@ -17,6 +17,21 @@ const Hero = () => {
     x.set(e.clientX);
     y.set(e.clientY);
   };
+
+  //make a function here to smoothly scroll to section (problem-solving) on button click
+  // Smoothly scroll to a section by id
+  const scrollToProblemSolving = () => {
+    const el = document.getElementById("problem-solving");
+    if (!el) return;
+
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      offset: -100,
+    });
+  };
+
+
   return (
     <section
       onMouseMove={handleMouseMove}
@@ -60,14 +75,14 @@ const Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.2 }}
-              className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left"
+              className="text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left"
             >
               <h1>
                 <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                  Launch Products
+                  Optimizing Products
                 </span>
                 <br />
-                <span className="text-primaryOrange">That Perform</span>
+                <span className="text-primaryOrange">To Perform</span>
                 <br />
                 <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
                   Under Pressure
@@ -81,8 +96,7 @@ const Hero = () => {
               transition={{ duration: 0.3, delay: 0.2 }}
               className="text-xl   mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0 lg:text-left sm:text-center text-left text-gray-700"
             >
-              From MVPs to enterprise infra, we deploy software that’s built to
-              last, not patched to survive.
+              Get a free performance audit to uncover speed and conversion issues before they cost you customers.
             </motion.p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 sm:mb-16 px-4 sm:px-0">
@@ -91,12 +105,13 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
-                <Link
-                  to={"/ContactUs"}
-                  className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+                <button
+                  type="button"
+                  onClick={scrollToProblemSolving}
+                  className="bg-primaryOrange border-2 border-primaryOrange hover:border-toOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
                 >
-                  Launch Your Project
-                </Link>
+                  Get Free Audit
+                </button>
               </motion.div>
 
               <motion.div
@@ -106,7 +121,7 @@ const Hero = () => {
               >
                 <Link
                   to={"/missions"}
-                  className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+                  className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
                 >
                   View Missions Completed
                 </Link>
@@ -125,14 +140,15 @@ const Hero = () => {
             <img
               // 1. Define the versions available
               srcSet={`
-    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_600/v1765145810/hero_1_idhbea.png 600w,
-    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1765145810/hero_1_idhbea.png 1200w
+    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_600/v1769118309/ChatGPT_Image_Jan_23_2026_02_43_24_AM_ch39qy.png 600w,
+    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1769118309/ChatGPT_Image_Jan_23_2026_02_43_24_AM_ch39qy.png 1200w
   `}
               // 2. Tell browser how wide the image will be on screen
               // "On mobile, it takes up 100% of screen. On desktop, cap it at 1200px."
               sizes="(max-width: 768px) 100vw, 1200px"
               // 3. Fallback for old browsers
-              src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1765145810/hero_1_idhbea.png"
+              
+              src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1769118309/ChatGPT_Image_Jan_23_2026_02_43_24_AM_ch39qy.png"
               alt="3D Material Prototype Illustration"
               className="w-full h-auto rounded-xl"
               // 4. Performance Boosters
