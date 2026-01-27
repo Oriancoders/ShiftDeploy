@@ -26,10 +26,10 @@ const Landing = () => {
   return (
     <>
       <Helmet>
-        <title>ShiftDeploy - Transform Your Vision Into High-Performance Reality</title>
+          <title>ShiftDeploy - Performance, Conversions, and Growth</title>
         <meta
           name="description"
-          content="ShiftDeploy provides cutting-edge web development..."
+          content="ShiftDeploy helps businesses improve website speed, increase conversions, and build sites that are easy to grow and maintain over time."
         />
         {/* ... other meta tags ... */}
       </Helmet>
@@ -43,8 +43,8 @@ const Landing = () => {
         {/* ✅ FIX 4: Only wrap the heavy, lower-down stuff in Suspense */}
         <Suspense fallback={<ShiftDeployLoader />}>
           <TrustStrip/>
-          <InsideShiftDeploy />
           <DeployToolkit />
+          <InsideShiftDeploy />
           <ShiftProtocol />
           <MissionsCompleted />
           <FlightLogs />

@@ -1,27 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail,  Slack,  } from 'lucide-react';
+import { Mail, Phone, Slack, } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 import { Link } from 'react-router-dom';
 import { FaXTwitter } from 'react-icons/fa6';
 const Footer = () => {
-  
+
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
     company: [
-      { name: 'Inside ShiftDeploy', href: '/insideShiftDeploy' },
-      { name: 'Deploy Toolkit', href: '/deploy-toolkit' },
+      { name: 'About ShiftDeploy', href: '/insideShiftDeploy' },
+      { name: 'ShiftDeploy Toolkit', href: '/services' },
       { name: 'The Shift Protocol', href: '/shift-protocol' },
       { name: 'Missions Completed', href: '/missions' },
       { name: 'Flight Logs', href: '/flight-logs' }
     ],
     services: [
-      { name: 'Cloud Services', href: '/deploy-toolkit' },
-      { name: 'DevOps Solutions', href: '/deploy-toolkit' },
-      { name: 'Web Development', href: '/deploy-toolkit' },
-      { name: 'Deployment Services', href: '/deploy-toolkit' },
-      { name: 'Consulting', href: '/deploy-toolkit' }
+      { name: 'ShiftSpeed (Performance Optimization)', href: '/services' },
+      { name: 'ShiftConvert (CRO & UX Optimization)', href: '/services' },
+      { name: 'ShiftBuild (Performance First Development)', href: '/services' },
+      { name: 'ShiftFlow (Ongoing Support & Optimization)', href: '/services' },
     ],
 
     caseStudies: [
@@ -53,21 +52,27 @@ const Footer = () => {
               <img src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145802/whiteV_vzhhvi.png" alt="" />
             </motion.div>
             <p className="text-gray-300 mb-4 sm:mb-6 lg:mb-8 leading-relaxed text-xs sm:text-sm lg:text-base">
-              Transforming digital visions into reality through cutting-edge web development,
-              cloud solutions, and deployment excellence.
+              Helping businesses build faster websites, improve conversions, and grow with a performance-first approach.
             </p>
+
             <div className="space-y-2 sm:space-y-3 lg:space-y-4">
               <a href='mailto:contact@shiftdeploy.com' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
                 <Mail className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">contact@shiftdeploy.com</span>
               </a>
+
+              <a href='tel:+447311126710' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
+                <Phone className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
+                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">+44 7311 126710</span>
+              </a>
+              <hr />
               <a href='https://x.com/shiftdeploy' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
                 <FaXTwitter className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on twitter</span>
               </a>
-              
+
               <a href='https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3gan3ow0g-OW0s3OJIJKIzQwQ0tB1V6A1' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
-                <Slack  className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
+                <Slack className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on slack</span>
               </a>
             </div>

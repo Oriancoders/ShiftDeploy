@@ -11,44 +11,74 @@ const ShiftProtocol = () => {
   const steps = [
     {
       icon: Search,
-      title: "Discovery & Alignment",
-      description: "We start by understanding your vision, challenges, and priorities to set a clear direction.",
-      details: ["Business deep-dive", "Stakeholder alignment", "Technical assessment", "Success criteria"],
-      gradient: "from-blue-500 to-indigo-600"
+      title: "Baseline and Audit",
+      description:
+        "We start with a clear baseline so we know exactly what is slowing your site down and what is costing you conversions.",
+      details: [
+        "Core Web Vitals check",
+        "Key page review (landing, pricing, booking, checkout)",
+        "Traffic and device split",
+        "Quick wins vs deep fixes",
+      ],
+      gradient: "from-blue-500 to-indigo-600",
     },
     {
       icon: BarChart3,
-      title: "Strategic Planning",
-      description: "Every project needs a strong foundation. We map out risks, resources, and the best path forward.",
-      details: ["Architecture planning", "Scalability review", "Resource mapping", "Risk management"],
-      gradient: "from-purple-500 to-indigo-600"
+      title: "ShiftSpeed (Fix Performance)",
+      description:
+        "We remove bottlenecks that cause slow loads, poor Lighthouse scores, and real user frustration.",
+      details: [
+        "Front-end speed improvements",
+        "Reduce JavaScript and render blocking",
+        "Image and font optimisation",
+        "Caching and delivery improvements",
+      ],
+      gradient: "from-purple-500 to-indigo-600",
     },
     {
       icon: Lightbulb,
-      title: "Design & Blueprint",
-      description: "We design tailored solutions that balance innovation, security, and long-term sustainability.",
-      details: ["Technology stack selection", "System architecture", "UX-driven design", "Integration plan"],
-      gradient: "from-yellow-500 to-orange-600"
+      title: "ShiftConvert (Improve Conversions)",
+      description:
+        "Once your site is fast, we focus on clarity, trust, and flow so more visitors take action.",
+      details: [
+        "Stronger messaging and CTAs",
+        "Trust signals and proof",
+        "Reduce form and funnel friction",
+        "Behaviour review (sessions, heatmaps)",
+      ],
+      gradient: "from-yellow-500 to-orange-600",
     },
     {
       icon: CheckCircle,
-      title: "Build & Validate",
-      description: "With agile sprints, we deliver secure, tested, and reliable solutions—step by step.",
-      details: ["Development cycles", "Automated testing", "Quality validation", "Performance tuning"],
-      gradient: "from-green-500 to-emerald-600"
+      title: "ShiftBuild (Build or Rebuild Right)",
+      description:
+        "If the foundation is outdated, we build a website that is designed to improve over time, not just launch and sit.",
+      details: [
+        "Performance-first build",
+        "Modular pages for easy improvement",
+        "SEO-ready structure",
+        "Built to support ongoing CRO",
+      ],
+      gradient: "from-green-500 to-emerald-600",
     },
     {
       icon: Rocket,
-      title: "Deployment & Beyond",
-      description: "We launch with confidence and continue to monitor, support, and scale as your needs grow.",
-      details: ["Seamless deployment", "Live monitoring", "User onboarding", "Ongoing support"],
-      gradient: "from-orange-500 to-red-600"
+      title: "ShiftFlow (Protect and Improve Monthly)",
+      description:
+        "We keep your site fast, stable, and improving with proactive checks and monthly optimisations.",
+      details: [
+        "Performance monitoring",
+        "Security and stability care",
+        "Monthly improvements",
+        "Reporting and accountability",
+      ],
+      gradient: "from-orange-500 to-red-600",
     },
     {
       title: "Problem Solved",
-
-    }
+    },
   ];
+
 
 
   return (
@@ -74,8 +104,9 @@ const ShiftProtocol = () => {
             variants={fadeInUp}
             className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  text-gray-700 leading-relaxed px-4 sm:px-0"
           >
-            Our proven 5-step methodology ensures successful project delivery from
-            concept to deployment and beyond.
+            Our protocol is simple: performance first, conversions next, and continuous improvement over time.
+            It is how ShiftSpeed, ShiftConvert, ShiftBuild, and ShiftFlow work together to deliver measurable results.
+
           </motion.p>
           <motion.div
             variants={fadeInUp}
@@ -98,14 +129,16 @@ const ShiftProtocol = () => {
                   >
                     {/* Heading */}
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 leading-snug ">
-                      That’s How We <span className='text-primaryOrange'>Build</span>, <br/> That’s How You <br/> 
-                      <span className='text-primaryOrange'>Succeed</span>
+                      That’s How We Fix <span className='text-primaryOrange'>Speed</span>, <br /> That’s How You Win<br />
+                      <span className='text-primaryOrange'>Customers</span>
                     </h2>
 
                     {/* Description */}
                     <p className=" sm:text-lg text-gray-200 mb-6 max-w-md">
-                      Let’s build, launch, and scale your vision into reality.
-                      Our team is ready to deliver results that let step into the future with confidence.
+                      Most websites do not fail because they look bad.
+                      They fail because they are slow, unclear, and hard to improve.
+                      We fix that with a proven system.
+
                     </p>
 
                     {/* CTA Button */}
@@ -159,12 +192,14 @@ const ShiftProtocol = () => {
             className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
           >
             <h1 className="text-2xl sm:text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
-              The Shift Protocol gives you clarity, control, and confidence without compromise
+              Start with the Shift Protocol and get a clear plan to improve speed and conversions
+
             </h1>
             <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             >
-              Let's start your transformation journey. Our proven methodology ensures
-              your project's success from day one.
+              We will review your site, identify what is slowing it down, and show you exactly what to fix first.
+              No vague advice. Just clear priorities and measurable outcomes.
+
             </p>
 
 

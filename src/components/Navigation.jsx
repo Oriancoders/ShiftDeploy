@@ -19,7 +19,7 @@ const Navigation = ({ isDarkBg = false }) => {
   }, []);
 
   const navItems = [
-    { label: 'Deploy Toolkit', path: '/deploy-toolkit' },
+    { label: 'Our Services', path: '/services' },
     { label: 'Inside ShiftDeploy', path: '/insideShiftDeploy' },
     { label: 'The Shift Protocol', path: '/shift-protocol' },
     {

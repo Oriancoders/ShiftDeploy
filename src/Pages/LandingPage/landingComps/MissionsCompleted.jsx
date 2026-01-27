@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import { ExternalLink, Download, Star, Calendar, Users, TrendingUp } from "lucide-react";
+import { ExternalLink, Star, Calendar, Users, TrendingUp } from "lucide-react";
 import { fadeInUp, staggerContainer } from "../../../utils/animations";
 import { ContextAPI } from "../../../GlobalProvider/ContextAPI";
 import { Link } from "react-router-dom";
@@ -10,26 +10,29 @@ const MissionsCompleted = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { scrwidth } = useContext(ContextAPI);
 
-  // 🔹 Animated stats state
+  // Animated stats state
   const [animatedNumbers, setAnimatedNumbers] = useState({});
 
-  // Helper function to split number + suffix
+  // Helper: split number + suffix (supports "10+", "4.9/5", "200%")
   const splitValue = (value) => {
-    const match = value.match(/(\d+\.?\d*)(.*)/); // e.g. "200%" => ["200%", "200", "%"]
-    return match ? { number: parseFloat(match[1]), suffix: match[2] } : { number: 0, suffix: "" };
+    const match = value.match(/(\d+\.?\d*)(.*)/);
+    return match
+      ? { number: parseFloat(match[1]), suffix: match[2] }
+      : { number: 0, suffix: "" };
   };
 
+  // ✅ Keep the stats honest / neutral (no UK claim, no hype)
   const stats = [
-    { icon: Users, value: "10+", label: "Successful Projects", gradient: "from-blue-500 to-indigo-600" },
-    { icon: TrendingUp, value: "200%", label: "Avg. Performance Boost", gradient: "from-green-500 to-emerald-600" },
-    { icon: Calendar, value: "3", suffix: " Years +", label: "Industry Experience", gradient: "from-purple-500 to-indigo-600" },
-    { icon: Star, value: "4.9", suffix: "/5", label: "Client Satisfaction", gradient: "from-yellow-500 to-orange-600" },
+    { icon: Users, value: "10+", label: "Projects Delivered" },
+    { icon: TrendingUp, value: "30", suffix: "%+", label: "Typical Speed Gains" },
+    { icon: Calendar, value: "3", suffix: " Years+", label: "Hands-on Experience" },
+    { icon: Star, value: "4.9", suffix: "/5", label: "Client Satisfaction" },
   ];
 
-  // 🔹 Animate number function
+
   const animateNumber = (index, targetValue) => {
     let currentValue = 0;
-    const increment = targetValue / 50; // 50 steps
+    const increment = targetValue / 50;
     const timer = setInterval(() => {
       currentValue += increment;
       if (currentValue >= targetValue) {
@@ -38,114 +41,123 @@ const MissionsCompleted = () => {
       }
       setAnimatedNumbers((prev) => ({
         ...prev,
-        [index]: Math.round(currentValue * 10) / 10, // one decimal place
+        [index]: Math.round(currentValue * 10) / 10,
       }));
     }, 30);
   };
 
-  // 🔹 Trigger animation when in view
   useEffect(() => {
     if (isInView) {
       stats.forEach((stat, index) => {
         const { number } = splitValue(stat.value + (stat.suffix || ""));
-        setTimeout(() => animateNumber(index, number), index * 200); // delay between each
+        setTimeout(() => animateNumber(index, number), index * 200);
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInView]);
 
+  // ✅ Keep projects exactly as you said (real)
   const projects = [
-  {
-    title: "Smart EV Charging Platform",
-    client: "Slacker IoT",
-    category: "IoT & Cloud",
-    description:
-      "Developed a full-stack IoT-enabled EV charging solution with real-time telemetry, Stripe billing, and an admin dashboard.",
-    image:
-      "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,/v1765189441/pexels-photo-110844_k1hftn.jpg",
-    results: [
-      "Real-time telemetry & alerts",
-      "Automated Stripe billing",
-      "24/7 monitoring & control",
-    ],
-    technologies: [
-      { name: "ESP32", icon: "SiEspressif" },
-      { name: "Spring Boot", icon: "SiSpringboot" },
-      { name: "MongoDB", icon: "SiMongodb" },
-      { name: "React", icon: "SiReact" },
-      { name: "MQTT", icon: "SiMqtt" },
-      { name: "Stripe", icon: "SiStripe" },
-    ],
-    url: "/CaseStudies/SlackerIOT",
-  },
-  {
-    title: "E-commerce Platform Transformation",
-    client: "K2 Traders",
-    category: "Web Development",
-    description:
-      "Complete redesign and optimization of an e-commerce platform, boosting conversions and improving customer experience.",
-    image:
-      "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1765189459/pexels-photo-230544_i6mjcv.jpg",
-    results: ["340% conversion increase", "50% faster loading", "Mobile-first design"],
-    technologies: [
-      { name: "React", icon: "SiReact" },
-      { name: "Node.js", icon: "SiNodedotjs" },
-      { name: "MongoDB", icon: "SiMongodb" },
-      { name: "AWS", icon: "SiAmazonaws" },
-      { name: "TailwindCSS", icon: "SiTailwindcss" },
-    ],
-    url: "/CaseStudies/K2TradersCase",
-  },
-  {
-    title: "DevOps Pipeline Automation",
-    client: "Bullseyes Investments",
-    category: "DevOps",
-    description:
-      "Implemented fully automated CI/CD pipelines reducing deployment time from hours to minutes while ensuring zero-downtime releases.",
-    image:
-      "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1765189477/pexels-photo-1181472_bmrhta.jpg",
-    results: ["95% faster deployments", "Zero-downtime releases", "Automated testing"],
-    technologies: [
-      { name: "Docker", icon: "SiDocker" },
-      { name: "Kubernetes", icon: "SiKubernetes" },
-      { name: "Jenkins", icon: "SiJenkins" },
-      { name: "GitLab CI", icon: "SiGitlab" },
-      { name: "Terraform", icon: "SiTerraform" },
-    ],
-    url: "/CaseStudies/BullseyesCase",
-  },
-];
-
-
+    {
+      title: "Smart EV Charging Platform",
+      client: "Slacker IoT",
+      category: "IoT & Cloud",
+      description:
+        "Developed a full-stack IoT-enabled EV charging solution with real-time telemetry, Stripe billing, and an admin dashboard.",
+      image:
+        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,/v1765189441/pexels-photo-110844_k1hftn.jpg",
+      results: [
+        "Real-time telemetry and alerts",
+        "Automated Stripe billing",
+        "24/7 monitoring and control",
+      ],
+      technologies: [
+        { name: "ESP32", icon: "SiEspressif" },
+        { name: "Spring Boot", icon: "SiSpringboot" },
+        { name: "MongoDB", icon: "SiMongodb" },
+        { name: "React", icon: "SiReact" },
+        { name: "MQTT", icon: "SiMqtt" },
+        { name: "Stripe", icon: "SiStripe" },
+      ],
+      url: "/CaseStudies/SlackerIOT",
+    },
+    {
+      title: "E-commerce Platform Transformation",
+      client: "K2 Traders",
+      category: "Web Development",
+      description:
+        "Complete redesign and optimization of an e-commerce platform, boosting conversions and improving customer experience.",
+      image:
+        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1765189459/pexels-photo-230544_i6mjcv.jpg",
+      results: ["340% conversion increase", "50% faster loading", "Mobile-first design"],
+      technologies: [
+        { name: "React", icon: "SiReact" },
+        { name: "Node.js", icon: "SiNodedotjs" },
+        { name: "MongoDB", icon: "SiMongodb" },
+        { name: "AWS", icon: "SiAmazonaws" },
+        { name: "TailwindCSS", icon: "SiTailwindcss" },
+      ],
+      url: "/CaseStudies/K2TradersCase",
+    },
+    {
+      title: "DevOps Pipeline Automation",
+      client: "Bullseyes Investments",
+      category: "DevOps",
+      description:
+        "Implemented fully automated CI/CD pipelines reducing deployment time from hours to minutes while ensuring zero-downtime releases.",
+      image:
+        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1765189477/pexels-photo-1181472_bmrhta.jpg",
+      results: ["95% faster deployments", "Zero-downtime releases", "Automated testing"],
+      technologies: [
+        { name: "Docker", icon: "SiDocker" },
+        { name: "Kubernetes", icon: "SiKubernetes" },
+        { name: "Jenkins", icon: "SiJenkins" },
+        { name: "GitLab CI", icon: "SiGitlab" },
+        { name: "Terraform", icon: "SiTerraform" },
+      ],
+      url: "/CaseStudies/BullseyesCase",
+    },
+  ];
 
   return (
     <section id="missions-completed" className="py-12 bg-white text-primaryBlue">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="w-full flex sm:flex-row flex-col justify-between items-center mb-8 ">
-          <motion.div ref={ref}
+        <div className="w-full flex sm:flex-row flex-col justify-between items-center mb-8">
+          {/* Left: Title + Copy */}
+          <motion.div
+            ref={ref}
             variants={staggerContainer}
             initial="initial"
             animate={isInView ? "animate" : "initial"}
-            className=" mb-12 sm:mb-16 sm:flex-1 sm:border-r border-gray-400">
+            className="mb-12 sm:mb-16 sm:flex-1 sm:border-r border-gray-300"
+          >
             <motion.h2
               variants={fadeInUp}
-              className="text-3xl sm:text-left text-center sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
+              className="text-3xl sm:text-left text-center sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight"
             >
-              Missions We've <br />
-              <span className="text-primaryOrange ">
-                Completed
-              </span>
+              Real Work.
+              <br />
+              <span className="text-primaryOrange">Real Results.</span>
             </motion.h2>
+
             <motion.p
               variants={fadeInUp}
-              className="text-lg sm:text-left text-center  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0 "
+              className="text-lg sm:text-left text-center max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0 text-gray-700"
             >
-              Explore our portfolio of successful projects and see how we've helped
-              businesses transform their digital presence.
+              Here are a few projects we’ve delivered. Different industries, different stacks, one
+              consistent focus: building systems that run reliably and perform better over time.
             </motion.p>
 
+            <motion.p
+              variants={fadeInUp}
+              className="text-sm sm:text-left text-center max-w-2xl mx-auto px-4 sm:px-0 text-gray-600"
+            >
+              Want a performance-focused audit for your website? Start with a quick review and we’ll
+              tell you what to fix first.
+            </motion.p>
           </motion.div>
 
-          {/* Stats */}
+          {/* Right: Stats */}
           <motion.div
             variants={staggerContainer}
             initial="initial"
@@ -153,61 +165,67 @@ const MissionsCompleted = () => {
             className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 sm:flex-1"
           >
             {stats.map((stat, index) => {
-              const { number, suffix } = splitValue(stat.value + (stat.suffix || ""));
+              const { suffix } = splitValue(stat.value + (stat.suffix || ""));
               return (
                 <motion.div key={index} className="text-center">
-                  <div className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2">
+                  <div className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 text-gray-900">
                     {animatedNumbers[index] || 0}
                     {suffix}
                   </div>
-                  <div className=" font-medium text-center">{stat.label}</div>
+                  <div className="font-medium text-center text-gray-700">{stat.label}</div>
                 </motion.div>
               );
             })}
           </motion.div>
-
         </div>
-        {/* Projects showcase (same as before) */}
-        <div className="space-y-6 sm:space-y-8 lg:space-y-12 ">
+
+        {/* Projects showcase */}
+        <div className="space-y-6 sm:space-y-8 lg:space-y-12">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-white border border-gray-300 rounded-3xl overflow-hidden  transition-all duration-100 group grid lg:grid-cols-2 gap-0"
+              className="bg-white border border-gray-300 rounded-3xl overflow-hidden transition-all duration-100 group grid lg:grid-cols-2 gap-0"
             >
               {/* Left: Image */}
               <div
                 className={`relative h-48 sm:h-64 lg:h-full ${scrwidth > 768 && index % 2 === 0 ? "order-2" : "order-1"
-                  } ${scrwidth < 768 && "order-2"}`}
+                  } ${scrwidth < 768 ? "order-2" : ""}`}
               >
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover sm:rounded-none"
+                  loading="lazy"
                 />
-
               </div>
 
               {/* Right: Content */}
               <div
                 className={`p-4 sm:p-6 lg:p-8 xl:p-10 ${scrwidth > 768 && index % 2 === 0 ? "order-1" : "order-2"
-                  } ${scrwidth < 768 && "order-1"}`}
+                  } ${scrwidth < 768 ? "order-1" : ""}`}
               >
                 <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 mb-1 sm:mb-2 lg:mb-3">
                   {project.title}
                 </h3>
-                <p className="text-primaryOrange font-semibold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
+
+                <p className="text-primaryOrange font-semibold mb-1 text-sm sm:text-base lg:text-lg">
                   {project.client}
                 </p>
-                <p className=" mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed">
+
+                <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4">
+                  {project.category}
+                </p>
+
+                <p className="mb-4 sm:mb-6 lg:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed text-gray-700">
                   {project.description}
                 </p>
 
                 <div className="space-y-3 sm:space-y-4 lg:space-y-6 mb-4 sm:mb-6 lg:mb-8">
                   <div>
-                    <h4 className=" font-bold mb-2 sm:mb-3 lg:mb-4 text-sm sm:text-base lg:text-lg">
+                    <h4 className="font-bold mb-2 sm:mb-3 lg:mb-4 text-sm sm:text-base lg:text-lg text-gray-900">
                       Key Results:
                     </h4>
                     <ul className="grid grid-cols-1 gap-1.5 sm:gap-2 lg:gap-3">
@@ -217,7 +235,7 @@ const MissionsCompleted = () => {
                           className="flex items-center space-x-2 sm:space-x-3"
                         >
                           <Star className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-orange-500 flex-shrink-0" />
-                          <span className="font-medium text-xs sm:text-sm lg:text-base">
+                          <span className="font-medium text-xs sm:text-sm lg:text-base text-gray-800">
                             {result}
                           </span>
                         </li>
@@ -227,18 +245,27 @@ const MissionsCompleted = () => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 lg:space-x-4">
-                  <Link to={project.url} className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm ">
+                  <Link
+                    to={project.url}
+                    className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm"
+                  >
                     <ExternalLink className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
                     <span>View Project Report</span>
-                  </Link >
-                  <motion.button aria-label="Download Case Study Button" className="bg-white sm:hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  hover:border-toBlue  sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-sm sm:text-base lg:text-lg">
-                    <Download className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
-                    <span>Case Study</span>
-                  </motion.button>
+                  </Link>
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Bottom CTA (simple, aligned) */}
+        <div className="mt-12 sm:mt-16 flex justify-center">
+          <Link
+            to={"/ContactUs"}
+            className="bg-primaryBlue text-white px-5 sm:px-8 py-3 sm:py-4 rounded-xl font-bold hover:bg-toBlue transition-all duration-200"
+          >
+            Start with a Quick Audit
+          </Link>
         </div>
       </div>
     </section>
