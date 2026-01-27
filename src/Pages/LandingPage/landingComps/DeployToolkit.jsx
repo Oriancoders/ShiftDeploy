@@ -1,17 +1,11 @@
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import {
-  Wrench,
-  Zap,
-  Shield,
-  Globe,
-  Server,
-  Database,
+
   ArrowRight,
   MoveLeft,
 } from "lucide-react";
 import {
-  fadeInUp,
   staggerContainer,
   scaleOnHover,
 } from "../../../utils/animations";
@@ -32,68 +26,69 @@ const DeployToolkit = () => {
     setActiveIndex(index);
   };
   const tools = [
-    {
-      icon: Globe,
-      title: "Global CDN",
-      description:
-        "Lightning-fast content delivery worldwide with 99.9% uptime guarantee",
-      problem:
-        "Slow loading times due to centralized servers and long-distance data travel. This frustrates users and hurts SEO rankings.",
-      solution:
-        "Distributing content across multiple global edge locations drastically reduces latency, ensures faster load times, and improves SEO performance.",
-      result: "40% faster loads",
-    },
-    {
-      icon: Server,
-      title: "Auto-Scaling Infrastructure",
-      description:
-        "Dynamically adjust resources based on demand to optimize performance",
-      problem:
-        "Traffic spikes can overwhelm fixed servers, causing downtime and slow response.",
-      solution:
-        "Our system automatically adjusts capacity in real time, ensuring smooth scaling during peak loads.",
-      result: "99.9% uptime",
-    },
-    {
-      icon: Database,
-      title: "Database Optimization",
-      description: "High-performance database solutions with automated backups",
-      problem:
-        "Unoptimized queries and slow retrieval bottleneck applications.",
-      solution:
-        "We apply indexing, caching, and optimized queries for faster data access.",
-      result: "2x faster queries",
-    },
-    {
-      icon: Shield,
-      title: "Security Hardening",
-      description:
-        "Enterprise-grade security measures to protect your applications",
-      problem: "Apps face risks like SQL injection, DDoS, and data leaks.",
-      solution:
-        "We deploy multi-layered firewalls, encryption, and audits for strong protection.",
-      result: "70% fewer risks",
-    },
-    {
-      icon: Zap,
-      title: "Performance Monitoring",
-      description:
-        "Real-time monitoring and alerting for optimal application health",
-      problem: "Issues stay hidden until customers complain.",
-      solution: "We use dashboards + instant alerts for proactive fixes.",
-      result: "90% faster fixes",
-    },
-    {
-      icon: Wrench,
-      title: "DevOps Automation",
-      description:
-        "Streamlined workflows with CI/CD pipelines and automated testing",
-      problem: "Manual deployment is slow and error-prone.",
-      solution:
-        "Automated pipelines & testing enable fast and reliable delivery.",
-      result: "60% faster deploys",
-    },
-  ];
+  {
+    title: "Slow Website Performance",
+    description:
+      "Your website takes too long to load, especially on mobile, and users leave before they engage.",
+    problem:
+      "Slow load times increase bounce rates, hurt search rankings, and quietly reduce conversions and ad ROI.",
+    solution:
+      "This is where ShiftSpeed comes in. We start with a deep performance audit and fix real bottlenecks at code and page level to improve Core Web Vitals and load times.",
+    result: "30 to 60% faster load times",
+  },
+  {
+    title: "Low Conversion Rates",
+    description:
+      "People visit your site, but they do not book, enquire, or sign up at the rate they should.",
+    problem:
+      "Unclear messaging, weak trust signals, and friction in key pages stop users from making decisions.",
+    solution:
+      "After speed is fixed, Our ShiftConvert model is designed to focus on user behaviour, trust, and clarity. We improve layouts, CTAs, and funnels to increase conversions.",
+    result: "20 to 100% more leads",
+  },
+  {
+    title: "Poor Core Web Vitals and SEO Impact",
+    description:
+      "Your site struggles with Google’s performance metrics and loses visibility as a result.",
+    problem:
+      "Failing Core Web Vitals lowers rankings and limits organic traffic growth, even with good content.",
+    solution:
+      "Our ShiftSpeed model directly targets these issues by optimising rendering, reducing JavaScript weight, and improving real user metrics, not just lab scores.",
+    result: "Stronger rankings and visibility",
+  },
+  {
+    title: "Outdated or Hard to Improve Website",
+    description:
+      "Your website works, but it is difficult to change, optimise, or scale as the business grows.",
+    problem:
+      "Older builds create technical debt and force expensive redesigns instead of continuous improvement.",
+    solution:
+      "Here the ShiftBuild model creates performance-first websites that are modular, flexible, and designed to support ongoing optimisation over time.",
+    result: "Future-ready website foundation",
+  },
+  {
+    title: "Performance Drops After Launch",
+    description:
+      "Even well-built websites slowly get slower, riskier, and harder to manage without oversight.",
+    problem:
+      "Updates, plugins, and small changes add up, causing performance and stability to decline month by month.",
+    solution:
+      "ShiftFlow keeps your site healthy with proactive monitoring, regular performance checks, and continuous improvements.",
+    result: "Stable long-term performance",
+  },
+  {
+    title: "No Clear Technical Ownership",
+    description:
+      "When something breaks or numbers drop, no one takes full responsibility for fixing it properly.",
+    problem:
+      "Multiple vendors lead to delays, guesswork, and missed opportunities for improvement.",
+    solution:
+      "ShiftDeploy brings everything together. Through ShiftSpeed, ShiftConvert, ShiftBuild, and ShiftFlow, we own performance and conversion outcomes end to end.",
+    result: "One accountable expert team",
+  },
+];
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -157,26 +152,22 @@ const DeployToolkit = () => {
           animate={isInView ? "animate" : "initial"}
           className="text-center mb-8"
         >
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
-          >
-            Our
-            <span className="text-primaryOrange pl-3">Deploy ToolKit</span>
+          <motion.h2 className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6">
+            What
+            <span className="text-primaryOrange pl-3">We Shift</span>
           </motion.h2>
-          <motion.p
-            variants={fadeInUp}
-            className="sm:text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  leading-relaxed px-4 sm:px-0 text-gray-700"
-          >
-            Our comprehensive Deploy Toolkit includes everything you need to
-            build, deploy, and scale modern applications with confidence.
+
+          <motion.p className="sm:text-lg max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 leading-relaxed px-4 sm:px-0 text-gray-700">
+            We focus on fixing the performance and conversion problems that quietly
+            cost businesses traffic, trust, and revenue.
           </motion.p>
+
         </motion.div>
 
         <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 px-4 sm:px-6 lg:px-8 max-w-7xl ">
           {tools.map((tool, index) => (
             <motion.div key={index} variants={scaleOnHover}>
-              <div className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[300px] border sm:border-gray-200 rounded-3xl p-6 pb-12   sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden">
+              <div className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[350px] border sm:border-gray-200 rounded-3xl p-6 pb-12   sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden">
                 <h1 className="text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4 text-gray-900">
                   {tool.title}
                 </h1>
@@ -199,15 +190,13 @@ const DeployToolkit = () => {
                 </div>
                 {/* this one card animation  */}
                 <div
-                  className={`w-full   absolute sm:-bottom-20 sm:left-20 bottom-0 left-0 group-hover:left-0 group-hover:bottom-0 text-white text-right ${
-                    activeIndex == index && "-bottom-20 left-20"
-                  }  transition-all duration-500`}
+                  className={`w-full   absolute sm:-bottom-20 sm:left-20 bottom-0 left-0 group-hover:left-0 group-hover:bottom-0 text-white text-right ${activeIndex == index && "-bottom-20 left-20"
+                    }  transition-all duration-500`}
                   style={{}}
                 >
                   <span
-                    className={` font-bold bg-primaryBlue sm:px-2 px-4 py-2 inline-block rounded-tl-2xl cursor-pointer ${
-                      activeIndex == index && "translate-y-16 translate-x-1/2"
-                    }transition-all duration-500`}
+                    className={` font-bold bg-primaryBlue sm:px-2 px-4 py-2 inline-block rounded-tl-2xl cursor-pointer ${activeIndex == index && "translate-y-16 translate-x-1/2"
+                      }transition-all duration-500`}
                     onClick={() => handleIndex(index)}
                   >
                     Reveal Solution{" "}
@@ -215,9 +204,8 @@ const DeployToolkit = () => {
                 </div>
                 {/* explanation card  */}
                 <div
-                  className={`w-full h-full bg-primaryBlue  absolute  px-6 py-4 text-white rounded-2xl  ${
-                    activeIndex == index ? "top-0 left-0" : "-top-96 -left-96"
-                  } transition-all duration-500 flex flex-col justify-between`}
+                  className={`w-full h-full bg-primaryBlue  absolute  px-6 py-4 text-white rounded-2xl  ${activeIndex == index ? "top-0 left-0" : "-top-96 -left-96"
+                    } transition-all duration-500 flex flex-col justify-between`}
                   style={{}}
                 >
                   <div className="flex flex-col gap-y-2">
@@ -256,13 +244,14 @@ const DeployToolkit = () => {
           <div className="w-full  p-4 sm:p-8 lg:p-16  drop-shadow-sm flex lg:flex-row flex-col   max-w-7xl mx-auto gap-4 sm:gap-6">
             <div className="flex-1 ">
               <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold  mb-4 sm:mb-6 lg:mb-8 leading-normal">
-                Whether it's containers, CI/CD, or observability <br /> we’ve
-                done it for teams like yours.
+                If your website is slow, underperforming, or not converting.
+                We’ve fixed this problem before.
+
               </h1>
               <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12  mx-auto leading-relaxed">
-                Our Deploy Toolkit is designed to solve the most common problems
-                businesses face when building and scaling digital products. Let
-                us help you overcome technical barriers.
+                We help businesses identify performance bottlenecks, fix conversion leaks,
+                and build websites that support long-term growth, not just launch and decay.
+
               </p>
             </div>
 
@@ -339,18 +328,16 @@ const DeployToolkit = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className={`mt-4 p-4 sm:p-5 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base flex items-center gap-3 ${
-                    message.includes("successfully")
-                      ? "bg-green-100 text-green-700 border border-green-300"
-                      : "bg-red-100 text-red-700 border border-red-300"
-                  }`}
+                  className={`mt-4 p-4 sm:p-5 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base flex items-center gap-3 ${message.includes("successfully")
+                    ? "bg-green-100 text-green-700 border border-green-300"
+                    : "bg-red-100 text-red-700 border border-red-300"
+                    }`}
                 >
                   <div
-                    className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 font-bold ${
-                      message.includes("successfully")
-                        ? "bg-green-500 text-white"
-                        : "bg-red-500 text-white"
-                    }`}
+                    className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 font-bold ${message.includes("successfully")
+                      ? "bg-green-500 text-white"
+                      : "bg-red-500 text-white"
+                      }`}
                   >
                     {message.includes("successfully") ? "✓" : "!"}
                   </div>

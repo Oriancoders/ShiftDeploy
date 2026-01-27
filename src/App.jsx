@@ -5,6 +5,7 @@ import GlobalProvider from './GlobalProvider/GlobalProvider';
 // Non-Lazy Imports (Things needed immediately)
 import ShiftDeployLoader from './components/ShiftDeployLoader'; // Ensure this path is correct based on your folder structure
 import ScrollToTop from './components/ScrollToTop'; // The new path you mentioned
+import ShiftSpeed from './Pages/Services/ShiftSpeed/ShiftSpeed';
 // import { Chatbot } from './components/Chatbot';
 
 // ✅ LAZY LOADED PAGES (Paths kept exactly as provided)
@@ -40,7 +41,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/insideShiftDeploy' element={<InSide_Landing />} />
-            <Route path='/deploy-toolkit' element={<Toolkit_Landing />} />
+            <Route path='/services' element={<Toolkit_Landing />} />
             <Route path='/shift-protocol' element={<Landing_Protocol />} />
             <Route path='/missions' element={<Mission_Landing />} />
             <Route path='/flight-logs' element={<Flight_Landing />} />
@@ -60,6 +61,11 @@ function App() {
 
             {/* shiftify Landing */}
             <Route path='/shiftify-landing-page' element={<Shiftify_Landing />} />
+            
+            {/* {services pages routes to be added here} */}
+            <Route path='/services/shiftspeed' element={<ShiftSpeed/>} />
+
+            
             
           </Routes>
         </Suspense>
