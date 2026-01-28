@@ -71,7 +71,7 @@ const Toolkit_Landing = () => {
             <TestimonialsSection />
             <FinalCTASection />
             <FAQSection />
-            <Footer />
+             <Footer />
         </Suspense>
       </div>
     </>

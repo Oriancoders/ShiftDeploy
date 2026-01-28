@@ -88,7 +88,7 @@ function FinalCTASection() {
   
 
           {/* Contact Options */}
-          <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+          {/* <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
               <Download className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
               <h3 className="text-white font-semibold mb-2">Download Protocol Brief</h3>
@@ -101,7 +101,7 @@ function FinalCTASection() {
                 See the protocol in action with real project examples
               </p>
             </div>
-          </div>
+          </div> */}
 
    
         </div>

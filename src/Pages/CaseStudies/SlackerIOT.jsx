@@ -14,287 +14,347 @@ import {
   Server,
   Monitor,
   BarChart3,
-
   Cpu,
   Activity
 } from 'lucide-react';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
 import { Link } from 'react-router-dom';
-// importing images here 
+// importing images here
 
 import { Helmet } from 'react-helmet-async';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 
-
-
 const SlackerIOT = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [showLoader, setShowLoader] = useState(true)
-
+  const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-
   // ✅ Hide loader when scrollY === 0
   useEffect(() => {
     const checkScroll = () => {
       if (window.scrollY === 0) {
-        setShowLoader(false)
-        window.removeEventListener('scroll', checkScroll)
+        setShowLoader(false);
+        window.removeEventListener('scroll', checkScroll);
       }
-    }
-    window.addEventListener('scroll', checkScroll)
-    checkScroll()
-    return () => window.removeEventListener('scroll', checkScroll)
-  }, [])
+    };
+    window.addEventListener('scroll', checkScroll);
+    checkScroll();
+    return () => window.removeEventListener('scroll', checkScroll);
+  }, []);
+
+  // ✅ Rewritten to business outcome language (structure unchanged)
+  // ✅ Aligned with card copy:
+  // description: "Built an end-to-end EV charging platform from scratch, including the customer dashboard, admin controls, and billing flows."
+  // results:
+  // - "Live device status and session tracking"
+  // - "Automated billing and payment capture"
+  // - "Admin dashboard for monitoring and control"
   const techDetails = [
     {
-      category: "Hardware & IoT",
+      category: "Charging Hardware",
       icon: Cpu,
       technologies: [
         {
-          name: "ESP32 Microcontroller",
-          description: "32-bit dual-core processor with built-in Wi-Fi and Bluetooth capabilities, perfect for IoT applications requiring real-time data processing and wireless connectivity."
+          name: "Charger Control Unit",
+          description:
+            "We enabled the charger to report status reliably so the business can see what’s happening on-site without manual checks."
         },
         {
-          name: "Current & Voltage Sensors",
-          description: "High-precision sensors for monitoring electrical parameters in real-time, ensuring safe charging operations and accurate billing calculations."
+          name: "Safety & Measurement Sensors",
+          description:
+            "Built-in monitoring helps keep sessions stable and supports accurate session reporting for billing and support."
         },
         {
-          name: "Temperature Monitoring",
-          description: "Thermal sensors integrated throughout the charging system to prevent overheating and ensure optimal performance under various environmental conditions."
+          name: "Operational Health Monitoring",
+          description:
+            "Key conditions are tracked so issues can be spotted early and chargers can stay available more consistently."
         }
       ],
-      image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979458/bannertry1_vyytu5.png',
-
+      // TODO: Consider replacing with a real charger/field photo or an actual product UI screenshot for authenticity
+      image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979458/bannertry1_vyytu5.png'
     },
     {
-      category: "Communication Protocol",
+      category: "Real-time Communication",
       icon: Wifi,
       technologies: [
         {
-          name: "MQTT Protocol",
-          description: "Lightweight messaging protocol ideal for IoT devices, enabling efficient real-time communication between charging stations and the cloud backend with minimal bandwidth usage."
+          name: "Live Device Updates",
+          description:
+            "Stations send live status updates so operators and customers can track sessions without delays."
         },
         {
-          name: "HiveMQ Cloud",
-          description: "Enterprise-grade MQTT broker providing reliable message delivery, scalability, and security features essential for mission-critical IoT applications."
+          name: "Reliable Message Delivery",
+          description:
+            "We used a robust messaging layer to keep device communication consistent—even when networks fluctuate."
         },
         {
-          name: "WebSocket Integration",
-          description: "Real-time bidirectional communication enabling instant updates between the web dashboard and charging stations without polling delays."
+          name: "Instant Dashboard Refresh",
+          description:
+            "Dashboards update in real time so teams can act quickly when devices start, stop, or report issues."
         }
       ],
+      // TODO: Replace with real “device status live” UI screenshots (blur device IDs if needed)
       image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979310/esp32_nkvzfi.png'
-
     },
     {
-      category: "Backend Infrastructure",
+      category: "Platform Backend",
       icon: Server,
       technologies: [
         {
-          name: "Spring Boot Framework",
-          description: "Robust Java-based framework providing enterprise-level security, scalability, and maintainability for handling complex business logic and API management."
+          name: "Session & User Management",
+          description:
+            "We built the logic to manage customers, sessions, and charger activity so the platform works end-to-end."
         },
         {
-          name: "MongoDB Database",
-          description: "NoSQL database optimized for handling large volumes of time-series data from IoT devices, user management, and transaction records with high performance."
+          name: "Billing & Transaction Records",
+          description:
+            "Charging activity and payment records are stored cleanly so support and reporting stay reliable."
         },
         {
-          name: "RESTful API Design",
-          description: "Well-structured API endpoints following REST principles, enabling seamless integration with frontend applications and third-party services."
+          name: "APIs for Dashboard + Admin",
+          description:
+            "The backend powers both the customer experience and admin controls from a single source of truth."
         }
       ],
+      // TODO: Replace with a real admin overview screenshot (blur sensitive values)
       image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979379/backend_q5d5v9.png'
-
     },
     {
-      category: "Frontend & User Interface",
+      category: "Customer + Admin Dashboards",
       icon: Monitor,
       technologies: [
         {
-          name: "React.js Framework",
-          description: "Modern JavaScript library for building responsive, interactive user interfaces with component-based architecture for better maintainability and reusability."
+          name: "Customer Dashboard",
+          description:
+            "Customers can view live device status, session progress, and charging history in one simple place."
         },
         {
-          name: "Tailwind CSS",
-          description: "Utility-first CSS framework enabling rapid UI development with consistent design patterns and responsive layouts across all device types."
+          name: "Admin Controls",
+          description:
+            "Admins can monitor chargers, review sessions, and take action quickly without digging through logs."
         },
         {
-          name: "Real-time Dashboard",
-          description: "Live monitoring interface displaying charging status, energy consumption, user activity, and system health metrics with automatic updates."
+          name: "Real-time Views",
+          description:
+            "Live updates reduce support load and help teams respond faster when a device needs attention."
         }
       ],
+      // TODO: Replace with actual dashboard screenshots (this will feel more real than generic UI images)
       image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979388/frontend_bwsf2d.png',
       size: '90%'
-
-
     },
     {
-      category: "Payment & Security",
+      category: "Billing & Access Control",
       icon: CreditCard,
       technologies: [
         {
-          name: "Stripe Payment Gateway",
-          description: "Industry-leading payment processor handling secure transactions, automated billing, invoice generation, and compliance with financial regulations."
+          name: "Automated Billing",
+          description:
+            "Charging sessions trigger billing automatically so payments are captured consistently and on time."
         },
         {
-          name: "JWT Authentication",
-          description: "Secure token-based authentication system ensuring user data protection and authorized access to charging stations and administrative functions."
+          name: "Secure Customer Access",
+          description:
+            "Users sign in securely so personal data and session history are protected."
         },
         {
-          name: "Role-based Access Control",
-          description: "Granular permission system allowing different access levels for administrators, operators, and end-users with comprehensive audit trails."
+          name: "Admin Roles & Permissions",
+          description:
+            "The platform supports different admin roles so teams can operate safely with the right access levels."
         }
       ],
-      image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979517/payment_oasj8l.png',
-
+      // TODO: Replace with a checkout/payment confirmation UI screenshot or billing history screen
+      image: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979517/payment_oasj8l.png'
     }
   ];
 
   const detailedFeatures = [
     {
       icon: Activity,
-      title: "Real-Time Telemetry System",
-      description: "Our advanced telemetry system continuously monitors and transmits critical charging parameters in real-time.",
+      title: "Live Device Status & Session Tracking",
+      description:
+        "Operators and customers can see charger status and active sessions in real time—no guessing, no waiting.",
       details: [
-        "Voltage monitoring with 0.1V precision accuracy",
-        "Current measurement up to 32A with safety cutoffs",
-        "Temperature tracking across multiple sensor points",
-        "Power consumption calculations and energy efficiency metrics",
-        "Automatic data logging every 5 seconds",
-        "Historical data analysis and trend reporting",
-        "Predictive maintenance alerts based on usage patterns"
+        "Live session status updates",
+        "Start/stop session visibility",
+        "Charging progress tracking",
+        "Session history for reference",
+        "Basic health signals for reliability",
+        "Reduced manual checks for operators",
+        "More clarity for customer support"
       ]
     },
     {
       icon: Smartphone,
-      title: "Remote Control & Management",
-      description: "Complete remote control capabilities allowing users and administrators to manage charging sessions from anywhere.",
+      title: "Customer Dashboard Experience",
+      description:
+        "A clear customer dashboard that makes it easy to understand charging sessions, status, and past activity.",
       details: [
-        "Start/stop charging sessions remotely via web dashboard",
-        "Schedule charging sessions for optimal energy rates",
-        "Set charging limits and time restrictions",
-        "Emergency stop functionality with instant response",
-        "User authentication and session management",
-        "Multi-device support across web and mobile platforms",
-        "Offline mode with automatic sync when reconnected"
+        "Mobile-friendly dashboard design",
+        "Session overview and history",
+        "Clear status indicators",
+        "Simple navigation and layout",
+        "Designed to reduce confusion",
+        "Built for everyday use",
+        "Ready for future feature upgrades"
       ]
     },
     {
       icon: Shield,
-      title: "Advanced Security Framework",
-      description: "Enterprise-grade security measures protecting both the IoT devices and user data throughout the entire system.",
+      title: "Platform Safety & Reliability",
+      description:
+        "Designed to keep chargers stable and reduce downtime by tracking key operational signals.",
       details: [
-        "End-to-end encryption for all data transmission",
-        "Secure device authentication and certificate management",
-        "Regular security audits and vulnerability assessments",
-        "GDPR compliant data handling and storage",
-        "Multi-factor authentication for administrative access",
-        "Intrusion detection and automated threat response",
-        "Secure firmware updates with rollback capabilities"
+        "Operational monitoring signals",
+        "Safer session handling",
+        "Reduced risk of inconsistent states",
+        "Clearer visibility for troubleshooting",
+        "Better uptime through monitoring",
+        "More reliable session records",
+        "Built with scalability in mind"
       ]
     },
     {
       icon: CreditCard,
-      title: "Integrated Payment Processing",
-      description: "Seamless payment integration handling all aspects of charging session billing and financial transactions.",
+      title: "Automated Billing & Payment Capture",
+      description:
+        "Billing and payment capture flows integrated directly into the platform to reduce manual work and missed payments.",
       details: [
-        "Automatic billing based on energy consumption",
-        "Multiple payment methods including cards and digital wallets",
-        "Real-time payment processing with instant confirmation",
-        "Automated invoice generation and email delivery",
-        "Subscription management for regular users",
-        "Detailed transaction history and reporting",
-        "Refund processing and dispute management"
+        "Automated billing based on sessions",
+        "Payment capture workflow",
+        "Clear transaction history",
+        "Reduced manual invoicing effort",
+        "Cleaner records for reconciliation",
+        "Supports refunds/disputes later if needed",
+        "Built for expansion to new pricing models"
       ]
     },
     {
       icon: Bell,
-      title: "Intelligent Notification System",
-      description: "Smart alert system keeping users and administrators informed about charging status and system health.",
+      title: "Operational Alerts & Visibility",
+      description:
+        "Notifications and visibility features that help teams respond quickly when chargers need attention.",
       details: [
-        "Real-time charging status notifications",
-        "Abnormal condition alerts (overheating, power fluctuations)",
-        "Maintenance reminders and service notifications",
-        "Low battery warnings and charging completion alerts",
-        "System downtime notifications with estimated resolution time",
-        "Custom notification preferences and delivery methods",
-        "Integration with email, SMS, and push notification services"
+        "Session event visibility",
+        "Issue signals surfaced to admins",
+        "Reduced support response time",
+        "Clearer operator awareness",
+        "Helps prevent small issues escalating",
+        "Built to expand notification channels",
+        "Improves day-to-day operations"
       ]
     },
     {
       icon: BarChart3,
-      title: "Comprehensive Analytics Dashboard",
-      description: "Powerful analytics platform providing insights into usage patterns, performance metrics, and business intelligence.",
+      title: "Admin Monitoring & Control",
+      description:
+        "An admin dashboard built for monitoring and control—so operators can manage chargers confidently.",
       details: [
-        "Real-time usage statistics and performance metrics",
-        "Energy consumption analysis and cost optimization",
-        "User behavior patterns and peak usage identification",
-        "Revenue tracking and financial reporting",
-        "Predictive analytics for capacity planning",
-        "Custom report generation with data export capabilities",
-        "Integration with business intelligence tools"
+        "Admin overview of charger activity",
+        "Session monitoring and review",
+        "Faster operational decision-making",
+        "Cleaner device visibility by location/station",
+        "Supports operational reporting",
+        "Reduces reliance on manual logs",
+        "Built for scalable fleet management"
       ]
     }
   ];
 
   const implementationPhases = [
     {
-      phase: "Phase 1: Hardware Integration",
+      phase: "Phase 1: Device + Platform Foundations",
       duration: "2 weeks",
-      description: "ESP32 firmware development and sensor integration",
-      deliverables: ["Custom firmware with MQTT communication", "Sensor calibration and testing", "Hardware safety protocols"]
+      description:
+        "Set up the device communication basics and established the platform foundation for tracking sessions reliably.",
+      deliverables: [
+        "Device communication baseline",
+        "Initial session tracking flow",
+        "Operational safety handling"
+      ]
     },
     {
-      phase: "Phase 2: Backend Development",
+      phase: "Phase 2: Core Platform Backend",
       duration: "3 weeks",
-      description: "Spring Boot API and database architecture",
-      deliverables: ["RESTful API endpoints", "MongoDB schema design", "Authentication system"]
+      description:
+        "Built the backend that supports customer accounts, session logging, and platform operations.",
+      deliverables: [
+        "Backend APIs for sessions and users",
+        "Reliable session record storage",
+        "Secure access foundation"
+      ]
     },
     {
-      phase: "Phase 3: Frontend Dashboard",
+      phase: "Phase 3: Customer + Admin Dashboards",
       duration: "2 weeks",
-      description: "React-based user interface and admin panel",
-      deliverables: ["Responsive web dashboard", "Real-time data visualization", "User management interface"]
+      description:
+        "Built dashboards for customers and admins with live session visibility and operational controls.",
+      deliverables: [
+        "Customer dashboard",
+        "Admin dashboard",
+        "Real-time session views"
+      ]
     },
     {
-      phase: "Phase 4: Payment Integration",
+      phase: "Phase 4: Billing & Payments",
       duration: "1 week",
-      description: "Stripe payment processing and billing system",
-      deliverables: ["Payment gateway integration", "Automated billing system", "Invoice generation"]
+      description:
+        "Implemented billing workflows and payment capture so sessions can be monetized without manual work.",
+      deliverables: [
+        "Billing logic integration",
+        "Payment capture flow",
+        "Transaction history view"
+      ]
     },
     {
-      phase: "Phase 5: Testing & Deployment",
+      phase: "Phase 5: Testing & Launch",
       duration: "1 week",
-      description: "System testing and production deployment",
-      deliverables: ["End-to-end testing", "Performance optimization", "Production deployment"]
+      description:
+        "Tested end-to-end flows and stabilized performance for real-world usage.",
+      deliverables: [
+        "End-to-end testing",
+        "Stability and performance checks",
+        "Launch readiness"
+      ]
     },
     {
-      phase: "phase 6"
+      phase: "Phase 6: Post-Launch Improvements",
+      duration: "Ongoing",
+      description:
+        "After launch, we can improve monitoring, reporting, and operational controls based on real usage patterns.",
+      deliverables: [
+        "Continuous improvements",
+        "New dashboard enhancements",
+        "Operational and reporting upgrades"
+      ]
     }
   ];
 
   const challenges = [
     {
-      challenge: "Real-time Data Synchronization",
-      solution: "Implemented MQTT protocol with HiveMQ Cloud for reliable, low-latency communication between IoT devices and backend systems."
+      challenge: "Keeping device updates reliable in real time",
+      solution:
+        "We implemented a real-time communication layer so device status and session updates stay consistent, even with unstable networks."
     },
     {
-      challenge: "Scalable Architecture Design",
-      solution: "Designed microservices architecture using Spring Boot with MongoDB for horizontal scaling and high availability."
+      challenge: "Turning charging activity into clean billing",
+      solution:
+        "We designed session logging and billing flows together so payments can be captured automatically with reliable records."
     },
     {
-      challenge: "Security & Compliance",
-      solution: "Implemented end-to-end encryption, JWT authentication, and GDPR-compliant data handling practices."
+      challenge: "Giving operators a clear admin view",
+      solution:
+        "We built an admin dashboard focused on monitoring and control, reducing reliance on manual device checks and scattered logs."
     },
     {
-      challenge: "Payment Processing Integration",
-      solution: "Integrated Stripe payment gateway with automated billing, invoice generation, and secure transaction processing."
+      challenge: "Protecting platform access and sensitive data",
+      solution:
+        "We added secure access and role-based permissions so customers and admins only see what they’re supposed to."
     }
   ];
 
@@ -302,21 +362,24 @@ const SlackerIOT = () => {
     <>
       <Helmet>
         {/* ✅ Basic SEO Meta */}
-        < title > Slacker IOT Case Study | EV Dashboard Deployment by ShiftDeploy</title >
+        <title>Slacker IoT Case Study | EV Charging Platform Built End-to-End</title>
         <meta
           name="description"
-          content="See how ShiftDeploy helped Slacker IOT build and deploy a powerful EV dashboard with real-time telemetry, IoT integration, and cloud infrastructure."
+          content="See how ShiftDeploy built an end-to-end EV charging platform for Slacker IoT, including the customer dashboard, admin controls, and automated billing flows."
         />
         <meta
           name="keywords"
-          content="Slacker IOT, EV dashboard, IoT deployment, cloud infrastructure, ShiftDeploy case study"
+          content="Slacker IoT, EV charging platform, charging dashboard, admin monitoring, automated billing, ShiftDeploy case study"
         />
 
         {/* ✅ Open Graph / Social Preview */}
-        <meta property="og:title" content="Slacker IOT Case Study | EV Dashboard Deployment by ShiftDeploy" />
+        <meta
+          property="og:title"
+          content="Slacker IoT Case Study | EV Charging Platform Built End-to-End"
+        />
         <meta
           property="og:description"
-          content="See how ShiftDeploy helped Slacker IOT build and deploy a powerful EV dashboard with real-time telemetry, IoT integration, and cloud infrastructure."
+          content="See how ShiftDeploy built an end-to-end EV charging platform for Slacker IoT, including the customer dashboard, admin controls, and automated billing flows."
         />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://www.shiftdeploy.com/CaseStudies/SlackerIOT" />
@@ -324,21 +387,25 @@ const SlackerIOT = () => {
 
         {/* ✅ Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Slacker IOT Case Study | EV Dashboard Deployment by ShiftDeploy" />
+        <meta
+          name="twitter:title"
+          content="Slacker IoT Case Study | EV Charging Platform Built End-to-End"
+        />
         <meta
           name="twitter:description"
-          content="Learn how we helped Slacker IOT build a real-time EV dashboard with full IoT and cloud integration."
+          content="See how ShiftDeploy built an end-to-end EV charging platform with live device tracking, automated billing, and admin monitoring."
         />
         {/* <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" /> */}
-      </Helmet >
-      {showLoader ? <ShiftDeployLoader /> : (
-        <div className='bg-gray-50 w-full'>
+      </Helmet>
 
+      {showLoader ? (
+        <ShiftDeployLoader />
+      ) : (
+        <div className='bg-gray-50 w-full'>
           <Navigation isDarkBg={true} />
 
-
           {/* Hero Section */}
-          <section className="relative  bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center py-20 sm:py-10">
+          <section className="relative bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center py-20 sm:py-10">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-30">
               <div
@@ -351,19 +418,18 @@ const SlackerIOT = () => {
                 }}
               ></div>
             </div>
-  
 
-            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-20 pt-28 sm:pt-32  md:pt-32">
-              <div
-                className="text-center"
-              >
+            <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-20 pt-28 sm:pt-32 md:pt-32">
+              <div className="text-center">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: 0.2 }}
                   className="inline-flex items-center space-x-2 bg-primaryOrange backdrop-blur-sm rounded-full px-6 py-3 mb-8"
                 >
-                  <span className="text-white font-semibold text-xs sm:text-lg">Detailed Case Study - Slacker IOT</span>
+                  <span className="text-white font-semibold text-xs sm:text-lg">
+                    Detailed Case Study - Slacker IoT
+                  </span>
                 </motion.div>
 
                 <motion.h1
@@ -372,108 +438,118 @@ const SlackerIOT = () => {
                   transition={{ duration: 0.3, delay: 0.3 }}
                   className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-8 leading-tight"
                 >
-                  Smart EV Charger{" "}
-                  <span className="text-primaryOrange">
-                    IoT Platform
-                  </span>
+                  An end-to-end{" "}
+                  <span className="text-primaryOrange">EV charging platform</span>
                   <br />
-                  Deep Dive Analysis
+                  built from scratch
                 </motion.h1>
 
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.4 }}
-                  className="text-lg sm:text-2xl  text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+                  className="text-lg sm:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
                 >
-                  A comprehensive technical breakdown of the full-stack IoT solution developed for{" "}
-                  <span className="text-primaryOrange font-semibold">Slacker IoT</span>{" "}
-                  by ShiftDeploy
+                  ShiftDeploy built Slacker IoT a complete EV charging platform,covering
+                  the customer dashboard, admin monitoring and control, and automated billing flows.
                 </motion.p>
               </div>
             </div>
           </section>
 
           {/* Project Overview */}
-          <section className=" pt-10 sm:pt-20 bg-gray-50">
+          <section className="pt-10 sm:pt-20 bg-gray-50">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div
-                
-                className="text-center mb-10 sm:mb-16"
-              >
+              <div className="text-center mb-10 sm:mb-16">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
                   Project Overview
                 </h2>
                 <p className="sm:text-xl text-gray-700 leading-relaxed p-2">
-                  ShiftDeploy was tasked with developing a comprehensive IoT platform for Slacker IoT,
-                  enabling smart EV charging with real-time monitoring, remote control capabilities,
-                  and integrated payment processing. This project required expertise across embedded
-                  systems, cloud infrastructure, web development, and payment integration.
+                  ShiftDeploy partnered with Slacker IoT to build an end-to-end EV charging platform from scratch.
+                  The focus was practical: live device status and session tracking, automated billing and payment capture,
+                  and a clear admin dashboard for monitoring and control.
                 </p>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-16  mb-20 p-2">
-                <div
-                >
-                  <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">Project Scope</h3>
+              <div className="grid lg:grid-cols-2 gap-16 mb-20 p-2">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">
+                    Project Scope
+                  </h3>
                   <div className="space-y-4">
                     <div className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
-                      <p className="text-gray-700">Full-stack IoT platform development from hardware to user interface</p>
+                      <p className="text-gray-700">
+                        Built an end-to-end platform from device to dashboard
+                      </p>
                     </div>
                     <div className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
-                      <p className="text-gray-700">Real-time telemetry system with MQTT communication protocol</p>
+                      <p className="text-gray-700">
+                        Live device status and session tracking
+                      </p>
                     </div>
                     <div className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
-                      <p className="text-gray-700">Secure cloud backend with scalable database architecture</p>
+                      <p className="text-gray-700">
+                        Admin dashboard for monitoring and control
+                      </p>
                     </div>
                     <div className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
-                      <p className="text-gray-700">Payment processing integration with automated billing</p>
+                      <p className="text-gray-700">
+                        Automated billing and payment capture
+                      </p>
                     </div>
                     <div className="flex items-start space-x-3">
                       <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
-                      <p className="text-gray-700">Responsive web dashboard with real-time monitoring</p>
+                      <p className="text-gray-700">
+                        Customer dashboard for session visibility and history
+                      </p>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8">
                     <div className="text-center">
-                      <div className="text-lg sm:text-xl xl:text-2xl font-bold text-primaryOrange mb-2">9 weeks</div>
-                      <div className="text-gray-600">Development Time</div>
+                      <div className="text-lg sm:text-xl xl:text-2xl font-bold text-primaryOrange mb-2">
+                        9 weeks
+                      </div>
+                      <div className="text-gray-600">Delivery Window</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-lg sm:text-xl xl:text-2xl font-bold text-slate-800 mb-2">5 phases</div>
-                      <div className="text-gray-600">Implementation</div>
+                      <div className="text-lg sm:text-xl xl:text-2xl font-bold text-slate-800 mb-2">
+                        5 phases
+                      </div>
+                      <div className="text-gray-600">Milestones</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-lg sm:text-xl xl:text-2xl font-bold text-primaryOrange mb-2">99.9%</div>
-                      <div className="text-gray-600">System Uptime</div>
+                      <div className="text-lg sm:text-xl xl:text-2xl font-bold text-primaryOrange mb-2">
+                        Live
+                      </div>
+                      <div className="text-gray-600">Tracking</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-lg sm:text-xl xl:text-2xl font-bold text-slate-800 mb-2">24/7</div>
-                      <div className="text-gray-600">Monitoring</div>
+                      <div className="text-lg sm:text-xl xl:text-2xl font-bold text-slate-800 mb-2">
+                        Built
+                      </div>
+                      <div className="text-gray-600">to Scale</div>
                     </div>
                   </div>
                 </div>
 
-                <div
-                  className="h-fit "
-                >
-                  <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">Key Statistics</h3>
-
-
-                  <div style={{
-                    backgroundImage: `url('https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979478/key_stats_u8ych3.png')`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'left',
-                    backgroundRepeat: 'no-repeat',
-                  }} className="image-placeholder w-full h-52 sm:h-64 mb-6 flex items-center justify-center text-gray-500">
-
-                  </div>
-
+                <div className="h-fit">
+                  <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">
+                    Key Statistics
+                  </h3>
+                  <div
+                    style={{
+                      backgroundImage: `url('https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979478/key_stats_u8ych3.png')`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'left',
+                      backgroundRepeat: 'no-repeat',
+                    }}
+                    className="image-placeholder w-full h-52 sm:h-64 mb-6 flex items-center justify-center text-gray-500"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -490,36 +566,34 @@ const SlackerIOT = () => {
                 className="text-center mb-16"
               >
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
-                  Technical Architecture Deep Dive
+                  Behind the Platform
                 </h2>
                 <p className="sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-                  Our solution leverages cutting-edge technologies across the entire stack,
-                  from embedded hardware to cloud infrastructure and user interfaces.
+                  The platform was designed to keep charger status visible in real time, simplify operations for admins,
+                  and automate billing so the business can scale with less manual work.
                 </p>
               </motion.div>
 
               <div className="space-y-16">
                 {techDetails.map((category, index) => (
-                  <div
-                    key={index}
-                    className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg"
-                  >
-                    {/* Image Placeholder */}
-
+                  <div key={index} className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg">
                     <div className="flex items-center space-x-4 mb-4 sm:mb-8">
                       <div className="w-10 sm:w-12 md:w-16 h-10 sm:h-12 md:h-16 bg-primaryBlue rounded-xl flex items-center justify-center">
                         <category.icon className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
                       </div>
-                      <h3 className="text-lg sm:text-2xl font-bold text-primaryBlue">{category.category}</h3>
+                      <h3 className="text-lg sm:text-2xl font-bold text-primaryBlue">
+                        {category.category}
+                      </h3>
                     </div>
 
-                    <div style={{
-                      backgroundImage: `url(${category.image})`,
-                      backgroundSize: `${category.size || 'cover'}`,
-                      backgroundPosition: 'center',
-                    }} className="image-placeholder w-full h-32 sm:h-60 md:h-80  rounded-xl mb-6 flex items-center justify-center text-gray-500">
-
-                    </div>
+                    <div
+                      style={{
+                        backgroundImage: `url(${category.image})`,
+                        backgroundSize: `${category.size || 'cover'}`,
+                        backgroundPosition: 'center',
+                      }}
+                      className="image-placeholder w-full h-32 sm:h-60 md:h-80 rounded-xl mb-6 flex items-center justify-center text-gray-500"
+                    ></div>
 
                     <div className="space-y-6">
                       {category.technologies.map((tech, techIndex) => (
@@ -535,7 +609,6 @@ const SlackerIOT = () => {
             </div>
           </section>
 
-
           {/* Detailed Features */}
           <section className="py-20 bg-gray-50">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -550,21 +623,15 @@ const SlackerIOT = () => {
                   Feature Deep Dive
                 </h2>
                 <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                  Each feature was carefully designed and implemented to provide maximum value
-                  and reliability for both end-users and system administrators.
+                  Each feature was built to make operations smoother for admins and the experience clearer for customers.
                 </p>
               </motion.div>
 
               <div className="space-y-10 sm:space-y-16">
                 {detailedFeatures.map((feature, index) => (
-                  <div
-                    key={index}
-         
-                    className="bg-white shadow-md rounded-2xl p-6 sm:p-8"
-                  >
+                  <div key={index} className="bg-white shadow-md rounded-2xl p-6 sm:p-8">
                     <div className="flex items-start sm:space-x-6">
-
-                      <div className="w-10 sm:w-12 md:w-16 h-10 md:h-16 sm:h-12 bg-primaryBlue rounded-2xl sm:flex items-center justify-center flex-shrink-0  hidden">
+                      <div className="w-10 sm:w-12 md:w-16 h-10 md:h-16 sm:h-12 bg-primaryBlue rounded-2xl sm:flex items-center justify-center flex-shrink-0 hidden">
                         <feature.icon className="w-5 sm:w-8 h-5 sm:h-8 text-white" />
                       </div>
 
@@ -589,7 +656,7 @@ const SlackerIOT = () => {
           </section>
 
           {/* Implementation Timeline */}
-          <section className="py-20 bg-gray-50 max-w-6xl  mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="py-20 bg-gray-50 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -601,8 +668,7 @@ const SlackerIOT = () => {
                 Implementation Timeline
               </h2>
               <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                Our structured approach ensured timely delivery while maintaining high quality
-                standards throughout the development process.
+                A structured delivery approach to ship a full platform—from devices to dashboards and billing.
               </p>
             </motion.div>
 
@@ -612,26 +678,22 @@ const SlackerIOT = () => {
                   {index == 5 ? (
                     <div className="bg-primaryBlue rounded-2xl p-6 sm:p-10 shadow-xl text-left text-white space-y-6">
                       <h2 className="text-3xl md:text-4xl font-bold">
-                        Ongoing Store Maintenance & Support
+                        Ongoing Platform Improvements (Optional)
                       </h2>
-                      <p className=" md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
-                        Keep your eCommerce platform fast, secure, and up to date with continuous
-                        monitoring, bug fixes, and feature enhancements. Focus on growth while
-                        we handle the maintenance.
+                      <p className="md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
+                        After launch, we can improve reporting, monitoring, and admin controls based on real usage and support needs.
                       </p>
                       <Link
                         to="/ContactUs"
                         className="inline-flex items-center px-4 sm:px-8 py-4 rounded-xl font-semibold bg-primaryOrange hover:bg-toOrange text-white sm:text-lg shadow-lg hover:shadow-2xl transition-all duration-300"
                       >
-                        <span>Let’s Maintain Your Store</span>
+                        <span>Talk About Next Steps</span>
                         <ArrowRight className="w-6 h-6 ml-2" />
                       </Link>
                     </div>
-
                   ) : (
-
                     <div className="space-y-6 bg-white rounded-2xl p-6 sm:p-8 shadow-md sm:hover:shadow-xl transition-all duration-300">
-                      <div className='flex justify-between items-center'>
+                      <div className="flex justify-between items-center">
                         <div className="w-10 sm:w-12 h-10 sm:h-12 bg-primaryOrange rounded-xl flex items-center justify-center flex-shrink-0">
                           <span className="text-white font-bold text-lg">{index + 1}</span>
                         </div>
@@ -645,7 +707,7 @@ const SlackerIOT = () => {
 
                         <div className="space-y-2">
                           <h4 className="text-lg font-semibold text-primaryBlue mb-3">Key Deliverables:</h4>
-                          {phase.deliverables.map((deliverable, deliverableIndex) => (
+                          {phase.deliverables?.map((deliverable, deliverableIndex) => (
                             <div key={deliverableIndex} className="flex items-start space-x-3">
                               <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange mt-0.5 flex-shrink-0" />
                               <p className="text-sm sm:text-md text-gray-700">{deliverable}</p>
@@ -658,8 +720,6 @@ const SlackerIOT = () => {
                 </>
               ))}
             </div>
-
-
           </section>
 
           {/* Challenges & Solutions */}
@@ -676,8 +736,7 @@ const SlackerIOT = () => {
                   Challenges & Solutions
                 </h2>
                 <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                  Every complex project presents unique challenges. Here's how we overcame
-                  the key technical and business obstacles during development.
+                  Real-time platforms need clarity, reliability, and simple operations—here’s how we made that happen.
                 </p>
               </motion.div>
 
@@ -689,7 +748,7 @@ const SlackerIOT = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="bg-white rounded-2xl p-6 sm:p-8 shadow-md"
+                    className={`bg-white rounded-2xl p-6 sm:p-8 shadow-md ${index === 0 || index === 3 ? 'lg:col-span-2' : ''}`}
                   >
                     <div className="space-y-6">
                       <div>
@@ -713,7 +772,6 @@ const SlackerIOT = () => {
             </div>
           </section>
 
-
           {/* Results & Impact */}
           <section className="py-20 bg-primaryBlue">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -724,25 +782,21 @@ const SlackerIOT = () => {
                 transition={{ duration: 0.3 }}
                 className="text-center mb-16"
               >
-                {/* Image Placeholder for Results Graphic */}
-                {/* <div className="image-placeholder w-full h-64 bg-gray-200/30 rounded-xl mb-10 flex items-center justify-center text-white">
-                  Results Infographic
-                </div> */}
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-8">
                   Results & Impact
                 </h2>
                 <p className="sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                  The delivered solution exceeded expectations, providing Slacker IoT with a
-                  robust, scalable platform that supports their business growth and customer satisfaction.
+                  Slacker IoT launched with a full platform that keeps device activity visible, billing automated,
+                  and operations manageable through an admin dashboard.
                 </p>
               </motion.div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
                 {[
-                  { metric: "99.9%", label: "System Uptime", icon: TrendingUp },
-                  { metric: "< 100ms", label: "Response Time", icon: Zap },
-                  { metric: "100%", label: "Payment Success", icon: CreditCard },
-                  { metric: "24/7", label: "Monitoring", icon: Shield }
+                  { metric: "Live", label: "device status + session tracking", icon: Activity },
+                  { metric: "Automated", label: "billing + payment capture", icon: CreditCard },
+                  { metric: "Admin", label: "monitoring and control dashboard", icon: Monitor },
+                  { metric: "Always-on", label: "operational visibility", icon: Shield }
                 ].map((result, index) => (
                   <motion.div
                     key={index}
@@ -775,15 +829,21 @@ const SlackerIOT = () => {
                     <ul className="space-y-3">
                       <li className="flex items-start space-x-3">
                         <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                        <p className="text-sm sm:text-md text-gray-300">Reduced operational costs by 40% through automation</p>
+                        <p className="text-sm sm:text-md text-gray-300">
+                          Centralized admin dashboard for monitoring and control
+                        </p>
                       </li>
                       <li className="flex items-start space-x-3">
                         <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                        <p className="text-sm sm:text-md text-gray-300">Increased customer satisfaction with real-time monitoring</p>
+                        <p className="text-sm sm:text-md text-gray-300">
+                          Automated billing and payment capture to reduce manual effort
+                        </p>
                       </li>
                       <li className="flex items-start space-x-3">
                         <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                        <p className="text-sm sm:text-md text-gray-300">Scalable platform supporting business growth</p>
+                        <p className="text-sm sm:text-md text-gray-300">
+                          Live visibility into sessions for faster support and operations
+                        </p>
                       </li>
                     </ul>
                   </div>
@@ -792,15 +852,21 @@ const SlackerIOT = () => {
                     <ul className="space-y-3">
                       <li className="flex items-start space-x-3">
                         <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                        <p className="text-sm sm:text-md text-gray-300">Seamless charging experience with mobile control</p>
+                        <p className="text-sm sm:text-md text-gray-300">
+                          Live session tracking and clear charging status
+                        </p>
                       </li>
                       <li className="flex items-start space-x-3">
                         <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                        <p className="text-sm sm:text-md text-gray-300">Transparent billing and automated payments</p>
+                        <p className="text-sm sm:text-md text-gray-300">
+                          Transparent billing experience through automated payment flows
+                        </p>
                       </li>
                       <li className="flex items-start space-x-3">
                         <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
-                        <p className="text-sm sm:text-md text-gray-300">Real-time charging status and notifications</p>
+                        <p className="text-sm sm:text-md text-gray-300">
+                          A smoother dashboard experience for checking session history
+                        </p>
                       </li>
                     </ul>
                   </div>
@@ -817,27 +883,25 @@ const SlackerIOT = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3 }}
-                className=" sm:p-12 text-center"
+                className="sm:p-12 text-center"
               >
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-8">
-                  Ready to Build Your IoT Platform?
+                  Building an EV or IoT Platform?
                 </h2>
                 <p className="sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-                  Let ShiftDeploy transform your IoT vision into reality. Our team of experts
-                  specializes in building scalable, secure, and innovative IoT solutions that
-                  drive business growth and customer satisfaction.
+                  If you need real-time device tracking, admin control, and automated billing flows, we can help you ship a platform that’s built to scale.
                 </p>
                 <div className='flex justify-center items-center sm:flex-row flex-col gap-6 w-full'>
                   <Link
                     to={"/ContactUs"}
                     className="bg-primaryOrange hover:bg-toOrange text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit"
                   >
-                    <span>Lets Start Your Project</span>
+                    <span>Plan Your Platform</span>
                     <ArrowRight className="w-6 h-6" />
                   </Link>
                   <Link
                     to={"/missions"}
-                    className="bg-white sm:hover:bg-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg  sm:shadow-lg transition-all duration-300 w-fit border border-primaryBlue"
+                    className="bg-white sm:hover:bg-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit border border-primaryBlue"
                   >
                     <span>View More Projects</span>
                     <ArrowRight className="w-6 h-6" />
@@ -850,8 +914,6 @@ const SlackerIOT = () => {
           <Footer />
         </div>
       )}
-
-
     </>
   );
 };

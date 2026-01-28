@@ -6,12 +6,13 @@ function TestimonialsSection() {
   const sectionRef = useRef(null)
 
 
-  const trustIndicators = [
-    { metric: "50+", description: "successful deployments" },
-    { metric: "99.9%", description: "uptime average across client projects" },
-    { metric: "Thousands+", description: "in client funding raised after our optimizations" },
-    { metric: "Zero", description: "security breaches in 2+ years" },
-  ]
+const trustIndicators = [
+  { metric: "10+", description: "projects shipped end-to-end" },
+  { metric: "30%+", description: "typical speed improvements delivered" },
+  { metric: "Hands-on", description: "founder-led execution on every project" },
+  { metric: "100%", description: "client projects delivered as agreed" },
+]
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,22 +51,16 @@ function TestimonialsSection() {
             <div
             >
               <blockquote className="sm:text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl">
-                "We were spending a fortune every month just to keep our old store running. Their team built us a modern, high-performance e-commerce platform and deployed it on Vercel with a smart one-time setup. Now our platform runs flawlessly without monthly server bills, it’s been a game-changer for us."
+                "Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is outstanding!"
               </blockquote>
 
               <div className="flex items-center justify-center">
-                <img
-                  src={"https://i.pravatar.cc/80?img=12"}
-                  alt={"Mohammad Ali"}
-                  className="w-10 sm:w-16 h-10 sm:h-16 rounded-full mr-4"
-                />
-                <div className="text-left">
-                  <div className="font-semibold text-gray-900 text-lg">Ahmed Khan</div>
-                  <div className="text-gray-600">
-                    CEO K2Traders
-                  </div>
-                </div>
+              <img src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE" alt="Kamran Abbas" className="w-12 sm:w-15 h-12 sm:h-15 rounded-full mr-4" />
+              <div className="text-left">
+                <div className="font-semibold text-gray-900 sm:text-lg"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/" target="__blank">Kamran Abbas</a></div>
+                <div className="text-gray-600">Chief Strategist at Bullseye Investment Private Limited</div>
               </div>
+            </div>
             </div>
           </div>
 
@@ -80,7 +75,7 @@ function TestimonialsSection() {
               className={`text-center transition-all duration-700 delay-${index * 100} transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                 }`}
             >
-              <div className="text-3xl md:text-5xl font-bold text-primaryOrange mb-2">{indicator.metric}</div>
+              <div className="text-3xl md:text-4xl font-bold text-primaryOrange mb-2">{indicator.metric}</div>
               <div className="text-gray-600">{indicator.description}</div>
             </div>
           ))}
