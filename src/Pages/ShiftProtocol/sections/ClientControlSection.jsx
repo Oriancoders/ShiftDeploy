@@ -140,15 +140,13 @@ function ClientControlSection() {
               ))}
             </div>
             <blockquote className="sm:text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl mx-auto">
-              "The Shift Protocol gave us something we'd never experienced with a technical partner: complete
-              confidence. We knew exactly what was happening, when it would be done, and that we could trust the
-              outcome. No surprises, no vendor lock-in, no regrets."
+              "Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is outstanding!"
             </blockquote>
             <div className="flex items-center justify-center">
-              <img src="https://i.pravatar.cc/80?img=28" alt="Sarah Chen" className="w-12 sm:w-15 h-12 sm:h-15 rounded-full mr-4" />
+              <img src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE" alt="Kamran Abbas" className="w-12 sm:w-15 h-12 sm:h-15 rounded-full mr-4" />
               <div className="text-left">
-                <div className="font-semibold text-gray-900 sm:text-lg">Sarah Chen</div>
-                <div className="text-gray-600">CTO @ GrowthLabs (Series A)</div>
+                <div className="font-semibold text-gray-900 sm:text-lg"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/" target="__blank">Kamran Abbas</a></div>
+                <div className="text-gray-600">Chief Strategist at Bullseye Investment Private Limited</div>
               </div>
             </div>
           </div>

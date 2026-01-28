@@ -171,11 +171,11 @@ function CommunicationRitualsSection() {
               Join Us On Slack 
             </a >
 
-            <Link to={"/shift-protocol"}
+            <Link to={"/services"}
 
               className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
             >
-              <span>View Shitft Protocol</span>
+              <span>Our Services</span>
             </Link>
           </div>
         </div>
