@@ -27,7 +27,7 @@ const TrustStrip = ({ speed = 28 }) => {
   const logos = [...LOGO_URLS, ...LOGO_URLS];
 
   return (
-    <div className="w-full overflow-hidden bg-gray-50 ">
+    <div className="w-full overflow-hidden bg-gray-50 py-20">
         <h1 className="text-3xl sm:text-4xl font-bold text-primaryBlue mb-6 leading-tight text-center px-6">Our Circle of Trust & Technology Excellence</h1>
       {/* Inline styles for keyframes so you don't need to change tailwind config */}
       <style>{`

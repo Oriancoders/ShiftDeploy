@@ -99,7 +99,7 @@ function ServiceCategoriesSection() {
           </h2>
           <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto">
             ShiftDeploy is built around four clear outcomes: speed, conversions, strong foundations, and ongoing care.
-            Pick what you need right now—we’ll handle the execution end-to-end.
+            Pick what you need right now. We’ll handle the execution end-to-end.
           </p>
         </div>
 

@@ -36,11 +36,11 @@ function HeroSection() {
           >
             <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
               ShiftDeploy helps businesses improve website speed, conversions, and stability without long timelines or
-              vague “redesigns”. Choose the model you need—{" "}
+              vague “redesigns”. Choose the model you need <br/>{" "}
               <span className="text-orange-600 font-semibold">
                 ShiftSpeed™, ShiftConvert™, ShiftBuild™, or ShiftFlow™
-              </span>
-              —and we handle the execution end-to-end.
+              </span><br/>
+              We handle the execution end-to-end.
             </p>
           </div>
 

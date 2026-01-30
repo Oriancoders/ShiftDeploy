@@ -15,7 +15,7 @@ const FAQSection = lazy(() => import('./sections/FAQSection'));
 const Footer = lazy(() => import('../../components/Footer')); // Lazy loading footer saves initial bytes
 
 const Toolkit_Landing = () => {
-  
+
   // ✅ Simple Scroll to Top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -25,37 +25,44 @@ const Toolkit_Landing = () => {
     <>
       <Helmet>
         {/* Basic SEO */}
-        <title>Deploy Toolkit | ShiftDeploy</title>
+        <title>Services | ShiftDeploy</title>
         <meta
           name="description"
-          content="Explore ShiftDeploy's Deploy Toolkit — solutions for CI/CD, cloud, and DevOps challenges. We help builders overcome deployment hurdles and launch faster."
+          content="Explore ShiftDeploy’s 4 service tracks: performance speed fixes, CRO & UX improvements, high-performance builds, and ongoing optimization. Clear outcomes, fast execution, and full ownership."
         />
         <meta
           name="keywords"
-          content="CI/CD solutions, DevOps deployment, cloud infrastructure, deployment toolkit, ShiftDeploy"
+          content="website performance optimization, core web vitals, CRO, UX optimization, web development agency, ecommerce development, website maintenance, ShiftDeploy services, Fast website solutions, conversion rate optimization, growth-ready web builds"
         />
-        <link
-          rel="canonical"
-          href="https://www.shiftdeploy.com/deploy-toolkit"
-        />
+        <link rel="canonical" href="https://www.shiftdeploy.com/services" />
 
         {/* Open Graph / Social */}
-        <meta property="og:title" content="Deploy Toolkit | ShiftDeploy" />
+        <meta
+          property="og:title"
+          content="Services | ShiftDeploy"
+        />
         <meta
           property="og:description"
-          content="Solve your CI/CD, cloud, and DevOps deployment challenges with ShiftDeploy's expert toolkit."
+          content="4 service tracks to help you grow: Speed (performance), Convert (CRO & UX), Build (new websites), and Flow (ongoing optimization)."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.shiftdeploy.com/deploy-toolkit" />
+        {/* Optional: add if you have a real banner */}
+        {/* <meta property="og:image" content="https://www.shiftdeploy.com/og-services.jpg" /> */}
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Deploy Toolkit | ShiftDeploy" />
+        <meta
+          name="twitter:title"
+          content="Services | ShiftDeploy"
+        />
         <meta
           name="twitter:description"
-          content="Solve your CI/CD, cloud, and DevOps deployment challenges with ShiftDeploy's expert toolkit."
+          content="Speed, CRO & UX, new builds, and ongoing optimization. outcomes-first work for businesses that want growth without complexity."
         />
+
       </Helmet>
+
 
       <div className="w-full overflow-x-hidden">
         {/* 1. Navigation loads instantly */}
@@ -66,14 +73,16 @@ const Toolkit_Landing = () => {
 
         {/* 3. The rest loads in background */}
         <Suspense fallback={<ShiftDeployLoader />}>
-            <ServiceCategoriesSection />
-            <WhatWeSolveSection />
-            <TestimonialsSection />
-            <FinalCTASection />
-            <FAQSection />
-             <Footer />
+          <ServiceCategoriesSection />
+          <WhatWeSolveSection />
+          <TestimonialsSection />
+          <FinalCTASection />
+          <FAQSection />
         </Suspense>
+
+
       </div>
+      <Footer />
     </>
   );
 };
