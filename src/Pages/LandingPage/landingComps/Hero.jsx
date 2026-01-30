@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import CursorFollower from "../../../utils/CursorFollower";
 import { Link } from "react-router-dom";
 import { ContextAPI } from "../../../GlobalProvider/ContextAPI";
@@ -33,132 +33,168 @@ const Hero = () => {
 
 
   return (
-    <section
-      onMouseMove={handleMouseMove}
-      className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12"
-    >
-      <motion.div
-        style={{ x: scrwidth > 660 ? moveX : 0, y: scrwidth > 660 ? moveY : 0 }}
-        className="absolute inset-0 opacity-30"
+    <>
+
+      <section
+        onMouseMove={handleMouseMove}
+        className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden  pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12"
       >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 20% 80%, #4361EE 1px, transparent 1px),
+
+        <div className="flex sm:items-center">
+          <motion.div
+            style={{ x: scrwidth > 660 ? moveX : 0, y: scrwidth > 660 ? moveY : 0 }}
+            className="absolute inset-0 opacity-30"
+          >
+            <div
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `radial-gradient(circle at 20% 80%, #4361EE 1px, transparent 1px),
                            radial-gradient(circle at 80% 20%, #F76707 1px, transparent 1px),
                            radial-gradient(circle at 40% 40%, #4361EE 1px, transparent 1px)`,
-            backgroundSize: "100px 100px",
-            transform: scrwidth > 660 ? moveX : 0,
-            y: scrwidth > 660 ? moveY : 0,
-          }}
-        ></div>
-      </motion.div>
+                backgroundSize: "100px 100px",
+                transform: scrwidth > 660 ? moveX : 0,
+                y: scrwidth > 660 ? moveY : 0,
+              }}
+            ></div>
+          </motion.div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 xl:gap-16 sm:items-center">
-          <div className="flex flex-col lg:items-start sm:items-center">
-            <CursorFollower
-              text={
-                <p className="flex items-center justify-center gap-x-2 italic">
-                  Deploy <ArrowRight size={16} /> Scale <ArrowRight size={16} />{" "}
-                  Succeed
-                </p>
-              }
-              className=" w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue  px-6 py-2 rounded-full text-white"
-              textClassName="text-white font-semibold text-sm lg:text-base "
-              gradientFrom="#f76707"
-              gradientTo="#0B1D30"
-              circleSize={100}
-            />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 xl:gap-16 sm:items-center">
+              <div className="flex flex-col lg:items-start sm:items-center">
+                <CursorFollower
+                  text={
+                    <p className="flex items-center justify-center gap-x-2 italic">
+                      Deploy <ArrowRight size={16} /> Scale <ArrowRight size={16} />{" "}
+                      Succeed
+                    </p>
+                  }
+                  className=" w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue  px-6 py-2 rounded-full text-white"
+                  textClassName="text-white font-semibold text-sm lg:text-base "
+                  gradientFrom="#f76707"
+                  gradientTo="#0B1D30"
+                  circleSize={100}
+                />
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-              className="text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left"
-            >
-              <h1>
-                <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                  Optimizing Products
-                </span>
-                <br />
-                <span className="text-primaryOrange">To Perform</span>
-                <br />
-                <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                  Under Pressure
-                </span>
-              </h1>
-            </motion.div>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
+                  className="text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left"
+                >
+                  <h1>
+                    <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
+                      Optimizing Products
+                    </span>
+                    <br />
+                    <span className="text-primaryOrange">To Perform</span>
+                    <br />
+                    <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
+                      Under Pressure
+                    </span>
+                  </h1>
+                </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
-              className="text-xl   mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0 lg:text-left sm:text-center text-left text-gray-700"
-            >
-              Get a free performance audit to uncover speed and conversion issues before they cost you customers.
-            </motion.p>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
+                  className="text-xl   mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0 lg:text-left sm:text-center text-left text-gray-700"
+                >
+                  Get a free performance audit to uncover speed and conversion issues before they cost you customers.
+                </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 sm:mb-16 px-4 sm:px-0">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 sm:mb-16 px-4 sm:px-0">
+                  <motion.div
+                    initial={{ opacity: 0, y: 60 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.3 }}
+                  >
+                    <button
+                      type="button"
+                      onClick={scrollToProblemSolving}
+                      className="bg-primaryOrange border-2 border-primaryOrange hover:border-toOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
+                    >
+                      Get Free Audit
+                    </button>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 60 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: 0.6 }}
+                  >
+                    <Link
+                      to={"/missions"}
+                      className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+                    >
+                      View Missions Completed
+                    </Link>
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* Right content - Enhanced 3D Material Prototype */}
+
               <motion.div
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: 60 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
+                className="relative mt-8 lg:mt-0 px-4 sm:px-0"
               >
-                <button
-                  type="button"
-                  onClick={scrollToProblemSolving}
-                  className="bg-primaryOrange border-2 border-primaryOrange hover:border-toOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
-                >
-                  Get Free Audit
-                </button>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.6 }}
-              >
-                <Link
-                  to={"/missions"}
-                  className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
-                >
-                  View Missions Completed
-                </Link>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Right content - Enhanced 3D Material Prototype */}
-
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3, delay: 0.3 }}
-            className="relative mt-8 lg:mt-0 px-4 sm:px-0"
-          >
-            <img
-              // 1. Define the versions available
-              srcSet={`
+                <img
+                  // 1. Define the versions available
+                  srcSet={`
     https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_600/v1769118309/ChatGPT_Image_Jan_23_2026_02_43_24_AM_ch39qy.png 600w,
     https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1769118309/ChatGPT_Image_Jan_23_2026_02_43_24_AM_ch39qy.png 1200w
   `}
-              // 2. Tell browser how wide the image will be on screen
-              // "On mobile, it takes up 100% of screen. On desktop, cap it at 1200px."
-              sizes="(max-width: 768px) 100vw, 1200px"
-              // 3. Fallback for old browsers
-              
-              src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1769118309/ChatGPT_Image_Jan_23_2026_02_43_24_AM_ch39qy.png"
-              alt="3D Material Prototype Illustration"
-              className="w-full h-auto rounded-xl"
-              // 4. Performance Boosters
-              fetchPriority="high"
-              loading="eager"
-            />
-          </motion.div>
+                  // 2. Tell browser how wide the image will be on screen
+                  // "On mobile, it takes up 100% of screen. On desktop, cap it at 1200px."
+                  sizes="(max-width: 768px) 100vw, 1200px"
+                  // 3. Fallback for old browsers
+
+                  src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1769118309/ChatGPT_Image_Jan_23_2026_02_43_24_AM_ch39qy.png"
+                  alt="3D Material Prototype Illustration"
+                  className="w-full h-auto rounded-xl"
+                  // 4. Performance Boosters
+                  fetchPriority="high"
+                  loading="eager"
+                />
+              </motion.div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+
+        {/* Client Testimonial */}
+        <div
+          className={` px-6`}
+        >
+          <div className="sm:bg-white rounded-3xl p-6 sm:p-12 shadow-md text-center max-w-6xl mx-auto">
+            <motion.h2 className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6">
+                        What
+                        <span className="text-primaryOrange pl-3">Others Think </span>About Us
+                      </motion.h2>
+            <div className="flex justify-center mb-6">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-6 h-6 text-yellow-500 fill-current" />
+              ))}
+            </div>
+            <blockquote className="sm:text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl mx-auto">
+              "Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is outstanding!"
+            </blockquote>
+            <div className="flex items-center justify-center">
+              <img src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE" alt="Kamran Abbas" className="w-12 sm:w-15 h-12 sm:h-15 rounded-full mr-4" />
+              <div className="text-left">
+                <div className="font-semibold text-gray-900 sm:text-lg"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/" target="__blank">Kamran Abbas</a></div>
+                <div className="text-gray-600">Chief Strategist at Bullseye Investment Private Limited</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+    </>
   );
 };
 

@@ -42,9 +42,9 @@ const Landing = () => {
         
         {/* ✅ FIX 4: Only wrap the heavy, lower-down stuff in Suspense */}
         <Suspense fallback={<ShiftDeployLoader />}>
-          <TrustStrip/>
           <DeployToolkit />
           <InsideShiftDeploy />
+          <TrustStrip/>
           <ShiftProtocol />
           <MissionsCompleted />
           <FlightLogs />

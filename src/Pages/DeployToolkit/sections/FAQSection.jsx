@@ -17,32 +17,32 @@ function FAQSection() {
     {
       question: "Do you work with our existing team?",
       answer:
-        "Yes. We can collaborate with your developer, designer, or internal team — or handle delivery end-to-end. We keep communication simple and leave behind clean handover notes so you’re not dependent on us.",
+        "Yes. We can collaborate with your developer, designer, or internal team or handle delivery end-to-end. We keep communication simple and leave behind clean handover notes so you’re not dependent on us.",
     },
     {
       question: "What if we’re not sure what we need yet?",
       answer:
-        "That’s common. The first step is a short discovery call where we clarify goals, identify what’s actually blocking results, and propose the smallest plan that creates real progress — speed, UX, or a rebuild.",
+        "That’s common. The first step is a short discovery call where we clarify goals, identify what’s actually blocking results, and propose the smallest plan that creates real progress. Speed, UX, or a rebuild.",
     },
     {
       question: "How do you handle security and access?",
       answer:
-        "We follow a “least access” approach — only what’s needed, for as long as needed. We can work with staging environments and shared accounts where possible, and we document what we touch so everything stays transparent.",
+        "We follow a “least access” approach, only what’s needed, for as long as needed. We can work with staging environments and shared accounts where possible, and we document what we touch so everything stays transparent.",
     },
     {
       question: "What happens after the project is complete?",
       answer:
-        "We don’t just hand it off and vanish. You’ll get a clear handover plus optional ongoing support for improvements, fixes, and updates — especially if you want your site to stay fast and conversion-ready over time.",
+        "We don’t just hand it off and vanish. You’ll get a clear handover plus optional ongoing support for improvements, fixes, and updates. ",
     },
     {
       question: "How is this different from a typical development agency?",
       answer:
-        "We’re focused on outcomes, not just deliverables. That means clearer messaging, smoother user journeys, faster pages, and a setup that’s easier to run — especially for founders who want momentum without the agency bloat.",
+        "We’re focused on outcomes, not just deliverables. That means clearer messaging, smoother user journeys, faster pages, and a setup that’s easier to run, especially for founders who want momentum without the agency bloat.",
     },
     {
       question: "What size companies do you work with?",
       answer:
-        "Mostly early-stage teams, solo founders, and growing small businesses — usually the ones who need senior execution without building a full in-house team yet.",
+        "Mostly early-stage teams, solo founders, and growing small businesses, usually the ones who need senior execution without building a full in-house team yet.",
     },
   ]
 
