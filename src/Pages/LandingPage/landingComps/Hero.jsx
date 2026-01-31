@@ -37,7 +37,7 @@ const Hero = () => {
 
       <section
         onMouseMove={handleMouseMove}
-        className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden  pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12"
+        className=" bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden  pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12"
       >
 
         <div className="flex sm:items-center">
@@ -64,7 +64,7 @@ const Hero = () => {
                 <CursorFollower
                   text={
                     <p className="flex items-center justify-center gap-x-2 italic">
-                      Deploy <ArrowRight size={16} /> Scale <ArrowRight size={16} />{" "}
+                      Building <ArrowRight size={16} /> Optimization <ArrowRight size={16} />{" "}
                       Succeed
                     </p>
                   }
@@ -164,34 +164,76 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Client Testimonial */}
-        <div
-          className={` px-6`}
-        >
-          <div className="sm:bg-white rounded-3xl p-6 sm:p-12 shadow-md text-center max-w-6xl mx-auto">
-            <motion.h2 className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6">
-                        What
-                        <span className="text-primaryOrange pl-3">Others Think </span>About Us
-                      </motion.h2>
-            <div className="flex justify-center mb-6">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 text-yellow-500 fill-current" />
-              ))}
-            </div>
-            <blockquote className="sm:text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl mx-auto">
-              "Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is outstanding!"
-            </blockquote>
-            <div className="flex items-center justify-center">
-              <img src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE" alt="Kamran Abbas" className="w-12 sm:w-15 h-12 sm:h-15 rounded-full mr-4" />
-              <div className="text-left">
-                <div className="font-semibold text-gray-900 sm:text-lg"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/" target="__blank">Kamran Abbas</a></div>
-                <div className="text-gray-600">Chief Strategist at Bullseye Investment Private Limited</div>
+
+
+
+      </section>
+
+
+
+      <div className="relative  overflow-hidden shadow-lg w-full mx-auto bg-primaryBlue text-center py-10 text-white">
+        {/* Background */}
+ 
+        <motion.h2 className="text-3xl sm:text-5xl font-bold mb-6">
+          What <span className="text-primaryOrange">Others Think</span> About Us
+        </motion.h2>
+        {/* Content */}
+        <div className="relative p-6 sm:p-12 text-center text-white bg-white/5 w-[90%] sm:w-fit mx-auto rounded-2xl mb-10">
+
+
+          {/* Stars */}
+          <div className="flex justify-center mb-6">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+            ))}
+          </div>
+
+          {/* Quote */}
+          <blockquote className="sm:text-xl italic leading-relaxed mb-8 max-w-4xl mx-auto text-white/90">
+            “Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is
+            outstanding!”
+          </blockquote>
+
+          {/* Author */}
+          <div className="flex items-center justify-center gap-4">
+            <img
+              src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE"
+              alt="Kamran Abbas"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-full ring-2 ring-white/30 object-cover"
+            />
+            <div className="text-left">
+              <div className="font-semibold sm:text-lg leading-tight">
+                <a
+                  href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:underline underline-offset-4"
+                >
+                  Kamran Abbas
+                </a>
+              </div>
+              <div className="text-white/75 text-sm sm:text-base">
+                Chief Strategist at Bullseye Investment Private Limited
               </div>
             </div>
           </div>
-        </div>
 
-      </section>
+         
+        </div>
+         {/* Bottom-left CTA */}
+          <div className="mt-10 flex justify-center md:justify-end md:pr-72">
+            <a
+              href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-primaryOrange hover:bg-toOrange border border-white/20 text-white px-4 sm:px-5 py-3 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/40"
+            >
+              View LinkedIn Post
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+      </div>
+
 
 
     </>
