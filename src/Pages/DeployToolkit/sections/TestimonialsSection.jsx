@@ -1,3 +1,4 @@
+import { Star } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 // Section 7: Testimonials
@@ -48,12 +49,18 @@ const trustIndicators = [
         {/* Testimonial Carousel */}
         <div className="relative mb-12 sm:mb-20">
           <div className="bg-white shadow-md sm:shadow-lg rounded-3xl p-6 sm:p-12 text-center sm:min-h-[300px] flex items-center justify-center">
-            <div
-            >
+           
+            <div>
+              {/* Stars */}
+          <div className="flex justify-center mb-6">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+            ))}
+          </div>
               <blockquote className="sm:text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl">
                 "Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is outstanding!"
               </blockquote>
-
+            <hr className="border-gray-300 mb-6" />
               <div className="flex items-center justify-center">
               <img src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE" alt="Kamran Abbas" className="w-12 sm:w-15 h-12 sm:h-15 rounded-full mr-4" />
               <div className="text-left">
