@@ -135,13 +135,7 @@ const MissionsCompleted = () => {
               consistent focus: building systems that run reliably and perform better over time.
             </motion.p>
 
-            <motion.p
-              variants={fadeInUp}
-              className="text-sm sm:text-left text-center max-w-2xl mx-auto px-4 sm:px-0 text-gray-600"
-            >
-              Want a performance-focused audit for your website? Start with a quick review and we’ll
-              tell you what to fix first.
-            </motion.p>
+           
           </motion.div>
 
           {/* Right: Stats */}
@@ -155,7 +149,7 @@ const MissionsCompleted = () => {
               const { suffix } = splitValue(stat.value + (stat.suffix || ""));
               return (
                 <motion.div key={index} className="text-center">
-                  <div className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 text-gray-900">
+                  <div className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 text-primaryBlue">
                     {animatedNumbers[index] || 0}
                     {suffix}
                   </div>
@@ -194,7 +188,7 @@ const MissionsCompleted = () => {
                 className={`p-4 sm:p-6 lg:p-8 xl:p-10 ${scrwidth > 768 && index % 2 === 0 ? "order-1" : "order-2"
                   } ${scrwidth < 768 ? "order-1" : ""}`}
               >
-                <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 mb-1 sm:mb-2 lg:mb-3">
+                <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-primaryBlue mb-1 sm:mb-2 lg:mb-3">
                   {project.title}
                 </h3>
 

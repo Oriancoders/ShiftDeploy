@@ -12,9 +12,9 @@ const FlightLogs = () => {
   const testimonials = [
     {
       name: "Kamran Abbas",
-      title: "CEO",
+      title: "Chief Strategist",
       company: "Bullseye Investment",
-      image: "https://i.pravatar.cc/80?img=14",
+      image: "https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE",
       rating: 5,
       review:
         "Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is outstanding!",

@@ -126,9 +126,9 @@ const InsideShiftDeploy = () => {
               Want Faster Load Times and Higher Conversions?
             </h1>
 
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
+            <p className="text-sm sm:text-base lg:text-lg xl:text-xl mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto  px-4 sm:px-0">
               Start with a performance audit and get a clear roadmap to improve Core Web Vitals,
-              rankings, and conversion rate — with measurable results.
+              rankings, and conversion rate, with measurable results.
             </p>
 
             <Link
