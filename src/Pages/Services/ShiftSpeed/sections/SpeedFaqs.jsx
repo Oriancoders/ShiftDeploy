@@ -8,7 +8,7 @@ function SpeedFaqs() {
   const [visibleFAQs, setVisibleFAQs] = useState([])
   const sectionRef = useRef(null)
 
-  const faqs = [
+ const faqs = [
   {
     question: "How quickly can you start?",
     answer:

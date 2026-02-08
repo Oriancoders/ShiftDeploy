@@ -1,5 +1,6 @@
 import { ArrowRight, CheckCircle, Mail } from "lucide-react"
 import { useEffect, useRef } from "react"
+import { FaWhatsapp } from "react-icons/fa6"
 import { Link } from "react-router-dom"
 
 // Section 9: Final CTA
@@ -51,7 +52,7 @@ function FinalCTASection() {
         {/* Value Reinforcement */}
         <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 mb-12 max-w-4xl mx-auto">
           <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">
-            In a 30-minute strategy call, you’ll walk away with:
+            In a 10-minute strategy call, you’ll walk away with:
           </h3>
 
           <div className="grid md:grid-cols-2 gap-6 text-left">
@@ -91,13 +92,15 @@ function FinalCTASection() {
         </p>
 
         {/* Primary CTA */}
-        <Link
-          to={"/ContactUs"}
+        <a
+          href={"https://wa.me/447311126710?text=" + encodeURIComponent("Hi ShiftDeploy, I'd like to book a free strategy call.")}
+          target="_blank"
+          rel="noopener noreferrer"
           className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit mb-12 mx-auto"
         >
-          Book a Free Strategy Call
-          <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
-        </Link>
+          Reach us on WhatsApp
+          <FaWhatsapp className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+        </a>
 
         {/* Contact Information */}
         <div className="grid md:grid-cols-1 gap-8 max-w-2xl mx-auto mb-12">
