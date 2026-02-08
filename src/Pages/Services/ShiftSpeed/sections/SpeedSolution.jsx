@@ -46,10 +46,10 @@ const SpeedSolution = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             A Proven <span className="text-primaryOrange">Performance Protocol</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
             Every engagement follows the same core system.  
             The difference is how deep we go.
           </p>

@@ -1,61 +1,81 @@
 import { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
-import { Stethoscope, Scale, Landmark, Calendar, FileText, Shield, ArrowRight } from "lucide-react";
+import { Stethoscope, Scale, Landmark, Calendar, FileText, Shield, ArrowRight, MapPin, Rocket, ChevronDown } from "lucide-react";
 
 const industries = [
   {
-    id: "dental",
+    id: "healthcare",
     icon: Stethoscope,
-    label: "Dental Clinics",
-    title: "Load Booking Forms Instantly",
+    label: "Healthcare Practices",
+    title: "When Speed Impacts Patient Decisions",
     description:
-      "Your patients are searching for emergency dental care on their phones. If your booking form takes 5 seconds to load, they've already moved on to your competitor down the street.",
+      "Patients searching for care are often anxious and time-sensitive. If your site or booking flow feels slow or broken, trust is lost instantly.",
     benefits: [
-      "Instant booking form loading for higher conversion",
-      "High-res before/after case studies without lag",
-      "Mobile-first optimization for on-the-go patients",
-      "Integration-friendly for Dentrix, Open Dental, etc.",
+      "Instant appointment and enquiry forms",
+      "Fast-loading service and treatment pages",
+      "Mobile-first performance for urgent searches",
+      "Optimized integrations with booking systems",
     ],
-    stat: "3.2x",
-    statLabel: "More online bookings",
-  },
+    stat: "2.8x",
+    statLabel: "Higher appointment conversions",
+  }
+  ,
   {
-    id: "legal",
-    icon: Scale,
-    label: "Law Firms",
-    title: "Create Immediate Authority",
-    description:
-      "When someone needs a lawyer, they're stressed and making quick decisions. A slow, glitchy website screams 'amateur.' Your site should load faster than they can blink.",
-    benefits: [
-      "Zero layout shifts while clients read practice areas",
-      "Fast-loading attorney profiles and credentials",
-      "Instant contact form submission with confirmation",
-      "SEO-optimized for local legal searches",
-    ],
-    stat: "47%",
-    statLabel: "Lower bounce rate",
-  },
-  {
-    id: "finance",
+    id: "fintech",
     icon: Landmark,
-    label: "Financial Services",
-    title: "Security and Speed Hand-in-Hand",
+    label: "FinTech & Financial Platforms",
+    title: "Speed Builds Trust Before Branding Does",
     description:
-      "In finance, milliseconds matter. Clients expect instant access to portals, calculators, and secure documents. Slow performance erodes trust before you even say hello.",
+      "In financial products, every delay raises doubt. Clients expect instant access, instant calculations, and instant feedback — without compromising security.",
     benefits: [
-      "Zero-downtime architecture with 99.99% uptime",
-      "Secure, fast-loading client portals",
+      "Fast, secure user dashboards",
       "Optimized calculators and interactive tools",
-      "Compliance-ready performance monitoring",
+      "Performance monitoring without downtime",
+      "Trust-first speed for high-stakes decisions",
     ],
     stat: "99.99%",
-    statLabel: "Uptime guaranteed",
+    statLabel: "Performance reliability",
   },
+  {
+    id: "saas",
+    icon: Rocket,
+    label: "SaaS & B2B Platforms",
+    title: "Performance That Converts Trials into Revenue",
+    description:
+      "Your buyers judge your product before they ever sign up. Slow landing pages, delayed dashboards, or broken onboarding quietly kill conversions.",
+    benefits: [
+      "Lightning-fast landing and pricing pages",
+      "Optimized onboarding and dashboards",
+      "Reduced churn from performance friction",
+      "Performance-ready scaling as traffic grows",
+    ],
+    stat: "34%",
+    statLabel: "Higher trial-to-paid conversion",
+  }
+  ,
+  {
+    id: "local-services",
+    icon: MapPin,
+    label: "High-Intent Local Services",
+    title: "Win the Click Before Competitors Load",
+    description:
+      "When users compare providers side-by-side, speed decides who gets contacted first. Slow pages lose leads before your offer is even seen.",
+    benefits: [
+      "Instant-loading service pages",
+      "Fast lead capture on mobile",
+      "Optimized for local search performance",
+      "Reduced bounce from paid traffic",
+    ],
+    stat: "41%",
+    statLabel: "More inbound leads",
+  }
+
 ];
 
 export const IndustriesSection = () => {
-  const [activeTab, setActiveTab] = useState("dental");
+  const [activeTab, setActiveTab] = useState("healthcare");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -78,37 +98,92 @@ export const IndustriesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-primaryBlue mb-6">
+          
+          
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             Engineered for{" "}
             <span className="text-primaryOrange">High-Value Service Pages</span>
           </h2>
-          <p className="text-lg text-primaryBlue/60 leading-relaxed">
-            We specialize in industries where trust is everything. Speed is 
+          <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
+            We specialize in industries where trust is everything. Speed is
             your first impression—make it count.
           </p>
         </motion.div>
 
-        {/* Tab Navigation */}
+        {/* Tab Navigation - Desktop */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="hidden md:flex flex-wrap justify-center gap-3 mb-12"
         >
           {industries.map((industry) => (
             <button
               key={industry.id}
               onClick={() => setActiveTab(industry.id)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                activeTab === industry.id
-                  ? "bg-primaryOrange text-white shadow-glow"
-                  : "bg-primaryBlue/10 text-primaryBlue/70 hover:bg-primaryBlue/15 hover:text-primaryBlue"
-              }`}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${activeTab === industry.id
+                ? "bg-primaryOrange text-white shadow-glow"
+                : "bg-primaryBlue/10 text-primaryBlue/70 hover:bg-primaryBlue/15 hover:text-primaryBlue"
+                }`}
             >
               <industry.icon className="w-5 h-5" />
               {industry.label}
             </button>
           ))}
+        </motion.div>
+
+        {/* Tab Navigation - Mobile/Tablet Dropdown */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="md:hidden mb-12 relative w-full"
+        >
+          <button
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            className="w-full flex items-center justify-between px-6 py-4 bg-primaryOrange text-white rounded-xl font-semibold transition-all duration-300 hover:bg-toOrange"
+          >
+            <div className="flex items-center gap-2">
+              <activeIndustry.icon className="w-5 h-5" />
+              <span className="text-left">{activeIndustry.label}</span>
+            </div>
+            <motion.div
+              animate={{ rotate: isDropdownOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <ChevronDown className="w-5 h-5" />
+            </motion.div>
+          </button>
+
+          <AnimatePresence>
+            {isDropdownOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full left-0 right-0 mt-2 bg-white border-2 border-primaryOrange rounded-xl shadow-lg z-50 overflow-hidden"
+              >
+                {industries.map((industry) => (
+                  <button
+                    key={industry.id}
+                    onClick={() => {
+                      setActiveTab(industry.id);
+                      setIsDropdownOpen(false);
+                    }}
+                    className={`w-full flex items-center gap-3 px-6 py-4 font-semibold transition-all duration-300 border-b last:border-b-0 ${
+                      activeTab === industry.id
+                        ? "bg-primaryOrange/10 text-primaryOrange"
+                        : "text-primaryBlue/70 hover:bg-primaryBlue/5 hover:text-primaryBlue"
+                    }`}
+                  >
+                    <industry.icon className="w-5 h-5" />
+                    <span>{industry.label}</span>
+                  </button>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
 
         {/* Tab Content */}
@@ -147,7 +222,7 @@ export const IndustriesSection = () => {
 
             <button
               onClick={() => scrollToSection("#pricing")}
-                className="bg-primaryOrange mt-12 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit group"
+              className="bg-primaryOrange mt-12 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit group"
 
             >
               Optimize My {activeIndustry.label.slice(0, -1)} Site

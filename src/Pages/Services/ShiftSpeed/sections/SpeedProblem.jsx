@@ -66,11 +66,11 @@ const SpeedProblem = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             The Real Cost of <span className="text-primaryOrange">Slow Performance</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Speed issues don’t just hurt metrics — they quietly drain revenue,
+          <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
+            Speed issues don’t just hurt metrics, they quietly drain revenue,
             visibility, and trust across your entire funnel.
           </p>
         </motion.div>

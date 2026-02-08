@@ -3,19 +3,12 @@ import { Helmet } from 'react-helmet-async';
 import Navigation from '../../../components/Navigation';
 import Footer from '../../../components/Footer';
 import ShiftDeployLoader from '../../../components/ShiftDeployLoader';
-import TrustStrip from '../../../components/TrustStrip';
-import Hero from '../../LandingPage/landingComps/Hero';
 import SpeedHero from './sections/SpeedHero';
-import SpeedProblem from './sections/SpeedProblem';
-import SpeedSolution from './sections/SpeedSolution';
-import SpeedAudience from './sections/SpeedAudience';
-import SpeedComparison from './sections/SpeedComparison';
-import SpeedPricing from './sections/SpeedPricing';
-import SpeedFaqs from './sections/SpeedFaqs';
-import ProblemSection from './sections/ProblemSection';
-import ComparisonSection from './sections/ComparisionSection';
-import { IndustriesSection } from './sections/IndustriesSection';
-import PricingSection from './sections/PricingSection';
+const SpeedProblem = lazy(() => import('./sections/SpeedProblem'));
+const SpeedSolution = lazy(() => import('./sections/SpeedSolution'));
+const SpeedComparison = lazy(() => import('./sections/SpeedComparison'));
+const SpeedFaqs = lazy(() => import('./sections/SpeedFaqs'));
+const IndustriesSection = lazy(() => import('./sections/IndustriesSection').then(m => ({ default: m.IndustriesSection })));
 
 
 
@@ -32,37 +25,57 @@ const ShiftSpeed = () => {
   return (
     <>
       <Helmet>
-        <title>ShiftDeploy - Transform Your Vision Into High-Performance Reality</title>
+        <title>ShiftSpeed™ – Website Performance Optimization That Protects Growth | ShiftDeploy</title>
+
         <meta
           name="description"
-          content="ShiftDeploy provides cutting-edge web development..."
+          content="ShiftSpeed™ fixes slow, fragile websites before they cost you trust, rankings, and conversions. Engineering-led performance optimization for businesses that need speed to work, not just look good."
         />
+        <meta
+          name="keywords"
+          content="ShiftSpeed, website speed optimization, Core Web Vitals, performance optimization service, website performance engineering, slow website fix, technical SEO speed"
+        />
+
+
+        <meta
+          property="og:title"
+          content="ShiftSpeed™ – Website Performance Optimization That Comes First"
+        />
+
+        <meta
+          property="og:description"
+          content="ShiftSpeed™ fixes slow, fragile websites before they cost you trust, rankings, and conversions. Engineering-led performance optimization built for businesses that depend on speed."
+        />
+
+        <meta property="og:type" content="website" />
+
+
+        <meta
+          property="og:url"
+          content="https://www.shiftdeploy.com/services/shiftspeed"
+        />
+
+
+
         {/* ... other meta tags ... */}
       </Helmet>
 
       <div className="w-full">
         <Navigation />
-        
+
         {/* ✅ FIX 3: Hero renders IMMEDIATELY. No Suspense fallback blocking it. */}
-        <SpeedHero />
-        
+
         {/* ✅ FIX 4: Only wrap the heavy, lower-down stuff in Suspense */}
         <Suspense fallback={<ShiftDeployLoader />}>
-          {/* <TrustStrip/> */}
-          <SpeedProblem />  
-          {/* <ProblemSection /> */}
-          {/* <ComparisonSection/> */}
-          <IndustriesSection/>
+         <SpeedHero />
+          <SpeedProblem />
+          <IndustriesSection />
           <SpeedSolution />
-          <SpeedAudience />
-          {/* <SpeedProtocol /> */}
-          <SpeedComparison/>
-          {/* <SpeedPricing /> */}
-          <PricingSection/>
-          <SpeedFaqs/>
-          
+          <SpeedComparison />
+          <SpeedFaqs />
+
         </Suspense>
-        
+
         <Footer />
       </div>
     </>

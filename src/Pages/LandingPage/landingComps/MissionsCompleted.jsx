@@ -122,9 +122,9 @@ const MissionsCompleted = () => {
               variants={fadeInUp}
               className="text-3xl sm:text-left text-center sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight"
             >
-              Real Work.
+              Missions
               <br />
-              <span className="text-primaryOrange">Real Results.</span>
+              <span className="text-primaryOrange">Completed</span>
             </motion.h2>
 
             <motion.p

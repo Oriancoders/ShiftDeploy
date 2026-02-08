@@ -9,42 +9,43 @@ function SpeedFaqs() {
   const sectionRef = useRef(null)
 
   const faqs = [
-    {
-      question: "How quickly can you start?",
-      answer:
-        "Most projects begin within 48 hours of our strategy call. For urgent issues, we can often start same-day. We keep capacity reserved for rapid response because we know technical problems don't wait for convenient timing.",
-    },
-    {
-      question: "Do you work with our existing team?",
-      answer:
-        "Absolutely. We're designed to augment your team, not replace them. We can work independently, collaborate closely, or train your team to maintain what we build. Whatever works best for your situation.",
-    },
-    {
-      question: "What if you can't solve our problem?",
-      answer:
-        "We've never encountered a technical challenge we couldn't solve, but if we did, you wouldn't pay. Our 30-day money-back guarantee means you only pay for results, not attempts.",
-    },
-    {
-      question: "How do you handle security and access?",
-      answer:
-        "Security is our specialty. We use industry-standard security protocols, sign comprehensive NDAs, and can work within your existing security frameworks. Many of our clients are in highly regulated industries.",
-    },
-    {
-      question: "What happens after the project is complete?",
-      answer:
-        "We don't disappear. Every package includes ongoing support, and we're available for additional optimization, scaling support, or new challenges as they arise. Think of us as your technical insurance policy.",
-    },
-    {
-      question: "How is this different from hiring a development agency?",
-      answer:
-        "We're specialists, not generalists. While agencies build features, we solve problems. We focus on the technical challenges that keep CTOs awake at night — performance, scaling, security, and infrastructure.",
-    },
-    {
-      question: "What size companies do you work with?",
-      answer:
-        "We work with startups from pre-seed to Series B and beyond. Our sweet spot is growing companies (10-200 employees) who need enterprise-level technical expertise without enterprise-level overhead.",
-    },
-  ]
+  {
+    question: "How quickly can you start?",
+    answer:
+      "We usually begin with the audit within 48 hours of confirmation. Since the first step is measurement, there’s no long onboarding or preparation required. You’ll see findings before any work is proposed.",
+  },
+  {
+    question: "Do you work with our existing team or developer?",
+    answer:
+      "Yes. We frequently work alongside in-house teams or external developers. Our role is to diagnose performance and usability issues and either implement fixes ourselves or provide clear guidance your team can follow.",
+  },
+  {
+    question: "What if the audit shows no major issues?",
+    answer:
+      "Then you’ve gained confirmation, not a sales pitch. If your site is already performing well, we’ll tell you that. The audit exists to give clarity, not to force a project.",
+  },
+  {
+    question: "Do you make changes during the free audit?",
+    answer:
+      "No. The audit is diagnostic only. We analyze performance, usability, and conversion risks without touching your live site. Any fixes are discussed separately, after you review the findings.",
+  },
+  {
+    question: "How do you handle access and security?",
+    answer:
+      "The audit requires no backend access. If you choose to proceed with implementation later, we follow standard security practices, work within your access policies, and only request what’s necessary.",
+  },
+  {
+    question: "What happens after optimization is complete?",
+    answer:
+      "You receive a before-and-after report showing what changed and why it matters. From there, some clients stop, others continue with ongoing monitoring or improvements. There’s no forced long-term commitment.",
+  },
+  {
+    question: "How is this different from a typical agency?",
+    answer:
+      "Most agencies start by building or redesigning. We start by measuring. Performance, usability, and conversion issues are identified first, so decisions are based on evidence, not assumptions.",
+  },
+];
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -75,7 +76,7 @@ function SpeedFaqs() {
     <section ref={sectionRef} className=" bg-gray-50 py-10 sm:py-20">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             Questions? <br/>
             <span className="text-primaryOrange">
               We've got answers.

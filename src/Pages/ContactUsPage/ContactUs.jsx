@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
-import {  Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
@@ -8,7 +8,7 @@ import emailjs from "@emailjs/browser";
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import { FaXTwitter } from 'react-icons/fa6';
-import { FaLinkedin,  } from 'react-icons/fa';
+import { FaLinkedin, } from 'react-icons/fa';
 import { IoMail } from 'react-icons/io5';
 
 const ContactUs = () => {
@@ -77,20 +77,20 @@ const ContactUs = () => {
 
   const contactInfo = [
     {
-      icon: <IoMail  className="w-6 sm:w-7 h-6 sm:h-7"/>,
+      icon: <IoMail className="w-6 sm:w-7 h-6 sm:h-7" />,
       label: 'Email',
       value: 'hello@shiftdeploy.com',
       href: 'mailto:hello@shiftdeploy.com',
     },
     {
-      icon: <FaLinkedin className="w-6 sm:w-7 h-6 sm:h-7"/>,
+      icon: <FaLinkedin className="w-6 sm:w-7 h-6 sm:h-7" />,
       label: 'LinkedIn',
       value: 'www.linkedin.com/company/shiftdeploy',
 
       href: 'https://www.linkedin.com/company/shiftdeploy',
     },
     {
-      icon: <FaXTwitter className="w-6 sm:w-7 h-6 sm:h-7"/>,
+      icon: <FaXTwitter className="w-6 sm:w-7 h-6 sm:h-7" />,
       label: 'Twitter',
       value: 'x.com/ShiftDeploy',
       href: 'https://x.com/ShiftDeploy',
@@ -103,36 +103,34 @@ const ContactUs = () => {
   return (
     <>
       <Helmet>
-        {/* ✅ Basic SEO Meta */}
-        <title>Contact ShiftDeploy | Start Your Deployment Journey</title>
+        <title>Get a Free Website Performance Audit | ShiftDeploy</title>
         <meta
           name="description"
-          content="Get in touch with ShiftDeploy to solve your CI/CD, cloud, and DevOps challenges. Let's turn your amazing product into a successful deployment."
+          content="Request a free performance audit to see how speed and usability affect real visitors—no changes to your site. Get clear findings and next steps."
         />
         <meta
           name="keywords"
-          content="contact ShiftDeploy, DevOps consultation, cloud deployment help, CI/CD experts, talk to DevOps team"
+          content="free website audit, performance audit, core web vitals audit, site speed audit, UX usability audit, ShiftDeploy"
         />
 
-        {/* ✅ Open Graph / Social Preview */}
-        <meta property="og:title" content="Contact ShiftDeploy | Start Your Deployment Journey" />
+        <meta property="og:title" content="Get a Free Website Performance Audit | ShiftDeploy" />
         <meta
           property="og:description"
-          content="Get in touch with ShiftDeploy to solve your CI/CD, cloud, and DevOps challenges. Let's turn your amazing product into a successful deployment."
+          content="Free performance audit showing how speed and usability affect real visitors—no site changes required."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.shiftdeploy.com/contact" />
         <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
 
-        {/* ✅ Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact ShiftDeploy | Start Your Deployment Journey" />
+        <meta name="twitter:title" content="Get a Free Website Performance Audit | ShiftDeploy" />
         <meta
           name="twitter:description"
-          content="Reach out to our team for expert guidance in CI/CD, DevOps, and cloud deployment."
+          content="Request a free audit to understand speed + usability impact on real visitors. No changes made during the audit."
         />
         <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
       </Helmet>
+
       <Navigation />
       <section id="contact-us" className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
         {/* Background Pattern */}
@@ -155,14 +153,17 @@ const ContactUs = () => {
               variants={fadeInUp}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primaryBlue mb-4 sm:mb-6 lg:mb-8"
             >
-              Get in Touch
+              Get a Free Performance Audit
             </motion.h1>
+
             <motion.p
               variants={fadeInUp}
               className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl lg:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
             >
-              We'd love to hear about your project or questions. Fill out the form or reach us through the details below.
+              We’ll review your website’s speed, usability, and conversion friction and show how it affects real visitors.
+              No changes are made to your site during the audit.
             </motion.p>
+
           </motion.div>
 
           {/* Main Content - Two Column Layout */}
@@ -174,14 +175,28 @@ const ContactUs = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="space-y-8 sm:space-y-10 lg:space-y-12 sm:order-1 order-2"
             >
-              <div>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primaryBlue mb-6 sm:mb-8">
-                  Let's Start a Conversation
-                </h2>
-                <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-8 sm:mb-10">
-                  Ready to transform your digital presence? Our team of experts is here to help you navigate your next big project.
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primaryBlue mb-6 sm:mb-8">
+                What you’ll get
+              </h2>
+
+              <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
+                A short, clear report that shows where visitors lose patience, where usability breaks down, and what to fix first.
+                This is diagnosis only — no access, no deployments, no risky edits.
+              </p>
+
+              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6 space-y-3">
+                <p className="text-slate-900 font-semibold text-base sm:text-lg">Audit includes:</p>
+                <ul className="text-slate-600 text-sm sm:text-base leading-relaxed space-y-2 list-disc pl-5">
+                  <li>Speed + Core Web Vitals snapshot (real-world impact)</li>
+                  <li>Mobile usability + UX friction notes</li>
+                  <li>Conversion blockers on key pages (booking/contact/service)</li>
+                  <li>Prioritized next steps (what matters first)</li>
+                </ul>
+                <p className="text-slate-500 text-sm sm:text-base pt-2">
+                  Typical turnaround: <span className="text-slate-700 font-medium">24–48 hours</span>
                 </p>
               </div>
+
 
               <h2 className="text-2xl sm:text-3xl lg:text-3xl font-bold text-primaryBlue mb-6 sm:mb-8 leading-10">
                 Contact Via Other Platforms
@@ -287,12 +302,12 @@ const ContactUs = () => {
                     </div>
                   </div>
 
-   
+
 
                   {/* Company Field */}
                   <div>
                     <label htmlFor="company" className="block text-slate-900 font-semibold text-base sm:text-lg mb-3">
-                      Company/Website
+                      Website / Company
                     </label>
                     <input
                       type="text"
@@ -301,7 +316,7 @@ const ContactUs = () => {
                       value={formData.company}
                       onChange={handleInputChange}
                       className="w-full px-4  py-2 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-500 focus:ring-2 focus:ring-primaryBlue transition-all duration-300 text-base sm:text-lg"
-                      placeholder="Your company or website (optional)"
+                      placeholder="Your website URL or company name"
                     />
                   </div>
 
@@ -310,7 +325,8 @@ const ContactUs = () => {
                   {/* Message Field */}
                   <div>
                     <label htmlFor="message" className="block text-slate-900 font-semibold text-base sm:text-lg mb-3">
-                      Explain your problem or project *
+                      What should we audit first? *
+
                     </label>
                     <textarea
                       id="message"
@@ -320,7 +336,7 @@ const ContactUs = () => {
                       required
                       rows={5}
                       className="w-full px-4  py-2  border border-slate-300 rounded-xl text-slate-900 placeholder-slate-500 focus:ring-2 focus:ring-primaryBlue transition-all duration-300 resize-vertical text-base sm:text-lg"
-                      placeholder="Tell us about your project, goals, or any questions you have..."
+                      placeholder="tell us what matters (speed, bookings/leads, mobile UX, conversions)..."
                     />
                   </div>
 
@@ -339,7 +355,7 @@ const ContactUs = () => {
                     ) : (
                       <>
                         <Send className="w-5 sm:w-6 h-5 sm:h-6" />
-                        <span>Send Message</span>
+                        <span>Get Free Audit</span>
                         {/* // https://ui.aceternity.com/components/stateful-button - > to be added here  */}
 
                       </>
