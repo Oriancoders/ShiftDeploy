@@ -3,6 +3,7 @@ import { useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { X, Check, ArrowRight, TrendingUp, TrendingDown, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import CursorFollower from "../../../../utils/CursorFollower";
 
 export const SpeedComparison = () => {
     const ref = useRef(null);
@@ -12,12 +13,7 @@ export const SpeedComparison = () => {
     const [isVisible, setIsVisible] = useState(false)
 
 
-    const trustIndicators = [
-        { metric: "50+", description: "successful deployments" },
-        { metric: "99.9%", description: "uptime average across client projects" },
-        { metric: "Thousands+", description: "in client funding raised after our optimizations" },
-        { metric: "Zero", description: "security breaches in 2+ years" },
-    ]
+
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -67,7 +63,7 @@ export const SpeedComparison = () => {
     ];
 
     return (
-        <section className="py-20 bg-slate" ref={ref}>
+        <section className=" bg-slate" ref={ref}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <motion.div
@@ -77,16 +73,16 @@ export const SpeedComparison = () => {
                     className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
                 >
 
-                    <h2 className="text-4xl md:text-5xl font-bold text-primaryBluemb-6">
+                    <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
                         The <span className="text-primaryOrange">Transformation</span> Difference
                     </h2>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                    <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
                         See the dramatic improvement in real-world metrics that directly impact your bottom line
                     </p>
                 </motion.div>
 
                 {/* Comparison Grid - Responsive Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-7 gap-6 lg:gap-4 items-stretch mb-12">
+                <div className="grid grid-cols-1 lg:grid-cols-7 gap-6 lg:gap-4 items-stretch ">
                     {/* Before Card */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -209,35 +205,31 @@ export const SpeedComparison = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className=" rounded-2xl p-6 md:p-10 text-center"
+                    className=" rounded-2xl p-6 text-center"
                 >
 
 
-                    <div className="grid md:grid-cols-4 gap-8  ">
-                        {trustIndicators.map((indicator, index) => (
-                            <div
-                                key={index}
-                                className={`text-center transition-all duration-700 delay-${index * 100} transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-                                    }`}
-                            >
-                                <div className="text-3xl md:text-5xl font-bold text-primaryOrange mb-2">{indicator.metric}</div>
-                                <div className="text-gray-600">{indicator.description}</div>
-                            </div>
-                        ))}
-                    </div>
+                    <CursorFollower
+                        text="We put our feets in your shoes first, then we simplify and deliver."
+                        className="max-w-2xl sm:mt-12 bg-primaryBlue px-10 sm:px-6 py-4 rounded-xl sm:rounded-full text-white mx-auto"
+                        textClassName="text-white font-semibold text-sm lg:text-base"
+                        gradientFrom="#f76707"
+                        gradientTo="#0B1D30"
+                        circleSize={200}
+                    />
 
                     {/* CTA */}
 
-                        <Link to={"/ContactUs"}
+                    <Link to={"/ContactUs"}
 
-                            className="bg-primaryOrange mt-12 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit"
+                        className="bg-primaryOrange mt-12 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit"
 
-                        >
-                            Start Shifting Speed Today
+                    >
+                        Start Shifting Speed Today
 
-                        </Link>
-                        
-                    
+                    </Link>
+
+
                 </motion.div>
             </div>
         </section>

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { ArrowRight, Clock, TrendingUp, Zap } from "lucide-react";
 import CursorFollower from "../../../../utils/CursorFollower";
 import { Link } from "react-router-dom";
@@ -9,27 +9,35 @@ const SpeedHero = () => {
   const [animatedNumbers, setAnimatedNumbers] = useState({ score: 30 });
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  const needleRotation = useMotionValue(-90);
   const { scrwidth } = useContext(ContextAPI);
 
-  // 🔹 Animate number function
-  const animateNumber = (index, targetValue) => {
-    let currentValue = 30;
-    const timer = setInterval(() => {
-      currentValue += 1; // Increment by 1
-      if (currentValue >= targetValue) {
-        currentValue = targetValue;
-        clearInterval(timer);
-      }
-      setAnimatedNumbers((prev) => ({
-        ...prev,
-        [index]: currentValue,
-      }));
-    }, 40);
-  };
-
-  // Trigger animation on mount
+  // Trigger animation on mount — drive both needle and numeric value from a shared MotionValue
   useEffect(() => {
-    animateNumber('score', 98);
+    const rotationStart = -90;
+    const rotationEnd = 45;
+    const needleDelay = 1; // seconds (faster)
+    const needleDuration = 0.9; // seconds (faster)
+    const startValue = 30;
+    const endValue = 98;
+
+    // seed starting score
+    setAnimatedNumbers((prev) => ({ ...prev, score: startValue }));
+
+    const controls = animate(needleRotation, rotationEnd, {
+      delay: needleDelay,
+      duration: needleDuration,
+      ease: "easeOut",
+      onUpdate: (v) => {
+        const progress = (v - rotationStart) / (rotationEnd - rotationStart);
+        const current = Math.round(startValue + (endValue - startValue) * Math.max(0, Math.min(progress, 1)));
+        setAnimatedNumbers((prev) => ({ ...prev, score: current }));
+      },
+    });
+
+    return () => {
+      controls.stop && controls.stop();
+    };
   }, []);
 
   const moveX = useTransform(x, [0, window.innerWidth], [-50, 50]);
@@ -59,22 +67,7 @@ const SpeedHero = () => {
       onMouseMove={handleMouseMove}
       className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12"
     >
-      <motion.div
-        style={{ x: scrwidth > 660 ? moveX : 0, y: scrwidth > 660 ? moveY : 0 }}
-        className="absolute inset-0 opacity-30"
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 20% 80%, #4361EE 1px, transparent 1px),
-                           radial-gradient(circle at 80% 20%, #F76707 1px, transparent 1px),
-                           radial-gradient(circle at 40% 40%, #4361EE 1px, transparent 1px)`,
-            backgroundSize: "100px 100px",
-            transform: scrwidth > 660 ? moveX : 0,
-            y: scrwidth > 660 ? moveY : 0,
-          }}
-        ></div>
-      </motion.div>
+     
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 xl:gap-16 sm:items-center">
@@ -127,13 +120,12 @@ const SpeedHero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
-                <button
-                  type="button"
-                  onClick={scrollToProblemSolving}
+                <Link
+                  to={"/contactus"}
                   className="bg-primaryOrange border-2 border-primaryOrange hover:border-toOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
                 >
-                  Visit Packages
-                </button>
+                  Get Free Audit
+                </Link>
               </motion.div>
 
               <motion.div
@@ -171,9 +163,9 @@ const SpeedHero = () => {
                       {/* Performance Score */}
                       <div className="text-center z-10">
                         <motion.div
-                          initial={{ scale: 0 }}
-                          animate={{ scale: 1 }}
-                          transition={{ duration: 0.8, delay: 1.2, type: "spring" }}
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 0.4, delay: 0.25, type: "spring" }}
                           className="text-4xl md:text-5xl lg:text-6xl font-bold text-green-500 mb-2"
                         >
                           {animatedNumbers.score}
@@ -184,11 +176,9 @@ const SpeedHero = () => {
                       
                       {/* Animated Speed Needle */}
                       <motion.div
-                        initial={{ rotate: -90 }}
-                        animate={{ rotate: 45 }}
-                        transition={{ duration: 2, delay: 2, type: "spring", stiffness: 100 }}
+                        // rotation driven by MotionValue so we can sync numeric updates
                         className="absolute top-1/2 left-1/2 w-1 h-20 bg-gradient-to-t from-primaryOrange to-primaryOrange origin-bottom transform -translate-x-1/2 rounded-full shadow-lg"
-                        style={{ transformOrigin: '50% 100%' }}
+                        style={{ transformOrigin: '50% 100%', rotate: needleRotation }}
                       />
                       
                       {/* Center Dot */}
@@ -249,7 +239,7 @@ const SpeedHero = () => {
               </motion.div>
               
               {/* Subtle Background Glow */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primaryOrange/20 to-primaryBlue/20 rounded-full blur-3xl -z-10 scale-150" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primaryOrange/10 to-primaryBlue/10 rounded-full blur-3xl -z-10 scale-150" />
             </div>
           </motion.div>
         </div>

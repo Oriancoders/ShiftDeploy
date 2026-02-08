@@ -11,68 +11,63 @@ const ShiftProtocol = () => {
   const steps = [
     {
       icon: Search,
-      title: "Baseline and Audit",
+      title: "Understand the Problem",
       description:
-        "We start with a clear baseline so we know exactly what is slowing your site down and what is costing you conversions.",
+        "We start by putting ourselves in your shoes. Before suggesting solutions, we understand your business goals, users, and constraints.",
       details: [
-        "Core Web Vitals check",
-        "Key page review (landing, pricing, booking, checkout)",
-        "Traffic and device split",
-        "Quick wins vs deep fixes",
+        "What you’re trying to achieve",
+        "Where things feel stuck or unclear",
+        "What success looks like for you",
+        "What’s urgent vs what can wait",
       ],
-      gradient: "from-blue-500 to-indigo-600",
     },
     {
       icon: BarChart3,
-      title: "ShiftSpeed (Fix Performance)",
+      title: "Diagnose What Matters",
       description:
-        "We remove bottlenecks that cause slow loads, poor Lighthouse scores, and real user frustration.",
+        "Next, we assess the situation objectively. Not everything needs fixing, we focus only on what actually moves the needle.",
       details: [
-        "Front-end speed improvements",
-        "Reduce JavaScript and render blocking",
-        "Image and font optimisation",
-        "Caching and delivery improvements",
+        "Review current setup and flows",
+        "Identify bottlenecks or friction points",
+        "Separate symptoms from root causes",
+        "Highlight risks and missed opportunities",
       ],
-      gradient: "from-purple-500 to-indigo-600",
     },
     {
       icon: Lightbulb,
-      title: "ShiftConvert (Improve Conversions)",
+      title: "Set Clear Priorities",
       description:
-        "Once your site is fast, we focus on clarity, trust, and flow so more visitors take action.",
+        "You get a clear plan. What to fix first, what can wait, and why. No overwhelm, no vague advice.",
       details: [
-        "Stronger messaging and CTAs",
-        "Trust signals and proof",
-        "Reduce form and funnel friction",
-        "Behaviour review (sessions, heatmaps)",
+        "Clear recommendations",
+        "Trade-offs explained in plain language",
+        "Short-term vs long-term actions",
+        "Alignment on scope and expectations",
       ],
-      gradient: "from-yellow-500 to-orange-600",
     },
     {
       icon: CheckCircle,
-      title: "ShiftBuild (Build or Rebuild Right)",
+      title: "Execute With Focus",
       description:
-        "If the foundation is outdated, we build a website that is designed to improve over time, not just launch and sit.",
+        "Once aligned, we move fast and deliberately. Every action has a reason, and every deliverable serves a purpose.",
       details: [
-        "Performance-first build",
-        "Modular pages for easy improvement",
-        "SEO-ready structure",
-        "Built to support ongoing CRO",
+        "Clean, focused execution",
+        "Regular updates and visibility",
+        "No unnecessary complexity",
+        "Progress you can actually see",
       ],
-      gradient: "from-green-500 to-emerald-600",
     },
     {
       icon: Rocket,
-      title: "ShiftFlow (Protect and Improve Monthly)",
+      title: "Measure & Improve",
       description:
-        "We keep your site fast, stable, and improving with proactive checks and monthly optimisations.",
+        "We don’t just ship and disappear. We validate outcomes and refine where needed so results compound over time.",
       details: [
-        "Performance monitoring",
-        "Security and stability care",
-        "Monthly improvements",
-        "Reporting and accountability",
+        "Check results against goals",
+        "Validate improvements",
+        "Refine based on real feedback",
+        "Plan next steps if needed",
       ],
-      gradient: "from-orange-500 to-red-600",
     },
     {
       title: "Problem Solved",
@@ -95,17 +90,19 @@ const ShiftProtocol = () => {
             variants={fadeInUp}
             className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
           >
-            The
-            <span className="text-primaryOrange pl-4">
-              Shift Protocol
+            How
+            <span className="text-primaryOrange px-4">
+              We Turn Problems Into
             </span>
+            Outcomes
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  text-gray-700 leading-relaxed px-4 sm:px-0"
           >
-            Our protocol is simple: performance first, conversions next, and continuous improvement over time.
-            It is how ShiftSpeed, ShiftConvert, ShiftBuild, and ShiftFlow work together to deliver measurable results.
+            We don’t start with tools or assumptions. We start by understanding the problem,
+            setting clear priorities, and delivering focused execution that actually moves the business forward.
+
 
           </motion.p>
           <motion.div
@@ -128,7 +125,7 @@ const ShiftProtocol = () => {
                     className="relative md:col-span-1 lg:col-span-1 bg-primaryBlue border rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-md sm:hover:shadow-lg transition-all duration-200 group h-full pt-6 text-white flex flex-col text-left"
                   >
                     {/* Heading */}
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 leading-snug ">
+                    <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold mb-4 leading-tight ">
                       That’s How We Fix <span className='text-primaryOrange'>Speed</span>, <br /> That’s How You Win<br />
                       <span className='text-primaryOrange'>Customers</span>
                     </h2>
@@ -156,7 +153,7 @@ const ShiftProtocol = () => {
                     initial={{ opacity: 0, y: 60 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
                     transition={{ duration: 0.6, delay: index * 0.2, once: false }}
-                    className="relative md:col-span-1 lg:col-span-1 bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-md sm:hover:shadow-lg  transition-all duration-200 group h-full pt-6 sm:pt-8 lg:pt-8 sm:space-y-6 space-y-4"
+                    className="relative md:col-span-1 lg:col-span-1 bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-md sm:hover:shadow-lg  transition-all duration-200 group h-full pt-6 sm:pt-8 lg:pt-8 sm:space-y-6 space-y-4 sm:min-h-[500px] "
                   >
 
 
@@ -186,34 +183,35 @@ const ShiftProtocol = () => {
         {/* CTA */}
 
 
-        <div className='w-full flex justify-center items-center'>
-          <div
+        <div
 
-            className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
+          className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
+        >
+          <h1 className="text-2xl sm:text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
+            Start with clarity, not guesswork
+
+          </h1>
+          <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
           >
-            <h1 className="text-2xl sm:text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
-              Start with the Shift Protocol and get a clear plan to improve speed and conversions
-
-            </h1>
-            <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
-            >
-              We will review your site, identify what is slowing it down, and show you exactly what to fix first.
-              No vague advice. Just clear priorities and measurable outcomes.
-
-            </p>
+            We’ll review your situation, identify what truly matters, and outline a clear path forward.
+            No noise. No overengineering. Just practical steps and accountable delivery.
 
 
-            <Link to={"/shift-protocol"}
+          </p>
 
-              className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
-            >
 
-              Let’s Walk You Through It
-              <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
-            </Link >
+          <Link to={"/shift-protocol"}
 
-          </div>
+            className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
+          >
+
+            Let’s Get Clarity
+
+            <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
+          </Link >
+
         </div>
+
       </div>
     </section>
   );

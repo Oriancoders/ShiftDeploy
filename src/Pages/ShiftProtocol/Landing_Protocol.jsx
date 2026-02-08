@@ -25,38 +25,34 @@ const Landing_Protocol = () => {
     <>
       <Helmet>
         {/* Basic SEO */}
-        <title>Shift Protocol | ShiftDeploy</title>
-        <meta 
-          name="description" 
-          content="Discover the Shift Protocol, our phased approach to solving CI/CD, cloud, and DevOps challenges with clarity, structure, and guaranteed outcomes." 
-        />
-        <meta 
-          name="keywords" 
-          content="Shift Protocol, deployment process, CI/CD strategy, DevOps framework, cloud infrastructure, ShiftDeploy" 
-        />
-        <link 
-          rel="canonical" 
-          href="https://www.shiftdeploy.com/shift-protocol" 
+        <title>How We Work | The ShiftDeploy Process</title>
+
+        <meta
+          name="description"
+          content="Learn how ShiftDeploy approaches problems from first audit to final delivery. A clear, structured process designed to reduce risk, create clarity, and deliver measurable outcomes."
         />
 
-        {/* Open Graph / Social */}
-        <meta property="og:title" content="Shift Protocol | ShiftDeploy" />
-        <meta 
-          property="og:description" 
-          content="Explore the Shift Protocol — a proven phased method to guide builders through deployment challenges with guaranteed success." 
+        <link
+          rel="canonical"
+          href="https://www.shiftdeploy.com/shift-protocol"
+        />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="How We Work | The ShiftDeploy Process" />
+        <meta
+          property="og:description"
+          content="A transparent look at how ShiftDeploy works, from understanding the problem to delivering reliable, outcome-focused solutions."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.shiftdeploy.com/shift-protocol" />
-        <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
 
-        {/* Twitter Card */}
+        {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Shift Protocol | ShiftDeploy" />
-        <meta 
-          name="twitter:description" 
-          content="Explore the Shift Protocol — a proven phased method to guide builders through deployment challenges with guaranteed success." 
+        <meta name="twitter:title" content="How We Work | The ShiftDeploy Process" />
+        <meta
+          name="twitter:description"
+          content="See how ShiftDeploy turns complex problems into clear plans and dependable delivery."
         />
-        <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
       </Helmet>
 
       <div className="w-full">

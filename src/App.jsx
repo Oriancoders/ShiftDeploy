@@ -6,13 +6,14 @@ import GlobalProvider from './GlobalProvider/GlobalProvider';
 import ShiftDeployLoader from './components/ShiftDeployLoader'; // Ensure this path is correct based on your folder structure
 import ScrollToTop from './components/ScrollToTop'; // The new path you mentioned
 import ShiftSpeed from './Pages/Services/ShiftSpeed/ShiftSpeed';
+import Insights from './components/Insights';
 // import { Chatbot } from './components/Chatbot';
 
 // ✅ LAZY LOADED PAGES (Paths kept exactly as provided)
 const Landing = lazy(() => import('./Pages/LandingPage/Landing'));
 const InSide_Landing = lazy(() => import('./Pages/InsideShiftDeploy/InSide_Landing'));
 const Toolkit_Landing = lazy(() => import('./Pages/DeployToolkit/Toolkit_Landing'));
-const Landing_Protocol = lazy(() => import('./Pages/ShiftProtocol/Landing_Protocol'));
+// const Landing_Protocol = lazy(() => import('./Pages/ShiftProtocol/Landing_Protocol'));
 const Mission_Landing = lazy(() => import('./Pages/MissionCompleted/Mission_Landing'));
 const Flight_Landing = lazy(() => import('./Pages/FlighLogs/Flight_Landing'));
 const ContactUs = lazy(() => import('./Pages/ContactUsPage/ContactUs'));
@@ -42,7 +43,6 @@ function App() {
             <Route path='/' element={<Landing />} />
             <Route path='/insideShiftDeploy' element={<InSide_Landing />} />
             <Route path='/services' element={<Toolkit_Landing />} />
-            <Route path='/shift-protocol' element={<Landing_Protocol />} />
             <Route path='/missions' element={<Mission_Landing />} />
             <Route path='/flight-logs' element={<Flight_Landing />} />
             <Route path='/ContactUs' element={<ContactUs />} />
@@ -59,13 +59,13 @@ function App() {
             <Route path='/privacy-policy' element={<PrivacyPolicy/>} />
             <Route path='/terms-of-services' element={<Terms_Of_Services/>} />
 
-            {/* shiftify Landing */}
-            <Route path='/shiftify-landing-page' element={<Shiftify_Landing />} />
+    
             
             {/* {services pages routes to be added here} */}
             <Route path='/services/shiftspeed' element={<ShiftSpeed/>} />
 
-            
+            {/* {Insight pages routes to be added here} */}
+            <Route path='/insights' element={<Insights/>} />
             
           </Routes>
         </Suspense>

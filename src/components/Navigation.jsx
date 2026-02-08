@@ -21,7 +21,7 @@ const Navigation = ({ isDarkBg = false }) => {
   const navItems = [
     { label: 'Our Services', path: '/services' },
     { label: 'Inside ShiftDeploy', path: '/insideShiftDeploy' },
-    { label: 'The Shift Protocol', path: '/shift-protocol' },
+    { label: 'ShiftSpeed', path: '/services/shiftspeed' },
     {
       label: 'Missions Completed',
       path: '/missions',
@@ -31,7 +31,7 @@ const Navigation = ({ isDarkBg = false }) => {
         { label: 'K2 Traders', path: '/CaseStudies/K2TradersCase' },
       ],
     },
-    { label: 'Flight Logs', path: '/flight-logs' },
+    { label: 'Insights', path: '/insights' },
   ];
 
   return (
@@ -61,6 +61,7 @@ const Navigation = ({ isDarkBg = false }) => {
             {navItems.map(({ label, path, subPaths }) => {
               const isActive = location.pathname === path || (subPaths && subPaths.some(sub => sub.path === location.pathname));
               const hasSubPaths = subPaths && subPaths.length > 0;
+              
 
               return (
                 <div
@@ -76,7 +77,7 @@ const Navigation = ({ isDarkBg = false }) => {
                       ${isActive ? 'text-primaryBlue' : 'text-gray-700 hover:text-primaryBlue'}
                     `}
                   >
-                    <Link to={path} className="flex items-center gap-2">
+                    <Link to={path} aria-current={isActive ? 'page' : undefined} className="flex items-center gap-2">
                       {label}
                       {hasSubPaths && <IoIosArrowDown />}
                     </Link>
@@ -92,7 +93,7 @@ const Navigation = ({ isDarkBg = false }) => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md w-48 py-2"
+                      className="absolute top-full left-0 bg-white shadow-lg rounded-md w-48 py-2 pt-3"
                     >
                       {subPaths.map((subItem) => (
                         <Link
@@ -113,7 +114,7 @@ const Navigation = ({ isDarkBg = false }) => {
               to="/ContactUs"
               className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base"
             >
-              Get Started
+              Get Free Audit
             </Link>
           </div>
 
@@ -191,7 +192,7 @@ const Navigation = ({ isDarkBg = false }) => {
                 onClick={() => setIsOpen(false)}
                 className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
               >
-                Get Started
+                Get Free Audit
               </Link>
             </div>
           </motion.div>
