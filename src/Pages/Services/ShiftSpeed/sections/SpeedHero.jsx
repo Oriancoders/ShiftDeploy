@@ -110,11 +110,11 @@ const SpeedHero = () => {
               transition={{ duration: 0.3, delay: 0.2 }}
               className="text-xl   mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0 lg:text-left sm:text-center text-left text-gray-700"
             >
-               We re-engineer service business websites (Dental, Finance, Legal) to load in under 2 seconds. 
+               We re-engineer service business websites  to load in under 2.5 seconds. 
               <span className="font-semibold text-[#0C1F3A]"> Better Google Rankings, Higher Conversions, Zero Frustration.</span>
             </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 sm:mb-16 px-4 sm:px-0">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-20 sm:mb-16 px-4 sm:px-0 ">
               <motion.div
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -128,18 +128,7 @@ const SpeedHero = () => {
                 </Link>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.6 }}
-              >
-                <Link
-                  to={"/missions"}
-                  className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
-                >
-                  View Missions Completed
-                </Link>
-              </motion.div>
+             
             </div>
           </div>
 

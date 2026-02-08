@@ -22,10 +22,10 @@ function HeroSection() {
           }`}
         >
           {/* Main Headline */}
-          <h1 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-primaryBlue mb-8 leading-tight">
+          <h1 className="text-3xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-primaryBlue mb-8 leading-tight">
             Fix what’s slowing you down
             <br />
-            <span className="text-primaryOrange">and grow with confidence</span>
+            <span className="text-primaryOrange">to grow with confidence</span>
           </h1>
 
           {/* Subheadline */}
@@ -36,7 +36,7 @@ function HeroSection() {
           >
             <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
               ShiftDeploy helps businesses improve website speed, conversions, and stability without long timelines or
-              vague “redesigns”. Choose the model you need <br/>{" "}
+              necessary “redesigns”. Choose the model you need <br/>{" "}
               <span className="text-orange-600 font-semibold">
                 ShiftSpeed™, ShiftConvert™, ShiftBuild™, or ShiftFlow™
               </span><br/>
@@ -74,7 +74,7 @@ function HeroSection() {
             to={"/ContactUs"}
             className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit"
           >
-            Discuss Your Project
+            Know Whats Slowing You Down
           </Link>
         </div>
       </div>

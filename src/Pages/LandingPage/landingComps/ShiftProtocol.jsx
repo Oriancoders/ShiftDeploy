@@ -84,14 +84,14 @@ const ShiftProtocol = () => {
           variants={staggerContainer}
           initial="initial"
           animate={isInView ? "animate" : "initial"}
-          className="text-center mb-6 sm:mb-8"
+          className="text-center mb-6 sm:mb-8 px-2" 
         >
           <motion.h2
             variants={fadeInUp}
             className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
           >
             How
-            <span className="text-primaryOrange px-4">
+            <span className="text-primaryOrange sm:px-4 px-2">
               We Turn Problems Into
             </span>
             Outcomes
@@ -126,7 +126,7 @@ const ShiftProtocol = () => {
                   >
                     {/* Heading */}
                     <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold mb-4 leading-tight ">
-                      That’s How We Fix <span className='text-primaryOrange'>Speed</span>, <br /> That’s How You Win<br />
+                      That’s How We Fix <span className='text-primaryOrange'>Problem</span>, <br /> That’s How You Win<br />
                       <span className='text-primaryOrange'>Customers</span>
                     </h2>
 
@@ -143,7 +143,7 @@ const ShiftProtocol = () => {
                       href="#contact"
                       className="px-6 py-3 rounded-xl bg-primaryOrange hover:bg-toOrange text-white font-semibold shadow-md transition-transform transform  text-center"
                     >
-                      Start Your Journey
+                      Lets fix my problem
                     </Link>
                   </div>
 
@@ -200,7 +200,7 @@ const ShiftProtocol = () => {
           </p>
 
 
-          <Link to={"/shift-protocol"}
+          <Link to={"/services"}
 
             className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
           >

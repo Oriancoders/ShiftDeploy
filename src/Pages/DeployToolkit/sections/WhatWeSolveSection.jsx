@@ -121,7 +121,7 @@ function WhatWeSolveSection() {
 
         <div className="text-center mt-20">
           <CursorFollower
-            text="If any of this sounds familiar, ShiftDeploy we can help you fix it with a clear plan and clean execution."
+            text="If any of this sounds familiar, ShiftDeploy can help you fix it with a clear plan and clean execution."
             className="max-w-2xl mt-12 bg-primaryBlue px-10 sm:px-6 py-4 rounded-3xl sm:rounded-full text-white mx-auto"
             textClassName="text-white font-semibold text-sm lg:text-base"
             gradientFrom="#f76707"

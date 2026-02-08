@@ -99,7 +99,7 @@ export const SpeedComparison = () => {
                                 <span className="font-bold text-sm uppercase tracking-wide">Before</span>
                             </div>
                             <h3 className="text-xl md:text-2xl font-bold text-primaryOrange">
-                                Generic WordPress Site
+                                Generic Site
                             </h3>
                         </div>
 

@@ -126,10 +126,10 @@ const Hero = () => {
                     transition={{ duration: 0.3, delay: 0.6 }}
                   >
                     <Link
-                      to={"/missions"}
+                      to={"/services/shiftspeed"}
                       className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
                     >
-                      View Missions Completed
+                      View ShiftSpeed
                     </Link>
                   </motion.div>
                 </div>

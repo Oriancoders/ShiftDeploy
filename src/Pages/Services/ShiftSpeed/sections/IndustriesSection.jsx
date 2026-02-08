@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { Stethoscope, Scale, Landmark, Calendar, FileText, Shield, ArrowRight, MapPin, Rocket, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const industries = [
   {
@@ -220,14 +221,14 @@ export const IndustriesSection = () => {
               ))}
             </ul>
 
-            <button
-              onClick={() => scrollToSection("#pricing")}
-              className="bg-primaryOrange mt-12 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit group"
+            <Link to={"/contactus"}
+              
+              className="bg-primaryOrange mt-12 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit group text-center"
 
             >
               Optimize My {activeIndustry.label.slice(0, -1)} Site
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link >
           </div>
 
           {/* Visual Card */}

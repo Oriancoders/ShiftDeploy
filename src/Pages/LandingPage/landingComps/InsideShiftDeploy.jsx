@@ -71,10 +71,10 @@ const InsideShiftDeploy = () => {
         >
           <motion.h2
             variants={fadeInUp}
-            className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight"
+            className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight "
           >
-            What
-            <span className="text-primaryOrange pl-4">ShiftDeploy Offers</span>
+            What <br/>
+            <span className="text-primaryOrange ">ShiftDeploy Offers</span>
           </motion.h2>
 
           <motion.p

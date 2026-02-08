@@ -9,42 +9,42 @@ function FAQSection() {
   const sectionRef = useRef(null)
 
   const faqs = [
-    {
-      question: "How quickly can you start?",
-      answer:
-        "Usually we can begin shortly after the strategy call once scope and access are clear. For small fixes, we can sometimes start right away. If it’s a bigger build, we’ll agree a realistic start date and timeline upfront.",
-    },
-    {
-      question: "Do you work with our existing team?",
-      answer:
-        "Yes. We can collaborate with your developer, designer, or internal team or handle delivery end-to-end. We keep communication simple and leave behind clean handover notes so you’re not dependent on us.",
-    },
-    {
-      question: "What if we’re not sure what we need yet?",
-      answer:
-        "That’s common. The first step is a short discovery call where we clarify goals, identify what’s actually blocking results, and propose the smallest plan that creates real progress. Speed, UX, or a rebuild.",
-    },
-    {
-      question: "How do you handle security and access?",
-      answer:
-        "We follow a “least access” approach, only what’s needed, for as long as needed. We can work with staging environments and shared accounts where possible, and we document what we touch so everything stays transparent.",
-    },
-    {
-      question: "What happens after the project is complete?",
-      answer:
-        "We don’t just hand it off and vanish. You’ll get a clear handover plus optional ongoing support for improvements, fixes, and updates. ",
-    },
-    {
-      question: "How is this different from a typical development agency?",
-      answer:
-        "We’re focused on outcomes, not just deliverables. That means clearer messaging, smoother user journeys, faster pages, and a setup that’s easier to run, especially for founders who want momentum without the agency bloat.",
-    },
-    {
-      question: "What size companies do you work with?",
-      answer:
-        "Mostly early-stage teams, solo founders, and growing small businesses, usually the ones who need senior execution without building a full in-house team yet.",
-    },
-  ]
+  {
+    question: "How quickly can you start?",
+    answer:
+      "We usually begin with the audit within 48 hours of confirmation. Since the first step is measurement, there’s no long onboarding or preparation required. You’ll see findings before any work is proposed.",
+  },
+  {
+    question: "Do you work with our existing team or developer?",
+    answer:
+      "Yes. We frequently work alongside in-house teams or external developers. Our role is to diagnose performance and usability issues and either implement fixes ourselves or provide clear guidance your team can follow.",
+  },
+  {
+    question: "What if the audit shows no major issues?",
+    answer:
+      "Then you’ve gained confirmation, not a sales pitch. If your site is already performing well, we’ll tell you that. The audit exists to give clarity, not to force a project.",
+  },
+  {
+    question: "Do you make changes during the free audit?",
+    answer:
+      "No. The audit is diagnostic only. We analyze performance, usability, and conversion risks without touching your live site. Any fixes are discussed separately, after you review the findings.",
+  },
+  {
+    question: "How do you handle access and security?",
+    answer:
+      "The audit requires no backend access. If you choose to proceed with implementation later, we follow standard security practices, work within your access policies, and only request what’s necessary.",
+  },
+  {
+    question: "What happens after optimization is complete?",
+    answer:
+      "You receive a before-and-after report showing what changed and why it matters. From there, some clients stop, others continue with ongoing monitoring or improvements. There’s no forced long-term commitment.",
+  },
+  {
+    question: "How is this different from a typical agency?",
+    answer:
+      "Most agencies start by building or redesigning. We start by measuring. Performance, usability, and conversion issues are identified first, so decisions are based on evidence, not assumptions.",
+  },
+];
 
   useEffect(() => {
     const timeoutIds = []
