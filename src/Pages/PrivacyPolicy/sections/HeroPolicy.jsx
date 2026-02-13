@@ -78,7 +78,7 @@ function HeroPolicy() {
     return (
         <section
             ref={sectionRef}
-            className="relative pb-10 min-h-screen  bg-gradient-to-br from-blue-50 via-white to-gray-50 overflow-hidden sm:pt-28 "
+            className="relative py-10 sm:py-20  bg-gradient-to-br from-blue-50 via-white to-gray-50 overflow-hidden sm:pt-28 "
         >
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-30">

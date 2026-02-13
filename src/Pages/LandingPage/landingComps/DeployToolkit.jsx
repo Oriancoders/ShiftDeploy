@@ -164,7 +164,7 @@ const DeployToolkit = () => {
 
         </motion.div>
 
-        <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 px-4 sm:px-6 lg:px-8 max-w-7xl ">
+        <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 px-4 sm:px-6 lg:px-8 max-w-7xl 2xl:max-w-[80%]">
           {tools.map((tool, index) => (
             <motion.div key={index} variants={scaleOnHover}>
               <div className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[350px] border sm:border-gray-200 rounded-3xl p-6 pb-12   sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden">
@@ -241,7 +241,7 @@ const DeployToolkit = () => {
         {/* Problem-solving CTA */}
 
         <section id="problem-solving" className="w-full  bg-gradient-to-br from-primaryBlue to-toBlue text-white ">
-          <div className="w-full  p-4 sm:p-8 lg:p-16  drop-shadow-sm flex lg:flex-row flex-col   max-w-7xl mx-auto gap-4 sm:gap-6">
+          <div className="w-full  p-4 sm:p-8 lg:p-16  drop-shadow-sm flex lg:flex-row flex-col  2xl:max-w-[80%] max-w-7xl mx-auto gap-4 sm:gap-6">
             <div className="flex-1 ">
               <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold  mb-4 sm:mb-6 lg:mb-8 leading-normal">
                 If your website is slow, underperforming, or not converting.

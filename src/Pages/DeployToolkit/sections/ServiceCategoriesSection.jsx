@@ -90,7 +90,7 @@ function ServiceCategoriesSection() {
 
   return (
     <section className="pt-10 pb-5 sm:pt-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             Choose the model that fits
