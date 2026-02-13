@@ -180,22 +180,23 @@ const ContactUs = () => {
               </h2>
 
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
-                A short, clear report that shows where visitors lose patience, where usability breaks down, and what to fix first.
-                This is diagnosis only — no access, no deployments, no risky edits.
+                A short, structured performance visibility report that shows how your website performs for real users today.
+                This is an informational health check only, no access required, no technical diagnosis, and no implementation guidance.
               </p>
 
               <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6 space-y-3">
-                <p className="text-slate-900 font-semibold text-base sm:text-lg">Audit includes:</p>
+                <p className="text-slate-900 font-semibold text-base sm:text-lg">Health check includes:</p>
                 <ul className="text-slate-600 text-sm sm:text-base leading-relaxed space-y-2 list-disc pl-5">
-                  <li>Speed + Core Web Vitals snapshot (real-world impact)</li>
-                  <li>Mobile usability + UX friction notes</li>
-                  <li>Conversion blockers on key pages (booking/contact/service)</li>
-                  <li>Prioritized next steps (what matters first)</li>
+                  <li>Load speed and responsiveness overview</li>
+                  <li>Core Web Vitals snapshot (LCP, INP, CLS)</li>
+                  <li>Visual stability during page load</li>
+                  <li>High-level indication of whether performance meets modern user expectations</li>
                 </ul>
                 <p className="text-slate-500 text-sm sm:text-base pt-2">
                   Typical turnaround: <span className="text-slate-700 font-medium">24–48 hours</span>
                 </p>
               </div>
+
 
 
               <h2 className="text-2xl sm:text-3xl lg:text-3xl font-bold text-primaryBlue mb-6 sm:mb-8 leading-10">

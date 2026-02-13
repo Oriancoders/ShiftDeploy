@@ -59,7 +59,7 @@ const Hero = () => {
             ></div>
           </motion.div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 xl:gap-16 sm:items-center">
               <div className="flex flex-col lg:items-start sm:items-center">
                 <CursorFollower

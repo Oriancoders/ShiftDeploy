@@ -108,7 +108,7 @@ const MissionsCompleted = () => {
 
   return (
     <section id="missions-completed" className="py-12 bg-white text-primaryBlue">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="w-full flex sm:flex-row flex-col justify-between items-center mb-8">
           {/* Left: Title + Copy */}
           <motion.div

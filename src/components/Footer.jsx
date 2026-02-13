@@ -34,7 +34,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-primaryBlue text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-6 sm:py-8 lg:py-10">
+      <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-4 py-6 sm:py-8 lg:py-10">
         <motion.div
           variants={staggerContainer}
           initial="initial"
