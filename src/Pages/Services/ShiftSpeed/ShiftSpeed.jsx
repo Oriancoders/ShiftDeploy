@@ -25,7 +25,7 @@ const ShiftSpeed = () => {
   return (
     <>
       <Helmet>
-        <title>ShiftSpeed™ – Website Performance Optimization That Protects Growth | ShiftDeploy</title>
+        <title>ShiftSpeed™ | Website Performance Optimization That Protects Growth | ShiftDeploy</title>
 
         <meta
           name="description"
