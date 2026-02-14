@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { ContextAPI } from "../../../GlobalProvider/ContextAPI";
 
 const Hero = () => {
-   const { scrwidth } = useContext(ContextAPI);
+  const { scrwidth } = useContext(ContextAPI);
   const scrollToProblemSolving = () => {
     const el = document.getElementById("problem-solving");
     if (!el) return;
@@ -28,7 +28,7 @@ const Hero = () => {
 
         <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 xl:gap-16 sm:items-center">
-            
+
             {/* Left Column: Text Content */}
             <div className="flex flex-col lg:items-start sm:items-center">
               {scrwidth > 640 ? (<CursorFollower
@@ -45,12 +45,12 @@ const Hero = () => {
                 circleSize={100}
               />) : (
                 <span className="w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-4 sm:px-6 py-2 rounded-full text-white font-semibold text-xs sm:text-sm lg:text-base">
-                    <p className="flex items-center justify-center gap-x-2 italic">
+                  <p className="flex items-center justify-center gap-x-2 italic">
                     Building <ArrowRight size={16} /> Optimization{" "}
                     <ArrowRight size={16} /> Succeed
                   </p>
                 </span>
-              ) }
+              )}
 
               <div className="text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left">
                 <h1>
@@ -97,22 +97,22 @@ const Hero = () => {
             <div className="relative mt-8 lg:mt-0 px-4 sm:px-0">
               <img
                 srcSet={`
-                  https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_400/v1771102147/hero_image_aw1jnc.webp 400w,
-                  https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_600/v1771102147/hero_image_aw1jnc.webp 600w,
-                  https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_800/v1771102147/hero_image_aw1jnc.webp 800w,
-                  https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp 1200w
-                `}
+    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_400/v1771102147/hero_image_aw1jnc.webp 400w,
+    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_600/v1771102147/hero_image_aw1jnc.webp 600w,
+    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_800/v1771102147/hero_image_aw1jnc.webp 800w,
+    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp 1200w
+  `}
                 sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 600px"
                 src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp"
                 width="1200"
                 height="675"
                 alt="3D Material Prototype Illustration"
-                className="w-full rounded-xl"
-                loading="eager"
+                className="w-full h-auto rounded-xl"
                 fetchPriority="high"
+                loading="eager"
               />
             </div>
-            
+
           </div>
         </div>
       </section>

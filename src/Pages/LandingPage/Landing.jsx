@@ -1,7 +1,6 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Navigation from '../../components/Navigation';
-import Footer from '../../components/Footer';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 // TrustStrip will be lazy-loaded below to keep initial bundle small
 
@@ -17,6 +16,7 @@ const MissionsCompleted = lazy(() => import('./landingComps/MissionsCompleted'))
 const FlightLogs = lazy(() => import('./landingComps/FlightLogs'));
 const VideoTestimonial = lazy(() => import('./landingComps/VideoTestimonial'));
 const TrustStrip = lazy(() => import('../../components/TrustStrip'));
+const Footer = lazy(() => import('../../components/Footer'));
 
 const Landing = () => {
 
@@ -48,7 +48,7 @@ const Landing = () => {
         {/* ✅ FIX 4: Only wrap the heavy, lower-down stuff in Suspense */}
         <Suspense fallback={<ShiftDeployLoader />}>
           <InsideShiftDeploy />
-          <VideoTestimonial videoSrc='https://res.cloudinary.com/dbazbq7u9/video/upload/v1771101197/Web_Video_1_handbraked_xii5jz.mp4' />
+          <VideoTestimonial videoSrc='https://res.cloudinary.com/dbazbq7u9/video/upload/v1771101197/Web_Video_1_handbraked_xii5jz.mp4'  posterSrc='https://res.cloudinary.com/dbazbq7u9/image/upload/v1771111040/poster_drnahj.webp'/>
           <DeployToolkit />
           <TrustStrip/>
           <ShiftProtocol />
