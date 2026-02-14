@@ -3,11 +3,11 @@ import { Helmet } from 'react-helmet-async';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
-import TrustStrip from '../../components/TrustStrip';
+// TrustStrip will be lazy-loaded below to keep initial bundle small
 
 // ✅ FIX 1: Import Hero DIRECTLY. No lazy loading for what the user sees first.
 import Hero from './landingComps/Hero'; 
-import VideoTestimonial from './landingComps/VideoTestimonial';
+// VideoTestimonial will be lazy-loaded below to avoid fetching video on initial load
 
 // Keep "Below the fold" components lazy to save bandwidth
 const InsideShiftDeploy = lazy(() => import('./landingComps/InsideShiftDeploy'));
@@ -15,6 +15,8 @@ const DeployToolkit = lazy(() => import('./landingComps/DeployToolkit'));
 const ShiftProtocol = lazy(() => import('./landingComps/ShiftProtocol'));
 const MissionsCompleted = lazy(() => import('./landingComps/MissionsCompleted'));
 const FlightLogs = lazy(() => import('./landingComps/FlightLogs'));
+const VideoTestimonial = lazy(() => import('./landingComps/VideoTestimonial'));
+const TrustStrip = lazy(() => import('../../components/TrustStrip'));
 
 const Landing = () => {
 

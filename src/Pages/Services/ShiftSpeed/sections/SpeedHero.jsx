@@ -67,23 +67,25 @@ const SpeedHero = () => {
       onMouseMove={handleMouseMove}
       className=" bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12"
     >
-     
+
 
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 xl:gap-16 sm:items-center">
           <div className="flex flex-col lg:items-start sm:items-center">
+            
             <CursorFollower
               text={
                 <p className="flex items-center justify-center gap-x-2 italic">
-                  ShiftSpeed <ArrowRight size={16} /> Faster Sites <ArrowRight size={16} /> More Clients
+                 ShiftSpeed <ArrowRight size={16} /> Faster Sites <ArrowRight size={16} /> More Clients
                 </p>
               }
               className=" w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue  px-6 py-2 rounded-full text-white"
-              textClassName="text-white font-semibold text-sm lg:text-base "
+              textClassName="text-white font-semibold text-xs sm:text-sm lg:text-base "
               gradientFrom="#f76707"
               gradientTo="#0B1D30"
               circleSize={100}
             />
+
 
             <motion.div
               initial={{ opacity: 0 }}
@@ -93,7 +95,7 @@ const SpeedHero = () => {
             >
               <h1>
                 <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                   Stop Losing 
+                  Stop Losing
                 </span>
                 <br />
                 <span className="text-primaryOrange">High-Value Clients</span>
@@ -110,7 +112,7 @@ const SpeedHero = () => {
               transition={{ duration: 0.3, delay: 0.2 }}
               className="text-xl   mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl  lg:mx-0 leading-relaxed  sm:px-0 lg:text-left sm:text-center text-left text-gray-700"
             >
-               We re-engineer service business websites  to load in under 2.5 seconds. 
+              We re-engineer service business websites  to load in under 2.5 seconds.
               <span className="font-semibold text-[#0C1F3A]"> Better Google Rankings, Higher Conversions, Zero Frustration.</span>
             </motion.p>
 
@@ -128,12 +130,12 @@ const SpeedHero = () => {
                 </Link>
               </motion.div>
 
-             
+
             </div>
           </div>
 
-         
-           {/* Right Visual - Enhanced Speedometer */}
+
+          {/* Right Visual - Enhanced Speedometer */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -152,9 +154,9 @@ const SpeedHero = () => {
                       {/* Performance Score */}
                       <div className="text-center z-10">
                         <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ duration: 0.4, delay: 0.25, type: "spring" }}
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ duration: 0.4, delay: 0.25, type: "spring" }}
                           className="text-4xl md:text-5xl lg:text-6xl font-bold text-green-500 mb-2"
                         >
                           {animatedNumbers.score}
@@ -162,25 +164,25 @@ const SpeedHero = () => {
                         <div className="text-lg font-semibold text-primaryBlue">Performance</div>
                         <div className="text-sm text-primaryBlue/60">Google Lighthouse</div>
                       </div>
-                      
+
                       {/* Animated Speed Needle */}
                       <motion.div
                         // rotation driven by MotionValue so we can sync numeric updates
                         className="absolute top-1/2 left-1/2 w-1 h-20 bg-gradient-to-t from-primaryOrange to-primaryOrange origin-bottom transform -translate-x-1/2 rounded-full shadow-lg"
                         style={{ transformOrigin: '50% 100%', rotate: needleRotation }}
                       />
-                      
+
                       {/* Center Dot */}
                       <div className="absolute -bottom-2 sm:bottom-2 md:bottom-6 left-1/2 w-4 h-4 bg-primaryBlue rounded-full transform -translate-x-1/2 -translate-y-1/2 z-20 shadow-lg" />
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Speed Indicators around the circle */}
                 <div className="absolute top-4 left-1/2 transform -translate-x-1/2 text-xs sm:text-sm font-semibold text-primaryOrange">SLOW</div>
                 <div className="absolute top-1/2 right-4 transform -translate-y-1/2 text-xs sm:text-sm font-semibold text-primaryBlue">FAST</div>
               </div>
-              
+
               {/* Floating Metrics */}
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.8 }}
@@ -196,7 +198,7 @@ const SpeedHero = () => {
                   </div>
                 </div>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.8 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -211,7 +213,7 @@ const SpeedHero = () => {
                   </div>
                 </div>
               </motion.div>
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.8 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -226,7 +228,7 @@ const SpeedHero = () => {
                   </div>
                 </div>
               </motion.div>
-              
+
               {/* Subtle Background Glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-primaryOrange/10 to-primaryBlue/10 rounded-full blur-3xl -z-10 scale-150" />
             </div>
