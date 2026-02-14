@@ -4,6 +4,7 @@ import {
 
   ArrowRight,
   MoveLeft,
+  Star,
 } from "lucide-react";
 import {
   staggerContainer,
@@ -241,18 +242,76 @@ const DeployToolkit = () => {
         {/* Problem-solving CTA */}
 
         <section id="problem-solving" className="w-full  bg-gradient-to-br from-primaryBlue to-toBlue text-white ">
-          <div className="w-full  p-4 sm:p-8 lg:p-16  drop-shadow-sm flex lg:flex-row flex-col  2xl:max-w-[80%] max-w-7xl mx-auto gap-4 sm:gap-6">
+          <div className="w-full  p-4 sm:p-8 lg:p-16  drop-shadow-sm flex lg:flex-row flex-col  2xl:max-w-[90%] max-w-7xl mx-auto  gap-10">
             <div className="flex-1 ">
-              <h1 className="text-2xl sm:text-3xl xl:text-4xl font-bold  mb-4 sm:mb-6 lg:mb-8 leading-normal">
+              <h1 className="text-xxl sm:text-2xl 2xl:text-3xl font-bold  mb-4 sm:mb-6 leading-normal">
                 If your website is slow, underperforming, or not converting.
                 We’ve fixed this problem before.
 
               </h1>
-              <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12  mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base 2xl:text-xl mb-6 sm:mb-8  mx-auto leading-relaxed">
                 We help businesses identify performance bottlenecks, fix conversion leaks,
                 and build websites that support long-term growth, not just launch and decay.
 
               </p>
+
+               
+        {/* Content */}
+        <div className="relative  p-6 2xl:p-12  text-center text-white bg-white/10 backdrop-blur-lg w-[90%] w-full sm:w-fit mx-auto rounded-2xl">
+
+
+          {/* Stars */}
+          <div className="flex justify-center mb-6">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-4 2xl:w-6 h-4 2xl:h-6 text-yellow-400 fill-current" />
+            ))}
+          </div>
+
+          {/* Quote */}
+          <blockquote className="2xl:text-xl italic leading-relaxed mb-8 max-w-4xl mx-auto text-white">
+            “Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is
+            outstanding!”
+          </blockquote>
+
+          <hr className="border-t border-white/20 " />
+          <div className="flex sm:flex-row flex-col gap-4 2xl:gap-7 justify-evenly items-center w-full pt-6 2xl:pt-10 ">
+            {/* Author */}
+            <div className="flex items-center justify-center gap-4">
+              <img
+                src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE"
+                alt="Kamran Abbas"
+                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full ring-2 ring-white/30 object-cover"
+              />
+              <div className="text-left">
+                <div className="font-semibold text-md 2xl:text-lg leading-tight">
+                  <a
+                    href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:underline underline-offset-4"
+                  >
+                    Kamran Abbas
+                  </a>
+                </div>
+                <div className="text-white/75 text-sm 2xl:text-base">
+                  Chief Strategist at Bullseye Investment Private Limited
+                </div>
+              </div>
+            </div>
+            {/* Bottom-left CTA */}
+
+            <a
+              href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
+              target="_blank"
+              rel="noreferrer"
+              className="sm:w-fit w-full  inline-flex items-center justify-center gap-2 bg-primaryOrange hover:bg-toOrange border border-white/20 text-white px-4 sm:px-5 py-3 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/40"
+            >
+              <span className="flex-1 text-sm 2xl:text-md">Visit Source</span>
+              <ArrowRight className="w-4 h-4 -rotate-45" />
+            </a>
+          </div>
+
+        </div>
             </div>
 
             <div className="flex flex-col gap-6">

@@ -16,7 +16,7 @@ export default function ShiftDeployLoader() {
         ))}
       </div>
       <p className="mt-6 text-lg tracking-widest animate-pulse">
-        Deploying...
+        Optimizing Performance
       </p>
 
       <style>{`

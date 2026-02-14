@@ -147,14 +147,17 @@ const Hero = () => {
                   // 1. Define the versions available
                   srcSet={`
     https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_600/v1769118309/ChatGPT_Image_Jan_23_2026_02_43_24_AM_ch39qy.png 600w,
-    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1769118309/ChatGPT_Image_Jan_23_2026_02_43_24_AM_ch39qy.png 1200w
+    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp 1200w
   `}
                   // 2. Tell browser how wide the image will be on screen
                   // "On mobile, it takes up 100% of screen. On desktop, cap it at 1200px."
                   sizes="(max-width: 768px) 100vw, 1200px"
                   // 3. Fallback for old browsers
 
-                  src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1769118309/ChatGPT_Image_Jan_23_2026_02_43_24_AM_ch39qy.png"
+                  
+                  src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp"
+                  width="1200"
+                  height="675"
                   alt="3D Material Prototype Illustration"
                   className="w-full h-auto rounded-xl"
                   // 4. Performance Boosters
@@ -173,80 +176,6 @@ const Hero = () => {
 
 
 
-      <div className="relative  overflow-hidden shadow-lg w-full mx-auto bg-primaryBlue text-center py-10 text-white ">
-        {/* Background */}
-        <div className="absolute inset-0 opacity-15">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `radial-gradient(circle at 20% 80%, #ffffff 1px, transparent 1px),
-                            radial-gradient(circle at 80% 20%, #ffffff 1px, transparent 1px),
-                            radial-gradient(circle at 50% 50%, #ffffff 1px, transparent 1px)`,
-              backgroundSize: "90px 90px",
-            }}
-          />
-        </div>
-        <motion.h2 className="text-3xl sm:text-5xl font-bold mb-6 px-4">
-          What <span className="text-primaryOrange">Client Think</span> About Us
-        </motion.h2>
-        {/* Content */}
-        <div className="relative p-6 sm:p-12 text-center text-white bg-white/10 backdrop-blur-lg w-[90%] sm:w-fit mx-auto rounded-2xl mb-10">
-
-
-          {/* Stars */}
-          <div className="flex justify-center mb-6">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
-            ))}
-          </div>
-
-          {/* Quote */}
-          <blockquote className="sm:text-xl italic leading-relaxed mb-8 max-w-4xl mx-auto text-white">
-            “Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is
-            outstanding!”
-          </blockquote>
-
-          <hr className="border-t border-white/20 " />
-          <div className="flex sm:flex-row flex-col gap-7 justify-evenly items-center w-full pt-10 ">
-            {/* Author */}
-            <div className="flex items-center justify-center gap-4">
-              <img
-                src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE"
-                alt="Kamran Abbas"
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full ring-2 ring-white/30 object-cover"
-              />
-              <div className="text-left">
-                <div className="font-semibold sm:text-lg leading-tight">
-                  <a
-                    href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:underline underline-offset-4"
-                  >
-                    Kamran Abbas
-                  </a>
-                </div>
-                <div className="text-white/75 text-sm sm:text-base">
-                  Chief Strategist at Bullseye Investment Private Limited
-                </div>
-              </div>
-            </div>
-            {/* Bottom-left CTA */}
-
-            <a
-              href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
-              target="_blank"
-              rel="noreferrer"
-              className="sm:w-fit w-full  inline-flex items-center justify-center gap-2 bg-primaryOrange hover:bg-toOrange border border-white/20 text-white px-4 sm:px-5 py-3 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/40"
-            >
-              Visit Source
-              <ArrowRight className="w-4 h-4 -rotate-45" />
-            </a>
-          </div>
-
-        </div>
-
-      </div>
 
 
 

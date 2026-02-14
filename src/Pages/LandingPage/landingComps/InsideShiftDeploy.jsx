@@ -59,7 +59,7 @@ const InsideShiftDeploy = () => {
   return (
     <section
       id="inside-shiftdeploy"
-      className="pt-8 sm:pt-12 text-textColor bg-gradient-to-b from-gray-50 to-gray-50"
+      className=" text-textColor bg-gradient-to-b from-gray-50 to-gray-50"
     >
       <div className="mx-auto flex flex-col justify-center items-center">
         <motion.div
