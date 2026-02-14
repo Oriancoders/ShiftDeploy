@@ -257,7 +257,7 @@ const DeployToolkit = () => {
 
                
         {/* Content */}
-        <div className="relative  p-6 2xl:p-12  text-center text-white bg-white/10 backdrop-blur-lg w-[90%] w-full sm:w-fit mx-auto rounded-2xl">
+        <div className="relative  p-6 2xl:p-12  text-center text-white bg-white/10 backdrop-blur-lg  w-full sm:w-fit mx-auto rounded-2xl">
 
 
           {/* Stars */}

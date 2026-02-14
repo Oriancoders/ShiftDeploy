@@ -14,7 +14,7 @@ function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative pb-10 min-h-screen flex justify-center items-center  bg-gradient-to-br from-blue-50 via-white to-gray-50 overflow-hidden sm:pt-28"
+      className="relative py-20  flex justify-center items-center  bg-gradient-to-br from-blue-50 via-white to-gray-50 overflow-hidden sm:pt-28"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
