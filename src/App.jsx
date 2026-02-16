@@ -10,7 +10,7 @@ const Insights = lazy(() => import('./components/Insights'));
 // import { Chatbot } from './components/Chatbot';
 
 // ✅ LAZY LOADED PAGES (Paths kept exactly as provided)
-const Landing = lazy(() => import('./Pages/LandingPage/Landing'));
+import Landing from './Pages/LandingPage/Landing';
 const InSide_Landing = lazy(() => import('./Pages/InsideShiftDeploy/InSide_Landing'));
 const Toolkit_Landing = lazy(() => import('./Pages/DeployToolkit/Toolkit_Landing'));
 // const Landing_Protocol = lazy(() => import('./Pages/ShiftProtocol/Landing_Protocol'));
