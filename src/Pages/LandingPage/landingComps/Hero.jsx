@@ -113,12 +113,13 @@ const Hero = () => {
             <div className="relative mt-8 lg:mt-0 px-4 sm:px-0">
               <img
                 srcSet={`
-    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_70,w_320/v1771102147/hero_image_aw1jnc.webp 320w,
-    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_600/v1771102147/hero_image_aw1jnc.webp 600w,
+    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_400/v1771102147/hero_image_aw1jnc.webp 400w,
+    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_800/v1771102147/hero_image_aw1jnc.webp 800w,
     https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp 1200w
   `}
                 sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 600px"
-                src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp" width="1200"
+                src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp"
+                width="1200"
                 height="675"
                 alt="3D Material Prototype Illustration"
                 className="w-full h-auto rounded-xl"
