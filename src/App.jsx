@@ -27,7 +27,6 @@ const K2TradersCase = lazy(() => import('./Pages/CaseStudies/K2Traders'));
 const ThankYouPage = lazy(() => import('./Pages/ContactUsPage/ThankYouPage'));
 const PrivacyPolicy = lazy(() => import('./Pages/PrivacyPolicy/PrivacyPolicy'));
 const Terms_Of_Services = lazy(() => import('./Pages/Terms_Of_Services/Terms_Of_Services'));
-const Shiftify_Landing = lazy(() => import('./Shiftify_Landing/Shiftify_Landing'));
 
 function App() {
   return (
