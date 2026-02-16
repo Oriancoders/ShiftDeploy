@@ -39,11 +39,11 @@ const Hero = () => {
             <div className="flex flex-col lg:items-start sm:items-center">
               <div className="hidden sm:block">
                 <Suspense fallback={<span className=" w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-4 sm:px-6 py-2 rounded-full text-white font-semibold text-xs sm:text-sm lg:text-base">
-                <p className="flex items-center justify-center gap-x-2 italic">
-                  Building <ArrowRight size={16} /> Optimization{" "}
-                  <ArrowRight size={16} /> Succeed
-                </p>
-              </span> }>
+                  <p className="flex items-center justify-center gap-x-2 italic">
+                    Building <ArrowRight size={16} /> Optimization{" "}
+                    <ArrowRight size={16} /> Succeed
+                  </p>
+                </span>}>
                   <CursorFollower
                     text={
                       <p className="flex items-center justify-center gap-x-2 italic">
@@ -113,14 +113,12 @@ const Hero = () => {
             <div className="relative mt-8 lg:mt-0 px-4 sm:px-0">
               <img
                 srcSet={`
-    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_400/v1771102147/hero_image_aw1jnc.webp 400w,
+    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_70,w_320/v1771102147/hero_image_aw1jnc.webp 320w,
     https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_600/v1771102147/hero_image_aw1jnc.webp 600w,
-    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_800/v1771102147/hero_image_aw1jnc.webp 800w,
     https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp 1200w
   `}
                 sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 600px"
-                src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp"
-                width="1200"
+                src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp" width="1200"
                 height="675"
                 alt="3D Material Prototype Illustration"
                 className="w-full h-auto rounded-xl"
