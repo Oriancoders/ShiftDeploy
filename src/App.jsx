@@ -11,6 +11,7 @@ const Insights = lazy(() => import('./components/Insights'));
 
 // ✅ LAZY LOADED PAGES (Paths kept exactly as provided)
 import Landing from './Pages/LandingPage/Landing';
+import LazyGTM from './utils/LazyGTM';
 const InSide_Landing = lazy(() => import('./Pages/InsideShiftDeploy/InSide_Landing'));
 const Toolkit_Landing = lazy(() => import('./Pages/DeployToolkit/Toolkit_Landing'));
 // const Landing_Protocol = lazy(() => import('./Pages/ShiftProtocol/Landing_Protocol'));
@@ -31,6 +32,7 @@ const Terms_Of_Services = lazy(() => import('./Pages/Terms_Of_Services/Terms_Of_
 function App() {
   return (
     <GlobalProvider>
+      <LazyGTM/>
       <div className="bg-white min-h-screen">
         
         {/* Helper to scroll to top on route change */}
