@@ -1,11 +1,23 @@
-import React, { useContext } from "react";
+import React, { lazy } from "react";
 import { ArrowRight } from "lucide-react";
-import CursorFollower from "../../../utils/CursorFollower";
 import { Link } from "react-router-dom";
-import { ContextAPI } from "../../../GlobalProvider/ContextAPI";
+
+// 2. Lazy Import the heavy interactive component
+// This tells React: "Don't download this file until we actually need to render it."
+const CursorFollower = lazy(() => import("../../../utils/CursorFollower"));
+
+// 3. Create a lightweight placeholder that looks identical but doesn't move
+// This prevents layout shift (CLS) while the real button loads.
+const FallbackButton = () => (
+  <div className="w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-6 py-2 rounded-full text-white">
+      <p className="flex items-center justify-center gap-x-2 italic font-semibold text-xs sm:text-sm lg:text-base">
+           Building <ArrowRight size={16} /> Optimization <ArrowRight size={16} /> Succeed
+      </p>
+  </div>
+);
 
 const Hero = () => {
-  const { scrwidth } = useContext(ContextAPI);
+
   const scrollToProblemSolving = () => {
     const el = document.getElementById("problem-solving");
     if (!el) return;
@@ -31,7 +43,8 @@ const Hero = () => {
 
             {/* Left Column: Text Content */}
             <div className="flex flex-col lg:items-start sm:items-center">
-              {scrwidth > 640 ? (<CursorFollower
+                <div className="hidden sm:block">
+                  <CursorFollower
                 text={
                   <p className="flex items-center justify-center gap-x-2 italic">
                     Building <ArrowRight size={16} /> Optimization{" "}
@@ -43,14 +56,16 @@ const Hero = () => {
                 gradientFrom="#f76707"
                 gradientTo="#0B1D30"
                 circleSize={100}
-              />) : (
-                <span className="w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-4 sm:px-6 py-2 rounded-full text-white font-semibold text-xs sm:text-sm lg:text-base">
+              />
+                </div>
+
+                {/* //for mobile  */}
+                <span className="block sm:hidden w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-4 sm:px-6 py-2 rounded-full text-white font-semibold text-xs sm:text-sm lg:text-base">
                   <p className="flex items-center justify-center gap-x-2 italic">
                     Building <ArrowRight size={16} /> Optimization{" "}
                     <ArrowRight size={16} /> Succeed
                   </p>
                 </span>
-              )}
 
               <div className="text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left">
                 <h1>
