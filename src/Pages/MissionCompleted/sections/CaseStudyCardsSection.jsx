@@ -11,29 +11,33 @@ function CaseStudyCardsSection() {
     {
       brand: "Slacker IoT",
       category: "IoT & SaaS Platform",
-      outcome: "Built a scalable EV charging platform with real-time telemetry and automated billing",
-      visual: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764978775/ev_dashboard_lak5oh.png',
-      metrics: { users: "5K+", uptime: "99.9%", costReduction: "40%" },
-      url: "/CaseStudies/SlackerIOT"
+      outcome:
+        "Engineered an EV charging platform with real-time monitoring and integrated hardware control, giving the client full operational visibility and scalable infrastructure.",
+      visual:
+        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764978775/ev_dashboard_lak5oh.png",
+      metrics: { monitoring: "Real-time data", reliability: "Stable ops", infrastructure: "Scalable" },
+      url: "/CaseStudies/SlackerIOT",
     },
+
     {
       brand: "Bullseye Investments",
       category: "FinTech Infrastructure",
-      outcome: "Delivered a live stock market dashboard integrated with APIs and Google Sheets",
-      visual: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764978786/bullseyes_x1ifpw.png',
-      metrics: { dataFeeds: "50+", downtime: "0 hrs", engagement: "3x higher" },
-      url: '/CaseStudies/BullseyesCase'
+      outcome:
+        "Designed and built a brokerage website focused on clarity, structured messaging, and conversion-driven CTAs that guide visitors directly to the client portal. Currently providing ongoing technical management and performance oversight.", visual:
+        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764978786/bullseyes_x1ifpw.png",
+      metrics: { clarity: "Clear positioning", cta: "Structured flow", support: "Ongoing management" },
+      url: "/CaseStudies/BullseyesCase",
     },
-
     {
       brand: "K2 Traders",
       category: "eCommerce Development",
-      outcome: "Zero recurring fees with a fully optimized React-based store",
-      visual: 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979152/k2_traders_vj05aq.png',
-      metrics: { savings: "$1000s", hosting: " Free ", maintenance: "One-time" },
-      url: "/CaseStudies/K2TradersCase"
+      outcome:
+        "Built a custom eCommerce store with a streamlined checkout flow, reliable performance, and a low-maintenance setup designed to reduce ongoing operational costs.",
+      visual:
+        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979152/k2_traders_vj05aq.png",
+      metrics: { checkout: "Smooth flow", performance: "Optimized", hosting: "$0/yr" },
+      url: "/CaseStudies/K2TradersCase",
     },
-
 
   ]
 
@@ -61,10 +65,10 @@ function CaseStudyCardsSection() {
 
   return (
     <section id="casestudy" ref={sectionRef} className="pt-10 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
-            Success Stories That <br/>
+            Success Stories That <br />
             <span className="text-primaryOrange">
               Speak For Themselves
             </span>
@@ -126,10 +130,10 @@ function CaseStudyCardsSection() {
 
                   {index == 1 && (
                     <a href="https://www.bullseyesinvestment.com/" target="_blank"
-                    className={` py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform  text-primaryBlue bg-white border-2 border-primaryBlue  mx-auto mt-3`}
-                  >
-                    Visit Bullseye Investments Website
-                  </a>
+                      className={` py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform  text-primaryBlue bg-white border-2 border-primaryBlue  mx-auto mt-3`}
+                    >
+                      Visit Bullseye Investments Website
+                    </a>
                   )}
                 </div>
 

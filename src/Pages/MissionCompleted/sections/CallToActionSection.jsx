@@ -61,7 +61,7 @@ function CallToActionSection() {
           <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-6 sm:p-8 mb-12 max-w-4xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 text-center">
               <div>
-                <div className="text-3xl font-bold text-white mb-2">30+</div>
+                <div className="text-3xl font-bold text-white mb-2">10+</div>
                 <div className="text-gray-300">Missions Completed</div>
               </div>
               <div>
@@ -69,7 +69,7 @@ function CallToActionSection() {
                 <div className="text-gray-300">Success Rate</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-white mb-2">8 weeks</div>
+                <div className="text-3xl font-bold text-white mb-2">4 weeks</div>
                 <div className="text-gray-300">Average Timeline</div>
               </div>
             </div>
@@ -83,14 +83,14 @@ function CallToActionSection() {
               className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit mb-12 mx-auto"
             >
 
-              Let's Explore Your Problem Together
+              Let's Fix Your Problem Together
               <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
             </Link >
 
           {/* Secondary CTA */}
           <div className="mb-12">
-            <Link to={"/deploy-toolkit"} className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-12 py-4 rounded-2xl hover:bg-white/20 transition-all duration-300">
-              See Deploy ToolKit
+            <Link to={"/insideShiftdeploy"} className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-12 py-4 rounded-2xl hover:bg-white/20 transition-all duration-300">
+              See What's Inside ShiftDeploy
             </Link>
           </div>
 

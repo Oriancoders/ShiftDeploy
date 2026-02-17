@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
+import { Star } from "lucide-react"
 // Section 4: Client Quote Wall
 function ClientQuoteWallSection() {
   const [currentQuote, setCurrentQuote] = useState(0)
@@ -98,27 +99,28 @@ function ClientQuoteWallSection() {
           <p className="sm:text-xl text-gray-600">The pattern is clear: we deliver what we promise, when we promise it</p>
         </div>
 
-        {/* Quote Carousel */}
+        {/* Testimonial Carousel */}
         <div className="relative mb-12 sm:mb-20">
-          <div className="bg-white shadow-md rounded-3xl p-6 sm:p-10 text-center min-h-[300px] flex items-center justify-center">
-            <div
-            >
+          <div className="bg-white shadow-md sm:shadow-lg rounded-3xl p-6 sm:p-12 text-center sm:min-h-[300px] flex items-center justify-center">
+           
+            <div>
+              {/* Stars */}
+          <div className="flex justify-center mb-6">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+            ))}
+          </div>
               <blockquote className="sm:text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl">
-                "I was skeptical about outsourcing our infrastructure, but these guys know their stuff. Our AWS costs dropped 60% and performance actually improved. Best investment we've made."
+                "Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is outstanding!"
               </blockquote>
+            <hr className="border-gray-300 mb-6" />
               <div className="flex items-center justify-center">
-                <img
-                  src={"https://i.pravatar.cc/80?img=26"}
-                  alt={"Marcus Rodriguez"}
-                  className="w-10 sm:w-16 h-10 sm:h-16 rounded-full mr-4"
-                />
-                <div className="text-left">
-                  <div className="font-semibold text-gray-900 text-lg">SADIA</div>
-                  <div className="text-gray-600">
-                    CTO Seed
-                  </div>
-                </div>
+              <img src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE" alt="Kamran Abbas" className="w-12 sm:w-15 h-12 sm:h-15 rounded-full mr-4" />
+              <div className="text-left">
+                <div className="font-semibold text-gray-900 sm:text-lg"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/" target="__blank">Kamran Abbas</a></div>
+                <div className="text-gray-600">Chief Strategist at Bullseye Investment Private Limited</div>
               </div>
+            </div>
             </div>
           </div>
 
@@ -140,14 +142,14 @@ function ClientQuoteWallSection() {
 
               className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md"
             >
-              Launch Your Project
+              Solve Your Problem With Us
             </Link >
 
-            <Link to={"/shift-protocol"}
+            <Link to={"/services"}
 
               className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
             >
-              <span>View Shift Protocol</span>
+              <span>View Our Services</span>
             </Link>
           </div>
         </div>
