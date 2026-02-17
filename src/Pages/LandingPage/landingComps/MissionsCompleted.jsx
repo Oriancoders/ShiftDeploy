@@ -57,53 +57,55 @@ const MissionsCompleted = () => {
   }, [isInView]);
 
   // ✅ Keep projects exactly as you said (real)
- const projects = [
-  {
-    title: "Smart EV Charging Platform",
-    client: "Slacker IoT",
-    category: "ShiftBuild",
-    description:
-      "Built an end-to-end EV charging platform from scratch, including the customer dashboard, admin controls, and billing flows.",
-    image:
-      "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,/v1765189441/pexels-photo-110844_k1hftn.jpg",
-    results: [
-      "Live device status and session tracking",
-      "Automated billing and payment capture",
-      "Admin dashboard for monitoring and control",
-    ],
-    url: "/CaseStudies/SlackerIOT",
-  },
-  {
-    title: "E-commerce Platform Transformation",
-    client: "K2 Traders",
-    category: "ShiftBuild",
-    description:
-      "Built a new e-commerce website from scratch with a cleaner shopping flow, faster pages, and a setup that’s easy to maintain.",
-    image:
-      "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1765189459/pexels-photo-230544_i6mjcv.jpg",
-    results: [
-      "Faster page loads across key pages",
-      "Mobile-first shopping and checkout flow",
-      "Improved conversion tracking and reporting",
-    ],
-    url: "/CaseStudies/K2TradersCase",
-  },
-  {
-    title: "Modern Investment Platform for Digital Trust",
-    client: "Bullseyes Investments",
-    category: "ShiftConvert",
-    description:
-      "Improved the platform experience by streamlining key user journeys and upgrading real-time data delivery for a smoother, more responsive product.",
-    image:
-      "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1765189477/pexels-photo-1181472_bmrhta.jpg",
-    results: [
-      "Faster, more responsive dashboards",
-      "More reliable real-time API updates",
-      "Reduced friction in key user flows",
-    ],
-    url: "/CaseStudies/BullseyesCase",
-  },
-];
+  const projects = [
+    {
+      title: "Smart EV Charging Platform",
+      client: "Slacker IoT",
+      category: "ShiftBuild",
+      description:
+        "Built an end-to-end EV charging platform from scratch, including the customer dashboard, admin controls, and billing flows.",
+      image:
+        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,/v1765189441/pexels-photo-110844_k1hftn.jpg",
+      results: [
+        "Live device status and session tracking",
+        "Automated billing and payment capture",
+        "Admin dashboard for monitoring and control",
+      ],
+      url: "/CaseStudies/SlackerIOT",
+    },
+    {
+      title: "Conversion-Focused E-commerce Platform",
+      client: "K2 Traders",
+      category: "ShiftBuild",
+      description:
+        "Built a new e-commerce website from scratch with a cleaner shopping flow, faster pages, and a setup that’s easy to maintain.",
+      image:
+        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1765189459/pexels-photo-230544_i6mjcv.jpg",
+      results: [
+        "Faster page loads across key pages",
+        "Mobile-first shopping and checkout flow",
+        "$0/year hosting setup",
+      ],
+      url: "/CaseStudies/K2TradersCase",
+    },
+    {
+      title: "Modern Investment Platform for Digital Trust",
+      client: "Bullseyes Investments",
+      category: "ShiftConvert",
+      description:
+        "Designed and built a brokerage website focused on clear positioning, structured CTAs, and seamless access to the client portal.",
+      image:
+        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1765189477/pexels-photo-1181472_bmrhta.jpg",
+      results: [
+        "Clear service positioning",
+
+        "Structured call-to-action hierarchy",
+
+        "Reduced friction in key user flows",
+      ],
+      url: "/CaseStudies/BullseyesCase",
+    },
+  ];
 
 
   return (
@@ -135,7 +137,7 @@ const MissionsCompleted = () => {
               consistent focus: building systems that run reliably and perform better over time.
             </motion.p>
 
-           
+
           </motion.div>
 
           {/* Right: Stats */}

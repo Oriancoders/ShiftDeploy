@@ -8,50 +8,51 @@ function FeaturedMissionSection() {
   const sectionRef = useRef(null)
 
   const mission = {
-    client: "Slacker IOT",
-    category: "SaaS Infrastructure Scaling",
-    timeline: "12 weeks",
-    team: "3 engineers + 1 DevOps specialist",
-    before: {
-      traffic: "10K users",
-      uptime: "95.2%",
-      costs: "$15K/month",
-      deployments: "Weekly (manual)",
-    },
-    after: {
-      traffic: "100K+ users",
-      uptime: "99.9%",
-      costs: "$6K/month",
-      deployments: "Daily (automated)",
-    },
-    challenges: [
-      "Database queries timing out during peak traffic",
-      "Manual deployment process causing frequent downtime",
-      "AWS costs spiraling out of control with growth",
-      "No monitoring system to identify bottlenecks",
-    ],
-    solutions: [
-      "Implemented Redis caching layer and query optimization",
-      "Built automated CI/CD pipeline with blue-green deployments",
-      "Right-sized infrastructure with auto-scaling policies",
-      "Set up comprehensive monitoring with Datadog integration",
-    ],
-    tools: [
-      { name: "AWS", icon: <Server className="w-6 h-6" /> },
-      { name: "Redis", icon: <Database className="w-6 h-6" /> },
-      { name: "Docker", icon: <Layers className="w-6 h-6" /> },
-      { name: "GitHub Actions", icon: <GitBranch className="w-6 h-6" /> },
-      { name: "Datadog", icon: <BarChart3 className="w-6 h-6" /> },
-      { name: "Terraform", icon: <Code className="w-6 h-6" /> },
-    ],
-    phases: [
-      { phase: "Discovery & Audit", duration: "2 weeks", status: "completed" },
-      { phase: "Infrastructure Optimization", duration: "4 weeks", status: "completed" },
-      { phase: "CI/CD Implementation", duration: "3 weeks", status: "completed" },
-      { phase: "Monitoring & Testing", duration: "2 weeks", status: "completed" },
-      { phase: "Launch & Handover", duration: "1 week", status: "completed" },
-    ],
-  }
+  client: "Bullseye Investments",
+  category: "Conversion-Focused Brokerage Website",
+  timeline: "3–4 weeks",
+  team: "1–2 engineers",
+  before: {
+    messaging: "Unclear value proposition",
+    navigation: "High-friction user flow",
+    ctas: "Weak / inconsistent CTAs",
+    portalAccess: "Not clearly surfaced",
+  },
+  after: {
+    messaging: "Clear positioning + structure",
+    navigation: "Simplified page flow",
+    ctas: "Conversion-led CTA hierarchy",
+    portalAccess: "Direct and prominent access",
+  },
+  challenges: [
+    "The website didn’t communicate trust and positioning clearly within the first scroll",
+    "Key user journeys were scattered and visitors had to “figure out” what to do next",
+    "Calls-to-action were inconsistent across pages, weakening conversion intent",
+    "Client portal access existed, but wasn’t presented in a clear, guided way",
+  ],
+  solutions: [
+    "Rebuilt the page structure around clarity-first messaging and trust signals",
+    "Designed a clean CTA hierarchy to guide visitors toward the next action",
+    "Aligned layout, spacing, and sections to reduce friction and improve scannability",
+    "Implemented a clear, consistent portal access path across the site",
+  ],
+  tools: [
+    { name: "UX Structure", icon: <Layers className="w-6 h-6" /> },
+    { name: "CTA Hierarchy", icon: <Target className="w-6 h-6" /> },
+    { name: "Performance Hygiene", icon: <BarChart3 className="w-6 h-6" /> },
+    { name: "Implementation", icon: <Code className="w-6 h-6" /> },
+    { name: "Deployment", icon: <GitBranch className="w-6 h-6" /> },
+    { name: "Reliability", icon: <Server className="w-6 h-6" /> },
+  ],
+  phases: [
+    { phase: "Discovery & Page Review", duration: "2–3 days", status: "completed" },
+    { phase: "Messaging & Structure Rewrite", duration: "4–6 days", status: "completed" },
+    { phase: "UI Implementation", duration: "1–1.5 weeks", status: "completed" },
+    { phase: "QA & Refinement", duration: "2–4 days", status: "completed" },
+    { phase: "Launch & Post-Launch Support", duration: "2–3 days", status: "completed" },
+  ],
+}
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -72,7 +73,7 @@ function FeaturedMissionSection() {
 
   return (
     <section ref={sectionRef} className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
             Mission spotlight <br/>
@@ -99,10 +100,9 @@ function FeaturedMissionSection() {
                   <h4 className="text-lg font-semibold text-primaryOrange mb-4">Before ShiftDeploy</h4>
                   <div className="space-y-3">
                     {Object.entries(mission.before).map(([key, value]) => (
-                      <div key={key} className="flex justify-between">
-                        <span className="text-primaryOrange capitalize">{key}:</span>
-                        <span className="font-medium text-primaryOrange">{value}</span>
-                      </div>
+                      <ul key={key} className="flex justify-between">
+                        <li className="font-medium text-primaryOrange">{value}</li>
+                      </ul>
                     ))}
                   </div>
                 </div>
@@ -113,7 +113,6 @@ function FeaturedMissionSection() {
                   <div className="space-y-3">
                     {Object.entries(mission.after).map(([key, value]) => (
                       <div key={key} className="flex justify-between">
-                        <span className="text-primaryBlue  capitalize">{key}:</span>
                         <span className="font-medium text-primaryBlue ">{value}</span>
                       </div>
                     ))}

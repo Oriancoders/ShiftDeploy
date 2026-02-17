@@ -10,41 +10,43 @@ function ImpactAnalyticsSection() {
 
   const metrics = [
     {
-      value: 50000,
+      value: 10,
       suffix: "+",
-      label: "Total Hours Saved",
-      description: "Across all client projects",
-      icon: <Clock className="w-5 sm:w-8 h-5 sm:h-8" />,
+      label: "Core Missions Delivered",
+      description: "Across different platforms",
+      icon: <CheckCircle className="w-5 sm:w-8 h-5 sm:h-8" />,
     },
     {
-      value: 99.9,
+      value: 100,
       suffix: "%",
-      label: "Average Uptime",
-      description: "Post-optimization",
+      label: "Custom-Built Systems",
+      description: "Customized for business needs",
+      icon: <Target className="w-5 sm:w-8 h-5 sm:h-8" />,
+    },
+    {
+      value: 0,
+      suffix: "$",
+      label: "Recurring Hosting",
+      description: "Cost-optimized deployment architecture",
       icon: <TrendingUp className="w-5 sm:w-8 h-5 sm:h-8" />,
     },
     {
-      value: 75,
-      suffix: "%",
-      label: "Faster Deployments",
-      description: "Average improvement",
-      icon: <Rocket className="w-5 sm:w-8 h-5 sm:h-8" />,
-    },
-    {
-      value: 10,
-      suffix: "x",
-      label: "Scale Capacity",
-      description: "Average increase",
-      icon: <BarChart3 className="w-5 sm:w-8 h-5 sm:h-8" />,
+      value: 4,
+      suffix: " Weeks",
+      label: "Typical Build Timeline",
+      description: "Focused execution without scope creep",
+      icon: <Calendar className="w-5 sm:w-8 h-5 sm:h-8" />,
     },
   ]
 
+
   const additionalStats = [
-    { label: "Projects Completed", value: "30+", icon: <CheckCircle className="w-6 h-6" /> },
-    { label: "Success Rate", value: "100%", icon: <Target className="w-6 h-6" /> },
-    { label: "Client Retention", value: "95%", icon: <Users className="w-6 h-6" /> },
-    { label: "Average Timeline", value: "8 weeks", icon: <Calendar className="w-6 h-6" /> },
+    { label: "Active Management Projects", value: "Ongoing", icon: <Users className="w-6 h-6" /> },
+    { label: "Performance-Focused Builds", value: "100%", icon: <BarChart3 className="w-6 h-6" /> },
+    { label: "Client-Centric Approach", value: "Structured", icon: <Target className="w-6 h-6" /> },
+    { label: "Delivery Model", value: "Lean & Direct", icon: <Rocket className="w-6 h-6" /> },
   ]
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -87,12 +89,12 @@ function ImpactAnalyticsSection() {
 
   return (
     <section ref={sectionRef} className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-6">
         <div className="text-center mb-20">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
-            The numbers <br />
+            The results <br />
             <span className="text-primaryOrange">
-              don't lie
+              we can stand behind
             </span>
           </h2>
           <p className="sm:text-xl text-gray-600">Measurable impact across every mission we complete.</p>
@@ -148,7 +150,7 @@ function ImpactAnalyticsSection() {
         {/* Bottom Message */}
         <div className="text-center">
           <CursorFollower
-            text="Every number represents a team that trusted us with their critical challenges"
+            text="Measured by execution quality, system clarity, and operational reliability"
             className="  max-w-2xl mt-12 bg-primaryBlue px-10 sm:px-6 py-4 rounded-3xl sm:rounded-full text-white mx-auto"
             textClassName='text-white font-semibold  sm:text-sm lg:text-base '
             gradientFrom="#F76707"

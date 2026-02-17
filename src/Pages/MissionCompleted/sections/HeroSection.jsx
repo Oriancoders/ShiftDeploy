@@ -38,9 +38,9 @@ function HeroSection() {
 
           {/* Main Headlines */}
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-primaryBlue mb-6 leading-tight">
-            Missions That Made <br />
+            Missions That Shift <br />
             <span className="text-primaryOrange">
-              the Shift
+              Speed & Outcomes
             </span>
           </h1>
 
@@ -99,13 +99,13 @@ function HeroSection() {
               className="cursor-pointer bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto  font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md w-fit"
 
             >
-              Explore Success Stories
+              Explore the Missions
 
 
             </a>
 
             <CursorFollower
-              text="“Every line of code is a promise of excellence crafted with care, tested with precision, and delivered with unwavering commitment to quality.”"
+              text="“Performance isn’t a score. It’s how fast the user gets clarity, trust, and a reason to take action.”"
               className="  max-w-2xl mt-12 bg-primaryBlue px-10 sm:px-6 py-4 rounded-3xl sm:rounded-full text-white mx-auto"
               textClassName='text-white font-semibold  sm:text-sm lg:text-base '
               gradientFrom="#F76707"
