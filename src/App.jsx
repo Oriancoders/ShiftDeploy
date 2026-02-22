@@ -6,7 +6,7 @@ import GlobalProvider from './GlobalProvider/GlobalProvider';
 import ShiftDeployLoader from './components/ShiftDeployLoader'; // Ensure this path is correct based on your folder structure
 import ScrollToTop from './components/ScrollToTop'; // The new path you mentioned
 const ShiftSpeed = lazy(() => import('./Pages/Services/ShiftSpeed/ShiftSpeed'));
-const Insights = lazy(() => import('./components/Insights'));
+const Insights = lazy(() => import('./Insights/Insights'));
 // import { Chatbot } from './components/Chatbot';
 
 // ✅ LAZY LOADED PAGES (Paths kept exactly as provided)
