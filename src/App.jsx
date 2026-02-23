@@ -7,6 +7,7 @@ import ShiftDeployLoader from './components/ShiftDeployLoader'; // Ensure this p
 import ScrollToTop from './components/ScrollToTop'; // The new path you mentioned
 const ShiftSpeed = lazy(() => import('./Pages/Services/ShiftSpeed/ShiftSpeed'));
 const Insights = lazy(() => import('./Insights/Insights'));
+const InsightDetail = lazy(() => import('./Insights/InsightDetail'));
 // import { Chatbot } from './components/Chatbot';
 
 // ✅ LAZY LOADED PAGES (Paths kept exactly as provided)
@@ -67,6 +68,7 @@ function App() {
 
             {/* {Insight pages routes to be added here} */}
             <Route path='/insights' element={<Insights/>} />
+            <Route path='/insights/:slug' element={<InsightDetail/>} />
             
           </Routes>
         </Suspense>

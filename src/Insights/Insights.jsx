@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Calendar,
@@ -13,165 +13,99 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
+import { isSanityConfigured, sanityClient } from "../lib/sanity";
 
-// ---------------------------
-// Sample data (replace later)
-// ---------------------------
-const SAMPLE_POSTS = [
-  {
-    id: "tag-bloat-silent-revenue-leak",
-    title: "Tag bloat: the silent revenue leak",
-    excerpt:
-      "Across audits, third-party tags quietly add latency and degrade responsiveness. The worst part: most of them don’t even fire.",
-    date: "2026-02-18",
-    tags: ["Performance", "CRO"],
-    author: "ShiftDeploy",
-    minutes: 6,
-    featured: true,
+const INSIGHTS_QUERY = `*[
+  _type in ["insight", "insights", "post", "blogPost"]
+] | order(coalesce(publishedAt, _createdAt) desc) {
+  _id,
+  title,
+  "id": coalesce(slug.current, _id),
+  excerpt,
+  summary,
+  body,
+  "date": coalesce(publishedAt, _createdAt),
+  tags,
+  categories[]->{
+    title
   },
-  {
-    id: "inp-why-sites-feel-slow",
-    title: "INP: why your site feels slow even when it loads fast",
-    excerpt:
-      "LCP can be “good” and users still feel friction. INP exposes the gap between loading and responsiveness.",
-    date: "2026-02-12",
-    tags: ["Performance"],
-    author: "ShiftDeploy",
-    minutes: 7,
-    featured: true,
+  author->{
+    name
   },
-  {
-    id: "lcp-vs-conversion-thresholds",
-    title: "LCP thresholds that actually matter for conversions",
-    excerpt:
-      "Stop chasing scores. Use practical thresholds that map to user patience and business impact.",
-    date: "2026-02-05",
-    tags: ["Performance", "SEO"],
-    author: "ShiftDeploy",
-    minutes: 5,
-    featured: true,
-  },
-  {
-    id: "design-debt-carousels-popups",
-    title: "Design debt: how carousels & pop-ups sabotage conversions",
-    excerpt:
-      "Certain design patterns consistently inflate DOM size and delay interaction. The UI looks “premium” while revenue drops.",
-    date: "2026-01-29",
-    tags: ["CRO", "UX"],
-    author: "ShiftDeploy",
-    minutes: 6,
-  },
-  {
-    id: "lab-vs-field-why-scores-conflict",
-    title: "Lab vs field: why PageSpeed, Lighthouse, CrUX disagree",
-    excerpt:
-      "Different tools measure different realities. Here’s how to interpret them without lying to yourself.",
-    date: "2026-01-22",
-    tags: ["Performance"],
-    author: "ShiftDeploy",
-    minutes: 8,
-  },
-  {
-    id: "hero-image-1-second-tax",
-    title: "Your hero image is a 1-second tax",
-    excerpt:
-      "Oversized hero images are the most common LCP offender. The fix is boring—but it works.",
-    date: "2026-01-15",
-    tags: ["Performance"],
-    author: "ShiftDeploy",
-    minutes: 4,
-  },
-  {
-    id: "forms-conversion-black-hole",
-    title: "Forms as conversion black holes",
-    excerpt:
-      "Too many fields + slow validation scripts = drop-offs you never diagnose. Here’s the pattern we keep seeing.",
-    date: "2026-01-08",
-    tags: ["CRO", "UX"],
-    author: "ShiftDeploy",
-    minutes: 5,
-  },
-  {
-    id: "cdn-when-it-actually-helps",
-    title: "When a CDN helps—and when it’s placebo",
-    excerpt:
-      "A CDN can cut global latency, but it won’t fix a bloated JS bundle. Use it where it moves the needle.",
-    date: "2025-12-20",
-    tags: ["Performance"],
-    author: "ShiftDeploy",
-    minutes: 6,
-  },
-  {
-    id: "js-hydration-cost",
-    title: "Hydration cost: the hidden delay after your page loads",
-    excerpt:
-      "Users see the page, tap a button, and nothing happens. That “dead time” is often hydration + main-thread lock.",
-    date: "2025-12-10",
-    tags: ["Performance"],
-    author: "ShiftDeploy",
-    minutes: 7,
-  },
-  {
-    id: "font-loading-ruins-lcp",
-    title: "Font loading mistakes that ruin LCP",
-    excerpt:
-      "Webfonts are often shipped like an afterthought. That’s why headlines appear late and layout shifts happen.",
-    date: "2025-12-02",
-    tags: ["Performance", "UX"],
-    author: "ShiftDeploy",
-    minutes: 5,
-  },
-  {
-    id: "seo-technical-not-content",
-    title: "Technical SEO: the part most agencies avoid",
-    excerpt:
-      "If your site is slow, SEO is a leaky bucket. Rankings don’t save you when users bounce before they engage.",
-    date: "2025-11-25",
-    tags: ["SEO", "Performance"],
-    author: "ShiftDeploy",
-    minutes: 6,
-  },
-  {
-    id: "waterfall-reading-101",
-    title: "How to read a waterfall without fooling yourself",
-    excerpt:
-      "A waterfall is a story. Learn how to spot the villain: render-blocking, long tasks, or slow server response.",
-    date: "2025-11-12",
-    tags: ["Performance"],
-    author: "ShiftDeploy",
-    minutes: 9,
-  },
-  {
-    id: "booking-page-first-not-junk",
-    title: "Your booking page should load first, not third-party junk",
-    excerpt:
-      "If the conversion path loads last, you’re paying for ads to send people into friction.",
-    date: "2025-10-28",
-    tags: ["CRO", "Performance"],
-    author: "ShiftDeploy",
-    minutes: 5,
-  },
-  {
-    id: "choice-overload-pricing",
-    title: "Pricing page paralysis: fewer options convert better",
-    excerpt:
-      "More plans ≠ more revenue. Choice overload is real, and it shows up in session recordings every time.",
-    date: "2025-10-15",
-    tags: ["CRO", "UX"],
-    author: "ShiftDeploy",
-    minutes: 6,
-  },
-  {
-    id: "perf-is-board-level",
-    title: "Performance is a board-level issue (not a dev metric)",
-    excerpt:
-      "If speed impacts conversion, it impacts revenue. That makes it a leadership problem, not a Lighthouse score.",
-    date: "2025-10-01",
-    tags: ["Performance"],
-    author: "ShiftDeploy",
-    minutes: 7,
-  },
-];
+  minutes,
+  readTime,
+  featured
+}`;
+
+const getBodyPreview = (body, words = 24) => {
+  if (!Array.isArray(body)) return "";
+  const text = body
+    .map((block) => {
+      if (!block || !Array.isArray(block.children)) return "";
+      return block.children
+        .map((child) => (typeof child?.text === "string" ? child.text : ""))
+        .join(" ");
+    })
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!text) return "";
+  const parts = text.split(" ");
+  if (parts.length <= words) return text;
+  return `${parts.slice(0, words).join(" ")}...`;
+};
+
+const getPortableTextWordCount = (body) => {
+  if (!Array.isArray(body)) return 0;
+  const text = body
+    .map((block) => {
+      if (!block || !Array.isArray(block.children)) return "";
+      return block.children
+        .map((child) => (typeof child?.text === "string" ? child.text : ""))
+        .join(" ");
+    })
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!text) return 0;
+  return text.split(" ").length;
+};
+
+const getReadMinutes = (minutes, readTime, body) => {
+  const fromMinutes = Number(minutes);
+  if (Number.isFinite(fromMinutes) && fromMinutes > 0) return Math.round(fromMinutes);
+
+  const fromReadTime = Number(readTime);
+  if (Number.isFinite(fromReadTime) && fromReadTime > 0) return Math.round(fromReadTime);
+
+  const words = getPortableTextWordCount(body);
+  if (words <= 0) return 1;
+  return Math.max(1, Math.ceil(words / 200));
+};
+
+const normalizeTags = (rawTags, rawCategories) => {
+  const fromTags = Array.isArray(rawTags)
+    ? rawTags
+        .map((tag) => {
+          if (typeof tag === "string") return tag;
+          if (tag && typeof tag.title === "string") return tag.title;
+          if (tag && typeof tag.value === "string") return tag.value;
+          return "";
+        })
+        .filter(Boolean)
+    : [];
+
+  const fromCategories = Array.isArray(rawCategories)
+    ? rawCategories
+        .map((cat) => (cat && typeof cat.title === "string" ? cat.title : ""))
+        .filter(Boolean)
+    : [];
+
+  const combined = [...fromTags, ...fromCategories];
+  return combined.length > 0 ? Array.from(new Set(combined)) : ["Insights"];
+};
 
 // ---------------------------
 // Helpers
@@ -235,11 +169,12 @@ const InsightCard = ({ post }) => (
         Audit memo
       </div>
 
-      <MetaRow date={post.date} author={post.author} minutes={post.minutes ?? 6} />
+      <MetaRow date={post.date} author={post.author} minutes={post.minutes ?? 5} />
 
       <h2 className="mt-3 text-xl sm:text-2xl font-extrabold text-primaryBlue leading-tight">
         <Link
           to={slugToInsightUrl(post.id)}
+          state={{ post }}
           className="underline-offset-4 decoration-2 decoration-primaryOrange/50 group-hover:underline"
         >
           {post.title}
@@ -259,6 +194,7 @@ const InsightCard = ({ post }) => (
       <div className="mt-6">
         <Link
           to={slugToInsightUrl(post.id)}
+          state={{ post }}
           className="inline-flex items-center gap-2 font-extrabold bg-primaryBlue text-white px-4 py-2 rounded-full transition-colors text-xs md:text-sm xl:text-md"
         >
           Read more <ArrowRight className="w-4 h-4" />
@@ -285,6 +221,7 @@ const SidebarSection = ({ title, rightText, children }) => (
 const SidebarPost = ({ post, compact = false }) => (
   <Link
     to={slugToInsightUrl(post.id)}
+    state={{ post }}
     className="block rounded-xl bg-gray-50/60 hover:bg-gray-50 transition-colors px-4 py-3"
   >
     <div className="text-[11px] text-gray-500 mb-1">
@@ -363,15 +300,74 @@ const Pagination = ({ page, totalPages, onPrev, onNext, onGo }) => {
 // ---------------------------
 const Insights = () => {
   const POSTS_PER_PAGE = 6;
+  const [page, setPage] = useState(1);
+  const [sanityPosts, setSanityPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(isSanityConfigured);
+  const [loadError, setLoadError] = useState("");
 
-  const allPosts = useMemo(() => {
-    const copy = [...SAMPLE_POSTS];
-    copy.sort((a, b) => new Date(b.date) - new Date(a.date));
-    return copy;
+  useEffect(() => {
+    let isCancelled = false;
+
+    if (!isSanityConfigured || !sanityClient) {
+      setIsLoading(false);
+      return () => {
+        isCancelled = true;
+      };
+    }
+
+    const loadInsights = async () => {
+      try {
+        setIsLoading(true);
+        setLoadError("");
+
+        const docs = await sanityClient.fetch(INSIGHTS_QUERY);
+        if (isCancelled) return;
+
+        const normalized = Array.isArray(docs)
+          ? docs
+              .filter((doc) => doc && doc.title)
+              .map((doc) => ({
+                id: doc.id || doc._id,
+                title: doc.title,
+                excerpt: doc.excerpt || doc.summary || getBodyPreview(doc.body),
+                date: doc.date || new Date().toISOString(),
+                tags: normalizeTags(doc.tags, doc.categories),
+                author: doc?.author?.name || "ShiftDeploy",
+                minutes: getReadMinutes(doc.minutes, doc.readTime, doc.body),
+                featured: Boolean(doc.featured),
+              }))
+          : [];
+
+        setSanityPosts(normalized);
+      } catch (error) {
+        if (!isCancelled) {
+          setLoadError("Could not load insights from Sanity.");
+        }
+      } finally {
+        if (!isCancelled) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    loadInsights();
+
+    return () => {
+      isCancelled = true;
+    };
   }, []);
 
+  const allPosts = useMemo(() => {
+    const copy = [...sanityPosts];
+    copy.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return copy;
+  }, [sanityPosts]);
+
   const totalPages = Math.max(1, Math.ceil(allPosts.length / POSTS_PER_PAGE));
-  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    setPage((prev) => clamp(prev, 1, totalPages));
+  }, [totalPages]);
 
   const pagedPosts = useMemo(() => {
     const start = (page - 1) * POSTS_PER_PAGE;
@@ -425,17 +421,43 @@ const Insights = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
             {/* Left: Post cards */}
             <div className="lg:col-span-8 space-y-5">
+              {isLoading && (
+                <div className="rounded-2xl bg-white p-5 sm:p-7 text-sm text-gray-600 shadow-[0_1px_0_rgba(12,31,58,0.08),0_10px_30px_rgba(12,31,58,0.06)]">
+                  Loading insights from Sanity...
+                </div>
+              )}
+
+              {loadError && (
+                <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 sm:p-7 text-sm text-amber-800">
+                  {loadError}
+                </div>
+              )}
+
+              {!isSanityConfigured && (
+                <div className="rounded-2xl border border-blue-100 bg-blue-50 p-5 sm:p-7 text-sm text-blue-800">
+                  Sanity is not configured yet (`VITE_SANITY_PROJECT_ID` / `VITE_SANITY_DATASET` missing).
+                </div>
+              )}
+
+              {!isLoading && isSanityConfigured && !loadError && allPosts.length === 0 && (
+                <div className="rounded-2xl border border-gray-200 bg-white p-5 sm:p-7 text-sm text-gray-700">
+                  No insights published yet.
+                </div>
+              )}
+
               {pagedPosts.map((post) => (
                 <InsightCard key={post.id} post={post} />
               ))}
 
-              <Pagination
-                page={page}
-                totalPages={totalPages}
-                onPrev={handlePrev}
-                onNext={handleNext}
-                onGo={goToPage}
-              />
+              {allPosts.length > 0 && (
+                <Pagination
+                  page={page}
+                  totalPages={totalPages}
+                  onPrev={handlePrev}
+                  onNext={handleNext}
+                  onGo={goToPage}
+                />
+              )}
             </div>
 
             {/* Right: Sidebar */}
@@ -482,3 +504,4 @@ const Insights = () => {
 };
 
 export default Insights;
+
