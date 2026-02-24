@@ -5,6 +5,8 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import { isSanityConfigured, sanityClient } from "../lib/sanity";
+import { PortableText } from "@portabletext/react";
+import { portableTextComponents } from "./portableTextComponents.jsx";
 
 const INSIGHT_BY_SLUG_QUERY = `*[
   _type in ["insight", "insights", "post", "blogPost"] &&
@@ -31,19 +33,19 @@ const INSIGHT_BY_SLUG_QUERY = `*[
 const normalizeTags = (rawTags, rawCategories) => {
   const fromTags = Array.isArray(rawTags)
     ? rawTags
-        .map((tag) => {
-          if (typeof tag === "string") return tag;
-          if (tag && typeof tag.title === "string") return tag.title;
-          if (tag && typeof tag.value === "string") return tag.value;
-          return "";
-        })
-        .filter(Boolean)
+      .map((tag) => {
+        if (typeof tag === "string") return tag;
+        if (tag && typeof tag.title === "string") return tag.title;
+        if (tag && typeof tag.value === "string") return tag.value;
+        return "";
+      })
+      .filter(Boolean)
     : [];
 
   const fromCategories = Array.isArray(rawCategories)
     ? rawCategories
-        .map((cat) => (cat && typeof cat.title === "string" ? cat.title : ""))
-        .filter(Boolean)
+      .map((cat) => (cat && typeof cat.title === "string" ? cat.title : ""))
+      .filter(Boolean)
     : [];
 
   const combined = [...fromTags, ...fromCategories];
@@ -217,41 +219,8 @@ const InsightDetail = () => {
               )}
 
               {Array.isArray(post.body) && post.body.length > 0 && (
-                <div className="mt-8 space-y-4 text-gray-800 leading-relaxed">
-                  {post.body.map((block) => {
-                    const text = getBlockText(block);
-                    if (!text) return null;
-
-                    if (block.listItem === "bullet") {
-                      return (
-                        <p key={block._key} className="text-base sm:text-lg pl-4">
-                          • {text}
-                        </p>
-                      );
-                    }
-
-                    if (block.style === "h2") {
-                      return (
-                        <h2 key={block._key} className="mt-6 text-2xl font-bold text-primaryBlue">
-                          {text}
-                        </h2>
-                      );
-                    }
-
-                    if (block.style === "h3") {
-                      return (
-                        <h3 key={block._key} className="mt-5 text-xl font-bold text-primaryBlue">
-                          {text}
-                        </h3>
-                      );
-                    }
-
-                    return (
-                      <p key={block._key} className="text-base sm:text-lg">
-                        {text}
-                      </p>
-                    );
-                  })}
+                <div className="mt-8">
+                  <PortableText value={post.body} components={portableTextComponents} />
                 </div>
               )}
 

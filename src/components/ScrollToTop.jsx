@@ -12,6 +12,10 @@ const ScrollToTop = () => {
     });
   }, [pathname]);
 
+  //add a simple h1 heading
+        
+
+
   return null;
 };
 
