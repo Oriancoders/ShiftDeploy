@@ -52,7 +52,7 @@ const getVideoEmbedUrl = (url) => {
 };
 
 // Helper: Render text with marks (bold, italic, underline, links, highlights, font size)
-const renderTextWithMarks = (children) => {
+const renderTextWithMarks = (children, markDefs = []) => {
   if (!Array.isArray(children)) return children;
   
   return children.map((span, idx) => {
@@ -60,6 +60,7 @@ const renderTextWithMarks = (children) => {
     if (!span || !span.text) return null;
 
     let element = <>{span.text}</>;
+    const defs = Array.isArray(markDefs) ? markDefs : [];
 
     // Apply marks in order
     if (Array.isArray(span.marks)) {
@@ -70,6 +71,46 @@ const renderTextWithMarks = (children) => {
           element = <em key={`em-${idx}`} className="italic">{element}</em>;
         } else if (mark === "underline") {
           element = <u key={`underline-${idx}`} className="underline">{element}</u>;
+        } else if (mark === "alignLeft") {
+          element = <span key={`align-left-${idx}`} className="block w-full text-left">{element}</span>;
+        } else if (mark === "alignCenter") {
+          element = <span key={`align-center-${idx}`} className="block w-full text-center">{element}</span>;
+        } else if (mark === "alignRight") {
+          element = <span key={`align-right-${idx}`} className="block w-full text-right">{element}</span>;
+        } else if (mark === "alignJustify") {
+          element = <span key={`align-justify-${idx}`} className="block w-full text-justify">{element}</span>;
+        } else if (typeof mark === "string") {
+          const markDef = defs.find((def) => def?._key === mark);
+          if (markDef?._type === "link") {
+            const href = markDef.href || "#";
+            const target = markDef.blank ? "_blank" : "_self";
+            element = (
+              <a
+                key={`link-${idx}`}
+                href={href}
+                target={target}
+                rel={markDef.blank ? "noopener noreferrer" : ""}
+                className="text-primaryBlue hover:underline"
+              >
+                {element}
+              </a>
+            );
+          } else if (
+            markDef?._type === "alignLeft" ||
+            markDef?._type === "alignCenter" ||
+            markDef?._type === "alignRight" ||
+            markDef?._type === "alignJustify"
+          ) {
+            const alignClass =
+              markDef._type === "alignCenter"
+                ? "text-center"
+                : markDef._type === "alignRight"
+                ? "text-right"
+                : markDef._type === "alignJustify"
+                ? "text-justify"
+                : "text-left";
+            element = <span key={`align-def-${idx}`} className={`block w-full ${alignClass}`}>{element}</span>;
+          }
         } else if (typeof mark === "object" && mark._type === "link") {
           const href = mark.href || "#";
           const target = mark.blank ? "_blank" : "_self";
@@ -108,17 +149,65 @@ const renderTextWithMarks = (children) => {
 };
 
 // Helper: Render a table block
+const parsePastedTable = (raw) => {
+  const lines = String(raw || "")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  if (!lines.length) return { header: [], rows: [] };
+
+  const parsed = lines.map((line) => line.split("\t").map((cell) => cell.trim()));
+  const [header, ...rows] = parsed;
+  return { header, rows };
+};
+
 const renderTable = (table) => {
-  if (!table || !table.rows) return null;
+  if (!table) return null;
   
   const striped = table.striped;
   const compact = table.compact;
+  const isPasteMode = table.inputMode === "paste";
+  const parsedFromPaste = isPasteMode ? parsePastedTable(table.pastedData) : { header: [], rows: [] };
+  const header = Array.isArray(table.header) && table.header.length > 0 ? table.header : parsedFromPaste.header;
+  const rows = Array.isArray(table.rows) && table.rows.length > 0 ? table.rows : parsedFromPaste.rows;
+  const hasHeader = Array.isArray(header) && header.length > 0;
+
+  if (!hasHeader && (!Array.isArray(rows) || rows.length === 0)) return null;
+
+  const getCellText = (cell) => {
+    if (typeof cell === "string" || typeof cell === "number") return String(cell);
+    if (cell && typeof cell.content === "string") return cell.content;
+    return "";
+  };
+  const getCellAlignment = (cell) => {
+    if (!cell || typeof cell !== "object") return "";
+    return cell.alignment === "center"
+      ? "text-center"
+      : cell.alignment === "right"
+      ? "text-right"
+      : "";
+  };
   
   return (
     <div className="overflow-x-auto my-6">
       <table className={`w-full border-collapse border border-gray-300 ${compact ? "text-sm" : ""}`}>
+        {hasHeader && (
+          <thead>
+            <tr className="bg-primaryBlue text-white font-bold">
+              {header.map((heading, headingIdx) => (
+                <th
+                  key={`heading-${headingIdx}`}
+                  className={`border border-gray-300 px-4 ${compact ? "py-1" : "py-2"} text-left`}
+                >
+                  {heading}
+                </th>
+              ))}
+            </tr>
+          </thead>
+        )}
         <tbody>
-          {table.rows.map((row, rowIdx) => (
+          {rows.map((row, rowIdx) => (
             <tr
               key={`row-${rowIdx}`}
               className={`
@@ -126,14 +215,14 @@ const renderTable = (table) => {
                 ${striped && rowIdx % 2 === 1 ? "bg-gray-100" : ""}
               `}
             >
-              {row.cells?.map((cell, cellIdx) => (
+              {(Array.isArray(row?.cells) ? row.cells : Array.isArray(row) ? row : []).map((cell, cellIdx) => (
                 <td
                   key={`cell-${rowIdx}-${cellIdx}`}
                   className={`border border-gray-300 px-4 ${compact ? "py-1" : "py-2"} text-left ${
-                    cell.alignment === "center" ? "text-center" : cell.alignment === "right" ? "text-right" : ""
+                    getCellAlignment(cell)
                   }`}
                 >
-                  {cell.content}
+                  {getCellText(cell)}
                 </td>
               ))}
             </tr>
@@ -201,7 +290,7 @@ const renderCallout = (callout) => {
               if (block._type === "block" && block.children) {
                 return (
                   <p key={block._key} className="text-sm">
-                    {renderTextWithMarks(block.children)}
+                    {renderTextWithMarks(block.children, block.markDefs)}
                   </p>
                 );
               }
@@ -377,6 +466,24 @@ const getReadMinutes = (minutes, readTime, body) => {
   const words = getPortableTextWordCount(body);
   if (words <= 0) return 1;
   return Math.max(1, Math.ceil(words / 200));
+};
+
+const getAlignmentClass = (block) => {
+  const alignmentMap = {
+    left: "text-left",
+    center: "text-center",
+    right: "text-right",
+    justify: "text-justify",
+  };
+  const styleMap = {
+    alignLeft: "text-left",
+    alignCenter: "text-center",
+    alignRight: "text-right",
+    alignJustify: "text-justify",
+  };
+
+  if (alignmentMap[block?.alignment]) return alignmentMap[block.alignment];
+  return styleMap[block?.style] || "";
 };
 
 const InsightDetail = () => {
@@ -645,14 +752,15 @@ const InsightDetail = () => {
                         return null;
                       }
 
-                      const textContent = renderTextWithMarks(block.children);
+                      const textContent = renderTextWithMarks(block.children, block.markDefs);
+                      const alignmentClass = getAlignmentClass(block);
 
                       // Blockquote style
                       if (block.style === "blockquote") {
                         return (
                           <blockquote
                             key={block._key}
-                            className="border-l-4 border-primaryBlue pl-4 italic my-4 text-gray-700 break-words"
+                            className={`border-l-4 border-primaryBlue pl-4 italic my-4 text-gray-700 break-words ${alignmentClass}`}
                           >
                             {textContent}
                           </blockquote>
@@ -664,7 +772,7 @@ const InsightDetail = () => {
                         return (
                           <h2
                             key={block._key}
-                            className="mt-8 mb-4 text-3xl font-bold text-primaryBlue break-words"
+                            className={`mt-8 mb-4 text-3xl font-bold text-primaryBlue break-words ${alignmentClass}`}
                           >
                             {textContent}
                           </h2>
@@ -676,7 +784,7 @@ const InsightDetail = () => {
                         return (
                           <h3
                             key={block._key}
-                            className="mt-6 mb-3 text-2xl font-bold text-primaryBlue break-words"
+                            className={`mt-6 mb-3 text-2xl font-bold text-primaryBlue break-words ${alignmentClass}`}
                           >
                             {textContent}
                           </h3>
@@ -688,7 +796,7 @@ const InsightDetail = () => {
                         return (
                           <h4
                             key={block._key}
-                            className="mt-5 mb-2 text-xl font-bold text-primaryBlue break-words"
+                            className={`mt-5 mb-2 text-xl font-bold text-primaryBlue break-words ${alignmentClass}`}
                           >
                             {textContent}
                           </h4>
@@ -710,12 +818,12 @@ const InsightDetail = () => {
                       // Normal paragraph
                       return (
                         <p
-                          key={block._key}
-                          className="text-base sm:text-lg leading-relaxed text-gray-800 break-words"
-                        >
-                          {textContent}
-                        </p>
-                      );
+                            key={block._key}
+                            className={`text-base sm:text-lg leading-relaxed text-gray-800 break-words ${alignmentClass}`}
+                          >
+                            {textContent}
+                          </p>
+                        );
                     }
 
                     return null;
