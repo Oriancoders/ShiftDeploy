@@ -8,6 +8,8 @@ import "highlight.js/styles/atom-one-dark.css";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import { isSanityConfigured, sanityClient } from "../lib/sanity";
+import { PortableText } from "@portabletext/react";
+import { portableTextComponents } from "./portableTextComponents.jsx";
 
 // Initialize the image URL builder
 const imageBuilder = sanityClient
@@ -405,19 +407,19 @@ const INSIGHT_BY_SLUG_QUERY = `*[
 const normalizeTags = (rawTags, rawCategories) => {
   const fromTags = Array.isArray(rawTags)
     ? rawTags
-        .map((tag) => {
-          if (typeof tag === "string") return tag;
-          if (tag && typeof tag.title === "string") return tag.title;
-          if (tag && typeof tag.value === "string") return tag.value;
-          return "";
-        })
-        .filter(Boolean)
+      .map((tag) => {
+        if (typeof tag === "string") return tag;
+        if (tag && typeof tag.title === "string") return tag.title;
+        if (tag && typeof tag.value === "string") return tag.value;
+        return "";
+      })
+      .filter(Boolean)
     : [];
 
   const fromCategories = Array.isArray(rawCategories)
     ? rawCategories
-        .map((cat) => (cat && typeof cat.title === "string" ? cat.title : ""))
-        .filter(Boolean)
+      .map((cat) => (cat && typeof cat.title === "string" ? cat.title : ""))
+      .filter(Boolean)
     : [];
 
   const combined = [...fromTags, ...fromCategories];
