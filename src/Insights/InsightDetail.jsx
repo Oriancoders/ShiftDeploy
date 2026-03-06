@@ -10,7 +10,6 @@ import Navigation from "../components/Navigation";
 import { isSanityConfigured, sanityClient } from "../lib/sanity";
 import { PortableText } from "@portabletext/react";
 import { portableTextComponents } from "./portableTextComponents.jsx";
-
 // Initialize the image URL builder
 const imageBuilder = sanityClient
   ? imageUrlBuilder(sanityClient)
@@ -399,27 +398,49 @@ const INSIGHT_BY_SLUG_QUERY = `*[
   author->{
     name
   },
+  "mainImage": coalesce(mainImage, coverImage),
   minutes,
   readTime,
   body
 }`;
 
+const INSIGHTS_QUERY = `*[
+  _type in ["insight", "insights", "post", "blogPost"]
+] | order(coalesce(publishedAt, _createdAt) desc) {
+  _id,
+  title,
+  "id": coalesce(slug.current, _id),
+  excerpt,
+  summary,
+  body,
+  "date": coalesce(publishedAt, _createdAt),
+  tags,
+  categories[]->{
+    title
+  },
+  author->{
+    name
+  },
+  minutes,
+  readTime
+}`;
+
 const normalizeTags = (rawTags, rawCategories) => {
   const fromTags = Array.isArray(rawTags)
     ? rawTags
-      .map((tag) => {
-        if (typeof tag === "string") return tag;
-        if (tag && typeof tag.title === "string") return tag.title;
-        if (tag && typeof tag.value === "string") return tag.value;
-        return "";
-      })
-      .filter(Boolean)
+        .map((tag) => {
+          if (typeof tag === "string") return tag;
+          if (tag && typeof tag.title === "string") return tag.title;
+          if (tag && typeof tag.value === "string") return tag.value;
+          return "";
+        })
+        .filter(Boolean)
     : [];
 
   const fromCategories = Array.isArray(rawCategories)
     ? rawCategories
-      .map((cat) => (cat && typeof cat.title === "string" ? cat.title : ""))
-      .filter(Boolean)
+        .map((cat) => (cat && typeof cat.title === "string" ? cat.title : ""))
+        .filter(Boolean)
     : [];
 
   const combined = [...fromTags, ...fromCategories];
@@ -488,10 +509,36 @@ const getAlignmentClass = (block) => {
   return styleMap[block?.style] || "";
 };
 
+const MoreInsightsSection = ({ insights }) => {
+  if (!Array.isArray(insights) || insights.length === 0) return null;
+
+  return (
+    <aside className="rounded-2xl bg-white p-5 shadow-[0_1px_0_rgba(12,31,58,0.08),0_10px_30px_rgba(12,31,58,0.06)]">
+      <h2 className="md:text-2xl font-extrabold text-primaryBlue">More Insights from ShiftDeploy</h2>
+      <div className="mt-4 space-y-3">
+        {insights.map((item) => (
+          <Link
+            key={`more-insight-${item.id}`}
+            to={`/insights/${item.id}`}
+            state={{ post: item }}
+            className="block rounded-xl border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+          >
+            <p className="text-xs text-gray-500">
+              {formatDate(item.date)} · {item.minutes} min read
+            </p>
+            <h3 className="mt-1 text-sm font-bold text-primaryBlue leading-snug">{item.title}</h3>
+          </Link>
+        ))}
+      </div>
+    </aside>
+  );
+};
+
 const InsightDetail = () => {
   const { slug } = useParams();
   const location = useLocation();
   const [post, setPost] = useState(location.state?.post || null);
+  const [moreInsights, setMoreInsights] = useState([]);
   const [isLoading, setIsLoading] = useState(isSanityConfigured);
   const [loadError, setLoadError] = useState("");
 
@@ -520,6 +567,7 @@ const InsightDetail = () => {
           date: doc.date || new Date().toISOString(),
           tags: normalizeTags(doc.tags, doc.categories),
           author: doc?.author?.name || "ShiftDeploy",
+          mainImage: doc.mainImage || doc.coverImage || null,
           body: Array.isArray(doc.body) ? doc.body : [],
           minutes: getReadMinutes(doc.minutes, doc.readTime, doc.body),
         });
@@ -541,10 +589,58 @@ const InsightDetail = () => {
     };
   }, [slug]);
 
+  useEffect(() => {
+    let isCancelled = false;
+
+    if (!isSanityConfigured || !sanityClient) {
+      return () => {
+        isCancelled = true;
+      };
+    }
+
+    const loadMoreInsights = async () => {
+      try {
+        const docs = await sanityClient.fetch(INSIGHTS_QUERY);
+        if (isCancelled) return;
+
+        const currentId = post?.id;
+        const normalized = Array.isArray(docs)
+          ? docs
+              .filter((doc) => doc && doc.title)
+              .map((doc) => ({
+                id: doc.id || doc._id,
+                title: doc.title,
+                excerpt: doc.excerpt || doc.summary || "",
+                date: doc.date || new Date().toISOString(),
+                tags: normalizeTags(doc.tags, doc.categories),
+                author: doc?.author?.name || "ShiftDeploy",
+                minutes: getReadMinutes(doc.minutes, doc.readTime, doc.body),
+              }))
+              .filter((doc) => doc.id !== currentId)
+              .slice(0, 5)
+          : [];
+
+        setMoreInsights(normalized);
+      } catch (error) {
+        if (!isCancelled) {
+          setMoreInsights([]);
+        }
+      }
+    };
+
+    loadMoreInsights();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, [post?.id]);
+
   const pageTitle = useMemo(
     () => (post?.title ? `${post.title} | ShiftDeploy Insights` : "Insight | ShiftDeploy"),
     [post]
   );
+
+  const heroImage = post?.mainImage || post?.coverImage || null;
 
   return (
     <>
@@ -554,8 +650,9 @@ const InsightDetail = () => {
 
       <Navigation />
 
-      <section className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 px-4 sm:px-6 lg:px-8 pt-28 pb-16">
-        <div className="max-w-4xl mx-auto">
+      <section className="min-h-screen bg-white px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+        <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-8 xl:col-span-9">
           <Link
             to="/insights"
             className="inline-flex items-center rounded-full px-4 py-2 text-sm font-bold text-primaryBlue bg-white ring-1 ring-gray-200 hover:ring-gray-300"
@@ -582,7 +679,17 @@ const InsightDetail = () => {
           )}
 
           {post && (
-            <article className="mt-6 rounded-2xl bg-white p-6 sm:p-8 shadow-[0_1px_0_rgba(12,31,58,0.08),0_10px_30px_rgba(12,31,58,0.06)] overflow-hidden">
+            <article className="mt-6 rounded-2xl   overflow-hidden">
+              {heroImage && (
+                <figure className="mb-6 overflow-hidden rounded-xl">
+                  <img
+                    src={getImageUrl(heroImage, 1400)}
+                    alt={heroImage.alt || post.title || "Insight cover image"}
+                    className="w-full h-auto object-cover"
+                  />
+                </figure>
+              )}
+
               <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight text-primaryBlue break-words">
                 {post.title}
               </h1>
@@ -845,6 +952,17 @@ const InsightDetail = () => {
               </div>
             </article>
           )}
+          </div>
+
+          <div className="hidden lg:block lg:col-span-4 xl:col-span-3">
+            <div className="lg:sticky lg:top-28">
+              <MoreInsightsSection insights={moreInsights} />
+            </div>
+          </div>
+
+          <div className="mt-6 lg:hidden">
+            <MoreInsightsSection insights={moreInsights} />
+          </div>
         </div>
       </section>
 
