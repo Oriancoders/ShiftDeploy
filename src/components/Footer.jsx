@@ -10,17 +10,17 @@ const Footer = () => {
 
   const footerLinks = {
     company: [
-      { name: 'About ShiftDeploy', href: '/insideShiftDeploy' },
-      { name: 'ShiftDeploy Toolkit', href: '/services' },
-      { name: 'The Shift Protocol', href: '/shift-protocol' },
+      { name: 'What we do', href: '/services' },
+      { name: 'Inside ShiftDeploy', href: '/insideShiftDeploy' },
+      { name: 'Solutions', href: '/services' },
       { name: 'Missions Completed', href: '/missions' },
-      { name: 'Flight Logs', href: '/flight-logs' }
+      { name: 'Insights', href: '/insights' },
     ],
     services: [
-      { name: 'ShiftSpeed (Performance Optimization)', href: '/services' },
-      { name: 'ShiftConvert (CRO & UX Optimization)', href: '/services' },
-      { name: 'ShiftBuild (Performance First Development)', href: '/services' },
-      { name: 'ShiftFlow (Ongoing Support & Optimization)', href: '/services' },
+      { name: 'ShiftSpeed', href: '/services/shiftspeed' },
+      { name: 'ShiftConvert', href: '/services/shiftconvert' },
+      { name: 'ShiftBuild', href: '/services/shiftbuild' },
+      { name: 'ShiftFlow', href: '/services/shiftflow' },
     ],
 
     caseStudies: [
@@ -97,7 +97,7 @@ const Footer = () => {
 
           {/* Services links */}
           <motion.div variants={fadeInUp} className="sm:col-span-1 lg:col-span-1">
-            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">Services</h4>
+            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">Solutions</h4>
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>

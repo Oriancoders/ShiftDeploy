@@ -132,7 +132,7 @@ const ContactUs = () => {
       </Helmet>
 
       <Navigation />
-      <section id="contact-us" className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
+      <section id="contact-us" className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-x-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-20 w-96 h-96 bg-blue-600 rounded-full blur-3xl" />
@@ -167,13 +167,13 @@ const ContactUs = () => {
           </motion.div>
 
           {/* Main Content - Two Column Layout */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-20">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-20 max-w-full">
             {/* Left Column - Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -60 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="space-y-8 sm:space-y-10 lg:space-y-12 sm:order-1 order-2"
+              className="space-y-8 sm:space-y-10 lg:space-y-12 sm:order-1 order-2 min-w-0"
             >
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primaryBlue mb-6 sm:mb-8">
                 What you’ll get
@@ -223,7 +223,7 @@ const ContactUs = () => {
                         <a
                           href={info.href}
                           target='_blank'
-                          className={`text-base sm:text-lg transition-colors duration-300 text-gray-600 hover:text-gray-800`}
+                          className={`text-base sm:text-lg transition-colors duration-300 text-gray-600 hover:text-gray-800 break-all`}
                         >
                           {info.value}
                         </a>
@@ -246,9 +246,9 @@ const ContactUs = () => {
               initial={{ opacity: 0, x: 60 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-8 lg:mt-0  sm:order-2 order-1 "
+              className="mt-8 lg:mt-0 sm:order-2 order-1 min-w-0"
             >
-              <div className="bg-white rounded-2xl sm:shadow-xl border border-slate-200 p-6">
+              <div className="w-full max-w-full bg-white rounded-2xl sm:shadow-xl border border-slate-200 p-4 sm:p-6 overflow-hidden">
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 ">
                   {/* Name Field */}
                   <div>

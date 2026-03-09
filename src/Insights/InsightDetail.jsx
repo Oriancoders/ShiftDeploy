@@ -650,7 +650,7 @@ const InsightDetail = () => {
 
       <Navigation />
 
-      <section className="min-h-screen bg-white px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+      <section className="min-h-screen bg-white px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-16">
         <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-8 xl:col-span-9">
           <Link
@@ -661,25 +661,25 @@ const InsightDetail = () => {
           </Link>
 
           {isLoading && (
-            <div className="mt-6 rounded-2xl bg-white p-6 text-gray-600 shadow-[0_1px_0_rgba(12,31,58,0.08),0_10px_30px_rgba(12,31,58,0.06)]">
+            <div className="mt-2 sm:mt-6 rounded-2xl bg-white p-6 text-gray-600 shadow-[0_1px_0_rgba(12,31,58,0.08),0_10px_30px_rgba(12,31,58,0.06)]">
               Loading insight...
             </div>
           )}
 
           {loadError && (
-            <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-6 text-amber-800">
+            <div className="mt-2 sm:mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-6 text-amber-800">
               {loadError}
             </div>
           )}
 
           {!isLoading && !post && (
-            <div className="mt-6 rounded-2xl border border-gray-200 bg-white p-6 text-gray-700">
+            <div className="mt-2 sm:mt-6 rounded-2xl border border-gray-200 bg-white p-6 text-gray-700">
               Insight not found.
             </div>
           )}
 
           {post && (
-            <article className="mt-6 rounded-2xl   overflow-hidden">
+            <article className="mt-2 sm:mt-6 rounded-2xl   overflow-hidden">
               {heroImage && (
                 <figure className="mb-6 overflow-hidden rounded-xl">
                   <img

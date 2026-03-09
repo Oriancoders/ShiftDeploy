@@ -9,15 +9,33 @@
     <loc>https://www.shiftdeploy.com/insideShiftDeploy</loc>
   </url>
 
-  
+  <url>
+    <loc>https://www.shiftdeploy.com/services</loc>
+  </url>
 
    <url>
     <loc>https://www.shiftdeploy.com/services/shiftspeed</loc>
   </url>
 
+  <url>
+    <loc>https://www.shiftdeploy.com/services/shiftconvert</loc>
+  </url>
+
+  <url>
+    <loc>https://www.shiftdeploy.com/services/shiftbuild</loc>
+  </url>
+
+  <url>
+    <loc>https://www.shiftdeploy.com/services/shiftflow</loc>
+  </url>
+
 
   <url>
     <loc>https://www.shiftdeploy.com/missions</loc>
+  </url>
+
+  <url>
+    <loc>https://www.shiftdeploy.com/insights</loc>
   </url>
 
 
