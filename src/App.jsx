@@ -6,6 +6,9 @@ import GlobalProvider from './GlobalProvider/GlobalProvider';
 import ShiftDeployLoader from './components/ShiftDeployLoader'; // Ensure this path is correct based on your folder structure
 import ScrollToTop from './components/ScrollToTop'; // The new path you mentioned
 const ShiftSpeed = lazy(() => import('./Pages/Services/ShiftSpeed/ShiftSpeed'));
+const ShiftConvert = lazy(() => import('./Pages/Services/ShiftConvert/ShiftConvert'));
+const ShiftBuild = lazy(() => import('./Pages/Services/ShiftBuild/ShiftBuild'));
+const ShiftFlow = lazy(() => import('./Pages/Services/ShiftFlow/ShiftFlow'));
 const Insights = lazy(() => import('./Insights/Insights'));
 const InsightDetail = lazy(() => import('./Insights/InsightDetail'));
 // import { Chatbot } from './components/Chatbot';
@@ -17,7 +20,6 @@ const InSide_Landing = lazy(() => import('./Pages/InsideShiftDeploy/InSide_Landi
 const Toolkit_Landing = lazy(() => import('./Pages/DeployToolkit/Toolkit_Landing'));
 // const Landing_Protocol = lazy(() => import('./Pages/ShiftProtocol/Landing_Protocol'));
 const Mission_Landing = lazy(() => import('./Pages/MissionCompleted/Mission_Landing'));
-const Flight_Landing = lazy(() => import('./Pages/FlighLogs/Flight_Landing'));
 const ContactUs = lazy(() => import('./Pages/ContactUsPage/ContactUs'));
 
 // Case Studies
@@ -46,7 +48,6 @@ function App() {
             <Route path='/insideShiftDeploy' element={<InSide_Landing />} />
             <Route path='/services' element={<Toolkit_Landing />} />
             <Route path='/missions' element={<Mission_Landing />} />
-            <Route path='/flight-logs' element={<Flight_Landing />} />
             <Route path='/ContactUs' element={<ContactUs />} />
 
             {/* case studies */}
@@ -65,6 +66,9 @@ function App() {
             
             {/* {services pages routes to be added here} */}
             <Route path='/services/shiftspeed' element={<ShiftSpeed/>} />
+            <Route path='/services/shiftconvert' element={<ShiftConvert/>} />
+            <Route path='/services/shiftbuild' element={<ShiftBuild/>} />
+            <Route path='/services/shiftflow' element={<ShiftFlow/>} />
 
             {/* {Insight pages routes to be added here} */}
             <Route path='/insights' element={<Insights/>} />

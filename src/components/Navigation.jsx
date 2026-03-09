@@ -11,6 +11,7 @@ const Navigation = ({ isDarkBg = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredPath, setHoveredPath] = useState(null);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -22,9 +23,18 @@ const Navigation = ({ isDarkBg = false }) => {
   }, []);
 
   const navItems = [
-    { label: 'Our Services', path: '/services' },
+    { label: 'What we do', path: '/services' },
     { label: 'Inside ShiftDeploy', path: '/insideShiftDeploy' },
-    { label: 'ShiftSpeed', path: '/services/shiftspeed' },
+    {
+      label: 'Solutions',
+      path: '/services',
+      subPaths: [
+        { label: 'ShiftSpeed', path: '/services/shiftspeed' },
+        { label: 'ShiftConvert', path: '/services/shiftconvert' },
+        { label: 'ShiftBuild', path: '/services/shiftbuild' },
+        { label: 'ShiftFlow', path: '/services/shiftflow' },
+      ],
+    },
     {
       label: 'Missions Completed',
       path: '/missions',
@@ -128,7 +138,7 @@ const Navigation = ({ isDarkBg = false }) => {
             <div className="lg:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-300 p-2"
+                className="text-primaryBlue hover:text-primaryBlue transition-colors duration-300 p-2"
               >
                 {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -150,45 +160,69 @@ const Navigation = ({ isDarkBg = false }) => {
                 <div className="space-y-3">
                   {navItems.map(({ label, path, subPaths }, index) => (
                     <div key={index}>
-                      <Link to={path}>
-                        <m.div
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: index * 0.1 }}
-                          onClick={() => {
-                            if (!subPaths) setIsOpen(false);
-                          }}
-                          className={`py-2 sm:py-3 font-medium text-base sm:text-lg 
-                            ${
-                              location.pathname === path || (subPaths && subPaths.some(sub => sub.path === location.pathname))
-                                ? 'text-primaryBlue'
-                                : 'text-gray-700 hover:text-blue-600'
-                            }
-                          `}
-                        >
-                          {label}
-                        </m.div>
-                      </Link>
+                      {!subPaths && (
+                        <Link to={path}>
+                          <m.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            onClick={() => setIsOpen(false)}
+                            className={`py-2 sm:py-3 font-medium text-base sm:text-lg 
+                              ${location.pathname === path ? 'text-primaryBlue' : 'text-gray-700 hover:text-primaryBlue'}
+                            `}
+                          >
+                            {label}
+                          </m.div>
+                        </Link>
+                      )}
+
                       {subPaths && (
-                        <m.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          transition={{ duration: 0.2 }}
-                          className="pl-4 border-l border-gray-200 ml-4 space-y-2"
-                        >
-                          {subPaths.map((subItem, subIndex) => (
-                            <Link key={subIndex} to={subItem.path} onClick={() => setIsOpen(false)}>
+                        <>
+                          <m.button
+                            type="button"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.1 }}
+                            onClick={() => setOpenMobileDropdown(openMobileDropdown === label ? null : label)}
+                            className={`w-full py-2 sm:py-3 font-medium text-base sm:text-lg flex items-center justify-between 
+                              ${
+                                location.pathname === path || subPaths.some(sub => sub.path === location.pathname)
+                                  ? 'text-primaryBlue'
+                                  : 'text-gray-700 hover:text-primaryBlue'
+                              }
+                            `}
+                          >
+                            <span>{label}</span>
+                            <IoIosArrowDown
+                              className={`transition-transform duration-300 ${openMobileDropdown === label ? 'rotate-180' : ''}`}
+                            />
+                          </m.button>
+
+                          <AnimatePresence>
+                            {openMobileDropdown === label && (
                               <m.div
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: (index + subIndex) * 0.1 }}
-                                className="py-1 text-sm text-gray-600 hover:text-primaryBlue"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.2 }}
+                                className="pl-4 border-l border-gray-200 ml-4 space-y-2 overflow-hidden"
                               >
-                                {subItem.label}
+                                {subPaths.map((subItem, subIndex) => (
+                                  <Link key={subIndex} to={subItem.path} onClick={() => setIsOpen(false)}>
+                                    <m.div
+                                      initial={{ opacity: 0, x: -10 }}
+                                      animate={{ opacity: 1, x: 0 }}
+                                      transition={{ delay: (index + subIndex) * 0.05 }}
+                                      className="py-1 text-sm text-gray-600 hover:text-primaryBlue"
+                                    >
+                                      {subItem.label}
+                                    </m.div>
+                                  </Link>
+                                ))}
                               </m.div>
-                            </Link>
-                          ))}
-                        </m.div>
+                            )}
+                          </AnimatePresence>
+                        </>
                       )}
                     </div>
                   ))}

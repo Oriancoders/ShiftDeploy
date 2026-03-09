@@ -13,7 +13,6 @@ const InsideShiftDeploy = lazy(() => import('./landingComps/InsideShiftDeploy'))
 const DeployToolkit = lazy(() => import('./landingComps/DeployToolkit'));
 const ShiftProtocol = lazy(() => import('./landingComps/ShiftProtocol'));
 const MissionsCompleted = lazy(() => import('./landingComps/MissionsCompleted'));
-const FlightLogs = lazy(() => import('./landingComps/FlightLogs'));
 const VideoTestimonial = lazy(() => import('./landingComps/VideoTestimonial'));
 const TrustStrip = lazy(() => import('../../components/TrustStrip'));
 const Footer = lazy(() => import('../../components/Footer'));
@@ -53,7 +52,6 @@ const Landing = () => {
           <TrustStrip/>
           <ShiftProtocol />
           <MissionsCompleted />
-          <FlightLogs />
         </Suspense>
         
         <Footer />
