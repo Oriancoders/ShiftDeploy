@@ -6,6 +6,7 @@ import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 
 // ✅ FIX 1: Import Hero DIRECTLY. No lazy loading for what the user sees first.
 import Hero from './landingComps/Hero'; 
+import DigitalReceptionist from './landingComps/DigitalReceptionist';
 // VideoTestimonial will be lazy-loaded below to avoid fetching video on initial load
 
 // Keep "Below the fold" components lazy to save bandwidth
@@ -46,10 +47,12 @@ const Landing = () => {
         
         {/* ✅ FIX 4: Only wrap the heavy, lower-down stuff in Suspense */}
         <Suspense fallback={<ShiftDeployLoader />}>
+          <DigitalReceptionist />
           <InsideShiftDeploy />
           <VideoTestimonial videoSrc='https://res.cloudinary.com/dbazbq7u9/video/upload/v1771101197/Web_Video_1_handbraked_xii5jz.mp4'  posterSrc='https://res.cloudinary.com/dbazbq7u9/image/upload/v1771111040/poster_drnahj.webp'/>
           <DeployToolkit />
           <TrustStrip/>
+
           <ShiftProtocol />
           <MissionsCompleted />
         </Suspense>

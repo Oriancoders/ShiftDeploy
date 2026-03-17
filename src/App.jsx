@@ -18,6 +18,7 @@ import Landing from './Pages/LandingPage/Landing';
 import LazyGTM from './utils/LazyGTM';
 const InSide_Landing = lazy(() => import('./Pages/InsideShiftDeploy/InSide_Landing'));
 const Toolkit_Landing = lazy(() => import('./Pages/DeployToolkit/Toolkit_Landing'));
+const DigitalReceptionist = lazy(() => import('./Pages/LandingPage/landingComps/DigitalReceptionist'));
 // const Landing_Protocol = lazy(() => import('./Pages/ShiftProtocol/Landing_Protocol'));
 const Mission_Landing = lazy(() => import('./Pages/MissionCompleted/Mission_Landing'));
 const ContactUs = lazy(() => import('./Pages/ContactUsPage/ContactUs'));
@@ -73,6 +74,9 @@ function App() {
             {/* {Insight pages routes to be added here} */}
             <Route path='/insights' element={<Insights/>} />
             <Route path='/insights/:slug' element={<InsightDetail/>} />
+
+            {/* Digital Receptionist */}
+            <Route path='/digital-receptionist' element={<DigitalReceptionist/>} />
             
           </Routes>
         </Suspense>
