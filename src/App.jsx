@@ -27,6 +27,7 @@ const ContactUs = lazy(() => import('./Pages/ContactUsPage/ContactUs'));
 const SlackerIOT = lazy(() => import('./Pages/CaseStudies/SlackerIOT'));
 const BullsEyesCase = lazy(() => import('./Pages/CaseStudies/BullsEyesCase'));
 const K2TradersCase = lazy(() => import('./Pages/CaseStudies/K2Traders'));
+const AiChatbotLanding = lazy(() => import('./Pages/AiChatbotLanding'));
 
 // Misc Pages
 const ThankYouPage = lazy(() => import('./Pages/ContactUsPage/ThankYouPage'));
@@ -77,6 +78,7 @@ function App() {
 
             {/* Digital Receptionist */}
             <Route path='/digital-receptionist' element={<DigitalReceptionist/>} />
+            <Route path='/ai-chatbot' element={<AiChatbotLanding/>} />
             
           </Routes>
         </Suspense>
