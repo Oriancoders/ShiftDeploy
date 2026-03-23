@@ -15,7 +15,7 @@ const DigitalReceptionist = ({
     const [isPlaying, setIsPlaying] = useState(false);
 
     return (
-        <section className="w-full bg-gray-50 sm:py-10 border-y border-gray-100 pb-24">
+        <section className="w-full bg-gray-50 sm:pt-10 border-y border-gray-100 pb-24">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* TOP: Centered Heading & Description */}

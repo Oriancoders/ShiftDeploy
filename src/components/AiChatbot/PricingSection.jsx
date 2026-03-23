@@ -4,7 +4,7 @@ import { Check, X, CheckCircle2 } from 'lucide-react';
 export default function PricingSection() {
   return (
     <>
-      <section className="py-20 md:py-32 bg-gray-50 relative border-t border-gray-200/60">
+      <section className="py-16 md:py-28 bg-gray-50 relative border-t border-gray-200/60">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
            <div className="text-center mb-16 relative">
              <motion.span 
@@ -15,18 +15,19 @@ export default function PricingSection() {
              </motion.span>
              <motion.h2 
                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-               className="text-4xl md:text-5xl text-textColor font-extrabold mb-6 tracking-tight"
+               className="text-4xl md:text-5xl text-primaryBlue font-extrabold mb-6 tracking-tight"
              >
                An investment that pays for <br className="hidden md:block"/> itself in <span className="text-transparent bg-clip-text bg-gradient-to-r from-primaryOrange to-orange-400">the first week.</span>
              </motion.h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
              {/* 1. Decoy / Starter Plan */}
-             <motion.div 
-               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once:true }}
-               className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col h-[90%]"
-             >
+                   <motion.div 
+                      initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once:true }}
+                      className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col h-full min-h-[480px]"
+                      aria-label="Essential Plan"
+                   >
                 <div className="mb-6">
                    <h3 className="text-xl font-bold text-gray-800">Essential</h3>
                    <p className="text-gray-500 text-sm mt-2">For solo practitioners</p>
@@ -46,17 +47,17 @@ export default function PricingSection() {
              {/* 2. Anchor / Recommended Plan (Center Focus) */}
              <motion.div 
                initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once:true }} transition={{ delay: 0.2 }}
-               className="relative p-[1px] rounded-3xl z-10 transform scale-105"
+               className="relative p-[2px] rounded-3xl z-20 transform scale-105 shadow-2xl lg:scale-110 lg:shadow-[0_8px_48px_rgba(247,103,7,0.18)]"
+               aria-label="Growth Plan - Best Value"
              >
                 {/* Animated gradient border */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primaryOrange via-pink-500 to-primaryOrange rounded-3xl animate-gradient-xy opacity-75 blur-[2px]"></div>
-                
+                <div className="absolute inset-0 bg-gradient-to-r from-primaryOrange via-pink-500 to-primaryOrange rounded-3xl animate-gradient-xy opacity-80 blur-[2px]"></div>
                 {/* Inner Card (Glassmorphism) */}
-                <div className="bg-[#0C1F3A]/95 backdrop-blur-2xl p-10 rounded-[23px] flex flex-col h-full relative z-10">
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primaryOrange to-orange-500 text-white px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider shadow-[0_0_20px_rgba(247,103,7,0.5)] border border-white/10">
-                     Most Popular
+                <div className="bg-primaryBlue/95 backdrop-blur-2xl p-10 rounded-[23px] flex flex-col h-full relative z-10 min-h-[520px]">
+                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primaryOrange to-orange-500 text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-wider shadow-[0_0_20px_rgba(247,103,7,0.5)] border border-white/10 scale-110">
+                     <span className="inline-flex items-center gap-2">Best Value <span className="text-lg">🔥</span></span>
                   </div>
-                  <div className="mb-6 mt-2">
+                  <div className="mb-6 mt-4">
                      <h3 className="text-2xl font-bold text-white relative inline-block">
                         Growth
                         <span className="absolute -right-6 -top-2">✨</span>
@@ -77,10 +78,11 @@ export default function PricingSection() {
                         </li>
                      ))}
                   </ul>
-                  <motion.button 
+                  <motion.button
                      whileHover={{ scale: 1.05 }}
                      whileTap={{ scale: 0.95 }}
-                     className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-primaryOrange to-orange-500 hover:from-orange-500 hover:to-orange-400 shadow-[0_10px_30px_rgba(247,103,7,0.4)] transition-all duration-300 mt-auto border border-white/10"
+                     className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-primaryOrange to-orange-500 hover:from-orange-500 hover:to-orange-400 shadow-[0_10px_30px_rgba(247,103,7,0.4)] transition-all duration-300 mt-auto border border-white/10 text-lg"
+                     aria-label="Scale My Business - Growth Plan"
                   >
                      Scale My Business
                   </motion.button>
@@ -88,10 +90,11 @@ export default function PricingSection() {
              </motion.div>
 
              {/* 3. Enterprise / Premium Plan */}
-             <motion.div 
-               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once:true }} transition={{ delay:0.4}}
-               className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col h-[90%]"
-             >
+                   <motion.div 
+                      initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once:true }} transition={{ delay:0.4}}
+                      className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col h-full min-h-[480px]"
+                      aria-label="Enterprise Plan"
+                   >
                 <div className="mb-6">
                    <h3 className="text-xl font-bold text-gray-800">Enterprise</h3>
                    <p className="text-gray-500 text-sm mt-2">For multi-location brands</p>

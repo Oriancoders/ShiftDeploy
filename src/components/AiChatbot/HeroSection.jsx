@@ -12,7 +12,7 @@ export default function HeroSection({ activeTab, setActiveTab }) {
   const sparkleVariants = { initial: { scale: 0, opacity: 0, rotate: -45 }, animate: { scale: [0, 1, 0], opacity: [0, 1, 0], rotate: [-45, 45, 90], transition: { duration: 2, repeat: Infinity, repeatDelay: 1, ease: "easeInOut" } } };
   return (
     <>
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-[#0C1F3A]">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-primaryBlue">
         {/* Dynamic Background Glows */}
         <div className="absolute inset-0 z-0">
           <motion.div 
@@ -21,7 +21,7 @@ export default function HeroSection({ activeTab, setActiveTab }) {
               opacity: [0.3, 0.5, 0.3] 
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-[#4361EE] rounded-full blur-[180px] mix-blend-screen"
+            className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-secondaryBlue rounded-full blur-[180px] mix-blend-screen"
           />
           <motion.div 
             animate={{ 
@@ -29,13 +29,13 @@ export default function HeroSection({ activeTab, setActiveTab }) {
               opacity: [0.2, 0.4, 0.2] 
             }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-[#F76707] rounded-full blur-[180px] mix-blend-screen"
+            className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-primaryOrange rounded-full blur-[180px] mix-blend-screen"
           />
           
           {/* subtle grid or pattern layer can go here */}
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.05]"></div>
           {/* Vignette effect */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0C1F3A] to-transparent opacity-80"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-primaryBlue to-transparent opacity-80"></div>
         </div>
 
         <div className="container mx-auto px-4 md:px-8 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
@@ -44,8 +44,8 @@ export default function HeroSection({ activeTab, setActiveTab }) {
             
             {/* Value prop pill with sweeping gradient */}
             <motion.div variants={fadeIn} className="relative inline-flex overflow-hidden rounded-full p-[1px] mb-8">
-              <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#4361EE_0%,#F76707_50%,#4361EE_100%)]" />
-              <div className="inline-flex items-center px-5 py-2.5 rounded-full bg-[#0C1F3A] text-blue-200 text-sm font-semibold backdrop-blur-md relative z-10">
+              <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,theme(colors.secondaryBlue)_0%,theme(colors.primaryOrange)_50%,theme(colors.secondaryBlue)_100%)]" />
+              <div className="inline-flex items-center px-5 py-2.5 rounded-full bg-primaryBlue text-blue-200 text-sm font-semibold backdrop-blur-md relative z-10">
                 <span className="relative flex h-3 w-3 mr-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primaryOrange opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-primaryOrange"></span>
@@ -63,14 +63,14 @@ export default function HeroSection({ activeTab, setActiveTab }) {
                   className="absolute -top-6 -left-6 z-0"
                >
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <path d="M12 0L14 9L23 12L14 15L12 24L10 15L1 12L10 9L12 0Z" fill="#F76707" fillOpacity="0.5"/>
+                     <path d="M12 0L14 9L23 12L14 15L12 24L10 15L1 12L10 9L12 0Z" fill="currentColor" fillOpacity="0.5"/>
                   </svg>
                </motion.div>
 
               <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-extrabold leading-[1.05] mb-6 text-white drop-shadow-xl relative z-10 tracking-tight">
                 Capture Bookings.<br />
                 <span className="relative">
-                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F76707] via-[#FF8C3A] to-[#F76707] animate-text-gradient bg-300%">Even While You</span>
+                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primaryOrange via-primaryOrange to-primaryOrange animate-text-gradient bg-300%">Even While You</span>
                    <motion.div 
                       className="inline-block mx-2"
                       animate={{ rotate: [0, -10, 10, -10, 0] }}
@@ -78,13 +78,13 @@ export default function HeroSection({ activeTab, setActiveTab }) {
                    >
                      😴
                    </motion.div>
-                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F76707] via-[#FF8C3A] to-[#F76707] animate-text-gradient bg-300%">Sleep.</span>
+                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-primaryOrange via-primaryOrange to-primaryOrange animate-text-gradient bg-300%">Sleep.</span>
                    {/* Animated underline */}
                    <motion.div 
                      initial={{ scaleX: 0 }}
                      animate={{ scaleX: 1 }}
                      transition={{ duration: 1, delay: 0.8 }}
-                     className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-[#F76707] to-transparent origin-left rounded-full"
+                     className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-primaryOrange to-transparent origin-left rounded-full"
                    />
                 </span>
               </h1>
@@ -95,13 +95,13 @@ export default function HeroSection({ activeTab, setActiveTab }) {
             </motion.p>
             
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-5">
-              <button className="relative group overflow-hidden bg-white text-[#0C1F3A] px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center hover:scale-[1.02]">
-                <div className="absolute inset-0 bg-gradient-to-r from-primaryOrange to-[#FF8C3A] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <button className="relative group overflow-hidden bg-white text-primaryBlue px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center hover:scale-[1.02]">
+                <div className="absolute inset-0 bg-gradient-to-r from-primaryOrange to-toOrange opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <span className="relative z-10 flex items-center group-hover:text-white transition-colors duration-300">
                   Deploy Your AI Agent <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
-              <button className="group bg-[#ffffff0a] hover:bg-[#ffffff15] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all flex items-center justify-center border border-white/10 backdrop-blur-md hover:border-white/30">
+              <button className="group bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all flex items-center justify-center border border-white/10 backdrop-blur-md hover:border-white/30">
                 See Live Demo <Bot className="ml-2 w-5 h-5 text-secondaryBlue group-hover:rotate-12 transition-transform" />
               </button>
             </motion.div>
@@ -109,14 +109,14 @@ export default function HeroSection({ activeTab, setActiveTab }) {
             <motion.div variants={fadeIn} className="mt-12 flex items-center gap-8 justify-start">
                <div className="flex -space-x-4">
                   {[1,2,3,4].map((i) => (
-                     <img key={i} className="w-10 h-10 rounded-full border-2 border-[#0C1F3A] z-10" src={`https://i.pravatar.cc/100?img=${i+10}`} alt="avatar" />
+                     <img key={i} className="w-10 h-10 rounded-full border-2 border-primaryBlue z-10" src={`https://i.pravatar.cc/100?img=${i+10}`} alt="avatar" />
                   ))}
                </div>
                <div className="text-sm">
-                  <div className="flex items-center text-[#F76707] font-bold">
+                  <div className="flex items-center text-primaryOrange font-bold">
                      ★★★★★ <span className="text-white ml-2">5.0</span>
                   </div>
-                  <p className="text-gray-400">Trusted by 500+ Local Businesses</p>
+                  <p className="text-gray-400">Valuable for a vast category of businesses</p>
                </div>
             </motion.div>
           </motion.div>
@@ -149,7 +149,7 @@ export default function HeroSection({ activeTab, setActiveTab }) {
               {/* Glass reflection layer */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-[26px] pointer-events-none z-20"></div>
 
-              <div className="bg-[#0b172a] rounded-[24px] overflow-hidden flex flex-col h-[480px] shadow-inner relative z-10">
+              <div className="bg-toBlue rounded-[24px] overflow-hidden flex flex-col h-[480px] shadow-inner relative z-10">
                 {/* Mac OS Style Header */}
                 <div className="px-5 py-4 border-b border-white/10 bg-white/5 flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -159,7 +159,7 @@ export default function HeroSection({ activeTab, setActiveTab }) {
                         <div className="w-3 h-3 rounded-full bg-green-400"></div>
                      </div>
                     <div className="relative">
-                      <div className="w-10 h-10 bg-gradient-to-br from-[#4361EE] to-[#1D4eD8] rounded-xl flex items-center justify-center shadow-lg transform rotate-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-secondaryBlue to-toSecBlue rounded-xl flex items-center justify-center shadow-lg transform rotate-3">
                         <Bot className="w-5 h-5 text-white transform -rotate-3" />
                       </div>
                     </div>

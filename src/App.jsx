@@ -77,8 +77,7 @@ function App() {
             <Route path='/insights/:slug' element={<InsightDetail/>} />
 
             {/* Digital Receptionist */}
-            <Route path='/digital-receptionist' element={<DigitalReceptionist/>} />
-            <Route path='/ai-chatbot' element={<AiChatbotLanding/>} />
+            <Route path='/digital-receptionist' element={<AiChatbotLanding/>} />
             
           </Routes>
         </Suspense>
