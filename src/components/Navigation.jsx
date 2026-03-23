@@ -33,6 +33,7 @@ const Navigation = ({ isDarkBg = false }) => {
         { label: 'ShiftConvert', path: '/services/shiftconvert' },
         { label: 'ShiftBuild', path: '/services/shiftbuild' },
         { label: 'ShiftFlow', path: '/services/shiftflow' },
+        { label: 'Digital Receptionist', path: '/digital-receptionist' },
       ],
     },
     {

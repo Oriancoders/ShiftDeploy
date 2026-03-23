@@ -16,7 +16,7 @@ export default function ProblemSolutionSection({ activeTab, setActiveTab }) {
              </motion.span>
             <motion.h2 
                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-               className="text-3xl md:text-5xl text-textColor font-extrabold mb-6 leading-tight"
+               className="text-3xl md:text-5xl text-primaryBlue font-extrabold mb-6 leading-tight"
             >
                The True Cost of a <br className="hidden md:block"/> <span className="relative inline-block"><span className="absolute bottom-1 left-0 w-full h-3 bg-red-200 -z-10 transform -rotate-1"></span>Traditional Setup</span>
             </motion.h2>
@@ -88,7 +88,7 @@ export default function ProblemSolutionSection({ activeTab, setActiveTab }) {
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ opacity: 0, x: 50 }}
               viewport={{ once: true }}
-              className="bg-[#0C1F3A] text-white p-8 md:p-10 rounded-3xl shadow-[0_20px_50px_rgba(67,97,238,0.2)] flex flex-col relative overflow-hidden transform md:scale-105 z-10 border border-blue-800/50"
+              className="bg-toBlue text-white p-8 md:p-10 rounded-3xl shadow-[0_20px_50px_rgba(67,97,238,0.2)] flex flex-col relative overflow-hidden transform md:scale-105 z-10 border border-blue-800/50"
             >
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-secondaryBlue to-primaryOrange blur-[80px] rounded-full opacity-30 pointer-events-none"></div>
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
