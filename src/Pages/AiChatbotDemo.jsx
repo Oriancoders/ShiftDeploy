@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Bot, Play, ArrowLeft, MessageCircleMore } from 'lucide-react';
+import { Bot, Play, ArrowLeft, MessageCircleMore, CalendarClock, CheckCircle2, User, Mail, Phone, Building2, CalendarDays, Clock3, Sparkles } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
@@ -44,6 +44,15 @@ const bookingSteps = [
     error: 'Please add a short purpose.',
   },
   {
+    key: 'company',
+    label: 'Company Name',
+    type: 'text',
+    placeholder: 'Enter your company name or website',
+    question: 'What is your company name (or website)?',
+    validate: (value) => /^[A-Za-z0-9\s.&'/-]{2,}$/.test(value.trim()),
+    error: 'Please enter a valid company name or website.',
+  },
+  {
     key: 'date',
     label: 'Preferred Date',
     type: 'date',
@@ -52,12 +61,23 @@ const bookingSteps = [
     validate: (value) => Boolean(value),
     error: 'Please choose an appointment date.',
   },
+  {
+    key: 'time',
+    label: 'Preferred Time',
+    type: 'time',
+    placeholder: '',
+    question: 'What time should we book for you?',
+    validate: (value) => Boolean(value),
+    error: 'Please choose a preferred time.',
+  },
 ];
 
 export default function AiChatbotDemo() {
   const [stepIndex, setStepIndex] = useState(0);
   const [inputValue, setInputValue] = useState('');
   const [bookingData, setBookingData] = useState({});
+  const [completedBooking, setCompletedBooking] = useState(null);
+  const [showCompletionModal, setShowCompletionModal] = useState(false);
   const [messages, setMessages] = useState([
     {
       role: 'bot',
@@ -68,7 +88,7 @@ export default function AiChatbotDemo() {
       text: bookingSteps[0].question,
     },
   ]);
-  const messagesEndRef = useRef(null);
+  const messagesBodyRef = useRef(null);
   const videoUrl = import.meta.env.VITE_DEMO_VIDEO_URL || defaultVideo;
 
   const currentStep = bookingSteps[stepIndex];
@@ -80,7 +100,13 @@ export default function AiChatbotDemo() {
   }, [currentStep, isCompleted, stepIndex]);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    const el = messagesBodyRef.current;
+    if (!el) return;
+
+    el.scrollTo({
+      top: el.scrollHeight,
+      behavior: 'smooth',
+    });
   }, [messages]);
 
   const pushBotMessage = (text) => {
@@ -107,9 +133,14 @@ export default function AiChatbotDemo() {
       return;
     }
 
+    const finalData = { ...bookingData, [currentStep.key]: value };
+    setCompletedBooking(finalData);
+    setShowCompletionModal(true);
     setStepIndex(nextIndex);
     pushBotMessage(
-      `Booked. ${bookingData.name || 'Your'} appointment request for ${value} is noted. We will contact you on ${bookingData.email || 'your email'} and ${bookingData.phone || 'your phone'}.`
+      `Booked. ${finalData.name || 'Your'} appointment request is noted for ${finalData.date || 'your selected date'} at ${
+        finalData.time || 'your selected time'
+      }. We will contact you on ${finalData.email || 'your email'} and ${finalData.phone || 'your phone'}.`
     );
     pushBotMessage(
       'This is a simple demo flow. Once you are interested, we provide a much smarter assistant with natural conversation, qualification logic, and live calendar sync.'
@@ -120,6 +151,8 @@ export default function AiChatbotDemo() {
     setStepIndex(0);
     setInputValue('');
     setBookingData({});
+    setCompletedBooking(null);
+    setShowCompletionModal(false);
     setMessages([
       {
         role: 'bot',
@@ -133,7 +166,7 @@ export default function AiChatbotDemo() {
   };
 
   const handleInputKeyDown = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && currentStep?.type !== 'date' && currentStep?.type !== 'time') {
       event.preventDefault();
       handleSend();
     }
@@ -173,7 +206,7 @@ export default function AiChatbotDemo() {
               <span className="text-xs font-semibold text-blue-700 bg-blue-100 px-2 py-1 rounded-full">{helperText}</span>
             </div>
 
-            <div className="h-[470px] p-4 overflow-y-auto bg-slate-50/60">
+            <div ref={messagesBodyRef} className="h-[470px] p-4 overflow-y-auto bg-slate-50/60">
               <div className="space-y-3">
                 {messages.map((message, index) => (
                   <div key={`${message.role}-${index}`} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -186,12 +219,16 @@ export default function AiChatbotDemo() {
                     </div>
                   </div>
                 ))}
-                <div ref={messagesEndRef} />
               </div>
             </div>
 
             <div className="p-4 border-t border-blue-100 bg-white">
               <div className="flex gap-2">
+                {!isCompleted && (currentStep?.type === 'date' || currentStep?.type === 'time') ? (
+                  <div className="w-11 shrink-0 rounded-xl border border-gray-300 bg-blue-50 flex items-center justify-center text-blue-700">
+                    <CalendarClock className="w-5 h-5 animate-pulse" />
+                  </div>
+                ) : null}
                 <input
                   type={isCompleted ? 'text' : currentStep.type}
                   value={inputValue}
@@ -224,7 +261,9 @@ export default function AiChatbotDemo() {
                 <li>2. Email</li>
                 <li>3. Phone Number</li>
                 <li>4. Purpose of Appointment</li>
-                <li>5. Preferred Date</li>
+                <li>5. Company Name</li>
+                <li>6. Preferred Date</li>
+                <li>7. Preferred Time</li>
               </ul>
             </div>
             <div className="bg-gradient-to-br from-[#0c1f3a] to-[#153870] rounded-2xl p-5 text-white">
@@ -260,6 +299,90 @@ export default function AiChatbotDemo() {
           </div>
         </div>
       </section>
+
+      {showCompletionModal && completedBooking ? (
+        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-[#091328]/70 backdrop-blur-sm" />
+          <div className="relative w-full max-w-2xl rounded-3xl border border-blue-100 bg-white shadow-2xl overflow-hidden">
+            <div className="relative px-6 md:px-8 pt-8 pb-6 bg-gradient-to-br from-[#0c1f3a] via-[#133264] to-[#1c4e92] text-white">
+              <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-white/20 animate-ping" />
+              <div className="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/20 animate-pulse" />
+              <div className="flex items-start gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center">
+                  <CheckCircle2 className="w-8 h-8 text-[#b8ffcf] animate-pulse" />
+                </div>
+                <div>
+                  <p className="text-blue-100 text-sm font-semibold uppercase tracking-wider">Appointment Confirmed</p>
+                  <h3 className="text-2xl md:text-3xl font-extrabold mt-1">Thank You, {completedBooking.name || 'Guest'}!</h3>
+                  <p className="text-blue-100 mt-2 text-sm md:text-base">
+                    Booked. {completedBooking.name || 'Your'} appointment request is noted for {completedBooking.date || 'selected date'} at{' '}
+                    {completedBooking.time || 'selected time'}.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 md:p-8 bg-gradient-to-b from-white to-[#f7fbff]">
+              <div className="rounded-2xl border border-blue-100 bg-white p-5 md:p-6 shadow-sm">
+                <div className="flex items-center gap-2 text-[#0c1f3a] font-bold">
+                  <Sparkles className="w-4 h-4 text-primaryOrange animate-pulse" />
+                  Confirmation Details
+                </div>
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                  <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
+                    <User className="w-4 h-4 text-primaryOrange" />
+                    <span>{completedBooking.name || 'N/A'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
+                    <Mail className="w-4 h-4 text-primaryOrange" />
+                    <span>{completedBooking.email || 'N/A'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
+                    <Phone className="w-4 h-4 text-primaryOrange" />
+                    <span>{completedBooking.phone || 'N/A'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
+                    <Building2 className="w-4 h-4 text-primaryOrange" />
+                    <span>{completedBooking.company || 'N/A'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
+                    <CalendarDays className="w-4 h-4 text-primaryOrange" />
+                    <span>{completedBooking.date || 'N/A'}</span>
+                  </div>
+                  <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
+                    <Clock3 className="w-4 h-4 text-primaryOrange" />
+                    <span>{completedBooking.time || 'N/A'}</span>
+                  </div>
+                </div>
+                <p className="mt-5 text-sm text-gray-600">
+                  We will contact you on <span className="font-semibold text-[#0c1f3a]">{completedBooking.email || 'your email'}</span> and{' '}
+                  <span className="font-semibold text-[#0c1f3a]">{completedBooking.phone || 'your phone'}</span>.
+                </p>
+                <p className="mt-2 text-xs text-gray-500">
+                  This is a simple demo flow. Once you are interested, we provide a much smarter assistant with natural conversation, qualification logic, and live calendar sync.
+                </p>
+              </div>
+
+              <div className="mt-5 flex flex-col sm:flex-row gap-3">
+                <button
+                  type="button"
+                  onClick={() => setShowCompletionModal(false)}
+                  className="flex-1 rounded-xl border border-blue-200 bg-white text-[#0c1f3a] font-semibold py-3 hover:bg-blue-50 transition-colors"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  onClick={resetDemo}
+                  className="flex-1 rounded-xl bg-primaryOrange text-white font-semibold py-3 hover:bg-orange-500 transition-colors"
+                >
+                  Book Another Demo
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       <Footer />
     </div>
