@@ -4,6 +4,7 @@
 
 html{
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
 }
 
 .perspective {
@@ -26,6 +27,15 @@ p{
 
 input , textarea, select, button {
   outline: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 :root {

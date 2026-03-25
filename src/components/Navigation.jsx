@@ -7,7 +7,7 @@ import X from 'lucide-react/dist/esm/icons/x';
 import { Link, useLocation } from 'react-router-dom';
 import { IoIosArrowDown } from 'react-icons/io';
 
-const Navigation = ({ isDarkBg = false }) => {
+const Navigation = ({ isDarkBg = false, onAuditClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredPath, setHoveredPath] = useState(null);
@@ -47,6 +47,13 @@ const Navigation = ({ isDarkBg = false }) => {
     },
     { label: 'Insights', path: '/insights' },
   ];
+
+  const handleAuditClick = () => {
+    if (onAuditClick) {
+      onAuditClick();
+      setIsOpen(false);
+    }
+  };
 
   return (
     // 2. WRAPPER: This tells Framer Motion to use the lightweight "domAnimation" driver.
@@ -127,12 +134,22 @@ const Navigation = ({ isDarkBg = false }) => {
                   </div>
                 );
               })}
-              <Link
-                to="/ContactUs"
-                className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base"
-              >
-                Get Free Audit
-              </Link>
+              {onAuditClick ? (
+                <button
+                  type="button"
+                  onClick={handleAuditClick}
+                  className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base"
+                >
+                  Get Free Audit
+                </button>
+              ) : (
+                <Link
+                  to="/ContactUs"
+                  className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base"
+                >
+                  Get Free Audit
+                </Link>
+              )}
             </div>
 
             {/* Mobile menu button */}
@@ -228,13 +245,23 @@ const Navigation = ({ isDarkBg = false }) => {
                     </div>
                   ))}
                 </div>
-                <Link
-                  to="/ContactUs"
-                  onClick={() => setIsOpen(false)}
-                  className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
-                >
-                  Get Free Audit
-                </Link>
+                {onAuditClick ? (
+                  <button
+                    type="button"
+                    onClick={handleAuditClick}
+                    className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
+                  >
+                    Get Free Audit
+                  </button>
+                ) : (
+                  <Link
+                    to="/ContactUs"
+                    onClick={() => setIsOpen(false)}
+                    className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
+                  >
+                    Get Free Audit
+                  </Link>
+                )}
               </div>
             </m.div>
           )}
