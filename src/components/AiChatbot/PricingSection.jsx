@@ -1,119 +1,111 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Check, X, CheckCircle2 } from 'lucide-react';
-export default function PricingSection() {
+import React, { useState } from 'react';
+import PricingHeader from './Pricing/PricingHeader';
+import EssentialPlanCard from './Pricing/EssentialPlanCard';
+import GrowthPlanCard from './Pricing/GrowthPlanCard';
+import EnterprisePlanCard from './Pricing/EnterprisePlanCard';
+
+const ShieldIcon = () => (
+  <svg className="w-8 h-8 text-indigo-500 mr-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+  </svg>
+);
+
+const LightningIcon = () => (
+  <svg className="w-8 h-8 text-amber-500 mr-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+  </svg>
+);
+
+export default function PricingSection({ onSelectPackage }) {
+  const [isAnnual, setIsAnnual] = useState(true); // Default to annual for better conversion psychology
+
   return (
-    <>
-      <section className="py-16 md:py-28 bg-gray-50 relative border-t border-gray-200/60">
-        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-           <div className="text-center mb-16 relative">
-             <motion.span 
-                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                className="text-primaryOrange font-bold tracking-wider uppercase text-sm mb-3 block"
-             >
-               Transparent Pricing
-             </motion.span>
-             <motion.h2 
-               initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-               className="text-4xl md:text-5xl text-primaryBlue font-extrabold mb-6 tracking-tight"
-             >
-               An investment that pays for <br className="hidden md:block"/> itself in <span className="text-transparent bg-clip-text bg-gradient-to-r from-primaryOrange to-orange-400">the first week.</span>
-             </motion.h2>
+    <section className="py-16 md:py-28 bg-gradient-to-b from-gray-50 to-white relative border-t border-gray-200/60 overflow-hidden">
+      {/* Subtle Background Glow Elements */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full overflow-hidden -z-10 pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-blue-100/40 blur-3xl"></div>
+        <div className="absolute top-40 -left-40 w-96 h-96 rounded-full bg-indigo-100/40 blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-8 max-w-6xl">
+        <PricingHeader isAnnual={isAnnual} setIsAnnual={setIsAnnual} />
+
+        {/* Monthly / Yearly Toggle */}
+        <div className="flex items-center justify-center gap-3 mb-10">
+          <span 
+            className={`text-sm font-medium cursor-pointer transition-colors ${!isAnnual ? 'text-gray-900' : 'text-gray-500'}`}
+            onClick={() => setIsAnnual(false)}
+          >
+            Monthly
+          </span>
+          
+          <button
+            type="button"
+            className={`relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:ring-offset-2 ${isAnnual ? 'bg-indigo-600' : 'bg-gray-300'}`}
+            role="switch"
+            aria-checked={isAnnual}
+            onClick={() => setIsAnnual(!isAnnual)}
+          >
+            <span
+              aria-hidden="true"
+              className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+                isAnnual ? 'translate-x-5' : 'translate-x-0'
+              }`}
+            />
+          </button>
+
+          <span 
+            className={`text-sm font-medium flex items-center gap-1.5 cursor-pointer transition-colors ${isAnnual ? 'text-gray-900' : 'text-gray-500'}`}
+            onClick={() => setIsAnnual(true)}
+          >
+            Annually
+            <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">
+              Save 20%
+            </span>
+          </span>
+        </div>
+
+        {/* Value Framing (Psychology: ROI Anchoring) */}
+        <div className="text-center max-w-2xl mx-auto mb-12 bg-indigo-50/80 backdrop-blur-sm text-indigo-800 py-3 px-6 rounded-full text-sm md:text-base font-medium shadow-sm border border-indigo-100/50">
+          💡 <span className="font-semibold">Value Perspective:</span> Get a 24/7 AI Sales Agent for less than the cost of your daily coffee.
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch relative">
+          <div className="flex flex-col h-full lg:mt-8">
+            <EssentialPlanCard isAnnual={isAnnual} onSelectPackage={onSelectPackage} />
           </div>
+          <div className="flex flex-col h-full relative z-10 transform lg:-translate-y-4 transition-all duration-500 hover:-translate-y-6 hover:scale-[1.03] hover:shadow-[0_20px_50px_-12px_rgba(79,70,229,0.3)] rounded-2xl group">
+            {/* Animated Hover Shimmer / Glare Effect */}
+            <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none z-20">
+              <div className="absolute inset-0 w-[200%] h-full translate-x-[-100%] group-hover:translate-x-[50%] transition-transform duration-[1500ms] ease-in-out bg-gradient-to-r from-transparent via-white/60 to-transparent skew-x-[-20deg]"></div>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto items-stretch">
-             {/* 1. Decoy / Starter Plan */}
-                   <motion.div 
-                      initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once:true }}
-                      className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col h-full min-h-[480px]"
-                      aria-label="Essential Plan"
-                   >
-                <div className="mb-6">
-                   <h3 className="text-xl font-bold text-gray-800">Essential</h3>
-                   <p className="text-gray-500 text-sm mt-2">For solo practitioners</p>
-                </div>
-                <div className="mb-8">
-                   <span className="text-4xl font-extrabold text-[#0C1F3A]">$149</span>
-                   <span className="text-gray-500 font-medium">/mo</span>
-                </div>
-                <ul className="space-y-4 mb-8 flex-grow">
-                   {['Up to 50 bookings/mo', 'Basic FAQS logic', 'Standard 24/7 Chat', 'Email Support'].map((feature, i) =>(
-                      <li key={i} className="flex font-medium text-gray-600 text-sm"><Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" /> {feature}</li>
-                   ))}
-                </ul>
-                <button className="w-full py-3.5 rounded-xl font-bold text-[#0C1F3A] bg-gray-100 hover:bg-gray-200 transition-colors">Start Free Trial</button>
-             </motion.div>
-
-             {/* 2. Anchor / Recommended Plan (Center Focus) */}
-             <motion.div 
-               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once:true }} transition={{ delay: 0.2 }}
-               className="relative p-[2px] rounded-3xl z-20 transform scale-105 shadow-2xl lg:scale-110 lg:shadow-[0_8px_48px_rgba(247,103,7,0.18)]"
-               aria-label="Growth Plan - Best Value"
-             >
-                {/* Animated gradient border */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primaryOrange via-pink-500 to-primaryOrange rounded-3xl animate-gradient-xy opacity-80 blur-[2px]"></div>
-                {/* Inner Card (Glassmorphism) */}
-                <div className="bg-primaryBlue/95 backdrop-blur-2xl p-10 rounded-[23px] flex flex-col h-full relative z-10 min-h-[520px]">
-                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primaryOrange to-orange-500 text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-wider shadow-[0_0_20px_rgba(247,103,7,0.5)] border border-white/10 scale-110">
-                     <span className="inline-flex items-center gap-2">Best Value <span className="text-lg">🔥</span></span>
-                  </div>
-                  <div className="mb-6 mt-4">
-                     <h3 className="text-2xl font-bold text-white relative inline-block">
-                        Growth
-                        <span className="absolute -right-6 -top-2">✨</span>
-                     </h3>
-                     <p className="text-blue-200 text-sm mt-2">For established clinics & salons</p>
-                  </div>
-                  <div className="mb-8">
-                     <span className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">$299</span>
-                     <span className="text-blue-300 font-medium">/mo</span>
-                  </div>
-                  <ul className="space-y-4 mb-8 flex-grow">
-                     {['Unlimited Bookings', 'Advanced Conversational AI', 'Automated Calendar Syncs', 'SMS Reminders & Follow-ups', 'Priority Setup & Support'].map((feature, i) =>(
-                        <li key={i} className="flex font-medium text-blue-50 text-[15px]">
-                           <div className="bg-primaryOrange/20 p-1 rounded-full mr-3 flex-shrink-0">
-                               <CheckCircle2 className="w-4 h-4 text-primaryOrange" />
-                           </div>
-                           {feature}
-                        </li>
-                     ))}
-                  </ul>
-                  <motion.button
-                     whileHover={{ scale: 1.05 }}
-                     whileTap={{ scale: 0.95 }}
-                     className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-primaryOrange to-orange-500 hover:from-orange-500 hover:to-orange-400 shadow-[0_10px_30px_rgba(247,103,7,0.4)] transition-all duration-300 mt-auto border border-white/10 text-lg"
-                     aria-label="Scale My Business - Growth Plan"
-                  >
-                     Scale My Business
-                  </motion.button>
-                </div>
-             </motion.div>
-
-             {/* 3. Enterprise / Premium Plan */}
-                   <motion.div 
-                      initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once:true }} transition={{ delay:0.4}}
-                      className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm flex flex-col h-full min-h-[480px]"
-                      aria-label="Enterprise Plan"
-                   >
-                <div className="mb-6">
-                   <h3 className="text-xl font-bold text-gray-800">Enterprise</h3>
-                   <p className="text-gray-500 text-sm mt-2">For multi-location brands</p>
-                </div>
-                <div className="mb-8">
-                   <span className="text-4xl font-extrabold text-[#0C1F3A]">Custom</span>
-                </div>
-                <ul className="space-y-4 mb-8 flex-grow">
-                   {['Multiple locations mapping', 'Custom API integrations', 'Dedicated account manager', 'White-labeled interface'].map((feature, i) =>(
-                      <li key={i} className="flex font-medium text-gray-600 text-sm"><Check className="w-5 h-5 text-gray-400 mr-3 flex-shrink-0" /> {feature}</li>
-                   ))}
-                </ul>
-                <button className="w-full py-3.5 rounded-xl font-bold text-[#0C1F3A] border-2 border-gray-200 hover:border-gray-300 transition-colors">Contact Sales</button>
-             </motion.div>
+            <GrowthPlanCard isAnnual={isAnnual} onSelectPackage={onSelectPackage} />
+          </div>
+          <div className="flex flex-col h-full lg:mt-8">
+            <EnterprisePlanCard isAnnual={isAnnual} onSelectPackage={onSelectPackage} />
           </div>
         </div>
-      </section>
 
-      {/* 5. Bottom CTA Section */}
-    </>
+        {/* Risk Reversal & Trust (Psychology: Friction Reduction) */}
+        <div className="mt-20 pt-10 border-t border-gray-100 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-gray-600 max-w-4xl mx-auto">
+          <div className="flex items-center text-left">
+            <ShieldIcon />
+            <div>
+              <p className="font-semibold text-gray-900">14-Day Money-Back Guarantee</p>
+              <p className="text-sm mt-0.5">Not seeing results? Get a full refund, no questions asked.</p>
+            </div>
+          </div>
+          <div className="hidden md:block w-px h-12 bg-gray-200"></div>
+          <div className="flex items-center text-left">
+            <LightningIcon />
+            <div>
+              <p className="font-semibold text-gray-900">Deploy in Minutes</p>
+              <p className="text-sm mt-0.5">Train on your website data instantly. Zero coding required.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
