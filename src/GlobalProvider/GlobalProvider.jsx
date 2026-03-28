@@ -4,6 +4,7 @@ import { ContextAPI } from './ContextAPI'
 const GlobalProvider = ({children}) => {
         const [scrwidth, setWidth] = useState(window.innerWidth); 
         const [isLoading , setIsLoading] = useState(false)
+        const [isLeadModel , setIsLeadModel] = useState(false)
 
 
         useEffect(() => {
@@ -21,6 +22,7 @@ const GlobalProvider = ({children}) => {
     <ContextAPI.Provider value={{
         scrwidth,
         isLoading , setIsLoading, 
+        isLeadModel , setIsLeadModel
     }}>
         {children}
     </ContextAPI.Provider>

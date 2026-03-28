@@ -7,7 +7,7 @@ import X from 'lucide-react/dist/esm/icons/x';
 import { Link, useLocation } from 'react-router-dom';
 import { IoIosArrowDown } from 'react-icons/io';
 
-const Navigation = ({ isDarkBg = false, onAuditClick }) => {
+const Navigation = ({ isDarkBg = false, isReceptionist = false }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hoveredPath, setHoveredPath] = useState(null);
@@ -22,6 +22,9 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const ctaPath = isReceptionist ? '/digital-receptionist/demo' : '/ContactUs';
+  const ctaLabel = isReceptionist ? 'Book a Demo' : 'Get Free Audit';
+
   const navItems = [
     { label: 'What we do', path: '/services' },
     { label: 'Inside ShiftDeploy', path: '/insideShiftDeploy' },
@@ -29,11 +32,11 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
       label: 'Solutions',
       path: '/services',
       subPaths: [
+        { label: 'Digital Receptionist', path: '/digital-receptionist' },
         { label: 'ShiftSpeed', path: '/services/shiftspeed' },
         { label: 'ShiftConvert', path: '/services/shiftconvert' },
         { label: 'ShiftBuild', path: '/services/shiftbuild' },
         { label: 'ShiftFlow', path: '/services/shiftflow' },
-        { label: 'Digital Receptionist', path: '/digital-receptionist' },
       ],
     },
     {
@@ -48,19 +51,9 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
     { label: 'Insights', path: '/insights' },
   ];
 
-  const handleAuditClick = () => {
-    if (onAuditClick) {
-      onAuditClick();
-      setIsOpen(false);
-    }
-  };
-
   return (
-    // 2. WRAPPER: This tells Framer Motion to use the lightweight "domAnimation" driver.
-    // This drastically reduces the initial JS bundle size.
     <LazyMotion features={domAnimation}>
       <m.nav
-        // 3. TAGS: Changed 'motion.nav' to 'm.nav'. It works exactly the same but connects to LazyMotion.
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
@@ -71,20 +64,15 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
       >
         <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-20">
-            {/* Logo */}
-            <m.div
-              whileHover={{ scale: 1.05 }}
-              className="2xl:max-w-60 sm:max-w-48 max-w-36"
-            >
+            <m.div whileHover={{ scale: 1.05 }} className="2xl:max-w-60 sm:max-w-48 max-w-36">
               <Link to="/">
                 <img src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145802/coloredV_zxupgq.png" alt="ShiftDeploy Logo" />
               </Link>
             </m.div>
 
-            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-6 xl:space-x-10">
               {navItems.map(({ label, path, subPaths }) => {
-                const isActive = location.pathname === path || (subPaths && subPaths.some(sub => sub.path === location.pathname));
+                const isActive = location.pathname === path || (subPaths && subPaths.some((sub) => sub.path === location.pathname));
                 const hasSubPaths = subPaths && subPaths.length > 0;
 
                 return (
@@ -134,25 +122,14 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                   </div>
                 );
               })}
-              {onAuditClick ? (
-                <button
-                  type="button"
-                  onClick={handleAuditClick}
-                  className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base"
-                >
-                  Get Free Audit
-                </button>
-              ) : (
-                <Link
-                  to="/ContactUs"
-                  className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base"
-                >
-                  Get Free Audit
-                </Link>
-              )}
+              <Link
+                to={ctaPath}
+                className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base"
+              >
+                {ctaLabel}
+              </Link>
             </div>
 
-            {/* Mobile menu button */}
             <div className="lg:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -164,7 +141,6 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
             <m.div
@@ -204,7 +180,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                             onClick={() => setOpenMobileDropdown(openMobileDropdown === label ? null : label)}
                             className={`w-full py-2 sm:py-3 font-medium text-base sm:text-lg flex items-center justify-between 
                               ${
-                                location.pathname === path || subPaths.some(sub => sub.path === location.pathname)
+                                location.pathname === path || subPaths.some((sub) => sub.path === location.pathname)
                                   ? 'text-primaryBlue'
                                   : 'text-gray-700 hover:text-primaryBlue'
                               }
@@ -245,23 +221,13 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                     </div>
                   ))}
                 </div>
-                {onAuditClick ? (
-                  <button
-                    type="button"
-                    onClick={handleAuditClick}
-                    className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
-                  >
-                    Get Free Audit
-                  </button>
-                ) : (
-                  <Link
-                    to="/ContactUs"
-                    onClick={() => setIsOpen(false)}
-                    className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
-                  >
-                    Get Free Audit
-                  </Link>
-                )}
+                <Link
+                  to={ctaPath}
+                  onClick={() => setIsOpen(false)}
+                  className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
+                >
+                  {ctaLabel}
+                </Link>
               </div>
             </m.div>
           )}

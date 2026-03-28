@@ -1,390 +1,386 @@
-import React, { useMemo, useRef, useState, useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Bot, Play, ArrowLeft, MessageCircleMore, CalendarClock, CheckCircle2, User, Mail, Phone, Building2, CalendarDays, Clock3, Sparkles } from 'lucide-react';
-import Navigation from '../components/Navigation';
+import {
+  ArrowLeft,
+  CalendarDays,
+  CheckCircle2,
+  ChevronDown,
+  Clock3,
+  HelpCircle,
+  Mail,
+  MessageSquareQuote,
+  Phone,
+  Sparkles,
+  UserRound,
+} from 'lucide-react';
 import Footer from '../components/Footer';
+import BlobCursor from '../components/react-bits/BlobCursor';
+import Magnet from '../components/react-bits/Magnet';
+import AnimateList from '../components/react-bits/AnimateList';
 
-const defaultVideo = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
-
-const bookingSteps = [
+const faqItems = [
   {
-    key: 'name',
-    label: 'Full Name',
-    type: 'text',
-    placeholder: 'Enter your full name',
-    question: 'Great, let us start. What is your full name?',
-    validate: (value) => value.trim().length >= 2,
-    error: 'Please enter a valid name.',
+    title: 'How long is the demo?',
+    content: 'The live demo is planned for 10 minutes, with a few extra minutes at the end for questions if needed.',
   },
   {
-    key: 'email',
-    label: 'Email',
-    type: 'email',
-    placeholder: 'name@company.com',
-    question: 'Thanks. What email should we use for confirmation?',
-    validate: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()),
-    error: 'Please enter a valid email address.',
+    title: 'Do I need to prepare anything?',
+    content: 'No long prep is needed. Just bring your website link and a quick idea of your current booking or front-desk process.',
   },
   {
-    key: 'phone',
-    label: 'Phone Number',
-    type: 'tel',
-    placeholder: '+1 555 123 4567',
-    question: 'What is the best phone number for quick follow-up?',
-    validate: (value) => value.replace(/\D/g, '').length >= 7,
-    error: 'Please enter a valid phone number.',
+    title: 'Will this be tailored to my business?',
+    content: 'Yes. The demo is framed around your business type, your website, and the kind of enquiries you want your digital receptionist to handle.',
   },
   {
-    key: 'purpose',
-    label: 'Purpose',
-    type: 'text',
-    placeholder: 'Consultation, demo, support, etc.',
-    question: 'What is the purpose of your appointment?',
-    validate: (value) => value.trim().length >= 3,
-    error: 'Please add a short purpose.',
-  },
-  {
-    key: 'company',
-    label: 'Company Name',
-    type: 'text',
-    placeholder: 'Enter your company name or website',
-    question: 'What is your company name (or website)?',
-    validate: (value) => /^[A-Za-z0-9\s.&'/-]{2,}$/.test(value.trim()),
-    error: 'Please enter a valid company name or website.',
-  },
-  {
-    key: 'date',
-    label: 'Preferred Date',
-    type: 'date',
-    placeholder: '',
-    question: 'Which date works best for your appointment?',
-    validate: (value) => Boolean(value),
-    error: 'Please choose an appointment date.',
-  },
-  {
-    key: 'time',
-    label: 'Preferred Time',
-    type: 'time',
-    placeholder: '',
-    question: 'What time should we book for you?',
-    validate: (value) => Boolean(value),
-    error: 'Please choose a preferred time.',
+    title: 'What happens after I book?',
+    content: 'You get instant confirmation on the page, and your selected slot is treated as the requested live demo time.',
   },
 ];
 
+const timeSlots = ['10:00 AM', '11:30 AM', '1:00 PM', '2:30 PM', '4:00 PM'];
+
+const initialForm = {
+  name: '',
+  email: '',
+  phone: '',
+  business: '',
+  website: '',
+  notes: '',
+};
+
+function formatDayLabel(date) {
+  return new Intl.DateTimeFormat('en-GB', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+  }).format(date);
+}
+
+function toDateValue(date) {
+  const year = date.getFullYear();
+  const month = `${date.getMonth() + 1}`.padStart(2, '0');
+  const day = `${date.getDate()}`.padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+function buildAvailability() {
+  const days = [];
+  const cursor = new Date();
+  cursor.setHours(0, 0, 0, 0);
+
+  while (days.length < 8) {
+    cursor.setDate(cursor.getDate() + 1);
+    const day = cursor.getDay();
+    if (day === 0 || day === 6) continue;
+
+    days.push({
+      value: toDateValue(cursor),
+      label: formatDayLabel(cursor),
+      shortLabel: new Intl.DateTimeFormat('en-GB', { month: 'short', day: 'numeric' }).format(cursor),
+      slots: timeSlots,
+    });
+  }
+
+  return days;
+}
+
+function formatReadableDate(dateValue) {
+  const date = new Date(`${dateValue}T00:00:00`);
+  return new Intl.DateTimeFormat('en-GB', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+  }).format(date);
+}
+
 export default function AiChatbotDemo() {
-  const [stepIndex, setStepIndex] = useState(0);
-  const [inputValue, setInputValue] = useState('');
-  const [bookingData, setBookingData] = useState({});
-  const [completedBooking, setCompletedBooking] = useState(null);
-  const [showCompletionModal, setShowCompletionModal] = useState(false);
-  const [messages, setMessages] = useState([
-    {
-      role: 'bot',
-      text: 'Welcome. This is a simple booking demo. Our production assistant is more advanced and tailored for your business.',
-    },
-    {
-      role: 'bot',
-      text: bookingSteps[0].question,
-    },
-  ]);
-  const messagesBodyRef = useRef(null);
-  const videoUrl = import.meta.env.VITE_DEMO_VIDEO_URL || defaultVideo;
-
-  const currentStep = bookingSteps[stepIndex];
-  const isCompleted = stepIndex >= bookingSteps.length;
-
-  const helperText = useMemo(() => {
-    if (isCompleted) return 'Demo completed successfully.';
-    return `Step ${stepIndex + 1} of ${bookingSteps.length}: ${currentStep.label}`;
-  }, [currentStep, isCompleted, stepIndex]);
+  const availability = useMemo(buildAvailability, []);
+  const [formData, setFormData] = useState(initialForm);
+  const [selectedDate, setSelectedDate] = useState(availability[0]?.value || '');
+  const [selectedSlot, setSelectedSlot] = useState(timeSlots[1]);
+  const [status, setStatus] = useState('idle');
+  const [error, setError] = useState('');
+  const [confirmation, setConfirmation] = useState(null);
 
   useEffect(() => {
-    const el = messagesBodyRef.current;
-    if (!el) return;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
-    el.scrollTo({
-      top: el.scrollHeight,
-      behavior: 'smooth',
-    });
-  }, [messages]);
+  const selectedDay = availability.find((day) => day.value === selectedDate) || availability[0];
 
-  const pushBotMessage = (text) => {
-    setMessages((prev) => [...prev, { role: 'bot', text }]);
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSend = () => {
-    if (isCompleted || !currentStep) return;
+  const validateForm = () => {
+    if (!formData.name.trim()) return 'Please add your name.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) return 'Please enter a valid email.';
+    if (formData.phone.replace(/\D/g, '').length < 7) return 'Please add a valid phone number.';
+    if (!formData.business.trim()) return 'Please add your business or clinic name.';
+    if (!selectedDate || !selectedSlot) return 'Please choose a date and time slot.';
+    return '';
+  };
 
-    const value = inputValue.trim();
-    if (!currentStep.validate(value)) {
-      pushBotMessage(currentStep.error);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const validationError = validateForm();
+    if (validationError) {
+      setConfirmation(null);
+      setError(validationError);
+      setStatus('error');
       return;
     }
 
-    setMessages((prev) => [...prev, { role: 'user', text: value }]);
-    setBookingData((prev) => ({ ...prev, [currentStep.key]: value }));
-    setInputValue('');
+    setError('');
+    setStatus('loading');
 
-    const nextIndex = stepIndex + 1;
-    if (nextIndex < bookingSteps.length) {
-      setStepIndex(nextIndex);
-      pushBotMessage(bookingSteps[nextIndex].question);
-      return;
-    }
+    const payload = {
+      ...formData,
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      business: formData.business.trim(),
+      website: formData.website.trim(),
+      notes: formData.notes.trim(),
+      demo_date: selectedDate,
+      demo_slot: selectedSlot,
+    };
 
-    const finalData = { ...bookingData, [currentStep.key]: value };
-    setCompletedBooking(finalData);
-    setShowCompletionModal(true);
-    setStepIndex(nextIndex);
-    pushBotMessage(
-      `Booked. ${finalData.name || 'Your'} appointment request is noted for ${finalData.date || 'your selected date'} at ${
-        finalData.time || 'your selected time'
-      }. We will contact you on ${finalData.email || 'your email'} and ${finalData.phone || 'your phone'}.`
-    );
-    pushBotMessage(
-      'This is a simple demo flow. Once you are interested, we provide a much smarter assistant with natural conversation, qualification logic, and live calendar sync.'
-    );
+    await new Promise((resolve) => setTimeout(resolve, 600));
+
+    setConfirmation(payload);
+    setStatus('success');
+    setFormData(initialForm);
   };
 
-  const resetDemo = () => {
-    setStepIndex(0);
-    setInputValue('');
-    setBookingData({});
-    setCompletedBooking(null);
-    setShowCompletionModal(false);
-    setMessages([
-      {
-        role: 'bot',
-        text: 'Welcome. This is a simple booking demo. Our production assistant is more advanced and tailored for your business.',
-      },
-      {
-        role: 'bot',
-        text: bookingSteps[0].question,
-      },
-    ]);
-  };
-
-  const handleInputKeyDown = (event) => {
-    if (event.key === 'Enter' && currentStep?.type !== 'date' && currentStep?.type !== 'time') {
-      event.preventDefault();
-      handleSend();
-    }
+  const closeSuccess = () => {
+    setStatus('idle');
+    setConfirmation(null);
   };
 
   return (
-    <div className="bg-white min-h-screen font-sans text-textColor overflow-x-hidden">
-      <Navigation isDarkBg={false} />
+    <>
+      <BlobCursor />
+      <div className="min-h-screen overflow-x-hidden bg-white text-textColor">
+        <section className="relative overflow-hidden bg-primaryBlue pt-10 pb-14 text-white md:pt-24 md:pb-20">
+          <div className="absolute inset-0 bg-gradient-to-br from-primaryBlue via-toBlue to-primaryBlue" />
+          <div className="absolute inset-x-0 top-10 mx-auto h-64 w-64 rounded-full bg-secondaryBlue/20 blur-3xl" />
+          <div className="absolute right-0 top-24 h-56 w-56 rounded-full bg-primaryOrange/20 blur-3xl" />
 
-      <section className="pt-28 md:pt-32 pb-12 bg-gradient-to-b from-[#0b1f46] via-[#0a1b3d] to-[#102a57] text-white">
-        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-          <Link to="/digital-receptionist" className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            Back to Digital Receptionist
-          </Link>
-          <div className="mt-8 max-w-3xl">
-            <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-100 text-sm">
-              <Bot className="w-4 h-4" />
-              Interactive Demo
-            </p>
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mt-4">Try a booking chat in real time.</h1>
-            <p className="text-blue-100/90 text-lg mt-4">
-              Test the demo assistant by completing a sample appointment flow. It is intentionally simple for preview purposes.
-            </p>
-          </div>
-        </div>
-      </section>
+          <div className="container relative z-10 mx-auto max-w-6xl px-4 md:px-8">
+            <Link to="/digital-receptionist" className="inline-flex items-center gap-2 text-sm text-white/80 transition-colors hover:text-white">
+              <ArrowLeft className="h-4 w-4" />
+              Back to Digital Receptionist
+            </Link>
 
-      <section className="py-12 md:py-16 bg-[#f8fbff]">
-        <div className="container mx-auto px-4 md:px-8 max-w-6xl grid grid-cols-1 lg:grid-cols-5 gap-8">
-          <div className="lg:col-span-3 bg-white rounded-2xl border border-blue-100 shadow-sm overflow-hidden min-h-[520px]">
-            <div className="px-5 py-4 border-b border-blue-100 bg-blue-50/70 flex items-center justify-between">
-              <h2 className="font-bold text-[#0c1f3a] flex items-center gap-2">
-                <MessageCircleMore className="w-5 h-5 text-primaryOrange" />
-                Booking Chatbot Demo
-              </h2>
-              <span className="text-xs font-semibold text-blue-700 bg-blue-100 px-2 py-1 rounded-full">{helperText}</span>
-            </div>
-
-            <div ref={messagesBodyRef} className="h-[470px] p-4 overflow-y-auto bg-slate-50/60">
-              <div className="space-y-3">
-                {messages.map((message, index) => (
-                  <div key={`${message.role}-${index}`} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                    <div
-                      className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
-                        message.role === 'user' ? 'bg-primaryOrange text-white rounded-br-md' : 'bg-white text-[#0c1f3a] border border-gray-200 rounded-bl-md'
-                      }`}
-                    >
-                      {message.text}
-                    </div>
-                  </div>
-                ))}
+            <div className="mt-8">
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white">
+                <Sparkles className="h-4 w-4 text-primaryOrange" />
+                Live Demo Booking
               </div>
-            </div>
-
-            <div className="p-4 border-t border-blue-100 bg-white">
-              <div className="flex gap-2">
-                {!isCompleted && (currentStep?.type === 'date' || currentStep?.type === 'time') ? (
-                  <div className="w-11 shrink-0 rounded-xl border border-gray-300 bg-blue-50 flex items-center justify-center text-blue-700">
-                    <CalendarClock className="w-5 h-5 animate-pulse" />
-                  </div>
-                ) : null}
-                <input
-                  type={isCompleted ? 'text' : currentStep.type}
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyDown={handleInputKeyDown}
-                  placeholder={isCompleted ? 'Demo completed. Click restart.' : currentStep.placeholder}
-                  disabled={isCompleted}
-                  className="flex-1 rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primaryOrange/40 disabled:bg-gray-100 disabled:text-gray-400"
-                />
-                <button
-                  type="button"
-                  onClick={handleSend}
-                  disabled={isCompleted}
-                  className="px-5 py-3 rounded-xl font-semibold text-white bg-primaryOrange hover:bg-orange-500 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-                >
-                  Send
-                </button>
-              </div>
-              <button type="button" onClick={resetDemo} className="mt-3 text-sm text-primaryBlue hover:underline">
-                Restart Demo
-              </button>
-            </div>
-          </div>
-
-          <div className="lg:col-span-2 space-y-4">
-            <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
-              <h3 className="font-bold text-[#0c1f3a]">What this demo collects</h3>
-              <ul className="mt-3 space-y-2 text-sm text-gray-600">
-                <li>1. Name</li>
-                <li>2. Email</li>
-                <li>3. Phone Number</li>
-                <li>4. Purpose of Appointment</li>
-                <li>5. Company Name</li>
-                <li>6. Preferred Date</li>
-                <li>7. Preferred Time</li>
-              </ul>
-            </div>
-            <div className="bg-gradient-to-br from-[#0c1f3a] to-[#153870] rounded-2xl p-5 text-white">
-              <p className="text-sm text-blue-100">Important</p>
-              <p className="text-lg font-bold mt-1">This is a simple demo. Production version is far more capable.</p>
-              <p className="text-sm text-blue-100 mt-2">
-                If you are interested, we can deploy a fully branded assistant with smarter logic, human-like conversation, and CRM/calendar integrations.
+              <h1 className="mt-5 text-4xl font-extrabold leading-tight md:text-6xl">
+                Book a live demo for your digital receptionist.
+              </h1>
+              <p className="mt-4 max-w-xl text-base leading-7 text-white/80 md:text-xl md:leading-8">
+                Pick a date, choose a time, and send your details. The page is built to be quick and clear on mobile.
               </p>
-              <Link to="/digital-receptionist" className="mt-4 inline-flex items-center justify-center w-full bg-primaryOrange hover:bg-orange-500 text-white font-bold py-3 rounded-xl transition-colors">
-                Get Free Audit
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-3">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primaryOrange">Length</div>
+                  <div className="mt-2 text-lg font-bold text-white">10 minutes</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primaryOrange">Focus</div>
+                  <div className="mt-2 text-lg font-bold text-white">Booking flow</div>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primaryOrange">Finish</div>
+                  <div className="mt-2 text-lg font-bold text-white">Q&A at end</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-14 md:py-20">
+          <div className="container mx-auto grid max-w-6xl gap-8 px-4 md:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
+            <div className="rounded-[2rem] border border-primaryBlue/10 bg-white p-5 shadow-[0_18px_60px_rgba(12,31,58,0.08)] md:p-8">
+              <div className="flex items-start gap-3">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primaryBlue text-white md:h-12 md:w-12">
+                  <CalendarDays className="h-5 w-5 md:h-6 md:w-6" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-extrabold text-primaryBlue md:text-3xl">Choose your slot</h2>
+                  <p className="mt-1 text-sm leading-6 text-textColor/70">Start with the date dropdown, then tap a time.</p>
+                </div>
+              </div>
+
+              <div className="mt-7 rounded-[1.5rem] border border-primaryBlue/10 bg-gray-50 p-4 md:p-5">
+                <label className="block">
+                  <span className="mb-2 block text-sm font-semibold uppercase tracking-[0.18em] text-primaryOrange">Date</span>
+                  <div className="relative">
+                    <select
+                      value={selectedDate}
+                      onChange={(e) => setSelectedDate(e.target.value)}
+                      className="w-full appearance-none rounded-2xl border border-primaryBlue/10 bg-white px-4 py-4 pr-12 text-base font-semibold text-primaryBlue outline-none transition focus:border-primaryOrange"
+                    >
+                      {availability.map((day) => (
+                        <option key={day.value} value={day.value}>
+                          {day.label}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-primaryBlue/60" />
+                  </div>
+                </label>
+              </div>
+
+              <div className="mt-6">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primaryOrange">Times for {selectedDay?.shortLabel}</p>
+                <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                  {selectedDay?.slots.map((slot) => {
+                    const isActive = selectedSlot === slot;
+                    return (
+                      <button
+                        key={slot}
+                        type="button"
+                        onClick={() => setSelectedSlot(slot)}
+                        className={`rounded-2xl border px-3 py-4 text-center transition-all ${
+                          isActive
+                            ? 'border-primaryOrange bg-primaryOrange text-white'
+                            : 'border-primaryBlue/10 bg-white text-primaryBlue hover:border-primaryOrange hover:text-primaryOrange'
+                        }`}
+                      >
+                        <div className="text-sm font-bold md:text-base">{slot}</div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-[1.75rem] bg-primaryBlue p-5 text-white">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primaryOrange">Selected slot</p>
+                <div className="mt-3 flex items-center justify-between gap-3">
+                  <div>
+                    <div className="text-base font-bold">{selectedDay?.label}</div>
+                    <div className="mt-1 text-sm text-white/70">{selectedSlot}</div>
+                  </div>
+                  <Clock3 className="h-5 w-5 text-primaryOrange" />
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-[2rem] border border-primaryBlue/10 bg-primaryBlue p-5 text-white shadow-[0_18px_60px_rgba(12,31,58,0.14)] md:p-8">
+              <h2 className="text-2xl font-extrabold md:text-3xl">Book your live demo</h2>
+              <p className="mt-3 max-w-lg text-sm leading-7 text-white/80 md:text-base">
+                Add your details below and lock in the slot you want. You will get an instant confirmation on the page as soon as you submit.
+              </p>
+
+              <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                <div className="grid gap-4 md:grid-cols-2">
+                  <label className="block">
+                    <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-white">
+                      <UserRound className="h-4 w-4 text-primaryOrange" />
+                      Full name
+                    </span>
+                    <input name="name" value={formData.name} onChange={handleChange} className="w-full rounded-2xl border border-white/10 bg-white px-4 py-3 text-textColor outline-none transition focus:border-primaryOrange" placeholder="Your full name" />
+                  </label>
+                  <label className="block">
+                    <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-white">
+                      <Mail className="h-4 w-4 text-primaryOrange" />
+                      Email
+                    </span>
+                    <input name="email" type="email" value={formData.email} onChange={handleChange} className="w-full rounded-2xl border border-white/10 bg-white px-4 py-3 text-textColor outline-none transition focus:border-primaryOrange" placeholder="name@business.com" />
+                  </label>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-2">
+                  <label className="block">
+                    <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-white">
+                      <Phone className="h-4 w-4 text-primaryOrange" />
+                      Phone
+                    </span>
+                    <input name="phone" value={formData.phone} onChange={handleChange} className="w-full rounded-2xl border border-white/10 bg-white px-4 py-3 text-textColor outline-none transition focus:border-primaryOrange" placeholder="Best number for follow-up" />
+                  </label>
+                  <label className="block">
+                    <span className="mb-2 flex items-center gap-2 text-sm font-semibold text-white">
+                      <Sparkles className="h-4 w-4 text-primaryOrange" />
+                      Business or clinic
+                    </span>
+                    <input name="business" value={formData.business} onChange={handleChange} className="w-full rounded-2xl border border-white/10 bg-white px-4 py-3 text-textColor outline-none transition focus:border-primaryOrange" placeholder="Your business name" />
+                  </label>
+                </div>
+
+                <label className="block">
+                  <span className="mb-2 block text-sm font-semibold text-white">Website</span>
+                  <input name="website" value={formData.website} onChange={handleChange} className="w-full rounded-2xl border border-white/10 bg-white px-4 py-3 text-textColor outline-none transition focus:border-primaryOrange" placeholder="Optional website link" />
+                </label>
+
+                <label className="block">
+                  <span className="mb-2 block text-sm font-semibold text-white">Anything you want covered?</span>
+                  <textarea name="notes" value={formData.notes} onChange={handleChange} rows={4} className="w-full rounded-2xl border border-white/10 bg-white px-4 py-3 text-textColor outline-none transition focus:border-primaryOrange" placeholder="Optional notes for the demo" />
+                </label>
+
+                {status === 'error' && error ? <p className="rounded-2xl border border-primaryOrange/40 bg-primaryOrange/10 px-4 py-3 text-sm text-white">{error}</p> : null}
+
+                <Magnet className="w-full">
+                  <button type="submit" disabled={status === 'loading'} className="w-full rounded-2xl bg-primaryOrange px-6 py-4 text-base font-bold text-white transition hover:bg-toOrange disabled:cursor-not-allowed disabled:bg-primaryOrange/70">
+                    {status === 'loading' ? 'Booking your demo...' : 'Book Live Demo'}
+                  </button>
+                </Magnet>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white pb-20">
+          <div className="container mx-auto max-w-6xl gap-10 px-4 md:px-8">
+            <div>
+              <div className="mb-6 flex items-center gap-3">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primaryOrange">FAQs</p>
+                  <h2 className="text-3xl font-extrabold text-primaryBlue">Short answers before you book</h2>
+                </div>
+              </div>
+              <AnimateList items={faqItems} />
+            </div>
+          </div>
+        </section>
+
+        {status === 'success' && confirmation ? (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div className="absolute inset-0 bg-primaryBlue/75 backdrop-blur-sm" onClick={closeSuccess} />
+            <div className="relative w-full max-w-lg rounded-[2rem] bg-white p-6 text-center shadow-[0_30px_80px_rgba(12,31,58,0.24)] md:p-8">
+              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primaryOrange/10 text-primaryOrange">
+                <CheckCircle2 className="h-10 w-10" />
+              </div>
+              <p className="mt-5 text-sm font-bold uppercase tracking-[0.24em] text-primaryOrange">Booked</p>
+              <h3 className="mt-3 text-3xl font-extrabold text-primaryBlue">Your live demo is locked in.</h3>
+              <p className="mt-4 text-base leading-7 text-textColor/75">
+                Nice. We will meet you on <span className="font-bold text-primaryBlue">{formatReadableDate(confirmation.demo_date)}</span> at <span className="font-bold text-primaryBlue">{confirmation.demo_slot}</span>.
+              </p>
+              <div className="mt-6 rounded-[1.5rem] bg-gray-50 px-4 py-4 text-left">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primaryOrange">What happens next</p>
+                <ul className="mt-3 space-y-2 text-sm leading-6 text-textColor/80">
+                  <li>We have captured your preferred time slot</li>
+                  <li>You are all set for a focused 10-minute walkthrough</li>
+                  <li>Bring your questions and we will cover them live</li>
+                </ul>
+              </div>
+              <Link
+                
+                to={"/digital-receptionist"}
+                className="mt-6 w-full rounded-2xl bg-primaryBlue px-6 py-4 text-base font-bold text-white transition hover:bg-toBlue"
+              >
+                Awesome, got it
               </Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="pb-20 bg-white">
-        <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-          <div className="flex items-center gap-2 mb-5">
-            <Play className="w-5 h-5 text-primaryOrange" />
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0c1f3a]">See Video Demo</h2>
-          </div>
-          <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
-            <iframe
-              src={videoUrl}
-              title="Digital Receptionist Video Demo"
-              className="w-full aspect-video"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
-          </div>
-        </div>
-      </section>
-
-      {showCompletionModal && completedBooking ? (
-        <div className="fixed inset-0 z-[120] flex items-center justify-center p-4">
-          <div className="absolute inset-0 bg-[#091328]/70 backdrop-blur-sm" />
-          <div className="relative w-full max-w-2xl rounded-3xl border border-blue-100 bg-white shadow-2xl overflow-hidden">
-            <div className="relative px-6 md:px-8 pt-8 pb-6 bg-gradient-to-br from-[#0c1f3a] via-[#133264] to-[#1c4e92] text-white">
-              <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-white/20 animate-ping" />
-              <div className="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/20 animate-pulse" />
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center">
-                  <CheckCircle2 className="w-8 h-8 text-[#b8ffcf] animate-pulse" />
-                </div>
-                <div>
-                  <p className="text-blue-100 text-sm font-semibold uppercase tracking-wider">Appointment Confirmed</p>
-                  <h3 className="text-2xl md:text-3xl font-extrabold mt-1">Thank You, {completedBooking.name || 'Guest'}!</h3>
-                  <p className="text-blue-100 mt-2 text-sm md:text-base">
-                    Booked. {completedBooking.name || 'Your'} appointment request is noted for {completedBooking.date || 'selected date'} at{' '}
-                    {completedBooking.time || 'selected time'}.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-6 md:p-8 bg-gradient-to-b from-white to-[#f7fbff]">
-              <div className="rounded-2xl border border-blue-100 bg-white p-5 md:p-6 shadow-sm">
-                <div className="flex items-center gap-2 text-[#0c1f3a] font-bold">
-                  <Sparkles className="w-4 h-4 text-primaryOrange animate-pulse" />
-                  Confirmation Details
-                </div>
-                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                  <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
-                    <User className="w-4 h-4 text-primaryOrange" />
-                    <span>{completedBooking.name || 'N/A'}</span>
-                  </div>
-                  <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
-                    <Mail className="w-4 h-4 text-primaryOrange" />
-                    <span>{completedBooking.email || 'N/A'}</span>
-                  </div>
-                  <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
-                    <Phone className="w-4 h-4 text-primaryOrange" />
-                    <span>{completedBooking.phone || 'N/A'}</span>
-                  </div>
-                  <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
-                    <Building2 className="w-4 h-4 text-primaryOrange" />
-                    <span>{completedBooking.company || 'N/A'}</span>
-                  </div>
-                  <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
-                    <CalendarDays className="w-4 h-4 text-primaryOrange" />
-                    <span>{completedBooking.date || 'N/A'}</span>
-                  </div>
-                  <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
-                    <Clock3 className="w-4 h-4 text-primaryOrange" />
-                    <span>{completedBooking.time || 'N/A'}</span>
-                  </div>
-                </div>
-                <p className="mt-5 text-sm text-gray-600">
-                  We will contact you on <span className="font-semibold text-[#0c1f3a]">{completedBooking.email || 'your email'}</span> and{' '}
-                  <span className="font-semibold text-[#0c1f3a]">{completedBooking.phone || 'your phone'}</span>.
-                </p>
-                <p className="mt-2 text-xs text-gray-500">
-                  This is a simple demo flow. Once you are interested, we provide a much smarter assistant with natural conversation, qualification logic, and live calendar sync.
-                </p>
-              </div>
-
-              <div className="mt-5 flex flex-col sm:flex-row gap-3">
-                <button
-                  type="button"
-                  onClick={() => setShowCompletionModal(false)}
-                  className="flex-1 rounded-xl border border-blue-200 bg-white text-[#0c1f3a] font-semibold py-3 hover:bg-blue-50 transition-colors"
-                >
-                  Close
-                </button>
-                <button
-                  type="button"
-                  onClick={resetDemo}
-                  className="flex-1 rounded-xl bg-primaryOrange text-white font-semibold py-3 hover:bg-orange-500 transition-colors"
-                >
-                  Book Another Demo
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : null}
-
+        ) : null}
+      </div>
       <Footer />
-    </div>
+    </>
   );
 }

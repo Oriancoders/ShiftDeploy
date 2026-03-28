@@ -9,9 +9,9 @@ const DigitalReceptionist = ({
     videoSrc = 'https://res.cloudinary.com/dbazbq7u9/video/upload/v1773749011/How_and_Why_to_Improve_Booking_Experience_iktvlr.mp4',
     posterSrc = 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1773750161/ChatGPT_Image_Mar_17_2026_05_22_24_PM_goshas.png' // Added f_auto,q_auto for optimization
 }) => {
-     const ref = useRef(null);
-      const isInView = useInView(ref, { once: true, margin: "-100px" });
-    
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
+
     const [isPlaying, setIsPlaying] = useState(false);
 
     return (
@@ -20,29 +20,29 @@ const DigitalReceptionist = ({
 
                 {/* TOP: Centered Heading & Description */}
                 <motion.div
-          ref={ref}
-          variants={staggerContainer}
-          initial="initial"
-          animate={isInView ? "animate" : "initial"}
-          className="text-center mb-8"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight "
-          >
-            AI-Based<br/>
-            <span className="text-primaryOrange ">Digital Booking Receptionist</span>
-            
-          </motion.h2>
+                    ref={ref}
+                    variants={staggerContainer}
+                    initial="initial"
+                    animate={isInView ? "animate" : "initial"}
+                    className="text-center mb-8"
+                >
+                    <motion.h2
+                        variants={fadeInUp}
+                        className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight "
+                    >
+                        AI-Based<br />
+                        <span className="text-primaryOrange ">Digital Booking Receptionist</span>
 
-          <motion.p
-            variants={fadeInUp}
-            className="text-lg max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 leading-relaxed px-4 sm:px-0 text-gray-600"
-          >
-            We solve the issues that hold websites back, from slow performance and weak conversion to fragile builds and ongoing technical drag.
+                    </motion.h2>
 
-          </motion.p>
-        </motion.div>
+                    <motion.p
+                        variants={fadeInUp}
+                        className="text-lg max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 leading-relaxed px-4 sm:px-0 text-gray-600"
+                    >
+                        We solve the issues that hold websites back, from slow performance and weak conversion to fragile builds and ongoing technical drag.
+
+                    </motion.p>
+                </motion.div>
 
                 {/* BOTTOM: Video Left, Benefits Right */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -96,32 +96,34 @@ const DigitalReceptionist = ({
                             <div className="flex gap-4">
                                 <span className="text-primaryOrange font-bold text-2xl flex-shrink-0">✓</span>
                                 <div>
-                                    <p className="text-gray-900 font-bold text-lg">50% fewer missed calls</p>
-                                    <p className="text-gray-600 text-sm">Intelligent call handling system</p>
-                                </div>
-                            </div>
-                            <div className="flex gap-4">
-                                <span className="text-primaryOrange font-bold text-2xl flex-shrink-0">✓</span>
-                                <div>
-                                    <p className="text-gray-900 font-bold text-lg">Instant confirmations</p>
-                                    <p className="text-gray-600 text-sm">Reduce no-shows by 30%</p>
-                                </div>
-                            </div>
-                            <div className="flex gap-4">
-                                <span className="text-primaryOrange font-bold text-2xl flex-shrink-0">✓</span>
-                                <div>
-                                    <p className="text-gray-900 font-bold text-lg">24/7 booking availability</p>
-                                    <p className="text-gray-600 text-sm">Without hiring extra staff</p>
-                                </div>
-                            </div>
-                            <div className="flex gap-4">
-                                <span className="text-primaryOrange font-bold text-2xl flex-shrink-0">✓</span>
-                                <div>
-                                    <p className="text-gray-900 font-bold text-lg">Real-time admin alerts</p>
-                                    <p className="text-gray-600 text-sm">Get notified of new appointments instantly</p>
+                                    <p className="text-gray-900 font-bold text-lg">Fewer missed bookings</p>
+                                    <p className="text-gray-600 text-sm">Visitors can book instantly instead of leaving</p>
                                 </div>
                             </div>
 
+                            <div className="flex gap-4">
+                                <span className="text-primaryOrange font-bold text-2xl flex-shrink-0">✓</span>
+                                <div>
+                                    <p className="text-gray-900 font-bold text-lg">Instant booking confirmations</p>
+                                    <p className="text-gray-600 text-sm">Secure available slots in real-time</p>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4">
+                                <span className="text-primaryOrange font-bold text-2xl flex-shrink-0">✓</span>
+                                <div>
+                                    <p className="text-gray-900 font-bold text-lg">Always-on availability</p>
+                                    <p className="text-gray-600 text-sm">Capture bookings anytime through live chat</p>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4">
+                                <span className="text-primaryOrange font-bold text-2xl flex-shrink-0">✓</span>
+                                <div>
+                                    <p className="text-gray-900 font-bold text-lg">Clear booking visibility</p>
+                                    <p className="text-gray-600 text-sm">Keep track of incoming appointments easily</p>
+                                </div>
+                            </div>
                         </div>
 
                         {/* CTA Buttons */}
@@ -134,11 +136,11 @@ const DigitalReceptionist = ({
                                 Call to Discuss
                             </a>
                             <Link
-                                to="/contactus"
+                                to="/digital-receptionist"
                                 className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
 
                             >
-                                Schedule a Demo
+                                Visit Digital Receptionist
                             </Link>
                         </div>
                     </div>

@@ -16,7 +16,7 @@ export default function ProblemCard() {
       <div className="w-14 h-14 bg-red-50/80 rounded-2xl flex items-center justify-center mb-8 relative z-10 border border-red-100">
         <Clock className="w-7 h-7 text-red-500" />
       </div>
-      <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 relative z-10 tracking-tight">Without Digital Receptionist</h3>
+      <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 relative z-10 tracking-tight">What clinics deal with today</h3>
 
       <ul className="space-y-5 mb-10 flex-grow relative z-10">
         {problemItems.map((item, i) => (
@@ -36,18 +36,18 @@ export default function ProblemCard() {
         ))}
       </ul>
 
-      <div className="bg-gradient-to-r from-red-50 to-white p-5 rounded-2xl mt-auto border border-red-100/50 relative z-10">
-        <div className="flex justify-between items-end">
+      <div className="bg-gradient-to-r from-red-50 to-white p-4 sm:p-5 rounded-2xl mt-auto border border-red-100/50 relative z-10">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 sm:gap-6">
           <div>
-            <p className="text-red-800/60 text-xs font-bold uppercase tracking-wider mb-1">Estimated Loss</p>
-            <p className="text-red-600 font-extrabold text-2xl">
-              ~$2,400<span className="text-red-400 text-base font-semibold">/mo</span>
+            <p className="text-red-800/60 text-xs font-bold uppercase tracking-wider mb-1">Hidden Cost</p>
+            <p className="text-red-600 font-extrabold text-xl sm:text-2xl leading-tight">
+              Missed leads<span className="text-red-400 text-sm sm:text-base font-semibold"> daily</span>
             </p>
           </div>
-          <div className="text-right">
-            <p className="text-red-800/60 text-xs font-bold uppercase tracking-wider mb-1">Lost Clients</p>
-            <p className="text-red-600 font-extrabold text-2xl">
-              12+<span className="text-red-400 text-base font-semibold">/mo</span>
+          <div className="sm:text-right">
+            <p className="text-red-800/60 text-xs font-bold uppercase tracking-wider mb-1">Operational Drag</p>
+            <p className="text-red-600 font-extrabold text-xl sm:text-2xl leading-tight">
+              Front desk overload<span className="text-red-400 text-sm sm:text-base font-semibold"> weekly</span>
             </p>
           </div>
         </div>

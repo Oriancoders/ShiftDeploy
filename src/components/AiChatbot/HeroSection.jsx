@@ -30,7 +30,7 @@ export default function HeroSection({ onPrimaryAction, onDemoAction }) {
       </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-        <HeroLeftContent animateEnabled={animateEnabled} onPrimaryAction={onPrimaryAction} onDemoAction={onDemoAction} />
+        <HeroLeftContent animateEnabled={animateEnabled} onDemoAction={onDemoAction} />
         <HeroRightVisual reduceMotion={reduceMotion} animateEnabled={animateEnabled} />
       </div>
     </section>

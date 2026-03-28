@@ -4,15 +4,15 @@ export const fadeIn = {
 };
 
 export const problemItems = [
-  'Missed calls from evening & weekend visitors',
-  'Staff spending 10+ hours/week on tedious scheduling',
-  'High bounce rate: impatient clients moving to competitors',
-  'Vague voicemails that require manual follow-ups',
+  'Patients visit after hours, get stuck, and leave without booking',
+  'Front desk staff repeat the same service, pricing, and prep answers all day',
+  'Generic chat widgets fail because they do not understand your clinic workflow',
+  'Website traffic turns into dead-end conversations instead of qualified appointments',
 ];
 
 export const solutionItems = [
-  'Instant responses & 24/7 self-serve booking',
-  'Automated calendar syncs = Zero manual data entry',
-  'Staff focused purely on in-person client experience',
-  'Capture competitors\' leads while they are closed',
+  'A dedicated digital receptionist trained around your clinic, not a shared template bot',
+  'Website integration that guides patients toward the right next step or booking path',
+  'Answers tailored to treatments, FAQs, policies, and front-desk language',
+  'Ongoing refinement from our team so performance improves after launch',
 ];
