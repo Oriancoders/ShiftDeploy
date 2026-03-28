@@ -17,6 +17,7 @@ import Footer from '../components/Footer';
 import BlobCursor from '../components/react-bits/BlobCursor';
 import Magnet from '../components/react-bits/Magnet';
 import AnimateList from '../components/react-bits/AnimateList';
+import { Helmet } from 'react-helmet-async';
 
 const faqItems = [
   {
@@ -161,6 +162,31 @@ export default function AiChatbotDemo() {
 
   return (
     <>
+      <Helmet>
+        <title>Book a Digital Receptionist Demo | ShiftDeploy</title>
+        <meta
+          name="description"
+          content="Book a live digital receptionist demo with ShiftDeploy. See how bookings, missed enquiries, FAQs, and front-desk workflows can be handled in one simple walkthrough."
+        />
+        <meta
+          name="keywords"
+          content="book digital receptionist demo, digital receptionist demo, clinic demo booking, live receptionist walkthrough, booking automation demo, ShiftDeploy"
+        />
+        <meta property="og:title" content="Book a Digital Receptionist Demo | ShiftDeploy" />
+        <meta
+          property="og:description"
+          content="Choose a time slot and book a live ShiftDeploy demo to see how a digital receptionist can support bookings, enquiries, and customer communication."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.shiftdeploy.com/digital-receptionist/demo" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Book a Digital Receptionist Demo | ShiftDeploy" />
+        <meta
+          name="twitter:description"
+          content="Book a live demo and see how ShiftDeploy's digital receptionist handles bookings, FAQs, and enquiries."
+        />
+        <link rel="canonical" href="https://www.shiftdeploy.com/digital-receptionist/demo" />
+      </Helmet>
       <BlobCursor />
       <div className="min-h-screen overflow-x-hidden bg-white text-textColor">
         <section className="relative overflow-hidden bg-primaryBlue pt-10 pb-14 text-white md:pt-24 md:pb-20">
