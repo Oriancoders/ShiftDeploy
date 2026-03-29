@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { Play, Video, CheckCircle2 } from 'lucide-react';
 
 export default function DemoVideoSection({
-  videoSrc = 'https://res.cloudinary.com/dbazbq7u9/video/upload/v1773749011/How_and_Why_to_Improve_Booking_Experience_iktvlr.mp4',
+  videoSrc = 'https://res.cloudinary.com/dbazbq7u9/video/upload/v1774790198/Digital_Receptionist_Demo_by_ShiftDeploy_ytazqe.mp4',
   posterSrc = 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1773750161/ChatGPT_Image_Mar_17_2026_05_22_24_PM_goshas.png',
 }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const points = [
     'See how the digital receptionist responds before booking a full demo',
-    'The page stays fast because only the poster loads at first',
-    'The full video player appears only after the visitor chooses to watch',
+    'Complete explanation of the product’s capabilities in a quick, engaging format',
+    'Also for other service businesses',
   ];
 
   return (
@@ -69,7 +69,7 @@ export default function DemoVideoSection({
           </div>
         </div>
 
-        <div className="mx-auto mt-8 grid max-w-4xl gap-3 md:grid-cols-3">
+        {/* <div className="mx-auto mt-8 grid max-w-4xl gap-3 md:grid-cols-3">
           {points.map((point) => (
             <div key={point} className="rounded-2xl bg-gray-50 px-4 py-4 shadow-[0_10px_30px_rgba(12,31,58,0.05)]">
               <div className="flex items-start gap-3">
@@ -78,6 +78,15 @@ export default function DemoVideoSection({
               </div>
             </div>
           ))}
+        </div> */}
+
+       {/* //adding a cta button to click and call directly "Call & Get it Now"  */}
+        <div className="mt-20 flex justify-center">
+          <a href="tel:+447311126710" // Replace with your phone number
+            className="inline-flex items-center gap-3 rounded-2xl bg-primaryOrange px-6 py-3 text-lg font-semibold text-white transition-colors duration-300 hover:bg-primaryOrange/90"
+          >
+            Call & Get it Now
+          </a>
         </div>
       </div>
     </section>
