@@ -3,7 +3,7 @@ import { Play, Video, CheckCircle2 } from 'lucide-react';
 
 export default function DemoVideoSection({
   videoSrc = 'https://res.cloudinary.com/dbazbq7u9/video/upload/v1774790198/Digital_Receptionist_Demo_by_ShiftDeploy_ytazqe.mp4',
-  posterSrc = 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1773750161/ChatGPT_Image_Mar_17_2026_05_22_24_PM_goshas.png',
+  posterSrc = 'https://res.cloudinary.com/dbazbq7u9/image/upload/v1774876387/ChatGPT_Image_Mar_30_2026_06_12_34_PM_ivetk2.png',
 }) {
   const [isPlaying, setIsPlaying] = useState(false);
 
