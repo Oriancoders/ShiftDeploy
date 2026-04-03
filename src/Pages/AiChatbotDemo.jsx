@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -13,10 +13,12 @@ import {
   Sparkles,
   UserRound,
 } from 'lucide-react';
-import Footer from '../components/Footer';
-import BlobCursor from '../components/react-bits/BlobCursor';
-import Magnet from '../components/react-bits/Magnet';
-import AnimateList from '../components/react-bits/AnimateList';
+
+const Footer = lazy(() => import('../components/Footer'));
+const BlobCursor = lazy(() => import('../components/react-bits/BlobCursor'));
+const Magnet = lazy(() => import('../components/react-bits/Magnet'));
+const AnimateList = lazy(() => import('../components/react-bits/AnimateList'));
+
 import { Helmet } from 'react-helmet-async';
 
 const faqItems = [
@@ -102,9 +104,27 @@ export default function AiChatbotDemo() {
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState('');
   const [confirmation, setConfirmation] = useState(null);
+  const [shouldLoadRest, setShouldLoadRest] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const handleInteraction = () => {
+      setShouldLoadRest(true);
+      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+    };
+
+    window.addEventListener('scroll', handleInteraction, { passive: true });
+    window.addEventListener('mousemove', handleInteraction, { passive: true });
+    window.addEventListener('touchstart', handleInteraction, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+    };
   }, []);
 
   const selectedDay = availability.find((day) => day.value === selectedDate) || availability[0];
@@ -187,7 +207,11 @@ export default function AiChatbotDemo() {
         />
         <link rel="canonical" href="https://www.shiftdeploy.com/digital-receptionist/demo" />
       </Helmet>
-      <BlobCursor />
+      
+      <Suspense fallback={null}>
+        {shouldLoadRest && <BlobCursor />}
+      </Suspense>
+
       <div className="min-h-screen overflow-x-hidden bg-white text-textColor">
         <section className="relative overflow-hidden bg-primaryBlue pt-10 pb-14 text-white md:pt-24 md:pb-20">
           <div className="absolute inset-0 bg-gradient-to-br from-primaryBlue via-toBlue to-primaryBlue" />
@@ -406,7 +430,9 @@ export default function AiChatbotDemo() {
           </div>
         ) : null}
       </div>
-      <Footer />
+      <Suspense fallback={<div className="h-40 bg-primaryBlue" />}>
+        {shouldLoadRest && <Footer />}
+      </Suspense>
     </>
   );
 }

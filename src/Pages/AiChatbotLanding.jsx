@@ -1,29 +1,53 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, lazy, Suspense, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
 import HeroSection from '../components/AiChatbot/HeroSection';
-import ProblemSolutionSection from '../components/AiChatbot/ProblemSolutionSection';
-import RevenueLossCalculatorSection from '../components/AiChatbot/RevenueLossCalculatorSection';
-import DemoVideoSection from '../components/AiChatbot/DemoVideoSection';
-import FeaturesSection from '../components/AiChatbot/FeaturesSection';
-import ServiceModelSection from '../components/AiChatbot/ServiceModelSection';
-import TestimonialsSection from '../components/AiChatbot/TestimonialsSection';
-import FAQSection from '../components/AiChatbot/FAQSection';
-import CtaSection from '../components/AiChatbot/CtaSection';
-import LeadCaptureModal from '../components/AiChatbot/LeadCaptureModal';
-import SectionCapsuleNav from '../components/AiChatbot/SectionCapsuleNav';
 import { ContextAPI } from '../GlobalProvider/ContextAPI';
 import { Helmet } from 'react-helmet-async';
-import { m, AnimatePresence, } from 'framer-motion';
+import { m } from 'framer-motion';
 
+// Lazy load non-critical sections
+const ProblemSolutionSection = lazy(() => import('../components/AiChatbot/ProblemSolutionSection'));
+const RevenueLossCalculatorSection = lazy(() => import('../components/AiChatbot/RevenueLossCalculatorSection'));
+const DemoVideoSection = lazy(() => import('../components/AiChatbot/DemoVideoSection'));
+const FeaturesSection = lazy(() => import('../components/AiChatbot/FeaturesSection'));
+const ServiceModelSection = lazy(() => import('../components/AiChatbot/ServiceModelSection'));
+const TestimonialsSection = lazy(() => import('../components/AiChatbot/TestimonialsSection'));
+const FAQSection = lazy(() => import('../components/AiChatbot/FAQSection'));
+const CtaSection = lazy(() => import('../components/AiChatbot/CtaSection'));
+const LeadCaptureModal = lazy(() => import('../components/AiChatbot/LeadCaptureModal'));
+const SectionCapsuleNav = lazy(() => import('../components/AiChatbot/SectionCapsuleNav'));
+const Footer = lazy(() => import('../components/Footer'));
 
 const AiChatbotLanding = () => {
-  
   const navigate = useNavigate();
-  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const { isLeadModel, setIsLeadModel } = React.useContext(ContextAPI);
   const [selectedPackage, setSelectedPackage] = useState('');
+  const [shouldLoadRest, setShouldLoadRest] = useState(false);
+
+  // Trigger lazy loading on any user interaction
+  useEffect(() => {
+    const handleInteraction = () => {
+      setShouldLoadRest(true);
+      // Remove listeners once triggered
+      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('keydown', handleInteraction);
+    };
+
+    window.addEventListener('scroll', handleInteraction, { passive: true });
+    window.addEventListener('mousemove', handleInteraction, { passive: true });
+    window.addEventListener('touchstart', handleInteraction, { passive: true });
+    window.addEventListener('keydown', handleInteraction, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener('mousemove', handleInteraction);
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('keydown', handleInteraction);
+    };
+  }, []);
 
   const sections = useMemo(
     () => [
@@ -114,7 +138,12 @@ const AiChatbotLanding = () => {
       </Helmet>
       <div className="bg-white font-sans text-textColor overflow-x-hidden">
         <Navigation isDarkBg={true} isReceptionist={true} />
-        <SectionCapsuleNav sections={sections} heroId="dr-hero" darkSectionIds={darkSectionIds} />
+        <Suspense fallback={null}>
+          {shouldLoadRest && (
+            <SectionCapsuleNav sections={sections} heroId="dr-hero" darkSectionIds={darkSectionIds} />
+          )}
+        </Suspense>
+        
         <div id="dr-hero" className="scroll-mt-32">
           <HeroSection onPrimaryAction={openLeadModal} onDemoAction={openLiveDemo} />
         </div>
@@ -139,34 +168,42 @@ const AiChatbotLanding = () => {
           </Link>
         </div>
         
-        <div id="dr-problem" className="scroll-mt-32">
-          <ProblemSolutionSection />
-        </div>
-        <div id="dr-calculator" className="scroll-mt-32">
-          <RevenueLossCalculatorSection onPrimaryAction={openLeadModal} />
-        </div>
-        <div id="dr-preview" className="scroll-mt-32">
-          <DemoVideoSection />
-        </div>
-        <div id="dr-features" className="scroll-mt-32">
-          <FeaturesSection />
-        </div>
-        <div id="dr-process" className="scroll-mt-32">
-          <ServiceModelSection onPrimaryAction={openLeadModal} />
-        </div>
-        <div id="dr-faq" className="scroll-mt-32">
-          <FAQSection onPrimaryAction={openLeadModal} />
-        </div>
-        <div id="dr-cta" className="scroll-mt-32">
-          <CtaSection onPrimaryAction={openLeadModal} onDemoAction={openLiveDemo} />
-        </div>
-        <div id="dr-proof" className="scroll-mt-32">
-          <TestimonialsSection onPrimaryAction={openLeadModal} />
-        </div>
-        <LeadCaptureModal isOpen={isLeadModel} onClose={closeLeadModal} selectedPackage={selectedPackage} />
+        <Suspense fallback={<div className="h-20 bg-white" />}>
+          {shouldLoadRest && (
+            <>
+              <div id="dr-problem" className="scroll-mt-32">
+                <ProblemSolutionSection />
+              </div>
+              <div id="dr-calculator" className="scroll-mt-32">
+                <RevenueLossCalculatorSection onPrimaryAction={openLeadModal} />
+              </div>
+              <div id="dr-preview" className="scroll-mt-32">
+                <DemoVideoSection />
+              </div>
+              <div id="dr-features" className="scroll-mt-32">
+                <FeaturesSection />
+              </div>
+              <div id="dr-process" className="scroll-mt-32">
+                <ServiceModelSection onPrimaryAction={openLeadModal} />
+              </div>
+              <div id="dr-faq" className="scroll-mt-32">
+                <FAQSection onPrimaryAction={openLeadModal} />
+              </div>
+              <div id="dr-cta" className="scroll-mt-32">
+                <CtaSection onPrimaryAction={openLeadModal} onDemoAction={openLiveDemo} />
+              </div>
+              <div id="dr-proof" className="scroll-mt-32">
+                <TestimonialsSection onPrimaryAction={openLeadModal} />
+              </div>
+              <LeadCaptureModal isOpen={isLeadModel} onClose={closeLeadModal} selectedPackage={selectedPackage} />
+            </>
+          )}
+        </Suspense>
       </div>
       <div id="dr-footer">
-        <Footer />
+        <Suspense fallback={<div className="h-40 bg-primaryBlue" />}>
+          {shouldLoadRest && <Footer />}
+        </Suspense>
       </div>
     </>
   );

@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, Check, ClipboardList, Clock, PoundSterling, Calendar, Smile, Send, Star, AlertCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+
+const Navigation = lazy(() => import('../../components/Navigation'));
 
 const FEEDBACK_MESSAGES = [
     "Great insight!",
@@ -45,6 +47,7 @@ const DentalSurvey = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [showFeedback, setShowFeedback] = useState(false);
+    const [shouldLoadRest, setShouldLoadRest] = useState(false);
     const [formData, setFormData] = useState({
         timestamp: new Date().toISOString(),
         first_name: '',
@@ -81,6 +84,29 @@ const DentalSurvey = () => {
             return () => clearTimeout(timer);
         }
     }, [step]);
+
+    // Lazy load on interaction
+    useEffect(() => {
+        const handleInteraction = () => {
+            setShouldLoadRest(true);
+            window.removeEventListener('scroll', handleInteraction);
+            window.removeEventListener('mousemove', handleInteraction);
+            window.removeEventListener('touchstart', handleInteraction);
+            window.removeEventListener('keydown', handleInteraction);
+        };
+
+        window.addEventListener('scroll', handleInteraction, { passive: true });
+        window.addEventListener('mousemove', handleInteraction, { passive: true });
+        window.addEventListener('touchstart', handleInteraction, { passive: true });
+        window.addEventListener('keydown', handleInteraction, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleInteraction);
+            window.removeEventListener('mousemove', handleInteraction);
+            window.removeEventListener('touchstart', handleInteraction);
+            window.removeEventListener('keydown', handleInteraction);
+        };
+    }, []);
 
     const handleNext = () => {
         if (validateStep()) {
@@ -596,6 +622,13 @@ const DentalSurvey = () => {
 
     return (
         <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
+            <Suspense fallback={null}>
+                {shouldLoadRest && (
+                    <div className="fixed top-0 left-0 w-full z-[100]">
+                        <Navigation isReceptionist={true} />
+                    </div>
+                )}
+            </Suspense>
             {/* Animated Background Elements */}
             <motion.div 
                 animate={{ 
