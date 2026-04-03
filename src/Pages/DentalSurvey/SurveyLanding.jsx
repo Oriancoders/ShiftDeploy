@@ -180,30 +180,28 @@ const DentalSurvey = () => {
         setIsSubmitting(true);
         const finalData = { ...formData, timestamp: new Date().toISOString() };
         
+        // Instant UI Feedback: Transition to the thank you page immediately
+        if (formData.q7 === "Yes, let's schedule a demo") {
+            setStep(12);
+        } else {
+            setStep(11);
+        }
+
+        // Fire and forget the network request in the background
         try {
             const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvay-eL-9G7LEuHptZ9MvJ5AnE_hKcDNWJKr_Nef8rBl3PAUloAxH61XWJuaodmPlR/exec';
             
-            // Using no-cors because Apps Script redirects can sometimes cause CORS issues in simple fetch
-            // But JSON.stringify + POST is the standard way.
-            await fetch(SCRIPT_URL, {
+            fetch(SCRIPT_URL, {
                 method: 'POST',
-                mode: 'no-cors', // Important for Apps Script
+                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(finalData),
-            });
+            }).catch(err => console.error("Background Submission Error:", err));
 
-            // Since we use no-cors, we won't get a readable response, 
-            // but the data will be sent successfully.
-            if (formData.q7 === "Yes, let's schedule a demo") {
-                setStep(12);
-            } else {
-                setStep(11);
-            }
         } catch (error) {
-            console.error("Submission Error:", error);
-            alert("There was an error saving your response. Please try again.");
+            console.error("Submission Setup Error:", error);
         } finally {
             setIsSubmitting(false);
         }
@@ -568,7 +566,7 @@ const DentalSurvey = () => {
                             </div>
                         </div>
                         <div className="space-y-4 max-w-lg mx-auto">
-                            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#0C1F3A] tracking-tight leading-tight">You're on the list!</h2>
+                            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#0C1F3A] tracking-tight leading-tight">Thank You for the Response. <br/>You're on the list!</h2>
                             <p className="text-sm sm:text-xl text-gray-500 leading-relaxed font-medium">
                                 One of our team will reach out on your preferred day. 
                                 We'll keep it to 20 minutes and show you exactly how it works. Speak soon.
