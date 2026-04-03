@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import { motion, useReducedMotion, useInView } from 'framer-motion';
 import HeroLeftContent from './Hero/HeroLeftContent';
 import HeroRightVisual from './Hero/HeroRightVisual';
+import { Link } from 'react-router-dom';
+
 
 export default function HeroSection({ onPrimaryAction, onDemoAction }) {
   const reduceMotion = useReducedMotion();
@@ -22,10 +24,10 @@ export default function HeroSection({ onPrimaryAction, onDemoAction }) {
           transition={animateEnabled ? { duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 } : undefined}
           className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-primaryOrange rounded-full blur-[140px] md:blur-[180px] mix-blend-normal md:mix-blend-screen transform-gpu [will-change:transform,opacity]"
         />
-        
+
         {/* Modern CSS Grid Pattern instead of external image */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_40%,transparent_100%)] opacity-30" />
-        
+
         <div className="absolute inset-0 bg-gradient-to-t from-primaryBlue to-transparent opacity-80" />
       </div>
 
@@ -33,6 +35,8 @@ export default function HeroSection({ onPrimaryAction, onDemoAction }) {
         <HeroLeftContent animateEnabled={animateEnabled} onDemoAction={onDemoAction} />
         <HeroRightVisual reduceMotion={reduceMotion} animateEnabled={animateEnabled} />
       </div>
+
+      
     </section>
   );
 }

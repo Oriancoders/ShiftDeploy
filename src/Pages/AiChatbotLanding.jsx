@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import HeroSection from '../components/AiChatbot/HeroSection';
@@ -15,8 +15,11 @@ import LeadCaptureModal from '../components/AiChatbot/LeadCaptureModal';
 import SectionCapsuleNav from '../components/AiChatbot/SectionCapsuleNav';
 import { ContextAPI } from '../GlobalProvider/ContextAPI';
 import { Helmet } from 'react-helmet-async';
+import { m, AnimatePresence, } from 'framer-motion';
+
 
 const AiChatbotLanding = () => {
+  
   const navigate = useNavigate();
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const { isLeadModel, setIsLeadModel } = React.useContext(ContextAPI);
@@ -115,6 +118,27 @@ const AiChatbotLanding = () => {
         <div id="dr-hero" className="scroll-mt-32">
           <HeroSection onPrimaryAction={openLeadModal} onDemoAction={openLiveDemo} />
         </div>
+
+        {/* Static Survey Strip for this page */}
+        <div className="bg-primaryBlue border-y border-white/10 relative z-10">
+          <Link 
+            to="/help-us-solve-dental-burnout" 
+            className="block py-3 sm:py-4 px-4 text-center cursor-pointer hover:bg-[#162a4a] transition-all duration-300 group"
+          >
+            <p className="text-white text-xs sm:text-sm md:text-base font-medium tracking-wide flex items-center justify-center gap-2">
+              <span className="opacity-90">Help us solve dental burnout by</span> 
+              <span className="text-primaryOrange font-bold group-hover:scale-105 transition-transform inline-block">sharing your opinion</span>
+              <m.span 
+                animate={{ x: [0, 5, 0] }} 
+                transition={{ repeat: Infinity, duration: 1.5 }}
+                className="inline-block"
+              >
+                →
+              </m.span>
+            </p>
+          </Link>
+        </div>
+        
         <div id="dr-problem" className="scroll-mt-32">
           <ProblemSolutionSection />
         </div>

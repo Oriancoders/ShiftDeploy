@@ -29,6 +29,7 @@ const BullsEyesCase = lazy(() => import('./Pages/CaseStudies/BullsEyesCase'));
 const K2TradersCase = lazy(() => import('./Pages/CaseStudies/K2Traders'));
 const AiChatbotLanding = lazy(() => import('./Pages/AiChatbotLanding'));
 const AiChatbotDemo = lazy(() => import('./Pages/AiChatbotDemo'));
+const DentalSurvey = lazy(() => import('./Pages/DentalSurvey/SurveyLanding'));
 
 // Misc Pages
 const ThankYouPage = lazy(() => import('./Pages/ContactUsPage/ThankYouPage'));
@@ -80,6 +81,7 @@ function App() {
             {/* Digital Receptionist */}
             <Route path='/digital-receptionist' element={<AiChatbotLanding/>} />
             <Route path='/digital-receptionist/demo' element={<AiChatbotDemo/>} />
+            <Route path='/help-us-solve-dental-burnout' element={<DentalSurvey/>} />
             
           </Routes>
         </Suspense>

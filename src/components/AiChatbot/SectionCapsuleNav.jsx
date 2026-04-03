@@ -75,7 +75,7 @@ export default function SectionCapsuleNav({ sections = [], heroId = 'dr-hero', d
         }`}
       >
         <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none]">
-          <div className="flex min-w-max items-center gap-1.5 sm:gap-2 [&::-webkit-scrollbar]:hidden">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 [&::-webkit-scrollbar]:hidden">
             {sections.map((section) => {
               const isActive = activeSection === section.id;
               return (

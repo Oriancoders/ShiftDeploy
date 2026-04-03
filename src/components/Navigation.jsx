@@ -12,13 +12,24 @@ const Navigation = ({ isDarkBg = false, isReceptionist = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [hoveredPath, setHoveredPath] = useState(null);
   const [openMobileDropdown, setOpenMobileDropdown] = useState(null);
+  const [hideBanner, setHideBanner] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 50);
+      
+      // If scrolling down, hide the banner. If scrolling up, show it.
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setHideBanner(true);
+      } else {
+        setHideBanner(false);
+      }
+      lastScrollY = currentScrollY;
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -229,6 +240,28 @@ const Navigation = ({ isDarkBg = false, isReceptionist = false }) => {
                   {ctaLabel}
                 </Link>
               </div>
+            </m.div>
+          )}
+        </AnimatePresence>
+
+        {/* Survey Banner - Fades up behind navbar on scroll down */}
+        <AnimatePresence>
+          {!hideBanner && location.pathname !== '/help-us-solve-dental-burnout' && !isReceptionist && (
+            <m.div
+              initial={{ y: -50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -50, opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="bg-primaryBlue relative z-[-1] border-t border-white/10"
+            >
+              <Link 
+                to="/help-us-solve-dental-burnout" 
+                className="block py-2.5 sm:py-3 px-4 text-center cursor-pointer hover:bg-[#162a4a] transition-colors"
+              >
+                <p className="text-white text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide ">
+                  Help us build something valuable by <span className="text-primaryOrange">sharing your opinion</span> 
+                </p>
+              </Link>
             </m.div>
           )}
         </AnimatePresence>
