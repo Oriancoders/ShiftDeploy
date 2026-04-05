@@ -51,9 +51,10 @@ const AiChatbotLanding = () => {
 
   const sections = useMemo(
     () => [
+      { id: 'dr-preview', label: 'Preview' },
+
       { id: 'dr-problem', label: 'Why' },
       { id: 'dr-calculator', label: 'Calculator' },
-      { id: 'dr-preview', label: 'Preview' },
       { id: 'dr-features', label: 'Features' },
       { id: 'dr-process', label: 'Process' },
       { id: 'dr-faq', label: 'FAQs' },
@@ -143,22 +144,22 @@ const AiChatbotLanding = () => {
             <SectionCapsuleNav sections={sections} heroId="dr-hero" darkSectionIds={darkSectionIds} />
           )}
         </Suspense>
-        
+
         <div id="dr-hero" className="scroll-mt-32">
           <HeroSection onPrimaryAction={openLeadModal} onDemoAction={openLiveDemo} />
         </div>
 
         {/* Static Survey Strip for this page */}
         <div className="bg-primaryBlue border-y border-white/10 relative z-10">
-          <Link 
-            to="/help-us-solve-dental-burnout" 
+          <Link
+            to="/help-us-solve-dental-burnout"
             className="block py-3 sm:py-4 px-4 text-center cursor-pointer hover:bg-[#162a4a] transition-all duration-300 group"
           >
             <p className="text-white text-xs sm:text-sm md:text-base font-medium tracking-wide flex items-center justify-center gap-2">
-              <span className="opacity-90">Help us solve dental burnout by</span> 
+              <span className="opacity-90">Help us solve dental burnout by</span>
               <span className="text-primaryOrange font-bold group-hover:scale-105 transition-transform inline-block">sharing your opinion</span>
-              <m.span 
-                animate={{ x: [0, 5, 0] }} 
+              <m.span
+                animate={{ x: [0, 5, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
                 className="inline-block"
               >
@@ -167,19 +168,20 @@ const AiChatbotLanding = () => {
             </p>
           </Link>
         </div>
-        
+
         <Suspense fallback={<div className="h-20 bg-white" />}>
           {shouldLoadRest && (
             <>
+              <div id="dr-preview" className="scroll-mt-32">
+                <DemoVideoSection />
+              </div>
               <div id="dr-problem" className="scroll-mt-32">
                 <ProblemSolutionSection />
               </div>
               <div id="dr-calculator" className="scroll-mt-32">
                 <RevenueLossCalculatorSection onPrimaryAction={openLeadModal} />
               </div>
-              <div id="dr-preview" className="scroll-mt-32">
-                <DemoVideoSection />
-              </div>
+
               <div id="dr-features" className="scroll-mt-32">
                 <FeaturesSection />
               </div>

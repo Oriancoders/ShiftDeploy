@@ -622,13 +622,7 @@ const DentalSurvey = () => {
 
     return (
         <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
-            <Suspense fallback={null}>
-                {shouldLoadRest && (
-                    <div className="fixed top-0 left-0 w-full z-[100]">
-                        <Navigation isReceptionist={true} />
-                    </div>
-                )}
-            </Suspense>
+            
             {/* Animated Background Elements */}
             <motion.div 
                 animate={{ 
