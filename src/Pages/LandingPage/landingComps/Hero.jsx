@@ -71,22 +71,21 @@ const Hero = () => {
               <div className="text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left">
                 <h1>
                   <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                    Capture Every
+                    We Handle 
 
                   </span>
                   <br />
-                  <span className="text-primaryOrange">Enquiry Without
+                  <span className="text-primaryOrange">What's Blocking 
 </span>
                   <br />
                   <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                    Losing Bookings
+                    Your Growth
                   </span>
                 </h1>
               </div>
 
               <p className="text-xl mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl lg:mx-0 leading-relaxed sm:px-0 lg:text-left sm:text-center text-left text-gray-700">
-                Get a free performance audit showing how booking flow, speed and usability
-                affect real visitors, without making changes to your site.
+                Most businesses don't have a marketing problem. They have an infrastructure problem. ShiftDeploy finds it, fixes it and keeps it working so your digital presence compounds in value over time.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 sm:mb-16">

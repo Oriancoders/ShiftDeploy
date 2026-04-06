@@ -28,12 +28,12 @@ export default function HeroLeftContent({ animateEnabled, onDemoAction }) {
         </motion.div>
 
         <h1 className="text-5xl md:text-6xl  font-extrabold leading-[1.05] mb-6 text-white drop-shadow-xl relative z-10 tracking-tight">
-          Capture Bookings.
+          Convert Every 
           <br />
           <span className="relative">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primaryOrange via-primaryOrange to-primaryOrange animate-text-gradient bg-300%">Even While Your</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primaryOrange via-primaryOrange to-primaryOrange animate-text-gradient bg-300%">Visitor Even </span>
           <br />
-            Whole team is away
+            After Hours
             
             <motion.div
               initial={{ scaleX: 0 }}
@@ -46,7 +46,7 @@ export default function HeroLeftContent({ animateEnabled, onDemoAction }) {
       </motion.div>
 
       <motion.p variants={fadeIn} className="text-lg md:text-xl text-blue-100/80 mb-10 max-w-xl leading-relaxed mix-blend-screen border-l-4 border-secondaryBlue pl-4">
-        Your business doesn't have to stop when your doors close. Deploy a digital receptionist that engages, qualifies, and schedules leads 24/7.
+        Your business doesn't have to stop when your doors close. Deploy a digital receptionist that engages, qualifies, and schedules bookings 24/7 in human behaviour.
       </motion.p>
 
       <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-5">

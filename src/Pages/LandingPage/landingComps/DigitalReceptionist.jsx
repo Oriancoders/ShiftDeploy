@@ -30,7 +30,7 @@ const DigitalReceptionist = ({
                         variants={fadeInUp}
                         className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight "
                     >
-                        AI-Based<br />
+                        Custom Trained<br />
                         <span className="text-primaryOrange ">Digital Booking Receptionist</span>
 
                     </motion.h2>

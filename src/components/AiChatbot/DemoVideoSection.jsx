@@ -22,7 +22,7 @@ export default function DemoVideoSection({
             Watch how the digital receptionist feels in practice.
           </h2>
           <p className="mt-4 text-base leading-7 text-textColor/75 md:text-lg">
-            A lightweight preview for visitors who want a clearer picture first. The poster shows immediately, and the actual video loads only after click.
+            A short video explanation of the digital receptionist in action.
           </p>
         </div>
 
