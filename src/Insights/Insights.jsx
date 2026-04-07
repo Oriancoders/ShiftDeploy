@@ -398,7 +398,7 @@ const Insights = () => {
 
       <Navigation />
 
-      <section className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+      <section className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 px-4 sm:px-6 lg:px-8 pt-28 sm:pt-40 pb-16">
         <div className="max-w-6xl mx-auto">
           {/* Header / Hero */}
           <motion.div
@@ -412,7 +412,7 @@ const Insights = () => {
             </h1>
 
             <p className="mt-4 max-w-2xl text-gray-600 text-base sm:text-lg leading-relaxed">
-              Short, evidence-driven memos from real audits—performance, UX friction, and conversion mechanics.
+              Short, evidence-driven memos from real audits,performance, UX friction, and conversion mechanics.
               No fluff. Just patterns that show up repeatedly.
             </p>
           </motion.div>

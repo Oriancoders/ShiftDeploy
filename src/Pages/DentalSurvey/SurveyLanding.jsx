@@ -1,4 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, Check, ClipboardList, Clock, PoundSterling, Calendar, Smile, Send, Star, AlertCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -621,7 +622,23 @@ const DentalSurvey = () => {
     };
 
     return (
+        <>
+        <Helmet>
+                <title>Dental Practice Survey - Out-of-Hours Management | ShiftDeploy</title>
+                <meta name="description" content="Help us understand how UK dental practices manage out-of-hours patient enquiries. Quick 4-minute survey with no follow-up. Gain insights into appointment booking challenges." />
+                <meta name="keywords" content="dental practice, out-of-hours, patient enquiries, appointment booking, dental practice management, UK dentistry, practice software" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta property="og:title" content="Dental Practice Survey - Out-of-Hours Management | ShiftDeploy" />
+                <meta property="og:description" content="Help us understand how UK dental practices manage out-of-hours patient enquiries. Quick 4-minute survey with honest feedback." />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Dental Practice Survey - Out-of-Hours Management" />
+                <meta name="twitter:description" content="Quick 4-minute survey. No sales. No follow-up. Help us build solutions for UK dental practices." />
+                <meta name="robots" content="index, follow" />
+                <meta name="language" content="English" />
+            </Helmet>
         <div className="min-h-screen bg-[#F8FAFC] flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
+            
             
             {/* Animated Background Elements */}
             <motion.div 
@@ -721,6 +738,9 @@ const DentalSurvey = () => {
                 </AnimatePresence>
             </div>
         </div>
+
+        </>
+
     );
 };
 

@@ -35,19 +35,21 @@ const ConvertHero = () => {
   return (
     <section
       onMouseMove={handleMouseMove}
-      className="bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12"
+      className="bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden flex sm:items-center pt-36 sm:pt-40 text-textColor pb-20 sm:pb-12"
     >
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 xl:gap-16 sm:items-center">
           <div className="flex flex-col lg:items-start sm:items-center">
+            
+
             <CursorFollower
               text={
                 <p className="flex items-center justify-center gap-x-2 italic">
                   ShiftConvert <ArrowRight size={16} /> Better UX <ArrowRight size={16} /> More Revenue
                 </p>
               }
-              className="w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-6 py-2 rounded-full text-white"
-              textClassName="text-white font-semibold text-xs sm:text-sm lg:text-base"
+              className=" w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue  px-6 py-2 rounded-full text-white"
+              textClassName="text-white font-semibold text-xs sm:text-sm lg:text-base "
               gradientFrom="#f76707"
               gradientTo="#0B1D30"
               circleSize={100}

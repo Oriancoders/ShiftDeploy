@@ -60,7 +60,7 @@ const ShiftSpeed = () => {
         {/* ... other meta tags ... */}
       </Helmet>
 
-      <div className="w-full">
+      <div className="w-full ">
         <Navigation />
 
         {/* ✅ FIX 3: Hero renders IMMEDIATELY. No Suspense fallback blocking it. */}

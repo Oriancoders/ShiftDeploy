@@ -650,16 +650,16 @@ const InsightDetail = () => {
 
       <Navigation />
 
-      <section className="min-h-screen bg-white px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-16">
+      <section className="min-h-screen bg-white px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 pb-16">
         <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-8 xl:col-span-9">
-          <Link
-            to="/insights"
-            className="inline-flex items-center rounded-full px-4 py-2 text-sm font-bold text-primaryBlue bg-white ring-1 ring-gray-200 hover:ring-gray-300"
+          <span
+            
+            className="inline-flex items-center rounded-full py-2 mb-4 text-sm font-bold text-primaryBlue/50  italic"
           >
-            Back to insights
-          </Link>
-
+            Insights {" > "} {pageTitle.slice(0, 28)}......
+          </span>
+          <hr />
           {isLoading && (
             <div className="mt-2 sm:mt-6 rounded-2xl bg-white p-6 text-gray-600 shadow-[0_1px_0_rgba(12,31,58,0.08),0_10px_30px_rgba(12,31,58,0.06)]">
               Loading insight...

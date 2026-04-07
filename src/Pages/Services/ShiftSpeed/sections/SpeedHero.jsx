@@ -65,7 +65,7 @@ const SpeedHero = () => {
   return (
     <section
       onMouseMove={handleMouseMove}
-      className=" bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12"
+      className=" bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden flex sm:items-center pt-36 sm:pt-40 text-textColor pb-20 sm:pb-12"
     >
 
 
