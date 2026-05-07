@@ -15,23 +15,25 @@ async function getInsightSlugs() {
 }
 
 export default async function sitemap() {
+  const now = new Date().toISOString();
+
   const staticRoutes = [
-    { url: BASE_URL, priority: 1.0, changeFrequency: 'weekly' },
-    { url: `${BASE_URL}/services`, priority: 0.9, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/services/shiftspeed`, priority: 0.8, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/services/shiftconvert`, priority: 0.8, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/services/shiftbuild`, priority: 0.8, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/services/shiftflow`, priority: 0.8, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/insideShiftDeploy`, priority: 0.7, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/missions`, priority: 0.8, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/insights`, priority: 0.9, changeFrequency: 'weekly' },
-    { url: `${BASE_URL}/digital-receptionist`, priority: 0.8, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/ContactUs`, priority: 0.7, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/CaseStudies/SlackerIOT`, priority: 0.7, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/CaseStudies/BullseyesCase`, priority: 0.7, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/CaseStudies/K2TradersCase`, priority: 0.7, changeFrequency: 'monthly' },
-    { url: `${BASE_URL}/privacy-policy`, priority: 0.3, changeFrequency: 'yearly' },
-    { url: `${BASE_URL}/terms-of-services`, priority: 0.3, changeFrequency: 'yearly' },
+    { url: BASE_URL, lastModified: now, priority: 1.0, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/services`, lastModified: now, priority: 0.9, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/services/shiftspeed`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/services/shiftconvert`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/services/shiftbuild`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/services/shiftflow`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/insideShiftDeploy`, lastModified: now, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/missions`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/insights`, lastModified: now, priority: 0.9, changeFrequency: 'weekly' },
+    { url: `${BASE_URL}/digital-receptionist`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/ContactUs`, lastModified: now, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/CaseStudies/SlackerIOT`, lastModified: now, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/CaseStudies/BullseyesCase`, lastModified: now, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/CaseStudies/K2TradersCase`, lastModified: now, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/privacy-policy`, lastModified: now, priority: 0.3, changeFrequency: 'yearly' },
+    { url: `${BASE_URL}/terms-of-services`, lastModified: now, priority: 0.3, changeFrequency: 'yearly' },
   ];
 
   const slugs = await getInsightSlugs();
