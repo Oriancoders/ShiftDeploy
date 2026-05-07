@@ -34,6 +34,7 @@ const AiChatbotDemo = lazy(() => import('./Pages/AiChatbotDemo'));
 const ThankYouPage = lazy(() => import('./Pages/ContactUsPage/ThankYouPage'));
 const PrivacyPolicy = lazy(() => import('./Pages/PrivacyPolicy/PrivacyPolicy'));
 const Terms_Of_Services = lazy(() => import('./Pages/Terms_Of_Services/Terms_Of_Services'));
+const NotFound = lazy(() => import('./Pages/NotFoundPage/NotFound'));
 
 function App() {
   return (
@@ -80,6 +81,9 @@ function App() {
             {/* Digital Receptionist */}
             <Route path='/digital-receptionist' element={<AiChatbotLanding/>} />
             <Route path='/digital-receptionist/demo' element={<AiChatbotDemo/>} />
+            
+            {/* Catch All 404 Route */}
+            <Route path='*' element={<NotFound />} />
             
           </Routes>
         </Suspense>
