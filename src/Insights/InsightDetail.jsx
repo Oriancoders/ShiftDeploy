@@ -11,6 +11,7 @@ import Navigation from "../components/Navigation";
 import { isSanityConfigured, sanityClient } from "../lib/sanity";
 import { PortableText } from "@portabletext/react";
 import { portableTextComponents } from "./portableTextComponents.jsx";
+import MediaSlider from "./MediaSlider.jsx";
 // Initialize the image URL builder
 const imageBuilder = sanityClient
   ? imageUrlBuilder(sanityClient)
@@ -394,20 +395,55 @@ const INSIGHT_BY_SLUG_QUERY = `*[
   "date": coalesce(publishedAt, _createdAt),
   tags,
   categories[]->{
-    title
+    title,
+    "slug": slug.current
   },
   author->{
-    name
+    name,
+    jobTitle,
+    "image": image.asset->url,
+    expertise,
+    socialLinks
   },
   "mainImage": coalesce(mainImage, coverImage),
   minutes,
   readTime,
-  body
+  body,
+  seoTitle,
+  seoDescription,
+  focusKeyword,
+  keywords,
+  secondaryKeywords,
+  openGraphImage,
+  socialTitle,
+  socialDescription,
+  canonicalUrl,
+  noIndex,
+  searchIntent,
+  funnelStage,
+  primaryCta,
+  internalLinks[]->{
+    title,
+    "slug": slug.current
+  },
+  theme,
+  featured,
+  status,
+  relatedPosts[]->{
+    title,
+    "slug": slug.current,
+    excerpt,
+    mainImage,
+    "date": coalesce(publishedAt, _createdAt),
+    minutes,
+    readingTime,
+    author->{ name }
+  }
 }`;
 
 const INSIGHTS_QUERY = `*[
   _type in ["insight", "insights", "post", "blogPost"]
-] | order(coalesce(publishedAt, _createdAt) desc) {
+] | order(coalesce(publishedAt, _createdAt) desc) [0...20] {
   _id,
   title,
   "id": coalesce(slug.current, _id),
@@ -416,12 +452,8 @@ const INSIGHTS_QUERY = `*[
   body,
   "date": coalesce(publishedAt, _createdAt),
   tags,
-  categories[]->{
-    title
-  },
-  author->{
-    name
-  },
+  categories[]->{ title },
+  author->{ name },
   minutes,
   readTime
 }`;
@@ -514,19 +546,26 @@ const MoreInsightsSection = ({ insights }) => {
   if (!Array.isArray(insights) || insights.length === 0) return null;
 
   return (
-    <aside className="rounded-2xl bg-white p-5 shadow-[0_1px_0_rgba(12,31,58,0.08),0_10px_30px_rgba(12,31,58,0.06)]">
-      <h2 className="md:text-2xl font-extrabold text-primaryBlue">More Insights from ShiftDeploy</h2>
-      <div className="mt-4 space-y-3">
+    <aside className="rounded-2xl bg-white border border-gray-100 shadow-sm overflow-hidden">
+      <div className="bg-primaryBlue px-5 py-4">
+        <h2 className="text-base font-extrabold text-white">More from ShiftDeploy</h2>
+      </div>
+      <div className="divide-y divide-gray-100">
         {insights.map((item) => (
           <Link
             key={`more-insight-${item.id}`}
             href={`/insights/${item.id}`}
-            className="block rounded-xl border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
+            className="flex gap-3 p-4 hover:bg-gray-50 transition group"
           >
-            <p className="text-xs text-gray-500">
-              {formatDate(item.date)} · {item.minutes} min read
-            </p>
-            <h3 className="mt-1 text-sm font-bold text-primaryBlue leading-snug">{item.title}</h3>
+            <div className="flex-shrink-0 w-1 rounded-full bg-primaryOrange opacity-0 group-hover:opacity-100 transition" />
+            <div className="min-w-0">
+              <h3 className="text-sm font-bold text-primaryBlue leading-snug group-hover:text-primaryOrange transition line-clamp-2">{item.title}</h3>
+              <p className="text-xs text-gray-400 mt-1 flex items-center gap-2">
+                <span>{formatDate(item.date)}</span>
+                <span>·</span>
+                <span>{item.minutes} min read</span>
+              </p>
+            </div>
           </Link>
         ))}
       </div>
@@ -567,9 +606,17 @@ const InsightDetail = ({ slug: slugProp }) => {
           date: doc.date || new Date().toISOString(),
           tags: normalizeTags(doc.tags, doc.categories),
           author: doc?.author?.name || "ShiftDeploy",
+          authorJobTitle: doc?.author?.jobTitle || "",
+          authorImage: doc?.author?.image || null,
+          authorExpertise: doc?.author?.expertise || [],
           mainImage: doc.mainImage || doc.coverImage || null,
           body: Array.isArray(doc.body) ? doc.body : [],
           minutes: getReadMinutes(doc.minutes, doc.readTime, doc.body),
+          internalLinks: Array.isArray(doc.internalLinks) ? doc.internalLinks : [],
+          theme: doc.theme || null,
+          primaryCta: doc.primaryCta || null,
+          relatedPosts: Array.isArray(doc.relatedPosts) ? doc.relatedPosts : [],
+          featured: doc.featured || false,
         });
       } catch (error) {
         if (!isCancelled) {
@@ -646,77 +693,151 @@ const InsightDetail = ({ slug: slugProp }) => {
     <>
       <Navigation />
 
-      <section className="min-h-screen bg-white px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-16">
-        <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-8 xl:col-span-9">
-          <Link
-            href="/insights"
-            className="inline-flex items-center rounded-full px-4 py-2 text-sm font-bold text-primaryBlue bg-white ring-1 ring-gray-200 hover:ring-gray-300"
-          >
-            Back to insights
+      {/* Hero banner */}
+      <div className="relative bg-primaryBlue overflow-hidden">
+        <div className="absolute inset-0 opacity-10" style={{backgroundImage:'radial-gradient(circle,#fff 1px,transparent 1px)',backgroundSize:'32px 32px'}} />
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10" style={{background:'radial-gradient(circle,#F76707,transparent 70%)',transform:'translate(30%,-30%)'}} />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 relative z-10">
+          <Link href="/insights" className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 hover:text-white transition mb-6">
+            ← Back to Insights
           </Link>
+          {post && (
+            <>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {post.tags?.slice(0,3).map((tag) => (
+                  <span key={tag} className="px-3 py-1 text-xs font-bold rounded-full bg-primaryOrange/20 text-orange-300 border border-orange-400/30">{tag}</span>
+                ))}
+              </div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-white max-w-4xl mb-6">
+                {post.title}
+              </h1>
+              {post.excerpt && (
+                <p className="text-lg text-white/70 leading-relaxed max-w-3xl mb-8">{post.excerpt}</p>
+              )}
+              <div className="flex flex-wrap items-center gap-4 text-sm text-white/60 pb-2">
+                <span className="flex items-center gap-2">
+                  {post.authorImage
+                    ? <img src={post.authorImage} alt={post.author} className="w-8 h-8 rounded-full object-cover ring-2 ring-white/30" />
+                    : <span className="w-8 h-8 rounded-full bg-primaryOrange/40 flex items-center justify-center text-white font-bold text-sm">{post.author?.[0]?.toUpperCase()}</span>
+                  }
+                  <span className="font-semibold text-white/80">{post.author}</span>
+                  {post.authorJobTitle && <span className="text-white/50">· {post.authorJobTitle}</span>}
+                </span>
+                <span className="w-px h-4 bg-white/20" />
+                <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4" />{formatDate(post.date)}</span>
+                <span className="w-px h-4 bg-white/20" />
+                <span className="flex items-center gap-1.5"><Clock3 className="w-4 h-4" />{post.minutes} min read</span>
+              </div>
+            </>
+          )}
+          {!post && !isLoading && (
+            <h1 className="text-3xl font-extrabold text-white">Insight</h1>
+          )}
+        </div>
+      </div>
+
+      <section className="min-h-screen bg-gray-50 pb-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="lg:grid lg:grid-cols-12 lg:gap-10 -mt-2">
+          <div className="lg:col-span-8 xl:col-span-9">
 
           {isLoading && (
-            <div className="mt-2 sm:mt-6 rounded-2xl bg-white p-6 text-gray-600 shadow-[0_1px_0_rgba(12,31,58,0.08),0_10px_30px_rgba(12,31,58,0.06)]">
-              Loading insight...
+            <div className="mt-8 rounded-2xl bg-white p-8 text-gray-500 shadow-sm border border-gray-100 text-center">
+              <div className="animate-pulse space-y-3">
+                <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto" />
+                <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto" />
+                <div className="h-4 bg-gray-200 rounded w-2/3 mx-auto" />
+              </div>
+              <p className="mt-4 text-sm text-gray-400">Loading insight…</p>
             </div>
           )}
 
           {loadError && (
-            <div className="mt-2 sm:mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-6 text-amber-800">
+            <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-6 text-amber-800">
               {loadError}
             </div>
           )}
 
           {!isLoading && !post && (
-            <div className="mt-2 sm:mt-6 rounded-2xl border border-gray-200 bg-white p-6 text-gray-700">
+            <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-8 text-gray-600 text-center">
               Insight not found.
             </div>
           )}
 
           {post && (
-            <article className="mt-2 sm:mt-6 rounded-2xl   overflow-hidden">
+            <article className="mt-8 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
               {heroImage && (
-                <figure className="mb-6 overflow-hidden rounded-xl">
+                <figure className="overflow-hidden">
                   <img
                     src={getImageUrl(heroImage, 1400)}
                     alt={heroImage.alt || post.title || "Insight cover image"}
-                    className="w-full h-auto object-cover"
+                    className="w-full h-64 sm:h-80 lg:h-96 object-cover"
                   />
                 </figure>
               )}
 
-              <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight text-primaryBlue break-words">
-                {post.title}
-              </h1>
-
-              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500">
-                <span className="inline-flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-gray-400" />
-                  {formatDate(post.date)}
-                </span>
-                <span className="text-gray-300">•</span>
-                <span className="inline-flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5 text-gray-400" />
-                  {post.author}
-                </span>
-                <span className="text-gray-300">•</span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Clock3 className="w-3.5 h-3.5 text-gray-400" />
-                  {post.minutes} min read
-                </span>
-              </div>
-
-              {post.excerpt && (
-                <p className="mt-6 text-base sm:text-lg leading-relaxed text-gray-700">
-                  {post.excerpt}
-                </p>
-              )}
-
               {Array.isArray(post.body) && post.body.length > 0 && (
-                <div className="mt-8 space-y-4 prose prose-sm max-w-none overflow-hidden">
-                  {post.body.map((block) => {
+                <div className="px-6 sm:px-10 pb-10 pt-8 max-w-none overflow-hidden space-y-2">
+                  {/* Group consecutive list items into proper ul/ol wrappers */}
+                  {(() => {
+                    const grouped = [];
+                    let i = 0;
+                    while (i < post.body.length) {
+                      const block = post.body[i];
+                      if (block?.listItem === "bullet") {
+                        const items = [];
+                        while (i < post.body.length && post.body[i]?.listItem === "bullet") {
+                          items.push(post.body[i]);
+                          i++;
+                        }
+                        grouped.push({ _type: "__bulletList", items, _key: items[0]._key + "_list" });
+                      } else if (block?.listItem === "number") {
+                        const items = [];
+                        while (i < post.body.length && post.body[i]?.listItem === "number") {
+                          items.push(post.body[i]);
+                          i++;
+                        }
+                        grouped.push({ _type: "__numberList", items, _key: items[0]._key + "_list" });
+                      } else {
+                        grouped.push(block);
+                        i++;
+                      }
+                    }
+                    return grouped;
+                  })().map((block) => {
                     if (!block) return null;
+
+                    if (block._type === "__bulletList") {
+                      return (
+                        <ul key={block._key} className="my-4 space-y-2 pl-0">
+                          {block.items.map((item) => {
+                            const textContent = renderTextWithMarks(item.children, item.markDefs);
+                            return (
+                              <li key={item._key} className="flex items-start gap-3 text-base sm:text-[17px] leading-[1.85] text-gray-700">
+                                <span className="mt-2.5 w-2 h-2 rounded-full bg-primaryOrange flex-shrink-0" />
+                                <span>{textContent}</span>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      );
+                    }
+
+                    if (block._type === "__numberList") {
+                      return (
+                        <ol key={block._key} className="my-4 space-y-2 pl-0">
+                          {block.items.map((item, idx) => {
+                            const textContent = renderTextWithMarks(item.children, item.markDefs);
+                            return (
+                              <li key={item._key} className="flex items-start gap-3 text-base sm:text-[17px] leading-[1.85] text-gray-700">
+                                <span className="mt-1 w-6 h-6 rounded-full bg-primaryBlue text-white text-xs font-bold flex items-center justify-center flex-shrink-0">{idx + 1}</span>
+                                <span>{textContent}</span>
+                              </li>
+                            );
+                          })}
+                        </ol>
+                      );
+                    }
 
                     // ============ IMAGE BLOCK ============
                     if (block._type === "imageBlock") {
@@ -792,12 +913,103 @@ const InsightDetail = ({ slug: slugProp }) => {
                       );
                     }
 
-                    // ============ CODE BLOCK ============
+                    // ============ CODE BLOCK (legacy) ============
                     if (block._type === "code") {
+                      return <div key={block._key}>{renderCode(block)}</div>;
+                    }
+
+                    // ============ CODE BLOCK (new @sanity/code-input) ============
+                    if (block._type === "codeBlock") {
+                      const codeData = block.code || {};
+                      return <div key={block._key}>{renderCode({
+                        code: codeData.code || "",
+                        language: codeData.language || "javascript",
+                        filename: codeData.filename,
+                        showLineNumbers: true,
+                        caption: block.caption,
+                      })}</div>;
+                    }
+
+                    // ============ STATS GRID ============
+                    if (block._type === "statsGrid") {
+                      const colMap = {"2":"grid-cols-2","3":"grid-cols-3","4":"grid-cols-4"};
+                      const colClass = colMap[block.columns] || "grid-cols-3";
+                      const bg = block.backgroundColor?.hex || "#F8FAFC";
+                      const accent = block.accentColor?.hex || "#F76707";
                       return (
-                        <div key={block._key}>
-                          {renderCode(block)}
+                        <div key={block._key} className="my-8">
+                          {block.title && <h3 className="text-xl font-bold text-primaryBlue mb-4">{block.title}</h3>}
+                          <div className={`grid ${colClass} gap-4`}>
+                            {block.stats?.map((stat, idx) => (
+                              <div key={idx} className="rounded-xl p-5 text-center border border-gray-100 shadow-sm" style={{background: bg}}>
+                                <div className="text-3xl sm:text-4xl font-extrabold" style={{color: accent}}>{stat.value}</div>
+                                <div className="text-sm font-semibold text-gray-700 mt-1">{stat.label}</div>
+                                {stat.description && <div className="text-xs text-gray-500 mt-1">{stat.description}</div>}
+                              </div>
+                            ))}
+                          </div>
                         </div>
+                      );
+                    }
+
+                    // ============ PROS & CONS (prosCons) ============
+                    if (block._type === "prosCons") {
+                      const posColor = block.positiveColor?.hex || "#16A34A";
+                      const negColor = block.negativeColor?.hex || "#DC2626";
+                      return (
+                        <div key={block._key} className="my-8">
+                          {block.title && <h3 className="text-xl font-bold text-primaryBlue mb-4">{block.title}</h3>}
+                          <div className="grid sm:grid-cols-2 gap-4">
+                            {Array.isArray(block.pros) && block.pros.length > 0 && (
+                              <div className="rounded-xl border p-5" style={{borderColor: posColor + "44", background: posColor + "0d"}}>
+                                <h4 className="font-bold mb-3" style={{color: posColor}}>{block.prosTitle || "Pros"}</h4>
+                                <ul className="space-y-2">
+                                  {block.pros.map((pro, i) => (
+                                    <li key={i} className="flex items-start gap-2 text-sm text-gray-800">
+                                      <span className="mt-0.5 font-bold" style={{color: posColor}}>✓</span>{pro}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                            {Array.isArray(block.cons) && block.cons.length > 0 && (
+                              <div className="rounded-xl border p-5" style={{borderColor: negColor + "44", background: negColor + "0d"}}>
+                                <h4 className="font-bold mb-3" style={{color: negColor}}>{block.consTitle || "Cons"}</h4>
+                                <ul className="space-y-2">
+                                  {block.cons.map((con, i) => (
+                                    <li key={i} className="flex items-start gap-2 text-sm text-gray-800">
+                                      <span className="mt-0.5 font-bold" style={{color: negColor}}>✗</span>{con}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    }
+
+                    // ============ EMBED BLOCK ============
+                    if (block._type === "embed") {
+                      const embedUrl = getVideoEmbedUrl(block.url);
+                      const aspectMap = {"16:9":"56.25%","4:3":"75%","1:1":"100%"};
+                      const paddingTop = aspectMap[block.aspectRatio] || "56.25%";
+                      if (!embedUrl && block.provider !== "custom") return null;
+                      return (
+                        <figure key={block._key} className="my-6 overflow-hidden rounded-xl shadow-sm">
+                          <div className="relative w-full" style={{paddingTop}}>
+                            <iframe
+                              src={embedUrl || block.url}
+                              className="absolute inset-0 w-full h-full"
+                              frameBorder="0"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                            />
+                          </div>
+                          {block.caption && (
+                            <figcaption className="px-4 py-2 text-sm text-gray-500 bg-gray-50 text-center">{block.caption}</figcaption>
+                          )}
+                        </figure>
                       );
                     }
 
@@ -828,6 +1040,156 @@ const InsightDetail = ({ slug: slugProp }) => {
                       );
                     }
 
+                    // ============ FAQ BLOCK ============
+                    if (block._type === "faq") {
+                      return (
+                        <div key={block._key} className="my-8 space-y-3">
+                          {block.title && <h3 className="text-2xl font-bold text-primaryBlue mb-4">{block.title}</h3>}
+                          {Array.isArray(block.items) && block.items.map((item, idx) => (
+                            <details key={idx} className="group border border-gray-200 rounded-lg overflow-hidden">
+                              <summary className="flex items-center justify-between px-5 py-4 cursor-pointer font-semibold text-primaryBlue bg-gray-50 hover:bg-gray-100 list-none">
+                                {item.question}
+                                <span className="ml-3 text-primaryOrange group-open:rotate-180 transition-transform">▼</span>
+                              </summary>
+                              <div className="px-5 py-4 text-gray-700 text-base leading-relaxed bg-white">
+                                {item.answer}
+                              </div>
+                            </details>
+                          ))}
+                        </div>
+                      );
+                    }
+
+                    // ============ TESTIMONIAL BLOCK ============
+                    if (block._type === "testimonial") {
+                      return (
+                        <figure key={block._key} className="my-8 rounded-xl bg-blue-50 border border-blue-100 p-6 relative">
+                          <blockquote className="text-lg italic text-gray-800 leading-relaxed mb-4">
+                            &ldquo;{block.quote}&rdquo;
+                          </blockquote>
+                          <figcaption className="flex items-center gap-3">
+                            {block.avatar && (
+                              <img src={getImageUrl(block.avatar, 80)} alt={block.name || "Testimonial"} className="w-10 h-10 rounded-full object-cover" />
+                            )}
+                            <div>
+                              {block.name && <p className="font-bold text-primaryBlue">{block.name}</p>}
+                              {block.role && <p className="text-sm text-gray-500">{block.role}</p>}
+                            </div>
+                            {block.rating > 0 && (
+                              <div className="ml-auto text-yellow-400 text-sm">
+                                {"★".repeat(block.rating)}{"☆".repeat(5 - block.rating)}
+                              </div>
+                            )}
+                          </figcaption>
+                        </figure>
+                      );
+                    }
+
+                    // ============ PROS & CONS BLOCK ============
+                    if (block._type === "prosAndCons") {
+                      return (
+                        <div key={block._key} className="my-8 grid sm:grid-cols-2 gap-4">
+                          {Array.isArray(block.pros) && block.pros.length > 0 && (
+                            <div className="rounded-xl bg-green-50 border border-green-200 p-5">
+                              <h4 className="font-bold text-green-800 mb-3 flex items-center gap-2">
+                                <span className="text-green-500">✓</span> {block.prosLabel || "Pros"}
+                              </h4>
+                              <ul className="space-y-2">
+                                {block.pros.map((pro, idx) => (
+                                  <li key={idx} className="flex items-start gap-2 text-green-900 text-sm">
+                                    <span className="text-green-500 mt-0.5">✓</span>{pro}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                          {Array.isArray(block.cons) && block.cons.length > 0 && (
+                            <div className="rounded-xl bg-red-50 border border-red-200 p-5">
+                              <h4 className="font-bold text-red-800 mb-3 flex items-center gap-2">
+                                <span className="text-red-500">✗</span> {block.consLabel || "Cons"}
+                              </h4>
+                              <ul className="space-y-2">
+                                {block.cons.map((con, idx) => (
+                                  <li key={idx} className="flex items-start gap-2 text-red-900 text-sm">
+                                    <span className="text-red-500 mt-0.5">✗</span>{con}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                          {block.verdict && (
+                            <div className="sm:col-span-2 rounded-lg bg-gray-50 border border-gray-200 p-4 text-sm text-gray-700">
+                              <span className="font-semibold text-primaryBlue">Verdict: </span>{block.verdict}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    }
+
+                    // ============ BUTTON GROUP BLOCK ============
+                    if (block._type === "buttonGroup") {
+                      const alignClass = { left: "justify-start", center: "justify-center", right: "justify-end" }[block.alignment] || "justify-center";
+                      return (
+                        <div key={block._key} className={`my-6 flex flex-wrap gap-3 ${alignClass}`}>
+                          {Array.isArray(block.buttons) && block.buttons.map((btn, idx) => {
+                            const btnClass = {
+                              primary: "bg-primaryBlue text-white hover:bg-blue-900",
+                              secondary: "bg-primaryOrange text-white hover:bg-orange-700",
+                              outline: "border-2 border-primaryBlue text-primaryBlue hover:bg-blue-50",
+                              ghost: "text-primaryBlue hover:underline",
+                            }[btn.style] || "bg-primaryBlue text-white";
+                            return (
+                              <a
+                                key={idx}
+                                href={btn.url || "#"}
+                                target={btn.openInNewTab ? "_blank" : "_self"}
+                                rel={btn.openInNewTab ? "noopener noreferrer" : ""}
+                                className={`inline-block px-5 py-2.5 rounded-lg font-semibold text-sm transition ${btnClass}`}
+                              >
+                                {btn.text}
+                              </a>
+                            );
+                          })}
+                        </div>
+                      );
+                    }
+
+                    // ============ THEMED SECTION BLOCK ============
+                    if (block._type === "themedSection") {
+                      const themeStyles = {
+                        light: "bg-gray-50 text-gray-900",
+                        dark: "bg-primaryBlue text-white",
+                        brand: "bg-primaryOrange text-white",
+                        gradient: "bg-gradient-to-br from-primaryBlue to-blue-800 text-white",
+                      };
+                      const sectionClass = themeStyles[block.theme] || themeStyles.light;
+                      const paddingClass = { small: "p-4", medium: "p-6", large: "p-10" }[block.padding] || "p-6";
+                      return (
+                        <section key={block._key} className={`my-8 rounded-xl ${sectionClass} ${paddingClass}`}>
+                          {block.heading && (
+                            <h3 className="text-xl font-bold mb-3">{block.heading}</h3>
+                          )}
+                          {Array.isArray(block.content) && block.content.map((innerBlock) => {
+                            if (innerBlock._type === "block" && innerBlock.children) {
+                              return (
+                                <p key={innerBlock._key} className="mb-2 leading-relaxed">
+                                  {renderTextWithMarks(innerBlock.children, innerBlock.markDefs)}
+                                </p>
+                              );
+                            }
+                            return null;
+                          })}
+                        </section>
+                      );
+                    }
+
+                    // ============ MEDIA SLIDER ============
+                    if (block._type === "mediaSlider") {
+                      return (
+                        <MediaSlider key={block._key} block={block} getImageUrl={getImageUrl} />
+                      );
+                    }
+
                     // ============ DIVIDER BLOCK ============
                     if (block._type === "divider") {
                       const thicknessClass = {
@@ -853,82 +1215,48 @@ const InsightDetail = ({ slug: slugProp }) => {
 
                     // ============ TEXT BLOCK ============
                     if (block._type === "block" || !block._type) {
-                      if (!block.children || !Array.isArray(block.children)) {
-                        return null;
-                      }
+                      if (!block.children || !Array.isArray(block.children)) return null;
 
                       const textContent = renderTextWithMarks(block.children, block.markDefs);
                       const alignmentClass = getAlignmentClass(block);
 
-                      // Blockquote style
                       if (block.style === "blockquote") {
                         return (
-                          <blockquote
-                            key={block._key}
-                            className={`border-l-4 border-primaryBlue pl-4 italic my-4 text-gray-700 break-words ${alignmentClass}`}
-                          >
+                          <blockquote key={block._key} className={`my-6 border-l-4 border-primaryOrange bg-orange-50 pl-5 pr-4 py-4 rounded-r-xl italic text-gray-700 text-lg leading-relaxed break-words ${alignmentClass}`}>
                             {textContent}
                           </blockquote>
                         );
                       }
-
-                      // Heading 2
                       if (block.style === "h2") {
                         return (
-                          <h2
-                            key={block._key}
-                            className={`mt-8 mb-4 text-3xl font-bold text-primaryBlue break-words ${alignmentClass}`}
-                          >
+                          <h2 key={block._key} className={`mt-10 mb-3 text-2xl sm:text-3xl font-extrabold text-primaryBlue leading-tight break-words border-b-2 border-gray-100 pb-3 ${alignmentClass}`}>
                             {textContent}
                           </h2>
                         );
                       }
-
-                      // Heading 3
                       if (block.style === "h3") {
                         return (
-                          <h3
-                            key={block._key}
-                            className={`mt-6 mb-3 text-2xl font-bold text-primaryBlue break-words ${alignmentClass}`}
-                          >
+                          <h3 key={block._key} className={`mt-8 mb-2 text-xl sm:text-2xl font-bold text-primaryBlue leading-snug break-words ${alignmentClass}`}>
+                            <span className="inline-block w-1 h-6 bg-primaryOrange rounded mr-3 align-middle" />
                             {textContent}
                           </h3>
                         );
                       }
-
-                      // Heading 4
                       if (block.style === "h4") {
                         return (
-                          <h4
-                            key={block._key}
-                            className={`mt-5 mb-2 text-xl font-bold text-primaryBlue break-words ${alignmentClass}`}
-                          >
+                          <h4 key={block._key} className={`mt-6 mb-2 text-lg sm:text-xl font-bold text-gray-800 break-words ${alignmentClass}`}>
                             {textContent}
                           </h4>
                         );
                       }
-
-                      // Bullet list
-                      if (block.listItem === "bullet") {
-                        return (
-                          <li
-                            key={block._key}
-                            className="ml-6 text-base sm:text-lg leading-relaxed text-gray-800 list-disc break-words"
-                          >
-                            {textContent}
-                          </li>
-                        );
-                      }
-
                       // Normal paragraph
+                      const isEmpty = block.children?.every(c => !c?.text?.trim());
+                      if (isEmpty) return <div key={block._key} className="h-3" />;
                       return (
-                        <p
-                            key={block._key}
-                            className={`text-base sm:text-lg leading-relaxed text-gray-800 break-words ${alignmentClass}`}
-                          >
-                            {textContent}
-                          </p>
-                        );
+                        <p key={block._key} className={`text-base sm:text-[17px] leading-[1.85] text-gray-700 break-words ${alignmentClass}`}>
+                          {textContent}
+                        </p>
+                      );
                     }
 
                     return null;
@@ -936,29 +1264,63 @@ const InsightDetail = ({ slug: slugProp }) => {
                 </div>
               )}
 
-              <div className="mt-6 flex flex-wrap gap-2">
-                {post.tags?.map((tag) => (
-                  <span
-                    key={`${post.id}-${tag}`}
-                    className="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-700 break-all"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              {/* Tags footer */}
+              {post.tags?.length > 0 && (
+                <div className="px-6 sm:px-10 pb-8 pt-4 border-t border-gray-100 mt-4 flex flex-wrap gap-2">
+                  <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider self-center mr-1">Tags:</span>
+                  {post.tags.map((tag) => (
+                    <span key={`${post.id}-${tag}`} className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-primaryBlue border border-blue-100 break-all">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Author card */}
+              <div className="mx-6 sm:mx-10 mb-6 mt-2 rounded-xl bg-gradient-to-r from-primaryBlue/5 to-blue-50 border border-blue-100 p-5 flex items-center gap-4">
+                {post.authorImage
+                  ? <img src={post.authorImage} alt={post.author} className="w-14 h-14 rounded-full object-cover ring-2 ring-primaryBlue/20 flex-shrink-0" />
+                  : <span className="w-14 h-14 rounded-full bg-primaryBlue flex items-center justify-center text-white font-extrabold text-xl flex-shrink-0">{post.author?.[0]?.toUpperCase()}</span>
+                }
+                <div>
+                  <p className="font-bold text-primaryBlue text-base">{post.author}</p>
+                  {post.authorJobTitle && <p className="text-sm text-gray-500 mt-0.5">{post.authorJobTitle}</p>}
+                  <p className="text-xs text-gray-400 mt-1">ShiftDeploy Team</p>
+                </div>
               </div>
+
+              {/* Related Posts */}
+              {Array.isArray(post.relatedPosts) && post.relatedPosts.length > 0 && (
+                <div className="mx-6 sm:mx-10 mb-8">
+                  <h2 className="text-lg font-extrabold text-primaryBlue mb-4">Related Posts</h2>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {post.relatedPosts.map((related) => (
+                      <Link key={related.slug} href={`/insights/${related.slug}`} className="group rounded-xl border border-gray-100 bg-gray-50 hover:bg-white hover:border-primaryBlue/20 hover:shadow-sm p-4 transition">
+                        {related.mainImage && (
+                          <img src={getImageUrl(related.mainImage, 400)} alt={related.title} className="w-full h-32 object-cover rounded-lg mb-3" />
+                        )}
+                        <p className="text-xs text-gray-400 mb-1">{formatDate(related.date)}</p>
+                        <h3 className="font-bold text-sm text-primaryBlue group-hover:text-primaryOrange transition leading-snug line-clamp-2">{related.title}</h3>
+                        {related.excerpt && <p className="text-xs text-gray-500 mt-1 line-clamp-2">{related.excerpt}</p>}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             </article>
           )}
           </div>
 
-          <div className="hidden lg:block lg:col-span-4 xl:col-span-3">
-            <div className="lg:sticky lg:top-28">
+          <div className="hidden lg:block lg:col-span-4 xl:col-span-3 mt-8">
+            <div className="lg:sticky lg:top-28 space-y-6">
               <MoreInsightsSection insights={moreInsights} />
             </div>
           </div>
 
-          <div className="mt-6 lg:hidden">
+          <div className="mt-8 lg:hidden">
             <MoreInsightsSection insights={moreInsights} />
           </div>
+        </div>
         </div>
       </section>
 

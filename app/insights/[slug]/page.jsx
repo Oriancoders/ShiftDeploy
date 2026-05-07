@@ -9,7 +9,7 @@ async function getPost(slug) {
   if (!isSanityConfigured || !sanityClient) return null;
   try {
     return await sanityClient.fetch(
-      `*[_type == "post" && slug.current == $slug][0]{
+      `*[_type in ["post","insight","insights","blogPost"] && slug.current == $slug][0]{
         title,
         excerpt,
         mainImage,
@@ -19,7 +19,16 @@ async function getPost(slug) {
         categories[]->{ title },
         minutes,
         readTime,
-        body
+        body,
+        seoTitle,
+        seoDescription,
+        focusKeyword,
+        keywords,
+        openGraphImage,
+        socialTitle,
+        socialDescription,
+        canonicalUrl,
+        noIndex
       }`,
       { slug }
     );
@@ -39,30 +48,44 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const ogImage =
+  const metaTitle = post.seoTitle || `${post.title} | ShiftDeploy Insights`;
+  const metaDesc = post.seoDescription || post.excerpt || `Read ${post.title} on the ShiftDeploy blog.`;
+  const canonicalHref = post.canonicalUrl || `https://shiftdeploy.com/insights/${slug}`;
+
+  const sanityOgImage =
+    post.openGraphImage && imageBuilder
+      ? imageBuilder.image(post.openGraphImage).width(1200).height(630).auto('format').url()
+      : null;
+  const mainOgImage =
     post.mainImage && imageBuilder
       ? imageBuilder.image(post.mainImage).width(1200).height(630).auto('format').url()
-      : '/og-image.png';
+      : null;
+  const ogImage = sanityOgImage || mainOgImage || '/og-image.png';
+
+  const ogTitle = post.socialTitle || post.title;
+  const ogDesc = post.socialDescription || metaDesc;
 
   return {
-    title: `${post.title} | ShiftDeploy Insights`,
-    description: post.excerpt || `Read ${post.title} on the ShiftDeploy blog.`,
-    alternates: { canonical: `https://shiftdeploy.com/insights/${slug}` },
+    title: metaTitle,
+    description: metaDesc,
+    keywords: post.keywords?.length ? post.keywords : post.focusKeyword ? [post.focusKeyword] : undefined,
+    alternates: { canonical: canonicalHref },
+    robots: post.noIndex ? { index: false, follow: false } : undefined,
     openGraph: {
-      title: post.title,
-      description: post.excerpt || `Read ${post.title} on the ShiftDeploy blog.`,
-      url: `https://shiftdeploy.com/insights/${slug}`,
+      title: ogTitle,
+      description: ogDesc,
+      url: canonicalHref,
       type: 'article',
       publishedTime: post.publishedAt,
       modifiedTime: post._updatedAt || post.publishedAt,
       authors: post.author?.name ? [post.author.name] : ['ShiftDeploy'],
       tags: post.categories?.map((c) => c.title) || [],
-      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
+      images: [{ url: ogImage, width: 1200, height: 630, alt: ogTitle }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt || `Read ${post.title} on the ShiftDeploy blog.`,
+      title: ogTitle,
+      description: ogDesc,
       images: [ogImage],
     },
   };

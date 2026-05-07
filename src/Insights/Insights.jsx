@@ -1,20 +1,22 @@
 'use client';
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Calendar,
-  User,
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight,
-  Clock3,
-  Sparkles,
-} from "lucide-react";
+import { Calendar, User, ArrowRight, ChevronLeft, ChevronRight, Clock3, Sparkles } from "lucide-react";
 import Link from "next/link";
+import imageUrlBuilder from "@sanity/image-url";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import { isSanityConfigured, sanityClient } from "../lib/sanity";
 
+// ── Image builder ──────────────────────────────────────────────────────────────
+const imageBuilder = sanityClient ? imageUrlBuilder(sanityClient) : null;
+const getImageUrl = (image, width = 800) => {
+  if (!image || !imageBuilder) return null;
+  try { return imageBuilder.image(image).width(width).auto("format").url(); }
+  catch { return null; }
+};
+
+// ── GROQ query — now includes mainImage ──────────────────────────────────────
 const INSIGHTS_QUERY = `*[
   _type in ["insight", "insights", "post", "blogPost"]
 ] | order(coalesce(publishedAt, _createdAt) desc) {
@@ -23,467 +25,463 @@ const INSIGHTS_QUERY = `*[
   "id": coalesce(slug.current, _id),
   excerpt,
   summary,
-  body,
   "date": coalesce(publishedAt, _createdAt),
   tags,
-  categories[]->{
-    title
-  },
-  author->{
-    name
-  },
+  categories[]->{ title },
+  author->{ name },
+  mainImage,
   minutes,
   readTime,
-  featured
+  featured,
+  status
 }`;
 
-const getBodyPreview = (body, words = 24) => {
-  if (!Array.isArray(body)) return "";
-  const text = body
-    .map((block) => {
-      if (!block || !Array.isArray(block.children)) return "";
-      return block.children
-        .map((child) => (typeof child?.text === "string" ? child.text : ""))
-        .join(" ");
-    })
-    .join(" ")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  if (!text) return "";
-  const parts = text.split(" ");
-  if (parts.length <= words) return text;
-  return `${parts.slice(0, words).join(" ")}...`;
-};
-
-const getPortableTextWordCount = (body) => {
-  if (!Array.isArray(body)) return 0;
-  const text = body
-    .map((block) => {
-      if (!block || !Array.isArray(block.children)) return "";
-      return block.children
-        .map((child) => (typeof child?.text === "string" ? child.text : ""))
-        .join(" ");
-    })
-    .join(" ")
-    .replace(/\s+/g, " ")
-    .trim();
-
-  if (!text) return 0;
-  return text.split(" ").length;
-};
-
-const getReadMinutes = (minutes, readTime, body) => {
-  const fromMinutes = Number(minutes);
-  if (Number.isFinite(fromMinutes) && fromMinutes > 0) return Math.round(fromMinutes);
-
-  const fromReadTime = Number(readTime);
-  if (Number.isFinite(fromReadTime) && fromReadTime > 0) return Math.round(fromReadTime);
-
-  const words = getPortableTextWordCount(body);
-  if (words <= 0) return 1;
-  return Math.max(1, Math.ceil(words / 200));
-};
-
+// ── Helpers ───────────────────────────────────────────────────────────────────
 const normalizeTags = (rawTags, rawCategories) => {
   const fromTags = Array.isArray(rawTags)
-    ? rawTags
-        .map((tag) => {
-          if (typeof tag === "string") return tag;
-          if (tag && typeof tag.title === "string") return tag.title;
-          if (tag && typeof tag.value === "string") return tag.value;
-          return "";
-        })
-        .filter(Boolean)
+    ? rawTags.map((t) => (typeof t === "string" ? t : t?.title || t?.value || "")).filter(Boolean)
     : [];
-
-  const fromCategories = Array.isArray(rawCategories)
-    ? rawCategories
-        .map((cat) => (cat && typeof cat.title === "string" ? cat.title : ""))
-        .filter(Boolean)
+  const fromCats = Array.isArray(rawCategories)
+    ? rawCategories.map((c) => c?.title || "").filter(Boolean)
     : [];
-
-  const combined = [...fromTags, ...fromCategories];
+  const combined = [...fromTags, ...fromCats];
   return combined.length > 0 ? Array.from(new Set(combined)) : ["Insights"];
 };
 
-// ---------------------------
-// Helpers
-// ---------------------------
 const formatDate = (iso) => {
   const d = new Date(iso);
-  const yyyy = d.getFullYear();
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
-  const dd = String(d.getDate()).padStart(2, "0");
-  return `${yyyy}-${mm}-${dd}`;
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 };
 
-const slugToInsightUrl = (id) => `/insights/${id}`;
+const getReadMinutes = (minutes, readTime) => {
+  const m = Number(minutes);
+  if (Number.isFinite(m) && m > 0) return Math.round(m);
+  const rt = Number(readTime);
+  if (Number.isFinite(rt) && rt > 0) return Math.round(rt);
+  return 5;
+};
 
 const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 
-// ---------------------------
-// Premium UI Primitives
-// ---------------------------
-const TagLabel = ({ text }) => (
-  <span className="inline-flex items-center gap-2 text-xs font-semibold text-gray-700">
+// ── Category pill ─────────────────────────────────────────────────────────────
+const CategoryPill = ({ text }) => (
+  <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-primaryOrange bg-orange-50 border border-orange-100 px-2.5 py-0.5 rounded-full">
     <span className="w-1.5 h-1.5 rounded-full bg-primaryOrange" />
     {text}
   </span>
 );
 
-const MetaRow = ({ date, author, minutes }) => (
-  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500">
-    <span className="inline-flex items-center gap-1.5">
-      <Calendar className="w-3.5 h-3.5 text-gray-400" />
-      {formatDate(date)}
-    </span>
-    <span className="text-gray-300">•</span>
-    <span className="inline-flex items-center gap-1.5">
-      <User className="w-3.5 h-3.5 text-gray-400" />
-      {author}
-    </span>
-    <span className="text-gray-300">•</span>
-    <span className="inline-flex items-center gap-1.5">
-      <Clock3 className="w-3.5 h-3.5 text-gray-400" />
-      {minutes} min read
-    </span>
-  </div>
-);
+// ── Featured hero card (large) ────────────────────────────────────────────────
+const HeroCard = ({ post }) => {
+  const thumb = post.mainImage ? getImageUrl(post.mainImage, 1200) : null;
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45 }}
+      className="group relative overflow-hidden rounded-2xl bg-primaryBlue shadow-xl"
+    >
+      <Link href={`/insights/${post.id}`} className="block">
+        {/* Background image */}
+        {thumb && (
+          <div className="absolute inset-0">
+            <img src={thumb} alt={post.title} className="w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-primaryBlue via-primaryBlue/80 to-primaryBlue/40" />
+          </div>
+        )}
+        {!thumb && (
+          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle,#fff 1px,transparent 1px)", backgroundSize: "28px 28px" }} />
+        )}
 
-const InsightCard = ({ post }) => (
-  <motion.article
-    initial={{ opacity: 0, y: 10 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{ duration: 0.32 }}
-    className="group relative overflow-hidden rounded-2xl bg-white shadow-[0_1px_0_rgba(12,31,58,0.08),0_10px_30px_rgba(12,31,58,0.06)] hover:shadow-[0_1px_0_rgba(12,31,58,0.10),0_18px_40px_rgba(12,31,58,0.10)] transition-shadow"
-  >
-    {/* subtle top accent */}
-    <div className="h-1 w-full bg-gradient-to-r from-primaryBlue to-primaryOrange opacity-70" />
+        <div className="relative z-10 p-7 sm:p-10 min-h-[340px] flex flex-col justify-end">
+          <div className="flex flex-wrap gap-2 mb-3">
+            <span className="text-[11px] font-bold bg-primaryOrange text-white px-2.5 py-0.5 rounded-full">⭐ Featured</span>
+            {post.tags.slice(0, 2).map((t) => (
+              <span key={t} className="text-[11px] font-bold bg-white/10 text-white/80 border border-white/20 px-2.5 py-0.5 rounded-full">{t}</span>
+            ))}
+          </div>
 
-    <div className="p-5 sm:p-7">
-      {/* Kicker */}
-      <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-gray-50 px-3 py-1 text-xs font-bold text-gray-700">
-        <Sparkles className="w-3.5 h-3.5 text-primaryOrange" />
-        Audit memo
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight mb-3 group-hover:text-orange-200 transition-colors">
+            {post.title}
+          </h2>
+
+          {post.excerpt && (
+            <p className="text-white/70 text-sm sm:text-base leading-relaxed mb-5 line-clamp-2">{post.excerpt}</p>
+          )}
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3 text-xs text-white/60">
+              <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" />{formatDate(post.date)}</span>
+              <span>·</span>
+              <span className="flex items-center gap-1.5"><User className="w-3.5 h-3.5" />{post.author}</span>
+              <span>·</span>
+              <span className="flex items-center gap-1.5"><Clock3 className="w-3.5 h-3.5" />{post.minutes} min</span>
+            </div>
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primaryOrange bg-primaryOrange/10 border border-primaryOrange/30 px-3 py-1.5 rounded-full group-hover:bg-primaryOrange group-hover:text-white transition">
+              Read <ArrowRight className="w-3.5 h-3.5" />
+            </span>
+          </div>
+        </div>
+      </Link>
+    </motion.article>
+  );
+};
+
+// ── Standard post card ────────────────────────────────────────────────────────
+const InsightCard = ({ post, index = 0 }) => {
+  const thumb = post.mainImage ? getImageUrl(post.mainImage, 640) : null;
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.35, delay: index * 0.06 }}
+      className="group relative bg-white rounded-2xl overflow-hidden shadow-[0_1px_0_rgba(12,31,58,0.07),0_6px_24px_rgba(12,31,58,0.07)] hover:shadow-[0_2px_0_rgba(12,31,58,0.10),0_16px_40px_rgba(12,31,58,0.12)] transition-all duration-300 hover:-translate-y-0.5 flex flex-col"
+    >
+      {/* Thumbnail */}
+      <Link href={`/insights/${post.id}`} className="block overflow-hidden bg-gray-100 relative aspect-[16/9] flex-shrink-0">
+        {thumb ? (
+          <img
+            src={thumb}
+            alt={post.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-primaryBlue/10 to-primaryBlue/5 flex items-center justify-center">
+            <span className="text-4xl opacity-20">📄</span>
+          </div>
+        )}
+        {/* Reading time badge */}
+        <span className="absolute top-3 right-3 text-[11px] font-bold bg-black/50 backdrop-blur-sm text-white px-2 py-0.5 rounded-full flex items-center gap-1">
+          <Clock3 className="w-3 h-3" />{post.minutes} min
+        </span>
+        {post.featured && (
+          <span className="absolute top-3 left-3 text-[11px] font-bold bg-primaryOrange text-white px-2 py-0.5 rounded-full">⭐ Featured</span>
+        )}
+      </Link>
+
+      {/* Content */}
+      <div className="flex flex-col flex-1 p-5">
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5 mb-3">
+          {post.tags.slice(0, 2).map((t) => (
+            <CategoryPill key={t} text={t} />
+          ))}
+        </div>
+
+        {/* Title */}
+        <h2 className="font-extrabold text-primaryBlue leading-snug text-base sm:text-lg group-hover:text-primaryOrange transition-colors duration-200 line-clamp-2 mb-2">
+          <Link href={`/insights/${post.id}`}>{post.title}</Link>
+        </h2>
+
+        {/* Excerpt */}
+        {post.excerpt && (
+          <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 flex-1 mb-4">{post.excerpt}</p>
+        )}
+
+        {/* Footer */}
+        <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-50">
+          <div className="flex items-center gap-2 text-[11px] text-gray-400">
+            <span className="flex items-center gap-1"><User className="w-3 h-3" />{post.author}</span>
+            <span>·</span>
+            <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{formatDate(post.date)}</span>
+          </div>
+          <Link
+            href={`/insights/${post.id}`}
+            className="inline-flex items-center gap-1 text-xs font-bold text-primaryOrange hover:text-primaryBlue transition-colors"
+          >
+            Read <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
       </div>
+    </motion.article>
+  );
+};
 
-      <MetaRow date={post.date} author={post.author} minutes={post.minutes ?? 5} />
-
-      <h2 className="mt-3 text-xl sm:text-2xl font-extrabold text-primaryBlue leading-tight">
-        <Link
-          href={slugToInsightUrl(post.id)}
-          state={{ post }}
-          className="underline-offset-4 decoration-2 decoration-primaryOrange/50 group-hover:underline"
-        >
-          {post.title}
-        </Link>
-      </h2>
-
-      <p className="mt-3 text-gray-600 text-sm sm:text-base leading-relaxed">
-        {post.excerpt}
-      </p>
-
-      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
-        {post.tags.map((t) => (
-          <TagLabel key={`${post.id}-${t}`} text={t} />
-        ))}
+// ── Sidebar post item ─────────────────────────────────────────────────────────
+const SidebarPost = ({ post, showThumb = false }) => {
+  const thumb = showThumb && post.mainImage ? getImageUrl(post.mainImage, 120) : null;
+  return (
+    <Link href={`/insights/${post.id}`} className="flex gap-3 group rounded-xl p-2.5 hover:bg-gray-50 transition">
+      {showThumb && (
+        <div className="flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden bg-gray-100">
+          {thumb
+            ? <img src={thumb} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+            : <div className="w-full h-full bg-gradient-to-br from-primaryBlue/10 to-primaryBlue/5" />
+          }
+        </div>
+      )}
+      <div className="min-w-0">
+        <p className="text-[11px] text-gray-400 mb-0.5">{formatDate(post.date)} · {post.minutes} min</p>
+        <p className="text-sm font-bold text-gray-800 leading-snug group-hover:text-primaryBlue transition-colors line-clamp-2">{post.title}</p>
       </div>
+    </Link>
+  );
+};
 
-      <div className="mt-6">
-        <Link
-          href={slugToInsightUrl(post.id)}
-          state={{ post }}
-          className="inline-flex items-center gap-2 font-extrabold bg-primaryBlue text-white px-4 py-2 rounded-full transition-colors text-xs md:text-sm xl:text-md"
-        >
-          Read more <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
-    </div>
-  </motion.article>
-);
-
-const SidebarSection = ({ title, rightText, children }) => (
-  <div className="rounded-2xl bg-white shadow-[0_1px_0_rgba(12,31,58,0.08),0_10px_30px_rgba(12,31,58,0.06)] overflow-hidden">
-    <div className="px-5 sm:px-6 py-4 border-b border-gray-100 flex items-baseline justify-between">
-      <h3 className="text-sm font-extrabold text-primaryBlue tracking-wide">
-        {title}
-      </h3>
-      {rightText ? (
-        <span className="text-xs font-semibold text-gray-500">{rightText}</span>
-      ) : null}
-    </div>
-    <div className="p-5 sm:p-6">{children}</div>
-  </div>
-);
-
-const SidebarPost = ({ post, compact = false }) => (
-  <Link
-    href={slugToInsightUrl(post.id)}
-    state={{ post }}
-    className="block rounded-xl bg-gray-50/60 hover:bg-gray-50 transition-colors px-4 py-3"
-  >
-    <div className="text-[11px] text-gray-500 mb-1">
-      {formatDate(post.date)} · {post.minutes ?? 6} min
-    </div>
-    <div className={`font-bold text-gray-900 leading-snug ${compact ? "text-sm" : "text-[15px]"}`}>
-      {post.title}
-    </div>
-    <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
-      {post.tags.slice(0, 2).map((t) => (
-        <TagLabel key={`${post.id}-sb-${t}`} text={t} />
-      ))}
-    </div>
-  </Link>
-);
-
+// ── Pagination ────────────────────────────────────────────────────────────────
 const Pagination = ({ page, totalPages, onPrev, onNext, onGo }) => {
   const pages = useMemo(() => {
-    const max = 5;
-    if (totalPages <= max) return Array.from({ length: totalPages }, (_, i) => i + 1);
-
-    const start = Math.max(1, page - 2);
-    const end = Math.min(totalPages, start + 4);
-    const adjustedStart = Math.max(1, end - 4);
-    return Array.from({ length: end - adjustedStart + 1 }, (_, i) => adjustedStart + i);
+    if (totalPages <= 5) return Array.from({ length: totalPages }, (_, i) => i + 1);
+    const start = Math.max(1, Math.min(page - 2, totalPages - 4));
+    return Array.from({ length: Math.min(5, totalPages - start + 1) }, (_, i) => start + i);
   }, [page, totalPages]);
 
   return (
-    <div className="flex items-center justify-between gap-3 mt-8">
-      <button
-        onClick={onPrev}
-        disabled={page === 1}
-        className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 font-extrabold text-gray-800 shadow-sm ring-1 ring-gray-200 disabled:opacity-40 disabled:cursor-not-allowed hover:ring-gray-300 transition"
-        aria-label="Previous page"
-      >
+    <div className="flex items-center justify-center gap-2 mt-10">
+      <button onClick={onPrev} disabled={page === 1}
+        className="p-2 rounded-xl bg-white border border-gray-200 text-gray-600 disabled:opacity-30 hover:border-primaryBlue hover:text-primaryBlue transition">
         <ChevronLeft className="w-4 h-4" />
-        Prev
       </button>
-
-      <div className="flex items-center gap-2">
-        {pages.map((p) => (
-          <button
-            key={`page-${p}`}
-            onClick={() => onGo(p)}
-            className={[
-              "rounded-xl px-4 py-2 font-extrabold ring-1 transition",
-              p === page
-                ? "bg-primaryBlue text-white ring-primaryBlue"
-                : "bg-white text-gray-800 ring-gray-200 hover:ring-gray-300",
-            ].join(" ")}
-            aria-current={p === page ? "page" : undefined}
-          >
-            {p}
-          </button>
-        ))}
-        {pages[pages.length - 1] !== totalPages && (
-          <span className="px-2 text-gray-400">…</span>
-        )}
-      </div>
-
-      <button
-        onClick={onNext}
-        disabled={page === totalPages}
-        className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 font-extrabold text-gray-800 shadow-sm ring-1 ring-gray-200 disabled:opacity-40 disabled:cursor-not-allowed hover:ring-gray-300 transition"
-        aria-label="Next page"
-      >
-        Next
+      {pages.map((p) => (
+        <button key={p} onClick={() => onGo(p)}
+          className={`w-9 h-9 rounded-xl text-sm font-bold transition ${p === page ? "bg-primaryBlue text-white" : "bg-white border border-gray-200 text-gray-700 hover:border-primaryBlue hover:text-primaryBlue"}`}>
+          {p}
+        </button>
+      ))}
+      {pages[pages.length - 1] < totalPages && <span className="text-gray-400 text-sm">…</span>}
+      <button onClick={onNext} disabled={page === totalPages}
+        className="p-2 rounded-xl bg-white border border-gray-200 text-gray-600 disabled:opacity-30 hover:border-primaryBlue hover:text-primaryBlue transition">
         <ChevronRight className="w-4 h-4" />
       </button>
     </div>
   );
 };
 
-// ---------------------------
-// Main Page
-// ---------------------------
+// ── Skeleton loader ───────────────────────────────────────────────────────────
+const CardSkeleton = () => (
+  <div className="bg-white rounded-2xl overflow-hidden shadow-sm animate-pulse">
+    <div className="aspect-[16/9] bg-gray-200" />
+    <div className="p-5 space-y-3">
+      <div className="h-3 bg-gray-200 rounded w-1/3" />
+      <div className="h-5 bg-gray-200 rounded w-5/6" />
+      <div className="h-4 bg-gray-200 rounded w-full" />
+      <div className="h-4 bg-gray-200 rounded w-4/6" />
+    </div>
+  </div>
+);
+
+// ── Main page ─────────────────────────────────────────────────────────────────
 const Insights = () => {
   const POSTS_PER_PAGE = 6;
   const [page, setPage] = useState(1);
   const [sanityPosts, setSanityPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(isSanityConfigured);
   const [loadError, setLoadError] = useState("");
+  const [activeTag, setActiveTag] = useState("All");
 
   useEffect(() => {
-    let isCancelled = false;
+    let cancelled = false;
+    if (!isSanityConfigured || !sanityClient) { setIsLoading(false); return; }
 
-    if (!isSanityConfigured || !sanityClient) {
-      setIsLoading(false);
-      return () => {
-        isCancelled = true;
-      };
-    }
-
-    const loadInsights = async () => {
+    (async () => {
       try {
         setIsLoading(true);
-        setLoadError("");
-
         const docs = await sanityClient.fetch(INSIGHTS_QUERY);
-        if (isCancelled) return;
-
+        if (cancelled) return;
         const normalized = Array.isArray(docs)
-          ? docs
-              .filter((doc) => doc && doc.title)
-              .map((doc) => ({
-                id: doc.id || doc._id,
-                title: doc.title,
-                excerpt: doc.excerpt || doc.summary || getBodyPreview(doc.body),
-                date: doc.date || new Date().toISOString(),
-                tags: normalizeTags(doc.tags, doc.categories),
-                author: doc?.author?.name || "ShiftDeploy",
-                minutes: getReadMinutes(doc.minutes, doc.readTime, doc.body),
-                featured: Boolean(doc.featured),
-              }))
+          ? docs.filter((d) => d?.title).map((d) => ({
+              id: d.id || d._id,
+              title: d.title,
+              excerpt: d.excerpt || d.summary || "",
+              date: d.date || new Date().toISOString(),
+              tags: normalizeTags(d.tags, d.categories),
+              author: d?.author?.name || "ShiftDeploy",
+              mainImage: d.mainImage || null,
+              minutes: getReadMinutes(d.minutes, d.readTime),
+              featured: Boolean(d.featured),
+              status: d.status || "published",
+            }))
           : [];
-
         setSanityPosts(normalized);
-      } catch (error) {
-        if (!isCancelled) {
-          setLoadError("Could not load insights from Sanity.");
-        }
+      } catch {
+        if (!cancelled) setLoadError("Could not load insights from Sanity.");
       } finally {
-        if (!isCancelled) {
-          setIsLoading(false);
-        }
+        if (!cancelled) setIsLoading(false);
       }
-    };
+    })();
 
-    loadInsights();
-
-    return () => {
-      isCancelled = true;
-    };
+    return () => { cancelled = true; };
   }, []);
 
-  const allPosts = useMemo(() => {
-    const copy = [...sanityPosts];
-    copy.sort((a, b) => new Date(b.date) - new Date(a.date));
-    return copy;
+  // Collect all unique tags
+  const allTags = useMemo(() => {
+    const set = new Set();
+    sanityPosts.forEach((p) => p.tags.forEach((t) => set.add(t)));
+    return ["All", ...Array.from(set)];
   }, [sanityPosts]);
 
-  const totalPages = Math.max(1, Math.ceil(allPosts.length / POSTS_PER_PAGE));
+  const filteredPosts = useMemo(() => {
+    const base = [...sanityPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+    if (activeTag === "All") return base;
+    return base.filter((p) => p.tags.includes(activeTag));
+  }, [sanityPosts, activeTag]);
 
-  useEffect(() => {
-    setPage((prev) => clamp(prev, 1, totalPages));
-  }, [totalPages]);
+  const featuredPosts = useMemo(() => filteredPosts.filter((p) => p.featured), [filteredPosts]);
+  const recentSidebar = useMemo(() => filteredPosts.slice(0, 5), [filteredPosts]);
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
+
+  useEffect(() => { setPage((p) => clamp(p, 1, totalPages)); }, [totalPages]);
+  useEffect(() => { setPage(1); }, [activeTag]);
 
   const pagedPosts = useMemo(() => {
     const start = (page - 1) * POSTS_PER_PAGE;
-    return allPosts.slice(start, start + POSTS_PER_PAGE);
-  }, [allPosts, page]);
-
-  const featured = useMemo(() => allPosts.filter((p) => p.featured).slice(0, 2), [allPosts]);
-  const recentPosts = useMemo(() => allPosts.slice(0, 6), [allPosts]);
-
-  const goToPage = (p) => setPage(clamp(p, 1, totalPages));
-  const handlePrev = () => goToPage(page - 1);
-  const handleNext = () => goToPage(page + 1);
-
-  const pageTitle = "Insights | ShiftDeploy";
-  const pageDesc =
-    "Evidence-driven memos from real audits—performance, UX friction, and conversion mechanics. No fluff. Just patterns that repeat.";
+    return filteredPosts.slice(start, start + POSTS_PER_PAGE);
+  }, [filteredPosts, page]);
 
   return (
     <>
-      
       <Navigation />
 
-      <section className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 px-4 sm:px-6 lg:px-8 pt-28 pb-16">
-        <div className="max-w-6xl mx-auto">
-          {/* Header / Hero */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45 }}
-            className="mb-10"
-          >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight text-primaryBlue">
+      {/* ── Page hero ── */}
+      <div className="relative bg-primaryBlue overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(circle,#fff 1px,transparent 1px)", backgroundSize: "32px 32px" }} />
+        <div className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-10" style={{ background: "radial-gradient(circle,#F76707,transparent 70%)", transform: "translate(30%,-30%)" }} />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-14 relative z-10">
+          <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
+            <p className="text-xs font-bold tracking-widest text-primaryOrange uppercase mb-3">ShiftDeploy Blog</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
               Insights<span className="text-primaryOrange">.</span>
             </h1>
-
-            <p className="mt-4 max-w-2xl text-gray-600 text-base sm:text-lg leading-relaxed">
-              Short, evidence-driven memos from real audits—performance, UX friction, and conversion mechanics.
-              No fluff. Just patterns that show up repeatedly.
+            <p className="mt-4 max-w-2xl text-white/60 text-base sm:text-lg leading-relaxed">
+              Evidence-driven memos from real audits — performance, UX friction, and conversion mechanics. No fluff.
             </p>
+            <div className="mt-4 flex items-center gap-4 text-sm text-white/50">
+              <span>{sanityPosts.length} articles published</span>
+              {sanityPosts.length > 0 && <><span>·</span><span>Updated regularly</span></>}
+            </div>
           </motion.div>
+        </div>
+      </div>
 
-          {/* Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-            {/* Left: Post cards */}
-            <div className="lg:col-span-8 space-y-5">
-              {isLoading && (
-                <div className="rounded-2xl bg-white p-5 sm:p-7 text-sm text-gray-600 shadow-[0_1px_0_rgba(12,31,58,0.08),0_10px_30px_rgba(12,31,58,0.06)]">
-                  Loading insights from Sanity...
-                </div>
-              )}
+      <section className="min-h-screen bg-gray-50 pb-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
 
-              {loadError && (
-                <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 sm:p-7 text-sm text-amber-800">
-                  {loadError}
-                </div>
-              )}
-
-              {!isSanityConfigured && (
-                <div className="rounded-2xl border border-blue-100 bg-blue-50 p-5 sm:p-7 text-sm text-blue-800">
-                  Sanity is not configured yet (`NEXT_PUBLIC_SANITY_PROJECT_ID` / `NEXT_PUBLIC_SANITY_DATASET` missing).
-                </div>
-              )}
-
-              {!isLoading && isSanityConfigured && !loadError && allPosts.length === 0 && (
-                <div className="rounded-2xl border border-gray-200 bg-white p-5 sm:p-7 text-sm text-gray-700">
-                  No insights published yet.
-                </div>
-              )}
-
-              {pagedPosts.map((post) => (
-                <InsightCard key={post.id} post={post} />
+          {/* ── Tag filter bar ── */}
+          {allTags.length > 1 && (
+            <div className="flex flex-wrap gap-2 mb-8">
+              {allTags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => setActiveTag(tag)}
+                  className={`text-xs font-bold px-4 py-1.5 rounded-full border transition ${
+                    activeTag === tag
+                      ? "bg-primaryBlue text-white border-primaryBlue"
+                      : "bg-white text-gray-600 border-gray-200 hover:border-primaryBlue hover:text-primaryBlue"
+                  }`}
+                >
+                  {tag}
+                </button>
               ))}
+            </div>
+          )}
 
-              {allPosts.length > 0 && (
-                <Pagination
-                  page={page}
-                  totalPages={totalPages}
-                  onPrev={handlePrev}
-                  onNext={handleNext}
-                  onGo={goToPage}
-                />
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+            {/* ── Main content ── */}
+            <div className="lg:col-span-8">
+              {/* Error / empty states */}
+              {loadError && (
+                <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-800 mb-6">{loadError}</div>
+              )}
+              {!isSanityConfigured && (
+                <div className="rounded-2xl border border-blue-100 bg-blue-50 p-5 text-sm text-blue-800 mb-6">
+                  Sanity is not configured. Add <code>NEXT_PUBLIC_SANITY_PROJECT_ID</code> to your <code>.env.local</code>.
+                </div>
+              )}
+
+              {/* Featured hero (shows first featured post at top) */}
+              {!isLoading && featuredPosts.length > 0 && activeTag === "All" && page === 1 && (
+                <div className="mb-6">
+                  <HeroCard post={featuredPosts[0]} />
+                </div>
+              )}
+
+              {/* Skeleton loaders */}
+              {isLoading && (
+                <div className="grid sm:grid-cols-2 gap-5">
+                  {Array.from({ length: 4 }).map((_, i) => <CardSkeleton key={i} />)}
+                </div>
+              )}
+
+              {/* Post grid */}
+              {!isLoading && pagedPosts.length > 0 && (
+                <div className="grid sm:grid-cols-2 gap-5">
+                  {pagedPosts.map((post, idx) => (
+                    <InsightCard key={post.id} post={post} index={idx} />
+                  ))}
+                </div>
+              )}
+
+              {!isLoading && isSanityConfigured && !loadError && filteredPosts.length === 0 && (
+                <div className="rounded-2xl border border-gray-200 bg-white p-8 text-center text-gray-500">
+                  {activeTag === "All" ? "No insights published yet." : `No posts tagged "${activeTag}".`}
+                </div>
+              )}
+
+              {filteredPosts.length > POSTS_PER_PAGE && (
+                <Pagination page={page} totalPages={totalPages} onPrev={() => setPage((p) => clamp(p - 1, 1, totalPages))} onNext={() => setPage((p) => clamp(p + 1, 1, totalPages))} onGo={(p) => setPage(clamp(p, 1, totalPages))} />
               )}
             </div>
 
-            {/* Right: Sidebar */}
+            {/* ── Sidebar ── */}
             <aside className="lg:col-span-4">
               <div className="sticky top-28 space-y-5">
-                <SidebarSection title="START HERE" rightText={`${allPosts.length} total`}>
-                  <div className="space-y-3">
-                    {featured.length > 0 ? (
-                      featured.map((p) => <SidebarPost key={`feat-${p.id}`} post={p} />)
-                    ) : (
-                      <div className="text-sm text-gray-600">
-                        No featured posts yet. Mark a couple as featured to guide new readers.
-                      </div>
-                    )}
-                  </div>
 
-                  <div className="mt-5 pt-5 border-t border-gray-100">
-                    <div className="text-xs font-extrabold text-gray-700 tracking-wide mb-3">
-                      RECENT
-                    </div>
-                    <div className="space-y-2">
-                      {recentPosts.map((p) => (
-                        <SidebarPost key={`recent-${p.id}`} post={p} compact />
+                {/* Recent posts */}
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                  <div className="bg-primaryBlue px-5 py-3.5 flex items-center justify-between">
+                    <h3 className="text-sm font-extrabold text-white">Latest Posts</h3>
+                    <span className="text-xs text-white/50">{sanityPosts.length} total</span>
+                  </div>
+                  <div className="p-2 divide-y divide-gray-50">
+                    {isLoading
+                      ? Array.from({ length: 4 }).map((_, i) => (
+                          <div key={i} className="p-3 flex gap-3 animate-pulse">
+                            <div className="w-16 h-12 bg-gray-200 rounded-lg flex-shrink-0" />
+                            <div className="flex-1 space-y-2">
+                              <div className="h-3 bg-gray-200 rounded w-2/3" />
+                              <div className="h-3 bg-gray-200 rounded w-full" />
+                            </div>
+                          </div>
+                        ))
+                      : recentSidebar.map((p) => <SidebarPost key={p.id} post={p} showThumb />)
+                    }
+                  </div>
+                </div>
+
+                {/* Topics cloud */}
+                {allTags.length > 1 && (
+                  <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+                    <h3 className="text-sm font-extrabold text-primaryBlue mb-3">Browse by Topic</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {allTags.filter((t) => t !== "All").map((tag) => (
+                        <button
+                          key={tag}
+                          onClick={() => setActiveTag(tag)}
+                          className={`text-xs font-semibold px-3 py-1 rounded-full border transition ${
+                            activeTag === tag
+                              ? "bg-primaryOrange text-white border-primaryOrange"
+                              : "bg-orange-50 text-orange-700 border-orange-100 hover:border-primaryOrange"
+                          }`}
+                        >
+                          {tag}
+                        </button>
                       ))}
                     </div>
                   </div>
-                </SidebarSection>
+                )}
 
-                {/* <SidebarSection title="NOTE" rightText="">
-                  <p className="text-sm text-gray-700 leading-relaxed">
-                    We publish weekly. If you want a newsletter module here, add it only after you’re consistent for
-                    4–6 weeks—otherwise it’s a dead widget that hurts credibility.
-                  </p>
-                </SidebarSection> */}
+                {/* CTA box */}
+                <div className="bg-gradient-to-br from-primaryBlue to-blue-800 rounded-2xl p-5 text-white">
+                  <p className="text-xs font-bold text-primaryOrange uppercase tracking-wider mb-2">Free Audit</p>
+                  <h3 className="font-extrabold text-lg leading-snug mb-2">Is your site leaving money on the table?</h3>
+                  <p className="text-white/60 text-sm mb-4 leading-relaxed">Get a performance & conversion audit from ShiftDeploy — no fluff, actionable results.</p>
+                  <Link href="/ContactUs" className="inline-flex items-center gap-2 bg-primaryOrange text-white text-sm font-bold px-4 py-2.5 rounded-xl hover:bg-orange-600 transition">
+                    Get Free Audit <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+
               </div>
             </aside>
           </div>
@@ -496,4 +494,3 @@ const Insights = () => {
 };
 
 export default Insights;
-
