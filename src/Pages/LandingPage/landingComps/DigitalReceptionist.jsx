@@ -7,7 +7,7 @@ import { fadeInUp, staggerContainer } from '../../../utils/animations';
 
 const DigitalReceptionist = ({
 
-    videoSrc = 'https://res.cloudinary.com/dbazbq7u9/video/upload/v1773749011/How_and_Why_to_Improve_Booking_Experience_iktvlr.mp4',
+    videoSrc = 'https://res.cloudinary.com/dbazbq7u9/video/upload/v1774790198/Digital_Receptionist_Demo_by_ShiftDeploy_ytazqe.mp4',
     posterSrc = 'https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1773750161/ChatGPT_Image_Mar_17_2026_05_22_24_PM_goshas.png' // Added f_auto,q_auto for optimization
 }) => {
      const ref = useRef(null);
