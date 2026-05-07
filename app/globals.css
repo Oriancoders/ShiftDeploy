@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
+
+.perspective {
+  perspective: 1000px;
+}
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+p {
+  color: '#4b5563';
+}
+
+input,
+textarea,
+select,
+button {
+  outline: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  --chat--color--primary: #f76707;
+  --chat--color--primary-shade-50: #f76707;
+  --chat--color--primary--shade-100: #f76707;
+  --chat--color-white: #ffffff;
+  --chat--color-light: #f2f4f8;
+  --chat--color-dark: #101330;
+  --chat--header--background: #0c1f3a;
+  --chat--color--secondary: #0c1f3a;
+  --chat--color-typing: #f76707;
+  --chat--window--width: 400px;
+  --chat--window--height: 600px;
+  --chat--header-height: auto;
+}

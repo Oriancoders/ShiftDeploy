@@ -1,5 +1,5 @@
+'use client';
 import React, { lazy, Suspense, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import Navigation from '../../../components/Navigation';
 import Footer from '../../../components/Footer';
 import ShiftDeployLoader from '../../../components/ShiftDeployLoader';
@@ -24,41 +24,7 @@ const ShiftSpeed = () => {
 
   return (
     <>
-      <Helmet>
-        <title>ShiftSpeed™ | Website Performance Optimization That Protects Growth | ShiftDeploy</title>
-
-        <meta
-          name="description"
-          content="ShiftSpeed™ fixes slow, fragile websites before they cost you trust, rankings, and conversions. Engineering-led performance optimization for businesses that need speed to work, not just look good."
-        />
-        <meta
-          name="keywords"
-          content="ShiftSpeed, website speed optimization, Core Web Vitals, performance optimization service, website performance engineering, slow website fix, technical SEO speed"
-        />
-
-
-        <meta
-          property="og:title"
-          content="ShiftSpeed™ – Website Performance Optimization That Comes First"
-        />
-
-        <meta
-          property="og:description"
-          content="ShiftSpeed™ fixes slow, fragile websites before they cost you trust, rankings, and conversions. Engineering-led performance optimization built for businesses that depend on speed."
-        />
-
-        <meta property="og:type" content="website" />
-
-
-        <meta
-          property="og:url"
-          content="https://www.shiftdeploy.com/services/shiftspeed"
-        />
-
-
-
-        {/* ... other meta tags ... */}
-      </Helmet>
+      
 
       <div className="w-full">
         <Navigation />

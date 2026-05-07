@@ -1,6 +1,7 @@
+'use client';
 import React, { lazy, Suspense } from "react";
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 // 2. Lazy Import the heavy interactive component
 // This tells React: "Don't download this file until we actually need to render it."
@@ -102,7 +103,7 @@ const Hero = () => {
 
                 <div>
                   <Link
-                    to={"/services/shiftspeed"}
+                    href={"/services/shiftspeed"}
                     className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
                   >
                     View ShiftSpeed

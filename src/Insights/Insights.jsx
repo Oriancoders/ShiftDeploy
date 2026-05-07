@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -9,8 +10,7 @@ import {
   Clock3,
   Sparkles,
 } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Link from "next/link";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import { isSanityConfigured, sanityClient } from "../lib/sanity";
@@ -173,7 +173,7 @@ const InsightCard = ({ post }) => (
 
       <h2 className="mt-3 text-xl sm:text-2xl font-extrabold text-primaryBlue leading-tight">
         <Link
-          to={slugToInsightUrl(post.id)}
+          href={slugToInsightUrl(post.id)}
           state={{ post }}
           className="underline-offset-4 decoration-2 decoration-primaryOrange/50 group-hover:underline"
         >
@@ -193,7 +193,7 @@ const InsightCard = ({ post }) => (
 
       <div className="mt-6">
         <Link
-          to={slugToInsightUrl(post.id)}
+          href={slugToInsightUrl(post.id)}
           state={{ post }}
           className="inline-flex items-center gap-2 font-extrabold bg-primaryBlue text-white px-4 py-2 rounded-full transition-colors text-xs md:text-sm xl:text-md"
         >
@@ -220,7 +220,7 @@ const SidebarSection = ({ title, rightText, children }) => (
 
 const SidebarPost = ({ post, compact = false }) => (
   <Link
-    to={slugToInsightUrl(post.id)}
+    href={slugToInsightUrl(post.id)}
     state={{ post }}
     className="block rounded-xl bg-gray-50/60 hover:bg-gray-50 transition-colors px-4 py-3"
   >
@@ -387,15 +387,7 @@ const Insights = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDesc} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDesc} />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Helmet>
-
+      
       <Navigation />
 
       <section className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 px-4 sm:px-6 lg:px-8 pt-28 pb-16">
@@ -435,7 +427,7 @@ const Insights = () => {
 
               {!isSanityConfigured && (
                 <div className="rounded-2xl border border-blue-100 bg-blue-50 p-5 sm:p-7 text-sm text-blue-800">
-                  Sanity is not configured yet (`VITE_SANITY_PROJECT_ID` / `VITE_SANITY_DATASET` missing).
+                  Sanity is not configured yet (`NEXT_PUBLIC_SANITY_PROJECT_ID` / `NEXT_PUBLIC_SANITY_DATASET` missing).
                 </div>
               )}
 

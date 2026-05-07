@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import {
@@ -11,7 +12,7 @@ import {
   scaleOnHover,
 } from "../../../utils/animations";
 import emailjs from "@emailjs/browser";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 const DeployToolkit = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [emailInput, setEmailInput] = useState("");
@@ -232,7 +233,7 @@ const DeployToolkit = () => {
         </div>
 
         <Link
-          to={"/insideShiftDeploy"}
+          href={"/insideShiftDeploy"}
           className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm mb-12 group "
         >
            Why ShiftDeploy 
@@ -286,7 +287,7 @@ const DeployToolkit = () => {
                 <div className="font-semibold text-md 2xl:text-lg leading-tight">
                   <a
                     href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
-                    target="_blank"
+                    target="_blank" rel="noopener noreferrer"
                     rel="noreferrer"
                     className="hover:underline underline-offset-4"
                   >
@@ -302,7 +303,7 @@ const DeployToolkit = () => {
 
             <a
               href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
-              target="_blank"
+              target="_blank" rel="noopener noreferrer"
               rel="noreferrer"
               className="sm:w-fit w-full  inline-flex items-center justify-center gap-2 bg-primaryOrange hover:bg-toOrange border border-white/20 text-white px-4 sm:px-5 py-3 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/40"
             >

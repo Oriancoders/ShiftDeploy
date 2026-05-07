@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
@@ -19,10 +20,9 @@ import {
 } from 'lucide-react';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 // importing images here
 
-import { Helmet } from 'react-helmet-async';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 
 const SlackerIOT = () => {
@@ -360,44 +360,7 @@ const SlackerIOT = () => {
 
   return (
     <>
-      <Helmet>
-        {/* ✅ Basic SEO Meta */}
-        <title>Slacker IoT Case Study | EV Charging Platform Built End-to-End</title>
-        <meta
-          name="description"
-          content="See how ShiftDeploy built an end-to-end EV charging platform for Slacker IoT, including the customer dashboard, admin controls, and automated billing flows."
-        />
-        <meta
-          name="keywords"
-          content="Slacker IoT, EV charging platform, charging dashboard, admin monitoring, automated billing, ShiftDeploy case study"
-        />
-
-        {/* ✅ Open Graph / Social Preview */}
-        <meta
-          property="og:title"
-          content="Slacker IoT Case Study | EV Charging Platform Built End-to-End"
-        />
-        <meta
-          property="og:description"
-          content="See how ShiftDeploy built an end-to-end EV charging platform for Slacker IoT, including the customer dashboard, admin controls, and automated billing flows."
-        />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://www.shiftdeploy.com/CaseStudies/SlackerIOT" />
-        {/* <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" /> */}
-
-        {/* ✅ Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Slacker IoT Case Study | EV Charging Platform Built End-to-End"
-        />
-        <meta
-          name="twitter:description"
-          content="See how ShiftDeploy built an end-to-end EV charging platform with live device tracking, automated billing, and admin monitoring."
-        />
-        {/* <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" /> */}
-      </Helmet>
-
+      
       {showLoader ? (
         <ShiftDeployLoader />
       ) : (
@@ -684,7 +647,7 @@ const SlackerIOT = () => {
                         After launch, we can improve reporting, monitoring, and admin controls based on real usage and support needs.
                       </p>
                       <Link
-                        to="/ContactUs"
+                        href="/ContactUs"
                         className="inline-flex items-center px-4 sm:px-8 py-4 rounded-xl font-semibold bg-primaryOrange hover:bg-toOrange text-white sm:text-lg shadow-lg hover:shadow-2xl transition-all duration-300"
                       >
                         <span>Talk About Next Steps</span>
@@ -893,14 +856,14 @@ const SlackerIOT = () => {
                 </p>
                 <div className='flex justify-center items-center sm:flex-row flex-col gap-6 w-full'>
                   <Link
-                    to={"/ContactUs"}
+                    href={"/ContactUs"}
                     className="bg-primaryOrange hover:bg-toOrange text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit"
                   >
                     <span>Plan Your Platform</span>
                     <ArrowRight className="w-6 h-6" />
                   </Link>
                   <Link
-                    to={"/missions"}
+                    href={"/missions"}
                     className="bg-white sm:hover:bg-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit border border-primaryBlue"
                   >
                     <span>View More Projects</span>

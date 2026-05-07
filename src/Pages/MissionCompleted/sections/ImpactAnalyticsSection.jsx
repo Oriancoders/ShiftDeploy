@@ -1,3 +1,4 @@
+'use client';
 import { BarChart3, Calendar, CheckCircle, Clock, Rocket, Target, TrendingUp, Users } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import CursorFollower from "../../../utils/CursorFollower"

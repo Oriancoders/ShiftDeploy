@@ -1,3 +1,4 @@
+'use client';
 import { BarChart3, CheckCircle, Code, Database, GitBranch, Layers, Server, Target } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 

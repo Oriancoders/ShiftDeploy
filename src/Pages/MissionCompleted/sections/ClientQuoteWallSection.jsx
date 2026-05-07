@@ -1,6 +1,7 @@
+'use client';
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import { Star } from "lucide-react"
 // Section 4: Client Quote Wall
 function ClientQuoteWallSection() {
@@ -117,7 +118,7 @@ function ClientQuoteWallSection() {
               <div className="flex items-center justify-center">
               <img src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE" alt="Kamran Abbas" className="w-12 sm:w-15 h-12 sm:h-15 rounded-full mr-4" />
               <div className="text-left">
-                <div className="font-semibold text-gray-900 sm:text-lg"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/" target="__blank">Kamran Abbas</a></div>
+                <div className="font-semibold text-gray-900 sm:text-lg"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/" target="_blank" rel="noopener noreferrer">Kamran Abbas</a></div>
                 <div className="text-gray-600">Chief Strategist at Bullseye Investment Private Limited</div>
               </div>
             </div>
@@ -138,14 +139,14 @@ function ClientQuoteWallSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto ">
-            <Link to={"/ContactUs"}
+            <Link href={"/ContactUs"}
 
               className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md"
             >
               Solve Your Problem With Us
             </Link >
 
-            <Link to={"/services"}
+            <Link href={"/services"}
 
               className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
             >

@@ -1,5 +1,6 @@
+'use client';
 import React, { useMemo, useRef, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Bot, Play, ArrowLeft, MessageCircleMore, CalendarClock, CheckCircle2, User, Mail, Phone, Building2, CalendarDays, Clock3, Sparkles } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -89,7 +90,7 @@ export default function AiChatbotDemo() {
     },
   ]);
   const messagesBodyRef = useRef(null);
-  const videoUrl = import.meta.env.VITE_DEMO_VIDEO_URL || defaultVideo;
+  const videoUrl = process.env.NEXT_PUBLIC_DEMO_VIDEO_URL || defaultVideo;
 
   const currentStep = bookingSteps[stepIndex];
   const isCompleted = stepIndex >= bookingSteps.length;
@@ -178,7 +179,7 @@ export default function AiChatbotDemo() {
 
       <section className="pt-28 md:pt-32 pb-12 bg-gradient-to-b from-[#0b1f46] via-[#0a1b3d] to-[#102a57] text-white">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-          <Link to="/digital-receptionist" className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors">
+          <Link href="/digital-receptionist" className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors">
             <ArrowLeft className="w-4 h-4" />
             Back to Digital Receptionist
           </Link>
@@ -272,7 +273,7 @@ export default function AiChatbotDemo() {
               <p className="text-sm text-blue-100 mt-2">
                 If you are interested, we can deploy a fully branded assistant with smarter logic, human-like conversation, and CRM/calendar integrations.
               </p>
-              <Link to="/digital-receptionist" className="mt-4 inline-flex items-center justify-center w-full bg-primaryOrange hover:bg-orange-500 text-white font-bold py-3 rounded-xl transition-colors">
+              <Link href="/digital-receptionist" className="mt-4 inline-flex items-center justify-center w-full bg-primaryOrange hover:bg-orange-500 text-white font-bold py-3 rounded-xl transition-colors">
                 Get Free Audit
               </Link>
             </div>

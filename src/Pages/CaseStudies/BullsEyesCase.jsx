@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import {
@@ -19,8 +20,7 @@ import {
 } from 'lucide-react';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
-import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Link from 'next/link';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 
 const BullsEyesCase = () => {
@@ -288,38 +288,7 @@ const BullsEyesCase = () => {
 
   return (
     <>
-      <Helmet>
-        {/* ✅ Basic SEO Meta */}
-        <title>Bullseyes Investments Case Study | Improving Clarity and Investor Experience</title>
-        <meta
-          name="description"
-          content="See how ShiftDeploy helped Bullseyes Investments improve website clarity, investor experience, and onboarding flow with a modern, trust-first corporate site."
-        />
-        <meta
-          name="keywords"
-          content="Bullseyes Investments case study, financial services website, investor experience, onboarding flow, ShiftDeploy"
-        />
-
-        {/* ✅ Open Graph / Social Preview */}
-        <meta property="og:title" content="Bullseyes Investments Case Study | Improving Clarity and Investor Experience" />
-        <meta
-          property="og:description"
-          content="See how ShiftDeploy helped Bullseyes Investments improve website clarity, investor experience, and onboarding flow with a modern, trust-first corporate site."
-        />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://www.shiftdeploy.com/CaseStudies/BullseyesInvestmentsCase" />
-        <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
-
-        {/* ✅ Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Bullseyes Investments Case Study | Improving Clarity and Investor Experience" />
-        <meta
-          name="twitter:description"
-          content="Discover how ShiftDeploy helped Bullseyes Investments improve investor experience, clarity, and onboarding flows with a modern website."
-        />
-        <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
-      </Helmet>
-
+      
       <Navigation isDarkBg={true} />
       {showLoader ? (
         <ShiftDeployLoader />
@@ -623,7 +592,7 @@ const BullsEyesCase = () => {
                           make the experience better over time.
                         </p>
                         <Link
-                          to="/ContactUs"
+                          href="/ContactUs"
                           className="inline-flex items-center px-4 sm:px-8 py-4 rounded-xl font-semibold bg-primaryOrange hover:bg-toOrange text-white sm:text-lg shadow-lg hover:shadow-2xl transition-all duration-300"
                         >
                           <span>Talk About Ongoing Support</span>
@@ -842,14 +811,14 @@ const BullsEyesCase = () => {
                 </p>
                 <div className="flex justify-center items-center sm:flex-row flex-col gap-6 w-full">
                   <Link
-                    to={"/ContactUs"}
+                    href={"/ContactUs"}
                     className="bg-primaryOrange hover:bg-toOrange text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit"
                   >
                     <span>Request a Quick Audit</span>
                     <ArrowRight className="w-6 h-6" />
                   </Link>
                   <Link
-                    to={"/missions"}
+                    href={"/missions"}
                     className="bg-white sm:hover:bg-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit border border-primaryBlue"
                   >
                     <span>View More Projects</span>

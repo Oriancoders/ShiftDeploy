@@ -1,7 +1,8 @@
+'use client';
 import { ArrowRight, CheckCircle, Mail } from "lucide-react"
 import { useEffect, useRef } from "react"
 import { FaWhatsapp } from "react-icons/fa6"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 
 // Section 9: Final CTA
 function FinalCTASection() {
@@ -94,7 +95,7 @@ function FinalCTASection() {
         {/* Primary CTA */}
         <a
           href={"https://wa.me/447311126710?text=" + encodeURIComponent("Hi ShiftDeploy, I'd like to book a free strategy call.")}
-          target="_blank"
+          target="_blank" rel="noopener noreferrer"
           rel="noopener noreferrer"
           className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit mb-12 mx-auto"
         >

@@ -1,6 +1,7 @@
+'use client';
 import React, { useEffect } from "react";
 import { motion, useMotionValue } from "framer-motion";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { fadeInUp, staggerContainer } from "../../utils/animations";
 import Footer from "../../components/Footer";
@@ -104,7 +105,7 @@ const ThankYouPage = () => {
               className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 justify-center mb-12 sm:mb-16"
             >
               <Link
-                to={"/"}
+                href={"/"}
                 className="bg-primaryOrange text-white px-8 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg transition-all duration-200 group"
               >
                 <span>Back to Home</span>
@@ -112,7 +113,7 @@ const ThankYouPage = () => {
               </Link>
 
               <Link
-                to={"/missions"}
+                href={"/missions"}
                 className="bg-white border-2 border-slate-300 text-slate-700 px-8 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold hover:bg-slate-50 hover:border-slate-400 transition-all duration-200 text-lg"
               >
                 View Missions Completed

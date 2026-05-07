@@ -1,8 +1,9 @@
+'use client';
 import React, { useEffect, useState } from "react";
 import { motion, animate, useMotionValue } from "framer-motion";
 import { ArrowRight, Activity, ShieldCheck, Wrench } from "lucide-react";
 import CursorFollower from "../../../../utils/CursorFollower";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const FlowHero = () => {
   const [animatedNumbers, setAnimatedNumbers] = useState({ score: 68 });
@@ -72,7 +73,7 @@ const FlowHero = () => {
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
                 <Link
-                  to="/contactus"
+                  href="/contactus"
                   className="bg-primaryOrange border-2 border-primaryOrange hover:border-toOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md"
                 >
                   Start ShiftFlow Support

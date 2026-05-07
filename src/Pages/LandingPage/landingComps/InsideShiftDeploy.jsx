@@ -1,8 +1,9 @@
+'use client';
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../../../utils/animations';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const InsideShiftDeploy = () => {
   const ref = useRef(null);
@@ -147,7 +148,7 @@ const InsideShiftDeploy = () => {
             </p>
 
             <Link
-              to={"/ContactUs"}
+              href={"/ContactUs"}
               className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold hover:bg-toOrange text-md"
             >
               Discuss Your Solution

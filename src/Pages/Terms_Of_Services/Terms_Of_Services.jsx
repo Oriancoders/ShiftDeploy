@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect } from 'react'
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'

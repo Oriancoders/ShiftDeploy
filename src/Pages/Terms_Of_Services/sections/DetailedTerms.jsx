@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 
 const DetailedTerms = () => {
   return (
@@ -205,7 +205,7 @@ const DetailedTerms = () => {
             If you’d like to learn more about how we protect your information, we’d be glad to help.
           </p>
           <Link
-            to={"/ContactUs"}
+            href={"/ContactUs"}
             className="inline-block hover:bg-toOrange text-white font-semibold px-6 py-3 rounded-lg bg-primaryOrange transition-colors"
           >
             Contact Our Team

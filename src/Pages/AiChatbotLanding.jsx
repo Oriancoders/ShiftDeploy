@@ -1,5 +1,6 @@
+'use client';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import HeroSection from '../components/AiChatbot/HeroSection';
@@ -10,12 +11,13 @@ import CtaSection from '../components/AiChatbot/CtaSection';
 import LeadCaptureModal from '../components/AiChatbot/LeadCaptureModal';
 
 const AiChatbotLanding = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState('');
 
   const openLeadModal = (pkg = '') => {
-    setSelectedPackage(pkg);
+    const normalizedPackage = typeof pkg === 'string' ? pkg : '';
+    setSelectedPackage(normalizedPackage);
     setIsLeadModalOpen(true);
   };
 
@@ -25,7 +27,7 @@ const AiChatbotLanding = () => {
   };
 
   const openLiveDemo = () => {
-    navigate('/digital-receptionist/demo');
+    router.push('/digital-receptionist/demo');
   };
 
   return (
@@ -35,7 +37,7 @@ const AiChatbotLanding = () => {
       <ProblemSolutionSection />
       <FeaturesSection />
       <PricingSection onSelectPackage={openLeadModal} />
-      <CtaSection />
+      <CtaSection onPrimaryAction={openLeadModal} />
       <LeadCaptureModal isOpen={isLeadModalOpen} onClose={closeLeadModal} selectedPackage={selectedPackage} />
       <Footer />
     </div>

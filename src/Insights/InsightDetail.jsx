@@ -1,7 +1,8 @@
+'use client';
 import React, { useEffect, useMemo, useState } from "react";
 import { Calendar, Clock3, User, AlertCircle, CheckCircle, Info, AlertTriangle } from "lucide-react";
-import { Helmet } from "react-helmet-async";
-import { Link, useLocation, useParams } from "react-router-dom";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import imageUrlBuilder from "@sanity/image-url";
 import hljs from "highlight.js";
 import "highlight.js/styles/atom-one-dark.css";
@@ -519,8 +520,7 @@ const MoreInsightsSection = ({ insights }) => {
         {insights.map((item) => (
           <Link
             key={`more-insight-${item.id}`}
-            to={`/insights/${item.id}`}
-            state={{ post: item }}
+            href={`/insights/${item.id}`}
             className="block rounded-xl border border-gray-200 bg-gray-50 p-4 transition hover:border-gray-300 hover:bg-white"
           >
             <p className="text-xs text-gray-500">
@@ -534,10 +534,10 @@ const MoreInsightsSection = ({ insights }) => {
   );
 };
 
-const InsightDetail = () => {
-  const { slug } = useParams();
-  const location = useLocation();
-  const [post, setPost] = useState(location.state?.post || null);
+const InsightDetail = ({ slug: slugProp }) => {
+  const params = useParams();
+  const slug = slugProp || params?.slug;
+  const [post, setPost] = useState(null);
   const [moreInsights, setMoreInsights] = useState([]);
   const [isLoading, setIsLoading] = useState(isSanityConfigured);
   const [loadError, setLoadError] = useState("");
@@ -644,17 +644,13 @@ const InsightDetail = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{pageTitle}</title>
-      </Helmet>
-
       <Navigation />
 
       <section className="min-h-screen bg-white px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-16">
         <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-8 xl:col-span-9">
           <Link
-            to="/insights"
+            href="/insights"
             className="inline-flex items-center rounded-full px-4 py-2 text-sm font-bold text-primaryBlue bg-white ring-1 ring-gray-200 hover:ring-gray-300"
           >
             Back to insights

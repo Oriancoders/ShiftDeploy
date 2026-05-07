@@ -1,3 +1,4 @@
+'use client';
 import { Star } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
@@ -64,7 +65,7 @@ const trustIndicators = [
               <div className="flex items-center justify-center">
               <img src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE" alt="Kamran Abbas" className="w-12 sm:w-15 h-12 sm:h-15 rounded-full mr-4" />
               <div className="text-left">
-                <div className="font-semibold text-gray-900 sm:text-lg"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/" target="__blank">Kamran Abbas</a></div>
+                <div className="font-semibold text-gray-900 sm:text-lg"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/" target="_blank" rel="noopener noreferrer">Kamran Abbas</a></div>
                 <div className="text-gray-600">Chief Strategist at Bullseye Investment Private Limited</div>
               </div>
             </div>

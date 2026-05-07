@@ -1,6 +1,7 @@
+'use client';
 import { ArrowRight, Calendar, Clock, Mail, Users } from "lucide-react"
 import { useRef } from "react"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 
 // Section 8: CTA
 function CTASection() {
@@ -57,7 +58,7 @@ function CTASection() {
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
           <Link
-            to={"/ContactUs"}
+            href={"/ContactUs"}
             className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit"
           >
             Discuss Your Project
@@ -65,7 +66,7 @@ function CTASection() {
           </Link>
 
           <Link
-            to={"/shift-protocol"}
+            href={"/shift-protocol"}
             className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 text-sm w-fit"
           >
             See How We Work
@@ -99,7 +100,7 @@ function CTASection() {
           </a>
 
           <Link
-            to={"/ContactUs"}
+            href={"/ContactUs"}
             className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300"
           >
             <Calendar className="w-8 h-8 text-primaryOrange mx-auto mb-4" />

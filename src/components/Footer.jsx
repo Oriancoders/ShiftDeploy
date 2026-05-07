@@ -1,11 +1,12 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Slack, } from 'lucide-react';
+import { Mail, Phone, Slack } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { FaXTwitter } from 'react-icons/fa6';
-const Footer = () => {
 
+const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
@@ -22,15 +23,12 @@ const Footer = () => {
       { name: 'ShiftBuild', href: '/services/shiftbuild' },
       { name: 'ShiftFlow', href: '/services/shiftflow' },
     ],
-
     caseStudies: [
       { name: 'Slacker IOT', href: '/CaseStudies/SlackerIOT' },
       { name: 'K2 Traders', href: '/CaseStudies/K2TradersCase' },
       { name: 'BullsEyes Investments', href: '/CaseStudies/BullseyesCase' },
-
-    ]
+    ],
   };
-
 
   return (
     <footer className="bg-primaryBlue text-white">
@@ -44,48 +42,71 @@ const Footer = () => {
         >
           {/* Company info */}
           <motion.div variants={fadeInUp} className="sm:col-span-2 lg:col-span-1">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="lg:max-w-60 sm:max-w-48 max-w-36"
-            >
-
-              <img src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145802/whiteV_vzhhvi.png" alt="" />
+            <motion.div whileHover={{ scale: 1.05 }} className="lg:max-w-60 sm:max-w-48 max-w-36">
+              <img
+                src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145802/whiteV_vzhhvi.png"
+                alt="ShiftDeploy"
+              />
             </motion.div>
             <p className="text-gray-300 mb-4 sm:mb-6 lg:mb-8 leading-relaxed text-xs sm:text-sm lg:text-base">
-              Helping businesses build faster websites, improve conversions, and grow with a performance-first approach.
+              Helping businesses build faster websites, improve conversions, and grow with a
+              performance-first approach.
             </p>
 
             <div className="space-y-2 sm:space-y-3 lg:space-y-4">
-              <a href='mailto:contact@shiftdeploy.com' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
+              <a
+                href="mailto:contact@shiftdeploy.com"
+                className="flex items-center space-x-2 sm:space-x-3"
+              >
                 <Mail className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
-                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">contact@shiftdeploy.com</span>
+                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">
+                  contact@shiftdeploy.com
+                </span>
               </a>
 
-              <a href='tel:+447311126710' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
+              <a href="tel:+447311126710" className="flex items-center space-x-2 sm:space-x-3">
                 <Phone className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
-                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">+44 7311 126710</span>
+                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">
+                  +44 7311 126710
+                </span>
               </a>
               <hr />
-              <a href='https://x.com/shiftdeploy' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
+              <a
+                href="https://x.com/shiftdeploy"
+                target="_blank" rel="noopener noreferrer"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 sm:space-x-3"
+              >
                 <FaXTwitter className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
-                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on twitter</span>
+                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">
+                  Join us on twitter
+                </span>
               </a>
 
-              <a href='https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3gan3ow0g-OW0s3OJIJKIzQwQ0tB1V6A1' target='_blank' className="flex items-center space-x-2 sm:space-x-3">
+              <a
+                href="https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3gan3ow0g-OW0s3OJIJKIzQwQ0tB1V6A1"
+                target="_blank" rel="noopener noreferrer"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 sm:space-x-3"
+              >
                 <Slack className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
-                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">Join us on slack</span>
+                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">
+                  Join us on slack
+                </span>
               </a>
             </div>
           </motion.div>
 
           {/* Company links */}
-          <motion.div variants={fadeInUp} className="sm:col-span-1 lg:col-span-1 ">
-            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">Explore ShiftDeploy</h4>
+          <motion.div variants={fadeInUp} className="sm:col-span-1 lg:col-span-1">
+            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
+              Explore ShiftDeploy
+            </h4>
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
                   >
                     {link.name}
@@ -97,12 +118,14 @@ const Footer = () => {
 
           {/* Services links */}
           <motion.div variants={fadeInUp} className="sm:col-span-1 lg:col-span-1">
-            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">Solutions</h4>
+            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
+              Solutions
+            </h4>
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
                   >
                     {link.name}
@@ -112,14 +135,16 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Support links */}
+          {/* Case studies links */}
           <motion.div variants={fadeInUp} className="sm:col-span-2 lg:col-span-1">
-            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">Case Studies</h4>
+            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
+              Case Studies
+            </h4>
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
               {footerLinks.caseStudies.map((link, index) => (
                 <li key={index}>
                   <Link
-                    to={link.href}
+                    href={link.href}
                     className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
                   >
                     {link.name}
@@ -136,36 +161,27 @@ const Footer = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="mt-8 sm:mt-12 lg:mt-16  border-t border-gray-700 flex flex-col md:flex-row justify-center pt-6 items-center  space-y-3 sm:space-y-4 lg:space-y-6 md:space-y-0"
+          className="mt-8 sm:mt-12 lg:mt-16 border-t border-gray-700 flex flex-col md:flex-row justify-center pt-6 items-center space-y-3 sm:space-y-4 lg:space-y-6 md:space-y-0"
         >
-          <div className="flex flex-col sm:flex-row  items-center space-y-3 sm:space-y-0 sm:space-x-4 lg:space-x-6 xl:space-x-8 text-center sm:text-left">
+          <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 lg:space-x-6 xl:space-x-8 text-center sm:text-left">
             <p className="text-gray-300 text-xs sm:text-sm lg:text-base">
               © {currentYear} ShiftDeploy. All rights reserved.
             </p>
             <div className="flex space-x-3 sm:space-x-4 lg:space-x-6">
-              <Link to="/privacy-policy" className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base">
+              <Link
+                href="/privacy-policy"
+                className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
+              >
                 Privacy Policy
               </Link>
-              <Link to="/terms-of-services" className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base">
+              <Link
+                href="/terms-of-services"
+                className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
+              >
                 Terms of Service
               </Link>
             </div>
           </div>
-
-          {/* <div className="flex items-center space-x-2 sm:space-x-3 lg:space-x-4">
-            {socialLinks.map((social, index) => (
-              <motion.a
-                key={index}
-                href={social.href}
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.9 }}
-                className="w-8 sm:w-10 lg:w-12 h-8 sm:h-10 lg:h-12 bg-gray-800 rounded-lg sm:rounded-xl flex items-center justify-center text-gray-300 hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
-                aria-label={social.label}
-              >
-                <social.icon className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
-              </motion.a>
-            ))}
-          </div> */}
         </motion.div>
       </div>
     </footer>

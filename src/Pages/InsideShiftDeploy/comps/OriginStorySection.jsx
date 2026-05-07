@@ -1,3 +1,4 @@
+'use client';
 import { Rocket, Target, Zap } from "lucide-react"
 import { useRef } from "react"
 import CursorFollower from "../../../utils/CursorFollower"

@@ -1,3 +1,4 @@
+'use client';
 import { Clock, MessageSquare, Shield, XCircle } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import CursorFollower from "../../../utils/CursorFollower"

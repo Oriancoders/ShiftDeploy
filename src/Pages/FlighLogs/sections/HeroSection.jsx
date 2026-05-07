@@ -1,6 +1,7 @@
+'use client';
 import { ArrowRight, Star } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 
 // Section 1: Hero Section
 function HeroSection() {
@@ -92,7 +93,7 @@ function HeroSection() {
               isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            <Link to={"/missions"} className="flex w-fit mx-auto items-center group bg-primaryOrange hover:bg-toOrange text-white text-xl font-semibold px-8 sm:px-12 py-4 rounded-2xl transition-all duration-300 transform  hover:shadow-2xl hover:shadow-blue-500/25">
+            <Link href={"/missions"} className="flex w-fit mx-auto items-center group bg-primaryOrange hover:bg-toOrange text-white text-xl font-semibold px-8 sm:px-12 py-4 rounded-2xl transition-all duration-300 transform  hover:shadow-2xl hover:shadow-blue-500/25">
                 Read Their Stories
                 <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>

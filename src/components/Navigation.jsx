@@ -1,10 +1,10 @@
+'use client';
 import React, { useState, useEffect } from 'react';
-// 1. CHANGE: Import 'm' (lightweight) instead of 'motion' (heavy)
-// 'LazyMotion' and 'domAnimation' let us load the animation engine separately.
 import { m, AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
 import Menu from 'lucide-react/dist/esm/icons/menu';
 import X from 'lucide-react/dist/esm/icons/x';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { IoIosArrowDown } from 'react-icons/io';
 
 const Navigation = ({ isDarkBg = false, onAuditClick }) => {
@@ -12,12 +12,10 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
   const [scrolled, setScrolled] = useState(false);
   const [hoveredPath, setHoveredPath] = useState(null);
   const [openMobileDropdown, setOpenMobileDropdown] = useState(null);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -56,35 +54,34 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
   };
 
   return (
-    // 2. WRAPPER: This tells Framer Motion to use the lightweight "domAnimation" driver.
-    // This drastically reduces the initial JS bundle size.
     <LazyMotion features={domAnimation}>
       <m.nav
-        // 3. TAGS: Changed 'motion.nav' to 'm.nav'. It works exactly the same but connects to LazyMotion.
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`fixed w-full z-50 transition-all duration-300 
-          ${isDarkBg && 'bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-200'} 
+        className={`fixed w-full z-50 transition-all duration-300
+          ${isDarkBg && 'bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-200'}
           ${scrolled && !isDarkBg ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200' : 'bg-transparent'}
         `}
       >
         <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-20">
             {/* Logo */}
-            <m.div
-              whileHover={{ scale: 1.05 }}
-              className="2xl:max-w-60 sm:max-w-48 max-w-36"
-            >
-              <Link to="/">
-                <img src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145802/coloredV_zxupgq.png" alt="ShiftDeploy Logo" />
+            <m.div whileHover={{ scale: 1.05 }} className="2xl:max-w-60 sm:max-w-48 max-w-36">
+              <Link href="/">
+                <img
+                  src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145802/coloredV_zxupgq.png"
+                  alt="ShiftDeploy Logo"
+                />
               </Link>
             </m.div>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-6 xl:space-x-10">
               {navItems.map(({ label, path, subPaths }) => {
-                const isActive = location.pathname === path || (subPaths && subPaths.some(sub => sub.path === location.pathname));
+                const isActive =
+                  pathname === path ||
+                  (subPaths && subPaths.some((sub) => sub.path === pathname));
                 const hasSubPaths = subPaths && subPaths.length > 0;
 
                 return (
@@ -101,7 +98,11 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                         ${isActive ? 'text-primaryBlue' : 'text-gray-700 hover:text-primaryBlue'}
                       `}
                     >
-                      <Link to={path} aria-current={isActive ? 'page' : undefined} className="flex items-center gap-2">
+                      <Link
+                        href={path}
+                        aria-current={isActive ? 'page' : undefined}
+                        className="flex items-center gap-2"
+                      >
                         {label}
                         {hasSubPaths && <IoIosArrowDown />}
                       </Link>
@@ -109,7 +110,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                         className={`absolute bottom-0 left-0 h-0.5 bg-primaryOrange transition-all duration-300
                           ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}
                         `}
-                      ></span>
+                      />
                     </m.div>
                     {hasSubPaths && hoveredPath === label && (
                       <m.div
@@ -122,7 +123,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                         {subPaths.map((subItem) => (
                           <Link
                             key={subItem.label}
-                            to={subItem.path}
+                            href={subItem.path}
                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                             onClick={() => setHoveredPath(null)}
                           >
@@ -144,7 +145,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                 </button>
               ) : (
                 <Link
-                  to="/ContactUs"
+                  href="/ContactUs"
                   className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base"
                 >
                   Get Free Audit
@@ -179,14 +180,14 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                   {navItems.map(({ label, path, subPaths }, index) => (
                     <div key={index}>
                       {!subPaths && (
-                        <Link to={path}>
+                        <Link href={path}>
                           <m.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 }}
                             onClick={() => setIsOpen(false)}
-                            className={`py-2 sm:py-3 font-medium text-base sm:text-lg 
-                              ${location.pathname === path ? 'text-primaryBlue' : 'text-gray-700 hover:text-primaryBlue'}
+                            className={`py-2 sm:py-3 font-medium text-base sm:text-lg
+                              ${pathname === path ? 'text-primaryBlue' : 'text-gray-700 hover:text-primaryBlue'}
                             `}
                           >
                             {label}
@@ -201,10 +202,12 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.1 }}
-                            onClick={() => setOpenMobileDropdown(openMobileDropdown === label ? null : label)}
-                            className={`w-full py-2 sm:py-3 font-medium text-base sm:text-lg flex items-center justify-between 
+                            onClick={() =>
+                              setOpenMobileDropdown(openMobileDropdown === label ? null : label)
+                            }
+                            className={`w-full py-2 sm:py-3 font-medium text-base sm:text-lg flex items-center justify-between
                               ${
-                                location.pathname === path || subPaths.some(sub => sub.path === location.pathname)
+                                pathname === path || subPaths.some((sub) => sub.path === pathname)
                                   ? 'text-primaryBlue'
                                   : 'text-gray-700 hover:text-primaryBlue'
                               }
@@ -226,7 +229,11 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                                 className="pl-4 border-l border-gray-200 ml-4 space-y-2 overflow-hidden"
                               >
                                 {subPaths.map((subItem, subIndex) => (
-                                  <Link key={subIndex} to={subItem.path} onClick={() => setIsOpen(false)}>
+                                  <Link
+                                    key={subIndex}
+                                    href={subItem.path}
+                                    onClick={() => setIsOpen(false)}
+                                  >
                                     <m.div
                                       initial={{ opacity: 0, x: -10 }}
                                       animate={{ opacity: 1, x: 0 }}
@@ -255,7 +262,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                   </button>
                 ) : (
                   <Link
-                    to="/ContactUs"
+                    href="/ContactUs"
                     onClick={() => setIsOpen(false)}
                     className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
                   >

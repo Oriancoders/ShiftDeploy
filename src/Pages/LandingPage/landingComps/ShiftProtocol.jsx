@@ -1,8 +1,9 @@
+'use client';
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Search, BarChart3, Lightbulb, CheckCircle, Rocket, ArrowRight } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../../../utils/animations';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const ShiftProtocol = () => {
   const ref = useRef(null);
@@ -139,7 +140,7 @@ const ShiftProtocol = () => {
                     </p>
 
                     {/* CTA Button */}
-                    <Link to={"/ContactUs"}
+                    <Link href={"/ContactUs"}
                       href="#contact"
                       className="px-6 py-3 rounded-xl bg-primaryOrange hover:bg-toOrange text-white font-semibold shadow-md transition-transform transform  text-center"
                     >
@@ -200,7 +201,7 @@ const ShiftProtocol = () => {
           </p>
 
 
-          <Link to={"/services"}
+          <Link href={"/services"}
 
             className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm "
           >

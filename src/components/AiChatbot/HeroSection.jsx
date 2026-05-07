@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef } from 'react';
 import { motion, useReducedMotion, useInView } from 'framer-motion';
 import HeroLeftContent from './Hero/HeroLeftContent';
@@ -30,8 +31,12 @@ export default function HeroSection({ onPrimaryAction, onDemoAction }) {
       </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-        <HeroLeftContent animateEnabled={animateEnabled} onPrimaryAction={onPrimaryAction} onDemoAction={onDemoAction} />
-        <HeroRightVisual reduceMotion={reduceMotion} animateEnabled={animateEnabled} />
+        <div className="relative z-20">
+          <HeroLeftContent animateEnabled={animateEnabled} onPrimaryAction={onPrimaryAction} onDemoAction={onDemoAction} />
+        </div>
+        <div className="relative z-10 pointer-events-none">
+          <HeroRightVisual reduceMotion={reduceMotion} animateEnabled={animateEnabled} />
+        </div>
       </div>
     </section>
   );

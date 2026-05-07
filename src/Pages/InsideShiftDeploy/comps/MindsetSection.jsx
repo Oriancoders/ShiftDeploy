@@ -1,3 +1,4 @@
+'use client';
 // Section 2: Mindset
 import { Code, Target, Zap } from "lucide-react"
 import { useEffect, useRef, useState } from "react"

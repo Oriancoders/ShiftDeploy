@@ -1,6 +1,7 @@
+'use client';
 import { CheckCircle } from "lucide-react"
 import { useRef } from "react"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 
 // Section 4: How We Work
 function HowWeWorkSection() {
@@ -97,14 +98,14 @@ function HowWeWorkSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mx-auto">
             <Link
-              to={"/ContactUs"}
+              href={"/ContactUs"}
               className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md"
             >
               Launch Your Project
             </Link>
 
             <Link
-              to={"/shift-protocol"}
+              href={"/shift-protocol"}
               className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
             >
               <span>View Shift Protocol</span>

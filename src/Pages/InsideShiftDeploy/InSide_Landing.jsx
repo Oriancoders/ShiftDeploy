@@ -1,7 +1,7 @@
+'use client';
 import React, { Suspense, lazy, useEffect } from 'react';
 import Navigation from '../../components/Navigation';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
-import { Helmet } from 'react-helmet-async';
 
 // ✅ EAGER IMPORT (Load this immediately for the user)
 import OriginStorySection from './comps/OriginStorySection';
@@ -24,19 +24,7 @@ const InSide_Landing = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Inside ShiftDeploy | Our Mission, Values & Mindset</title>
-        <meta
-          name="description"
-          content="Discover the story behind ShiftDeploy — how our team helps innovators overcome deployment roadblocks with CI/CD, Cloud, and DevOps solutions."
-        />
-        <meta name="keywords" content="ShiftDeploy, CI/CD, Cloud, DevOps, deployment experts, team, mindset, mission" />
-        <meta property="og:title" content="Inside ShiftDeploy" />
-        <meta property="og:description" content="Learn about ShiftDeploy's mission, values and approach to solving deployment challenges for builders." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.shiftdeploy.com/insideShiftDeploy" />
-        {/* <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" /> */}
-      </Helmet>
+      
 
       <div>
         {/* 1. Navigation loads instantly */}

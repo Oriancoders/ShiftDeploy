@@ -1,6 +1,7 @@
+'use client';
 import { ArrowRight, Clock } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 
 // Section 6: Call to Action
 function CallToActionSection() {
@@ -78,7 +79,7 @@ function CallToActionSection() {
 
 
           {/* Primary CTA */}
-           <Link to={"/ContactUs"}
+           <Link href={"/ContactUs"}
 
               className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit mb-12 mx-auto"
             >
@@ -89,7 +90,7 @@ function CallToActionSection() {
 
           {/* Secondary CTA */}
           <div className="mb-12">
-            <Link to={"/insideShiftdeploy"} className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-12 py-4 rounded-2xl hover:bg-white/20 transition-all duration-300">
+            <Link href={"/insideShiftdeploy"} className="bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold px-12 py-4 rounded-2xl hover:bg-white/20 transition-all duration-300">
               See What's Inside ShiftDeploy
             </Link>
           </div>

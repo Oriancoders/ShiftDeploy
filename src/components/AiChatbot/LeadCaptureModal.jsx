@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 
@@ -12,6 +13,7 @@ const INITIAL_FORM = {
 export default function LeadCaptureModal({ isOpen, onClose, selectedPackage }) {
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [submitted, setSubmitted] = useState(false);
+  const safeSelectedPackage = typeof selectedPackage === 'string' ? selectedPackage : '';
 
   useEffect(() => {
     if (!isOpen) return undefined;
@@ -36,13 +38,13 @@ export default function LeadCaptureModal({ isOpen, onClose, selectedPackage }) {
       return;
     }
 
-    if (selectedPackage) {
+    if (safeSelectedPackage) {
       setFormData({
         ...INITIAL_FORM,
-        message: `I'm interested in the ${selectedPackage} package.`,
+        message: `I'm interested in the ${safeSelectedPackage} package.`,
       });
     }
-  }, [isOpen, selectedPackage]);
+  }, [isOpen, safeSelectedPackage]);
 
   if (!isOpen) return null;
 
@@ -69,9 +71,9 @@ export default function LeadCaptureModal({ isOpen, onClose, selectedPackage }) {
           <>
             <h3 className="text-2xl font-extrabold text-primaryBlue mb-2">Get Your Free Audit</h3>
             <p className="text-gray-600 mb-6">Share your details and we will reach out shortly.</p>
-            {selectedPackage ? (
+            {safeSelectedPackage ? (
               <div className="mb-5 inline-flex items-center rounded-full bg-orange-50 border border-orange-200 px-3 py-1.5 text-sm font-semibold text-orange-700">
-                Selected Package: {selectedPackage}
+                Selected Package: {safeSelectedPackage}
               </div>
             ) : null}
 

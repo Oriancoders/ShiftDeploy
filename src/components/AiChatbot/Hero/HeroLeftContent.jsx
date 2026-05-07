@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Bot, ArrowRight } from 'lucide-react';
@@ -54,7 +55,7 @@ export default function HeroLeftContent({ animateEnabled, onPrimaryAction, onDem
       <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-5">
         <button
           type="button"
-          onClick={onPrimaryAction}
+          onClick={() => onPrimaryAction?.()}
           className="relative group overflow-hidden bg-white text-primaryBlue px-8 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center hover:scale-[1.02]"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-primaryOrange to-toOrange opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -64,7 +65,7 @@ export default function HeroLeftContent({ animateEnabled, onPrimaryAction, onDem
         </button>
         <button
           type="button"
-          onClick={onDemoAction}
+          onClick={() => onDemoAction?.()}
           className="group bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all flex items-center justify-center border border-white/10 backdrop-blur-md hover:border-white/30"
         >
           See Live Demo <Bot className="ml-2 w-5 h-5 text-secondaryBlue group-hover:rotate-12 transition-transform" />

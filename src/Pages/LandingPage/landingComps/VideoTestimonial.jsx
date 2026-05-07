@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import { Play } from 'lucide-react'; // Ensure you have lucide-react installed
 

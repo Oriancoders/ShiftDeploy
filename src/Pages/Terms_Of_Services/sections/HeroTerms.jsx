@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useRef, useState, } from "react"
 // Section 1: Hero Section
 

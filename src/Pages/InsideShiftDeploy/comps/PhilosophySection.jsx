@@ -1,3 +1,4 @@
+'use client';
 import { Layers, MessageSquare, Target } from "lucide-react"
 import { useEffect, useState, useRef } from "react"
 

@@ -1,7 +1,8 @@
+'use client';
 import { ArrowRight, CheckCircle, DollarSign, FileText, Lock, Shield, Users } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 // Section 3: What We Guarantee
 function GuaranteesSection() {
   const sectionRef = useRef(null)
@@ -103,7 +104,7 @@ function GuaranteesSection() {
           ))}
         </div>
 
-        <Link to={"/ContactUs"}
+        <Link href={"/ContactUs"}
           className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md group mx-auto w-fit mt-12"
 
         >

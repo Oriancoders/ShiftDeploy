@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+'use client';
+import { useRef, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInUp } from "./animations";
 
@@ -11,31 +12,33 @@ export default function CursorFollower({
   gradientTo = "rgba(255,255,255,0.2)",
   circleSize = 80,
   framerAtts = {},
-  hoverColor ,
+  hoverColor,
   children
 }) {
   const buttonRef = useRef(null);
   const textRef = useRef(null);
+  const rafRef = useRef(null);
   const [hovered, setHovered] = useState(false);
   const [circlePos, setCirclePos] = useState({ x: 0, y: 0 });
   const [textHovered, setTextHovered] = useState(false);
 
-  const handleMouseMove = (e) => {
-    const rect = buttonRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    setCirclePos({ x, y });
-
-    // Collision detection
-    if (textRef.current) {
-      const textRect = textRef.current.getBoundingClientRect();
-      const distX = e.clientX - (textRect.left + textRect.width / 2);
-      const distY = e.clientY - (textRect.top + textRect.height / 2);
-      const distance = Math.sqrt(distX * distX + distY * distY);
-      setTextHovered(distance < circleSize / 1.5);
-    }
-  };
+  const handleMouseMove = useCallback((e) => {
+    if (rafRef.current) return;
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      if (!buttonRef.current) return;
+      const rect = buttonRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      setCirclePos({ x, y });
+      if (textRef.current) {
+        const textRect = textRef.current.getBoundingClientRect();
+        const distX = e.clientX - (textRect.left + textRect.width / 2);
+        const distY = e.clientY - (textRect.top + textRect.height / 2);
+        setTextHovered(Math.sqrt(distX * distX + distY * distY) < circleSize / 1.5);
+      }
+    });
+  }, [circleSize]);
 
   return (
     <motion.button

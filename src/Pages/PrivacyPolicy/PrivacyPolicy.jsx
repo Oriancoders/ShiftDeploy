@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect } from 'react'
 import HeroPolicy from './sections/HeroPolicy'
 import Navigation from '../../components/Navigation'

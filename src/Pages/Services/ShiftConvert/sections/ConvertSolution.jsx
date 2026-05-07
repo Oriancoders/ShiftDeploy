@@ -1,7 +1,8 @@
+'use client';
 import React from "react";
 import { motion } from "framer-motion";
 import { Search, PenSquare, GitBranch, Shield } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const ConvertSolution = () => {
   const steps = [
@@ -86,7 +87,7 @@ const ConvertSolution = () => {
         </div>
 
         <Link
-          to="/contactus"
+          href="/contactus"
           className="bg-primaryOrange mt-14 text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-xl lg:rounded-2xl mx-auto font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md w-fit"
         >
           Start Shifting Conversion Today

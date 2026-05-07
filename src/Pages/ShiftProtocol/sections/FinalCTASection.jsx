@@ -1,3 +1,4 @@
+'use client';
 import { Calendar, CheckCircle, Download, Shield } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 

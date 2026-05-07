@@ -1,9 +1,10 @@
+'use client';
 import React, { useContext, useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { ExternalLink, Star, Calendar, Users, TrendingUp } from "lucide-react";
 import { fadeInUp, staggerContainer } from "../../../utils/animations";
 import { ContextAPI } from "../../../GlobalProvider/ContextAPI";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const MissionsCompleted = () => {
   const ref = useRef(null);
@@ -229,7 +230,7 @@ const MissionsCompleted = () => {
 
                 <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 lg:space-x-4">
                   <Link
-                    to={project.url}
+                    href={project.url}
                     className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm"
                   >
                     <ExternalLink className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5" />
@@ -244,7 +245,7 @@ const MissionsCompleted = () => {
         {/* Bottom CTA (simple, aligned) */}
         <div className="mt-12 sm:mt-16 flex justify-center">
           <Link
-            to={"/ContactUs"}
+            href={"/ContactUs"}
             className="bg-primaryBlue text-white px-5 sm:px-8 py-3 sm:py-4 rounded-xl font-bold hover:bg-toBlue transition-all duration-200"
           >
             Start with a Quick Audit

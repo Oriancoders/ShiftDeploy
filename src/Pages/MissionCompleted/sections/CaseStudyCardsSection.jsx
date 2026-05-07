@@ -1,5 +1,6 @@
+'use client';
 import { useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 
 // Section 2: Case Study Cards Grid
 function CaseStudyCardsSection() {
@@ -122,14 +123,14 @@ function CaseStudyCardsSection() {
                   </div>
 
                   {/* CTA */}
-                  <Link to={study.url}
+                  <Link href={study.url}
                     className={` py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform  bg-primaryBlue text-white shadow-lg  mx-auto mt-6`}
                   >
                     Read Full Mission Report
                   </Link>
 
                   {index == 1 && (
-                    <a href="https://www.bullseyesinvestment.com/" target="_blank"
+                    <a href="https://www.bullseyesinvestment.com/" target="_blank" rel="noopener noreferrer"
                       className={` py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform  text-primaryBlue bg-white border-2 border-primaryBlue  mx-auto mt-3`}
                     >
                       Visit Bullseye Investments Website

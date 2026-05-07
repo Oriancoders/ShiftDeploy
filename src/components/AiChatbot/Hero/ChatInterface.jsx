@@ -1,3 +1,4 @@
+'use client';
 import React, { memo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Bot, ArrowRight } from 'lucide-react';

@@ -1,15 +1,14 @@
+'use client';
 import React, { lazy, Suspense, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import Navigation from '../../components/Navigation';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 // TrustStrip will be lazy-loaded below to keep initial bundle small
 
 // ✅ FIX 1: Import Hero DIRECTLY. No lazy loading for what the user sees first.
-import Hero from './landingComps/Hero'; 
-import DigitalReceptionist from './landingComps/DigitalReceptionist';
-// VideoTestimonial will be lazy-loaded below to avoid fetching video on initial load
+import Hero from './landingComps/Hero';
 
-// Keep "Below the fold" components lazy to save bandwidth
+// Everything below the fold is lazy — only Hero renders on first paint
+const DigitalReceptionist = lazy(() => import('./landingComps/DigitalReceptionist'));
 const InsideShiftDeploy = lazy(() => import('./landingComps/InsideShiftDeploy'));
 const DeployToolkit = lazy(() => import('./landingComps/DeployToolkit'));
 const ShiftProtocol = lazy(() => import('./landingComps/ShiftProtocol'));
@@ -28,16 +27,7 @@ const Landing = () => {
 
   return (
     <>
-      <Helmet>
-          <title>ShiftDeploy | Performance, Conversions, and Growth</title>
-        <meta
-          name="description"
-          content="ShiftDeploy helps businesses improve website speed, increase conversions, and build sites that are easy to grow and maintain over time."
-        />
-        {/* ... other meta tags ... */}
-        {/* NOTE: removed preload to avoid making the hero image the LCP bottleneck.
-            We now defer loading the full hero image until the browser is idle. */}
-      </Helmet>
+      
 
       <div className="w-full">
         <Navigation />

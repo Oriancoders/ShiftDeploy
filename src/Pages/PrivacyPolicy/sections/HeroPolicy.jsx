@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useRef, useState, } from "react"
 import CursorFollower from "../../../utils/CursorFollower"
 import { section } from "framer-motion/client";

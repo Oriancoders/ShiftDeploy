@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -18,9 +19,8 @@ import {
 } from 'lucide-react';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
-import { Helmet } from 'react-helmet-async';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 
 const K2TradersCase = () => {
@@ -327,38 +327,7 @@ const K2TradersCase = () => {
 
   return (
     <>
-      <Helmet>
-        {/* ✅ Basic SEO Meta */}
-        <title>K2 Traders Case Study | E-Commerce Website Built from Scratch</title>
-        <meta
-          name="description"
-          content="See how ShiftDeploy built K2 Traders a new e-commerce website from scratch with faster pages, a mobile-first checkout flow, and improved conversion tracking."
-        />
-        <meta
-          name="keywords"
-          content="K2 Traders case study, e-commerce website, mobile-first checkout, website speed, conversion tracking, ShiftDeploy"
-        />
-
-        {/* ✅ Open Graph / Social Preview */}
-        <meta property="og:title" content="K2 Traders Case Study | E-Commerce Website Built from Scratch" />
-        <meta
-          property="og:description"
-          content="See how ShiftDeploy built K2 Traders a new e-commerce website from scratch with faster pages, a mobile-first checkout flow, and improved conversion tracking."
-        />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://www.shiftdeploy.com/CaseStudies/K2TradersCase" />
-        <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
-
-        {/* ✅ Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="K2 Traders Case Study | E-Commerce Website Built from Scratch" />
-        <meta
-          name="twitter:description"
-          content="See how ShiftDeploy built K2 Traders a new e-commerce website from scratch with faster pages, a mobile-first checkout flow, and improved conversion tracking."
-        />
-        <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
-      </Helmet>
-
+      
       <Navigation isDarkBg={true} />
 
       {showLoader ? (
@@ -661,7 +630,7 @@ const K2TradersCase = () => {
                           comes in, so the store gets better month by month.
                         </p>
                         <Link
-                          to="/ContactUs"
+                          href="/ContactUs"
                           className="inline-flex items-center px-4 sm:px-8 py-4 rounded-xl font-semibold bg-primaryOrange hover:bg-toOrange text-white sm:text-lg shadow-lg hover:shadow-2xl transition-all duration-300"
                         >
                           <span>Talk About Improvements</span>
@@ -876,14 +845,14 @@ const K2TradersCase = () => {
 
               <div className="flex justify-center items-center sm:flex-row flex-col gap-6 w-full">
                 <Link
-                  to={"/ContactUs"}
+                  href={"/ContactUs"}
                   className="bg-primaryOrange hover:bg-toOrange text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit"
                 >
                   <span>Request a Quick Audit</span>
                   <ArrowRight className="w-6 h-6" />
                 </Link>
                 <Link
-                  to={"/missions"}
+                  href={"/missions"}
                   className="bg-white sm:hover:bg-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit border border-primaryBlue"
                 >
                   <span>View More Projects</span>

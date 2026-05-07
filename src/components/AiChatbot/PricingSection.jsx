@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import PricingHeader from './Pricing/PricingHeader';
 import EssentialPlanCard from './Pricing/EssentialPlanCard';

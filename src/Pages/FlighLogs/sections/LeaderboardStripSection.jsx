@@ -1,3 +1,4 @@
+'use client';
 import { CheckCircle, Clock, Star, Target, Users } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 

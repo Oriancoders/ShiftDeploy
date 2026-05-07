@@ -1,3 +1,4 @@
+'use client';
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
@@ -5,8 +6,7 @@ import { fadeInUp, staggerContainer } from '../../utils/animations';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
 import emailjs from "@emailjs/browser";
-import { Helmet } from 'react-helmet-async';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaLinkedin, } from 'react-icons/fa';
 import { IoMail } from 'react-icons/io5';
@@ -14,7 +14,7 @@ import { IoMail } from 'react-icons/io5';
 const ContactUs = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const navigate = useNavigate()
+  const router = useRouter()
 
   // 🟢 Page load hone par scroll top
   useEffect(() => {
@@ -61,7 +61,7 @@ const ContactUs = () => {
         () => {
           setFormStatus("success");
           setTimeout(() => {
-            navigate("/thankyou")
+            router.push("/thankyou")
           }, 1000)
           console.log("form data yera ", formData)
           setFormData({ name: "", email: "", company: "", message: "", phone: "", budget: "", timeline: "" });
@@ -102,35 +102,6 @@ const ContactUs = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Get a Free Website Performance Audit | ShiftDeploy</title>
-        <meta
-          name="description"
-          content="Request a free performance audit to see how speed and usability affect real visitors—no changes to your site. Get clear findings and next steps."
-        />
-        <meta
-          name="keywords"
-          content="free website audit, performance audit, core web vitals audit, site speed audit, UX usability audit, ShiftDeploy"
-        />
-
-        <meta property="og:title" content="Get a Free Website Performance Audit | ShiftDeploy" />
-        <meta
-          property="og:description"
-          content="Free performance audit showing how speed and usability affect real visitors—no site changes required."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.shiftdeploy.com/contact" />
-        <meta property="og:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Get a Free Website Performance Audit | ShiftDeploy" />
-        <meta
-          name="twitter:description"
-          content="Request a free audit to understand speed + usability impact on real visitors. No changes made during the audit."
-        />
-        <meta name="twitter:image" content="https://www.shiftdeploy.com/og-banner.jpg" />
-      </Helmet>
-
       <Navigation />
       <section id="contact-us" className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-x-hidden">
         {/* Background Pattern */}

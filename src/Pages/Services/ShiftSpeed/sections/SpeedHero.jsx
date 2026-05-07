@@ -1,8 +1,9 @@
+'use client';
 import React, { useContext, useState, useEffect } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { ArrowRight, Clock, TrendingUp, Zap } from "lucide-react";
 import CursorFollower from "../../../../utils/CursorFollower";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { ContextAPI } from "../../../../GlobalProvider/ContextAPI";
 
 const SpeedHero = () => {
@@ -40,8 +41,8 @@ const SpeedHero = () => {
     };
   }, []);
 
-  const moveX = useTransform(x, [0, window.innerWidth], [-50, 50]);
-  const moveY = useTransform(y, [0, window.innerHeight], [-50, 50]);
+  const moveX = useTransform(x, [0, typeof window !== 'undefined' ? window.innerWidth : 1440], [-50, 50]);
+  const moveY = useTransform(y, [0, typeof window !== 'undefined' ? window.innerHeight : 900], [-50, 50]);
 
   const handleMouseMove = (e) => {
     x.set(e.clientX);
@@ -123,7 +124,7 @@ const SpeedHero = () => {
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
                 <Link
-                  to={"/contactus"}
+                  href={"/contactus"}
                   className="bg-primaryOrange border-2 border-primaryOrange hover:border-toOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md "
                 >
                   Get Free Audit

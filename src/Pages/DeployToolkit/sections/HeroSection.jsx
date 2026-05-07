@@ -1,5 +1,6 @@
+'use client';
 import { useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
+import Link from "next/link"
 
 // Section 1: Hero + Value Propositions
 function HeroSection() {
@@ -71,7 +72,7 @@ function HeroSection() {
 
           {/* CTA */}
           <Link
-            to={"/ContactUs"}
+            href={"/ContactUs"}
             className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mx-auto mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit"
           >
             Know Whats Slowing You Down
