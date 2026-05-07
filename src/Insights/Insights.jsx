@@ -332,20 +332,20 @@ const Insights = () => {
 
   return (
     <>
-      <Navigation />
+      <Navigation isDarkBg={true} />
 
       {/* ── Page hero ── */}
       <div className="relative bg-primaryBlue overflow-hidden">
         <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(circle,#fff 1px,transparent 1px)", backgroundSize: "32px 32px" }} />
         <div className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-10" style={{ background: "radial-gradient(circle,#F76707,transparent 70%)", transform: "translate(30%,-30%)" }} />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-14 relative z-10">
+        <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-14 relative z-10">
           <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
-            <p className="text-xs font-bold tracking-widest text-primaryOrange uppercase mb-3">ShiftDeploy Blog</p>
+            <p className="text-xs font-bold tracking-widest text-primaryOrange uppercase mb-3"></p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
               Insights<span className="text-primaryOrange">.</span>
             </h1>
             <p className="mt-4 max-w-2xl text-white/60 text-base sm:text-lg leading-relaxed">
-              Evidence-driven memos from real audits — performance, UX friction, and conversion mechanics. No fluff.
+              Evidence-driven memos from real audits, performance, UX friction, and conversion mechanics. No fluff.
             </p>
             <div className="mt-4 flex items-center gap-4 text-sm text-white/50">
               <span>{sanityPosts.length} articles published</span>
@@ -356,7 +356,7 @@ const Insights = () => {
       </div>
 
       <section className="min-h-screen bg-gray-50 pb-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+        <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 pt-10">
 
           {/* ── Tag filter bar ── */}
           {allTags.length > 1 && (
@@ -473,10 +473,10 @@ const Insights = () => {
                 )}
 
                 {/* CTA box */}
-                <div className="bg-gradient-to-br from-primaryBlue to-blue-800 rounded-2xl p-5 text-white">
+                <div className="bg-gradient-to-br from-primaryBlue to-toBlue rounded-2xl p-5 text-white">
                   <p className="text-xs font-bold text-primaryOrange uppercase tracking-wider mb-2">Free Audit</p>
                   <h3 className="font-extrabold text-lg leading-snug mb-2">Is your site leaving money on the table?</h3>
-                  <p className="text-white/60 text-sm mb-4 leading-relaxed">Get a performance & conversion audit from ShiftDeploy — no fluff, actionable results.</p>
+                  <p className="text-white/60 text-sm mb-4 leading-relaxed">Get a performance & conversion audit from ShiftDeploy, no fluff, actionable results.</p>
                   <Link href="/ContactUs" className="inline-flex items-center gap-2 bg-primaryOrange text-white text-sm font-bold px-4 py-2.5 rounded-xl hover:bg-orange-600 transition">
                     Get Free Audit <ArrowRight className="w-4 h-4" />
                   </Link>

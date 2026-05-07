@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm outdated *)",
+      "Bash(exit 0)",
+      "Bash(npm install *)",
+      "Bash(npm audit *)",
+      "Bash(node -e \"const d=JSON.parse\\(require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\)\\); Object.entries\\(d.vulnerabilities||{}\\).forEach\\(\\([k,v]\\)=>console.log\\(v.severity.toUpperCase\\(\\), k, '-', v.title||''\\)\\)\")"
+    ]
+  }
+}
