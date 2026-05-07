@@ -2,12 +2,6 @@
   "framework": "nextjs",
   "redirects": [
     {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.shiftdeploy.com" }],
-      "destination": "https://shiftdeploy.com/$1",
-      "permanent": true
-    },
-    {
       "source": "/deploy-toolkit",
       "destination": "/services",
       "permanent": true
