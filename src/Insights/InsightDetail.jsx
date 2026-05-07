@@ -691,7 +691,7 @@ const InsightDetail = ({ slug: slugProp }) => {
 
   return (
     <>
-      <Navigation />
+      <Navigation isDarkBg="true" />
 
       {/* Hero banner */}
       <div className="relative bg-primaryBlue overflow-hidden">
