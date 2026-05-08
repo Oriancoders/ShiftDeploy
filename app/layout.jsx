@@ -1,4 +1,5 @@
 import './globals.css';
+import 'highlight.js/styles/atom-one-dark.css';
 import { Inter } from 'next/font/google';
 import GlobalProvider from '../src/GlobalProvider/GlobalProvider';
 import LazyGTM from '../src/utils/LazyGTM';

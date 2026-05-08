@@ -1,45 +1,16 @@
 export const revalidate = 3600;
 import InsightDetail from '../../../src/Insights/InsightDetail';
-import { sanityClient, isSanityConfigured } from '../../../src/lib/sanity';
-import imageUrlBuilder from '@sanity/image-url';
-
-const imageBuilder = isSanityConfigured ? imageUrlBuilder(sanityClient) : null;
-
-async function getPost(slug) {
-  if (!isSanityConfigured || !sanityClient) return null;
-  try {
-    return await sanityClient.fetch(
-      `*[_type in ["post","insight","insights","blogPost"] && slug.current == $slug][0]{
-        title,
-        excerpt,
-        mainImage,
-        publishedAt,
-        _updatedAt,
-        "author": author->{ name, "image": image.asset->url },
-        categories[]->{ title },
-        minutes,
-        readTime,
-        body,
-        seoTitle,
-        seoDescription,
-        focusKeyword,
-        keywords,
-        openGraphImage,
-        socialTitle,
-        socialDescription,
-        canonicalUrl,
-        noIndex
-      }`,
-      { slug }
-    );
-  } catch {
-    return null;
-  }
-}
+import {
+  buildSanityImageUrl,
+  getInsightBySlug,
+  getInsightList,
+  getReadMinutes,
+  normalizeInsightDetail,
+} from '../../../src/lib/insightsData';
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const post = await getPost(slug);
+  const post = await getInsightBySlug(slug);
 
   if (!post) {
     return {
@@ -53,13 +24,9 @@ export async function generateMetadata({ params }) {
   const canonicalHref = post.canonicalUrl || `https://shiftdeploy.com/insights/${slug}`;
 
   const sanityOgImage =
-    post.openGraphImage && imageBuilder
-      ? imageBuilder.image(post.openGraphImage).width(1200).height(630).auto('format').url()
-      : null;
+    post.openGraphImage ? buildSanityImageUrl(post.openGraphImage, 1200, 630) : null;
   const mainOgImage =
-    post.mainImage && imageBuilder
-      ? imageBuilder.image(post.mainImage).width(1200).height(630).auto('format').url()
-      : null;
+    post.mainImage ? buildSanityImageUrl(post.mainImage, 1200, 630) : null;
   const ogImage = sanityOgImage || mainOgImage || '/og-image.png';
 
   const ogTitle = post.socialTitle || post.title;
@@ -93,24 +60,17 @@ export async function generateMetadata({ params }) {
 
 export default async function InsightDetailPage({ params }) {
   const { slug } = await params;
-  const post = await getPost(slug);
+  const post = await getInsightBySlug(slug);
 
   const ogImage =
-    post?.mainImage && imageBuilder
-      ? imageBuilder.image(post.mainImage).width(1200).height(630).auto('format').url()
-      : 'https://shiftdeploy.com/og-image.png';
+    post?.mainImage ? buildSanityImageUrl(post.mainImage, 1200, 630) : 'https://shiftdeploy.com/og-image.png';
 
   const readMinutes = (() => {
-    const fromMinutes = Number(post?.minutes);
-    if (Number.isFinite(fromMinutes) && fromMinutes > 0) return Math.round(fromMinutes);
-    const fromReadTime = Number(post?.readTime);
-    if (Number.isFinite(fromReadTime) && fromReadTime > 0) return Math.round(fromReadTime);
-    if (!Array.isArray(post?.body)) return 3;
-    const words = post.body
-      .map((b) => (b?.children || []).map((c) => c?.text || '').join(' ')).join(' ')
-      .split(/\s+/).filter(Boolean).length;
-    return Math.max(1, Math.ceil(words / 200));
+    return getReadMinutes(post?.minutes, post?.readTime, post?.body);
   })();
+
+  const initialPost = post ? normalizeInsightDetail(post) : null;
+  const moreInsights = (await getInsightList()).filter((item) => item.id !== initialPost?.id).slice(0, 5);
 
   const articleSchema = post
     ? {
@@ -156,7 +116,7 @@ export default async function InsightDetailPage({ params }) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <InsightDetail slug={slug} />
+      <InsightDetail slug={slug} initialPost={initialPost} initialMoreInsights={moreInsights} />
     </>
   );
 }

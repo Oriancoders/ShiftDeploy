@@ -1,11 +1,8 @@
-'use client';
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 import { Calendar, Clock3, User, AlertCircle, CheckCircle, Info, AlertTriangle } from "lucide-react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import imageUrlBuilder from "@sanity/image-url";
 import hljs from "highlight.js";
-import "highlight.js/styles/atom-one-dark.css";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import { isSanityConfigured, sanityClient } from "../lib/sanity";
@@ -573,120 +570,9 @@ const MoreInsightsSection = ({ insights }) => {
   );
 };
 
-const InsightDetail = ({ slug: slugProp }) => {
-  const params = useParams();
-  const slug = slugProp || params?.slug;
-  const [post, setPost] = useState(null);
-  const [moreInsights, setMoreInsights] = useState([]);
-  const [isLoading, setIsLoading] = useState(isSanityConfigured);
-  const [loadError, setLoadError] = useState("");
-
-  useEffect(() => {
-    let isCancelled = false;
-
-    if (!slug || !isSanityConfigured || !sanityClient) {
-      setIsLoading(false);
-      return () => {
-        isCancelled = true;
-      };
-    }
-
-    const loadPost = async () => {
-      try {
-        setIsLoading(true);
-        setLoadError("");
-        const doc = await sanityClient.fetch(INSIGHT_BY_SLUG_QUERY, { slug });
-
-        if (isCancelled || !doc) return;
-
-        setPost({
-          id: doc.id || doc._id,
-          title: doc.title,
-          excerpt: doc.excerpt || doc.summary || "",
-          date: doc.date || new Date().toISOString(),
-          tags: normalizeTags(doc.tags, doc.categories),
-          author: doc?.author?.name || "ShiftDeploy",
-          authorJobTitle: doc?.author?.jobTitle || "",
-          authorImage: doc?.author?.image || null,
-          authorExpertise: doc?.author?.expertise || [],
-          mainImage: doc.mainImage || doc.coverImage || null,
-          body: Array.isArray(doc.body) ? doc.body : [],
-          minutes: getReadMinutes(doc.minutes, doc.readTime, doc.body),
-          internalLinks: Array.isArray(doc.internalLinks) ? doc.internalLinks : [],
-          theme: doc.theme || null,
-          primaryCta: doc.primaryCta || null,
-          relatedPosts: Array.isArray(doc.relatedPosts) ? doc.relatedPosts : [],
-          featured: doc.featured || false,
-        });
-      } catch (error) {
-        if (!isCancelled) {
-          setLoadError("Could not load this insight from Sanity.");
-        }
-      } finally {
-        if (!isCancelled) {
-          setIsLoading(false);
-        }
-      }
-    };
-
-    loadPost();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, [slug]);
-
-  useEffect(() => {
-    let isCancelled = false;
-
-    if (!isSanityConfigured || !sanityClient) {
-      return () => {
-        isCancelled = true;
-      };
-    }
-
-    const loadMoreInsights = async () => {
-      try {
-        const docs = await sanityClient.fetch(INSIGHTS_QUERY);
-        if (isCancelled) return;
-
-        const currentId = post?.id;
-        const normalized = Array.isArray(docs)
-          ? docs
-              .filter((doc) => doc && doc.title)
-              .map((doc) => ({
-                id: doc.id || doc._id,
-                title: doc.title,
-                excerpt: doc.excerpt || doc.summary || "",
-                date: doc.date || new Date().toISOString(),
-                tags: normalizeTags(doc.tags, doc.categories),
-                author: doc?.author?.name || "ShiftDeploy",
-                minutes: getReadMinutes(doc.minutes, doc.readTime, doc.body),
-              }))
-              .filter((doc) => doc.id !== currentId)
-              .slice(0, 5)
-          : [];
-
-        setMoreInsights(normalized);
-      } catch (error) {
-        if (!isCancelled) {
-          setMoreInsights([]);
-        }
-      }
-    };
-
-    loadMoreInsights();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, [post?.id]);
-
-  const pageTitle = useMemo(
-    () => (post?.title ? `${post.title} | ShiftDeploy Insights` : "Insight | ShiftDeploy"),
-    [post]
-  );
-
+const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
+  const post = initialPost;
+  const moreInsights = Array.isArray(initialMoreInsights) ? initialMoreInsights : [];
   const heroImage = post?.mainImage || post?.coverImage || null;
 
   return (
@@ -730,7 +616,7 @@ const InsightDetail = ({ slug: slugProp }) => {
               </div>
             </>
           )}
-          {!post && !isLoading && (
+          {!post && (
             <h1 className="text-3xl font-extrabold text-white">Insight</h1>
           )}
         </div>
@@ -741,24 +627,7 @@ const InsightDetail = ({ slug: slugProp }) => {
           <div className="lg:grid lg:grid-cols-12 lg:gap-10 -mt-2">
           <div className="lg:col-span-8 xl:col-span-9">
 
-          {isLoading && (
-            <div className="mt-8 rounded-2xl bg-white p-8 text-gray-500 shadow-sm border border-gray-100 text-center">
-              <div className="animate-pulse space-y-3">
-                <div className="h-4 bg-gray-200 rounded w-3/4 mx-auto" />
-                <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto" />
-                <div className="h-4 bg-gray-200 rounded w-2/3 mx-auto" />
-              </div>
-              <p className="mt-4 text-sm text-gray-400">Loading insight…</p>
-            </div>
-          )}
-
-          {loadError && (
-            <div className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-6 text-amber-800">
-              {loadError}
-            </div>
-          )}
-
-          {!isLoading && !post && (
+          {!post && (
             <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-8 text-gray-600 text-center">
               Insight not found.
             </div>

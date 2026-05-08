@@ -263,16 +263,22 @@ const CardSkeleton = () => (
 );
 
 // ── Main page ─────────────────────────────────────────────────────────────────
-const Insights = () => {
+const Insights = ({ initialPosts = [] }) => {
   const POSTS_PER_PAGE = 6;
+  const safeInitialPosts = Array.isArray(initialPosts) ? initialPosts : [];
   const [page, setPage] = useState(1);
-  const [sanityPosts, setSanityPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(isSanityConfigured);
+  const [sanityPosts, setSanityPosts] = useState(safeInitialPosts);
+  const [isLoading, setIsLoading] = useState(isSanityConfigured && safeInitialPosts.length === 0);
   const [loadError, setLoadError] = useState("");
   const [activeTag, setActiveTag] = useState("All");
 
   useEffect(() => {
     let cancelled = false;
+    if (safeInitialPosts.length > 0) {
+      setIsLoading(false);
+      return;
+    }
+
     if (!isSanityConfigured || !sanityClient) { setIsLoading(false); return; }
 
     (async () => {
@@ -303,7 +309,7 @@ const Insights = () => {
     })();
 
     return () => { cancelled = true; };
-  }, []);
+  }, [safeInitialPosts.length]);
 
   // Collect all unique tags
   const allTags = useMemo(() => {

@@ -68,6 +68,7 @@ export default async function Image() {
             <div style={{
               fontSize: '68px', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-2px',
               color: '#ffffff', marginBottom: '28px', maxWidth: '820px',
+              display: 'flex', flexWrap: 'wrap',
             }}>
               Performance-First{' '}
               <span style={{ color: '#F76707' }}>Web Agency</span>

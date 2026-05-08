@@ -1,5 +1,6 @@
 export const revalidate = 1800;
 import Insights from '../../src/Insights/Insights';
+import { getInsightList } from '../../src/lib/insightsData';
 
 export const metadata = {
   title: 'Insights | Web Performance, CRO & Growth Blog',
@@ -33,11 +34,13 @@ const blogSchema = {
   },
 };
 
-export default function InsightsPage() {
+export default async function InsightsPage() {
+  const posts = await getInsightList();
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
-      <Insights />
+      <Insights initialPosts={posts} />
     </>
   );
 }

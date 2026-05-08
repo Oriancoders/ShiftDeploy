@@ -18,7 +18,7 @@ export default async function Image() {
             <div style={{ marginLeft:'12px',padding:'4px 14px',borderRadius:'999px',background:'rgba(247,103,7,0.18)',border:'1px solid rgba(247,103,7,0.4)',fontSize:'14px',color:'#F76707',fontWeight:600 }}>ShiftFlow</div>
           </div>
           <div style={{ flex:1,display:'flex',flexDirection:'column',justifyContent:'center' }}>
-            <div style={{ fontSize:'62px',fontWeight:800,lineHeight:1.05,letterSpacing:'-2px',color:'#ffffff',marginBottom:'24px',maxWidth:'900px' }}>Business Automation <span style={{ color:'#F76707' }}>&amp; AI</span></div>
+            <div style={{ fontSize:'62px',fontWeight:800,lineHeight:1.05,letterSpacing:'-2px',color:'#ffffff',marginBottom:'24px',maxWidth:'900px',display:'flex',flexWrap:'wrap' }}>Business Automation <span style={{ color:'#F76707', marginLeft:'14px' }}>&amp; AI</span></div>
             <div style={{ fontSize:'24px',color:'rgba(255,255,255,0.68)',lineHeight:1.5,maxWidth:'700px' }}>Eliminate manual tasks with AI-powered workflows that scale.</div>
           </div>
           <div style={{ fontSize:'16px',color:'rgba(255,255,255,0.4)' }}>shiftdeploy.com</div>
