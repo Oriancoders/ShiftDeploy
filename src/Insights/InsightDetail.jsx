@@ -59,7 +59,8 @@ const renderTextWithMarks = (children, markDefs = []) => {
     if (typeof span === "string") return span;
     if (!span || !span.text) return null;
 
-    let element = <>{span.text}</>;
+    const key = span._key || idx;
+    let element = <React.Fragment key={key}>{span.text}</React.Fragment>;
     const defs = Array.isArray(markDefs) ? markDefs : [];
 
     // Apply marks in order
