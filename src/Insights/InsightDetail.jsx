@@ -641,7 +641,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                   <img
                     src={getImageUrl(heroImage, 1400)}
                     alt={heroImage.alt || post.title || "Insight cover image"}
-                    className="w-full h-64 sm:h-80 lg:h-96 object-cover"
+                    className="w-full h-fit object-cover"
                   />
                 </figure>
               )}
