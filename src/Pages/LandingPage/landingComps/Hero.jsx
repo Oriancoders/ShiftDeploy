@@ -72,11 +72,11 @@ const Hero = () => {
               <div className="text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left">
                 <h1>
                   <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                    Your Digital Partner,
-
+                   
+                    Your Technical Partner,
                   </span>
                   <br />
-                  <span className="text-primaryOrange">We Fix Whats
+                  <span className="text-primaryOrange"> We Fix What's 
 </span>
                   <br />
                   <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
