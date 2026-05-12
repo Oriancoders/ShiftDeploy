@@ -110,6 +110,27 @@ const EMAILJS_SERVICE_ID = 'service_kl93ix7';
 const EMAILJS_TEMPLATE_ID = 'template_fqpwrcg';
 const EMAILJS_PUBLIC_KEY = 'cDFV4myTzYdyZu09M';
 
+const uploadAuditRequestToSheet = async (form) => {
+  const response = await fetch('/api/service-growth-audit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: form.name.trim(),
+      email: form.email.trim(),
+      country_code: form.country_code,
+      phone: form.phone.trim(),
+      full_phone: `${form.country_code} ${form.phone.trim()}`,
+      website: form.website.trim() || 'Not provided',
+      service_type: form.service_type,
+      message: form.message.trim() || 'Not provided',
+    }),
+  });
+
+  if (!response.ok) {
+    throw new Error('Google Sheets upload failed.');
+  }
+};
+
 const INITIAL_AUDIT_FORM = {
   name: '',
   email: '',
@@ -516,19 +537,22 @@ export default function ServiceGrowthAudit() {
     setFormMessage('');
 
     try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          name: auditForm.name.trim(),
-          email: auditForm.email.trim(),
-          phone: `${auditForm.country_code} ${auditForm.phone.trim()}`,
-          website: auditForm.website.trim() || 'Not provided',
-          service_type: auditForm.service_type,
-          message: auditForm.message.trim() || 'Not provided',
-        },
-        { publicKey: EMAILJS_PUBLIC_KEY }
-      );
+      await Promise.all([
+        emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          {
+            name: auditForm.name.trim(),
+            email: auditForm.email.trim(),
+            phone: `${auditForm.country_code} ${auditForm.phone.trim()}`,
+            website: auditForm.website.trim() || 'Not provided',
+            service_type: auditForm.service_type,
+            message: auditForm.message.trim() || 'Not provided',
+          },
+          { publicKey: EMAILJS_PUBLIC_KEY }
+        ),
+        uploadAuditRequestToSheet(auditForm),
+      ]);
 
       setFormStatus('success');
       setFormMessage('Audit request sent successfully.');
