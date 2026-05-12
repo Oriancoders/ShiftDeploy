@@ -175,8 +175,7 @@ const MissionsCompleted = () => {
             >
               {/* Left: Image */}
               <div
-                className={`relative h-48 sm:h-64 lg:h-full ${scrwidth > 768 && index % 2 === 0 ? "order-2" : "order-1"
-                  } ${scrwidth < 768 ? "order-2" : ""}`}
+                className={`relative h-48 sm:h-64 lg:h-full order-2 ${index % 2 === 0 ? "lg:order-2" : "lg:order-1"}`}
               >
                 <img
                   src={project.image}
@@ -188,8 +187,7 @@ const MissionsCompleted = () => {
 
               {/* Right: Content */}
               <div
-                className={`p-4 sm:p-6 lg:p-8 xl:p-10 ${scrwidth > 768 && index % 2 === 0 ? "order-1" : "order-2"
-                  } ${scrwidth < 768 ? "order-1" : ""}`}
+                className={`p-4 sm:p-6 lg:p-8 xl:p-10 order-1 ${index % 2 === 0 ? "lg:order-1" : "lg:order-2"}`}
               >
                 <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-primaryBlue mb-1 sm:mb-2 lg:mb-3">
                   {project.title}

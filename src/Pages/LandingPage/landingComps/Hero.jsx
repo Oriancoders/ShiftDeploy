@@ -2,6 +2,7 @@
 import React, { lazy, Suspense } from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import HeroAnimation from "./HeroAnimation";
 
 // 2. Lazy Import the heavy interactive component
 // This tells React: "Don't download this file until we actually need to render it."
@@ -112,23 +113,9 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Right Column: Image (FIXED SECTION) */}
-            <div className="relative mt-8 lg:mt-0 px-4 sm:px-0">
-              <img
-                srcSet={`
-    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_400/v1771102147/hero_image_aw1jnc.webp 400w,
-    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto:eco,w_800/v1771102147/hero_image_aw1jnc.webp 800w,
-    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp 1200w
-  `}
-                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 600px"
-                src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1771102147/hero_image_aw1jnc.webp"
-                width="1200"
-                height="675"
-                alt="3D Material Prototype Illustration"
-                className="w-full h-auto rounded-xl"
-                fetchPriority="high"
-                loading="eager"
-              />
+            {/* Right Column: Animation */}
+            <div className="relative mt-8 lg:mt-0 px-4 sm:px-0 flex items-center justify-center">
+              <HeroAnimation />
             </div>
 
           </div>

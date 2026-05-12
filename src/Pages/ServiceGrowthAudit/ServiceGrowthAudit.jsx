@@ -73,7 +73,6 @@ const auditAreas = [
 const packages = [
   {
     name: 'Growth Activation System',
-    price: 'From $1,499/month + ad spend',
     description: 'For businesses that need campaigns and conversion flow improved together.',
     features: [
       'Meta campaign management',
@@ -85,7 +84,6 @@ const packages = [
   },
   {
     name: 'Managed Digital Growth Partner',
-    price: 'From $2,499/month',
     description: 'For businesses that want wider visibility, positioning, and growth oversight.',
     features: [
       'Full digital growth oversight',
@@ -1093,7 +1091,6 @@ export default function ServiceGrowthAudit() {
                   {plan.highlighted ? <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-primaryOrange/10 blur-3xl" /> : null}
                   <div className="relative">
                     <h3 className="text-2xl font-extrabold text-primaryBlue">{plan.name}</h3>
-                    <p className="mt-3 text-xl font-extrabold text-primaryOrange">{plan.price}</p>
                     <p className="mt-4 leading-relaxed text-gray-600">{plan.description}</p>
                     <div className="mt-8 space-y-4">
                       {plan.features.map((feature) => (
