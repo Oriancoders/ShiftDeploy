@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 import { growthFeatures } from './constants';
 
@@ -29,7 +29,7 @@ export default function GrowthPlanCard({ isAnnual, onSelectPackage }) {
           </span>
         </div>
         <div className="mb-6 mt-4">
-          <h3 className="text-2xl font-bold text-white relative inline-block">
+          <h3 className="text-2xl font-semibold text-white relative inline-block">
             Growth
             <span className="absolute -right-6 -top-2">✨</span>
           </h3>
@@ -37,7 +37,7 @@ export default function GrowthPlanCard({ isAnnual, onSelectPackage }) {
         </div>
         <div className="mb-8">
           <p className="text-blue-300/80 text-sm line-through mb-1">$399/mo typical staffing alternative</p>
-          <span className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">${displayPrice}</span>
+          <span className="text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">${displayPrice}</span>
           <span className="text-blue-300 font-medium">/mo</span>
           <p className="text-xs text-blue-300/80 mt-2">
             {isAnnual ? `Billed yearly ($${annualTotal}/yr) • Save $${annualSavings}/yr` : 'Billed monthly'}
@@ -47,11 +47,11 @@ export default function GrowthPlanCard({ isAnnual, onSelectPackage }) {
           <p className="text-[11px] uppercase tracking-wider font-black text-green-300 mb-1">Most Chosen</p>
           <p className="text-sm font-semibold text-white">Built for teams that want faster response times and predictable booking growth.</p>
         </div>
-        <ul className="space-y-4 mb-8 flex-grow">
+        <ul className="gap-y-4 mb-8 flex-grow">
           {growthFeatures.map((feature, i) => (
-            <li key={i} className="flex items-start font-medium text-blue-50 text-[15px]">
+            <li key={feature?.id ?? feature?.slug ?? feature?.title ?? feature?.name ?? i} className="flex items-start font-medium text-blue-50 text-[15px]">
               <div className="bg-primaryOrange/20 p-1 rounded-full mr-3 flex-shrink-0 mt-0.5 self-start">
-                <CheckCircle2 className="w-4 h-4 text-primaryOrange" />
+                <CheckCircle2 className="size-4 text-primaryOrange" />
               </div>
               {feature}
             </li>

@@ -1,5 +1,6 @@
 export const revalidate = 3600;
 import ShiftFlow from '../../../src/Pages/Services/ShiftFlow/ShiftFlow';
+import JsonLd from '../../../src/components/JsonLd';
 
 export const metadata = {
   title: 'ShiftFlow | Business Automation & AI Workflows',
@@ -28,7 +29,7 @@ const schema = {
 export default function ShiftFlowPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={schema} />
       <ShiftFlow />
     </>
   );

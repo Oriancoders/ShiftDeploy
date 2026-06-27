@@ -64,12 +64,12 @@ export default function LeadCaptureModal({ isOpen, onClose, selectedPackage }) {
 
       <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 sm:p-8">
         <button type="button" onClick={onClose} className="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-          <X className="w-5 h-5" />
+          <X className="size-5" />
         </button>
 
         {!submitted ? (
           <>
-            <h3 className="text-2xl font-extrabold text-primaryBlue mb-2">Get Your Free Audit</h3>
+            <h3 className="text-2xl font-semibold text-primaryBlue mb-2">Get Your Free Audit</h3>
             <p className="text-gray-600 mb-6">Share your details and we will reach out shortly.</p>
             {safeSelectedPackage ? (
               <div className="mb-5 inline-flex items-center rounded-full bg-orange-50 border border-orange-200 px-3 py-1.5 text-sm font-semibold text-orange-700">
@@ -91,7 +91,7 @@ export default function LeadCaptureModal({ isOpen, onClose, selectedPackage }) {
           </>
         ) : (
           <div className="py-8 text-center">
-            <h3 className="text-2xl font-extrabold text-primaryBlue mb-2">Thank you!</h3>
+            <h3 className="text-2xl font-semibold text-primaryBlue mb-2">Thank you!</h3>
             <p className="text-gray-600 mb-6">Your details were captured. Our team will contact you soon.</p>
             <button type="button" onClick={onClose} className="bg-primaryBlue text-white px-6 py-3 rounded-lg font-semibold">
               Close

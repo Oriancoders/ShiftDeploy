@@ -134,7 +134,7 @@ const DetailedTerms = () => {
             By confirming a project, you acknowledge and agree that:
           </p>
           <ul className="list-disc pl-6 mt-2 space-y-1 ">
-            <li><strong>Invoices:</strong> Issued upon project initiation, milestone completion, or delivery — as defined in the engagement agreement.</li>
+            <li><strong>Invoices:</strong> Issued upon project initiation, milestone completion, or delivery - as defined in the engagement agreement.</li>
             <li><strong>Payment Methods:</strong> We accept bank transfers, online payments, or other approved channels.</li>
             <li><strong>Refunds:</strong> We refund full amount if client is not satisfied with milestone 1.  Generally not available after Milestons 1 is approved, except where legally required or explicitly stated.</li>
             <li><strong>Late Payments :</strong> May incur a reasonable service fee or delay in project progress.</li>
@@ -169,8 +169,8 @@ const DetailedTerms = () => {
           </h1>
           <p>
             Unless otherwise stated in writing, all intellectual property created by
-            ShiftDeploy during a client project — including but not limited to software
-            code, designs, documentation, and technical strategies — remains the
+            ShiftDeploy during a client project - including but not limited to software
+            code, designs, documentation, and technical strategies - remains the
             property of ShiftDeploy until full payment is received
           </p>
 

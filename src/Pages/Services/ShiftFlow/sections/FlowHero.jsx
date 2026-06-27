@@ -1,12 +1,12 @@
 'use client';
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from 'framer-motion';
 import { ArrowRight, Activity, ShieldCheck, Wrench, CheckCircle2 } from "lucide-react";
 import CursorFollower from "../../../../utils/CursorFollower";
 import Link from "next/link";
 
 /* =====================================================
-   Live Health Monitor — EKG waveform + status feed
+   Live Health Monitor - EKG waveform + status feed
    No circles, no cards. Just live signals on transparent BG.
    ===================================================== */
 
@@ -144,7 +144,7 @@ function StatusRow({ label, value, delay, status = "ok" }) {
       transition={{ delay, duration: 0.4 }}
       className="flex items-center gap-3 py-1.5"
     >
-      <div className="relative w-2 h-2 flex-shrink-0">
+      <div className="relative size-2 flex-shrink-0">
         <motion.div
           animate={{ scale: [1, 2.2], opacity: [0.5, 0] }}
           transition={{ repeat: Infinity, duration: 2, delay: delay * 0.5, ease: "easeOut" }}
@@ -180,7 +180,7 @@ function AccentPill({ icon: Icon, label, value, color, position, delay }) {
         className="flex items-center gap-2 px-3 py-2 rounded-xl"
         style={{
           background: "rgba(255,255,255,0.92)",
-          backdropFilter: "blur(20px)",
+          backdropFilter: "blur(8px)",
           border: `1px solid ${color}25`,
           boxShadow: `
             0 1px 2px rgba(15,23,42,0.04),
@@ -190,13 +190,13 @@ function AccentPill({ icon: Icon, label, value, color, position, delay }) {
         }}
       >
         <div
-          className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+          className="size-7 rounded-lg flex items-center justify-center flex-shrink-0"
           style={{
             background: `linear-gradient(135deg, ${color}, ${color}cc)`,
             boxShadow: `0 3px 8px ${color}55`,
           }}
         >
-          <Icon className="w-3.5 h-3.5 text-white" strokeWidth={2.5} />
+          <Icon className="size-3.5 text-white" strokeWidth={2.5} />
         </div>
         <div className="leading-tight">
           <div className="text-[9px] font-black text-gray-500 uppercase tracking-wider">
@@ -335,7 +335,7 @@ const FlowHero = () => {
                   width: 220,
                   height: 220,
                   background: "radial-gradient(circle, rgba(34,197,94,0.18), transparent 70%)",
-                  filter: "blur(50px)",
+                  filter: "blur(8px)",
                 }}
               />
               <div
@@ -346,7 +346,7 @@ const FlowHero = () => {
                   width: 240,
                   height: 240,
                   background: "radial-gradient(circle, rgba(67,97,238,0.16), transparent 70%)",
-                  filter: "blur(50px)",
+                  filter: "blur(8px)",
                 }}
               />
               <div
@@ -357,7 +357,7 @@ const FlowHero = () => {
                   width: 180,
                   height: 180,
                   background: "radial-gradient(circle, rgba(247,103,7,0.12), transparent 70%)",
-                  filter: "blur(45px)",
+                  filter: "blur(8px)",
                 }}
               />
 
@@ -368,7 +368,7 @@ const FlowHero = () => {
                 transition={{ delay: 0.3 }}
                 className="flex items-center gap-2 mb-4 relative z-20"
               >
-                <div className="relative w-2.5 h-2.5">
+                <div className="relative size-2.5">
                   <motion.div
                     animate={{ scale: [1, 2.4], opacity: [0.7, 0] }}
                     transition={{ repeat: Infinity, duration: 1.5, ease: "easeOut" }}
@@ -454,7 +454,7 @@ const FlowHero = () => {
                     System Checks
                   </span>
                   <span className="flex items-center gap-1 text-[9px] font-black text-green-600 uppercase tracking-widest">
-                    <CheckCircle2 className="w-3 h-3" strokeWidth={3} />
+                    <CheckCircle2 className="size-3" strokeWidth={3} />
                     All Operational
                   </span>
                 </div>

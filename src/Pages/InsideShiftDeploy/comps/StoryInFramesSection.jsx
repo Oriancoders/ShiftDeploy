@@ -31,7 +31,7 @@ function StoryInFramesSection() {
       description:
         "A reliable investment platform designed to support growth and investor confidence.",
       details:
-        "Bullseye now operates on a system that delivers timely data, smoother internal operations, and a more transparent experience for stakeholders — without increasing operational complexity.",
+        "Bullseye now operates on a system that delivers timely data, smoother internal operations, and a more transparent experience for stakeholders - without increasing operational complexity.",
       icon: <Battery className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
   ]
@@ -40,7 +40,7 @@ function StoryInFramesSection() {
     <section ref={sectionRef} className="py-24 bg-gray-50 overflow-x-hidden text-textColor">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             From fragile systems to <br />
             <span className="text-primaryOrange">
               decision-ready platforms
@@ -54,14 +54,14 @@ function StoryInFramesSection() {
         <div className="relative">
           <div className="grid md:grid-cols-3 gap-8">
             {projectFrames.map((frame, index) => (
-              <div key={index}>
+              <div key={frame?.id ?? frame?.slug ?? frame?.title ?? frame?.name ?? index}>
                 <div className="bg-white rounded-3xl p-6 sm:p-8 border border-gray-300 transition-all duration-300 h-full shadow-md sm:hover:shadow-xl">
                   <div className="inline-flex items-center justify-center w-10 sm:w-16 h-10 sm:h-16 rounded-2xl bg-primaryBlue mb-4 sm:mb-6">
                     <div className="text-white">{frame.icon}</div>
                   </div>
 
                   <div className="mb-4">
-                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-2">
                       {frame.title}
                     </h3>
                     <h4 className="text-lg mb-4">{frame.subtitle}</h4>
@@ -96,7 +96,7 @@ function StoryInFramesSection() {
 
             <Link
               href={"/CaseStudies/BullseyesCase"}
-              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center gap-x-2 text-md"
             >
               <span>View Full Case Study</span>
             </Link>

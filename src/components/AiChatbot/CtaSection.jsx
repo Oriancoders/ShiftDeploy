@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 export default function CtaSection({ onPrimaryAction }) {
   return (
@@ -38,7 +38,7 @@ export default function CtaSection({ onPrimaryAction }) {
               onClick={() => onPrimaryAction?.()}
               className="bg-primaryOrange hover:bg-toOrange text-white px-10 py-5 rounded-lg font-bold text-lg transition-colors flex items-center justify-center shadow-lg shadow-primaryOrange/30"
             >
-              Start Your Free Trial <ChevronRight className="ml-2 w-5 h-5" />
+              Start Your Free Trial <ChevronRight className="ml-2 size-5" />
             </button>
             <p className="mt-4 text-sm text-gray-400 sm:hidden">No credit card required. Cancel anytime.</p>
           </motion.div>

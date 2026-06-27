@@ -38,12 +38,12 @@ function FeaturedMissionSection() {
     "Implemented a clear, consistent portal access path across the site",
   ],
   tools: [
-    { name: "UX Structure", icon: <Layers className="w-6 h-6" /> },
-    { name: "CTA Hierarchy", icon: <Target className="w-6 h-6" /> },
-    { name: "Performance Hygiene", icon: <BarChart3 className="w-6 h-6" /> },
-    { name: "Implementation", icon: <Code className="w-6 h-6" /> },
-    { name: "Deployment", icon: <GitBranch className="w-6 h-6" /> },
-    { name: "Reliability", icon: <Server className="w-6 h-6" /> },
+    { name: "UX Structure", icon: <Layers className="size-6" /> },
+    { name: "CTA Hierarchy", icon: <Target className="size-6" /> },
+    { name: "Performance Hygiene", icon: <BarChart3 className="size-6" /> },
+    { name: "Implementation", icon: <Code className="size-6" /> },
+    { name: "Deployment", icon: <GitBranch className="size-6" /> },
+    { name: "Reliability", icon: <Server className="size-6" /> },
   ],
   phases: [
     { phase: "Discovery & Page Review", duration: "2–3 days", status: "completed" },
@@ -76,7 +76,7 @@ function FeaturedMissionSection() {
     <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             Mission spotlight <br/>
             <span className="text-primaryOrange">
               {mission.client}
@@ -94,7 +94,7 @@ function FeaturedMissionSection() {
           >
             {/* Before → After Comparison */}
             <div className="mb-12">
-              <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Before → After</h3>
+              <h3 className="text-3xl font-semibold text-gray-900 mb-8 text-center">Before → After</h3>
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Before */}
                 <div className="bg-primaryOrange/10 border-l-4 border-primaryOrange rounded-r-2xl p-6 sm:max-w-auto max-w-[90vw]">
@@ -124,14 +124,14 @@ function FeaturedMissionSection() {
 
             {/* Impact Metrics */}
             <div className="bg-white shadow-md rounded-2xl p-8  sm:max-w-auto max-w-[90vw]">
-              <h4 className="text-xl font-bold text-gray-900 mb-6 text-center">Mission Impact</h4>
+              <h4 className="text-xl font-semibold text-gray-900 mb-6 text-center">Mission Impact</h4>
               <div className="grid grid-cols-2 gap-6 text-primaryBlue">
                 <div className="text-center">
-                  <div className="text-3xl font-bold ">10x</div>
+                  <div className="text-3xl font-semibold ">10x</div>
                   <div className="text-sm text-gray-600">Traffic Capacity</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold ">60%</div>
+                  <div className="text-3xl font-semibold ">60%</div>
                   <div className="text-sm text-gray-600">Cost Reduction</div>
                 </div>
                 <div className="text-center">
@@ -169,9 +169,9 @@ function FeaturedMissionSection() {
             <div className="min-h-[400px]">
               {activeTab === "challenge" && (
                 <div className="space-y-4">
-                  <h4 className="text-xl font-bold text-gray-900 mb-4 sm:mb-6">The Challenges We Faced</h4>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-4 sm:mb-6">The Challenges We Faced</h4>
                   {mission.challenges.map((challenge, index) => (
-                    <div key={index} className="flex sm:items-center items-start bg-red-50 rounded-xl p-4">
+                    <div key={challenge?.id ?? challenge?.slug ?? challenge?.title ?? challenge?.name ?? index} className="flex sm:items-center items-start bg-red-50 rounded-xl p-4">
                       <Target className="w-4 sm:w-5 h-4 sm:h-5 text-red-500 mr-3 mt-1 flex-shrink-0" />
                       <p className="sm:text-md text-xs text-gray-700">{challenge}</p>
                     </div>
@@ -181,10 +181,10 @@ function FeaturedMissionSection() {
 
               {activeTab === "solution" && (
                 <div className="space-y-6">
-                  <h4 className="text-xl font-bold text-gray-900 mb-4 sm:mb-6">How We Solved It</h4>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-4 sm:mb-6">How We Solved It</h4>
                   <div className="space-y-4">
                     {mission.solutions.map((solution, index) => (
-                      <div key={index} className="flex sm:items-center items-start bg-green-50 rounded-xl p-4">
+                      <div key={solution?.id ?? solution?.slug ?? solution?.title ?? solution?.name ?? index} className="flex sm:items-center items-start bg-green-50 rounded-xl p-4">
                         <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
                         <p className="sm:text-md text-xs text-gray-700">{solution}</p>
                       </div>
@@ -196,7 +196,7 @@ function FeaturedMissionSection() {
                     <h5 className="text-lg font-semibold text-gray-900 mb-4 sm:mb-6">Tools & Technologies</h5>
                     <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                       {mission.tools.map((tool, index) => (
-                        <div key={index} className="flex items-center bg-white rounded-xl p-3 shadow-sm">
+                        <div key={tool?.id ?? tool?.slug ?? tool?.title ?? tool?.name ?? index} className="flex items-center bg-white rounded-xl p-3 shadow-sm">
                           <div className="text-gray-600 mr-2">{tool.icon}</div>
                           <span className="text-sm font-medium text-gray-700">{tool.name}</span>
                         </div>
@@ -208,10 +208,10 @@ function FeaturedMissionSection() {
 
               {activeTab === "timeline" && (
                 <div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-6">Project Timeline</h4>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-6">Project Timeline</h4>
                   <div className="space-y-4">
                     {mission.phases.map((phase, index) => (
-                      <div key={index} className="flex items-center bg-gray-50 rounded-xl p-3 sm:p-4 bg-primaryBlue/5">
+                      <div key={phase?.id ?? phase?.slug ?? phase?.title ?? phase?.name ?? index} className="flex items-center bg-gray-50 rounded-xl p-3 sm:p-4 bg-primaryBlue/5">
                         <div className="w-6 sm:w-8 h-6 sm:h-8 bg-primaryBlue rounded-full flex items-center justify-center mr-4">
                           <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-white" />
                         </div>

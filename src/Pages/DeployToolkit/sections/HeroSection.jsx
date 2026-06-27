@@ -1,6 +1,6 @@
 'use client';
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m as motion } from 'framer-motion';
 import { Zap, TrendingUp, Code2, Workflow, ArrowRight, Search } from "lucide-react";
 
 /* ------- HCI-friendly: 4 services as scannable cards ------- */
@@ -50,11 +50,11 @@ function HeroSection() {
 
       {/* Soft ambient glows */}
       <div
-        className="absolute top-1/4 -left-20 w-72 h-72 rounded-full opacity-20 blur-3xl pointer-events-none"
+        className="absolute top-1/4 -left-20 size-72 rounded-full opacity-20 blur-3xl pointer-events-none"
         style={{ background: "radial-gradient(circle, #4361EE, transparent)" }}
       />
       <div
-        className="absolute bottom-10 -right-20 w-80 h-80 rounded-full opacity-15 blur-3xl pointer-events-none"
+        className="absolute bottom-10 -right-20 size-80 rounded-full opacity-15 blur-3xl pointer-events-none"
         style={{ background: "radial-gradient(circle, #F76707, transparent)" }}
       />
 
@@ -90,7 +90,7 @@ function HeroSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base sm:text-lg lg:text-xl text-gray-600 mb-7 max-w-xl mx-auto"
           >
-            Pick the model. We diagnose, fix, and ship — end-to-end.
+            Pick the model. We diagnose, fix, and ship - end-to-end.
           </motion.p>
 
           <motion.div
@@ -158,14 +158,14 @@ function HeroSection() {
                       style={{ background: service.color }}
                     />
                     <div
-                      className="relative w-11 h-11 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
+                      className="relative size-11 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
                       style={{ background: `${service.color}15`, color: service.color }}
                     >
                       <Icon size={22} strokeWidth={2.2} />
                     </div>
                   </div>
 
-                  <h3 className="font-bold text-primaryBlue text-sm sm:text-base mb-1">
+                  <h3 className="font-semibold text-primaryBlue text-sm sm:text-base mb-1">
                     {service.name}
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-600 leading-snug">
@@ -173,7 +173,7 @@ function HeroSection() {
                   </p>
 
                   <div
-                    className="mt-3 text-xs font-bold flex items-center gap-1 opacity-60 group-hover:opacity-100 transition-opacity"
+                    className="mt-3 text-xs font-semibold flex items-center gap-1 opacity-60 group-hover:opacity-100 transition-opacity"
                     style={{ color: service.color }}
                   >
                     Learn more
@@ -196,17 +196,17 @@ function HeroSection() {
           className="flex flex-wrap items-center justify-center gap-x-5 sm:gap-x-8 gap-y-2 mt-10 text-xs sm:text-sm text-gray-500 font-semibold"
         >
           <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+            <span className="size-1.5 rounded-full bg-green-500" />
             No redesigns
           </span>
           <span className="hidden sm:inline text-gray-300">•</span>
           <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+            <span className="size-1.5 rounded-full bg-green-500" />
             No downtime
           </span>
           <span className="hidden sm:inline text-gray-300">•</span>
           <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
+            <span className="size-1.5 rounded-full bg-green-500" />
             End-to-end execution
           </span>
         </motion.div>

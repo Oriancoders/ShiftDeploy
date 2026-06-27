@@ -1,6 +1,6 @@
 'use client';
 import React, { memo, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { Bot, ArrowRight } from 'lucide-react';
 import { CHAT_MESSAGES } from './constants';
 import useRafTicker from './useRafTicker';
@@ -12,7 +12,7 @@ const ChatMessages = memo(function ChatMessages({ chatStep }) {
         {CHAT_MESSAGES.map((msg, index) =>
           index <= chatStep ? (
             <motion.div
-              key={index}
+              key={msg?.id ?? msg?.slug ?? msg?.title ?? msg?.name ?? index}
               initial={{ opacity: 0, y: 30, scale: 0.8, rotateX: -20 }}
               animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
@@ -33,11 +33,11 @@ const ChatMessages = memo(function ChatMessages({ chatStep }) {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="flex space-x-1.5 py-3.5 px-5 bg-white/5 border border-white/10 rounded-2xl rounded-bl-sm w-16 justify-center shadow-inner"
+            className="flex gap-x-1.5 py-3.5 px-5 bg-white/5 border border-white/10 rounded-2xl rounded-bl-sm w-16 justify-center shadow-inner"
           >
-            <span className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce" />
-            <span className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-            <span className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
+            <span className="size-1.5 bg-gray-300 rounded-full animate-bounce" />
+            <span className="size-1.5 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+            <span className="size-1.5 bg-gray-300 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
           </motion.div>
         </div>
       ) : null}
@@ -81,22 +81,22 @@ const ChatInterface = memo(function ChatInterface({ reduceMotion, animateEnabled
       <div className="bg-toBlue rounded-[24px] overflow-hidden flex flex-col h-[480px] shadow-inner relative z-10">
         <div className="px-5 py-4 border-b border-white/10 bg-white/5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex space-x-1.5 border-r border-white/10 pr-3 mr-1">
-              <div className="w-3 h-3 rounded-full bg-red-400" />
-              <div className="w-3 h-3 rounded-full bg-amber-400" />
-              <div className="w-3 h-3 rounded-full bg-green-400" />
+            <div className="flex gap-x-1.5 border-r border-white/10 pr-3 mr-1">
+              <div className="size-3 rounded-full bg-red-400" />
+              <div className="size-3 rounded-full bg-amber-400" />
+              <div className="size-3 rounded-full bg-green-400" />
             </div>
             <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-secondaryBlue to-toSecBlue rounded-xl flex items-center justify-center shadow-lg transform rotate-3">
-                <Bot className="w-5 h-5 text-white transform -rotate-3" />
+              <div className="size-10 bg-gradient-to-br from-secondaryBlue to-toSecBlue rounded-xl flex items-center justify-center shadow-lg transform rotate-3">
+                <Bot className="size-5 text-white transform -rotate-3" />
               </div>
             </div>
             <div>
-              <h3 className="font-bold text-white text-[15px]">Shift Receptionist</h3>
+              <h3 className="font-semibold text-white text-[15px]">Shift Receptionist</h3>
               <p className="text-green-400/80 text-[11px] font-medium tracking-wide flex items-center">
-                <span className="relative flex h-2 w-2 mr-1">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                <span className="relative flex size-2 mr-1">
+                  <span className="animate-ping absolute inline-flex size-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full size-2 bg-green-500" />
                 </span>
                 Live & Active
               </p>
@@ -112,8 +112,8 @@ const ChatInterface = memo(function ChatInterface({ reduceMotion, animateEnabled
         <div className="p-4 border-t border-white/10 bg-[#0B1D30]">
           <div className="bg-white/5 border border-white/10 rounded-full py-3 px-5 flex items-center justify-between">
             <span className="text-gray-500 text-sm">Automating your growth...</span>
-            <div className="w-6 h-6 rounded-full bg-secondaryBlue flex items-center justify-center">
-              <ArrowRight className="w-3 h-3 text-white" />
+            <div className="size-6 rounded-full bg-secondaryBlue flex items-center justify-center">
+              <ArrowRight className="size-3 text-white" />
             </div>
           </div>
         </div>

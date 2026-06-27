@@ -180,15 +180,15 @@ export default function AiChatbotDemo() {
       <section className="pt-28 md:pt-32 pb-12 bg-gradient-to-b from-[#0b1f46] via-[#0a1b3d] to-[#102a57] text-white">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           <Link href="/digital-receptionist" className="inline-flex items-center gap-2 text-blue-200 hover:text-white transition-colors">
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="size-4" />
             Back to Digital Receptionist
           </Link>
           <div className="mt-8 max-w-3xl">
             <p className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-100 text-sm">
-              <Bot className="w-4 h-4" />
+              <Bot className="size-4" />
               Interactive Demo
             </p>
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mt-4">Try a booking chat in real time.</h1>
+            <h1 className="text-4xl md:text-5xl font-semibold leading-tight mt-4">Try a booking chat in real time.</h1>
             <p className="text-blue-100/90 text-lg mt-4">
               Test the demo assistant by completing a sample appointment flow. It is intentionally simple for preview purposes.
             </p>
@@ -200,8 +200,8 @@ export default function AiChatbotDemo() {
         <div className="container mx-auto px-4 md:px-8 max-w-6xl grid grid-cols-1 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-3 bg-white rounded-2xl border border-blue-100 shadow-sm overflow-hidden min-h-[520px]">
             <div className="px-5 py-4 border-b border-blue-100 bg-blue-50/70 flex items-center justify-between">
-              <h2 className="font-bold text-[#0c1f3a] flex items-center gap-2">
-                <MessageCircleMore className="w-5 h-5 text-primaryOrange" />
+              <h2 className="font-semibold text-[#0c1f3a] flex items-center gap-2">
+                <MessageCircleMore className="size-5 text-primaryOrange" />
                 Booking Chatbot Demo
               </h2>
               <span className="text-xs font-semibold text-blue-700 bg-blue-100 px-2 py-1 rounded-full">{helperText}</span>
@@ -227,7 +227,7 @@ export default function AiChatbotDemo() {
               <div className="flex gap-2">
                 {!isCompleted && (currentStep?.type === 'date' || currentStep?.type === 'time') ? (
                   <div className="w-11 shrink-0 rounded-xl border border-gray-300 bg-blue-50 flex items-center justify-center text-blue-700">
-                    <CalendarClock className="w-5 h-5 animate-pulse" />
+                    <CalendarClock className="size-5 animate-pulse" />
                   </div>
                 ) : null}
                 <input
@@ -256,7 +256,7 @@ export default function AiChatbotDemo() {
 
           <div className="lg:col-span-2 space-y-4">
             <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
-              <h3 className="font-bold text-[#0c1f3a]">What this demo collects</h3>
+              <h3 className="font-semibold text-[#0c1f3a]">What this demo collects</h3>
               <ul className="mt-3 space-y-2 text-sm text-gray-600">
                 <li>1. Name</li>
                 <li>2. Email</li>
@@ -284,8 +284,8 @@ export default function AiChatbotDemo() {
       <section className="pb-20 bg-white">
         <div className="container mx-auto px-4 md:px-8 max-w-6xl">
           <div className="flex items-center gap-2 mb-5">
-            <Play className="w-5 h-5 text-primaryOrange" />
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0c1f3a]">See Video Demo</h2>
+            <Play className="size-5 text-primaryOrange" />
+            <h2 className="text-2xl md:text-3xl font-semibold text-[#0c1f3a]">See Video Demo</h2>
           </div>
           <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
             <iframe
@@ -306,15 +306,15 @@ export default function AiChatbotDemo() {
           <div className="absolute inset-0 bg-[#091328]/70 backdrop-blur-sm" />
           <div className="relative w-full max-w-2xl rounded-3xl border border-blue-100 bg-white shadow-2xl overflow-hidden">
             <div className="relative px-6 md:px-8 pt-8 pb-6 bg-gradient-to-br from-[#0c1f3a] via-[#133264] to-[#1c4e92] text-white">
-              <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-white/20 animate-ping" />
-              <div className="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/20 animate-pulse" />
+              <div className="absolute -top-8 -right-8 size-24 rounded-full bg-white/20 animate-ping" />
+              <div className="absolute top-8 right-8 size-12 rounded-full bg-white/20 animate-pulse" />
               <div className="flex items-start gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center">
-                  <CheckCircle2 className="w-8 h-8 text-[#b8ffcf] animate-pulse" />
+                <div className="size-14 rounded-2xl bg-white/20 border border-white/30 flex items-center justify-center">
+                  <CheckCircle2 className="size-8 text-[#b8ffcf] animate-pulse" />
                 </div>
                 <div>
                   <p className="text-blue-100 text-sm font-semibold uppercase tracking-wider">Appointment Confirmed</p>
-                  <h3 className="text-2xl md:text-3xl font-extrabold mt-1">Thank You, {completedBooking.name || 'Guest'}!</h3>
+                  <h3 className="text-2xl md:text-3xl font-semibold mt-1">Thank You, {completedBooking.name || 'Guest'}!</h3>
                   <p className="text-blue-100 mt-2 text-sm md:text-base">
                     Booked. {completedBooking.name || 'Your'} appointment request is noted for {completedBooking.date || 'selected date'} at{' '}
                     {completedBooking.time || 'selected time'}.
@@ -326,32 +326,32 @@ export default function AiChatbotDemo() {
             <div className="p-6 md:p-8 bg-gradient-to-b from-white to-[#f7fbff]">
               <div className="rounded-2xl border border-blue-100 bg-white p-5 md:p-6 shadow-sm">
                 <div className="flex items-center gap-2 text-[#0c1f3a] font-bold">
-                  <Sparkles className="w-4 h-4 text-primaryOrange animate-pulse" />
+                  <Sparkles className="size-4 text-primaryOrange animate-pulse" />
                   Confirmation Details
                 </div>
                 <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
                   <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
-                    <User className="w-4 h-4 text-primaryOrange" />
+                    <User className="size-4 text-primaryOrange" />
                     <span>{completedBooking.name || 'N/A'}</span>
                   </div>
                   <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
-                    <Mail className="w-4 h-4 text-primaryOrange" />
+                    <Mail className="size-4 text-primaryOrange" />
                     <span>{completedBooking.email || 'N/A'}</span>
                   </div>
                   <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
-                    <Phone className="w-4 h-4 text-primaryOrange" />
+                    <Phone className="size-4 text-primaryOrange" />
                     <span>{completedBooking.phone || 'N/A'}</span>
                   </div>
                   <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
-                    <Building2 className="w-4 h-4 text-primaryOrange" />
+                    <Building2 className="size-4 text-primaryOrange" />
                     <span>{completedBooking.company || 'N/A'}</span>
                   </div>
                   <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
-                    <CalendarDays className="w-4 h-4 text-primaryOrange" />
+                    <CalendarDays className="size-4 text-primaryOrange" />
                     <span>{completedBooking.date || 'N/A'}</span>
                   </div>
                   <div className="flex items-center gap-2 rounded-xl bg-[#f8fbff] border border-blue-100 px-3 py-2 text-[#0c1f3a]">
-                    <Clock3 className="w-4 h-4 text-primaryOrange" />
+                    <Clock3 className="size-4 text-primaryOrange" />
                     <span>{completedBooking.time || 'N/A'}</span>
                   </div>
                 </div>

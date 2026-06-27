@@ -1,7 +1,7 @@
 'use client';
 import { Quote, Star } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
+import { m as motion } from 'framer-motion'
 import Link from "next/link"
 // Section 2: Quote Wall
 function QuoteWallSection() {
@@ -12,7 +12,7 @@ function QuoteWallSection() {
  const testimonials = [
   {
     quote:
-      "We were burning cash every month just to keep our old store running. ShiftDeploy built us a fast, modern e-commerce platform and deployed it on Vercel with zero ongoing costs. It just works — no servers to babysit, no maintenance headaches. This move saved us a fortune.",
+      "We were burning cash every month just to keep our old store running. ShiftDeploy built us a fast, modern e-commerce platform and deployed it on Vercel with zero ongoing costs. It just works - no servers to babysit, no maintenance headaches. This move saved us a fortune.",
     author: "Ahmed Khan",
     role: "Founder",
     company: "K2 Traders",
@@ -74,14 +74,16 @@ function QuoteWallSection() {
 
 
   useEffect(() => {
+    const __tids = [];
+    const __t = (id) => { __tids.push(id); return id; };
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const index = Number.parseInt(entry.target.getAttribute("data-index") || "0")
           if (entry.isIntersecting) {
-            setTimeout(() => {
+            __t(setTimeout(() => {
               setVisibleQuotes((prev) => [...new Set([...prev, index])])
-            }, index * 200)
+            }, index * 200))
           }
         })
       },
@@ -92,14 +94,13 @@ function QuoteWallSection() {
       if (ref) observer.observe(ref)
     })
 
-    return () => observer.disconnect()
-  }, [])
+    return () => { observer.disconnect(); __tids.forEach(clearTimeout); }}, [])
 
   return (
     <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             What they really<br/>
             <span className="text-primaryOrange">
               think of us
@@ -113,7 +114,7 @@ function QuoteWallSection() {
         <div className="grid lg:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
             <div
-              key={index}
+              key={testimonial?.id ?? testimonial?.slug ?? testimonial?.title ?? testimonial?.name ?? index}
               ref={(el) => (quoteRefs.current[index] = el)}
               data-index={index}
               className={`group `}
@@ -130,7 +131,7 @@ function QuoteWallSection() {
                   <div className="flex items-center">
                     <div className="flex">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 text-yellow-500 fill-current" />
+                        <Star key={_?.id ?? _?.slug ?? _?.title ?? _?.name ?? i} className="w-5 h-5 text-yellow-500 fill-current" />
                       ))}
                     </div>
                     <span
@@ -195,7 +196,7 @@ function QuoteWallSection() {
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  shadow-lg sm:hover:shadow-xl flex items-center justify-center gap-x-2 text-md"
             >
               <span>View Case Study</span>
 

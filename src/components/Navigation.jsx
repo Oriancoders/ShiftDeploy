@@ -21,17 +21,23 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
   }, []);
 
   const navItems = [
-    { label: 'What we do', path: '/services' },
-    { label: 'Inside ShiftDeploy', path: '/insideShiftDeploy' },
     {
-      label: 'Solutions',
+      label: 'Services',
       path: '/services',
       subPaths: [
         { label: 'ShiftSpeed', path: '/services/shiftspeed' },
         { label: 'ShiftConvert', path: '/services/shiftconvert' },
         { label: 'ShiftBuild', path: '/services/shiftbuild' },
         { label: 'ShiftFlow', path: '/services/shiftflow' },
+      ],
+    },
+    { label: 'Inside ShiftDeploy', path: '/insideShiftDeploy' },
+    {
+      label: 'Product',
+      path: '/product',
+      subPaths: [
         { label: 'Digital Receptionist', path: '/digital-receptionist' },
+        { label: 'Review Your Doctor', path: '/review-your-doctor' },
       ],
     },
     {
@@ -64,7 +70,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
           ${scrolled && !isDarkBg ? 'bg-white/95 backdrop-blur-sm border-b border-gray-200' : 'bg-transparent'}
         `}
       >
-        <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl xl:max-w-[90%] 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-20">
             {/* Logo */}
             <m.div whileHover={{ scale: 1.05 }} className="2xl:max-w-60 sm:max-w-48 max-w-36">
@@ -77,7 +83,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
             </m.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6 xl:space-x-10">
+            <div className="hidden lg:flex flex-1 items-center justify-center gap-x-5 xl:gap-x-10 2xl:gap-x-12 mx-6 xl:mx-12">
               {navItems.map(({ label, path, subPaths }) => {
                 const isActive =
                   pathname === path ||
@@ -94,7 +100,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                     <m.div
                       whileHover={{ y: -2 }}
                       transition={{ duration: 0.2 }}
-                      className={`cursor-pointer font-medium relative group text-sm xl:text-base
+                      className={`cursor-pointer font-medium relative group text-sm xl:text-base whitespace-nowrap
                         ${isActive ? 'text-primaryBlue' : 'text-gray-700 hover:text-primaryBlue'}
                       `}
                     >
@@ -135,18 +141,22 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                   </div>
                 );
               })}
+            </div>
+
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center">
               {onAuditClick ? (
                 <button
                   type="button"
                   onClick={handleAuditClick}
-                  className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base"
+                  className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base whitespace-nowrap"
                 >
                   Get Free Audit
                 </button>
               ) : (
                 <Link
                   href="/ContactUs"
-                  className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base"
+                  className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base whitespace-nowrap"
                 >
                   Get Free Audit
                 </Link>
@@ -175,7 +185,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
               transition={{ duration: 0.3 }}
               className="lg:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200"
             >
-              <div className="px-4 sm:px-6 py-4 sm:py-6 space-y-3 sm:space-y-4 flex flex-col justify-between h-[90dvh]">
+              <div className="px-4 sm:px-6 py-4 sm:py-6 gap-y-3 sm:gap-y-4 flex flex-col justify-between h-[90dvh]">
                 <div className="space-y-3">
                   {navItems.map(({ label, path, subPaths }, index) => (
                     <div key={index}>
@@ -230,7 +240,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                               >
                                 {subPaths.map((subItem, subIndex) => (
                                   <Link
-                                    key={subIndex}
+                                    key={subItem?.id ?? subItem?.slug ?? subItem?.title ?? subItem?.name ?? subIndex}
                                     href={subItem.path}
                                     onClick={() => setIsOpen(false)}
                                   >

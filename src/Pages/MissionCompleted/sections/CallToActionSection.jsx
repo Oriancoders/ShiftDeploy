@@ -32,8 +32,8 @@ function CallToActionSection() {
     >
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primaryOrange/50 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondaryBlue/50 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 left-1/4 size-96 bg-primaryOrange/50 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 size-96 bg-secondaryBlue/50 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="max-w-5xl mx-auto px-6 relative text-center">
@@ -41,7 +41,7 @@ function CallToActionSection() {
           className={`transition-all duration-1000 transform `}
         >
           {/* Header */}
-          <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-semibold text-white mb-8 leading-tight">
             Your growth story starts <br/>
             <span className="text-primaryOrange">
               with the next shift.

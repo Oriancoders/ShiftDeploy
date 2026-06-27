@@ -1,6 +1,7 @@
 export const revalidate = 3600;
 
 import Landing from '../src/Pages/LandingPage/Landing';
+import JsonLd from '../src/components/JsonLd';
 
 export const metadata = {
   title: 'ShiftDeploy | Performance-First Web Agency',
@@ -36,10 +37,7 @@ const websiteSchema = {
 export default function HomePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
+      <JsonLd data={websiteSchema} />
       <Landing />
     </>
   );

@@ -10,7 +10,7 @@ export default function ProblemSolutionSection() {
         <SectionHeader />
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-stretch relative">
-          <div className="hidden md:flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-xl z-20 items-center justify-center font-black text-xl text-gray-400 border-4 border-gray-50">
+          <div className="hidden md:flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 size-16 bg-white rounded-full shadow-xl z-20 items-center justify-center font-black text-xl text-gray-400 border-4 border-gray-50">
             VS
           </div>
 

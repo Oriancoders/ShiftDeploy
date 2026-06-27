@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { m as motion, useMotionValue, useSpring } from 'framer-motion';
 import Link from 'next/link';
 import { Home } from "lucide-react";
 import { fadeInUp, staggerContainer } from "../src/utils/animations";
@@ -41,11 +41,11 @@ export default function NotFound() {
         <>
           <motion.div
             style={{ x: smoothX, y: smoothY }}
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-primaryBlue/10 rounded-full blur-[100px] pointer-events-none"
+            className="absolute top-1/4 left-1/4 size-96 bg-primaryBlue/10 rounded-full blur-[100px] pointer-events-none"
           />
           <motion.div
             style={{ x: smoothX, y: smoothY, translateX: -20, translateY: -20 }}
-            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primaryOrange/10 rounded-full blur-[100px] pointer-events-none"
+            className="absolute bottom-1/4 right-1/4 size-96 bg-primaryOrange/10 rounded-full blur-[100px] pointer-events-none"
           />
         </>
       )}
@@ -62,18 +62,18 @@ export default function NotFound() {
         >
           {/* Huge 404 Heading with Techy Shadow/Glow */}
           <motion.div variants={fadeInUp} className="flex justify-center relative">
-            <h1 className="text-[12rem] sm:text-[16rem] lg:text-[20rem] font-black text-primaryBlue leading-none tracking-tight relative z-10 drop-shadow-sm">
+            <h1 className="text-[12rem] sm:text-[16rem] lg:text-[20rem] font-semibold text-primaryBlue leading-none tracking-tight relative z-10 drop-shadow-sm">
               404
             </h1>
             {/* Outline highlight effect */}
-            <h1 className="text-[12rem] sm:text-[16rem] lg:text-[20rem] font-black text-transparent leading-none tracking-tight absolute top-2 -left-2 z-0" style={{ WebkitTextStroke: '2px rgba(255, 102, 0, 0.1)' }}>
+            <h1 className="text-[12rem] sm:text-[16rem] lg:text-[20rem] font-semibold text-transparent leading-none tracking-tight absolute top-2 -left-2 z-0" style={{ WebkitTextStroke: '2px rgba(255, 102, 0, 0.1)' }}>
               404
             </h1>
           </motion.div>
 
           {/* Error Message */}
           <motion.div variants={fadeInUp} className="space-y-4">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-900 tracking-tight">
               Mission <span className="text-primaryOrange">Aborted.</span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
@@ -87,7 +87,7 @@ export default function NotFound() {
               href="/"
               className="group flex items-center justify-center gap-3 bg-primaryBlue text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-primaryOrange transition-colors duration-300 w-full sm:w-auto shadow-xl hover:shadow-primaryOrange/25 hover:-translate-y-1"
             >
-              <Home className="w-5 h-5" />
+              <Home className="size-5" />
               <span>Go to Homepage</span>
             </Link>
           </motion.div>

@@ -1,6 +1,6 @@
 'use client';
 import React, { useContext, useRef, useState, useEffect } from "react";
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from 'framer-motion';
 import { ExternalLink, Star, Calendar, Users, TrendingUp } from "lucide-react";
 import { fadeInUp, staggerContainer } from "../../../utils/animations";
 import { ContextAPI } from "../../../GlobalProvider/ContextAPI";
@@ -48,12 +48,15 @@ const MissionsCompleted = () => {
   };
 
   useEffect(() => {
+    const timeoutIds = [];
     if (isInView) {
       stats.forEach((stat, index) => {
         const { number } = splitValue(stat.value + (stat.suffix || ""));
-        setTimeout(() => animateNumber(index, number), index * 200);
+        const id = setTimeout(() => animateNumber(index, number), index * 200);
+        timeoutIds.push(id);
       });
     }
+    return () => { timeoutIds.forEach(clearTimeout); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInView]);
 
@@ -151,7 +154,7 @@ const MissionsCompleted = () => {
             {stats.map((stat, index) => {
               const { suffix } = splitValue(stat.value + (stat.suffix || ""));
               return (
-                <motion.div key={index} className="text-center">
+                <motion.div key={stat?.id ?? stat?.slug ?? stat?.title ?? stat?.name ?? index} className="text-center">
                   <div className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 text-primaryBlue">
                     {animatedNumbers[index] || 0}
                     {suffix}
@@ -167,7 +170,7 @@ const MissionsCompleted = () => {
         <div className="space-y-6 sm:space-y-8 lg:space-y-12">
           {projects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project?.id ?? project?.slug ?? project?.title ?? project?.name ?? index}
               initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -180,7 +183,7 @@ const MissionsCompleted = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover sm:rounded-none"
+                  className="size-full object-cover sm:rounded-none"
                   loading="lazy"
                 />
               </div>
@@ -189,7 +192,7 @@ const MissionsCompleted = () => {
               <div
                 className={`p-4 sm:p-6 lg:p-8 xl:p-10 order-1 ${index % 2 === 0 ? "lg:order-1" : "lg:order-2"}`}
               >
-                <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold text-primaryBlue mb-1 sm:mb-2 lg:mb-3">
+                <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-primaryBlue mb-1 sm:mb-2 lg:mb-3">
                   {project.title}
                 </h3>
 
@@ -207,14 +210,14 @@ const MissionsCompleted = () => {
 
                 <div className="space-y-3 sm:space-y-4 lg:space-y-6 mb-4 sm:mb-6 lg:mb-8">
                   <div>
-                    <h4 className="font-bold mb-2 sm:mb-3 lg:mb-4 text-sm sm:text-base lg:text-lg text-gray-900">
+                    <h4 className="font-semibold mb-2 sm:mb-3 lg:mb-4 text-sm sm:text-base lg:text-lg text-gray-900">
                       Key Results:
                     </h4>
                     <ul className="grid grid-cols-1 gap-1.5 sm:gap-2 lg:gap-3">
                       {project.results.map((result, resultIndex) => (
                         <li
-                          key={resultIndex}
-                          className="flex items-center space-x-2 sm:space-x-3"
+                          key={result?.id ?? result?.slug ?? result?.title ?? result?.name ?? resultIndex}
+                          className="flex items-center gap-x-2 sm:gap-x-3"
                         >
                           <Star className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-orange-500 flex-shrink-0" />
                           <span className="font-medium text-xs sm:text-sm lg:text-base text-gray-800">
@@ -226,7 +229,7 @@ const MissionsCompleted = () => {
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 lg:space-x-4">
+                <div className="flex flex-col sm:flex-row gap-y-2 sm:gap-y-0 sm:gap-x-3 lg:gap-x-4">
                   <Link
                     href={project.url}
                     className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm"

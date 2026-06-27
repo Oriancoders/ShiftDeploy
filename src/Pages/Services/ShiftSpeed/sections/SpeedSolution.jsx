@@ -1,6 +1,6 @@
 'use client';
 import React from "react";
-import { motion } from "framer-motion";
+import { m as motion } from 'framer-motion';
 import { Search, Zap, Rocket, Shield } from "lucide-react";
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ const SpeedSolution = () => {
       title: "Diagnose",
       description: "Understand exactly what’s slowing your site",
       detail:
-        "We identify the specific issues hurting load time, usability, and search performance — no guessing, no generic advice.",
+        "We identify the specific issues hurting load time, usability, and search performance - no guessing, no generic advice.",
     },
     {
       icon: Zap,
@@ -47,7 +47,7 @@ const SpeedSolution = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             A Proven <span className="text-primaryOrange">Performance Protocol</span>
           </h2>
           <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
@@ -60,7 +60,7 @@ const SpeedSolution = () => {
         <div className="grid md:grid-cols-4 gap-8">
           {steps.map((step, index) => (
             <motion.div
-              key={index}
+              key={step?.id ?? step?.slug ?? step?.title ?? step?.name ?? index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -81,7 +81,7 @@ const SpeedSolution = () => {
                   STEP {index + 1}
                 </div>
 
-                <h3 className="text-xl font-bold text-primaryBlue mb-3">
+                <h3 className="text-xl font-semibold text-primaryBlue mb-3">
                   {step.title}
                 </h3>
 

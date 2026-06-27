@@ -1,10 +1,11 @@
 export const revalidate = 3600;
 import AiChatbotLanding from '../../src/Pages/AiChatbotLanding';
+import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
   title: 'Digital Receptionist | AI-Powered 24/7 Customer Engagement',
   description:
-    "ShiftDeploy's Digital Receptionist is an AI chatbot that answers questions, captures leads, and books appointments 24/7 — so you never miss a customer.",
+    "ShiftDeploy's Digital Receptionist is an AI chatbot that answers questions, captures leads, and books appointments 24/7 - so you never miss a customer.",
   keywords: [
     'AI receptionist', 'AI chatbot for business', '24/7 customer service bot',
     'lead capture chatbot', 'appointment booking AI', 'digital receptionist software',
@@ -33,7 +34,7 @@ const schema = {
 export default function DigitalReceptionistPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={schema} />
       <AiChatbotLanding />
     </>
   );

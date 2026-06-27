@@ -47,13 +47,15 @@ function BuildFaqs() {
   ];
 
   useEffect(() => {
+    const __tids = [];
+    const __t = (id) => { __tids.push(id); return id; };
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
           faqs.forEach((_, index) => {
-            setTimeout(() => {
+            __t(setTimeout(() => {
               setVisibleFAQs((prev) => [...prev, index]);
-            }, index * 100);
+            }, index * 100));
           });
         }
       },
@@ -64,7 +66,7 @@ function BuildFaqs() {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); __tids.forEach(clearTimeout); }
   }, []);
 
   const toggleFAQ = (index) => {
@@ -75,7 +77,7 @@ function BuildFaqs() {
     <section ref={sectionRef} className="bg-gray-50 py-10 sm:py-20">
       <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             Questions? <br />
             <span className="text-primaryOrange">We've got answers.</span>
           </h2>
@@ -84,7 +86,7 @@ function BuildFaqs() {
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div
-              key={index}
+              key={faq?.id ?? faq?.slug ?? faq?.title ?? faq?.name ?? index}
               className={`transition-all duration-500 transform ${
                 visibleFAQs.includes(index) ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
               }`}

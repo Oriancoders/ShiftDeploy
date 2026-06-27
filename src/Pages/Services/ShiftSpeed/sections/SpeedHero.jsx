@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from 'framer-motion';
 import { ArrowRight, Clock, TrendingUp, Zap, Award } from "lucide-react";
 import CursorFollower from "../../../../utils/CursorFollower";
 import Link from "next/link";
@@ -47,7 +47,7 @@ function LightningBolt() {
         transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
       >
         <div
-          className="relative w-14 h-14 rounded-2xl flex items-center justify-center"
+          className="relative size-14 rounded-2xl flex items-center justify-center"
           style={{
             background: "linear-gradient(135deg, #fbbf24 0%, #F76707 100%)",
             boxShadow: `
@@ -58,7 +58,7 @@ function LightningBolt() {
             `,
           }}
         >
-          <Zap className="w-7 h-7 text-white" fill="white" strokeWidth={1.5} />
+          <Zap className="size-7 text-white" fill="white" strokeWidth={1.5} />
           {/* Inner glow halo */}
           <motion.div
             animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
@@ -159,7 +159,7 @@ function PerformanceCore() {
           const y2 = 115 + r2 * Math.sin(angle);
           return (
             <motion.line
-              key={i}
+              key={_?.id ?? _?.slug ?? _?.title ?? _?.name ?? i}
               x1={x1}
               y1={y1}
               x2={x2}
@@ -216,7 +216,7 @@ function PerformanceCore() {
             border: "1px solid rgba(34,197,94,0.25)",
           }}
         >
-          <Award className="w-2.5 h-2.5 text-green-700" strokeWidth={3} />
+          <Award className="size-2.5 text-green-700" strokeWidth={3} />
           <span className="text-[8px] font-black text-green-700 tracking-widest">
             LIGHTHOUSE
           </span>
@@ -242,8 +242,8 @@ function MetricChip({ position, value, label, color, icon: Icon, delay }) {
         className="flex items-center gap-2.5 px-3.5 py-2.5 rounded-2xl"
         style={{
           background: "rgba(255,255,255,0.88)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
           border: `1px solid ${color}25`,
           boxShadow: `
             0 1px 2px rgba(15,23,42,0.04),
@@ -254,13 +254,13 @@ function MetricChip({ position, value, label, color, icon: Icon, delay }) {
         }}
       >
         <div
-          className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
+          className="size-9 rounded-xl flex items-center justify-center flex-shrink-0"
           style={{
             background: `linear-gradient(135deg, ${color}, ${color}cc)`,
             boxShadow: `0 4px 12px ${color}55, inset 0 1px 0 rgba(255,255,255,0.3)`,
           }}
         >
-          <Icon className="w-4 h-4 text-white" strokeWidth={2.5} />
+          <Icon className="size-4 text-white" strokeWidth={2.5} />
         </div>
         <div className="leading-tight">
           <div
@@ -288,8 +288,8 @@ function VitalRow({ label, value, delay }) {
       className="flex items-center justify-between px-3 py-2 rounded-xl"
       style={{
         background: "rgba(255,255,255,0.88)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
         border: "1px solid rgba(34,197,94,0.18)",
         boxShadow: "0 4px 14px rgba(34,197,94,0.10), 0 1px 2px rgba(15,23,42,0.03)",
       }}
@@ -298,7 +298,7 @@ function VitalRow({ label, value, delay }) {
         <motion.div
           animate={{ opacity: [1, 0.4, 1], scale: [1, 1.2, 1] }}
           transition={{ repeat: Infinity, duration: 2, delay: delay * 0.1 }}
-          className="w-1.5 h-1.5 rounded-full bg-green-500"
+          className="size-1.5 rounded-full bg-green-500"
           style={{ boxShadow: "0 0 8px #22c55e" }}
         />
         <span className="text-[10px] font-black text-gray-700 uppercase tracking-wider">
@@ -432,7 +432,7 @@ const SpeedHero = () => {
             style={{ minHeight: 480 }}
           >
             <div className="relative w-full h-[500px]">
-              {/* Ambient color orbs (transparent overall — just glow) */}
+              {/* Ambient color orbs (transparent overall - just glow) */}
               <div
                 className="absolute pointer-events-none"
                 style={{
@@ -441,7 +441,7 @@ const SpeedHero = () => {
                   width: 220,
                   height: 220,
                   background: "radial-gradient(circle, rgba(67,97,238,0.18), transparent 70%)",
-                  filter: "blur(50px)",
+                  filter: "blur(8px)",
                 }}
               />
               <div
@@ -452,7 +452,7 @@ const SpeedHero = () => {
                   width: 260,
                   height: 260,
                   background: "radial-gradient(circle, rgba(34,197,94,0.18), transparent 70%)",
-                  filter: "blur(55px)",
+                  filter: "blur(8px)",
                 }}
               />
               <div
@@ -463,11 +463,11 @@ const SpeedHero = () => {
                   width: 180,
                   height: 180,
                   background: "radial-gradient(circle, rgba(247,103,7,0.14), transparent 70%)",
-                  filter: "blur(45px)",
+                  filter: "blur(8px)",
                 }}
               />
 
-              {/* Lightning bolt — top-left of visual */}
+              {/* Lightning bolt - top-left of visual */}
               <LightningBolt />
 
               {/* CENTER: Performance Score Core (no card wrapping) */}

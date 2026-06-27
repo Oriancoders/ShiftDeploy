@@ -1,5 +1,5 @@
 'use client';
-import { motion } from "framer-motion";
+import { m as motion } from 'framer-motion';
 import { useEffect, useState } from "react";
 
 function easeOutQuart(t) {
@@ -155,7 +155,7 @@ export default function HeroAnimation() {
           inset: 0,
           background:
             "radial-gradient(ellipse at 30% 40%, rgba(67,97,238,0.10) 0%, transparent 55%), radial-gradient(ellipse at 75% 60%, rgba(247,103,7,0.10) 0%, transparent 55%)",
-          filter: "blur(40px)",
+          filter: "blur(8px)",
           pointerEvents: "none",
           zIndex: 0,
         }}
@@ -220,7 +220,7 @@ export default function HeroAnimation() {
               p < 0.3 ? "#ef4444" : p < 0.55 ? "#f97316" : p < 0.8 ? "#84cc16" : "#22c55e";
             return (
               <line
-                key={i}
+                key={_?.id ?? _?.slug ?? _?.title ?? _?.name ?? i}
                 x1={x1}
                 y1={y1}
                 x2={x2}
@@ -242,7 +242,7 @@ export default function HeroAnimation() {
             strokeLinecap="round"
           />
 
-          {/* Arc filled — synced with needle */}
+          {/* Arc filled - synced with needle */}
           <motion.path
             d="M 88 240 A 152 152 0 0 1 392 240"
             fill="none"
@@ -279,7 +279,7 @@ export default function HeroAnimation() {
             FAST
           </text>
 
-          {/* CLEAN NEEDLE — direct SVG transform */}
+          {/* CLEAN NEEDLE - direct SVG transform */}
           <g transform={`rotate(${needleAngle} 240 240)`}>
             <path
               d="M 235 240 L 240 92 L 245 240 Z"

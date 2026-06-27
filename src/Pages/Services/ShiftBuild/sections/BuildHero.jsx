@@ -1,12 +1,12 @@
 'use client';
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from 'framer-motion';
 import { ArrowRight, Layers, ShieldCheck, Zap } from "lucide-react";
 import CursorFollower from "../../../../utils/CursorFollower";
 import Link from "next/link";
 
 /* ========================================================
-   Live Architecture Tree — NO circles, NO cards, just
+   Live Architecture Tree - NO circles, NO cards, just
    lines + nodes + text + flowing data.
    ======================================================== */
 
@@ -14,7 +14,7 @@ import Link from "next/link";
 const VB_W = 460;
 const VB_H = 520;
 
-/* Tree nodes — positioned as % of viewBox */
+/* Tree nodes - positioned as % of viewBox */
 const NODES = {
   root: { id: "root", label: "Your Site", sublabel: "shiftdeploy.com", x: 50, y: 6, color: "#0f172a", level: 0 },
 
@@ -289,7 +289,7 @@ function AccentPill({ icon: Icon, label, value, color, position, delay }) {
         className="flex items-center gap-2 px-3 py-2 rounded-xl"
         style={{
           background: "rgba(255,255,255,0.92)",
-          backdropFilter: "blur(20px)",
+          backdropFilter: "blur(8px)",
           border: `1px solid ${color}25`,
           boxShadow: `
             0 1px 2px rgba(15,23,42,0.04),
@@ -299,13 +299,13 @@ function AccentPill({ icon: Icon, label, value, color, position, delay }) {
         }}
       >
         <div
-          className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+          className="size-7 rounded-lg flex items-center justify-center flex-shrink-0"
           style={{
             background: `linear-gradient(135deg, ${color}, ${color}cc)`,
             boxShadow: `0 3px 8px ${color}55`,
           }}
         >
-          <Icon className="w-3.5 h-3.5 text-white" strokeWidth={2.5} />
+          <Icon className="size-3.5 text-white" strokeWidth={2.5} />
         </div>
         <div className="leading-tight">
           <div className="text-[9px] font-black text-gray-500 uppercase tracking-wider">
@@ -419,7 +419,7 @@ const BuildHero = () => {
                   height: 220,
                   background:
                     "radial-gradient(circle, rgba(67,97,238,0.16), transparent 70%)",
-                  filter: "blur(50px)",
+                  filter: "blur(8px)",
                 }}
               />
               <div
@@ -431,7 +431,7 @@ const BuildHero = () => {
                   height: 200,
                   background:
                     "radial-gradient(circle, rgba(34,197,94,0.16), transparent 70%)",
-                  filter: "blur(45px)",
+                  filter: "blur(8px)",
                 }}
               />
               <div
@@ -443,7 +443,7 @@ const BuildHero = () => {
                   height: 220,
                   background:
                     "radial-gradient(circle, rgba(247,103,7,0.14), transparent 70%)",
-                  filter: "blur(50px)",
+                  filter: "blur(8px)",
                 }}
               />
 
@@ -454,7 +454,7 @@ const BuildHero = () => {
                 transition={{ delay: 0.2 }}
                 className="absolute top-0 left-0 right-0 flex items-center gap-2 z-20 px-2"
               >
-                <div className="relative w-2 h-2">
+                <div className="relative size-2">
                   <motion.div
                     animate={{ scale: [1, 2.5], opacity: [0.6, 0] }}
                     transition={{ repeat: Infinity, duration: 1.8, ease: "easeOut" }}

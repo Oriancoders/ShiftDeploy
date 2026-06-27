@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { m as motion, useInView } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../../../utils/animations';
 import Link from 'next/link';
@@ -94,20 +94,20 @@ const InsideShiftDeploy = () => {
         <div className="grid sm:grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl 2xl:max-w-[80%]">
           {solutions.map((solution, index) => (
             <motion.div
-              key={index}
+              key={solution?.id ?? solution?.slug ?? solution?.title ?? solution?.name ?? index}
               className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-7 lg:p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group col-span-1 h-full relative overflow-hidden"
             >
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primaryOrange to-primaryBlue" />
 
-              <div className="flex flex-col items-start space-y-4">
+              <div className="flex flex-col items-start gap-y-4">
              
 
                 <div className="space-y-2">
-                  <h1 className="text-xl lg:text-2xl font-bold text-primaryBlue leading-snug">
+                  <h1 className="text-xl lg:text-2xl font-semibold text-primaryBlue leading-snug">
                     {solution.title}
                   </h1>
                   <div className="flex items-center gap-2 text-primaryOrange">
-                    <ArrowRight className="w-4 h-4 flex-shrink-0" />
+                    <ArrowRight className="size-4 flex-shrink-0" />
                     <span className="text-sm sm:text-base font-semibold tracking-wide">
                       {solution.offer}
                     </span>
@@ -121,8 +121,8 @@ const InsideShiftDeploy = () => {
                 <ul className="space-y-2 sm:space-y-3 lg:space-y-4 pt-2">
                   {solution.features.map((feature, featureIndex) => (
                     <li
-                      key={featureIndex}
-                      className="flex items-start justify-start space-x-2 sm:space-x-3 rounded-lg bg-gray-50 px-3 py-3"
+                      key={feature?.id ?? feature?.slug ?? feature?.title ?? feature?.name ?? featureIndex}
+                      className="flex items-start justify-start gap-x-2 sm:gap-x-3 rounded-lg bg-gray-50 px-3 py-3"
                     >
                       <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 mt-0.5 text-primaryOrange flex-shrink-0" />
                       <span className="text-gray-700 font-medium text-sm sm:text-base lg:text-lg leading-relaxed">
@@ -139,7 +139,7 @@ const InsideShiftDeploy = () => {
         {/* CTA */}
         <div className="w-full flex justify-center items-center">
           <div className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center">
-            <h1 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold mb-4 sm:mb-6 lg:mb-8">
+            <h1 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-semibold mb-4 sm:mb-6 lg:mb-8">
               Need the Right Solution for Your Business?
             </h1>
 

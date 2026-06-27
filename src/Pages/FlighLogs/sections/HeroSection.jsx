@@ -38,13 +38,13 @@ function HeroSection() {
           {/* Trust Badge */}
           {/* <div className="mb-8">
             <div className="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-200 shadow-sm">
-              <Star className="w-5 h-5 text-yellow-500 mr-2" />
+              <Star className="size-5 text-yellow-500 mr-2" />
               <span className="text-sm text-gray-700 font-medium">4.9/5 average rating • 50+ completed missions</span>
             </div>
           </div> */}
 
           {/* Main Headlines */}
-          <h1 className="text-3xl sm:text-5xl md:text-8xl font-bold text-primaryBlue mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-8xl font-semibold text-primaryBlue mb-6 leading-tight">
             Flight Logs <br/>
             <span className="text-primaryOrange">
               Real Stories
@@ -95,7 +95,7 @@ function HeroSection() {
           >
             <Link href={"/missions"} className="flex w-fit mx-auto items-center group bg-primaryOrange hover:bg-toOrange text-white text-xl font-semibold px-8 sm:px-12 py-4 rounded-2xl transition-all duration-300 transform  hover:shadow-2xl hover:shadow-blue-500/25">
                 Read Their Stories
-                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="ml-3 size-6 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </div>
         </div>

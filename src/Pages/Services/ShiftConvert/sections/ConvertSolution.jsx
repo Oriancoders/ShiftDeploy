@@ -1,6 +1,6 @@
 'use client';
 import React from "react";
-import { motion } from "framer-motion";
+import { m as motion } from 'framer-motion';
 import { Search, PenSquare, GitBranch, Shield } from "lucide-react";
 import Link from "next/link";
 
@@ -46,7 +46,7 @@ const ConvertSolution = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             A Proven <span className="text-primaryOrange">Conversion Protocol</span>
           </h2>
           <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
@@ -58,7 +58,7 @@ const ConvertSolution = () => {
         <div className="grid md:grid-cols-4 gap-8">
           {steps.map((step, index) => (
             <motion.div
-              key={index}
+              key={step?.id ?? step?.slug ?? step?.title ?? step?.name ?? index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -76,7 +76,7 @@ const ConvertSolution = () => {
 
                 <div className="text-xs tracking-wider text-primaryOrange font-semibold mb-2">STEP {index + 1}</div>
 
-                <h3 className="text-xl font-bold text-primaryBlue mb-3">{step.title}</h3>
+                <h3 className="text-xl font-semibold text-primaryBlue mb-3">{step.title}</h3>
 
                 <p className="text-gray-700 mb-4 font-medium">{step.description}</p>
 
@@ -88,7 +88,7 @@ const ConvertSolution = () => {
 
         <Link
           href="/contactus"
-          className="bg-primaryOrange mt-14 text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-xl lg:rounded-2xl mx-auto font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md w-fit"
+          className="bg-primaryOrange mt-14 text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-xl lg:rounded-2xl mx-auto font-semibold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md w-fit"
         >
           Start Shifting Conversion Today
         </Link>

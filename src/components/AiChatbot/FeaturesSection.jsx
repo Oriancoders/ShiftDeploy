@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { CalendarCheck, MessageSquare, Users } from 'lucide-react';
 export default function FeaturesSection() {
   const fadeIn = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } } };
@@ -30,17 +30,17 @@ export default function FeaturesSection() {
               { icon: MessageSquare, title: "Smart Service Explanations", desc: "Answers FAQs about pricing, procedures, and policies accurately like your best employee." },
               { icon: Users, title: "Reduce Labor Costs", desc: "Free up your front desk staff from non-stop phone calls to focus on in-person client experience." }
             ].map((feature, idx) => (
-              <motion.div key={idx} variants={fadeIn} 
+              <motion.div key={feature?.id ?? feature?.slug ?? feature?.title ?? feature?.name ?? idx} variants={fadeIn} 
                   whileHover={{ y: -8, transition: { duration: 0.2 } }}
                   className="relative group bg-white p-8 rounded-3xl border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(43,97,238,0.08)] transition-all duration-300 overflow-hidden"
                >
                 {/* Background glow on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-secondaryBlue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                <div className="relative z-10 w-16 h-16 bg-blue-50 text-[#4361EE] group-hover:bg-gradient-to-br group-hover:from-[#4361EE] group-hover:to-blue-400 group-hover:text-white group-hover:shadow-lg transition-all duration-300 rounded-2xl flex items-center justify-center mb-6">
-                  <feature.icon className="w-8 h-8" />
+                <div className="relative z-10 size-16 bg-blue-50 text-[#4361EE] group-hover:bg-gradient-to-br group-hover:from-[#4361EE] group-hover:to-blue-400 group-hover:text-white group-hover:shadow-lg transition-all duration-300 rounded-2xl flex items-center justify-center mb-6">
+                  <feature.icon className="size-8" />
                 </div>
-                <h3 className="relative z-10 text-xl font-extrabold mb-3 text-[#0C1F3A] leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#0C1F3A] group-hover:to-[#4361EE] transition-all duration-300">{feature.title}</h3>
+                <h3 className="relative z-10 text-xl font-semibold mb-3 text-[#0C1F3A] leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#0C1F3A] group-hover:to-[#4361EE] transition-all duration-300">{feature.title}</h3>
                 <p className="relative z-10 text-gray-500 leading-relaxed font-medium">{feature.desc}</p>
               </motion.div>
             ))}

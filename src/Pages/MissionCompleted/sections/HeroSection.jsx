@@ -38,7 +38,7 @@ function HeroSection() {
 
 
           {/* Main Headlines */}
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-primaryBlue mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-semibold text-primaryBlue mb-6 leading-tight">
             Missions That Shift <br />
             <span className="text-primaryOrange">
               Speed & Outcomes
@@ -65,8 +65,8 @@ function HeroSection() {
           >
             <div className="flex items-center justify-center mb-12">
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-2 border border-gray-200 shadow-sm">
-                <div className="flex items-center space-x-2">
-                  <Filter className="w-5 h-5 text-gray-500 ml-3" />
+                <div className="flex items-center gap-x-2">
+                  <Filter className="size-5 text-gray-500 ml-3" />
                   {filters.map((filter) => (
                     <button
                       key={filter}

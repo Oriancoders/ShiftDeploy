@@ -1,6 +1,6 @@
 'use client';
 import { useState, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { m as motion, AnimatePresence, useInView } from 'framer-motion';
 import {
   Stethoscope,
   Landmark,
@@ -97,7 +97,7 @@ export const IndustriesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-12"
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             Built for <span className="text-primaryOrange">Decision-Critical Funnels</span>
           </h2>
           <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
@@ -122,7 +122,7 @@ export const IndustriesSection = () => {
                   : "bg-primaryBlue/10 text-primaryBlue/70 hover:bg-primaryBlue/15 hover:text-primaryBlue"
               }`}
             >
-              <industry.icon className="w-5 h-5" />
+              <industry.icon className="size-5" />
               {industry.label}
             </button>
           ))}
@@ -139,11 +139,11 @@ export const IndustriesSection = () => {
             className="w-full flex items-center justify-between px-6 py-4 bg-primaryOrange text-white rounded-xl font-semibold transition-all duration-300 hover:bg-toOrange"
           >
             <div className="flex items-center gap-2">
-              <activeIndustry.icon className="w-5 h-5" />
+              <activeIndustry.icon className="size-5" />
               <span className="text-left">{activeIndustry.label}</span>
             </div>
             <motion.div animate={{ rotate: isDropdownOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
-              <ChevronDown className="w-5 h-5" />
+              <ChevronDown className="size-5" />
             </motion.div>
           </button>
 
@@ -169,7 +169,7 @@ export const IndustriesSection = () => {
                         : "text-primaryBlue/70 hover:bg-primaryBlue/5 hover:text-primaryBlue"
                     }`}
                   >
-                    <industry.icon className="w-5 h-5" />
+                    <industry.icon className="size-5" />
                     <span>{industry.label}</span>
                   </button>
                 ))}
@@ -187,19 +187,19 @@ export const IndustriesSection = () => {
         >
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primaryOrange/20 text-primaryOrange rounded-full mb-6">
-              <activeIndustry.icon className="w-4 h-4" />
+              <activeIndustry.icon className="size-4" />
               <span className="text-sm font-semibold">{activeIndustry.label}</span>
             </div>
 
-            <h3 className="text-2xl md:text-3xl font-bold text-primaryBlue mb-4">{activeIndustry.title}</h3>
+            <h3 className="text-2xl md:text-3xl font-semibold text-primaryBlue mb-4">{activeIndustry.title}</h3>
 
             <p className="text-primaryBlue/70 leading-relaxed mb-8">{activeIndustry.description}</p>
 
             <ul className="space-y-4 mb-8">
               {activeIndustry.benefits.map((benefit, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-primaryBlue/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <div className="w-2 h-2 rounded-full bg-primaryBlue" />
+                <li key={benefit?.id ?? benefit?.slug ?? benefit?.title ?? benefit?.name ?? index} className="flex items-start gap-3">
+                  <div className="size-6 rounded-full bg-primaryBlue/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="size-2 rounded-full bg-primaryBlue" />
                   </div>
                   <span className="text-primaryBlue">{benefit}</span>
                 </li>
@@ -211,7 +211,7 @@ export const IndustriesSection = () => {
               className="bg-primaryOrange mt-12 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit group text-center"
             >
               Optimize My Funnel
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
@@ -220,7 +220,7 @@ export const IndustriesSection = () => {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <activeIndustry.icon className="w-8 h-8 text-primaryOrange" />
+                    <activeIndustry.icon className="size-8 text-primaryOrange" />
                     <span className="text-white font-semibold">Conversion Dashboard</span>
                   </div>
                   <span className="px-3 py-1 bg-primaryBlue/20 text-primaryBlue text-sm font-semibold rounded-full">
@@ -247,7 +247,7 @@ export const IndustriesSection = () => {
                   <div className="h-24 flex items-end gap-1">
                     {[22, 28, 33, 39, 44, 49, 57, 64, 69, 75, 82, 88].map((h, i) => (
                       <motion.div
-                        key={i}
+                        key={h?.id ?? h?.slug ?? h?.title ?? h?.name ?? i}
                         initial={{ height: 0 }}
                         animate={{ height: `${h}%` }}
                         transition={{ duration: 0.5, delay: i * 0.05 }}
@@ -265,7 +265,7 @@ export const IndustriesSection = () => {
               className="absolute -top-4 -right-4 bg-primaryBlue rounded-xl p-4 shadow-xl text-white"
             >
               <div className="flex items-center gap-3">
-                <Calendar className="w-8 h-8" />
+                <Calendar className="size-8" />
                 <div>
                   <div className="font-bold">+64</div>
                   <div className="text-xs">New Leads</div>
@@ -279,7 +279,7 @@ export const IndustriesSection = () => {
               className="absolute -bottom-4 -left-4 bg-primaryBlue rounded-xl p-4 shadow-xl text-white"
             >
               <div className="flex items-center gap-3">
-                <Shield className="w-8 h-8" />
+                <Shield className="size-8" />
                 <div>
                   <div className="font-bold">A+ Clarity</div>
                   <div className="text-xs">Trust Score</div>

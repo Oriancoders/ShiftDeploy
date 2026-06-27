@@ -1,6 +1,6 @@
 'use client';
 import React from "react";
-import { motion } from "framer-motion";
+import { m as motion } from 'framer-motion';
 import {
   AlertTriangle,
   TrendingDown,
@@ -66,7 +66,7 @@ const ConvertProblem = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             The Real Cost of <span className="text-primaryOrange">Low Conversion Clarity</span>
           </h2>
           <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
@@ -78,7 +78,7 @@ const ConvertProblem = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {problems.map((problem, index) => (
             <motion.div
-              key={index}
+              key={problem?.id ?? problem?.slug ?? problem?.title ?? problem?.name ?? index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.08 }}
@@ -90,7 +90,7 @@ const ConvertProblem = () => {
                   <problem.icon size={44} />
                 </div>
 
-                <h3 className="text-2xl font-bold text-primaryBlue mb-4">{problem.title}</h3>
+                <h3 className="text-2xl font-semibold text-primaryBlue mb-4">{problem.title}</h3>
 
                 <p className="text-gray-600 mb-6 leading-relaxed">{problem.description}</p>
               </div>

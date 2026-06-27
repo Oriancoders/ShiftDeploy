@@ -43,14 +43,16 @@ function CaseStudyCardsSection() {
   ]
 
   useEffect(() => {
+    const __tids = [];
+    const __t = (id) => { __tids.push(id); return id; };
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const index = Number.parseInt(entry.target.getAttribute("data-index") || "0")
           if (entry.isIntersecting) {
-            setTimeout(() => {
+            __t(setTimeout(() => {
               setVisibleCards((prev) => [...new Set([...prev, index])])
-            }, index * 150)
+            }, index * 150))
           }
         })
       },
@@ -61,14 +63,13 @@ function CaseStudyCardsSection() {
       if (ref) observer.observe(ref)
     })
 
-    return () => observer.disconnect()
-  }, [])
+    return () => { observer.disconnect(); __tids.forEach(clearTimeout); }}, [])
 
   return (
     <section id="casestudy" ref={sectionRef} className="pt-10 bg-gray-50">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             Success Stories That <br />
             <span className="text-primaryOrange">
               Speak For Themselves
@@ -82,7 +83,7 @@ function CaseStudyCardsSection() {
         <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8">
           {caseStudies.map((study, index) => (
             <div
-              key={index}
+              key={study?.id ?? study?.slug ?? study?.title ?? study?.name ?? index}
               ref={(el) => (cardRefs.current[index] = el)}
               data-index={index}
               className={`group transition-all duration-300 transform ${visibleCards.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
@@ -109,14 +110,14 @@ function CaseStudyCardsSection() {
 
                 {/* Content */}
                 <div className="p-6 sm:p-8 flex flex-col">
-                  <h3 className="text-2xl font-bold text-primaryBlue mb-4">{study.brand}</h3>
+                  <h3 className="text-2xl font-semibold text-primaryBlue mb-4">{study.brand}</h3>
                   <p className="text-gray-700 leading-relaxed mb-6">{study.outcome}</p>
 
                   {/* Metrics */}
                   <div className="grid grid-cols-3 gap-4 mb-4 sm:mb-6">
                     {Object.entries(study.metrics).map(([key, value], metricIndex) => (
                       <div key={metricIndex} className="text-center">
-                        <div className="text-lg font-bold text-primaryBlue">{value}</div>
+                        <div className="text-lg font-semibold text-primaryBlue">{value}</div>
                         <div className="text-xs text-gray-500 capitalize">{key}</div>
                       </div>
                     ))}

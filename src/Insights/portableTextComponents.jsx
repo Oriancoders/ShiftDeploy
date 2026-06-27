@@ -3,22 +3,22 @@ import React from "react";
 export const portableTextComponents = {
   block: {
     h1: ({ children }) => (
-      <h1 className="text-3xl sm:text-4xl font-extrabold text-primaryBlue mt-10 mb-4 leading-tight">
+      <h1 className="text-3xl sm:text-4xl font-semibold text-primaryBlue mt-10 mb-4 leading-tight">
         {children}
       </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl sm:text-3xl font-extrabold text-primaryBlue mt-10 mb-3 leading-tight">
+      <h2 className="text-2xl sm:text-3xl font-semibold text-primaryBlue mt-10 mb-3 leading-tight">
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl sm:text-2xl font-extrabold text-primaryBlue mt-8 mb-3 leading-tight">
+      <h3 className="text-xl sm:text-2xl font-semibold text-primaryBlue mt-8 mb-3 leading-tight">
         {children}
       </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-lg sm:text-xl font-extrabold text-primaryBlue mt-6 mb-2 leading-tight">
+      <h4 className="text-lg sm:text-xl font-semibold text-primaryBlue mt-6 mb-2 leading-tight">
         {children}
       </h4>
     ),
@@ -127,7 +127,7 @@ export const portableTextComponents = {
           <div className="flex gap-3">
             {value.showIcon && <span className="flex-shrink-0 mt-0.5">{styles.icon}</span>}
             <div className={`flex-1 ${styles.text}`}>
-              {value.title && <h4 className="font-bold mb-2">{value.title}</h4>}
+              {value.title && <h4 className="font-semibold mb-2">{value.title}</h4>}
               <div className="text-sm">{value.content}</div>
             </div>
           </div>
@@ -137,9 +137,9 @@ export const portableTextComponents = {
 
     faq: ({ value }) => (
       <div className="my-8 space-y-3">
-        {value.title && <h3 className="text-2xl font-bold text-primaryBlue mb-4">{value.title}</h3>}
+        {value.title && <h3 className="text-2xl font-semibold text-primaryBlue mb-4">{value.title}</h3>}
         {Array.isArray(value.items) && value.items.map((item, idx) => (
-          <details key={idx} className="group border border-gray-200 rounded-lg overflow-hidden">
+          <details key={item?.id ?? item?.slug ?? item?.title ?? item?.name ?? idx} className="group border border-gray-200 rounded-lg overflow-hidden">
             <summary className="flex items-center justify-between px-5 py-4 cursor-pointer font-semibold text-primaryBlue bg-gray-50 hover:bg-gray-100 list-none">
               {item.question}
               <span className="ml-3 text-primaryOrange group-open:rotate-180 transition-transform">▼</span>
@@ -173,10 +173,10 @@ export const portableTextComponents = {
       <div className="my-8 grid sm:grid-cols-2 gap-4">
         {Array.isArray(value.pros) && value.pros.length > 0 && (
           <div className="rounded-xl bg-green-50 border border-green-200 p-5">
-            <h4 className="font-bold text-green-800 mb-3">{value.prosLabel || "Pros"}</h4>
+            <h4 className="font-semibold text-green-800 mb-3">{value.prosLabel || "Pros"}</h4>
             <ul className="space-y-2">
               {value.pros.map((pro, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-green-900 text-sm">
+                <li key={pro?.id ?? pro?.slug ?? pro?.title ?? pro?.name ?? idx} className="flex items-start gap-2 text-green-900 text-sm">
                   <span className="text-green-500 mt-0.5">✓</span>{pro}
                 </li>
               ))}
@@ -185,10 +185,10 @@ export const portableTextComponents = {
         )}
         {Array.isArray(value.cons) && value.cons.length > 0 && (
           <div className="rounded-xl bg-red-50 border border-red-200 p-5">
-            <h4 className="font-bold text-red-800 mb-3">{value.consLabel || "Cons"}</h4>
+            <h4 className="font-semibold text-red-800 mb-3">{value.consLabel || "Cons"}</h4>
             <ul className="space-y-2">
               {value.cons.map((con, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-red-900 text-sm">
+                <li key={con?.id ?? con?.slug ?? con?.title ?? con?.name ?? idx} className="flex items-start gap-2 text-red-900 text-sm">
                   <span className="text-red-500 mt-0.5">✗</span>{con}
                 </li>
               ))}
@@ -209,7 +209,7 @@ export const portableTextComponents = {
       return (
         <div className={`my-6 grid ${colClass} gap-6 p-6 rounded-lg bg-gray-50`}>
           {value.stats?.map((stat, idx) => (
-            <div key={idx} className={alignClass}>
+            <div key={stat?.id ?? stat?.slug ?? stat?.title ?? stat?.name ?? idx} className={alignClass}>
               <div className="text-3xl font-bold text-primaryBlue">{stat.value}</div>
               <div className="text-sm text-gray-600">{stat.label}</div>
             </div>
@@ -231,7 +231,7 @@ export const portableTextComponents = {
             }[btn.style] || "bg-primaryBlue text-white";
             return (
               <a
-                key={idx}
+                key={btn?.id ?? btn?.slug ?? btn?.title ?? btn?.name ?? idx}
                 href={btn.url || "#"}
                 target={btn.openInNewTab ? "_blank" : "_self"}
                 rel={btn.openInNewTab ? "noopener noreferrer" : ""}
@@ -255,7 +255,7 @@ export const portableTextComponents = {
       const paddingClass = { small: "p-4", medium: "p-6", large: "p-10" }[value.padding] || "p-6";
       return (
         <section className={`my-8 rounded-xl ${themeClass} ${paddingClass}`}>
-          {value.heading && <h3 className="text-xl font-bold mb-3">{value.heading}</h3>}
+          {value.heading && <h3 className="text-xl font-semibold mb-3">{value.heading}</h3>}
         </section>
       );
     },

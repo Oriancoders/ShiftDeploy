@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowRight,
   MapPin,
@@ -109,8 +109,8 @@ function ConversionCard({ event, age, isTop }) {
         className="relative flex items-center gap-3 px-3.5 py-3 rounded-2xl"
         style={{
           background: "rgba(255,255,255,0.92)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
           border: `1px solid ${event.color}25`,
           boxShadow: `
             0 1px 2px rgba(15,23,42,0.04),
@@ -122,13 +122,13 @@ function ConversionCard({ event, age, isTop }) {
       >
         {/* Icon */}
         <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 relative"
+          className="size-10 rounded-xl flex items-center justify-center flex-shrink-0 relative"
           style={{
             background: `linear-gradient(135deg, ${event.color}, ${event.color}cc)`,
             boxShadow: `0 4px 12px ${event.color}55, inset 0 1px 0 rgba(255,255,255,0.3)`,
           }}
         >
-          <Icon className="w-5 h-5 text-white" strokeWidth={2.5} />
+          <Icon className="size-5 text-white" strokeWidth={2.5} />
           {isTop && (
             <motion.div
               animate={{ scale: [1, 1.4, 1], opacity: [0.6, 0, 0.6] }}
@@ -223,7 +223,7 @@ function AccentChip({ icon: Icon, label, value, color, position, delay }) {
         className="flex items-center gap-2 px-3 py-2 rounded-xl"
         style={{
           background: "rgba(255,255,255,0.92)",
-          backdropFilter: "blur(20px)",
+          backdropFilter: "blur(8px)",
           border: `1px solid ${color}25`,
           boxShadow: `
             0 1px 2px rgba(15,23,42,0.04),
@@ -233,13 +233,13 @@ function AccentChip({ icon: Icon, label, value, color, position, delay }) {
         }}
       >
         <div
-          className="w-7 h-7 rounded-lg flex items-center justify-center"
+          className="size-7 rounded-lg flex items-center justify-center"
           style={{
             background: `linear-gradient(135deg, ${color}, ${color}cc)`,
             boxShadow: `0 3px 8px ${color}55`,
           }}
         >
-          <Icon className="w-3.5 h-3.5 text-white" strokeWidth={2.5} />
+          <Icon className="size-3.5 text-white" strokeWidth={2.5} />
         </div>
         <div className="leading-tight">
           <div className="text-[9px] font-black text-gray-500 uppercase tracking-wider">
@@ -384,7 +384,7 @@ const ConvertHero = () => {
                   height: 220,
                   background:
                     "radial-gradient(circle, rgba(67,97,238,0.16), transparent 70%)",
-                  filter: "blur(50px)",
+                  filter: "blur(8px)",
                 }}
               />
               <div
@@ -396,7 +396,7 @@ const ConvertHero = () => {
                   height: 260,
                   background:
                     "radial-gradient(circle, rgba(247,103,7,0.16), transparent 70%)",
-                  filter: "blur(55px)",
+                  filter: "blur(8px)",
                 }}
               />
               <div
@@ -408,7 +408,7 @@ const ConvertHero = () => {
                   height: 180,
                   background:
                     "radial-gradient(circle, rgba(34,197,94,0.14), transparent 70%)",
-                  filter: "blur(45px)",
+                  filter: "blur(8px)",
                 }}
               />
 
@@ -419,7 +419,7 @@ const ConvertHero = () => {
                 transition={{ delay: 0.4 }}
                 className="flex items-center gap-2 mb-3 relative z-20"
               >
-                <div className="relative w-2.5 h-2.5">
+                <div className="relative size-2.5">
                   <motion.div
                     animate={{ scale: [1, 2.2], opacity: [0.6, 0] }}
                     transition={{ repeat: Infinity, duration: 1.6, ease: "easeOut" }}

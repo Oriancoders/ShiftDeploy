@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { m as motion, useMotionValue } from 'framer-motion';
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { fadeInUp, staggerContainer } from "../../utils/animations";
@@ -36,7 +36,7 @@ const ThankYouPage = () => {
         className="min-h-screen bg-primaryBlue overflow-hidden flex items-center justify-center pt-32 pb-10 relative"
       >
         {/* Dark overlay */}
-        <div className="absolute w-full h-full inset-0 bg-primaryBlue/80 z-10" />
+        <div className="absolute size-full inset-0 bg-primaryBlue/80 z-10" />
 
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-20">
           <motion.div
@@ -79,7 +79,7 @@ const ThankYouPage = () => {
             {/* Confirmation Card */}
             <motion.div variants={fadeInUp} className="mb-12 sm:mb-16 lg:mb-20">
               <div className="bg-white border border-slate-200 rounded-2xl sm:rounded-3xl p-8 sm:p-12 max-w-2xl mx-auto drop-shadow-lg">
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primaryBlue mb-4">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-primaryBlue mb-4">
                   What you’ll get
                 </h3>
                 <p className="text-slate-700 text-base sm:text-lg lg:text-xl leading-relaxed">
@@ -106,7 +106,7 @@ const ThankYouPage = () => {
             >
               <Link
                 href={"/"}
-                className="bg-primaryOrange text-white px-8 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg transition-all duration-200 group"
+                className="bg-primaryOrange text-white px-8 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold flex items-center justify-center gap-x-3 text-lg transition-all duration-200 group"
               >
                 <span>Back to Home</span>
                 <ArrowRight className="w-5 sm:w-6 h-5 sm:h-6 sm:group-hover:ml-6 transition-all duration-200" />
@@ -125,14 +125,14 @@ const ThankYouPage = () => {
               variants={fadeInUp}
               className="bg-white drop-shadow-md border border-slate-200 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 max-w-3xl mx-auto"
             >
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-800 mb-6 sm:mb-8">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-slate-800 mb-6 sm:mb-8">
                 What Happens Next?
               </h3>
 
               <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
                 <div className="text-center">
                   <div className="w-12 sm:w-16 h-12 sm:h-16 bg-primaryBlue rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <span className="text-white font-bold text-lg sm:text-xl">1</span>
+                    <span className="text-white font-semibold text-lg sm:text-xl">1</span>
                   </div>
                   <h4 className="text-slate-800 font-semibold mb-2 text-base sm:text-lg">
                     Intake

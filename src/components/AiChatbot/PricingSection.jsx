@@ -6,13 +6,13 @@ import GrowthPlanCard from './Pricing/GrowthPlanCard';
 import EnterprisePlanCard from './Pricing/EnterprisePlanCard';
 
 const ShieldIcon = () => (
-  <svg className="w-8 h-8 text-indigo-500 mr-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="size-8 text-indigo-500 mr-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
   </svg>
 );
 
 const LightningIcon = () => (
-  <svg className="w-8 h-8 text-amber-500 mr-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <svg className="size-8 text-amber-500 mr-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
   </svg>
 );
@@ -24,8 +24,8 @@ export default function PricingSection({ onSelectPackage }) {
     <section className="py-16 md:py-28 bg-gradient-to-b from-gray-50 to-white relative border-t border-gray-200/60 overflow-hidden">
       {/* Subtle Background Glow Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full overflow-hidden -z-10 pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-blue-100/40 blur-3xl"></div>
-        <div className="absolute top-40 -left-40 w-96 h-96 rounded-full bg-indigo-100/40 blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 size-96 rounded-full bg-blue-100/40 blur-3xl"></div>
+        <div className="absolute top-40 -left-40 size-96 rounded-full bg-indigo-100/40 blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
@@ -49,7 +49,7 @@ export default function PricingSection({ onSelectPackage }) {
           >
             <span
               aria-hidden="true"
-              className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+              className={`pointer-events-none inline-block size-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
                 isAnnual ? 'translate-x-5' : 'translate-x-0'
               }`}
             />

@@ -1,11 +1,11 @@
 export default function ShiftDeployLoader() {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-primaryBlue text-white">
-      <div className="relative w-24 h-24">
+      <div className="relative size-24">
         {[...Array(4)].map((_, i) => (
           <div
-            key={i}
-            className="absolute top-1/2 left-1/2 w-4 h-4 rounded-full"
+            key={_?.id ?? _?.slug ?? _?.title ?? _?.name ?? i}
+            className="absolute top-1/2 left-1/2 size-4 rounded-full"
             style={{
               backgroundColor: ['#FF7A00', '#00CFFF', '#1E3A8A', '#FF7A00'][i],
               transform: `rotate(${i * 90}deg) translate(40px)`,

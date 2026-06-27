@@ -1,5 +1,5 @@
 'use client';
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from 'framer-motion';
 import { useRef } from "react";
 import { X, Check, ArrowRight, TrendingUp, TrendingDown } from "lucide-react";
 import Link from "next/link";
@@ -46,7 +46,7 @@ export const FlowComparison = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             The <span className="text-primaryOrange">ShiftFlow</span> Difference
           </h2>
           <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
@@ -66,16 +66,16 @@ export const FlowComparison = () => {
 
             <div className="text-center mb-6">
               <div className="inline-flex items-center gap-2 bg-primaryOrange text-white px-4 py-2 rounded-full mb-4">
-                <TrendingDown className="w-4 h-4" />
+                <TrendingDown className="size-4" />
                 <span className="font-bold text-sm uppercase tracking-wide">Before</span>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-primaryOrange">Reactive Maintenance</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-primaryOrange">Reactive Maintenance</h3>
             </div>
 
             <div className="space-y-3 mb-6">
               {beforeMetrics.map((metric, index) => (
                 <motion.div
-                  key={index}
+                  key={metric?.id ?? metric?.slug ?? metric?.title ?? metric?.name ?? index}
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
@@ -91,8 +91,8 @@ export const FlowComparison = () => {
               <div className="text-primaryOrange font-bold mb-3 uppercase tracking-wide text-xl">Critical Issues:</div>
               <ul className="space-y-2">
                 {beforeIssues.map((issue, index) => (
-                  <li key={index} className="flex items-start gap-2 text-md text-primaryOrange">
-                    <X className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                  <li key={issue?.id ?? issue?.slug ?? issue?.title ?? issue?.name ?? index} className="flex items-start gap-2 text-md text-primaryOrange">
+                    <X className="size-4 mt-0.5 flex-shrink-0" />
                     <span>{issue}</span>
                   </li>
                 ))}
@@ -107,7 +107,7 @@ export const FlowComparison = () => {
             className="lg:col-span-1 flex items-center justify-center py-4 lg:py-0"
           >
             <div className="bg-primaryOrange text-white p-4 rounded-full shadow-lg shadow-primaryOrange/30">
-              <ArrowRight className="w-6 h-6 md:w-8 md:h-8 rotate-90 lg:rotate-0" />
+              <ArrowRight className="size-6 md:size-8 rotate-90 lg:rotate-0" />
             </div>
           </motion.div>
 
@@ -121,16 +121,16 @@ export const FlowComparison = () => {
 
             <div className="text-center mb-6">
               <div className="inline-flex items-center gap-2 bg-primaryBlue text-white px-4 py-2 rounded-full mb-4">
-                <TrendingUp className="w-4 h-4" />
+                <TrendingUp className="size-4" />
                 <span className="font-bold text-sm uppercase tracking-wide">After</span>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-primaryBlue">ShiftFlow Proactive Ops</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-primaryBlue">ShiftFlow Proactive Ops</h3>
             </div>
 
             <div className="space-y-3 mb-6">
               {afterMetrics.map((metric, index) => (
                 <motion.div
-                  key={index}
+                  key={metric?.id ?? metric?.slug ?? metric?.title ?? metric?.name ?? index}
                   initial={{ opacity: 0, x: 20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
@@ -146,8 +146,8 @@ export const FlowComparison = () => {
               <div className="text-primaryBlue font-bold mb-3 text-xl uppercase tracking-wide">Optimizations Applied:</div>
               <ul className="space-y-2">
                 {afterOptimizations.map((opt, index) => (
-                  <li key={index} className="flex items-start gap-2 text-md text-primaryBlue">
-                    <Check className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                  <li key={opt?.id ?? opt?.slug ?? opt?.title ?? opt?.name ?? index} className="flex items-start gap-2 text-md text-primaryBlue">
+                    <Check className="size-4 mt-0.5 flex-shrink-0" />
                     <span>{opt}</span>
                   </li>
                 ))}

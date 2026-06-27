@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { m as motion, useInView } from 'framer-motion';
 import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../../utils/animations';
 import Footer from '../../components/Footer';
@@ -106,8 +106,8 @@ const ContactUs = () => {
       <section id="contact-us" className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-x-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-600 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-80 h-80 bg-indigo-600 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-20 size-96 bg-blue-600 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-20 size-80 bg-indigo-600 rounded-full blur-3xl" />
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-400 rounded-full blur-3xl" />
         </div>
 
@@ -146,7 +146,7 @@ const ContactUs = () => {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="space-y-8 sm:space-y-10 lg:space-y-12 sm:order-1 order-2 min-w-0"
             >
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primaryBlue mb-6 sm:mb-8">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-primaryBlue mb-6 sm:mb-8">
                 What you’ll get
               </h2>
 
@@ -170,18 +170,18 @@ const ContactUs = () => {
 
 
 
-              <h2 className="text-2xl sm:text-3xl lg:text-3xl font-bold text-primaryBlue mb-6 sm:mb-8 leading-10">
+              <h2 className="text-2xl sm:text-3xl lg:text-3xl font-semibold text-primaryBlue mb-6 sm:mb-8 leading-10">
                 Contact Via Other Platforms
               </h2>
               {/* Contact Information */}
               <div className="space-y-6 sm:space-y-8">
                 {contactInfo.map((info, index) => (
                   <motion.div
-                    key={index}
+                    key={info?.id ?? info?.slug ?? info?.title ?? info?.name ?? index}
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                    className="flex items-start space-x-4 sm:space-x-5"
+                    className="flex items-start gap-x-4 sm:gap-x-5"
                   >
                     <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-xl flex items-center justify-center flex-shrink-0 bg-primaryBlue text-white">
                       {info.icon}
@@ -317,11 +317,11 @@ const ContactUs = () => {
                     type="submit"
                     disabled={formStatus === 'loading'}
 
-                    className="w-full bg-primaryOrange hover:bg-toOrange text-white font-semibold py-4 sm:py-5 px-6 sm:px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-3 text-base sm:text-lg disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full bg-primaryOrange hover:bg-toOrange text-white font-semibold py-4 sm:py-5 px-6 sm:px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-x-3 text-base sm:text-lg disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {formStatus === 'loading' ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <div className="size-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                         <span>Sending...</span>
                       </>
                     ) : (
@@ -339,9 +339,9 @@ const ContactUs = () => {
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="flex items-center space-x-3 text-green-600 bg-green-50 p-4 rounded-xl border border-green-200"
+                      className="flex items-center gap-x-3 text-green-600 bg-green-50 p-4 rounded-xl border border-green-200"
                     >
-                      <CheckCircle className="w-5 h-5 flex-shrink-0" />
+                      <CheckCircle className="size-5 flex-shrink-0" />
                       <span className="text-sm sm:text-base">Message sent successfully! We'll get back to you soon.</span>
                     </motion.div>
                   )}
@@ -350,9 +350,9 @@ const ContactUs = () => {
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="flex items-center space-x-3 text-red-600 bg-red-50 p-4 rounded-xl border border-red-200"
+                      className="flex items-center gap-x-3 text-red-600 bg-red-50 p-4 rounded-xl border border-red-200"
                     >
-                      <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                      <AlertCircle className="size-5 flex-shrink-0" />
                       <span className="text-sm sm:text-base">Something went wrong. Please try again.</span>
                     </motion.div>
                   )}

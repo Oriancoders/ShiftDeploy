@@ -36,14 +36,16 @@ function PhilosophySection() {
   ]
 
   useEffect(() => {
+    const __tids = [];
+    const __t = (id) => { __tids.push(id); return id; };
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const index = Number.parseInt(entry.target.getAttribute("data-index") || "0")
           if (entry.isIntersecting) {
-            setTimeout(() => {
+            __t(setTimeout(() => {
               setVisibleItems((prev) => [...new Set([...prev, index])])
-            }, index * 200)
+            }, index * 200))
           }
         })
       },
@@ -54,8 +56,7 @@ function PhilosophySection() {
       if (ref) observer.observe(ref)
     })
 
-    return () => observer.disconnect()
-  }, [])
+    return () => { observer.disconnect(); __tids.forEach(clearTimeout); }}, [])
 
   return (
     <section ref={sectionRef} className="py-24 bg-primaryBlue relative overflow-hidden">
@@ -67,7 +68,7 @@ function PhilosophySection() {
 
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-white mb-6 leading-tight">
             The principles that deliver <br />
             <span className="text-primaryOrange">real business results</span>
           </h2>
@@ -76,7 +77,7 @@ function PhilosophySection() {
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {philosophyItems.map((item, index) => (
             <div
-              key={index}
+              key={item?.id ?? item?.slug ?? item?.title ?? item?.name ?? index}
               ref={(el) => (itemRefs.current[index] = el)}
               data-index={index}
               className={`group cursor-pointer transition-all duration-300 transform ${
@@ -87,7 +88,7 @@ function PhilosophySection() {
                 <div
                   className={`relative p-6 sm:p-8 rounded-3xl border border-gray-700 bg-primaryBlue/50 backdrop-blur-sm h-full transition-all duration-500 transform group-hover:border-gray-600`}
                 >
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 transition-colors duration-300">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4 transition-colors duration-300">
                     {item.title}
                   </h3>
 

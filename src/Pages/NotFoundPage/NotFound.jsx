@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { m as motion, useMotionValue } from 'framer-motion';
 import { Link } from "react-router-dom";
 import { Home, ArrowRight } from "lucide-react";
 import { fadeInUp, staggerContainer } from "../../utils/animations";
@@ -30,7 +30,7 @@ const NotFound = () => {
       >
         {/* Dark background graphic texture (Optional) */}
         <div className="absolute top-0 right-0 w-[50vw] h-[50vh] -mr-48 -mt-48 opacity-20 pointer-events-none">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/200 200" className="w-full h-full text-textCyan/10 fill-current">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/200 200" className="size-full text-textCyan/10 fill-current">
             <path d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-46.8C87.4,-34.5,90,-20.1,89.3,-6.2C88.6,7.8,84.7,21.3,77.7,33.1C70.6,44.9,60.5,55.1,48.7,63.1C36.9,71.1,23.4,76.9,9.4,79.5C-4.6,82.1,-19,81.4,-31.9,76.5C-44.8,71.6,-56.3,62.5,-66.1,51.4C-75.9,40.4,-84.1,27.5,-86.6,13.4C-89.1,-0.7,-85.9,-15.9,-78.9,-28.9C-71.9,-41.8,-61,-52.4,-48.3,-60.1C-35.5,-67.7,-21,-72.4,-6,-71C9.1,-69.6,28.2,-62,44.7,-76.4Z" transform="translate(100 100)" />
           </svg>
         </div>
@@ -44,14 +44,14 @@ const NotFound = () => {
           >
             {/* 404 Heading */}
             <motion.div variants={fadeInUp} className="flex justify-center">
-              <h1 className="text-8xl sm:text-9xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primaryBlue to-toBlue">
+              <h1 className="text-8xl sm:text-9xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-primaryBlue to-toBlue">
                 404
               </h1>
             </motion.div>
 
             {/* Error Message */}
             <motion.div variants={fadeInUp} className="space-y-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white tracking-tight">
                 Mission Aborted.
               </h2>
               <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
@@ -65,7 +65,7 @@ const NotFound = () => {
                 to="/"
                 className="group relative flex items-center justify-center gap-3 bg-textCyan text-primaryBlue px-8 py-4 rounded-full font-semibold text-lg hover:bg-white transition-all duration-300 w-full sm:w-auto"
               >
-                <Home className="w-5 h-5" />
+                <Home className="size-5" />
                 <span>Return to Base</span>
                 <div className="absolute inset-0 rounded-full border border-textCyan group-hover:scale-105 group-hover:opacity-0 transition-all duration-500" />
               </Link>
@@ -75,7 +75,7 @@ const NotFound = () => {
                 className="group flex items-center justify-center gap-2 text-white px-8 py-4 rounded-full font-medium text-lg border border-white/20 hover:border-textCyan hover:bg-white/5 transition-all duration-300 w-full sm:w-auto"
               >
                 <span>Report an Issue</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="size-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.div>
             

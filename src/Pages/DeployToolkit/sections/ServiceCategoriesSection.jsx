@@ -68,14 +68,16 @@ function ServiceCategoriesSection() {
   ]
 
   useEffect(() => {
+    const __tids = [];
+    const __t = (id) => { __tids.push(id); return id; };
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const index = Number.parseInt(entry.target.getAttribute("data-index") || "0")
           if (entry.isIntersecting) {
-            setTimeout(() => {
+            __t(setTimeout(() => {
               setVisibleCards((prev) => (prev.includes(index) ? prev : [...prev, index]))
-            }, index * 150)
+            }, index * 150))
           }
         })
       },
@@ -86,14 +88,13 @@ function ServiceCategoriesSection() {
       if (ref) observer.observe(ref)
     })
 
-    return () => observer.disconnect()
-  }, [])
+    return () => { observer.disconnect(); __tids.forEach(clearTimeout); }}, [])
 
   return (
     <section className="pt-10 pb-5 sm:pt-24 bg-gray-50">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             Choose the model that fits
             <br />
             <span className="text-primaryOrange">your situation</span>
@@ -107,7 +108,7 @@ function ServiceCategoriesSection() {
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
           {services.map((service, index) => (
             <div
-              key={index}
+              key={service?.id ?? service?.slug ?? service?.title ?? service?.name ?? index}
               ref={(el) => (cardRefs.current[index] = el)}
               data-index={index}
               className={`group transition-all duration-300 transform ${
@@ -124,7 +125,7 @@ function ServiceCategoriesSection() {
 
                 {/* Category & Subtitle */}
                 <div className="mb-4 sm:mb-6">
-                  <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-2">{service.category}</h3>
+                  <h3 className="text-xl sm:text-2xl font-semibold text-primaryBlue mb-2">{service.category}</h3>
                   <p className="text-sm sm:text-lg text-gray-600">{service.subtitle}</p>
                 </div>
 
@@ -134,7 +135,7 @@ function ServiceCategoriesSection() {
                 {/* Services List */}
                 <ul className="space-y-3 mb-4 sm:mb-6">
                   {service.services.map((item, serviceIndex) => (
-                    <li key={serviceIndex} className="flex items-start">
+                    <li key={item?.id ?? item?.slug ?? item?.title ?? item?.name ?? serviceIndex} className="flex items-start">
                       <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange mr-3 mt-0.5 flex-shrink-0" />
                       <span className="text-sm sm:text-md text-gray-700">{item}</span>
                     </li>

@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from 'framer-motion';
 import { Calendar, User, ArrowRight, ChevronLeft, ChevronRight, Clock3, Sparkles } from "lucide-react";
 import Link from "next/link";
 import imageUrlBuilder from "@sanity/image-url";
@@ -16,7 +16,7 @@ const getImageUrl = (image, width = 800) => {
   catch { return null; }
 };
 
-// ── GROQ query — now includes mainImage ──────────────────────────────────────
+// ── GROQ query - now includes mainImage ──────────────────────────────────────
 const INSIGHTS_QUERY = `*[
   _type in ["insight", "insights", "post", "blogPost"]
 ] | order(coalesce(publishedAt, _createdAt) desc) {
@@ -66,7 +66,7 @@ const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
 // ── Category pill ─────────────────────────────────────────────────────────────
 const CategoryPill = ({ text }) => (
   <span className="inline-flex items-center gap-1.5 text-[11px] font-bold text-primaryOrange bg-orange-50 border border-orange-100 px-2.5 py-0.5 rounded-full">
-    <span className="w-1.5 h-1.5 rounded-full bg-primaryOrange" />
+    <span className="size-1.5 rounded-full bg-primaryOrange" />
     {text}
   </span>
 );
@@ -85,7 +85,7 @@ const HeroCard = ({ post }) => {
         {/* Background image */}
         {thumb && (
           <div className="absolute inset-0">
-            <img src={thumb} alt={post.title} className="w-full h-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500" />
+            <img src={thumb} alt={post.title} className="size-full object-cover opacity-30 group-hover:opacity-40 transition-opacity duration-500" />
             <div className="absolute inset-0 bg-gradient-to-t from-primaryBlue via-primaryBlue/80 to-primaryBlue/40" />
           </div>
         )}
@@ -101,7 +101,7 @@ const HeroCard = ({ post }) => {
             ))}
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-tight mb-3 group-hover:text-orange-200 transition-colors">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-white leading-tight mb-3 group-hover:text-orange-200 transition-colors">
             {post.title}
           </h2>
 
@@ -111,14 +111,14 @@ const HeroCard = ({ post }) => {
 
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3 text-xs text-white/60">
-              <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" />{formatDate(post.date)}</span>
+              <span className="flex items-center gap-1.5"><Calendar className="size-3.5" />{formatDate(post.date)}</span>
               <span>·</span>
-              <span className="flex items-center gap-1.5"><User className="w-3.5 h-3.5" />{post.author}</span>
+              <span className="flex items-center gap-1.5"><User className="size-3.5" />{post.author}</span>
               <span>·</span>
-              <span className="flex items-center gap-1.5"><Clock3 className="w-3.5 h-3.5" />{post.minutes} min</span>
+              <span className="flex items-center gap-1.5"><Clock3 className="size-3.5" />{post.minutes} min</span>
             </div>
             <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primaryOrange bg-primaryOrange/10 border border-primaryOrange/30 px-3 py-1.5 rounded-full group-hover:bg-primaryOrange group-hover:text-white transition">
-              Read <ArrowRight className="w-3.5 h-3.5" />
+              Read <ArrowRight className="size-3.5" />
             </span>
           </div>
         </div>
@@ -145,16 +145,16 @@ const InsightCard = ({ post, index = 0 }) => {
           <img
             src={thumb}
             alt={post.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            className="size-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-primaryBlue/10 to-primaryBlue/5 flex items-center justify-center">
+          <div className="size-full bg-gradient-to-br from-primaryBlue/10 to-primaryBlue/5 flex items-center justify-center">
             <span className="text-4xl opacity-20">📄</span>
           </div>
         )}
         {/* Reading time badge */}
         <span className="absolute top-3 right-3 text-[11px] font-bold bg-black/50 backdrop-blur-sm text-white px-2 py-0.5 rounded-full flex items-center gap-1">
-          <Clock3 className="w-3 h-3" />{post.minutes} min
+          <Clock3 className="size-3" />{post.minutes} min
         </span>
         {post.featured && (
           <span className="absolute top-3 left-3 text-[11px] font-bold bg-primaryOrange text-white px-2 py-0.5 rounded-full">⭐ Featured</span>
@@ -171,7 +171,7 @@ const InsightCard = ({ post, index = 0 }) => {
         </div>
 
         {/* Title */}
-        <h2 className="font-extrabold text-primaryBlue leading-snug text-base sm:text-lg group-hover:text-primaryOrange transition-colors duration-200 line-clamp-2 mb-2">
+        <h2 className="font-semibold text-primaryBlue leading-snug text-base sm:text-lg group-hover:text-primaryOrange transition-colors duration-200 line-clamp-2 mb-2">
           <Link href={`/insights/${post.id}`}>{post.title}</Link>
         </h2>
 
@@ -183,15 +183,15 @@ const InsightCard = ({ post, index = 0 }) => {
         {/* Footer */}
         <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-50">
           <div className="flex items-center gap-2 text-[11px] text-gray-400">
-            <span className="flex items-center gap-1"><User className="w-3 h-3" />{post.author}</span>
+            <span className="flex items-center gap-1"><User className="size-3" />{post.author}</span>
             <span>·</span>
-            <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{formatDate(post.date)}</span>
+            <span className="flex items-center gap-1"><Calendar className="size-3" />{formatDate(post.date)}</span>
           </div>
           <Link
             href={`/insights/${post.id}`}
             className="inline-flex items-center gap-1 text-xs font-bold text-primaryOrange hover:text-primaryBlue transition-colors"
           >
-            Read <ArrowRight className="w-3.5 h-3.5" />
+            Read <ArrowRight className="size-3.5" />
           </Link>
         </div>
       </div>
@@ -207,8 +207,8 @@ const SidebarPost = ({ post, showThumb = false }) => {
       {showThumb && (
         <div className="flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden bg-gray-100">
           {thumb
-            ? <img src={thumb} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
-            : <div className="w-full h-full bg-gradient-to-br from-primaryBlue/10 to-primaryBlue/5" />
+            ? <img src={thumb} alt={post.title} className="size-full object-cover group-hover:scale-105 transition-transform" />
+            : <div className="size-full bg-gradient-to-br from-primaryBlue/10 to-primaryBlue/5" />
           }
         </div>
       )}
@@ -232,18 +232,18 @@ const Pagination = ({ page, totalPages, onPrev, onNext, onGo }) => {
     <div className="flex items-center justify-center gap-2 mt-10">
       <button onClick={onPrev} disabled={page === 1}
         className="p-2 rounded-xl bg-white border border-gray-200 text-gray-600 disabled:opacity-30 hover:border-primaryBlue hover:text-primaryBlue transition">
-        <ChevronLeft className="w-4 h-4" />
+        <ChevronLeft className="size-4" />
       </button>
       {pages.map((p) => (
         <button key={p} onClick={() => onGo(p)}
-          className={`w-9 h-9 rounded-xl text-sm font-bold transition ${p === page ? "bg-primaryBlue text-white" : "bg-white border border-gray-200 text-gray-700 hover:border-primaryBlue hover:text-primaryBlue"}`}>
+          className={`size-9 rounded-xl text-sm font-bold transition ${p === page ? "bg-primaryBlue text-white" : "bg-white border border-gray-200 text-gray-700 hover:border-primaryBlue hover:text-primaryBlue"}`}>
           {p}
         </button>
       ))}
       {pages[pages.length - 1] < totalPages && <span className="text-gray-400 text-sm">…</span>}
       <button onClick={onNext} disabled={page === totalPages}
         className="p-2 rounded-xl bg-white border border-gray-200 text-gray-600 disabled:opacity-30 hover:border-primaryBlue hover:text-primaryBlue transition">
-        <ChevronRight className="w-4 h-4" />
+        <ChevronRight className="size-4" />
       </button>
     </div>
   );
@@ -343,11 +343,11 @@ const Insights = ({ initialPosts = [] }) => {
       {/* ── Page hero ── */}
       <div className="relative bg-primaryBlue overflow-hidden">
         <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "radial-gradient(circle,#fff 1px,transparent 1px)", backgroundSize: "32px 32px" }} />
-        <div className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-10" style={{ background: "radial-gradient(circle,#F76707,transparent 70%)", transform: "translate(30%,-30%)" }} />
+        <div className="absolute top-0 right-0 size-80 rounded-full opacity-10" style={{ background: "radial-gradient(circle,#F76707,transparent 70%)", transform: "translate(30%,-30%)" }} />
         <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-14 relative z-10">
           <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
             <p className="text-xs font-bold tracking-widest text-primaryOrange uppercase mb-3"></p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
               Insights<span className="text-primaryOrange">.</span>
             </h1>
             <p className="mt-4 max-w-2xl text-white/60 text-base sm:text-lg leading-relaxed">
@@ -406,7 +406,7 @@ const Insights = ({ initialPosts = [] }) => {
               {/* Skeleton loaders */}
               {isLoading && (
                 <div className="grid sm:grid-cols-2 gap-5">
-                  {Array.from({ length: 4 }).map((_, i) => <CardSkeleton key={i} />)}
+                  {Array.from({ length: 4 }).map((_, i) => <CardSkeleton key={_?.id ?? _?.slug ?? _?.title ?? _?.name ?? i} />)}
                 </div>
               )}
 
@@ -437,15 +437,15 @@ const Insights = ({ initialPosts = [] }) => {
                 {/* Recent posts */}
                 <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
                   <div className="bg-primaryBlue px-5 py-3.5 flex items-center justify-between">
-                    <h3 className="text-sm font-extrabold text-white">Latest Posts</h3>
+                    <h3 className="text-sm font-semibold text-white">Latest Posts</h3>
                     <span className="text-xs text-white/50">{sanityPosts.length} total</span>
                   </div>
                   <div className="p-2 divide-y divide-gray-50">
                     {isLoading
                       ? Array.from({ length: 4 }).map((_, i) => (
-                          <div key={i} className="p-3 flex gap-3 animate-pulse">
+                          <div key={_?.id ?? _?.slug ?? _?.title ?? _?.name ?? i} className="p-3 flex gap-3 animate-pulse">
                             <div className="w-16 h-12 bg-gray-200 rounded-lg flex-shrink-0" />
-                            <div className="flex-1 space-y-2">
+                            <div className="flex-1 gap-y-2">
                               <div className="h-3 bg-gray-200 rounded w-2/3" />
                               <div className="h-3 bg-gray-200 rounded w-full" />
                             </div>
@@ -459,7 +459,7 @@ const Insights = ({ initialPosts = [] }) => {
                 {/* Topics cloud */}
                 {allTags.length > 1 && (
                   <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-                    <h3 className="text-sm font-extrabold text-primaryBlue mb-3">Browse by Topic</h3>
+                    <h3 className="text-sm font-semibold text-primaryBlue mb-3">Browse by Topic</h3>
                     <div className="flex flex-wrap gap-2">
                       {allTags.filter((t) => t !== "All").map((tag) => (
                         <button
@@ -481,10 +481,10 @@ const Insights = ({ initialPosts = [] }) => {
                 {/* CTA box */}
                 <div className="bg-gradient-to-br from-primaryBlue to-toBlue rounded-2xl p-5 text-white">
                   <p className="text-xs font-bold text-primaryOrange uppercase tracking-wider mb-2">Free Audit</p>
-                  <h3 className="font-extrabold text-lg leading-snug mb-2">Is your site leaving money on the table?</h3>
+                  <h3 className="font-semibold text-lg leading-snug mb-2">Is your site leaving money on the table?</h3>
                   <p className="text-white/60 text-sm mb-4 leading-relaxed">Get a performance & conversion audit from ShiftDeploy, no fluff, actionable results.</p>
-                  <Link href="/ContactUs" className="inline-flex items-center gap-2 bg-primaryOrange text-white text-sm font-bold px-4 py-2.5 rounded-xl hover:bg-orange-600 transition">
-                    Get Free Audit <ArrowRight className="w-4 h-4" />
+                  <Link href="/ContactUs" className="inline-flex items-center gap-2 bg-primaryOrange text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:bg-orange-600 transition">
+                    Get Free Audit <ArrowRight className="size-4" />
                   </Link>
                 </div>
 

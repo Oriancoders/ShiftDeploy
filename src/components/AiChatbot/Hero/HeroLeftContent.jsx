@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { Bot, ArrowRight } from 'lucide-react';
 import { fadeIn, sparkleVariants, staggerContainer } from './constants';
 
@@ -10,9 +10,9 @@ export default function HeroLeftContent({ animateEnabled, onPrimaryAction, onDem
       <motion.div variants={fadeIn} className="relative inline-flex overflow-hidden rounded-full p-[1px] mb-8">
         <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,theme(colors.secondaryBlue)_0%,theme(colors.primaryOrange)_50%,theme(colors.secondaryBlue)_100%)]" />
         <div className="inline-flex items-center px-5 py-2.5 rounded-full bg-primaryBlue text-blue-200 text-sm font-semibold backdrop-blur-md relative z-10">
-          <span className="relative flex h-3 w-3 mr-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primaryOrange opacity-75" />
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-primaryOrange" />
+          <span className="relative flex size-3 mr-3">
+            <span className="animate-ping absolute inline-flex size-full rounded-full bg-primaryOrange opacity-75" />
+            <span className="relative inline-flex rounded-full size-3 bg-primaryOrange" />
           </span>
           Recoup 30% of Lost Clients
         </div>
@@ -25,7 +25,7 @@ export default function HeroLeftContent({ animateEnabled, onPrimaryAction, onDem
           </svg>
         </motion.div>
 
-        <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-extrabold leading-[1.05] mb-6 text-white drop-shadow-xl relative z-10 tracking-tight">
+        <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-semibold leading-[1.05] mb-6 text-white drop-shadow-xl relative z-10 tracking-tight">
           Capture Bookings.
           <br />
           <span className="relative">
@@ -60,7 +60,7 @@ export default function HeroLeftContent({ animateEnabled, onPrimaryAction, onDem
         >
           <div className="absolute inset-0 bg-gradient-to-r from-primaryOrange to-toOrange opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           <span className="relative z-10 flex items-center group-hover:text-white transition-colors duration-300">
-            Deploy Your AI Agent <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            Deploy Your AI Agent <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
           </span>
         </button>
         <button
@@ -68,14 +68,14 @@ export default function HeroLeftContent({ animateEnabled, onPrimaryAction, onDem
           onClick={() => onDemoAction?.()}
           className="group bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all flex items-center justify-center border border-white/10 backdrop-blur-md hover:border-white/30"
         >
-          See Live Demo <Bot className="ml-2 w-5 h-5 text-secondaryBlue group-hover:rotate-12 transition-transform" />
+          See Live Demo <Bot className="ml-2 size-5 text-secondaryBlue group-hover:rotate-12 transition-transform" />
         </button>
       </motion.div>
 
       <motion.div variants={fadeIn} className="mt-12 flex items-center gap-8 justify-start">
-        <div className="flex -space-x-4">
+        <div className="flex -gap-x-4">
           {[1, 2, 3, 4].map((i) => (
-            <img key={i} className="w-10 h-10 rounded-full border-2 border-primaryBlue z-10" src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="avatar" loading="lazy" decoding="async" />
+            <img key={i} className="size-10 rounded-full border-2 border-primaryBlue z-10" src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="avatar" loading="lazy" decoding="async" />
           ))}
         </div>
         <div className="text-sm">

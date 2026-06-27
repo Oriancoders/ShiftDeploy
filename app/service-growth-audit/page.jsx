@@ -1,6 +1,7 @@
 export const revalidate = 3600;
 
 import ServiceGrowthAudit from '../../src/Pages/ServiceGrowthAudit/ServiceGrowthAudit';
+import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
   title: 'Service Growth Audit | ShiftDeploy',
@@ -38,7 +39,7 @@ const schema = {
 export default function ServiceGrowthAuditPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={schema} />
       <ServiceGrowthAudit />
     </>
   );

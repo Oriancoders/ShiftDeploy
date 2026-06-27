@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef } from 'react';
-import { motion, useReducedMotion, useInView } from 'framer-motion';
+import { m as motion, useReducedMotion, useInView } from 'framer-motion';
 import HeroLeftContent from './Hero/HeroLeftContent';
 import HeroRightVisual from './Hero/HeroRightVisual';
 

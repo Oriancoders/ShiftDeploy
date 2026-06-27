@@ -1,6 +1,6 @@
 'use client';
 import React from "react";
-import { motion } from "framer-motion";
+import { m as motion } from 'framer-motion';
 import { Check, Star } from "lucide-react";
 
 const ConvertPricing = () => {
@@ -60,7 +60,7 @@ const ConvertPricing = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0C1F3A] mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold text-[#0C1F3A] mb-6">
             Transparent, <span className="text-[#EF4923]">Outcome-Focused</span> Pricing
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -71,7 +71,7 @@ const ConvertPricing = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
             <motion.div
-              key={index}
+              key={plan?.id ?? plan?.slug ?? plan?.title ?? plan?.name ?? index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -83,22 +83,22 @@ const ConvertPricing = () => {
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <div className="bg-blue-500 text-white px-6 py-2 rounded-full text-sm font-semibold flex items-center">
-                    <Star className="w-4 h-4 mr-1" />
+                    <Star className="size-4 mr-1" />
                     Most Popular
                   </div>
                 </div>
               )}
 
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-[#0C1F3A] mb-2">{plan.name}</h3>
-                <div className="text-4xl font-bold text-[#EF4923] mb-2">{plan.price}</div>
+                <h3 className="text-2xl font-semibold text-[#0C1F3A] mb-2">{plan.name}</h3>
+                <div className="text-4xl font-semibold text-[#EF4923] mb-2">{plan.price}</div>
                 <p className="text-gray-600">{plan.description}</p>
               </div>
 
               <ul className="space-y-3 mb-8">
                 {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-center text-gray-600">
-                    <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                  <li key={feature?.id ?? feature?.slug ?? feature?.title ?? feature?.name ?? i} className="flex items-center text-gray-600">
+                    <Check className="size-5 text-green-500 mr-3 flex-shrink-0" />
                     {feature}
                   </li>
                 ))}

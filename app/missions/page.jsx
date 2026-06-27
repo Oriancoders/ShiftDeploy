@@ -1,10 +1,11 @@
 export const revalidate = 3600;
 import Mission_Landing from '../../src/Pages/MissionCompleted/Mission_Landing';
+import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
   title: 'Missions Completed | Client Results & Case Studies',
   description:
-    'See the measurable results ShiftDeploy has delivered for real businesses — faster sites, higher conversions, and sustainable growth.',
+    'See the measurable results ShiftDeploy has delivered for real businesses - faster sites, higher conversions, and sustainable growth.',
   keywords: ['web agency case studies', 'CRO results', 'website performance results', 'client success stories', 'ShiftDeploy portfolio'],
   alternates: { canonical: 'https://shiftdeploy.com/missions' },
   openGraph: {
@@ -27,7 +28,7 @@ const schema = {
 export default function MissionsPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={schema} />
       <Mission_Landing />
     </>
   );

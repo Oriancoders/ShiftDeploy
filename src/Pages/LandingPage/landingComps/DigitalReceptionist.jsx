@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 import { Play } from 'lucide-react'; // Ensure you have lucide-react installed
 import Link from 'next/link';
-import { motion, useInView } from 'framer-motion';
+import { m as motion, useInView } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../../../utils/animations';
 
 const DigitalReceptionist = ({
@@ -54,14 +54,14 @@ const DigitalReceptionist = ({
                             // 1. The "Facade" (Image + Button)
                             <button
                                 onClick={() => setIsPlaying(true)}
-                                className="absolute inset-0 w-full h-full block cursor-pointer group focus:outline-none"
+                                className="absolute inset-0 size-full block cursor-pointer group focus:outline-none"
                                 aria-label="Play testimonial video"
                             >
                                 {/* Optimized Poster Image */}
                                 <img
                                     src={posterSrc}
                                     alt="Video thumbnail"
-                                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                                    className="size-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                                     width="1280"
                                     height="720"
                                     loading="lazy"
@@ -72,15 +72,15 @@ const DigitalReceptionist = ({
 
                                 {/* Custom Play Button */}
                                 <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                                        <Play className="w-8 h-8 text-white fill-white ml-1" />
+                                    <div className="size-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                        <Play className="size-8 text-white fill-white ml-1" />
                                     </div>
                                 </div>
                             </button>
                         ) : (
                             // 2. The Actual Video (Only renders after click)
                             <video
-                                className="w-full h-full object-cover"
+                                className="size-full object-cover"
                                 src={videoSrc}
                                 poster={posterSrc}
                                 controls
@@ -136,7 +136,7 @@ const DigitalReceptionist = ({
                             </a>
                             <Link
                                 href="/contactus"
-                                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+                                className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:hover:shadow-xl flex items-center justify-center gap-x-2 text-md"
 
                             >
                                 Schedule a Demo

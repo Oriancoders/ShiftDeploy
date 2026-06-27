@@ -1,7 +1,7 @@
 'use client';
 import { ArrowRight, CheckCircle, DollarSign, FileText, Lock, Shield, Users } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
+import { m as motion } from 'framer-motion'
 import Link from "next/link"
 // Section 3: What We Guarantee
 function GuaranteesSection() {
@@ -47,7 +47,7 @@ function GuaranteesSection() {
       title: "Direct Access",
       fear: "We might only deal with sales, not builders",
       guarantee:
-        "You always speak with the engineers and designers working on your project—no middle layers, just real experts.",
+        "You always speak with the engineers and designers working on your project - no middle layers, just real experts.",
       icon: <Users className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
   ];
@@ -60,7 +60,7 @@ function GuaranteesSection() {
     <section ref={sectionRef} className="pt-10 bg-gray-50 pb-10">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             Our non-negotiable <br />
             <span className="text-primaryOrange">
               commitments
@@ -72,7 +72,7 @@ function GuaranteesSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {guarantees.map((guarantee, index) => (
             <div
-              key={index}
+              key={guarantee?.id ?? guarantee?.slug ?? guarantee?.title ?? guarantee?.name ?? index}
               className={`group transition-all duration-700 transform ${index === 4 ? "md:col-span-2 lg:col-span-1 lg:col-start-2" : ""}`}
             >
               <div className="bg-white rounded-3xl p-6 sm:p-8  sm:hover:shadow-xl transition-all duration-300 transform  h-full border border-gray-300">
@@ -84,7 +84,7 @@ function GuaranteesSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-2xl font-bold text-gray-900  mb-4 sm:mb-6">{guarantee.title}</h3>
+                <h3 className="text-2xl font-semibold text-gray-900  mb-4 sm:mb-6">{guarantee.title}</h3>
 
                 {/* Fear */}
                 <div className=" mb-4 sm:mb-6">
@@ -105,12 +105,12 @@ function GuaranteesSection() {
         </div>
 
         <Link href={"/ContactUs"}
-          className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md group mx-auto w-fit mt-12"
+          className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-semibold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md group mx-auto w-fit mt-12"
 
         >
 
           Lets Deploy Your Project
-          <ArrowRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+          <ArrowRight className="ml-2 size-6 group-hover:translate-x-1 transition-transform duration-300" />
 
         </Link>
       </div>

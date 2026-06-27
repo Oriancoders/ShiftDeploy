@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { Mail, Phone, Slack } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 import Link from 'next/link';
@@ -11,9 +11,9 @@ const Footer = () => {
 
   const footerLinks = {
     company: [
-      { name: 'What we do', href: '/services' },
+      { name: 'Services', href: '/services' },
       { name: 'Inside ShiftDeploy', href: '/insideShiftDeploy' },
-      { name: 'Solutions', href: '/services' },
+      { name: 'Product', href: '/product' },
       { name: 'Missions Completed', href: '/missions' },
       { name: 'Insights', href: '/insights' },
     ],
@@ -56,7 +56,7 @@ const Footer = () => {
             <div className="space-y-2 sm:space-y-3 lg:space-y-4">
               <a
                 href="mailto:contact@shiftdeploy.com"
-                className="flex items-center space-x-2 sm:space-x-3"
+                className="flex items-center gap-x-2 sm:gap-x-3"
               >
                 <Mail className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">
@@ -64,7 +64,7 @@ const Footer = () => {
                 </span>
               </a>
 
-              <a href="tel:+447311126710" className="flex items-center space-x-2 sm:space-x-3">
+              <a href="tel:+447311126710" className="flex items-center gap-x-2 sm:gap-x-3">
                 <Phone className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">
                   +44 7311 126710
@@ -74,8 +74,7 @@ const Footer = () => {
               <a
                 href="https://x.com/shiftdeploy"
                 target="_blank" rel="noopener noreferrer"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 sm:space-x-3"
+                className="flex items-center gap-x-2 sm:gap-x-3"
               >
                 <FaXTwitter className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">
@@ -86,8 +85,7 @@ const Footer = () => {
               <a
                 href="https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3gan3ow0g-OW0s3OJIJKIzQwQ0tB1V6A1"
                 target="_blank" rel="noopener noreferrer"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 sm:space-x-3"
+                className="flex items-center gap-x-2 sm:gap-x-3"
               >
                 <Slack className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
                 <span className="text-gray-300 text-xs sm:text-sm lg:text-base">
@@ -99,12 +97,12 @@ const Footer = () => {
 
           {/* Company links */}
           <motion.div variants={fadeInUp} className="sm:col-span-1 lg:col-span-1">
-            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
+            <h4 className="text-white font-semibold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
               Explore ShiftDeploy
             </h4>
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
               {footerLinks.company.map((link, index) => (
-                <li key={index}>
+                <li key={link?.id ?? link?.slug ?? link?.title ?? link?.name ?? index}>
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
@@ -118,12 +116,12 @@ const Footer = () => {
 
           {/* Services links */}
           <motion.div variants={fadeInUp} className="sm:col-span-1 lg:col-span-1">
-            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
-              Solutions
+            <h4 className="text-white font-semibold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
+              Services
             </h4>
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
               {footerLinks.services.map((link, index) => (
-                <li key={index}>
+                <li key={link?.id ?? link?.slug ?? link?.title ?? link?.name ?? index}>
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
@@ -137,12 +135,12 @@ const Footer = () => {
 
           {/* Case studies links */}
           <motion.div variants={fadeInUp} className="sm:col-span-2 lg:col-span-1">
-            <h4 className="text-white font-bold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
+            <h4 className="text-white font-semibold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
               Case Studies
             </h4>
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
               {footerLinks.caseStudies.map((link, index) => (
-                <li key={index}>
+                <li key={link?.id ?? link?.slug ?? link?.title ?? link?.name ?? index}>
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
@@ -161,13 +159,13 @@ const Footer = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
-          className="mt-8 sm:mt-12 lg:mt-16 border-t border-gray-700 flex flex-col md:flex-row justify-center pt-6 items-center space-y-3 sm:space-y-4 lg:space-y-6 md:space-y-0"
+          className="mt-8 sm:mt-12 lg:mt-16 border-t border-gray-700 flex flex-col md:flex-row justify-center pt-6 items-center gap-y-3 sm:gap-y-4 lg:gap-y-6 md:gap-y-0"
         >
-          <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4 lg:space-x-6 xl:space-x-8 text-center sm:text-left">
+          <div className="flex flex-col sm:flex-row items-center gap-y-3 sm:gap-y-0 sm:gap-x-4 lg:gap-x-6 xl:gap-x-8 text-center sm:text-left">
             <p className="text-gray-300 text-xs sm:text-sm lg:text-base">
               © {currentYear} ShiftDeploy. All rights reserved.
             </p>
-            <div className="flex space-x-3 sm:space-x-4 lg:space-x-6">
+            <div className="flex gap-x-3 sm:gap-x-4 lg:gap-x-6">
               <Link
                 href="/privacy-policy"
                 className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"

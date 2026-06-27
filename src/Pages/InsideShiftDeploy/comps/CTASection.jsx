@@ -18,13 +18,13 @@ function CTASection() {
     <section ref={sectionRef} className="py-20 bg-primaryBlue relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondaryBlue/50 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primaryOrange/50 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 size-96 bg-secondaryBlue/50 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 size-96 bg-primaryOrange/50 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-4xl mx-auto px-6 relative text-center">
         {/* Header */}
-        <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl font-semibold text-white mb-8 leading-tight">
           Tell us what’s broken <br />
           <span className="text-primaryOrange">we’ll step into your shoes</span>
         </h2>
@@ -47,7 +47,7 @@ function CTASection() {
           </h3>
           <div className="grid sm:grid-cols-2 gap-4 text-left">
             {engagementModes.map((mode, idx) => (
-              <div key={idx} className="bg-white/10 rounded-2xl p-4 hover:bg-white/15 transition-colors duration-300">
+              <div key={mode?.id ?? mode?.slug ?? mode?.title ?? mode?.name ?? idx} className="bg-white/10 rounded-2xl p-4 hover:bg-white/15 transition-colors duration-300">
                 <p className="text-white font-semibold">{mode.title}</p>
                 <p className="text-gray-300 text-sm mt-1">{mode.desc}</p>
               </div>
@@ -77,11 +77,11 @@ function CTASection() {
         <div className="text-gray-200">
           <div className="flex sm:flex-row flex-col gap-4 items-center justify-center text-sm">
             <div className="flex items-center">
-              <Clock className="w-4 h-4 mr-2" />
+              <Clock className="size-4 mr-2" />
               <span>Response time: within 24 hours</span>
             </div>
             <div className="flex items-center">
-              <Users className="w-4 h-4 mr-2" />
+              <Users className="size-4 mr-2" />
               <span>Always from a human</span>
             </div>
           </div>
@@ -94,7 +94,7 @@ function CTASection() {
             href="mailto:contact@shiftdeploy.com"
             className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300"
           >
-            <Mail className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
+            <Mail className="size-8 text-primaryOrange mx-auto mb-4" />
             <h3 className="text-white font-semibold mb-2">Email us</h3>
             <p className="text-gray-300 text-sm">contact@shiftdeploy.com</p>
           </a>
@@ -103,7 +103,7 @@ function CTASection() {
             href={"/ContactUs"}
             className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300"
           >
-            <Calendar className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
+            <Calendar className="size-8 text-primaryOrange mx-auto mb-4" />
             <h3 className="text-white font-semibold mb-2">Request a solution plan</h3>
             <p className="text-gray-300 text-sm">Share the problem , we reply with the best-fit model + next steps.</p>
           </Link>

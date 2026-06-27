@@ -39,7 +39,7 @@ const trustIndicators = [
     <section ref={sectionRef} className="py-12 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center  sm:mb-20">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             What founders <br />
             <span className="text-primaryOrange">
               are saying
@@ -55,7 +55,7 @@ const trustIndicators = [
               {/* Stars */}
           <div className="flex justify-center mb-6">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+              <Star key={_?.id ?? _?.slug ?? _?.title ?? _?.name ?? i} className="size-6 text-yellow-400 fill-current" />
             ))}
           </div>
               <blockquote className="sm:text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl">
@@ -79,7 +79,7 @@ const trustIndicators = [
         <div className="grid md:grid-cols-4 gap-8">
           {trustIndicators.map((indicator, index) => (
             <div
-              key={index}
+              key={indicator?.id ?? indicator?.slug ?? indicator?.title ?? indicator?.name ?? index}
               className={`text-center transition-all duration-700 delay-${index * 100} transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
                 }`}
             >

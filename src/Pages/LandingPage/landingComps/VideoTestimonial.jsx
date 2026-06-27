@@ -19,14 +19,14 @@ const VideoTestimonial = ({
               // 1. The "Facade" (Image + Button)
               <button 
                 onClick={() => setIsPlaying(true)}
-                className="absolute inset-0 w-full h-full block cursor-pointer group focus:outline-none"
+                className="absolute inset-0 size-full block cursor-pointer group focus:outline-none"
                 aria-label="Play testimonial video"
               >
                 {/* Optimized Poster Image */}
                 <img 
                   src={posterSrc} 
                   alt="Video thumbnail" 
-                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                  className="size-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                   width="1280"
                   height="720"
                   loading="lazy"
@@ -37,15 +37,15 @@ const VideoTestimonial = ({
 
                 {/* Custom Play Button */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <Play className="w-8 h-8 text-white fill-white ml-1" />
+                  <div className="size-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <Play className="size-8 text-white fill-white ml-1" />
                   </div>
                 </div>
               </button>
             ) : (
               // 2. The Actual Video (Only renders after click)
               <video
-                className="w-full h-full object-cover"
+                className="size-full object-cover"
                 src={videoSrc}
                 poster={posterSrc}
                 controls
@@ -57,7 +57,7 @@ const VideoTestimonial = ({
 
           {/* RIGHT: Context Text */}
           <div className="flex flex-col justify-center text-center md:text-left">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-primaryBlue mb-6 leading-tight">
               Trusted by 
               <span className="block text-primaryOrange mt-2">High-Stakes Financial Firms</span>
             </h2>

@@ -1,5 +1,6 @@
 export const revalidate = 3600;
 import InsightDetail from '../../../src/Insights/InsightDetail';
+import JsonLd from '../../../src/components/JsonLd';
 import {
   buildSanityImageUrl,
   getInsightBySlug,
@@ -113,9 +114,9 @@ export default async function InsightDetailPage({ params }) {
   return (
     <>
       {articleSchema && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+        <JsonLd data={articleSchema} />
       )}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <JsonLd data={breadcrumbSchema} />
       <InsightDetail slug={slug} initialPost={initialPost} initialMoreInsights={moreInsights} />
     </>
   );

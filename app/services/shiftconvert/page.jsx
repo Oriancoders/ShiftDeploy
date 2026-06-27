@@ -1,5 +1,6 @@
 export const revalidate = 3600;
 import ShiftConvert from '../../../src/Pages/Services/ShiftConvert/ShiftConvert';
+import JsonLd from '../../../src/components/JsonLd';
 
 export const metadata = {
   title: 'ShiftConvert | Conversion Rate Optimisation (CRO)',
@@ -28,7 +29,7 @@ const schema = {
 export default function ShiftConvertPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={schema} />
       <ShiftConvert />
     </>
   );

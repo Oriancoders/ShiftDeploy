@@ -19,7 +19,7 @@ export default async function Image() {
           </div>
           <div style={{ flex:1,display:'flex',flexDirection:'column',justifyContent:'center' }}>
             <div style={{ fontSize:'62px',fontWeight:800,lineHeight:1.05,letterSpacing:'-2px',color:'#ffffff',marginBottom:'24px',maxWidth:'900px',display:'flex',flexWrap:'wrap' }}>AI <span style={{ color:'#F76707', marginLeft:'14px' }}>Digital Receptionist</span></div>
-            <div style={{ fontSize:'24px',color:'rgba(255,255,255,0.68)',lineHeight:1.5,maxWidth:'700px' }}>Capture every enquiry 24/7 — never miss a customer again.</div>
+            <div style={{ fontSize:'24px',color:'rgba(255,255,255,0.68)',lineHeight:1.5,maxWidth:'700px' }}>Capture every enquiry 24/7 - never miss a customer again.</div>
           </div>
           <div style={{ fontSize:'16px',color:'rgba(255,255,255,0.4)' }}>shiftdeploy.com</div>
         </div>

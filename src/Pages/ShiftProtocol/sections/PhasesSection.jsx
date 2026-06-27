@@ -1,6 +1,6 @@
 'use client';
 import { ArrowRight, CheckCircle, Clock, Code, Lightbulb, Monitor, Target, TrendingUp } from "lucide-react"
-import { motion } from "framer-motion"
+import { m as motion } from 'framer-motion'
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 
@@ -17,7 +17,7 @@ function PhasesSection() {
       timeline: "Days 1–5",
       fear: "They won’t fully grasp our unique needs and priorities.",
       promise:
-        "We map every challenge, constraint, and growth objective before touching code—so nothing gets lost in translation.",
+        "We map every challenge, constraint, and growth objective before touching code - so nothing gets lost in translation.",
       whatHappens: [
         "Stakeholder alignment sessions",
         "Technical & business audit",
@@ -49,7 +49,7 @@ function PhasesSection() {
       timeline: "Weeks 2–8 (scope-dependent)",
       fear: "They’ll build something that doesn’t actually solve our problems.",
       promise:
-        "Agile sprints with transparent demos and your approval at every key milestone—no surprises.",
+        "Agile sprints with transparent demos and your approval at every key milestone - no surprises.",
       whatHappens: [
         "Modular, test-driven development",
         "Weekly progress demonstrations",
@@ -65,7 +65,7 @@ function PhasesSection() {
       timeline: "Days 1–7 post-build",
       fear: "They’ll launch it and disappear when issues arise.",
       promise:
-        "We manage deployment like a mission launch—with monitoring, safeguards, and immediate response if needed.",
+        "We manage deployment like a mission launch - with monitoring, safeguards, and immediate response if needed.",
       whatHappens: [
         "Staged rollout with rollback options",
         "Performance & error monitoring setup",
@@ -81,7 +81,7 @@ function PhasesSection() {
       timeline: "Ongoing (your choice)",
       fear: "We’ll be locked in with no flexibility to adapt or maintain.",
       promise:
-        "You get full ownership, documentation, and freedom—plus optional long-term partnership for continuous growth.",
+        "You get full ownership, documentation, and freedom - plus optional long-term partnership for continuous growth.",
       whatHappens: [
         "Comprehensive documentation handover",
         "Team enablement & training",
@@ -95,14 +95,16 @@ function PhasesSection() {
 
 
   useEffect(() => {
+    const __tids = [];
+    const __t = (id) => { __tids.push(id); return id; };
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const index = Number.parseInt(entry.target.getAttribute("data-index") || "0")
           if (entry.isIntersecting) {
-            setTimeout(() => {
+            __t(setTimeout(() => {
               setVisiblePhases((prev) => [...new Set([...prev, index])])
-            }, index * 20)
+            }, index * 20))
           }
         })
       },
@@ -113,14 +115,13 @@ function PhasesSection() {
       if (ref) observer.observe(ref)
     })
 
-    return () => observer.disconnect()
-  }, [])
+    return () => { observer.disconnect(); __tids.forEach(clearTimeout); }}, [])
 
   return (
     <section ref={sectionRef} className="pb-12 pt-12 sm:pt-24 bg-gradient-to-br from-white via-gray-50 to-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             Five phases <br />
             <span className="text-primaryOrange">
               Zero surprises
@@ -134,7 +135,7 @@ function PhasesSection() {
         <div className="flex flex-col gap-12  mx-auto">
           {phases.map((phase, index) => (
             <motion.div
-              key={index}
+              key={phase?.id ?? phase?.slug ?? phase?.title ?? phase?.name ?? index}
               ref={(el) => (phaseRefs.current[index] = el)}
               data-index={index}
               initial={{ opacity: 0, y: 50 }}
@@ -153,7 +154,7 @@ function PhasesSection() {
                     </div>
                     <div>
                       <div className="text-2xl font-bold text-gray-400">{phase.number}</div>
-                      <h3 className="text-xl font-bold text-gray-900">{phase.title}</h3>
+                      <h3 className="text-xl font-semibold text-gray-900">{phase.title}</h3>
                     </div>
                   </div>
                   {/* Timeline */}
@@ -170,7 +171,7 @@ function PhasesSection() {
                     </h4>
                     <ul className="space-y-2">
                       {phase.whatHappens.map((item, itemIndex) => (
-                        <li key={itemIndex} className="flex items-start">
+                        <li key={item?.id ?? item?.slug ?? item?.title ?? item?.name ?? itemIndex} className="flex items-start">
                           <CheckCircle className="w-3 sm:w-4 h-3 sm:h-4 text-primaryOrange mr-2 mt-0.5 flex-shrink-0" />
                           <span className="text-gray-700 text-xs sm:text-sm">{item}</span>
                         </li>
@@ -179,7 +180,7 @@ function PhasesSection() {
                   </div>
                 </div>
                 {/* Right side: Fear & Promise, Approval */}
-                <div className="md:border-l border-gray-200 md:px-10 flex flex-col space-y-4 md:space-y-6">
+                <div className="md:border-l border-gray-200 md:px-10 flex flex-col gap-y-4 md:gap-y-6">
                   {/* Approval */}
                   <div className=" pt-3 mb-4">
                     <p className="text-lg text-gray-500 mb-1">Client Approval Required:</p>
@@ -224,7 +225,7 @@ function PhasesSection() {
 
             <Link href={"/missions"}
 
-              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center gap-x-2 text-md"
             >
               <span>View Our Work</span>
             </Link>

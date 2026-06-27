@@ -12,20 +12,20 @@ function MindsetSection() {
     {
       title: "We diagnose before we deploy.",
       description:
-        "We start by stepping into your shoes — understanding the real pain, the constraints, and what success looks like. Then we design the fix with clarity, not assumptions.",
-      icon: <Target className="w-8 h-8" />,
+        "We start by stepping into your shoes - understanding the real pain, the constraints, and what success looks like. Then we design the fix with clarity, not assumptions.",
+      icon: <Target className="size-8" />,
     },
     {
       title: "Fundamentals over hype.",
       description:
-        "Trends come and go. We build reliable systems: clean architecture, secure patterns, and performance you can measure — so your product holds up under growth.",
-      icon: <Code className="w-8 h-8" />,
+        "Trends come and go. We build reliable systems: clean architecture, secure patterns, and performance you can measure - so your product holds up under growth.",
+      icon: <Code className="size-8" />,
     },
     {
       title: "Ship fast. Improve faster.",
       description:
-        "We deliver in focused milestones, then iterate with real signals — speed, stability, conversion, cost. Shipping is the start; sharpening is how you win.",
-      icon: <Zap className="w-8 h-8" />,
+        "We deliver in focused milestones, then iterate with real signals - speed, stability, conversion, cost. Shipping is the start; sharpening is how you win.",
+      icon: <Zap className="size-8" />,
     },
   ]
 
@@ -53,7 +53,7 @@ function MindsetSection() {
     <section ref={sectionRef} className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-gray-900 mb-6 leading-tight">
             The mindset behind <br />
             <span className="block bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
               how ShiftDeploy operates
@@ -68,7 +68,7 @@ function MindsetSection() {
         <div className="space-y-24 sm:space-y-32">
           {mindsetItems.map((item, index) => (
             <div
-              key={index}
+              key={item?.id ?? item?.slug ?? item?.title ?? item?.name ?? index}
               ref={(el) => (itemRefs.current[index] = el)}
               data-index={index}
               className={`group transition-all duration-1000 transform ${
@@ -83,7 +83,7 @@ function MindsetSection() {
                       <div className="text-white">{item.icon}</div>
                     </div>
 
-                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight group-hover:text-primaryBlue transition-colors duration-300">
+                    <h3 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 mb-6 leading-tight group-hover:text-primaryBlue transition-colors duration-300">
                       {item.title}
                     </h3>
 
@@ -118,7 +118,7 @@ function MindsetSection() {
 
         <div className="text-center mt-24 sm:mt-32">
           <p className="text-xl sm:text-2xl text-gray-600 italic font-light max-w-3xl mx-auto">
-            This isn’t “our philosophy.” It’s how clients get relief — because we treat your problems like they’re ours.
+            This isn’t “our philosophy.” It’s how clients get relief - because we treat your problems like they’re ours.
           </p>
         </div>
       </div>

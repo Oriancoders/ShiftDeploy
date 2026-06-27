@@ -13,7 +13,7 @@ function OriginStorySection() {
       subtitle: "We start in your shoes",
       description:
         "Before we touch anything, we learn the real pressure: what’s breaking, what’s blocked, and what success actually looks like for your business. No assumptions. No templated solutions.",
-      icon: <Zap className="w-8 h-8" />,
+      icon: <Zap className="size-8" />,
       image: "https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145684/spark_wmkexc.avif",
       // (optional) consider swapping this image to a “strategy / workshop / planning” visual for stronger business tone
     },
@@ -22,7 +22,7 @@ function OriginStorySection() {
       subtitle: "Clarity before complexity",
       description:
         "We turn messy problems into a clear plan: what to fix first, what can wait, and what will move the needle. That’s how teams stop wasting time and start shipping with confidence.",
-      icon: <Target className="w-8 h-8" />,
+      icon: <Target className="size-8" />,
       image: "https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145716/struggle_kodvee.jpg",
       // (optional) consider swapping this image to “systems / roadmap / clarity” instead of “struggle”
     },
@@ -31,7 +31,7 @@ function OriginStorySection() {
       subtitle: "Outcome-focused execution",
       description:
         "Then we execute with ownership. You get measurable improvements, cleaner flows, and a system that’s easier to run. The goal isn’t more features, it’s fewer headaches and better results.",
-      icon: <Rocket className="w-8 h-8" />,
+      icon: <Rocket className="size-8" />,
       image: "https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145681/system_musz7d.jpg",
       // (optional) consider swapping this image to “business growth / dashboard / results” visual
     },
@@ -62,7 +62,7 @@ function OriginStorySection() {
       <div className="max-w-7xl mx-auto px-6 relative">
         {/* Header */}
         <div className="text-center mb-20">
-          <h1 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-primaryBlue mb-4 leading-[1.3]">
+          <h1 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-semibold text-primaryBlue mb-4 leading-[1.3]">
             We don’t start with code
             <span className="block bg-gradient-to-r from-primaryOrange to-orange-600 bg-clip-text text-transparent pb-5">
               We start with your pain
@@ -88,7 +88,7 @@ function OriginStorySection() {
           <div className="space-y-16 sm:space-y-32">
             {stages.map((stage, index) => (
               <div
-                key={index}
+                key={stage?.id ?? stage?.slug ?? stage?.title ?? stage?.name ?? index}
                 className={`grid md:grid-cols-2 gap-8 sm:gap-16 items-center ${
                   index % 2 === 1 ? "md:grid-flow-col-dense" : ""
                 }`}
@@ -96,7 +96,7 @@ function OriginStorySection() {
                 {/* Content */}
                 <div className={`${index % 2 === 1 ? "md:col-start-2" : ""}`}>
                   <div className="relative">
-                    <h3 className="text-5xl font-bold text-primaryBlue mb-2">{stage.title}</h3>
+                    <h3 className="text-5xl font-semibold text-primaryBlue mb-2">{stage.title}</h3>
                     <h4 className="text-xl text-gray-800 font-semibold mb-6">{stage.subtitle}</h4>
                     <p className="text-lg text-gray-800 leading-relaxed">{stage.description}</p>
                   </div>
@@ -115,7 +115,7 @@ function OriginStorySection() {
                 </div>
 
                 {/* Timeline Node */}
-                <div className="absolute lg:block hidden left-1/2 transform -translate-x-1/2 w-6 h-6 bg-white rounded-full border-4 border-gray-800 z-10"></div>
+                <div className="absolute lg:block hidden left-1/2 transform -translate-x-1/2 size-6 bg-white rounded-full border-4 border-gray-800 z-10"></div>
               </div>
             ))}
           </div>

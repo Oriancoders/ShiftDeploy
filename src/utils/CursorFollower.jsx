@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp } from "./animations";
 
 export default function CursorFollower({
@@ -74,7 +74,7 @@ export default function CursorFollower({
                 width: circleSize,
                 height: circleSize,
                 background: `radial-gradient(circle at center, ${gradientFrom}, ${gradientTo})`,
-                filter: "blur(10px)",
+                filter: "blur(8px)",
                 pointerEvents: "none",
               }}
             />

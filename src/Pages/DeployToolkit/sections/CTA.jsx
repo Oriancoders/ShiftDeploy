@@ -31,13 +31,13 @@ function FinalCTASection() {
     >
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondaryBlue/50 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primaryOrange/50 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 size-96 bg-secondaryBlue/50 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 size-96 bg-primaryOrange/50 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-5xl mx-auto px-6 relative text-center">
         {/* Header */}
-        <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+        <h2 className="text-3xl sm:text-5xl md:text-7xl font-semibold text-white mb-8 leading-tight">
           Ready to improve results <br />
           <span className="text-primaryOrange">with confidence?</span>
         </h2>
@@ -52,7 +52,7 @@ function FinalCTASection() {
 
         {/* Value Reinforcement */}
         <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 mb-12 max-w-4xl mx-auto">
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">
+          <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6">
             In a 10-minute strategy call, you’ll walk away with:
           </h3>
 
@@ -81,7 +81,7 @@ function FinalCTASection() {
             <div className="flex items-start">
               <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange mr-3 mt-1 flex-shrink-0" />
               <p className="text-xs sm:text-md text-white font-medium">
-                A simple roadmap — optimize, improve UX, or rebuild — based on your goals
+                A simple roadmap - optimize, improve UX, or rebuild - based on your goals
               </p>
             </div>
           </div>
@@ -96,7 +96,6 @@ function FinalCTASection() {
         <a
           href={"https://wa.me/447311126710?text=" + encodeURIComponent("Hi ShiftDeploy, I'd like to book a free strategy call.")}
           target="_blank" rel="noopener noreferrer"
-          rel="noopener noreferrer"
           className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit mb-12 mx-auto"
         >
           Reach us on WhatsApp
@@ -106,7 +105,7 @@ function FinalCTASection() {
         {/* Contact Information */}
         <div className="grid md:grid-cols-1 gap-8 max-w-2xl mx-auto mb-12">
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
-            <Mail className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
+            <Mail className="size-8 text-primaryOrange mx-auto mb-4" />
             <h3 className="text-white font-semibold mb-2">Prefer email?</h3>
             <p className="text-gray-300">contact@shiftdeploy.com</p>
           </div>

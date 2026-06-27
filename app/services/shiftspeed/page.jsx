@@ -1,5 +1,6 @@
 export const revalidate = 3600;
 import ShiftSpeed from '../../../src/Pages/Services/ShiftSpeed/ShiftSpeed';
+import JsonLd from '../../../src/components/JsonLd';
 
 export const metadata = {
   title: 'ShiftSpeed | Core Web Vitals & Page Speed Optimisation',
@@ -28,7 +29,7 @@ const schema = {
 export default function ShiftSpeedPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={schema} />
       <ShiftSpeed />
     </>
   );

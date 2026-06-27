@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import GlobalProvider from '../src/GlobalProvider/GlobalProvider';
 import LazyGTM from '../src/utils/LazyGTM';
 import ScrollToTop from '../src/components/ScrollToTop';
+import JsonLd from '../src/components/JsonLd';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -97,18 +98,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en-GB" className={inter.className}>
       <head>
-        {/* Preconnect to Cloudinary CDN — saves ~150ms on image loads */}
+        {/* Preconnect to Cloudinary CDN - saves ~150ms on image loads */}
         <link rel="preconnect" href="https://res.cloudinary.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
         {/* Preconnect to Sanity CDN for blog images */}
         <link rel="preconnect" href="https://cdn.sanity.io" />
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
       </head>
-      <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        />
+      <body className="overflow-x-hidden">
+        <JsonLd data={organizationSchema} />
         {/* GTM noscript fallback */}
         <noscript>
           <iframe

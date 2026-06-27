@@ -18,7 +18,7 @@ const SECTIONS = [
     {
         id: "how-we-use",
         title: "How ShiftDeploy Uses Your Information",
-        desc: "Explains the purposes behind data collection — from improving services to ensuring security and compliance."
+        desc: "Explains the purposes behind data collection - from improving services to ensuring security and compliance."
     },
     {
         id: "cookies-analytics",
@@ -102,7 +102,7 @@ function HeroPolicy() {
 
 
                     {/* Main Headlines */}
-                    <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold text-primaryBlue mb-6 leading-normal">
+                    <h1 className="text-3xl sm:text-5xl md:text-7xl font-semibold text-primaryBlue mb-6 leading-normal">
                         ShiftDeploy Community  <br />
                         <span className="text-primaryOrange">
                             Privacy Policy

@@ -7,8 +7,9 @@ import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 // ✅ FIX 1: Import Hero DIRECTLY. No lazy loading for what the user sees first.
 import Hero from './landingComps/Hero';
 
-// Everything below the fold is lazy — only Hero renders on first paint
+// Everything below the fold is lazy - only Hero renders on first paint
 const DigitalReceptionist = lazy(() => import('./landingComps/DigitalReceptionist'));
+const ReviewYourDoctor = lazy(() => import('./landingComps/ReviewYourDoctor'));
 const InsideShiftDeploy = lazy(() => import('./landingComps/InsideShiftDeploy'));
 const DeployToolkit = lazy(() => import('./landingComps/DeployToolkit'));
 const ShiftProtocol = lazy(() => import('./landingComps/ShiftProtocol'));
@@ -38,6 +39,7 @@ const Landing = () => {
         {/* ✅ FIX 4: Only wrap the heavy, lower-down stuff in Suspense */}
         <Suspense fallback={<ShiftDeployLoader />}>
           <DigitalReceptionist />
+          <ReviewYourDoctor />
           <InsideShiftDeploy />
           <VideoTestimonial videoSrc='https://res.cloudinary.com/dbazbq7u9/video/upload/v1771101197/Web_Video_1_handbraked_xii5jz.mp4'  posterSrc='https://res.cloudinary.com/dbazbq7u9/image/upload/v1771111040/poster_drnahj.webp'/>
           <DeployToolkit />

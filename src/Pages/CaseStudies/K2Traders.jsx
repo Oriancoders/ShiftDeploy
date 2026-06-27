@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import {
   ArrowRight,
   AlertTriangle,
@@ -355,7 +355,7 @@ const K2TradersCase = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: 0.2 }}
-                  className="inline-flex items-center space-x-2 bg-primaryOrange backdrop-blur-sm rounded-full px-6 py-3 mb-8"
+                  className="inline-flex items-center gap-x-2 bg-primaryOrange backdrop-blur-sm rounded-full px-6 py-3 mb-8"
                 >
                   <span className="text-white font-semibold text-xs sm:text-lg">
                     Detailed Case Study - K2 Traders
@@ -393,7 +393,7 @@ const K2TradersCase = () => {
           <section className="pt-10 sm:pt-20 bg-gray-50">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-8 sm:mb-16">
-                <h2 className="text-3xl lg:text-5xl font-bold text-primaryBlue mb-4 sm:mb-8">
+                <h2 className="text-3xl lg:text-5xl font-semibold text-primaryBlue mb-4 sm:mb-8">
                   Project Overview
                 </h2>
                 <p className="sm:text-xl text-gray-700 leading-relaxed p-2">
@@ -408,36 +408,36 @@ const K2TradersCase = () => {
               <div className="grid lg:grid-cols-2 gap-16 mb-8 sm:mb-16 p-2">
                 {/* Project Scope */}
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-primaryBlue mb-4 sm:mb-6">
                     Project Scope
                   </h3>
                   <div className="space-y-4">
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
+                    <div className="flex items-start gap-x-3">
+                      <div className="size-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
                       <p className="text-gray-700">
                         Built a new e-commerce website from scratch
                       </p>
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
+                    <div className="flex items-start gap-x-3">
+                      <div className="size-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
                       <p className="text-gray-700">
                         Cleaner shopping flow from product to checkout
                       </p>
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
+                    <div className="flex items-start gap-x-3">
+                      <div className="size-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
                       <p className="text-gray-700">
                         Faster page loads on key pages
                       </p>
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
+                    <div className="flex items-start gap-x-3">
+                      <div className="size-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
                       <p className="text-gray-700">
                         Mobile-first shopping and checkout experience
                       </p>
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
+                    <div className="flex items-start gap-x-3">
+                      <div className="size-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
                       <p className="text-gray-700">
                         Improved conversion tracking and reporting
                       </p>
@@ -474,7 +474,7 @@ const K2TradersCase = () => {
 
                 {/* Key Statistics Graphic Placeholder */}
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-primaryBlue mb-4 sm:mb-6">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-primaryBlue mb-4 sm:mb-6">
                     Key Statistics
                   </h3>
                   <div
@@ -501,7 +501,7 @@ const K2TradersCase = () => {
                 transition={{ duration: 0.3 }}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl lg:text-5xl font-bold text-primaryBlue mb-8">
+                <h2 className="text-3xl lg:text-5xl font-semibold text-primaryBlue mb-8">
                   Behind the Build
                 </h2>
                 <p className="sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
@@ -513,12 +513,12 @@ const K2TradersCase = () => {
 
               <div className="space-y-16">
                 {techDetails.map((category, index) => (
-                  <div key={index} className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg">
-                    <div className="flex items-center space-x-4 mb-4 sm:mb-8">
+                  <div key={category?.id ?? category?.slug ?? category?.title ?? category?.name ?? index} className="bg-white rounded-2xl p-4 sm:p-8 shadow-lg">
+                    <div className="flex items-center gap-x-4 mb-4 sm:mb-8">
                       <div className="w-10 sm:w-12 md:w-16 h-10 sm:h-12 md:h-16 bg-primaryBlue rounded-xl flex items-center justify-center">
-                        <category.icon className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
+                        <category.icon className="size-5 sm:size-8 text-white" />
                       </div>
-                      <h3 className="text-lg sm:text-2xl font-bold text-primaryBlue">
+                      <h3 className="text-lg sm:text-2xl font-semibold text-primaryBlue">
                         {category.category}
                       </h3>
                     </div>
@@ -534,7 +534,7 @@ const K2TradersCase = () => {
 
                     <div className="space-y-6">
                       {category.technologies.map((tech, techIndex) => (
-                        <div key={techIndex} className="border-l-4 border-orange-500 pl-6">
+                        <div key={tech?.id ?? tech?.slug ?? tech?.title ?? tech?.name ?? techIndex} className="border-l-4 border-orange-500 pl-6">
                           <h4 className="sm:text-xl font-semibold text-primaryBlue mb-3">
                             {tech.name}
                           </h4>
@@ -558,7 +558,7 @@ const K2TradersCase = () => {
                 transition={{ duration: 0.3 }}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl lg:text-5xl font-bold text-slate-800 mb-4 sm:mb-8">
+                <h2 className="text-3xl lg:text-5xl font-semibold text-slate-800 mb-4 sm:mb-8">
                   Feature Deep Dive
                 </h2>
                 <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
@@ -569,14 +569,14 @@ const K2TradersCase = () => {
 
               <div className="space-y-10 sm:space-y-16">
                 {detailedFeatures.map((feature, index) => (
-                  <div key={index} className="bg-white shadow-md rounded-2xl p-6 sm:p-8">
-                    <div className="flex items-start sm:space-x-6">
+                  <div key={feature?.id ?? feature?.slug ?? feature?.title ?? feature?.name ?? index} className="bg-white shadow-md rounded-2xl p-6 sm:p-8">
+                    <div className="flex items-start sm:gap-x-6">
                       <div className="w-10 sm:w-12 md:w-16 h-10 md:h-16 sm:h-12 bg-primaryBlue rounded-2xl sm:flex items-center justify-center flex-shrink-0 hidden">
                         <feature.icon className="w-5 sm:w-8 h-5 sm:h-8 text-white" />
                       </div>
 
                       <div className="flex-1">
-                        <h3 className="text-lg sm:text-2xl font-bold text-primaryBlue mb-4">
+                        <h3 className="text-lg sm:text-2xl font-semibold text-primaryBlue mb-4">
                           {feature.title}
                         </h3>
                         <p className="sm:text-xl text-gray-600 mb-6 leading-relaxed">
@@ -585,8 +585,8 @@ const K2TradersCase = () => {
 
                         <div className="grid md:grid-cols-2 gap-4">
                           {feature.details.map((detail, detailIndex) => (
-                            <div key={detailIndex} className="flex items-start space-x-3">
-                              <div className="w-2 h-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
+                            <div key={detail?.id ?? detail?.slug ?? detail?.title ?? detail?.name ?? detailIndex} className="flex items-start gap-x-3">
+                              <div className="size-2 bg-primaryOrange rounded-full mt-2 flex-shrink-0" />
                               <p className="text-sm sm:text-md text-gray-700">{detail}</p>
                             </div>
                           ))}
@@ -609,7 +609,7 @@ const K2TradersCase = () => {
                 transition={{ duration: 0.3 }}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl lg:text-5xl font-bold text-slate-800 mb-4 sm:mb-8">
+                <h2 className="text-3xl lg:text-5xl font-semibold text-slate-800 mb-4 sm:mb-8">
                   Implementation Timeline
                 </h2>
                 <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
@@ -622,7 +622,7 @@ const K2TradersCase = () => {
                   <>
                     {index == 5 ? (
                       <div className="bg-primaryBlue rounded-2xl p-6 sm:p-10 shadow-xl text-left text-white space-y-6">
-                        <h2 className="text-3xl md:text-4xl font-bold">
+                        <h2 className="text-3xl md:text-4xl font-semibold">
                           Ongoing Improvements (Optional)
                         </h2>
                         <p className="md:text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
@@ -634,7 +634,7 @@ const K2TradersCase = () => {
                           className="inline-flex items-center px-4 sm:px-8 py-4 rounded-xl font-semibold bg-primaryOrange hover:bg-toOrange text-white sm:text-lg shadow-lg hover:shadow-2xl transition-all duration-300"
                         >
                           <span>Talk About Improvements</span>
-                          <ArrowRight className="w-6 h-6 ml-2" />
+                          <ArrowRight className="size-6 ml-2" />
                         </Link>
                       </div>
                     ) : (
@@ -647,7 +647,7 @@ const K2TradersCase = () => {
                         </div>
                         <div className="flex-1">
                           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                            <h3 className="text-lg sm:text-2xl font-bold text-primaryBlue">
+                            <h3 className="text-lg sm:text-2xl font-semibold text-primaryBlue">
                               {phase.phase}
                             </h3>
                           </div>
@@ -656,7 +656,7 @@ const K2TradersCase = () => {
                           <div className="space-y-2">
                             <h4 className="text-lg font-semibold text-primaryBlue mb-3">Key Deliverables:</h4>
                             {phase.deliverables.map((deliverable, deliverableIndex) => (
-                              <div key={deliverableIndex} className="flex items-start space-x-3">
+                              <div key={deliverable?.id ?? deliverable?.slug ?? deliverable?.title ?? deliverable?.name ?? deliverableIndex} className="flex items-start gap-x-3">
                                 <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange mt-0.5 flex-shrink-0" />
                                 <p className="text-sm sm:text-md text-gray-700">{deliverable}</p>
                               </div>
@@ -681,7 +681,7 @@ const K2TradersCase = () => {
                 transition={{ duration: 0.3 }}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl lg:text-5xl font-bold text-primaryBlue mb-4 sm:mb-8">
+                <h2 className="text-3xl lg:text-5xl font-semibold text-primaryBlue mb-4 sm:mb-8">
                   Challenges & Solutions
                 </h2>
                 <p className="sm:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
@@ -693,7 +693,7 @@ const K2TradersCase = () => {
               <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
                 {challenges.map((item, index) => (
                   <motion.div
-                    key={index}
+                    key={item?.id ?? item?.slug ?? item?.title ?? item?.name ?? index}
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -702,16 +702,16 @@ const K2TradersCase = () => {
                   >
                     <div className="space-y-6">
                       <div>
-                        <div className="flex items-center space-x-3 mb-2">
+                        <div className="flex items-center gap-x-3 mb-2">
                           <AlertTriangle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange" />
-                          <h3 className="text-lg sm:text-xl font-bold text-primaryBlue">Challenge</h3>
+                          <h3 className="text-lg sm:text-xl font-semibold text-primaryBlue">Challenge</h3>
                         </div>
                         <p className="text-gray-700 sm:text-lg leading-relaxed">{item.challenge}</p>
                       </div>
                       <div>
-                        <div className="flex items-center space-x-3 mb-2">
+                        <div className="flex items-center gap-x-3 mb-2">
                           <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryBlue" />
-                          <h3 className="text-lg sm:text-xl font-bold text-primaryBlue">Solution</h3>
+                          <h3 className="text-lg sm:text-xl font-semibold text-primaryBlue">Solution</h3>
                         </div>
                         <p className="text-gray-700 sm:text-lg leading-relaxed">{item.solution}</p>
                       </div>
@@ -732,7 +732,7 @@ const K2TradersCase = () => {
                 transition={{ duration: 0.3 }}
                 className="text-center mb-16"
               >
-                <h2 className="text-3xl lg:text-5xl font-bold text-white mb-8">
+                <h2 className="text-3xl lg:text-5xl font-semibold text-white mb-8">
                   Results & Impact
                 </h2>
                 <p className="sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
@@ -749,15 +749,15 @@ const K2TradersCase = () => {
                   { metric: "Better", label: "conversion tracking and reporting", icon: BarChart3 }
                 ].map((result, index) => (
                   <motion.div
-                    key={index}
+                    key={result?.id ?? result?.slug ?? result?.title ?? result?.name ?? index}
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className="text-center bg-slate-700/50 rounded-2xl p-6"
                   >
-                    <div className="w-16 h-16 bg-primaryOrange rounded-2xl flex items-center justify-center mx-auto mb-4">
-                      <result.icon className="w-8 h-8 text-white" />
+                    <div className="size-16 bg-primaryOrange rounded-2xl flex items-center justify-center mx-auto mb-4">
+                      <result.icon className="size-8 text-white" />
                     </div>
                     <div className="text-3xl font-bold text-white mb-2">{result.metric}</div>
                     <div className="text-gray-300">{result.label}</div>
@@ -772,25 +772,25 @@ const K2TradersCase = () => {
                 transition={{ duration: 0.3, delay: 0.4 }}
                 className="bg-slate-700/50 rounded-2xl p-8"
               >
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">Business Impact</h3>
+                <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6">Business Impact</h3>
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="text-lg sm:text-xl font-semibold text-white mb-4">For K2 Traders</h4>
                     <ul className="space-y-3">
-                      <li className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <li className="flex items-start gap-x-3">
+                        <div className="size-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
                         <p className="text-sm sm:text-md text-gray-300">
                           A fresh website foundation that’s easy to maintain and improve
                         </p>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <li className="flex items-start gap-x-3">
+                        <div className="size-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
                         <p className="text-sm sm:text-md text-gray-300">
                           Better visibility into conversion performance and customer drop-offs
                         </p>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <li className="flex items-start gap-x-3">
+                        <div className="size-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
                         <p className="text-sm sm:text-md text-gray-300">
                           A store that can evolve without needing a full rebuild
                         </p>
@@ -800,20 +800,20 @@ const K2TradersCase = () => {
                   <div>
                     <h4 className="text-lg sm:text-xl font-semibold text-white mb-4">For Customers</h4>
                     <ul className="space-y-3">
-                      <li className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <li className="flex items-start gap-x-3">
+                        <div className="size-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
                         <p className="text-sm sm:text-md text-gray-300">
                           Faster browsing on key pages, especially on mobile
                         </p>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <li className="flex items-start gap-x-3">
+                        <div className="size-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
                         <p className="text-sm sm:text-md text-gray-300">
                           Cleaner shopping flow from product to checkout
                         </p>
                       </li>
-                      <li className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
+                      <li className="flex items-start gap-x-3">
+                        <div className="size-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
                         <p className="text-sm sm:text-md text-gray-300">
                           A checkout experience that feels simpler and easier to complete
                         </p>
@@ -834,7 +834,7 @@ const K2TradersCase = () => {
               transition={{ duration: 0.3 }}
               className="sm:p-12 text-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
             >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-primaryBlue mb-8">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-primaryBlue mb-8">
                 Want a store that’s faster and easier to grow?
               </h2>
               <p className="sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
@@ -846,17 +846,17 @@ const K2TradersCase = () => {
               <div className="flex justify-center items-center sm:flex-row flex-col gap-6 w-full">
                 <Link
                   href={"/ContactUs"}
-                  className="bg-primaryOrange hover:bg-toOrange text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit"
+                  className="bg-primaryOrange hover:bg-toOrange text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center gap-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit"
                 >
                   <span>Request a Quick Audit</span>
-                  <ArrowRight className="w-6 h-6" />
+                  <ArrowRight className="size-6" />
                 </Link>
                 <Link
                   href={"/missions"}
-                  className="bg-white sm:hover:bg-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center space-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit border border-primaryBlue"
+                  className="bg-white sm:hover:bg-primaryBlue text-primaryBlue sm:hover:text-white px-4 sm:px-12 py-4 rounded-2xl font-bold flex items-center justify-center gap-x-3 text-lg sm:shadow-lg transition-all duration-300 w-fit border border-primaryBlue"
                 >
                   <span>View More Projects</span>
-                  <ArrowRight className="w-6 h-6" />
+                  <ArrowRight className="size-6" />
                 </Link>
               </div>
             </motion.div>

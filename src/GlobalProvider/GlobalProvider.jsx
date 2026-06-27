@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import { ContextAPI } from './ContextAPI';
 
 const GlobalProvider = ({ children }) => {
@@ -15,7 +16,9 @@ const GlobalProvider = ({ children }) => {
 
   return (
     <ContextAPI.Provider value={{ scrwidth, isLoading, setIsLoading }}>
-      {children}
+      <LazyMotion features={domAnimation} strict={false}>
+        {children}
+      </LazyMotion>
     </ContextAPI.Provider>
   );
 };

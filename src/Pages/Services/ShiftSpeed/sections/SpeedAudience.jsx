@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { Stethoscope, Briefcase, Monitor } from 'lucide-react';
 
 const SpeedAudience = () => {
@@ -35,7 +35,7 @@ const SpeedAudience = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-4xl md:text-5xl font-semibold text-primaryBlue mb-6">
             Engineered for <span className="text-primaryOrange">High-Stakes</span> Service Businesses
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -46,7 +46,7 @@ const SpeedAudience = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {audiences.map((audience, index) => (
             <motion.div
-              key={index}
+              key={audience?.id ?? audience?.slug ?? audience?.title ?? audience?.name ?? index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -57,7 +57,7 @@ const SpeedAudience = () => {
                 <audience.icon size={48} />
               </div>
               
-              <h3 className="text-2xl font-bold text-primaryBlue mb-4">
+              <h3 className="text-2xl font-semibold text-primaryBlue mb-4">
                 {audience.title}
               </h3>
               
@@ -67,8 +67,8 @@ const SpeedAudience = () => {
               
               <ul className="space-y-2">
                 {audience.benefits.map((benefit, i) => (
-                  <li key={i} className="flex items-center text-sm text-gray-600">
-                    <div className="w-2 h-2 bg-primaryOrange rounded-full mr-3 flex-shrink-0"></div>
+                  <li key={benefit?.id ?? benefit?.slug ?? benefit?.title ?? benefit?.name ?? i} className="flex items-center text-sm text-gray-600">
+                    <div className="size-2 bg-primaryOrange rounded-full mr-3 flex-shrink-0"></div>
                     {benefit}
                   </li>
                 ))}

@@ -13,19 +13,19 @@ function WhatWeBelieveSection() {
     {
       title: "Trust-first delivery",
       description:
-        "We treat your product like it’s live from day one — careful access, clean commits, and changes you can review. No surprises. No shortcuts.",
+        "We treat your product like it’s live from day one - careful access, clean commits, and changes you can review. No surprises. No shortcuts.",
       icon: <Shield className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
     {
       title: "Clarity beats complexity",
       description:
-        "We explain what’s broken, why it matters, and what we’ll do about it — in plain language. If it’s not clear, it’s not done.",
+        "We explain what’s broken, why it matters, and what we’ll do about it - in plain language. If it’s not clear, it’s not done.",
       icon: <MessageSquare className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
     {
       title: "Systems that don’t fall apart",
       description:
-        "We build for today’s release and tomorrow’s growth — stable infra, maintainable code, and decisions that still make sense six months later.",
+        "We build for today’s release and tomorrow’s growth - stable infra, maintainable code, and decisions that still make sense six months later.",
       icon: <Clock className="w-6 sm:w-8 h-6 sm:h-8" />,
     },
   ]
@@ -38,56 +38,57 @@ function WhatWeBelieveSection() {
   ]
 
   useEffect(() => {
+    const __tids = [];
+    const __t = (id) => { __tids.push(id); return id; };
     const observer = new IntersectionObserver(
       (entries) => {
         if (!entries?.[0]?.isIntersecting) return
 
         beliefs.forEach((_, index) => {
-          setTimeout(() => {
+          __t(setTimeout(() => {
             setVisibleBeliefs((prev) => [...new Set([...prev, index])])
-          }, index * 200)
+          }, index * 200))
         })
 
-        setTimeout(() => {
+       __t( setTimeout(() => {
           boundaries.forEach((_, index) => {
-            setTimeout(() => {
+           __t( setTimeout(() => {
               setVisibleBoundaries((prev) => [...new Set([...prev, index])])
-            }, index * 150)
+            }, index * 150))
           })
-        }, 800)
+        }, 800))
       },
       { threshold: 0.3 },
     )
 
     if (sectionRef.current) observer.observe(sectionRef.current)
-    return () => observer.disconnect()
-  }, [])
+    return () => { observer.disconnect(); __tids.forEach(clearTimeout); }}, [])
 
   return (
     <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-4 sm:mb-6">
             What we stand for
             <span className="block text-gray-600 text-lg sm:text-3xl mt-4">
               (and what we refuse to do)
             </span>
           </h2>
           <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
-            We step into your shoes, understand the pain, and fix the real problem — not just the symptoms.
+            We step into your shoes, understand the pain, and fix the real problem - not just the symptoms.
           </p>
         </div>
 
         {/* Beliefs */}
         <div className="mb-20">
-          <h3 className="text-2xl sm:text-3xl font-bold text-primaryBlue mb-6 sm:mb-12 text-center">
+          <h3 className="text-2xl sm:text-3xl font-semibold text-primaryBlue mb-6 sm:mb-12 text-center">
             We believe in
           </h3>
 
           <div className="grid md:grid-cols-3 gap-8">
             {beliefs.map((belief, index) => (
               <div
-                key={index}
+                key={belief?.id ?? belief?.slug ?? belief?.title ?? belief?.name ?? index}
                 className={`group transition-all duration-700 transform ${
                   visibleBeliefs.includes(index)
                     ? "translate-y-0 opacity-100"
@@ -99,7 +100,7 @@ function WhatWeBelieveSection() {
                     <div className="text-white">{belief.icon}</div>
                   </div>
 
-                  <h4 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                  <h4 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4">
                     {belief.title}
                   </h4>
                   <p className="text-gray-600 leading-relaxed">{belief.description}</p>
@@ -111,14 +112,14 @@ function WhatWeBelieveSection() {
 
         {/* Boundaries */}
         <div className="mb-12">
-          <h3 className="text-2xl sm:text-3xl font-bold text-primaryBlue mb-6 sm:mb-12 text-center">
+          <h3 className="text-2xl sm:text-3xl font-semibold text-primaryBlue mb-6 sm:mb-12 text-center">
             What we don’t do:
           </h3>
 
           <div className="max-w-3xl mx-auto space-y-6">
             {boundaries.map((boundary, index) => (
               <div
-                key={index}
+                key={boundary?.id ?? boundary?.slug ?? boundary?.title ?? boundary?.name ?? index}
                 className={`flex items-start transition-all duration-500 transform ${
                   visibleBoundaries.includes(index)
                     ? "translate-x-0 opacity-100"
@@ -136,7 +137,7 @@ function WhatWeBelieveSection() {
 
         <div className="text-center">
           <CursorFollower
-            text="These aren’t “rules.” They’re how we earn trust — and keep it."
+            text="These aren’t “rules.” They’re how we earn trust - and keep it."
             className="max-w-2xl sm:mt-12 bg-primaryBlue px-10 sm:px-6 py-4 rounded-xl sm:rounded-full text-white mx-auto"
             textClassName="text-white font-semibold text-sm lg:text-base"
             gradientFrom="#f76707"

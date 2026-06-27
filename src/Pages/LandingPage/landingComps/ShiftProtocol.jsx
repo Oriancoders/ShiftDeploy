@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { m as motion, useInView } from 'framer-motion';
 import { Search, BarChart3, Lightbulb, CheckCircle, Rocket, ArrowRight } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../../../utils/animations';
 import Link from 'next/link';
@@ -119,14 +119,14 @@ const ShiftProtocol = () => {
 
           <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl 2xl:max-w-[80%] mx-auto ">
             {steps.map((step, index) => (
-              <div key={index}>
+              <div key={step?.id ?? step?.slug ?? step?.title ?? step?.name ?? index}>
                 {index == 5 ? (
                   <div
-                    key={index}
+                    key={step?.id ?? step?.slug ?? step?.title ?? step?.name ?? index}
                     className="relative md:col-span-1 lg:col-span-1 bg-primaryBlue border rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-md sm:hover:shadow-lg transition-all duration-200 group h-full pt-6 text-white flex flex-col text-left"
                   >
                     {/* Heading */}
-                    <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold mb-4 leading-tight ">
+                    <h2 className="text-xl sm:text-3xl lg:text-4xl font-semibold mb-4 leading-tight ">
                       That’s How We Fix <span className='text-primaryOrange'>Problem</span>, <br /> That’s How You Win<br />
                       <span className='text-primaryOrange'>Customers</span>
                     </h2>
@@ -141,7 +141,6 @@ const ShiftProtocol = () => {
 
                     {/* CTA Button */}
                     <Link href={"/ContactUs"}
-                      href="#contact"
                       className="px-6 py-3 rounded-xl bg-primaryOrange hover:bg-toOrange text-white font-semibold shadow-md transition-transform transform  text-center"
                     >
                       Lets fix my problem
@@ -150,7 +149,7 @@ const ShiftProtocol = () => {
 
                 ) : (
                   <motion.div
-                    key={index}
+                    key={step?.id ?? step?.slug ?? step?.title ?? step?.name ?? index}
                     initial={{ opacity: 0, y: 60 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
                     transition={{ duration: 0.6, delay: index * 0.2, once: false }}
@@ -163,13 +162,13 @@ const ShiftProtocol = () => {
                       <step.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
                     </motion.div>
 
-                    <h1 className="text-lg lg:text-xl xl:text-2xl font-bold text-gray-900  text-center">{index + 1}: {step.title}</h1>
+                    <h1 className="text-lg lg:text-xl xl:text-2xl font-semibold text-gray-900  text-center">{index + 1}: {step.title}</h1>
                     <p className="  text-center sm:leading-relaxed sm:text-lg text-gray-600">{step.description}</p>
 
-                    <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3  grid grid-cols-1 ">
+                    <ul className="gap-y-1.5 sm:gap-y-2 lg:gap-y-3  grid grid-cols-1 ">
                       {step.details.map((detail, detailIndex) => (
-                        <li key={detailIndex} className="flex items-center space-x-2 sm:space-x-3 ">
-                          <div className="w-2 h-2 bg-primaryOrange rounded-full flex-shrink-0" />
+                        <li key={detail?.id ?? detail?.slug ?? detail?.title ?? detail?.name ?? detailIndex} className="flex items-center gap-x-2 sm:gap-x-3 ">
+                          <div className="size-2 bg-primaryOrange rounded-full flex-shrink-0" />
                           <span className="text-gray-700  sm:text-md ">{detail}</span>
                         </li>
                       ))}
@@ -188,7 +187,7 @@ const ShiftProtocol = () => {
 
           className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
         >
-          <h1 className="text-2xl sm:text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-bold  mb-4 sm:mb-6 lg:mb-8">
+          <h1 className="text-2xl sm:text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-semibold  mb-4 sm:mb-6 lg:mb-8">
             Start with clarity, not guesswork
 
           </h1>

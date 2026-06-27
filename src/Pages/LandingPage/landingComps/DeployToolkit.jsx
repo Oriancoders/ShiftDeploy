@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from 'framer-motion';
 import {
 
   ArrowRight,
@@ -168,9 +168,9 @@ const DeployToolkit = () => {
 
         <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 px-4 sm:px-6 lg:px-8 max-w-7xl 2xl:max-w-[80%]">
           {tools.map((tool, index) => (
-            <motion.div key={index} variants={scaleOnHover}>
+            <motion.div key={tool?.id ?? tool?.slug ?? tool?.title ?? tool?.name ?? index} variants={scaleOnHover}>
               <div className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[350px] border sm:border-gray-200 rounded-3xl p-6 pb-12   sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden">
-                <h1 className="text-2xl font-bold  mb-2 sm:mb-3 lg:mb-4 text-gray-900">
+                <h1 className="text-2xl font-semibold  mb-2 sm:mb-3 lg:mb-4 text-gray-900">
                   {tool.title}
                 </h1>
                 <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed   sm:text-lg text-gray-700">
@@ -178,8 +178,8 @@ const DeployToolkit = () => {
                 </p>
 
                 <div className="space-y-1.5 sm:space-y-2 lg:space-y-3">
-                  <div className="flex items-center  space-x-2 sm:space-x-3 ">
-                    <div className="w-3 h-3 bg-primaryOrange rounded-full flex-shrink-0" />
+                  <div className="flex items-center  gap-x-2 sm:gap-x-3 ">
+                    <div className="size-3 bg-primaryOrange rounded-full flex-shrink-0" />
                     <span className="text-md ">
                       <span className="text-primaryOrange font-semibold">
                         Problem:
@@ -206,7 +206,7 @@ const DeployToolkit = () => {
                 </div>
                 {/* explanation card  */}
                 <div
-                  className={`w-full h-full bg-primaryBlue  absolute  px-6 py-4 text-white rounded-2xl  ${activeIndex == index ? "top-0 left-0" : "-top-96 -left-96"
+                  className={`size-full bg-primaryBlue  absolute  px-6 py-4 text-white rounded-2xl  ${activeIndex == index ? "top-0 left-0" : "-top-96 -left-96"
                     } transition-all duration-500 flex flex-col justify-between`}
                   style={{}}
                 >
@@ -219,11 +219,11 @@ const DeployToolkit = () => {
                       <MoveLeft />
                     </h1>
 
-                    <span className=" font-bold text-xl">Our Solution</span>
+                    <span className=" font-semibold text-xl">Our Solution</span>
                     {tool.solution}
                   </div>
 
-                  <div className="w-full text-right text-xl font-bold ">
+                  <div className="w-full text-right text-xl font-semibold ">
                     {tool.result}
                   </div>
                 </div>
@@ -245,7 +245,7 @@ const DeployToolkit = () => {
         <section id="problem-solving" className="w-full  bg-gradient-to-br from-primaryBlue to-toBlue text-white ">
           <div className="w-full  p-4 sm:p-8 lg:p-16  drop-shadow-sm flex lg:flex-row flex-col  2xl:max-w-[90%] max-w-7xl mx-auto  gap-10">
             <div className="flex-1 ">
-              <h1 className="text-xxl sm:text-2xl 2xl:text-3xl font-bold  mb-4 sm:mb-6 leading-normal">
+              <h1 className="text-xxl sm:text-2xl 2xl:text-3xl font-semibold  mb-4 sm:mb-6 leading-normal">
                 If your website is slow, underperforming, or not converting.
                 We’ve fixed this problem before.
 
@@ -264,7 +264,7 @@ const DeployToolkit = () => {
           {/* Stars */}
           <div className="flex justify-center mb-6">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-4 2xl:w-6 h-4 2xl:h-6 text-yellow-400 fill-current" />
+              <Star key={_?.id ?? _?.slug ?? _?.title ?? _?.name ?? i} className="w-4 2xl:w-6 h-4 2xl:h-6 text-yellow-400 fill-current" />
             ))}
           </div>
 
@@ -281,14 +281,13 @@ const DeployToolkit = () => {
               <img
                 src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE"
                 alt="Kamran Abbas"
-                className="w-12 h-12 sm:w-14 sm:h-14 rounded-full ring-2 ring-white/30 object-cover"
+                className="size-12 sm:size-14 rounded-full ring-2 ring-white/30 object-cover"
               />
               <div className="text-left">
                 <div className="font-semibold text-md 2xl:text-lg leading-tight">
                   <a
                     href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
                     target="_blank" rel="noopener noreferrer"
-                    rel="noreferrer"
                     className="hover:underline underline-offset-4"
                   >
                     Kamran Abbas
@@ -304,11 +303,10 @@ const DeployToolkit = () => {
             <a
               href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
               target="_blank" rel="noopener noreferrer"
-              rel="noreferrer"
               className="sm:w-fit w-full  inline-flex items-center justify-center gap-2 bg-primaryOrange hover:bg-toOrange border border-white/20 text-white px-4 sm:px-5 py-3 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/40"
             >
               <span className="flex-1 text-sm 2xl:text-md">Visit Source</span>
-              <ArrowRight className="w-4 h-4 -rotate-45" />
+              <ArrowRight className="size-4 -rotate-45" />
             </a>
           </div>
 
@@ -319,7 +317,7 @@ const DeployToolkit = () => {
               <form
                 ref={formRef}
                 onSubmit={handleSubmit}
-                className="flex-1 space-y-8"
+                className="flex-1 gap-y-8"
               >
                 <img
                   // 1. Cloudinary Optimization (Mobile vs Desktop)
@@ -369,12 +367,12 @@ const DeployToolkit = () => {
                       {loading ? (
                         <>
                           Sending request
-                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <div className="size-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                         </>
                       ) : (
                         <>
                           Send me free audit
-                          <ArrowRight className="w-5 h-5" />
+                          <ArrowRight className="size-5" />
                         </>
                       )}
                     </button>
@@ -394,7 +392,7 @@ const DeployToolkit = () => {
                     }`}
                 >
                   <div
-                    className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 font-bold ${message.includes("successfully")
+                    className={`size-5 rounded-full flex items-center justify-center flex-shrink-0 font-bold ${message.includes("successfully")
                       ? "bg-green-500 text-white"
                       : "bg-red-500 text-white"
                       }`}

@@ -31,7 +31,7 @@ const AiChatbotLanding = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen font-sans text-textColor overflow-x-hidden">
+    <div className="bg-white min-h-screen font-sans text-textColor">
       <Navigation isDarkBg={true} onAuditClick={openLeadModal} />
       <HeroSection onPrimaryAction={openLeadModal} onDemoAction={openLiveDemo} />
       <ProblemSolutionSection />

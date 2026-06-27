@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { motion, useReducedMotion } from 'framer-motion';
+import { m as motion, useReducedMotion } from 'framer-motion';
 import {
   ArrowRight,
   BarChart3,
@@ -241,7 +241,7 @@ const ServiceGrowthAuditNav = ({ onAuditClick }) => {
             />
           </button>
 
-          <div className="hidden lg:flex items-center space-x-6 xl:space-x-10">
+          <div className="hidden lg:flex items-center gap-x-6 xl:gap-x-10">
             {navItems.map((item) => (
               <button
                 key={item.target}
@@ -286,7 +286,7 @@ const ServiceGrowthAuditNav = ({ onAuditClick }) => {
           transition={{ duration: 0.3 }}
           className="lg:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200"
         >
-          <div className="px-4 sm:px-6 py-4 sm:py-6 space-y-3 sm:space-y-4 flex flex-col justify-between h-[90dvh]">
+          <div className="px-4 sm:px-6 py-4 sm:py-6 gap-y-3 sm:gap-y-4 flex flex-col justify-between h-[90dvh]">
             <div className="space-y-3">
               {navItems.map((item, index) => (
                 <motion.button
@@ -373,7 +373,7 @@ const SectionHeader = ({ eyebrow, title, text, align = 'center' }) => (
         {eyebrow}
       </span>
     ) : null}
-    <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primaryBlue">
+    <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-primaryBlue">
       {title}
     </h2>
     {text ? <p className="mt-5 text-base sm:text-lg leading-relaxed text-gray-600">{text}</p> : null}
@@ -424,7 +424,7 @@ const ServiceGrowthAuditFooter = ({ onAuditClick }) => {
           </div>
 
           <div>
-            <h3 className="mb-4 text-base font-bold text-white">Page Sections</h3>
+            <h3 className="mb-4 text-base font-semibold text-white">Page Sections</h3>
             <div className="grid grid-cols-2 gap-2">
               {navItems.map((item) => (
                 <button
@@ -440,21 +440,21 @@ const ServiceGrowthAuditFooter = ({ onAuditClick }) => {
           </div>
 
           <div>
-            <h3 className="mb-4 text-base font-bold text-white">Start With The Audit</h3>
+            <h3 className="mb-4 text-base font-semibold text-white">Start With The Audit</h3>
             <div className="space-y-3 text-sm text-gray-300">
               <a href="mailto:contact@shiftdeploy.com" className="flex items-center gap-3 transition-colors hover:text-primaryOrange">
-                <Mail className="h-4 w-4 text-primaryOrange" />
+                <Mail className="size-4 text-primaryOrange" />
                 contact@shiftdeploy.com
               </a>
               <a href="tel:+447311126710" className="flex items-center gap-3 transition-colors hover:text-primaryOrange">
-                <Phone className="h-4 w-4 text-primaryOrange" />
+                <Phone className="size-4 text-primaryOrange" />
                 +44 7311 126710
               </a>
             </div>
             <div className="mt-5 flex justify-start">
               <button type="button" onClick={onAuditClick} className={primaryButtonClass}>
                 <span>Get Free Audit</span>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="size-4" />
               </button>
             </div>
           </div>
@@ -632,9 +632,9 @@ export default function ServiceGrowthAudit() {
           <div className="container relative z-10 mx-auto grid max-w-7xl 2xl:max-w-[80%] sm:px-6 lg:px-8 items-center gap-12 px-4 md:grid-cols-[1fr_0.82fr] md:px-8">
             <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-3xl">
               <motion.div variants={fadeUp} className="mb-7 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-bold text-blue-100 backdrop-blur-md">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primaryOrange opacity-70" />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-primaryOrange" />
+                <span className="relative flex size-2.5">
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-primaryOrange opacity-70" />
+                  <span className="relative inline-flex size-2.5 rounded-full bg-primaryOrange" />
                 </span>
                 Service growth audit
               </motion.div>
@@ -655,10 +655,10 @@ export default function ServiceGrowthAudit() {
                   className={ "bg-primaryOrange border-2 border-primaryOrange hover:border-toOrange text-white px-4 sm:px-6  py-2.5 sm:py-4 "+ primaryButtonClass  }
                 >
                   <span>Request Your Service Growth Audit</span>
-                  <ArrowRight className="h-5 w-5" />
+                  <ArrowRight className="size-5" />
                 </button>
                 <div className="flex items-center gap-3 text-sm font-semibold text-blue-100/80">
-                  <CheckCircle className="h-5 w-5 text-primaryOrange" />
+                  <CheckCircle className="size-5 text-primaryOrange" />
                   Audit first. Recommendation after.
                 </div>
               </motion.div>
@@ -676,11 +676,11 @@ export default function ServiceGrowthAudit() {
                 <div className="mb-6 flex items-start justify-between gap-4">
                   <div>
                     <p className="text-sm font-bold uppercase tracking-[0.18em] text-primaryOrange">Primary CTA</p>
-                    <h2 className="mt-2 text-2xl font-extrabold text-primaryBlue">Request Your Growth Audit</h2>
+                    <h2 className="mt-2 text-2xl font-semibold text-primaryBlue">Request Your Growth Audit</h2>
                     <p className="mt-2 text-sm leading-relaxed text-gray-600">We audit first, then recommend the right system.</p>
                   </div>
                   <div className="hidden rounded-2xl bg-blue-50 p-3 text-secondaryBlue sm:block">
-                    <ClipboardCheck className="h-7 w-7" />
+                    <ClipboardCheck className="size-7" />
                   </div>
                 </div>
 
@@ -796,7 +796,7 @@ export default function ServiceGrowthAudit() {
                       >
                         {formStatus === 'loading' ? (
                           <>
-                            <Loader2 className="h-5 w-5 animate-spin" />
+                            <Loader2 className="size-5 animate-spin" />
                             <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                               Sending request...
                             </motion.span>
@@ -804,7 +804,7 @@ export default function ServiceGrowthAudit() {
                         ) : (
                           <>
                             <span>{formStatus === 'error' ? 'Try Again' : 'Request Your Growth Audit'}</span>
-                            <ChevronRight className="h-5 w-5" />
+                            <ChevronRight className="size-5" />
                           </>
                         )}
                       </button>
@@ -812,13 +812,13 @@ export default function ServiceGrowthAudit() {
                   </form>
                 ) : (
                   <div className="rounded-2xl bg-green-50 p-6 text-center">
-                    <CheckCircle className="mx-auto mb-3 h-10 w-10 text-green-600" />
-                    <h3 className="text-xl font-extrabold text-primaryBlue">Audit request received.</h3>
+                    <CheckCircle className="mx-auto mb-3 size-10 text-green-600" />
+                    <h3 className="text-xl font-semibold text-primaryBlue">Audit request received.</h3>
                     <p className="mt-2 text-sm text-gray-600">We will review your details and come back with the next step.</p>
                     <button
                       type="button"
                       onClick={resetAuditForm}
-                      className="mx-auto mt-6 flex items-center justify-center rounded-xl border-2 border-primaryOrange px-5 py-3 text-sm font-extrabold text-primaryOrange transition hover:bg-primaryOrange hover:text-white"
+                      className="mx-auto mt-6 flex items-center justify-center rounded-xl border-2 border-primaryOrange px-5 py-3 text-sm font-semibold text-primaryOrange transition hover:bg-primaryOrange hover:text-white"
                     >
                       Submit another request
                     </button>
@@ -830,8 +830,8 @@ export default function ServiceGrowthAudit() {
         </section>
 
         <section id="proof" className="relative scroll-mt-24 overflow-hidden bg-white py-20 md:py-28">
-          <div className="absolute left-[-12%] top-10 h-72 w-72 rounded-full bg-secondaryBlue/5 blur-[110px]" />
-          <div className="absolute right-[-10%] bottom-10 h-80 w-80 rounded-full bg-primaryOrange/10 blur-[120px]" />
+          <div className="absolute left-[-12%] top-10 size-72 rounded-full bg-secondaryBlue/5 blur-[110px]" />
+          <div className="absolute right-[-10%] bottom-10 size-80 rounded-full bg-primaryOrange/10 blur-[120px]" />
           <div className="container mx-auto max-w-6xl px-4 md:px-8">
             <SectionHeader
               eyebrow="Proof before promise"
@@ -848,7 +848,7 @@ export default function ServiceGrowthAudit() {
             >
               <motion.div variants={fadeUp} className="flex justify-center gap-1.5 text-yellow-400">
                 {[...Array(5)].map((_, index) => (
-                  <Star key={index} className="h-6 w-6 fill-current" />
+                  <Star key={_?.id ?? _?.slug ?? _?.title ?? _?.name ?? index} className="size-6 fill-current" />
                 ))}
               </motion.div>
 
@@ -876,7 +876,7 @@ export default function ServiceGrowthAudit() {
                   className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primaryOrange px-6 py-3.5 font-extrabold text-white transition hover:bg-toOrange sm:w-fit"
                 >
                   Visit Source
-                  <ExternalLink className="h-4 w-4" />
+                  <ExternalLink className="size-4" />
                 </a>
               </motion.div>
             </motion.div>
@@ -886,8 +886,8 @@ export default function ServiceGrowthAudit() {
         <VideoTestimonial />
 
         <section id="problem" className="relative scroll-mt-24 overflow-hidden bg-gray-50 py-20 md:py-28">
-          <div className="absolute left-[-10%] top-16 h-80 w-80 rounded-full bg-secondaryBlue/5 blur-[120px]" />
-          <div className="absolute bottom-10 right-[-12%] h-80 w-80 rounded-full bg-primaryOrange/5 blur-[120px]" />
+          <div className="absolute left-[-10%] top-16 size-80 rounded-full bg-secondaryBlue/5 blur-[120px]" />
+          <div className="absolute bottom-10 right-[-12%] size-80 rounded-full bg-primaryOrange/5 blur-[120px]" />
           <div className="container mx-auto max-w-6xl px-4 md:px-8">
             <SectionHeader
               eyebrow="The real constraint"
@@ -913,10 +913,10 @@ export default function ServiceGrowthAudit() {
                         whileHover={reduceMotion ? undefined : { y: -6 }}
                         className="group rounded-2xl border border-gray-100 bg-white p-5 text-center transition-all duration-300 hover:border-primaryOrange/40 hover:shadow-[0_16px_36px_rgba(12,31,58,0.08)]"
                       >
-                        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-orange-50 text-primaryOrange transition-colors duration-300 group-hover:bg-primaryOrange group-hover:text-white">
-                          <Icon className="h-5 w-5" />
+                        <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-orange-50 text-primaryOrange transition-colors duration-300 group-hover:bg-primaryOrange group-hover:text-white">
+                          <Icon className="size-5" />
                         </div>
-                        <h3 className="text-base font-extrabold text-primaryBlue">{item.title}</h3>
+                        <h3 className="text-base font-semibold text-primaryBlue">{item.title}</h3>
                         <p className="mt-3 text-sm leading-relaxed text-gray-500">{item.text}</p>
                       </motion.div>
                     );
@@ -928,7 +928,7 @@ export default function ServiceGrowthAudit() {
                 <div className="grid gap-5 md:grid-cols-[0.8fr_1.2fr] md:items-center">
                   <div>
                     <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-100/60">Audit lens</p>
-                    <h3 className="mt-2 text-2xl font-extrabold">We map the gap between attention and enquiry.</h3>
+                    <h3 className="mt-2 text-2xl font-semibold">We map the gap between attention and enquiry.</h3>
                   </div>
                   <div className="grid gap-3 sm:grid-cols-4">
                     {['Attention', 'Trust', 'Action', 'Follow up'].map((step, index) => (
@@ -937,7 +937,7 @@ export default function ServiceGrowthAudit() {
                         variants={fadeUp}
                         className="relative rounded-2xl border border-white/10 bg-white/7 p-4"
                       >
-                        <span className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-primaryOrange text-sm font-extrabold text-white">
+                        <span className="mb-3 flex size-8 items-center justify-center rounded-full bg-primaryOrange text-sm font-extrabold text-white">
                           {index + 1}
                         </span>
                         <p className="font-bold text-white">{step}</p>
@@ -997,12 +997,12 @@ export default function ServiceGrowthAudit() {
               >
                 <motion.div variants={fadeUp} className="rounded-3xl border border-gray-100 bg-white p-7 shadow-[0_16px_50px_rgba(12,31,58,0.08)]">
                   <div className="mb-6 flex items-center justify-between">
-                    <h3 className="text-xl font-extrabold text-primaryBlue">Estimated audit snapshot</h3>
-                    <SlidersHorizontal className="h-6 w-6 text-primaryOrange" />
+                    <h3 className="text-xl font-semibold text-primaryBlue">Estimated audit snapshot</h3>
+                    <SlidersHorizontal className="size-6 text-primaryOrange" />
                   </div>
                   <div className="grid gap-4 sm:grid-cols-3">
                     <div>
-                      <p className="text-3xl font-extrabold text-secondaryBlue">{results.expectedEnquiries}</p>
+                      <p className="text-3xl font-semibold text-secondaryBlue">{results.expectedEnquiries}</p>
                       <p className="mt-1 text-sm text-gray-500">estimated enquiries/mo</p>
                     </div>
                     <div>
@@ -1029,7 +1029,7 @@ export default function ServiceGrowthAudit() {
                     className={primaryButtonClass}
                   >
                     <span>Request Your Service Growth Audit</span>
-                    <ArrowRight className="h-5 w-5" />
+                    <ArrowRight className="size-5" />
                   </button>
                 </motion.div>
               </motion.div>
@@ -1049,10 +1049,10 @@ export default function ServiceGrowthAudit() {
             >
               {auditAreas.map((area) => (
                 <motion.div key={area.title} variants={fadeUp} whileHover={{ y: -6 }} className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:shadow-xl">
-                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-secondaryBlue transition group-hover:bg-primaryBlue group-hover:text-white">
-                    <area.icon className="h-7 w-7" />
+                  <div className="mb-5 flex size-14 items-center justify-center rounded-2xl bg-blue-50 text-secondaryBlue transition group-hover:bg-primaryBlue group-hover:text-white">
+                    <area.icon className="size-7" />
                   </div>
-                  <h3 className="text-xl font-extrabold text-primaryBlue">{area.title}</h3>
+                  <h3 className="text-xl font-semibold text-primaryBlue">{area.title}</h3>
                   <p className="mt-3 leading-relaxed text-gray-600">{area.text}</p>
                 </motion.div>
               ))}
@@ -1081,7 +1081,7 @@ export default function ServiceGrowthAudit() {
                 'We build or manage the growth system',
               ].map((step, index) => (
                 <motion.div key={step} variants={fadeUp} className="relative rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-                  <div className="mb-6 flex h-11 w-11 items-center justify-center rounded-xl bg-primaryOrange text-lg font-extrabold text-white">{index + 1}</div>
+                  <div className="mb-6 flex size-11 items-center justify-center rounded-xl bg-primaryOrange text-lg font-extrabold text-white">{index + 1}</div>
                   <p className="font-extrabold leading-snug text-primaryBlue">{step}</p>
                 </motion.div>
               ))}
@@ -1112,14 +1112,14 @@ export default function ServiceGrowthAudit() {
                     plan.highlighted ? 'border-orange-200 bg-orange-50/40' : 'border-gray-100 bg-white'
                   }`}
                 >
-                  {plan.highlighted ? <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-primaryOrange/10 blur-3xl" /> : null}
+                  {plan.highlighted ? <div className="absolute right-0 top-0 size-40 rounded-full bg-primaryOrange/10 blur-3xl" /> : null}
                   <div className="relative">
-                    <h3 className="text-2xl font-extrabold text-primaryBlue">{plan.name}</h3>
+                    <h3 className="text-2xl font-semibold text-primaryBlue">{plan.name}</h3>
                     <p className="mt-4 leading-relaxed text-gray-600">{plan.description}</p>
                     <div className="mt-8 space-y-4">
                       {plan.features.map((feature) => (
                         <div key={feature} className="flex items-start gap-3">
-                          <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-primaryOrange" />
+                          <CheckCircle className="mt-0.5 size-5 flex-shrink-0 text-primaryOrange" />
                           <span className="font-semibold text-gray-700">{feature}</span>
                         </div>
                       ))}
@@ -1127,7 +1127,7 @@ export default function ServiceGrowthAudit() {
                     <div className="mt-9 flex justify-start">
                       <button type="button" onClick={scrollToForm} className={primaryButtonClass}>
                         <span>Request audit first</span>
-                        <ArrowRight className="h-4 w-4" />
+                        <ArrowRight className="size-4" />
                       </button>
                     </div>
                   </div>
@@ -1139,7 +1139,7 @@ export default function ServiceGrowthAudit() {
 
         <section id="final-cta" className="relative scroll-mt-24 overflow-hidden bg-primaryBlue py-20 text-white md:py-28">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:34px_34px] opacity-30" />
-          <div className="absolute -bottom-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primaryOrange/25 blur-[110px]" />
+          <div className="absolute -bottom-24 left-1/2 size-72 -translate-x-1/2 rounded-full bg-primaryOrange/25 blur-[110px]" />
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -1147,8 +1147,8 @@ export default function ServiceGrowthAudit() {
             variants={stagger}
             className="container relative z-10 mx-auto max-w-4xl px-4 text-center md:px-8"
           >
-            <motion.div variants={fadeUp} className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-primaryOrange ring-1 ring-white/15">
-              <SearchCheck className="h-8 w-8" />
+            <motion.div variants={fadeUp} className="mx-auto mb-6 flex size-14 items-center justify-center rounded-2xl bg-white/10 text-primaryOrange ring-1 ring-white/15">
+              <SearchCheck className="size-8" />
             </motion.div>
             <motion.h2 variants={fadeUp} className="text-3xl font-extrabold leading-tight tracking-tight md:text-5xl">
               Before spending more on marketing,
@@ -1160,7 +1160,7 @@ export default function ServiceGrowthAudit() {
             <motion.div variants={fadeUp} className="mt-10 flex justify-center">
               <button type="button" onClick={scrollToForm} className={primaryButtonClass}>
                 <span>Request Your Service Growth Audit</span>
-                <ArrowRight className="h-5 w-5" />
+                <ArrowRight className="size-5" />
               </button>
             </motion.div>
           </motion.div>

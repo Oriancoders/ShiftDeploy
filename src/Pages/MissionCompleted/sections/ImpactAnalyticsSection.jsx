@@ -50,15 +50,17 @@ function ImpactAnalyticsSection() {
 
 
   useEffect(() => {
+    const __tids = [];
+    const __t = (id) => { __tids.push(id); return id; };
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
           setIsVisible(true)
           // Animate numbers
           metrics.forEach((metric, index) => {
-            setTimeout(() => {
+            __t(setTimeout(() => {
               animateNumber(index, metric.value)
-            }, index * 200)
+            }, index * 200))
           })
         }
       },
@@ -69,8 +71,7 @@ function ImpactAnalyticsSection() {
       observer.observe(sectionRef.current)
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => { observer.disconnect(); __tids.forEach(clearTimeout); }}, [])
 
   const animateNumber = (index, targetValue) => {
     let currentValue = 0
@@ -92,7 +93,7 @@ function ImpactAnalyticsSection() {
     <section ref={sectionRef} className="py-20 bg-gray-50">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             The results <br />
             <span className="text-primaryOrange">
               we can stand behind
@@ -105,7 +106,7 @@ function ImpactAnalyticsSection() {
         <div className="grid lg:grid-cols-4 grid-cols-2 gap-4 sm:gap-8 mb-16">
           {metrics.map((metric, index) => (
             <div
-              key={index}
+              key={metric?.id ?? metric?.slug ?? metric?.title ?? metric?.name ?? index}
               className={`transition-all duration-700 delay-${index * 100} transform ${isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
                 }`}
             >
@@ -132,10 +133,10 @@ function ImpactAnalyticsSection() {
             }`}
         >
           <div className="bg-white rounded-3xl p-8 sm:shadow-lg">
-            <h3 className="text-4xl font-bold text-primaryBlue mb-8 text-center">Mission Statistics</h3>
+            <h3 className="text-4xl font-semibold text-primaryBlue mb-8 text-center">Mission Statistics</h3>
             <div className="grid md:grid-cols-4 gap-8">
               {additionalStats.map((stat, index) => (
-                <div key={index} className="text-center">
+                <div key={stat?.id ?? stat?.slug ?? stat?.title ?? stat?.name ?? index} className="text-center">
                   <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mx-auto mb-4 shadow-sm">
                     <div className="text-gray-600">{stat.icon}</div>
                   </div>

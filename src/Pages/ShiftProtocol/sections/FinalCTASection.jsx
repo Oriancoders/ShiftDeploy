@@ -40,8 +40,8 @@ function FinalCTASection() {
     >
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondaryBlue/50 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primaryOrange/50 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 size-96 bg-secondaryBlue/50 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 size-96 bg-primaryOrange/50 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-5xl mx-auto px-6 relative text-center">
@@ -51,7 +51,7 @@ function FinalCTASection() {
           }`}
         >
           {/* Header */}
-          <h2 className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-semibold text-white mb-8 leading-tight">
             Ready to eliminate <br/>
             <span className="text-primaryOrange">
               technical project risk?
@@ -69,10 +69,10 @@ function FinalCTASection() {
 
           {/* Value Proposition */}
           <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 mb-12 max-w-4xl mx-auto">
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-6">In this comprehensive brief, you'll get</h3>
+            <h3 className="text-xl sm:text-2xl font-semibold text-white mb-6">In this comprehensive brief, you'll get</h3>
             <div className="grid md:grid-cols-2 gap-4 text-left">
               {briefIncludes.map((item, index) => (
-                <div key={index} className="flex items-start">
+                <div key={item?.id ?? item?.slug ?? item?.title ?? item?.name ?? index} className="flex items-start">
                   <CheckCircle className="w-3 sm:w-4 h-3 sm:h-4 text-primaryOrange mr-3 mt-1 flex-shrink-0" />
                   <span className="text-xs sm:text-sm text-white">{item}</span>
                 </div>
@@ -91,12 +91,12 @@ function FinalCTASection() {
           {/* Contact Options */}
           {/* <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
-              <Download className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
+              <Download className="size-8 text-primaryOrange mx-auto mb-4" />
               <h3 className="text-white font-semibold mb-2">Download Protocol Brief</h3>
               <p className="text-gray-300 text-sm">Get the complete methodology guide instantly</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-colors duration-300">
-              <Calendar className="w-8 h-8 text-primaryOrange mx-auto mb-4" />
+              <Calendar className="size-8 text-primaryOrange mx-auto mb-4" />
               <h3 className="text-white font-semibold mb-2">Book Process Walkthrough</h3>
               <p className="text-gray-300 text-sm">
                 See the protocol in action with real project examples

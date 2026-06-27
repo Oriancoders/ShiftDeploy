@@ -47,7 +47,7 @@ function HowWeWorkSection() {
     <section ref={sectionRef} className="py-12 sm:py-24 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             How we work <br />
             <span className="text-primaryOrange">inside your reality</span>
           </h2>
@@ -59,12 +59,12 @@ function HowWeWorkSection() {
         <div className="space-y-8 sm:space-y-16">
           {workPrinciples.map((principle, index) => (
             <div
-              key={index}
+              key={principle?.id ?? principle?.slug ?? principle?.title ?? principle?.name ?? index}
               className="transition-all duration-800 transform bg-white p-6 sm:p-8 rounded-2xl shadow-md sm:hover:shadow-lg"
             >
               <div className="grid md:grid-cols-3 gap-8 items-center">
                 <div className="md:col-span-2">
-                  <h3 className="text-xl sm:text-3xl font-bold text-primaryBlue mb-4">
+                  <h3 className="text-xl sm:text-3xl font-semibold text-primaryBlue mb-4">
                     {principle.title}
                   </h3>
                   <p className="sm:text-lg text-gray-600 leading-relaxed">
@@ -78,8 +78,8 @@ function HowWeWorkSection() {
                   </h4>
                   <ul className="space-y-2">
                     {principle.tools.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-center text-gray-700">
-                        <CheckCircle className="w-4 h-4 text-primaryOrange mr-2 flex-shrink-0" />
+                      <li key={item?.id ?? item?.slug ?? item?.title ?? item?.name ?? itemIndex} className="flex items-center text-gray-700">
+                        <CheckCircle className="size-4 text-primaryOrange mr-2 flex-shrink-0" />
                         <span className="text-sm">{item}</span>
                       </li>
                     ))}
@@ -106,7 +106,7 @@ function HowWeWorkSection() {
 
             <Link
               href={"/shift-protocol"}
-              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center gap-x-2 text-md"
             >
               <span>View Shift Protocol</span>
             </Link>

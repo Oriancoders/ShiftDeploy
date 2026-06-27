@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import { DollarSign, CalendarCheck, Bell } from 'lucide-react';
 import ChatInterface from './ChatInterface';
 import { floatingAnimation1, floatingAnimation2 } from './constants';
@@ -11,7 +11,7 @@ export default function HeroRightVisual({ reduceMotion, animateEnabled }) {
       <motion.div
         animate={animateEnabled ? { scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] } : { opacity: 0.5 }}
         transition={animateEnabled ? { duration: 4, repeat: Infinity } : undefined}
-        className="absolute w-64 h-64 bg-secondaryBlue rounded-full blur-[100px] z-0 transform-gpu [will-change:transform,opacity]"
+        className="absolute size-64 bg-secondaryBlue rounded-full blur-[100px] z-0 transform-gpu [will-change:transform,opacity]"
       />
 
       <ChatInterface reduceMotion={reduceMotion} animateEnabled={animateEnabled} />
@@ -28,7 +28,7 @@ export default function HeroRightVisual({ reduceMotion, animateEnabled }) {
         <div>
           <p className="text-white font-bold text-[15px] leading-tight">Booking at 2:15 AM</p>
           <p className="text-gray-400 text-xs mt-0.5 flex items-center">
-            <DollarSign className="w-3 h-3 text-green-500 mr-0.5" /> <strong className="text-green-500 font-bold">+$150</strong> Value Secured
+            <DollarSign className="size-3 text-green-500 mr-0.5" /> <strong className="text-green-500 font-bold">+$150</strong> Value Secured
           </p>
         </div>
       </motion.div>
@@ -41,7 +41,7 @@ export default function HeroRightVisual({ reduceMotion, animateEnabled }) {
       >
         <div className="bg-orange-500/20 p-2.5 rounded-xl shadow-inner text-primaryOrange relative border border-orange-500/30">
           <Bell size={24} />
-          <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-[#1a2b45] animate-pulse" />
+          <span className="absolute -top-1 -right-1 size-3 bg-red-500 rounded-full border-2 border-[#1a2b45] animate-pulse" />
         </div>
         <div>
           <p className="text-white font-bold text-[15px] leading-tight drop-shadow-md">New Client Saved</p>

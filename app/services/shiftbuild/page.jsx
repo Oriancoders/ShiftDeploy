@@ -1,5 +1,6 @@
 export const revalidate = 3600;
 import ShiftBuild from '../../../src/Pages/Services/ShiftBuild/ShiftBuild';
+import JsonLd from '../../../src/components/JsonLd';
 
 export const metadata = {
   title: 'ShiftBuild | Custom Web Development & Design',
@@ -28,7 +29,7 @@ const schema = {
 export default function ShiftBuildPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={schema} />
       <ShiftBuild />
     </>
   );

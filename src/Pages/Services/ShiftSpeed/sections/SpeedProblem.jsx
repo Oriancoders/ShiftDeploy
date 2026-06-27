@@ -1,6 +1,6 @@
 'use client';
 import React from "react";
-import { motion } from "framer-motion";
+import { m as motion } from 'framer-motion';
 import {
   Clock,
   TrendingDown,
@@ -30,21 +30,21 @@ const SpeedProblem = () => {
       icon: TrendingDown,
       title: "Search Visibility Suppression",
       description:
-        "Google uses Core Web Vitals as a ranking signal. Slow sites don’t disappear — they just get pushed below faster competitors.",
+        "Google uses Core Web Vitals as a ranking signal. Slow sites don’t disappear - they just get pushed below faster competitors.",
       stat: "Lower SERP priority",
     },
     {
       icon: DollarSign,
       title: "Paid Traffic Waste",
       description:
-        "You pay for every click. If the page lags, users bounce before it loads — burning ad budget with zero return.",
+        "You pay for every click. If the page lags, users bounce before it loads - burning ad budget with zero return.",
       stat: "Clicks without ROI",
     },
     {
       icon: ShieldAlert,
       title: "Trust & Brand Perception Loss",
       description:
-        "Speed signals quality. Slow sites feel outdated, unreliable, and unprofessional — even if the product is solid.",
+        "Speed signals quality. Slow sites feel outdated, unreliable, and unprofessional - even if the product is solid.",
       stat: "Credibility erosion",
     },
     {
@@ -67,7 +67,7 @@ const SpeedProblem = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             The Real Cost of <span className="text-primaryOrange">Slow Performance</span>
           </h2>
           <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
@@ -80,7 +80,7 @@ const SpeedProblem = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {problems.map((problem, index) => (
             <motion.div
-              key={index}
+              key={problem?.id ?? problem?.slug ?? problem?.title ?? problem?.name ?? index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.08 }}
@@ -92,7 +92,7 @@ const SpeedProblem = () => {
                   <problem.icon size={44} />
                 </div>
 
-                <h3 className="text-2xl font-bold text-primaryBlue mb-4">
+                <h3 className="text-2xl font-semibold text-primaryBlue mb-4">
                   {problem.title}
                 </h3>
 

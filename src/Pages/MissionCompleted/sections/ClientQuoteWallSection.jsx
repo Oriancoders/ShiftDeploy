@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
+import { m as motion } from 'framer-motion'
 import Link from "next/link"
 import { Star } from "lucide-react"
 // Section 4: Client Quote Wall
@@ -12,7 +12,7 @@ function ClientQuoteWallSection() {
   const quotes = [
     {
       quote:
-        "We needed to scale from 10K to 100K users without breaking the bank. ShiftDeploy delivered a solution that reduced our costs by 60% while handling 10x the traffic — faster and cleaner than expected.",
+        "We needed to scale from 10K to 100K users without breaking the bank. ShiftDeploy delivered a solution that reduced our costs by 60% while handling 10x the traffic - faster and cleaner than expected.",
       author: "Sarah Chen",
       title: "CTO",
       company: "StreamlineHQ",
@@ -22,7 +22,7 @@ function ClientQuoteWallSection() {
     },
     {
       quote:
-        "We needed SOC2 compliance to close enterprise deals. ShiftDeploy delivered full certification in 4 months instead of the 12+ months everyone else quoted — faster and cleaner than expected.",
+        "We needed SOC2 compliance to close enterprise deals. ShiftDeploy delivered full certification in 4 months instead of the 12+ months everyone else quoted - faster and cleaner than expected.",
       author: "Marcus Rodriguez",
       title: "Founder",
       company: "SecureAPI",
@@ -32,7 +32,7 @@ function ClientQuoteWallSection() {
     },
     {
       quote:
-        "We needed to launch our MVP before our runway ran out. ShiftDeploy delivered a production-ready platform in 8 weeks that helped us raise $2M Series A — faster and cleaner than expected.",
+        "We needed to launch our MVP before our runway ran out. ShiftDeploy delivered a production-ready platform in 8 weeks that helped us raise $2M Series A - faster and cleaner than expected.",
       author: "Jennifer Park",
       title: "CEO",
       company: "GrowthLabs",
@@ -42,7 +42,7 @@ function ClientQuoteWallSection() {
     },
     {
       quote:
-        "We needed zero-downtime deployments for our growing user base. ShiftDeploy delivered an automated CI/CD pipeline that eliminated outages and increased deployment speed by 90% — faster and cleaner than expected.",
+        "We needed zero-downtime deployments for our growing user base. ShiftDeploy delivered an automated CI/CD pipeline that eliminated outages and increased deployment speed by 90% - faster and cleaner than expected.",
       author: "David Kim",
       title: "CTO",
       company: "DataFlow",
@@ -52,7 +52,7 @@ function ClientQuoteWallSection() {
     },
     {
       quote:
-        "We needed to fix our conversion funnel that was bleeding users. ShiftDeploy delivered a redesigned onboarding flow that increased conversions by 340% — faster and cleaner than expected.",
+        "We needed to fix our conversion funnel that was bleeding users. ShiftDeploy delivered a redesigned onboarding flow that increased conversions by 340% - faster and cleaner than expected.",
       author: "Alex Thompson",
       title: "Product Lead",
       company: "UserFlow",
@@ -91,7 +91,7 @@ function ClientQuoteWallSection() {
     <section ref={sectionRef} className=" py-20 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             What clients <br />
             <span className="text-primaryOrange">
               really say
@@ -108,7 +108,7 @@ function ClientQuoteWallSection() {
               {/* Stars */}
           <div className="flex justify-center mb-6">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
+              <Star key={_?.id ?? _?.slug ?? _?.title ?? _?.name ?? i} className="size-6 text-yellow-400 fill-current" />
             ))}
           </div>
               <blockquote className="sm:text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl">
@@ -148,7 +148,7 @@ function ClientQuoteWallSection() {
 
             <Link href={"/services"}
 
-              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center space-x-2 text-md"
+              className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:shadow-lg sm:hover:shadow-xl flex items-center justify-center gap-x-2 text-md"
             >
               <span>View Our Services</span>
             </Link>

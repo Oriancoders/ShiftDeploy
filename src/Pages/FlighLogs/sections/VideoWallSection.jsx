@@ -38,13 +38,15 @@ function VideoWallSection() {
   ]
 
   useEffect(() => {
+    const __tids = [];
+    const __t = (id) => { __tids.push(id); return id; };
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
           videoTestimonials.forEach((_, index) => {
-            setTimeout(() => {
+            __t(setTimeout(() => {
               setVisibleVideos((prev) => [...prev, index])
-            }, index * 200)
+            }, index * 200))
           })
         }
       },
@@ -55,14 +57,13 @@ function VideoWallSection() {
       observer.observe(sectionRef.current)
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => { observer.disconnect(); __tids.forEach(clearTimeout); }}, [])
 
   return (
     <section ref={sectionRef} className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h2 className="text-5xl md:text-6xl font-semibold text-gray-900 mb-6">
             Hear it
             <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               directly
@@ -74,7 +75,7 @@ function VideoWallSection() {
         <div className="grid lg:grid-cols-3 gap-8">
           {videoTestimonials.map((video, index) => (
             <div
-              key={index}
+              key={video?.id ?? video?.slug ?? video?.title ?? video?.name ?? index}
               className={`group transition-all duration-700 transform ${
                 visibleVideos.includes(index) ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
               }`}
@@ -106,7 +107,7 @@ function VideoWallSection() {
 
                 {/* Video Info */}
                 <div className="p-6">
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">{video.title}</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">{video.title}</h3>
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
                     <div>

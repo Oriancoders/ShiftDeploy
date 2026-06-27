@@ -10,7 +10,7 @@ function WhatWeSolveSection() {
 
   const problems = [
     {
-      pain: "Our website feels slow — and we can see users dropping off, but we don’t know what to fix first.",
+      pain: "Our website feels slow - and we can see users dropping off, but we don’t know what to fix first.",
       fix: "ShiftSpeed™: We identify the real slow points, apply practical fixes, and track improvements with before/after metrics (Core Web Vitals + key pages).",
       icon: <BarChart3 className="w-4 sm:w-6 h-4 sm:h-6" />,
     },
@@ -26,7 +26,7 @@ function WhatWeSolveSection() {
     },
     {
       pain: "Small updates keep turning into big headaches. Things break, and nobody truly owns the site long-term.",
-      fix: "ShiftFlow™: Ongoing care that keeps your site stable, fast, and improving—regular checkups, updates, and monthly optimizations with one accountable partner.",
+      fix: "ShiftFlow™: Ongoing care that keeps your site stable, fast, and improving - regular checkups, updates, and monthly optimizations with one accountable partner.",
       icon: <Zap className="w-4 sm:w-6 h-4 sm:h-6" />,
     },
     {
@@ -37,14 +37,16 @@ function WhatWeSolveSection() {
   ]
 
   useEffect(() => {
+    const __tids = [];
+    const __t = (id) => { __tids.push(id); return id; };
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const index = Number.parseInt(entry.target.getAttribute("data-index") || "0")
           if (entry.isIntersecting) {
-            setTimeout(() => {
+            __t(setTimeout(() => {
               setVisibleProblems((prev) => (prev.includes(index) ? prev : [...prev, index]))
-            }, index * 200)
+            }, index * 200))
           }
         })
       },
@@ -55,14 +57,13 @@ function WhatWeSolveSection() {
       if (ref) observer.observe(ref)
     })
 
-    return () => observer.disconnect()
-  }, [])
+    return () => { observer.disconnect(); __tids.forEach(clearTimeout); }}, [])
 
   return (
     <section className="pb-5 sm:pt-12 bg-gray-50">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-4 sm:mb-6">
             The issues that quietly
             <br />
             <span className="text-primaryOrange">slow down growth</span>
@@ -76,7 +77,7 @@ function WhatWeSolveSection() {
         <div className="space-y-16">
           {problems.map((problem, index) => (
             <div
-              key={index}
+              key={problem?.id ?? problem?.slug ?? problem?.title ?? problem?.name ?? index}
               ref={(el) => (problemRefs.current[index] = el)}
               data-index={index}
               className={`transition-all duration-700 transform ${

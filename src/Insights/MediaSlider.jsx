@@ -66,7 +66,7 @@ export default function MediaSlider({ block, getImageUrl }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       {title && (
-        <h3 className="text-xl font-bold text-primaryBlue mb-3">{title}</h3>
+        <h3 className="text-xl font-semibold text-primaryBlue mb-3">{title}</h3>
       )}
 
       {/* Slide area */}
@@ -78,29 +78,29 @@ export default function MediaSlider({ block, getImageUrl }) {
               key={current}
               src={imageUrl}
               alt={slide.alt || slide.caption || 'Slide image'}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+              className={`absolute inset-0 size-full object-cover transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
             />
           )}
 
-          {/* Video — embedded (YouTube/Vimeo) */}
+          {/* Video - embedded (YouTube/Vimeo) */}
           {slide?.type === 'video' && embedUrl && !isMp4(slide.videoUrl) && (
             <iframe
               key={current}
               src={embedUrl}
-              className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+              className={`absolute inset-0 size-full transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
           )}
 
-          {/* Video — native mp4 */}
+          {/* Video - native mp4 */}
           {slide?.type === 'video' && isMp4(slide.videoUrl) && (
             <video
               key={current}
               src={slide.videoUrl}
               controls
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+              className={`absolute inset-0 size-full object-cover transition-opacity duration-300 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
             />
           )}
 
@@ -116,14 +116,14 @@ export default function MediaSlider({ block, getImageUrl }) {
             <>
               <button
                 onClick={(e) => { e.stopPropagation(); prev(); }}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition backdrop-blur-sm z-10"
+                className="absolute left-3 top-1/2 -translate-y-1/2 size-9 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition backdrop-blur-sm z-10"
                 aria-label="Previous slide"
               >
                 ‹
               </button>
               <button
                 onClick={(e) => { e.stopPropagation(); next(); }}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition backdrop-blur-sm z-10"
+                className="absolute right-3 top-1/2 -translate-y-1/2 size-9 rounded-full bg-black/50 hover:bg-black/70 text-white flex items-center justify-center transition backdrop-blur-sm z-10"
                 aria-label="Next slide"
               >
                 ›
@@ -144,12 +144,12 @@ export default function MediaSlider({ block, getImageUrl }) {
           <div className="flex items-center justify-center gap-1.5 py-3 bg-gray-900/80">
             {slides.map((_, idx) => (
               <button
-                key={idx}
+                key={_?.id ?? _?.slug ?? _?.title ?? _?.name ?? idx}
                 onClick={() => goTo(idx)}
                 className={`transition-all duration-300 rounded-full ${
                   idx === current
                     ? 'w-6 h-2 bg-primaryOrange'
-                    : 'w-2 h-2 bg-white/30 hover:bg-white/60'
+                    : 'size-2 bg-white/30 hover:bg-white/60'
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
@@ -165,16 +165,16 @@ export default function MediaSlider({ block, getImageUrl }) {
             const thumbUrl = s.type === 'image' && s.image ? getImageUrl(s.image, 160) : null;
             return (
               <button
-                key={idx}
+                key={s?.id ?? s?.slug ?? s?.title ?? s?.name ?? idx}
                 onClick={() => goTo(idx)}
                 className={`flex-shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition ${
                   idx === current ? 'border-primaryOrange' : 'border-transparent opacity-60 hover:opacity-100'
                 }`}
               >
                 {thumbUrl ? (
-                  <img src={thumbUrl} alt="" className="w-full h-full object-cover" />
+                  <img src={thumbUrl} alt="" className="size-full object-cover" />
                 ) : (
-                  <div className="w-full h-full bg-gray-700 flex items-center justify-center text-white text-lg">▶</div>
+                  <div className="size-full bg-gray-700 flex items-center justify-center text-white text-lg">▶</div>
                 )}
               </button>
             );

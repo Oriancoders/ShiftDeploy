@@ -282,10 +282,10 @@ const renderCallout = (callout) => {
     >
       <div className="flex gap-3">
         {callout.showIcon && (
-          <Icon className={`flex-shrink-0 w-5 h-5 mt-0.5 ${styles.iconColor}`} />
+          <Icon className={`flex-shrink-0 size-5 mt-0.5 ${styles.iconColor}`} />
         )}
         <div className={`flex-1 ${styles.textColor}`}>
-          {callout.title && <h4 className="font-bold mb-2">{callout.title}</h4>}
+          {callout.title && <h4 className="font-semibold mb-2">{callout.title}</h4>}
           {callout.content &&
             callout.content.map((block) => {
               if (block._type === "block" && block.children) {
@@ -319,7 +319,7 @@ const renderCTA = (cta) => {
   
   return (
     <div className={`my-6 p-6 ${cta.darkModeVariant ? "bg-gray-900 text-white" : "bg-gray-100"} rounded-lg ${alignmentClass}`}>
-      <h3 className="text-xl font-bold mb-2">{cta.title}</h3>
+      <h3 className="text-xl font-semibold mb-2">{cta.title}</h3>
       {cta.description && <p className="mb-4 text-gray-700 dark:text-gray-300">{cta.description}</p>}
       <a
         href={cta.buttonLink}
@@ -344,7 +344,7 @@ const renderStats = (stats) => {
   return (
     <div className={`my-6 grid ${colClass} gap-6 p-6 rounded-lg bg-gray-50`}>
       {stats.stats?.map((stat, idx) => (
-        <div key={idx} className={alignmentClass}>
+        <div key={stat?.id ?? stat?.slug ?? stat?.title ?? stat?.name ?? idx} className={alignmentClass}>
           <div className="text-3xl font-bold text-primaryBlue">{stat.value}</div>
           <div className="text-sm text-gray-600">{stat.label}</div>
         </div>
@@ -546,7 +546,7 @@ const MoreInsightsSection = ({ insights }) => {
   return (
     <aside className="rounded-2xl bg-white border border-gray-100 shadow-sm overflow-hidden">
       <div className="bg-primaryBlue px-5 py-4">
-        <h2 className="text-base font-extrabold text-white">More from ShiftDeploy</h2>
+        <h2 className="text-base font-semibold text-white">More from ShiftDeploy</h2>
       </div>
       <div className="divide-y divide-gray-100">
         {insights.map((item) => (
@@ -557,7 +557,7 @@ const MoreInsightsSection = ({ insights }) => {
           >
             <div className="flex-shrink-0 w-1 rounded-full bg-primaryOrange opacity-0 group-hover:opacity-100 transition" />
             <div className="min-w-0">
-              <h3 className="text-sm font-bold text-primaryBlue leading-snug group-hover:text-primaryOrange transition line-clamp-2">{item.title}</h3>
+              <h3 className="text-sm font-semibold text-primaryBlue leading-snug group-hover:text-primaryOrange transition line-clamp-2">{item.title}</h3>
               <p className="text-xs text-gray-400 mt-1 flex items-center gap-2">
                 <span>{formatDate(item.date)}</span>
                 <span>·</span>
@@ -583,7 +583,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
       {/* Hero banner */}
       <div className="relative bg-primaryBlue overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{backgroundImage:'radial-gradient(circle,#fff 1px,transparent 1px)',backgroundSize:'32px 32px'}} />
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-10" style={{background:'radial-gradient(circle,#F76707,transparent 70%)',transform:'translate(30%,-30%)'}} />
+        <div className="absolute top-0 right-0 size-96 rounded-full opacity-10" style={{background:'radial-gradient(circle,#F76707,transparent 70%)',transform:'translate(30%,-30%)'}} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 relative z-10">
           <Link href="/insights" className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 hover:text-white transition mb-6">
             ← Back to Insights
@@ -595,7 +595,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                   <span key={tag} className="px-3 py-1 text-xs font-bold rounded-full bg-primaryOrange/20 text-orange-300 border border-orange-400/30">{tag}</span>
                 ))}
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-white max-w-4xl mb-6">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-white max-w-4xl mb-6">
                 {post.title}
               </h1>
               {post.excerpt && (
@@ -604,21 +604,21 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
               <div className="flex flex-wrap items-center gap-4 text-sm text-white/60 pb-2">
                 <span className="flex items-center gap-2">
                   {post.authorImage
-                    ? <img src={post.authorImage} alt={post.author} className="w-8 h-8 rounded-full object-cover ring-2 ring-white/30" />
-                    : <span className="w-8 h-8 rounded-full bg-primaryOrange/40 flex items-center justify-center text-white font-bold text-sm">{post.author?.[0]?.toUpperCase()}</span>
+                    ? <img src={post.authorImage} alt={post.author} className="size-8 rounded-full object-cover ring-2 ring-white/30" />
+                    : <span className="size-8 rounded-full bg-primaryOrange/40 flex items-center justify-center text-white font-bold text-sm">{post.author?.[0]?.toUpperCase()}</span>
                   }
                   <span className="font-semibold text-white/80">{post.author}</span>
                   {post.authorJobTitle && <span className="text-white/50">· {post.authorJobTitle}</span>}
                 </span>
                 <span className="w-px h-4 bg-white/20" />
-                <span className="flex items-center gap-1.5"><Calendar className="w-4 h-4" />{formatDate(post.date)}</span>
+                <span className="flex items-center gap-1.5"><Calendar className="size-4" />{formatDate(post.date)}</span>
                 <span className="w-px h-4 bg-white/20" />
-                <span className="flex items-center gap-1.5"><Clock3 className="w-4 h-4" />{post.minutes} min read</span>
+                <span className="flex items-center gap-1.5"><Clock3 className="size-4" />{post.minutes} min read</span>
               </div>
             </>
           )}
           {!post && (
-            <h1 className="text-3xl font-extrabold text-white">Insight</h1>
+            <h1 className="text-3xl font-semibold text-white">Insight</h1>
           )}
         </div>
       </div>
@@ -684,7 +684,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                             const textContent = renderTextWithMarks(item.children, item.markDefs);
                             return (
                               <li key={item._key} className="flex items-start gap-3 text-base sm:text-[17px] leading-[1.85] text-gray-700">
-                                <span className="mt-2.5 w-2 h-2 rounded-full bg-primaryOrange flex-shrink-0" />
+                                <span className="mt-2.5 size-2 rounded-full bg-primaryOrange flex-shrink-0" />
                                 <span>{textContent}</span>
                               </li>
                             );
@@ -700,7 +700,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                             const textContent = renderTextWithMarks(item.children, item.markDefs);
                             return (
                               <li key={item._key} className="flex items-start gap-3 text-base sm:text-[17px] leading-[1.85] text-gray-700">
-                                <span className="mt-1 w-6 h-6 rounded-full bg-primaryBlue text-white text-xs font-bold flex items-center justify-center flex-shrink-0">{idx + 1}</span>
+                                <span className="mt-1 size-6 rounded-full bg-primaryBlue text-white text-xs font-bold flex items-center justify-center flex-shrink-0">{idx + 1}</span>
                                 <span>{textContent}</span>
                               </li>
                             );
@@ -808,11 +808,11 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                       const accent = block.accentColor?.hex || "#F76707";
                       return (
                         <div key={block._key} className="my-8">
-                          {block.title && <h3 className="text-xl font-bold text-primaryBlue mb-4">{block.title}</h3>}
+                          {block.title && <h3 className="text-xl font-semibold text-primaryBlue mb-4">{block.title}</h3>}
                           <div className={`grid ${colClass} gap-4`}>
                             {block.stats?.map((stat, idx) => (
-                              <div key={idx} className="rounded-xl p-5 text-center border border-gray-100 shadow-sm" style={{background: bg}}>
-                                <div className="text-3xl sm:text-4xl font-extrabold" style={{color: accent}}>{stat.value}</div>
+                              <div key={stat?.id ?? stat?.slug ?? stat?.title ?? stat?.name ?? idx} className="rounded-xl p-5 text-center border border-gray-100 shadow-sm" style={{background: bg}}>
+                                <div className="text-3xl sm:text-4xl font-semibold" style={{color: accent}}>{stat.value}</div>
                                 <div className="text-sm font-semibold text-gray-700 mt-1">{stat.label}</div>
                                 {stat.description && <div className="text-xs text-gray-500 mt-1">{stat.description}</div>}
                               </div>
@@ -828,15 +828,15 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                       const negColor = block.negativeColor?.hex || "#DC2626";
                       return (
                         <div key={block._key} className="my-8">
-                          {block.title && <h3 className="text-xl font-bold text-primaryBlue mb-4">{block.title}</h3>}
+                          {block.title && <h3 className="text-xl font-semibold text-primaryBlue mb-4">{block.title}</h3>}
                           <div className="grid sm:grid-cols-2 gap-4">
                             {Array.isArray(block.pros) && block.pros.length > 0 && (
                               <div className="rounded-xl border p-5" style={{borderColor: posColor + "44", background: posColor + "0d"}}>
-                                <h4 className="font-bold mb-3" style={{color: posColor}}>{block.prosTitle || "Pros"}</h4>
+                                <h4 className="font-semibold mb-3" style={{color: posColor}}>{block.prosTitle || "Pros"}</h4>
                                 <ul className="space-y-2">
                                   {block.pros.map((pro, i) => (
-                                    <li key={i} className="flex items-start gap-2 text-sm text-gray-800">
-                                      <span className="mt-0.5 font-bold" style={{color: posColor}}>✓</span>{pro}
+                                    <li key={pro?.id ?? pro?.slug ?? pro?.title ?? pro?.name ?? i} className="flex items-start gap-2 text-sm text-gray-800">
+                                      <span className="mt-0.5 font-semibold" style={{color: posColor}}>✓</span>{pro}
                                     </li>
                                   ))}
                                 </ul>
@@ -844,11 +844,11 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                             )}
                             {Array.isArray(block.cons) && block.cons.length > 0 && (
                               <div className="rounded-xl border p-5" style={{borderColor: negColor + "44", background: negColor + "0d"}}>
-                                <h4 className="font-bold mb-3" style={{color: negColor}}>{block.consTitle || "Cons"}</h4>
+                                <h4 className="font-semibold mb-3" style={{color: negColor}}>{block.consTitle || "Cons"}</h4>
                                 <ul className="space-y-2">
                                   {block.cons.map((con, i) => (
-                                    <li key={i} className="flex items-start gap-2 text-sm text-gray-800">
-                                      <span className="mt-0.5 font-bold" style={{color: negColor}}>✗</span>{con}
+                                    <li key={con?.id ?? con?.slug ?? con?.title ?? con?.name ?? i} className="flex items-start gap-2 text-sm text-gray-800">
+                                      <span className="mt-0.5 font-semibold" style={{color: negColor}}>✗</span>{con}
                                     </li>
                                   ))}
                                 </ul>
@@ -870,7 +870,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                           <div className="relative w-full" style={{paddingTop}}>
                             <iframe
                               src={embedUrl || block.url}
-                              className="absolute inset-0 w-full h-full"
+                              className="absolute inset-0 size-full"
                               frameBorder="0"
                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                               allowFullScreen
@@ -914,9 +914,9 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                     if (block._type === "faq") {
                       return (
                         <div key={block._key} className="my-8 space-y-3">
-                          {block.title && <h3 className="text-2xl font-bold text-primaryBlue mb-4">{block.title}</h3>}
+                          {block.title && <h3 className="text-2xl font-semibold text-primaryBlue mb-4">{block.title}</h3>}
                           {Array.isArray(block.items) && block.items.map((item, idx) => (
-                            <details key={idx} className="group border border-gray-200 rounded-lg overflow-hidden">
+                            <details key={item?.id ?? item?.slug ?? item?.title ?? item?.name ?? idx} className="group border border-gray-200 rounded-lg overflow-hidden">
                               <summary className="flex items-center justify-between px-5 py-4 cursor-pointer font-semibold text-primaryBlue bg-gray-50 hover:bg-gray-100 list-none">
                                 {item.question}
                                 <span className="ml-3 text-primaryOrange group-open:rotate-180 transition-transform">▼</span>
@@ -939,7 +939,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                           </blockquote>
                           <figcaption className="flex items-center gap-3">
                             {block.avatar && (
-                              <img src={getImageUrl(block.avatar, 80)} alt={block.name || "Testimonial"} className="w-10 h-10 rounded-full object-cover" />
+                              <img src={getImageUrl(block.avatar, 80)} alt={block.name || "Testimonial"} className="size-10 rounded-full object-cover" />
                             )}
                             <div>
                               {block.name && <p className="font-bold text-primaryBlue">{block.name}</p>}
@@ -961,12 +961,12 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                         <div key={block._key} className="my-8 grid sm:grid-cols-2 gap-4">
                           {Array.isArray(block.pros) && block.pros.length > 0 && (
                             <div className="rounded-xl bg-green-50 border border-green-200 p-5">
-                              <h4 className="font-bold text-green-800 mb-3 flex items-center gap-2">
+                              <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
                                 <span className="text-green-500">✓</span> {block.prosLabel || "Pros"}
                               </h4>
                               <ul className="space-y-2">
                                 {block.pros.map((pro, idx) => (
-                                  <li key={idx} className="flex items-start gap-2 text-green-900 text-sm">
+                                  <li key={pro?.id ?? pro?.slug ?? pro?.title ?? pro?.name ?? idx} className="flex items-start gap-2 text-green-900 text-sm">
                                     <span className="text-green-500 mt-0.5">✓</span>{pro}
                                   </li>
                                 ))}
@@ -975,12 +975,12 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                           )}
                           {Array.isArray(block.cons) && block.cons.length > 0 && (
                             <div className="rounded-xl bg-red-50 border border-red-200 p-5">
-                              <h4 className="font-bold text-red-800 mb-3 flex items-center gap-2">
+                              <h4 className="font-semibold text-red-800 mb-3 flex items-center gap-2">
                                 <span className="text-red-500">✗</span> {block.consLabel || "Cons"}
                               </h4>
                               <ul className="space-y-2">
                                 {block.cons.map((con, idx) => (
-                                  <li key={idx} className="flex items-start gap-2 text-red-900 text-sm">
+                                  <li key={con?.id ?? con?.slug ?? con?.title ?? con?.name ?? idx} className="flex items-start gap-2 text-red-900 text-sm">
                                     <span className="text-red-500 mt-0.5">✗</span>{con}
                                   </li>
                                 ))}
@@ -1010,7 +1010,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                             }[btn.style] || "bg-primaryBlue text-white";
                             return (
                               <a
-                                key={idx}
+                                key={btn?.id ?? btn?.slug ?? btn?.title ?? btn?.name ?? idx}
                                 href={btn.url || "#"}
                                 target={btn.openInNewTab ? "_blank" : "_self"}
                                 rel={btn.openInNewTab ? "noopener noreferrer" : ""}
@@ -1037,7 +1037,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                       return (
                         <section key={block._key} className={`my-8 rounded-xl ${sectionClass} ${paddingClass}`}>
                           {block.heading && (
-                            <h3 className="text-xl font-bold mb-3">{block.heading}</h3>
+                            <h3 className="text-xl font-semibold mb-3">{block.heading}</h3>
                           )}
                           {Array.isArray(block.content) && block.content.map((innerBlock) => {
                             if (innerBlock._type === "block" && innerBlock.children) {
@@ -1149,8 +1149,8 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
               {/* Author card */}
               <div className="mx-6 sm:mx-10 mb-6 mt-2 rounded-xl bg-gradient-to-r from-primaryBlue/5 to-blue-50 border border-blue-100 p-5 flex items-center gap-4">
                 {post.authorImage
-                  ? <img src={post.authorImage} alt={post.author} className="w-14 h-14 rounded-full object-cover ring-2 ring-primaryBlue/20 flex-shrink-0" />
-                  : <span className="w-14 h-14 rounded-full bg-primaryBlue flex items-center justify-center text-white font-extrabold text-xl flex-shrink-0">{post.author?.[0]?.toUpperCase()}</span>
+                  ? <img src={post.authorImage} alt={post.author} className="size-14 rounded-full object-cover ring-2 ring-primaryBlue/20 flex-shrink-0" />
+                  : <span className="size-14 rounded-full bg-primaryBlue flex items-center justify-center text-white font-extrabold text-xl flex-shrink-0">{post.author?.[0]?.toUpperCase()}</span>
                 }
                 <div>
                   <p className="font-bold text-primaryBlue text-base">{post.author}</p>
@@ -1162,7 +1162,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
               {/* Related Posts */}
               {Array.isArray(post.relatedPosts) && post.relatedPosts.length > 0 && (
                 <div className="mx-6 sm:mx-10 mb-8">
-                  <h2 className="text-lg font-extrabold text-primaryBlue mb-4">Related Posts</h2>
+                  <h2 className="text-lg font-semibold text-primaryBlue mb-4">Related Posts</h2>
                   <div className="grid sm:grid-cols-2 gap-4">
                     {post.relatedPosts.map((related) => (
                       <Link key={related.slug} href={`/insights/${related.slug}`} className="group rounded-xl border border-gray-100 bg-gray-50 hover:bg-white hover:border-primaryBlue/20 hover:shadow-sm p-4 transition">
@@ -1170,7 +1170,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                           <img src={getImageUrl(related.mainImage, 400)} alt={related.title} className="w-full h-32 object-cover rounded-lg mb-3" />
                         )}
                         <p className="text-xs text-gray-400 mb-1">{formatDate(related.date)}</p>
-                        <h3 className="font-bold text-sm text-primaryBlue group-hover:text-primaryOrange transition leading-snug line-clamp-2">{related.title}</h3>
+                        <h3 className="font-semibold text-sm text-primaryBlue group-hover:text-primaryOrange transition leading-snug line-clamp-2">{related.title}</h3>
                         {related.excerpt && <p className="text-xs text-gray-500 mt-1 line-clamp-2">{related.excerpt}</p>}
                       </Link>
                     ))}

@@ -12,31 +12,31 @@ function LeaderboardStripSection() {
       metric: "Projects Delivered",
       value: "30+",
       description: "On time, every time",
-      icon: <CheckCircle className="w-8 h-8" />,
+      icon: <CheckCircle className="size-8" />,
     },
     {
       metric: "Client Satisfaction",
       value: "4.9/5",
       description: "Average rating",
-      icon: <Star className="w-8 h-8" />,
+      icon: <Star className="size-8" />,
     },
     {
       metric: "Success Rate",
       value: "100%",
       description: "Mission completion",
-      icon: <Target className="w-8 h-8" />,
+      icon: <Target className="size-8" />,
     },
     {
       metric: "Client Retention",
       value: "95%",
       description: "Come back for more",
-      icon: <Users className="w-8 h-8" />,
+      icon: <Users className="size-8" />,
     },
     {
       metric: "Average Timeline",
       value: "8 weeks",
       description: "From start to launch",
-      icon: <Clock className="w-8 h-8" />,
+      icon: <Clock className="size-8" />,
     },
   ]
 
@@ -73,7 +73,7 @@ function LeaderboardStripSection() {
 
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-primaryBlue mb-6">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             The Numbers <br/>
             <span className="text-primaryOrange">
               Speak Volumes
@@ -85,14 +85,14 @@ function LeaderboardStripSection() {
         <div className="grid lg:grid-cols-5 md:grid-cols-3 gap-8">
           {leaderboardStats.map((stat, index) => (
             <div
-              key={index}
+              key={stat?.id ?? stat?.slug ?? stat?.title ?? stat?.name ?? index}
               className={`text-center transition-all duration-700 delay-${index * 100} transform ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
               }`}
             >
               <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:bg-white/15 transition-colors duration-300">
                 <div
-                  className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primaryBlue mb-6`}
+                  className={`inline-flex items-center justify-center size-16 rounded-2xl bg-primaryBlue mb-6`}
                 >
                   <div className="text-white">{stat.icon}</div>
                 </div>
