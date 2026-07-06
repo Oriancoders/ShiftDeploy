@@ -21,6 +21,14 @@ const benefits = [
     desc: 'Every patient gets the same review choice, no gating, DPA + consent built in.',
   },
   {
+    title: 'Win back unhappy patients',
+    desc: 'Automated follow-up emails, then a one-click review invite once the problem is fixed.',
+  },
+  {
+    title: 'Billing and receipts built in',
+    desc: 'No billing system? Add a patient, click send, they get a branded PDF receipt by email.',
+  },
+  {
     title: 'Live in minutes, zero hardware',
     desc: 'Print one branded QR poster for reception. No app, no staff training.',
   },
@@ -188,7 +196,7 @@ const ReviewYourDoctor = () => {
             </motion.div>
 
             <motion.p variants={fadeInUp} className="mt-4 text-sm text-gray-500">
-              30-day free trial, then £49/month. No card required to start.
+              Free 30-day trial, then plans from £49/month. No card required to start.
             </motion.p>
           </div>
 

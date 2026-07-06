@@ -28,11 +28,12 @@ const products = [
     icon: Stethoscope,
     tagline: 'More 5-star reviews, fully GDPR compliant.',
     description:
-      'A QR-powered patient feedback platform that helps UK private clinics earn more 5-star Google reviews, while privately catching unhappy patients before they post in public.',
+      'A QR-powered patient feedback and billing platform for UK private clinics: earn more 5-star Google reviews, catch unhappy patients privately, win them back with follow-ups, and email branded PDF receipts, all from one dashboard.',
     points: [
-      'One-tap rating in under eight seconds',
-      'Smart routing: happy patients to Google, others private',
-      'UK GDPR compliant with a live feedback dashboard',
+      'Every patient chooses: Google review or private feedback (no gating)',
+      'Automated follow-ups turn resolved complaints into 5-star reviews',
+      'Built-in patient billing: branded PDF receipts emailed in one click',
+      'UK GDPR compliant with a live feedback + revenue dashboard',
     ],
   },
 ];

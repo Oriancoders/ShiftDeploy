@@ -2,7 +2,8 @@
 import React, { useRef } from 'react';
 import { LazyMotion, domAnimation, m as motion, useInView } from 'framer-motion';
 import {
-  QrCode, Star, SplitSquareVertical, BellRing, ShieldCheck, BarChart3, ArrowUpRight,
+  QrCode, Star, BellRing, ShieldCheck, BarChart3, ArrowUpRight,
+  MailCheck, ReceiptText, UsersRound, Palette, Check,
 } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -11,18 +12,47 @@ import { fadeInUp, staggerContainer } from '../utils/animations';
 
 const LIVE_URL = 'https://reviewyourdoctor.shiftdeploy.com';
 
+// Paste a YouTube/Vimeo EMBED url here to show the demo video section
+// (e.g. 'https://www.youtube.com/embed/XXXXXXXXXXX'). Leave empty to hide it.
+const DEMO_VIDEO_EMBED = '';
+
 const steps = [
-  { icon: QrCode, title: 'Patient scans the QR', desc: 'A branded poster at reception, no app to download.' },
-  { icon: Star, title: 'They rate the visit', desc: 'One tap, under eight seconds, on their own phone.' },
-  { icon: SplitSquareVertical, title: 'Smart, compliant routing', desc: 'Happy patients go to Google, others share privately.' },
-  { icon: BellRing, title: 'Manager gets alerted', desc: 'Negative feedback triggers an instant email to staff.' },
+  { icon: QrCode, title: 'Ask at the right moment', desc: 'Patient scans the QR at the counter, or taps the link in their receipt email.' },
+  { icon: Star, title: 'They rate and choose', desc: 'One tap on their own phone. Every patient gets the same choice: Google review or private feedback.' },
+  { icon: BellRing, title: 'You catch problems early', desc: 'Private feedback alerts the manager instantly and lands in your resolve worklist.' },
+  { icon: MailCheck, title: 'Resolve, then win back', desc: 'Fix the issue, and one click asks the now-happy patient for the review they want to give.' },
 ];
 
 const features = [
-  { icon: Star, title: 'Public review growth', desc: 'More genuine 5-star Google reviews, automatically.' },
+  { icon: Star, title: 'Public review growth', desc: 'More genuine 5-star Google reviews, by asking every patient at the right moment.' },
+  { icon: BellRing, title: 'Never miss a complaint', desc: 'Unhappy patients are heard privately and land in a resolve worklist before anything goes public.' },
+  { icon: MailCheck, title: 'Automated follow-ups', desc: 'Email sequences to unhappy patients, sent in your clinic\'s name with replies to your inbox. Resolved patients get a one-click review invite.' },
+  { icon: ReceiptText, title: 'Billing without a billing system', desc: 'Add a patient, click send: a branded PDF receipt lands in their email, with revenue analytics on your dashboard.' },
+  { icon: UsersRound, title: 'Patient records built in', desc: 'A simple patient book, deduplicated automatically, linked to their feedback and receipts.' },
+  { icon: Palette, title: 'Your brand, your voice', desc: 'Your logo on the QR poster and receipts, fully customisable emails, sent as your clinic.' },
   { icon: ShieldCheck, title: 'Compliance-first', desc: 'UK GDPR, a published DPA, consent at signup, and an equal review choice for every patient (no gating).' },
-  { icon: BarChart3, title: 'Live dashboard', desc: 'Ratings, trends and private feedback update in real time.' },
-  { icon: BellRing, title: 'Never miss a complaint', desc: 'Catch unhappy patients before they post in public.' },
+  { icon: BarChart3, title: 'Live dashboard', desc: 'Ratings, trends, private feedback and revenue update in real time.' },
+];
+
+const plans = [
+  {
+    name: 'Starter',
+    price: '£49',
+    points: ['Branded QR poster + review funnel', 'Private feedback + instant alerts', 'Live dashboard + patient records'],
+    highlight: false,
+  },
+  {
+    name: 'Growth',
+    price: '£69',
+    points: ['Everything in Starter', 'Automated follow-up email sequences', 'One-click win-back review invites'],
+    highlight: true,
+  },
+  {
+    name: 'Pro',
+    price: '£79',
+    points: ['Everything in Growth', 'Patient billing + PDF receipts by email', 'Custom emails + revenue analytics'],
+    highlight: false,
+  },
 ];
 
 function Section({ children, className = '' }) {
@@ -90,10 +120,39 @@ const ReviewYourDoctorLanding = () => {
             </a>
           </motion.div>
           <motion.p variants={fadeInUp} className="mt-4 text-sm text-gray-400">
-            30-day free trial, then £49/month.
+            Free trial, then plans from £49/month.
           </motion.p>
         </Section>
       </section>
+
+      {/* DEMO VIDEO */}
+      {DEMO_VIDEO_EMBED && (
+        <section className="bg-white py-20 sm:py-24">
+          <Section className="mx-auto max-w-4xl px-4 sm:px-6">
+            <motion.h2 variants={fadeInUp} className="text-center text-3xl font-bold text-primaryBlue sm:text-4xl">
+              See it in action
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="mx-auto mt-3 max-w-2xl text-center text-gray-600">
+              A quick walkthrough: from the patient scan to the resolved complaint and the receipt email.
+            </motion.p>
+            <motion.div
+              variants={fadeInUp}
+              className="mt-10 overflow-hidden rounded-2xl border border-gray-100 shadow-xl shadow-emerald-900/10"
+            >
+              <div className="relative aspect-video w-full">
+                <iframe
+                  src={DEMO_VIDEO_EMBED}
+                  title="Review Your Doctor demo"
+                  className="absolute inset-0 h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
+          </Section>
+        </section>
+      )}
 
       {/* Reuse the rich product section */}
       <ReviewYourDoctor />
@@ -132,7 +191,7 @@ const ReviewYourDoctorLanding = () => {
           <motion.h2 variants={fadeInUp} className="text-center text-3xl font-bold text-primaryBlue sm:text-4xl">
             Why clinics choose it
           </motion.h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
             {features.map((f) => (
               <motion.div
                 key={f.title}
@@ -146,6 +205,60 @@ const ReviewYourDoctorLanding = () => {
                   <p className="font-bold text-gray-900">{f.title}</p>
                   <p className="mt-1 text-sm text-gray-600">{f.desc}</p>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </Section>
+      </section>
+
+      {/* PLANS */}
+      <section className="bg-gray-50 py-20 sm:py-24">
+        <Section className="mx-auto max-w-6xl px-4 sm:px-6">
+          <motion.h2 variants={fadeInUp} className="text-center text-3xl font-bold text-primaryBlue sm:text-4xl">
+            Simple plans, free trial on all of them
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="mx-auto mt-3 max-w-2xl text-center text-gray-600">
+            Start free, pick a plan when you are ready. Monthly or yearly billing.
+          </motion.p>
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {plans.map((p) => (
+              <motion.div
+                key={p.name}
+                variants={fadeInUp}
+                className={`relative flex flex-col rounded-2xl border bg-white p-7 shadow-sm ${
+                  p.highlight ? 'border-emerald-500 ring-2 ring-emerald-500/20' : 'border-gray-100'
+                }`}
+              >
+                {p.highlight && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-emerald-500 px-3 py-1 text-xs font-bold text-white">
+                    Most popular
+                  </span>
+                )}
+                <p className="font-bold text-gray-900">{p.name}</p>
+                <p className="mt-2 text-4xl font-black text-primaryBlue">
+                  {p.price}
+                  <span className="text-base font-medium text-gray-500">/month</span>
+                </p>
+                <ul className="mt-5 space-y-2.5">
+                  {p.points.map((pt) => (
+                    <li key={pt} className="flex items-start gap-2 text-sm text-gray-600">
+                      <Check className="mt-0.5 size-4 flex-shrink-0 text-emerald-600" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={`${LIVE_URL}/signup`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`mt-7 rounded-xl px-6 py-3 text-center font-bold transition-colors ${
+                    p.highlight
+                      ? 'bg-primaryOrange text-white hover:bg-toOrange'
+                      : 'border-2 border-primaryBlue text-primaryBlue hover:bg-primaryBlue hover:text-white'
+                  }`}
+                >
+                  Start free trial
+                </a>
               </motion.div>
             ))}
           </div>
