@@ -26,6 +26,7 @@ const products = [
     name: 'Review Your Doctor',
     href: '/review-your-doctor',
     icon: Stethoscope,
+    logo: '/products/review-your-doctor/icon.png',
     tagline: 'More 5-star reviews, fully GDPR compliant.',
     description:
       'A QR-powered patient feedback and billing platform for UK private clinics: earn more 5-star Google reviews, catch unhappy patients privately, win them back with follow-ups, and email branded PDF receipts, all from one dashboard.',
@@ -100,8 +101,16 @@ const ProductLanding = () => {
                 variants={fadeInUp}
                 className="flex flex-col rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-shadow hover:shadow-md"
               >
-                <div className="grid size-14 place-items-center rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 text-white">
-                  <p.icon className="size-7" />
+                <div
+                  className={`grid size-14 place-items-center rounded-2xl ${
+                    p.logo ? 'bg-emerald-50 ring-1 ring-emerald-100' : 'bg-gradient-to-br from-emerald-500 to-green-600 text-white'
+                  }`}
+                >
+                  {p.logo ? (
+                    <img src={p.logo} alt={`${p.name} logo`} className="size-9 object-contain" />
+                  ) : (
+                    <p.icon className="size-7" />
+                  )}
                 </div>
                 <h2 className="mt-6 text-2xl font-bold text-primaryBlue">{p.name}</h2>
                 <p className="mt-1 font-semibold text-primaryOrange">{p.tagline}</p>

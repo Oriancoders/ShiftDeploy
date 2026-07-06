@@ -47,8 +47,12 @@ function FlowMock({ inView }) {
       <div className="relative rounded-[2rem] border border-gray-100 bg-white p-6 shadow-2xl shadow-emerald-900/10">
         {/* clinic header */}
         <div className="mb-5 flex items-center gap-3">
-          <div className="grid size-10 place-items-center rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 text-white">
-            <Star className="size-5 fill-white" />
+          <div className="grid size-10 place-items-center rounded-xl bg-emerald-50 ring-1 ring-emerald-100">
+            <img
+              src="/products/review-your-doctor/icon.png"
+              alt=""
+              className="size-6 object-contain"
+            />
           </div>
           <div>
             <p className="text-sm font-bold text-primaryBlue">Smile Dental Care</p>
@@ -139,7 +143,11 @@ const ReviewYourDoctor = () => {
               variants={fadeInUp}
               className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1.5 text-sm font-semibold text-emerald-700 ring-1 ring-emerald-100"
             >
-              <Star className="size-4 fill-emerald-500 text-emerald-500" />
+              <img
+                src="/products/review-your-doctor/icon.png"
+                alt="Review Your Doctor logo"
+                className="size-5 object-contain"
+              />
               SaaS product for healthcare
             </motion.span>
 

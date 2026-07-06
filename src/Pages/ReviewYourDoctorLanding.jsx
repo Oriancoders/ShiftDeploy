@@ -88,6 +88,15 @@ const ReviewYourDoctorLanding = () => {
             <Star className="size-4 fill-emerald-300 text-emerald-300" />
             A ShiftDeploy product
           </motion.span>
+          <motion.div variants={fadeInUp} className="mt-8 flex justify-center">
+            <div className="grid size-20 place-items-center rounded-3xl bg-white shadow-lg shadow-emerald-900/20 ring-1 ring-white/20">
+              <img
+                src="/products/review-your-doctor/icon.png"
+                alt="Review Your Doctor logo"
+                className="size-14 object-contain"
+              />
+            </div>
+          </motion.div>
           <motion.h1
             variants={fadeInUp}
             className="mt-6 text-4xl font-bold leading-tight text-white sm:text-6xl"
