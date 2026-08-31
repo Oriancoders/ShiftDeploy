@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="t d">
+  <title id="t">Where patients drop off between the ad click and the confirmed booking</title>
+  <desc id="d">A funnel from 1000 paid ad clicks: 1000 clicks, 530 reach the landing page after slow-load abandonment, 380 reach treatments after layout shift, 290 reach the booking form, and 240 confirm. The largest single loss, 470 visitors, happens before the landing page even renders.</desc>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <text x="60" y="62" font-family="Segoe UI, system-ui, sans-serif" font-size="32" font-weight="700" fill="#0B2A4A">Where 1,000 paid clicks actually go</text>
+  <text x="60" y="94" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#5A6B7C">You paid for all 1,000. The biggest loss happens before anything renders.</text>
+
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L9,3.5 L0,7 z" fill="#C7D2DC"/>
+    </marker>
+  </defs>
+
+  <!-- stages: x positions -->
+  <!-- 1 -->
+  <rect x="60" y="150" width="190" height="112" rx="10" fill="#0B2A4A"/>
+  <text x="155" y="188" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700" fill="#8FA6BC" text-anchor="middle">AD CLICK</text>
+  <text x="155" y="228" font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">1,000</text>
+  <text x="155" y="250" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#8FA6BC" text-anchor="middle">all billed</text>
+
+  <line x1="256" y1="206" x2="290" y2="206" stroke="#C7D2DC" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- 2 -->
+  <rect x="296" y="150" width="190" height="112" rx="10" fill="#4A7FB5"/>
+  <text x="391" y="188" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700" fill="#D6E4F2" text-anchor="middle">LANDING PAGE</text>
+  <text x="391" y="228" font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">530</text>
+  <text x="391" y="250" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#D6E4F2" text-anchor="middle">saw content</text>
+
+  <line x1="492" y1="206" x2="526" y2="206" stroke="#C7D2DC" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- 3 -->
+  <rect x="532" y="150" width="190" height="112" rx="10" fill="#6B9BD1"/>
+  <text x="627" y="188" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700" fill="#EAF2FA" text-anchor="middle">TREATMENTS</text>
+  <text x="627" y="228" font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">380</text>
+
+  <line x1="728" y1="206" x2="762" y2="206" stroke="#C7D2DC" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- 4 -->
+  <rect x="768" y="150" width="190" height="112" rx="10" fill="#9DB8D4"/>
+  <text x="863" y="188" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700" fill="#22384F" text-anchor="middle">BOOKING FORM</text>
+  <text x="863" y="228" font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="700" fill="#0B2A4A" text-anchor="middle">290</text>
+
+  <line x1="964" y1="206" x2="998" y2="206" stroke="#C7D2DC" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- 5 -->
+  <rect x="1004" y="150" width="136" height="112" rx="10" fill="#1F9D55"/>
+  <text x="1072" y="188" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700" fill="#D4F0E0" text-anchor="middle">CONFIRMED</text>
+  <text x="1072" y="228" font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">240</text>
+
+  <!-- drop-off callouts -->
+  <g font-family="Segoe UI, system-ui, sans-serif">
+    <!-- biggest loss -->
+    <path d="M296 274 L296 320" stroke="#C2410C" stroke-width="2" stroke-dasharray="5 4"/>
+    <rect x="188" y="326" width="270" height="96" rx="10" fill="#FDF0E8" stroke="#E8833A" stroke-width="2"/>
+    <text x="208" y="356" font-size="26" font-weight="700" fill="#C2410C">−470</text>
+    <text x="208" y="382" font-size="15" font-weight="600" fill="#0B2A4A">Slow load, before render</text>
+    <text x="208" y="404" font-size="14" fill="#8A6144">47% of the budget, gone</text>
+
+    <path d="M532 274 L532 320" stroke="#B0BFCC" stroke-width="2" stroke-dasharray="5 4"/>
+    <rect x="474" y="326" width="200" height="96" rx="10" fill="#F5F7FA" stroke="#D4DDE5"/>
+    <text x="494" y="356" font-size="24" font-weight="700" fill="#5A6B7C">−150</text>
+    <text x="494" y="382" font-size="15" fill="#0B2A4A">Layout shift</text>
+    <text x="494" y="404" font-size="14" fill="#8494A3">content jumps</text>
+
+    <path d="M768 274 L768 320" stroke="#B0BFCC" stroke-width="2" stroke-dasharray="5 4"/>
+    <rect x="700" y="326" width="200" height="96" rx="10" fill="#F5F7FA" stroke="#D4DDE5"/>
+    <text x="720" y="356" font-size="24" font-weight="700" fill="#5A6B7C">−90</text>
+    <text x="720" y="382" font-size="15" fill="#0B2A4A">Tap delay</text>
+    <text x="720" y="404" font-size="14" fill="#8494A3">INP over 200ms</text>
+
+    <path d="M1004 274 L1004 320" stroke="#B0BFCC" stroke-width="2" stroke-dasharray="5 4"/>
+    <rect x="936" y="326" width="204" height="96" rx="10" fill="#F5F7FA" stroke="#D4DDE5"/>
+    <text x="956" y="356" font-size="24" font-weight="700" fill="#5A6B7C">−50</text>
+    <text x="956" y="382" font-size="15" fill="#0B2A4A">Form friction</text>
+    <text x="956" y="404" font-size="14" fill="#8494A3">fields, validation</text>
+  </g>
+
+  <rect x="60" y="470" width="1080" height="1" fill="#EDF1F5"/>
+
+  <text x="60" y="516" font-family="Segoe UI, system-ui, sans-serif" font-size="20" font-weight="700" fill="#0B2A4A">The first drop-off is larger than the other three combined.</text>
+  <text x="60" y="550" font-family="Segoe UI, system-ui, sans-serif" font-size="17" fill="#5A6B7C">It is also the only one that happens before the patient has read a single word about your practice,</text>
+  <text x="60" y="576" font-family="Segoe UI, system-ui, sans-serif" font-size="17" fill="#5A6B7C">and the only one that no amount of copywriting, offer testing or ad optimisation can recover.</text>
+
+  <rect x="60" y="604" width="1080" height="44" rx="8" fill="#FDF0E8"/>
+  <text x="82" y="632" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#8A6144">Illustrative funnel based on drop-off patterns observed in practice website audits. Your own split will differ.</text>
+</svg>

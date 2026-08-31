@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="t d">
+  <title id="t">Where the 4.1 second booking page goes</title>
+  <desc id="d">A waterfall showing server response 0.9s, render-blocking CSS and fonts 1.1s, hero image download 1.6s, and decode plus paint 0.5s, totalling 4.1 seconds against a 2.5 second Good threshold.</desc>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <text x="60" y="70" font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="700" fill="#0B2A4A">Where a 4.1s booking page actually spends its time</text>
+  <text x="60" y="104" font-family="Segoe UI, system-ui, sans-serif" font-size="19" fill="#5A6B7C">Mobile, throttled 4G. Each bar starts when the previous one unblocks it.</text>
+
+  <!-- time axis -->
+  <line x1="60" y1="560" x2="1140" y2="560" stroke="#D4DDE5" stroke-width="2"/>
+  <g font-family="Segoe UI, system-ui, sans-serif" font-size="15" fill="#8494A3" text-anchor="middle">
+    <text x="60"  y="590">0s</text>
+    <text x="292" y="590">1s</text>
+    <text x="524" y="590">2s</text>
+    <text x="756" y="590">3s</text>
+    <text x="988" y="590">4s</text>
+  </g>
+  <g stroke="#EDF1F5" stroke-width="1">
+    <line x1="292" y1="150" x2="292" y2="560"/>
+    <line x1="524" y1="150" x2="524" y2="560"/>
+    <line x1="756" y1="150" x2="756" y2="560"/>
+    <line x1="988" y1="150" x2="988" y2="560"/>
+  </g>
+
+  <!-- 2.5s Good threshold -->
+  <line x1="640" y1="150" x2="640" y2="560" stroke="#1F9D55" stroke-width="2" stroke-dasharray="7 5"/>
+  <rect x="546" y="150" width="188" height="28" rx="14" fill="#1F9D55"/>
+  <text x="640" y="169" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">2.5s — Good LCP</text>
+
+  <!-- bars: x = 60 + seconds*232 -->
+  <g font-family="Segoe UI, system-ui, sans-serif" font-size="17">
+    <!-- server -->
+    <text x="60" y="222" fill="#0B2A4A" font-weight="600">Server response (TTFB)</text>
+    <rect x="60" y="234" width="209" height="34" rx="6" fill="#4A7FB5"/>
+    <text x="283" y="257" fill="#5A6B7C" font-size="15">0.9s</text>
+
+    <!-- css/fonts -->
+    <text x="60" y="304" fill="#0B2A4A" font-weight="600">Render-blocking CSS and fonts</text>
+    <rect x="269" y="316" width="255" height="34" rx="6" fill="#6B9BD1"/>
+    <text x="538" y="339" fill="#5A6B7C" font-size="15">1.1s</text>
+
+    <!-- hero image -->
+    <text x="60" y="386" fill="#0B2A4A" font-weight="600">Hero image download</text>
+    <rect x="524" y="398" width="371" height="34" rx="6" fill="#E8833A"/>
+    <text x="909" y="421" fill="#B45309" font-size="15" font-weight="600">1.6s — the largest single block</text>
+
+    <!-- decode -->
+    <text x="60" y="468" fill="#0B2A4A" font-weight="600">Decode and paint</text>
+    <rect x="895" y="480" width="116" height="34" rx="6" fill="#9DB8D4"/>
+    <text x="1025" y="503" fill="#5A6B7C" font-size="15">0.5s</text>
+  </g>
+
+  <!-- LCP marker -->
+  <line x1="1011" y1="150" x2="1011" y2="560" stroke="#C2410C" stroke-width="2"/>
+  <rect x="931" y="120" width="160" height="28" rx="14" fill="#C2410C"/>
+  <text x="1011" y="139" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">LCP 4.1s</text>
+
+  <text x="60" y="640" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#5A6B7C">The hero image is 39% of the total. It is also the cheapest part to fix.</text>
+</svg>

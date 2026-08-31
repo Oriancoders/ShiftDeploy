@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="t d">
+  <title id="t">What the owner sees versus what the patient sees</title>
+  <desc id="d">Left: the dental website on a desktop, fully rendered with hero image, heading and booking button. Right: the same site on a mobile phone mid-load at 2.8 seconds, with the hero image still a blank grey block and the booking button not yet painted.</desc>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <text x="60" y="62" font-family="Segoe UI, system-ui, sans-serif" font-size="32" font-weight="700" fill="#0B2A4A">What the owner sees vs what the patient sees</text>
+  <text x="60" y="94" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#5A6B7C">The same website, two devices, the same moment in the load.</text>
+
+  <!-- ============ DESKTOP ============ -->
+  <text x="60" y="146" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="700" fill="#1F9D55" letter-spacing="0.5">OFFICE LAPTOP · WIFI · CACHED</text>
+
+  <rect x="60" y="162" width="500" height="330" rx="10" fill="#ffffff" stroke="#D4DDE5" stroke-width="2"/>
+  <rect x="60" y="162" width="500" height="30" rx="10" fill="#F5F7FA"/>
+  <rect x="60" y="182" width="500" height="10" fill="#F5F7FA"/>
+  <circle cx="82" cy="177" r="5" fill="#E8833A"/>
+  <circle cx="100" cy="177" r="5" fill="#D4DDE5"/>
+  <circle cx="118" cy="177" r="5" fill="#D4DDE5"/>
+
+  <!-- rendered hero -->
+  <rect x="80" y="212" width="460" height="120" rx="6" fill="#4A7FB5"/>
+  <circle cx="150" cy="272" r="34" fill="#6B9BD1"/>
+  <rect x="205" y="248" width="230" height="14" rx="7" fill="#ffffff" opacity="0.92"/>
+  <rect x="205" y="274" width="160" height="11" rx="5" fill="#ffffff" opacity="0.6"/>
+
+  <rect x="80" y="348" width="300" height="13" rx="6" fill="#0B2A4A"/>
+  <rect x="80" y="372" width="420" height="9" rx="4" fill="#C7D2DC"/>
+  <rect x="80" y="390" width="380" height="9" rx="4" fill="#C7D2DC"/>
+
+  <rect x="80" y="420" width="170" height="42" rx="8" fill="#E8833A"/>
+  <text x="165" y="447" font-family="Segoe UI, system-ui, sans-serif" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">Book Appointment</text>
+
+  <rect x="60" y="512" width="500" height="34" rx="8" fill="#EAF7EF"/>
+  <text x="80" y="535" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#1F7A44">Everything painted. Looks polished. Sign-off given.</text>
+
+  <!-- ============ MOBILE ============ -->
+  <text x="700" y="146" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="700" fill="#C2410C" letter-spacing="0.5">MID-RANGE ANDROID · 4G · NO CACHE</text>
+
+  <rect x="700" y="162" width="230" height="440" rx="24" fill="#ffffff" stroke="#D4DDE5" stroke-width="2"/>
+  <rect x="782" y="176" width="66" height="8" rx="4" fill="#D4DDE5"/>
+
+  <!-- unrendered hero -->
+  <rect x="716" y="200" width="198" height="130" rx="6" fill="#EDF1F5" stroke="#D4DDE5" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="815" y="258" font-family="Segoe UI, system-ui, sans-serif" font-size="14" fill="#A6B4C2" text-anchor="middle">hero image</text>
+  <text x="815" y="278" font-family="Segoe UI, system-ui, sans-serif" font-size="14" fill="#A6B4C2" text-anchor="middle">still loading</text>
+
+  <rect x="716" y="348" width="150" height="11" rx="5" fill="#D9E1E8"/>
+  <rect x="716" y="368" width="182" height="8" rx="4" fill="#EDF1F5"/>
+  <rect x="716" y="384" width="160" height="8" rx="4" fill="#EDF1F5"/>
+
+  <rect x="716" y="416" width="198" height="40" rx="8" fill="#F5F7FA" stroke="#E3E9EF" stroke-dasharray="5 4"/>
+  <text x="815" y="441" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#A6B4C2" text-anchor="middle">button not painted yet</text>
+
+  <!-- timer -->
+  <rect x="960" y="200" width="180" height="76" rx="10" fill="#FDF0E8" stroke="#F0C4A6"/>
+  <text x="1050" y="234" font-family="Segoe UI, system-ui, sans-serif" font-size="30" font-weight="700" fill="#C2410C" text-anchor="middle">2.8s</text>
+  <text x="1050" y="258" font-family="Segoe UI, system-ui, sans-serif" font-size="14" fill="#B45309" text-anchor="middle">elapsed, nothing read</text>
+
+  <rect x="960" y="300" width="180" height="140" rx="10" fill="#F5F7FA" stroke="#E3E9EF"/>
+  <text x="978" y="328" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700" fill="#8494A3">PATIENT THINKS</text>
+  <text x="978" y="358" font-family="Segoe UI, system-ui, sans-serif" font-size="15" fill="#0B2A4A">“This clinic</text>
+  <text x="978" y="380" font-family="Segoe UI, system-ui, sans-serif" font-size="15" fill="#0B2A4A">feels</text>
+  <text x="978" y="402" font-family="Segoe UI, system-ui, sans-serif" font-size="15" fill="#0B2A4A">disorganised.”</text>
+  <text x="978" y="426" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#C2410C">Then they leave.</text>
+
+  <text x="700" y="640" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#5A6B7C">They never diagnose an LCP problem. They just form an impression.</text>
+</svg>

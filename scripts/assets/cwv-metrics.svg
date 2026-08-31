@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="t d">
+  <title id="t">LCP, INP and CLS on a typical dental website, and what each one feels like</title>
+  <desc id="d">Three Core Web Vitals for a typical dental practice site measured on mobile: LCP 4.2 seconds against a 2.5 second target, INP 340 milliseconds against 200, and CLS 0.24 against 0.1. Each is marked Poor, with a plain-language note on what the patient experiences.</desc>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <text x="60" y="62" font-family="Segoe UI, system-ui, sans-serif" font-size="32" font-weight="700" fill="#0B2A4A">A typical dental website, measured on mobile</text>
+  <text x="60" y="94" font-family="Segoe UI, system-ui, sans-serif" font-size="18" fill="#5A6B7C">The score is not the point. What the patient experiences is.</text>
+
+  <!-- LCP -->
+  <g>
+    <rect x="60" y="130" width="1080" height="150" rx="12" fill="#FDF6F4" stroke="#F0C4A6" stroke-width="1.5"/>
+    <text x="88" y="168" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700" fill="#8494A3">LCP · LARGEST CONTENTFUL PAINT</text>
+    <text x="88" y="216" font-family="Segoe UI, system-ui, sans-serif" font-size="44" font-weight="700" fill="#C2410C">4.2s</text>
+    <rect x="196" y="188" width="72" height="26" rx="13" fill="#C2410C"/>
+    <text x="232" y="206" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">Poor</text>
+    <text x="88" y="248" font-family="Segoe UI, system-ui, sans-serif" font-size="15" fill="#8494A3">Good is under 2.5s</text>
+
+    <!-- bar -->
+    <rect x="330" y="182" width="600" height="14" rx="7" fill="#EDF1F5"/>
+    <rect x="330" y="182" width="357" height="14" rx="7" fill="#1F9D55"/>
+    <rect x="687" y="182" width="243" height="14" rx="7" fill="#C2410C"/>
+    <line x1="687" y1="172" x2="687" y2="206" stroke="#0B2A4A" stroke-width="2"/>
+    <text x="687" y="166" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="600" fill="#0B2A4A" text-anchor="middle">2.5s target</text>
+
+    <text x="330" y="242" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#0B2A4A">The patient stares at a blank space where the hero and heading should be.</text>
+    <text x="330" y="264" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#5A6B7C">They are reading nothing while they wait.</text>
+  </g>
+
+  <!-- INP -->
+  <g>
+    <rect x="60" y="298" width="1080" height="150" rx="12" fill="#FDF6F4" stroke="#F0C4A6" stroke-width="1.5"/>
+    <text x="88" y="336" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700" fill="#8494A3">INP · INTERACTION TO NEXT PAINT</text>
+    <text x="88" y="384" font-family="Segoe UI, system-ui, sans-serif" font-size="44" font-weight="700" fill="#C2410C">340ms</text>
+    <rect x="238" y="356" width="72" height="26" rx="13" fill="#C2410C"/>
+    <text x="274" y="374" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">Poor</text>
+    <text x="88" y="416" font-family="Segoe UI, system-ui, sans-serif" font-size="15" fill="#8494A3">Good is under 200ms</text>
+
+    <rect x="360" y="350" width="570" height="14" rx="7" fill="#EDF1F5"/>
+    <rect x="360" y="350" width="335" height="14" rx="7" fill="#1F9D55"/>
+    <rect x="695" y="350" width="235" height="14" rx="7" fill="#C2410C"/>
+    <line x1="695" y1="340" x2="695" y2="374" stroke="#0B2A4A" stroke-width="2"/>
+    <text x="695" y="334" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="600" fill="#0B2A4A" text-anchor="middle">200ms target</text>
+
+    <text x="360" y="410" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#0B2A4A">They tap “Book” and nothing happens for a third of a second.</text>
+    <text x="360" y="432" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#5A6B7C">So they tap again, or assume it is broken.</text>
+  </g>
+
+  <!-- CLS -->
+  <g>
+    <rect x="60" y="466" width="1080" height="150" rx="12" fill="#FDF6F4" stroke="#F0C4A6" stroke-width="1.5"/>
+    <text x="88" y="504" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700" fill="#8494A3">CLS · CUMULATIVE LAYOUT SHIFT</text>
+    <text x="88" y="552" font-family="Segoe UI, system-ui, sans-serif" font-size="44" font-weight="700" fill="#C2410C">0.24</text>
+    <rect x="186" y="524" width="72" height="26" rx="13" fill="#C2410C"/>
+    <text x="222" y="542" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">Poor</text>
+    <text x="88" y="584" font-family="Segoe UI, system-ui, sans-serif" font-size="15" fill="#8494A3">Good is under 0.1</text>
+
+    <rect x="330" y="518" width="600" height="14" rx="7" fill="#EDF1F5"/>
+    <rect x="330" y="518" width="250" height="14" rx="7" fill="#1F9D55"/>
+    <rect x="580" y="518" width="350" height="14" rx="7" fill="#C2410C"/>
+    <line x1="580" y1="508" x2="580" y2="542" stroke="#0B2A4A" stroke-width="2"/>
+    <text x="580" y="502" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="600" fill="#0B2A4A" text-anchor="middle">0.1 target</text>
+
+    <text x="330" y="578" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#0B2A4A">A cookie banner drops in and pushes the booking form 200px down</text>
+    <text x="330" y="600" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#5A6B7C">at the exact moment their thumb is already moving.</text>
+  </g>
+</svg>

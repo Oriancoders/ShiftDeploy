@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="t d">
+  <title id="t">One upload, the right file for every visitor</title>
+  <desc id="d">A pipeline diagram: a 6.2 megabyte phone photo is compressed in the browser to 340 kilobytes WebP, stored once on the CDN, then served as 48 kilobyte AVIF to a phone, 96 kilobyte AVIF to a tablet, and 180 kilobyte AVIF to a desktop, selected by srcset and the Accept header.</desc>
+
+  <rect width="1200" height="675" fill="#ffffff"/>
+
+  <text x="60" y="66" font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="700" fill="#0B2A4A">One upload. The right file for every visitor.</text>
+  <text x="60" y="100" font-family="Segoe UI, system-ui, sans-serif" font-size="19" fill="#5A6B7C">The editor never chooses a format or a size. The pipeline does it per request.</text>
+
+  <defs>
+    <marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 z" fill="#B0BFCC"/>
+    </marker>
+  </defs>
+
+  <!-- stage 1 -->
+  <rect x="60" y="150" width="230" height="120" rx="12" fill="#F5F7FA" stroke="#D4DDE5" stroke-width="2"/>
+  <text x="175" y="184" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700" fill="#8494A3" text-anchor="middle">1 — EDITOR DROPS</text>
+  <text x="175" y="222" font-family="Segoe UI, system-ui, sans-serif" font-size="30" font-weight="700" fill="#C2410C" text-anchor="middle">6.2 MB</text>
+  <text x="175" y="248" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#5A6B7C" text-anchor="middle">JPEG from a phone</text>
+
+  <line x1="298" y1="210" x2="352" y2="210" stroke="#B0BFCC" stroke-width="2.5" marker-end="url(#a)"/>
+
+  <!-- stage 2 -->
+  <rect x="360" y="150" width="230" height="120" rx="12" fill="#F5F7FA" stroke="#D4DDE5" stroke-width="2"/>
+  <text x="475" y="184" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700" fill="#8494A3" text-anchor="middle">2 — IN THE BROWSER</text>
+  <text x="475" y="222" font-family="Segoe UI, system-ui, sans-serif" font-size="30" font-weight="700" fill="#1F9D55" text-anchor="middle">340 KB</text>
+  <text x="475" y="248" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#5A6B7C" text-anchor="middle">WebP, max 2400px</text>
+
+  <line x1="598" y1="210" x2="652" y2="210" stroke="#B0BFCC" stroke-width="2.5" marker-end="url(#a)"/>
+
+  <!-- stage 3 -->
+  <rect x="660" y="150" width="230" height="120" rx="12" fill="#EAF2FA" stroke="#4A7FB5" stroke-width="2"/>
+  <text x="775" y="184" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700" fill="#4A7FB5" text-anchor="middle">3 — STORED ONCE</text>
+  <text x="775" y="222" font-family="Segoe UI, system-ui, sans-serif" font-size="22" font-weight="700" fill="#0B2A4A" text-anchor="middle">CDN original</text>
+  <text x="775" y="248" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#5A6B7C" text-anchor="middle">width, height, LQIP</text>
+
+  <!-- fan out -->
+  <path d="M890 210 C 960 210, 960 380, 1010 380" fill="none" stroke="#B0BFCC" stroke-width="2.5" marker-end="url(#a)"/>
+  <path d="M890 210 C 960 210, 960 470, 1010 470" fill="none" stroke="#B0BFCC" stroke-width="2.5" marker-end="url(#a)"/>
+  <path d="M890 210 C 960 210, 960 560, 1010 560" fill="none" stroke="#B0BFCC" stroke-width="2.5" marker-end="url(#a)"/>
+
+  <text x="60" y="352" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="700" fill="#8494A3">4 — SERVED PER REQUEST, CHOSEN BY srcset + Accept</text>
+
+  <g font-family="Segoe UI, system-ui, sans-serif">
+    <rect x="60" y="368" width="1080" height="1" fill="#EDF1F5"/>
+
+    <text x="60" y="392" font-size="18" font-weight="600" fill="#0B2A4A">Phone · 390px</text>
+    <rect x="300" y="374" width="120" height="24" rx="5" fill="#1F9D55"/>
+    <text x="360" y="391" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">AVIF</text>
+    <text x="1140" y="392" font-size="20" font-weight="700" fill="#1F9D55" text-anchor="end">48 KB</text>
+
+    <text x="60" y="482" font-size="18" font-weight="600" fill="#0B2A4A">Tablet · 768px</text>
+    <rect x="300" y="464" width="120" height="24" rx="5" fill="#1F9D55"/>
+    <text x="360" y="481" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">AVIF</text>
+    <text x="1140" y="482" font-size="20" font-weight="700" fill="#1F9D55" text-anchor="end">96 KB</text>
+
+    <text x="60" y="572" font-size="18" font-weight="600" fill="#0B2A4A">Desktop · 1440px</text>
+    <rect x="300" y="554" width="120" height="24" rx="5" fill="#1F9D55"/>
+    <text x="360" y="571" font-size="14" font-weight="600" fill="#ffffff" text-anchor="middle">AVIF</text>
+    <text x="1140" y="572" font-size="20" font-weight="700" fill="#1F9D55" text-anchor="end">180 KB</text>
+  </g>
+
+  <text x="60" y="636" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#5A6B7C">A phone downloads 48 KB, not 6.2 MB. Same upload, 129× less data.</text>
+</svg>
