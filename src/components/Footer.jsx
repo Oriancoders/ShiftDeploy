@@ -44,8 +44,12 @@ const Footer = () => {
           <motion.div variants={fadeInUp} className="sm:col-span-2 lg:col-span-1">
             <motion.div whileHover={{ scale: 1.05 }} className="lg:max-w-60 sm:max-w-48 max-w-36">
               <img
-                src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1765145802/whiteV_vzhhvi.png"
+                src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_480/v1765145802/whiteV_vzhhvi.png"
                 alt="ShiftDeploy"
+                width={775}
+                height={176}
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             <p className="text-gray-300 mb-4 sm:mb-6 lg:mb-8 leading-relaxed text-xs sm:text-sm lg:text-base">

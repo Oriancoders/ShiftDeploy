@@ -128,7 +128,18 @@ export const portableTextComponents = {
             {value.showIcon && <span className="flex-shrink-0 mt-0.5">{styles.icon}</span>}
             <div className={`flex-1 ${styles.text}`}>
               {value.title && <h4 className="font-semibold mb-2">{value.title}</h4>}
-              <div className="text-sm">{value.content}</div>
+              {/* content is a plain string from the admin editor, or Portable
+                  Text from Studio. Rendering an array of objects directly
+                  would silently produce nothing. */}
+              <div className="text-sm">
+                {Array.isArray(value.content)
+                  ? value.content.map((b) => (
+                      <p key={b._key} className="mb-1 last:mb-0">
+                        {(b.children || []).map((c) => c.text).join("")}
+                      </p>
+                    ))
+                  : value.content}
+              </div>
             </div>
           </div>
         </div>

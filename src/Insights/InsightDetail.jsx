@@ -9,6 +9,8 @@ import { isSanityConfigured, sanityClient } from "../lib/sanity";
 import { PortableText } from "@portabletext/react";
 import { portableTextComponents } from "./portableTextComponents.jsx";
 import MediaSlider from "./MediaSlider.jsx";
+import SanityImage from "../components/SanityImage";
+import { DirectAnswer, KeyTakeaways, FaqSection, HowToSteps, Citations } from "./AiSeoBlocks.jsx";
 // Initialize the image URL builder
 const imageBuilder = sanityClient
   ? imageUrlBuilder(sanityClient)
@@ -286,17 +288,22 @@ const renderCallout = (callout) => {
         )}
         <div className={`flex-1 ${styles.textColor}`}>
           {callout.title && <h4 className="font-semibold mb-2">{callout.title}</h4>}
-          {callout.content &&
-            callout.content.map((block) => {
-              if (block._type === "block" && block.children) {
-                return (
-                  <p key={block._key} className="text-sm">
-                    {renderTextWithMarks(block.children, block.markDefs)}
-                  </p>
-                );
-              }
-              return null;
-            })}
+          {/* content is Portable Text on callouts authored in Studio, but a
+              plain string on ones created through the admin editor. Handle
+              both rather than assuming an array. */}
+          {typeof callout.content === "string"
+            ? <p className="text-sm">{callout.content}</p>
+            : Array.isArray(callout.content) &&
+              callout.content.map((block) => {
+                if (block._type === "block" && block.children) {
+                  return (
+                    <p key={block._key} className="text-sm">
+                      {renderTextWithMarks(block.children, block.markDefs)}
+                    </p>
+                  );
+                }
+                return null;
+              })}
         </div>
       </div>
     </div>
@@ -424,6 +431,17 @@ const INSIGHT_BY_SLUG_QUERY = `*[
     title,
     "slug": slug.current
   },
+  schemaType,
+  updatedAt,
+  directAnswer,
+  keyTakeaways,
+  faqSection,
+  howTo,
+  citations,
+  entities,
+  speakable,
+  seo,
+  social,
   theme,
   featured,
   status,
@@ -604,7 +622,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
               <div className="flex flex-wrap items-center gap-4 text-sm text-white/60 pb-2">
                 <span className="flex items-center gap-2">
                   {post.authorImage
-                    ? <img src={post.authorImage} alt={post.author} className="size-8 rounded-full object-cover ring-2 ring-white/30" />
+                    ? <img src={post.authorImage} alt="" width={32} height={32} loading="lazy" decoding="async" className="size-8 rounded-full object-cover ring-2 ring-white/30" />
                     : <span className="size-8 rounded-full bg-primaryOrange/40 flex items-center justify-center text-white font-bold text-sm">{post.author?.[0]?.toUpperCase()}</span>
                   }
                   <span className="font-semibold text-white/80">{post.author}</span>
@@ -638,16 +656,27 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
             <article className="mt-8 bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
               {heroImage && (
                 <figure className="overflow-hidden">
-                  <img
-                    src={getImageUrl(heroImage, 1400)}
+                  {/* The hero is almost always the LCP element, so it is loaded
+                      eagerly at high priority and never lazily. */}
+                  <SanityImage
+                    image={heroImage}
                     alt={heroImage.alt || post.title || "Insight cover image"}
+                    sizes="(max-width: 1024px) 100vw, 896px"
+                    maxWidth={1792}
+                    priority
                     className="w-full h-fit object-cover"
                   />
                 </figure>
               )}
 
+              {/* AI-SEO surfaces. Rendered above the body so both readers and
+                  extractors hit the answer first. */}
+              <DirectAnswer value={post.directAnswer} />
+              <KeyTakeaways value={post.keyTakeaways} />
+              <HowToSteps value={post.howTo} />
+
               {Array.isArray(post.body) && post.body.length > 0 && (
-                <div className="px-6 sm:px-10 pb-10 pt-8 max-w-none overflow-hidden space-y-2">
+                <div className="px-6 sm:px-10 pb-10 pt-8 max-w-[68ch] mx-auto overflow-hidden space-y-2">
                   {/* Group consecutive list items into proper ul/ol wrappers */}
                   {(() => {
                     const grouped = [];
@@ -711,10 +740,8 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
 
                     // ============ IMAGE BLOCK ============
                     if (block._type === "imageBlock") {
-                      const imageUrl = getImageUrl(block.image, 1000);
-                      const altText = block.alt || "Blog image";
-                      
-                      if (!imageUrl) return null;
+                      const altText = block.alt || block.image?.alt || "";
+                      if (!block.image) return null;
                       
                       const widthClass = {
                         normal: "max-w-2xl",
@@ -733,9 +760,16 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                       
                       return (
                         <figure key={block._key} className={`my-6 overflow-hidden ${alignmentClass} ${widthClass}`}>
-                          <img
-                            src={imageUrl}
+                          <SanityImage
+                            image={block.image}
                             alt={altText}
+                            sizes={
+                              block.width === "full"
+                                ? "(max-width: 1024px) 100vw, 896px"
+                                : block.width === "wide"
+                                ? "(max-width: 896px) 100vw, 896px"
+                                : "(max-width: 672px) 100vw, 672px"
+                            }
                             className={`w-full shadow-md ${roundedClass}`}
                           />
                           {block.caption && (
@@ -939,7 +973,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                           </blockquote>
                           <figcaption className="flex items-center gap-3">
                             {block.avatar && (
-                              <img src={getImageUrl(block.avatar, 80)} alt={block.name || "Testimonial"} className="size-10 rounded-full object-cover" />
+                              <img src={getImageUrl(block.avatar, 80)} alt="" width={40} height={40} loading="lazy" decoding="async" className="size-10 rounded-full object-cover" />
                             )}
                             <div>
                               {block.name && <p className="font-bold text-primaryBlue">{block.name}</p>}
@@ -1134,6 +1168,9 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                 </div>
               )}
 
+              <FaqSection value={post.faqSection} />
+              <Citations value={post.citations} />
+
               {/* Tags footer */}
               {post.tags?.length > 0 && (
                 <div className="px-6 sm:px-10 pb-8 pt-4 border-t border-gray-100 mt-4 flex flex-wrap gap-2">
@@ -1149,7 +1186,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
               {/* Author card */}
               <div className="mx-6 sm:mx-10 mb-6 mt-2 rounded-xl bg-gradient-to-r from-primaryBlue/5 to-blue-50 border border-blue-100 p-5 flex items-center gap-4">
                 {post.authorImage
-                  ? <img src={post.authorImage} alt={post.author} className="size-14 rounded-full object-cover ring-2 ring-primaryBlue/20 flex-shrink-0" />
+                  ? <img src={post.authorImage} alt="" width={56} height={56} loading="lazy" decoding="async" className="size-14 rounded-full object-cover ring-2 ring-primaryBlue/20 flex-shrink-0" />
                   : <span className="size-14 rounded-full bg-primaryBlue flex items-center justify-center text-white font-extrabold text-xl flex-shrink-0">{post.author?.[0]?.toUpperCase()}</span>
                 }
                 <div>
@@ -1167,7 +1204,13 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                     {post.relatedPosts.map((related) => (
                       <Link key={related.slug} href={`/insights/${related.slug}`} className="group rounded-xl border border-gray-100 bg-gray-50 hover:bg-white hover:border-primaryBlue/20 hover:shadow-sm p-4 transition">
                         {related.mainImage && (
-                          <img src={getImageUrl(related.mainImage, 400)} alt={related.title} className="w-full h-32 object-cover rounded-lg mb-3" />
+                          <SanityImage
+                            image={related.mainImage}
+                            alt=""
+                            sizes="(max-width: 640px) 100vw, 320px"
+                            maxWidth={640}
+                            className="w-full h-32 object-cover rounded-lg mb-3"
+                          />
                         )}
                         <p className="text-xs text-gray-400 mb-1">{formatDate(related.date)}</p>
                         <h3 className="font-semibold text-sm text-primaryBlue group-hover:text-primaryOrange transition leading-snug line-clamp-2">{related.title}</h3>
