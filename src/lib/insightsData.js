@@ -65,6 +65,24 @@ export const INSIGHT_BY_SLUG_QUERY = `*[
     title,
     "slug": slug.current
   },
+  schemaType,
+  updatedAt,
+  contentGoal,
+  targetAudience,
+
+  // --- AI SEO / GEO ---
+  directAnswer,
+  keyTakeaways,
+  faqSection,
+  howTo,
+  citations,
+  entities,
+  speakable,
+
+  // --- grouped SEO objects (new schema) ---
+  seo,
+  social,
+
   theme,
   featured,
   status,
@@ -90,6 +108,45 @@ export const buildSanityImageUrl = (image, width = 1200, height) => {
   } catch {
     return null;
   }
+};
+
+
+/**
+ * Resolve an SEO field from either the new grouped `seo`/`social` objects or the
+ * legacy flat top-level fields. Existing posts use the flat shape; posts edited
+ * in the new Studio use the grouped shape. Both must keep working.
+ */
+export const resolveSeo = (doc) => {
+  if (!doc) return {};
+  const seo = doc.seo || {};
+  const social = doc.social || {};
+  return {
+    seoTitle: seo.seoTitle || doc.seoTitle || '',
+    seoDescription: seo.seoDescription || doc.seoDescription || '',
+    focusKeyword: seo.focusKeyword || doc.focusKeyword || '',
+    secondaryKeywords: seo.secondaryKeywords || doc.secondaryKeywords || [],
+    semanticKeywords: seo.semanticKeywords || [],
+    canonicalUrl: seo.canonicalUrl || doc.canonicalUrl || '',
+    noIndex: seo.noIndex ?? doc.noIndex ?? false,
+    searchIntent: seo.searchIntent || doc.searchIntent || '',
+    funnelStage: seo.funnelStage || doc.funnelStage || '',
+    targetAudience: seo.targetAudience || doc.targetAudience || '',
+    socialTitle: social.socialTitle || doc.socialTitle || '',
+    socialDescription: social.socialDescription || doc.socialDescription || '',
+    openGraphImage: social.openGraphImage || doc.openGraphImage || null,
+  };
+};
+
+/** Every keyword we know about, de-duplicated, for the meta keywords tag. */
+export const resolveKeywords = (doc) => {
+  const seo = resolveSeo(doc);
+  const all = [
+    seo.focusKeyword,
+    ...(seo.secondaryKeywords || []),
+    ...(seo.semanticKeywords || []),
+    ...(doc?.keywords || []),
+  ].filter(Boolean);
+  return all.length ? Array.from(new Set(all)) : undefined;
 };
 
 export const normalizeTags = (rawTags, rawCategories) => {
@@ -156,6 +213,14 @@ export const normalizeInsightDetail = (doc) => ({
   primaryCta: doc.primaryCta || null,
   relatedPosts: Array.isArray(doc.relatedPosts) ? doc.relatedPosts : [],
   featured: Boolean(doc.featured),
+
+  // AI-SEO surfaces rendered on the page itself
+  directAnswer: doc.directAnswer || null,
+  keyTakeaways: doc.keyTakeaways || null,
+  faqSection: doc.faqSection || null,
+  howTo: doc.howTo || null,
+  citations: Array.isArray(doc.citations) ? doc.citations : [],
+  entities: Array.isArray(doc.entities) ? doc.entities : [],
 });
 
 export async function getInsightList() {
