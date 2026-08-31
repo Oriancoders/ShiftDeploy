@@ -4,7 +4,7 @@ export default function robots() {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/thankyou', '/api/'],
+        disallow: ['/thankyou', '/api/', '/admin', '/admin/'],
       },
     ],
     sitemap: 'https://shiftdeploy.com/sitemap.xml',
