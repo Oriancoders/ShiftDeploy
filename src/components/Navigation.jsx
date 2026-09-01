@@ -168,11 +168,19 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
 
             {/* Mobile menu button */}
             <div className="lg:hidden">
+              {/* Icon-only control, so it needs an explicit name: the SVG
+                  carries no text and a screen reader or AI agent otherwise
+                  announces it as an unlabelled button. aria-expanded and
+                  aria-controls let both know what it operates and its state. */}
               <button
+                type="button"
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                aria-expanded={isOpen}
+                aria-controls="mobile-navigation"
                 className="text-primaryBlue hover:text-primaryBlue transition-colors duration-300 p-2"
               >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
+                {isOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
               </button>
             </div>
           </div>
@@ -182,6 +190,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
         <AnimatePresence>
           {isOpen && (
             <m.div
+              id="mobile-navigation"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: '100vh' }}
               exit={{ opacity: 0, height: 0 }}

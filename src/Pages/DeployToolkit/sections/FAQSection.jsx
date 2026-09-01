@@ -101,7 +101,9 @@ function FAQSection() {
             >
               <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
                 <button
+                  type="button"
                   onClick={() => toggleFAQ(index)}
+                  aria-expanded={openFAQ === index}
                   className="w-full px-4 sm:px-8 py-4 sm:py-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200"
                 >
                   <h3 className="text-lg font-semibold text-primaryBlue pr-4">{faq.question}</h3>
