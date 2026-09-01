@@ -3,7 +3,7 @@ import ReviewYourDoctorLanding from '../../src/Pages/ReviewYourDoctorLanding';
 import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
-  title: 'Review Your Doctor | QR Patient Feedback & 5-Star Reviews for Clinics',
+  title: 'Review Your Doctor | QR Patient Feedback',
   description:
     "A QR-powered patient feedback platform for UK private clinics. Earn more 5-star Google reviews, catch unhappy patients privately, stay GDPR compliant.",
   keywords: [
@@ -13,7 +13,7 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://shiftdeploy.com/review-your-doctor' },
   openGraph: {
-    title: 'Review Your Doctor | QR Patient Feedback & 5-Star Reviews for Clinics',
+    title: 'Review Your Doctor | QR Patient Feedback',
     description:
       'A QR-powered patient feedback platform that grows 5-star Google reviews and catches unhappy patients privately, fully GDPR compliant.',
     url: 'https://shiftdeploy.com/review-your-doctor',

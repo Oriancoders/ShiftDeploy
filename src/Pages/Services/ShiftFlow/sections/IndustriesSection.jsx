@@ -207,7 +207,7 @@ export const IndustriesSection = () => {
             </ul>
 
             <Link
-              href="/contactus"
+              href="/ContactUs"
               className="bg-primaryOrange mt-12 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit group text-center"
             >
               Activate ShiftFlow

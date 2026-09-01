@@ -103,9 +103,9 @@ const InsideShiftDeploy = () => {
              
 
                 <div className="space-y-2">
-                  <h1 className="text-xl lg:text-2xl font-semibold text-primaryBlue leading-snug">
+                  <h2 className="text-xl lg:text-2xl font-semibold text-primaryBlue leading-snug">
                     {solution.title}
-                  </h1>
+                  </h2>
                   <div className="flex items-center gap-2 text-primaryOrange">
                     <ArrowRight className="size-4 flex-shrink-0" />
                     <span className="text-sm sm:text-base font-semibold tracking-wide">
@@ -139,9 +139,9 @@ const InsideShiftDeploy = () => {
         {/* CTA */}
         <div className="w-full flex justify-center items-center">
           <div className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center">
-            <h1 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-semibold mb-4 sm:mb-6 lg:mb-8">
+            <h2 className="text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-semibold mb-4 sm:mb-6 lg:mb-8">
               Need the Right Solution for Your Business?
-            </h1>
+            </h2>
 
             <p className="text-sm sm:text-base lg:text-lg xl:text-xl mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto  px-4 sm:px-0">
               We’ll identify where your site is losing speed, trust, or conversions, then show you the clearest path to fix it.

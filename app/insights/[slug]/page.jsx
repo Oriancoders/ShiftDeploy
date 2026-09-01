@@ -26,7 +26,10 @@ export async function generateMetadata({ params }) {
 
   const seo = resolveSeo(post);
 
-  const metaTitle = seo.seoTitle || `${post.title} | ShiftDeploy Insights`;
+  // Bare title only. The root layout's template appends "| ShiftDeploy", so
+  // adding a suffix here produced "... | ShiftDeploy Insights | ShiftDeploy" -
+  // 125 characters on one post, well past where Bing and Google truncate.
+  const metaTitle = seo.seoTitle || post.title;
   // The direct answer makes a strong meta description: it is already written to
   // be a self-contained answer, which is exactly what a snippet needs to be.
   const metaDesc =

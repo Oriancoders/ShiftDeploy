@@ -170,9 +170,9 @@ const DeployToolkit = () => {
           {tools.map((tool, index) => (
             <motion.div key={tool?.id ?? tool?.slug ?? tool?.title ?? tool?.name ?? index} variants={scaleOnHover}>
               <div className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[350px] border sm:border-gray-200 rounded-3xl p-6 pb-12   sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden">
-                <h1 className="text-2xl font-semibold  mb-2 sm:mb-3 lg:mb-4 text-gray-900">
+                <h2 className="text-2xl font-semibold  mb-2 sm:mb-3 lg:mb-4 text-gray-900">
                   {tool.title}
-                </h1>
+                </h2>
                 <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed   sm:text-lg text-gray-700">
                   {tool.description}
                 </p>
@@ -211,13 +211,13 @@ const DeployToolkit = () => {
                   style={{}}
                 >
                   <div className="flex flex-col gap-y-2">
-                    <h1
+                    <h2
                       className={` font-bold   inline-block  cursor-pointer`}
                       onClick={() => handleIndex(null)}
                     >
                       {" "}
                       <MoveLeft />
-                    </h1>
+                    </h2>
 
                     <span className=" font-semibold text-xl">Our Solution</span>
                     {tool.solution}
@@ -245,11 +245,11 @@ const DeployToolkit = () => {
         <section id="problem-solving" className="w-full  bg-gradient-to-br from-primaryBlue to-toBlue text-white ">
           <div className="w-full  p-4 sm:p-8 lg:p-16  drop-shadow-sm flex lg:flex-row flex-col  2xl:max-w-[90%] max-w-7xl mx-auto  gap-10">
             <div className="flex-1 ">
-              <h1 className="text-xxl sm:text-2xl 2xl:text-3xl font-semibold  mb-4 sm:mb-6 leading-normal">
+              <h2 className="text-xxl sm:text-2xl 2xl:text-3xl font-semibold  mb-4 sm:mb-6 leading-normal">
                 If your website is slow, underperforming, or not converting.
                 We’ve fixed this problem before.
 
-              </h1>
+              </h2>
               <p className="text-sm sm:text-base 2xl:text-xl mb-6 sm:mb-8  mx-auto leading-relaxed">
                 We help businesses identify performance bottlenecks, fix conversion leaks,
                 and build websites that support long-term growth, not just launch and decay.

@@ -162,7 +162,7 @@ const ShiftProtocol = () => {
                       <step.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
                     </motion.div>
 
-                    <h1 className="text-lg lg:text-xl xl:text-2xl font-semibold text-gray-900  text-center">{index + 1}: {step.title}</h1>
+                    <h2 className="text-lg lg:text-xl xl:text-2xl font-semibold text-gray-900  text-center">{index + 1}: {step.title}</h2>
                     <p className="  text-center sm:leading-relaxed sm:text-lg text-gray-600">{step.description}</p>
 
                     <ul className="gap-y-1.5 sm:gap-y-2 lg:gap-y-3  grid grid-cols-1 ">
@@ -187,10 +187,10 @@ const ShiftProtocol = () => {
 
           className="w-full bg-gradient-to-br from-primaryBlue to-toBlue text-white p-6 sm:p-8 lg:p-12 xl:p-16 text-center drop-shadow-sm flex flex-col justify-center items-center"
         >
-          <h1 className="text-2xl sm:text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-semibold  mb-4 sm:mb-6 lg:mb-8">
+          <h2 className="text-2xl sm:text-3xl xl:text-4xl max-w-xl lg:max-w-4xl xl:max-w-5xl font-semibold  mb-4 sm:mb-6 lg:mb-8">
             Start with clarity, not guesswork
 
-          </h1>
+          </h2>
           <p className="text-sm sm:text-base lg:text-lg xl:text-xl  mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-xl lg:max-w-2xl xl:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
           >
             We’ll review your situation, identify what truly matters, and outline a clear path forward.

@@ -3,7 +3,7 @@ import AiChatbotLanding from '../../src/Pages/AiChatbotLanding';
 import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
-  title: 'Digital Receptionist | AI-Powered 24/7 Customer Engagement',
+  title: 'Digital Receptionist | AI Booking 24/7',
   description:
     "ShiftDeploy's Digital Receptionist is an AI chatbot that answers questions, captures leads, and books appointments 24/7 - so you never miss a customer.",
   keywords: [
@@ -12,7 +12,7 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://shiftdeploy.com/digital-receptionist' },
   openGraph: {
-    title: 'Digital Receptionist | AI-Powered 24/7 Customer Engagement',
+    title: 'Digital Receptionist | AI Booking 24/7',
     description: 'An AI chatbot that answers questions, captures leads, and books appointments 24/7.',
     url: 'https://shiftdeploy.com/digital-receptionist',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
