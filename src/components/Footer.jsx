@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { m as motion } from 'framer-motion';
-import { Mail, Phone, Slack } from 'lucide-react';
+import { Mail, Phone, Slack, Linkedin } from 'lucide-react';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 import Link from 'next/link';
 import { FaXTwitter } from 'react-icons/fa6';
@@ -75,6 +75,17 @@ const Footer = () => {
                 </span>
               </a>
               <hr />
+              <a
+                href="https://www.linkedin.com/company/shiftdeploy/"
+                target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-x-2 sm:gap-x-3"
+              >
+                <Linkedin className="w-3 sm:w-4 lg:w-5 h-3 sm:h-4 lg:h-5 text-primaryOrange flex-shrink-0" />
+                <span className="text-gray-300 text-xs sm:text-sm lg:text-base">
+                  Follow us on LinkedIn
+                </span>
+              </a>
+
               <a
                 href="https://x.com/shiftdeploy"
                 target="_blank" rel="noopener noreferrer"

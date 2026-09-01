@@ -5,6 +5,7 @@ import GlobalProvider from '../src/GlobalProvider/GlobalProvider';
 import LazyGTM from '../src/utils/LazyGTM';
 import ScrollToTop from '../src/components/ScrollToTop';
 import JsonLd from '../src/components/JsonLd';
+import { FOUNDERS, COMPANY_LINKEDIN } from '../src/data/founders';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -121,9 +122,23 @@ const organizationSchema = {
     },
   ],
   sameAs: [
+    COMPANY_LINKEDIN,
     'https://x.com/shiftdeploy',
     'https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3gan3ow0g-OW0s3OJIJKIzQwQ0tB1V6A1',
   ],
+  // Named founders. An organisation with no people attached is exactly the gap
+  // that sends an assistant to a scraper for "who runs this company".
+  founder: FOUNDERS.map((f) => ({
+    '@type': 'Person',
+    '@id': `https://shiftdeploy.com/insideShiftDeploy#${f.slug}`,
+    name: f.name,
+    jobTitle: f.role,
+    description: f.bio,
+    ...(f.focus?.length ? { knowsAbout: f.focus } : {}),
+    // Only emit sameAs when the URL actually resolves to this person.
+    ...(f.linkedin ? { sameAs: [f.linkedin] } : {}),
+    worksFor: { '@id': 'https://shiftdeploy.com/#organization' },
+  })),
   areaServed: { '@type': 'Country', name: 'United Kingdom' },
   serviceArea: { '@type': 'Place', name: 'United Kingdom' },
   knowsAbout: [
