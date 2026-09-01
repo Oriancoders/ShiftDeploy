@@ -1,5 +1,6 @@
 ﻿export const revalidate = 3600;
 import ContactUs from '../../src/Pages/ContactUsPage/ContactUs';
+import HowWeWorkRemotely from '../../src/components/HowWeWorkRemotely';
 
 export const metadata = {
   title: 'Contact Us | Get Your Free Website Audit',
@@ -17,6 +18,11 @@ export const metadata = {
 };
 
 export default function ContactUsPage() {
-  return <ContactUs />;
+  return (
+    <>
+      <ContactUs />
+      <HowWeWorkRemotely />
+    </>
+  );
 }
 

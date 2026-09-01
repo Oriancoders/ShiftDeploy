@@ -330,6 +330,12 @@ const K2TradersCase = () => {
       
       <Navigation isDarkBg={true} />
 
+      
+      {/* Primary content landmark: AI extractors use <main> to find the
+      
+          article body rather than guessing from the DOM. */}
+      
+      <main>
       {showLoader ? (
         <ShiftDeployLoader />
       ) : (
@@ -863,6 +869,9 @@ const K2TradersCase = () => {
           </section>
         </div>
       )}
+
+      
+      </main>
 
       <Footer />
     </>

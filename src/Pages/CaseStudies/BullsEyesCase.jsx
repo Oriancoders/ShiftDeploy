@@ -290,6 +290,12 @@ const BullsEyesCase = () => {
     <>
       
       <Navigation isDarkBg={true} />
+      
+      {/* Primary content landmark: AI extractors use <main> to find the
+      
+          article body rather than guessing from the DOM. */}
+      
+      <main>
       {showLoader ? (
         <ShiftDeployLoader />
       ) : (
@@ -830,6 +836,9 @@ const BullsEyesCase = () => {
           </section>
         </div>
       )}
+
+      
+      </main>
       <Footer />
     </>
   );

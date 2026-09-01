@@ -367,6 +367,9 @@ const SlackerIOT = () => {
         <div className='bg-gray-50 w-full'>
           <Navigation isDarkBg={true} />
 
+          {/* Primary content landmark: AI extractors use <main> to find the
+              article body rather than guessing from the DOM. */}
+          <main>
           {/* Hero Section */}
           <section className="relative bg-gradient-to-br from-primaryBlue to-toBlue overflow-hidden flex items-center py-20 sm:py-10">
             {/* Background Pattern */}
@@ -873,6 +876,8 @@ const SlackerIOT = () => {
               </motion.div>
             </div>
           </section>
+
+          </main>
 
           <Footer />
         </div>

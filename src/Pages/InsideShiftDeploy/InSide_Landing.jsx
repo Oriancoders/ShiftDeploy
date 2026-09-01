@@ -14,6 +14,7 @@ const HowWeWorkSection = lazy(() => import('./comps/HowWeWorkSection'));
 const CTASection = lazy(() => import('./comps/CTASection'));
 const WhatWeBelieveSection = lazy(() => import('./comps/WhatWeBelieveSection'));
 const FoundersSection = lazy(() => import('./comps/FoundersSection'));
+const HowWeWorkRemotely = lazy(() => import('../../components/HowWeWorkRemotely'));
 const Footer = lazy(() => import('../../components/Footer')); // Lazy load footer too since it's at the bottom
 
 const InSide_Landing = () => {
@@ -41,6 +42,7 @@ const InSide_Landing = () => {
           <PhilosophySection />
           <HowWeWorkSection />
           <FoundersSection />
+          <HowWeWorkRemotely variant="dark" />
           <CTASection />
           <WhatWeBelieveSection />
           <Footer />

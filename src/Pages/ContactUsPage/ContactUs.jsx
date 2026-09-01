@@ -103,6 +103,9 @@ const ContactUs = () => {
   return (
     <>
       <Navigation />
+      {/* Primary content landmark: AI extractors use <main> to find the
+          article body rather than guessing from the DOM. */}
+      <main>
       <section id="contact-us" className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-x-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -367,6 +370,8 @@ const ContactUs = () => {
           </div>
         </div>
       </section>
+
+      </main>
       <Footer />
     </>
   );

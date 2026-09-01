@@ -142,8 +142,25 @@ const organizationSchema = {
     ...(f.linkedin ? { sameAs: [f.linkedin] } : {}),
     worksFor: { '@id': 'https://shiftdeploy.com/#organization' },
   })),
-  areaServed: { '@type': 'Country', name: 'United Kingdom' },
-  serviceArea: { '@type': 'Place', name: 'United Kingdom' },
+  // Honest geography. We operate from Karachi and serve the UK remotely, and
+  // saying so is the safer position: a claimed UK address we do not have is
+  // both a Google Business Profile violation and the exact thing that makes a
+  // remote agency look like a front. addressCountry alone (no street) states
+  // where we are without pretending to a presence we lack.
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Karachi',
+    addressCountry: 'PK',
+  },
+  areaServed: [
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'Pakistan' },
+  ],
+  serviceArea: { '@type': 'Country', name: 'United Kingdom' },
+  // A remote business is a service-area business in Google's terms: no
+  // storefront, work delivered to the client wherever they are.
+  availableLanguage: ['en-GB', 'en', 'ur'],
+  knowsLanguage: ['English', 'Urdu'],
   knowsAbout: [
     'Core Web Vitals',
     'Largest Contentful Paint',
