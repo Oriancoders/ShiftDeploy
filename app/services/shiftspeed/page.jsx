@@ -1,6 +1,7 @@
 export const revalidate = 3600;
 import ShiftSpeed from '../../../src/Pages/Services/ShiftSpeed/ShiftSpeed';
 import JsonLd from '../../../src/components/JsonLd';
+import RelatedInsights from '../../../src/components/RelatedInsights';
 
 export const metadata = {
   title: 'ShiftSpeed | Core Web Vitals & Page Speed Optimisation',
@@ -31,6 +32,14 @@ export default function ShiftSpeedPage() {
     <>
       <JsonLd data={schema} />
       <ShiftSpeed />
+      {/* Links the service page into the blog. Without this the two were
+          separate islands with no crawlable path between them. */}
+      <RelatedInsights
+        tags={['Core Web Vitals', 'LCP', 'INP', 'CLS', 'Mobile', 'TTFB']}
+        categories={['Web Performance']}
+        heading={"Speed work we have written up"}
+        subheading={"Real audits and the numbers behind them, not theory."}
+      />
     </>
   );
 }

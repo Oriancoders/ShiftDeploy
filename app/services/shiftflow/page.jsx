@@ -1,6 +1,7 @@
 export const revalidate = 3600;
 import ShiftFlow from '../../../src/Pages/Services/ShiftFlow/ShiftFlow';
 import JsonLd from '../../../src/components/JsonLd';
+import RelatedInsights from '../../../src/components/RelatedInsights';
 
 export const metadata = {
   title: 'ShiftFlow | Business Automation & AI Workflows',
@@ -31,6 +32,14 @@ export default function ShiftFlowPage() {
     <>
       <JsonLd data={schema} />
       <ShiftFlow />
+      {/* Links the service page into the blog. Without this the two were
+          separate islands with no crawlable path between them. */}
+      <RelatedInsights
+        tags={['Scheduling', 'Booking', 'Forms', 'Lead response']}
+        categories={['Conversion']}
+        heading={"Automation work we have written up"}
+        subheading={"What happens after the enquiry arrives."}
+      />
     </>
   );
 }

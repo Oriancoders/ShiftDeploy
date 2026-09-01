@@ -1,6 +1,7 @@
 export const revalidate = 3600;
 import ShiftConvert from '../../../src/Pages/Services/ShiftConvert/ShiftConvert';
 import JsonLd from '../../../src/components/JsonLd';
+import RelatedInsights from '../../../src/components/RelatedInsights';
 
 export const metadata = {
   title: 'ShiftConvert | Conversion Rate Optimisation (CRO)',
@@ -31,6 +32,14 @@ export default function ShiftConvertPage() {
     <>
       <JsonLd data={schema} />
       <ShiftConvert />
+      {/* Links the service page into the blog. Without this the two were
+          separate islands with no crawlable path between them. */}
+      <RelatedInsights
+        tags={['Conversion rate', 'Forms', 'Booking pages', 'Lead capture', 'Lead response']}
+        categories={['Conversion']}
+        heading={"Conversion work we have written up"}
+        subheading={"Where booking and enquiry flows actually lose people."}
+      />
     </>
   );
 }

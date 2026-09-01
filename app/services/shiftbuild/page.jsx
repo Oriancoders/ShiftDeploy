@@ -1,6 +1,7 @@
 export const revalidate = 3600;
 import ShiftBuild from '../../../src/Pages/Services/ShiftBuild/ShiftBuild';
 import JsonLd from '../../../src/components/JsonLd';
+import RelatedInsights from '../../../src/components/RelatedInsights';
 
 export const metadata = {
   title: 'ShiftBuild | Custom Web Development & Design',
@@ -31,6 +32,14 @@ export default function ShiftBuildPage() {
     <>
       <JsonLd data={schema} />
       <ShiftBuild />
+      {/* Links the service page into the blog. Without this the two were
+          separate islands with no crawlable path between them. */}
+      <RelatedInsights
+        tags={['CMS', 'Images', 'AVIF', 'WebP', 'JavaScript']}
+        categories={['Engineering']}
+        heading={"How we build"}
+        subheading={"Engineering decisions from projects we have shipped."}
+      />
     </>
   );
 }
