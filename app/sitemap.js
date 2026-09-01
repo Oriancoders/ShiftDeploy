@@ -1,4 +1,5 @@
-import { sanityClient, isSanityConfigured } from '../src/lib/sanity';
+import { sanityClient } from '../src/lib/sanity/client';
+import { isSanityConfigured } from '../src/lib/sanity/config';
 
 const BASE_URL = 'https://shiftdeploy.com';
 

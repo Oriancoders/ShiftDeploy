@@ -1,5 +1,6 @@
 import imageUrlBuilder from '@sanity/image-url';
-import { isSanityConfigured, sanityClient } from './sanity';
+import { sanityClient } from './sanity/client';
+import { isSanityConfigured } from './sanity/config';
 
 export const INSIGHTS_LIST_QUERY = `*[
   _type in ["insight", "insights", "post", "blogPost"]

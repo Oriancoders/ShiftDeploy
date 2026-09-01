@@ -6,7 +6,8 @@ import Link from "next/link";
 import imageUrlBuilder from "@sanity/image-url";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
-import { isSanityConfigured, sanityClient } from "../lib/sanity";
+import { sanityClient } from "../lib/sanity/client";
+import { isSanityConfigured } from "../lib/sanity/config";
 
 // ── Image builder ──────────────────────────────────────────────────────────────
 const imageBuilder = sanityClient ? imageUrlBuilder(sanityClient) : null;

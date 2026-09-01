@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
-import { sanityClient, isSanityConfigured } from '../../../src/lib/sanity';
+import { sanityClient } from '../../../src/lib/sanity/client';
+import { isSanityConfigured } from '../../../src/lib/sanity/config';
 
 export const runtime = 'edge';
 export const size = { width: 1200, height: 630 };
