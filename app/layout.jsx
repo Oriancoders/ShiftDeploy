@@ -133,7 +133,9 @@ const organizationSchema = {
     '@id': `https://shiftdeploy.com/insideShiftDeploy#${f.slug}`,
     name: f.name,
     jobTitle: f.role,
-    description: f.bio,
+    // belief + story, flattened. `bio` was renamed when the section was
+    // rewritten; reading it here would have silently emitted undefined.
+    description: [f.belief, f.story].filter(Boolean).join(' ').split('\n\n').join(' '),
     ...(f.image ? { image: `https://shiftdeploy.com${f.image}` } : {}),
     ...(f.focus?.length ? { knowsAbout: f.focus } : {}),
     // Only emit sameAs when the URL actually resolves to this person.
