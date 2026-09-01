@@ -1201,9 +1201,27 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                   : <span className="size-14 rounded-full bg-primaryBlue flex items-center justify-center text-white font-extrabold text-xl flex-shrink-0">{post.author?.[0]?.toUpperCase()}</span>
                 }
                 <div>
-                  <p className="font-bold text-primaryBlue text-base">{post.author}</p>
+                  {post.authorSlug ? (
+                    <Link
+                      href={`/insights/author/${post.authorSlug}`}
+                      className="font-bold text-primaryBlue text-base hover:text-primaryOrange transition"
+                    >
+                      {post.author}
+                    </Link>
+                  ) : (
+                    <p className="font-bold text-primaryBlue text-base">{post.author}</p>
+                  )}
                   {post.authorJobTitle && <p className="text-sm text-gray-500 mt-0.5">{post.authorJobTitle}</p>}
-                  <p className="text-xs text-gray-400 mt-1">ShiftDeploy Team</p>
+                  {post.authorBio && (
+                    <p className="text-sm text-gray-600 mt-2 leading-relaxed">{post.authorBio}</p>
+                  )}
+                  {post.authorCredentials?.length > 0 && (
+                    <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+                      {post.authorCredentials.map((c) => (
+                        <li key={c} className="text-xs text-gray-500">&#10003; {c}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
 

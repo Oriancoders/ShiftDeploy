@@ -81,9 +81,10 @@ export const buildPostGraph = ({ post, slug, ogImage, readMinutes, seo }) => {
     ...(author.expertise?.length ? { knowsAbout: author.expertise } : {}),
     ...(author.credentials?.length ? { hasCredential: author.credentials } : {}),
     ...(authorSameAs.length ? { sameAs: authorSameAs } : {}),
-    // Points at the site, not /insights/author/<slug> - that route does not
-    // exist, and Google explicitly wants author.url to resolve.
-    url: SITE,
+    // Google wants author.url to resolve to a page that uniquely identifies
+    // the author. /insights/author/<slug> now exists, so use it when we have a
+    // slug and fall back to the site when we do not.
+    url: author.slug ? `${SITE}/insights/author/${author.slug}` : SITE,
     worksFor: { '@id': ORG_ID },
   });
 

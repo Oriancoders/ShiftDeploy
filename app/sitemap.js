@@ -3,6 +3,21 @@ import { isSanityConfigured } from '../src/lib/sanity/config';
 
 const BASE_URL = 'https://shiftdeploy.com';
 
+async function getAuthorSlugs() {
+  if (!isSanityConfigured || !sanityClient) return [];
+  try {
+    // Only authors who actually have published posts - an empty profile page
+    // in the sitemap is a thin page invitation.
+    return await sanityClient.fetch(
+      `*[_type == "author" && defined(slug.current)
+         && count(*[_type == "post" && author._ref == ^._id && status == "published"]) > 0
+        ]{ "slug": slug.current, _updatedAt }`
+    );
+  } catch {
+    return [];
+  }
+}
+
 async function getInsightSlugs() {
   if (!isSanityConfigured || !sanityClient) return [];
   try {
@@ -45,5 +60,13 @@ export default async function sitemap() {
     changeFrequency: 'weekly',
   }));
 
-  return [...staticRoutes, ...insightRoutes];
+  const authors = await getAuthorSlugs();
+  const authorRoutes = authors.map((a) => ({
+    url: `${BASE_URL}/insights/author/${a.slug}`,
+    lastModified: a._updatedAt,
+    priority: 0.5,
+    changeFrequency: 'monthly',
+  }));
+
+  return [...staticRoutes, ...insightRoutes, ...authorRoutes];
 }

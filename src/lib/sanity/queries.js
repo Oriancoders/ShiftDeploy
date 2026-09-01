@@ -37,3 +37,28 @@ export const adminAuthorsQuery = `*[_type == "author"] | order(name asc){
 export const adminCategoriesQuery = `*[_type == "category"] | order(title asc){
   _id, title, "slug": slug.current, description, topicCluster, color
 }`;
+
+/** Author profile page: the author plus everything they have written. */
+export const authorBySlugQuery = `*[_type == "author" && slug.current == $slug][0]{
+  _id,
+  name,
+  jobTitle,
+  bio,
+  expertise,
+  credentials,
+  sameAs,
+  "slug": slug.current,
+  "imageUrl": image.asset->url,
+  "posts": *[_type == "post" && author._ref == ^._id && status == "published"]
+    | order(coalesce(publishedAt, _createdAt) desc){
+      title,
+      "slug": slug.current,
+      excerpt,
+      "date": coalesce(publishedAt, _createdAt),
+      mainImage,
+      categories[]->{ title }
+    }
+}`;
+
+/** Slugs for generateStaticParams on the author route. */
+export const authorSlugsQuery = `*[_type == "author" && defined(slug.current)].slug.current`;
