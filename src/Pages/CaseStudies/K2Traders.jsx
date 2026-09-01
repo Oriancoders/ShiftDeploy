@@ -24,7 +24,11 @@ import Link from 'next/link';
 import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 
 const K2TradersCase = () => {
-  const [showLoader, setShowLoader] = useState(true);
+  // Was useState(true), which meant the server rendered only the loader and
+  // none of the case study - 24KB of shell with zero headings, invisible to
+  // crawlers and AI engines. The loader hid itself the moment scrollY === 0,
+  // which is true on load, so it was a flash with no purpose.
+  const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
