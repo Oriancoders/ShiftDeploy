@@ -7,6 +7,18 @@ html {
   scrollbar-gutter: stable;
 }
 
+/* Every image is width-constrained by default.
+   We set intrinsic width/height attributes on images so the browser can
+   reserve layout space and avoid cumulative layout shift - but a bare
+   width="1280" also lets the image overflow a 390px viewport. This caps the
+   rendered size while keeping the attributes doing their CLS job. */
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
 .perspective {
   perspective: 1000px;
 }
