@@ -5,7 +5,7 @@ import JsonLd from '../../src/components/JsonLd';
 export const metadata = {
   title: 'Review Your Doctor | QR Patient Feedback & 5-Star Reviews for Clinics',
   description:
-    "Review Your Doctor by ShiftDeploy is a QR-powered patient feedback platform for UK private clinics. Earn more 5-star Google reviews, catch unhappy patients privately, and stay fully GDPR compliant.",
+    "A QR-powered patient feedback platform for UK private clinics. Earn more 5-star Google reviews, catch unhappy patients privately, stay GDPR compliant.",
   keywords: [
     'patient feedback software', 'dental clinic Google reviews', 'QR review system',
     'healthcare reputation management', 'GDPR patient feedback', 'clinic review platform',

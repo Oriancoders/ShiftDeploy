@@ -6,7 +6,7 @@ import RelatedInsights from '../../src/components/RelatedInsights';
 export const metadata = {
   title: 'The Shift Protocol | How We Work',
   description:
-    'The five phases every ShiftDeploy engagement runs through: Discover & Align, Design & Blueprint, Engineer & Validate, Deploy & Safeguard, Evolve & Support. Plus what we guarantee and how we communicate.',
+    'The five phases every ShiftDeploy engagement runs through, what we guarantee at each one, and how we keep you in control of the work.',
   alternates: { canonical: 'https://shiftdeploy.com/shift-protocol' },
   openGraph: {
     title: 'The Shift Protocol | How ShiftDeploy Works',

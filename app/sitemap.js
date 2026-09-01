@@ -41,6 +41,12 @@ export default async function sitemap() {
     { url: `${BASE_URL}/services/shiftbuild`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/services/shiftflow`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/insideShiftDeploy`, lastModified: now, priority: 0.7, changeFrequency: 'monthly' },
+    // Product and lead-gen pages. These were absent from the sitemap despite
+    // /product and /review-your-doctor sitting in the main nav, and
+    // /service-growth-audit having no inbound internal link at all.
+    { url: `${BASE_URL}/product`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/review-your-doctor`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/service-growth-audit`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/shift-protocol`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/deploy-toolkit`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/missions`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },

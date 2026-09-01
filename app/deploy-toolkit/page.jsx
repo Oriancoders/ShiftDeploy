@@ -6,7 +6,7 @@ import RelatedInsights from '../../src/components/RelatedInsights';
 export const metadata = {
   title: 'Deploy Toolkit | What We Fix and How',
   description:
-    'Slow sites that lose visitors, traffic that never converts, builds that need doing right, and systems that quietly degrade. What we fix, how the engagement works, and answers to the questions we get asked most.',
+    'Slow sites, traffic that never converts, builds that need doing right, systems that quietly degrade. What we fix and what working with us involves.',
   alternates: { canonical: 'https://shiftdeploy.com/deploy-toolkit' },
   openGraph: {
     title: 'Deploy Toolkit | What ShiftDeploy Fixes',

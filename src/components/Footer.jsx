@@ -16,6 +16,9 @@ const Footer = () => {
       { name: 'Product', href: '/product' },
       { name: 'Missions Completed', href: '/missions' },
       { name: 'Insights', href: '/insights' },
+      // The audit is the main lead magnet but had no inbound internal link at
+      // all - it was reachable only by knowing the URL.
+      { name: 'Free Growth Audit', href: '/service-growth-audit' },
     ],
     services: [
       { name: 'ShiftSpeed', href: '/services/shiftspeed' },
