@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useMemo, useState } from "react";
-import { m as motion } from 'framer-motion';
-import { Calendar, User, ArrowRight, ChevronLeft, ChevronRight, Clock3, Sparkles } from "lucide-react";
+import { m as motion, AnimatePresence } from 'framer-motion';
+import { Calendar, User, ArrowRight, ChevronLeft, ChevronRight, Clock3, Sparkles, Search, X } from "lucide-react";
 import Link from "next/link";
 import imageUrlBuilder from "@sanity/image-url";
 import Footer from "../components/Footer";
@@ -134,10 +134,13 @@ const InsightCard = ({ post, index = 0 }) => {
 
   return (
     <motion.article
+      // animate (not whileInView) so cards re-animate when the filter or page
+      // changes. whileInView with once:true fires a single time per element,
+      // which meant a filtered-in card just appeared with no transition.
       initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.35, delay: index * 0.06 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.28, delay: Math.min(index, 5) * 0.045 }}
       className="group relative bg-white rounded-2xl overflow-hidden shadow-[0_1px_0_rgba(12,31,58,0.07),0_6px_24px_rgba(12,31,58,0.07)] hover:shadow-[0_2px_0_rgba(12,31,58,0.10),0_16px_40px_rgba(12,31,58,0.12)] transition-all duration-300 hover:-translate-y-0.5 flex flex-col"
     >
       {/* Thumbnail */}
@@ -272,6 +275,7 @@ const Insights = ({ initialPosts = [] }) => {
   const [isLoading, setIsLoading] = useState(isSanityConfigured && safeInitialPosts.length === 0);
   const [loadError, setLoadError] = useState("");
   const [activeTag, setActiveTag] = useState("All");
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     let cancelled = false;
@@ -320,17 +324,30 @@ const Insights = ({ initialPosts = [] }) => {
   }, [sanityPosts]);
 
   const filteredPosts = useMemo(() => {
-    const base = [...sanityPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
-    if (activeTag === "All") return base;
-    return base.filter((p) => p.tags.includes(activeTag));
-  }, [sanityPosts, activeTag]);
+    let base = [...sanityPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+    if (activeTag !== "All") base = base.filter((p) => p.tags.includes(activeTag));
+
+    const q = query.trim().toLowerCase();
+    if (!q) return base;
+
+    // Match on every field a reader might search by, and require all terms so
+    // that typing more words narrows the result rather than widening it.
+    const terms = q.split(/\s+/);
+    return base.filter((p) => {
+      const haystack = [p.title, p.excerpt, p.author, ...(p.tags || [])]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+      return terms.every((t) => haystack.includes(t));
+    });
+  }, [sanityPosts, activeTag, query]);
 
   const featuredPosts = useMemo(() => filteredPosts.filter((p) => p.featured), [filteredPosts]);
   const recentSidebar = useMemo(() => filteredPosts.slice(0, 5), [filteredPosts]);
   const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
 
   useEffect(() => { setPage((p) => clamp(p, 1, totalPages)); }, [totalPages]);
-  useEffect(() => { setPage(1); }, [activeTag]);
+  useEffect(() => { setPage(1); }, [activeTag, query]);
 
   const pagedPosts = useMemo(() => {
     const start = (page - 1) * POSTS_PER_PAGE;
@@ -365,24 +382,70 @@ const Insights = ({ initialPosts = [] }) => {
       <section className="min-h-screen bg-gray-50 pb-20">
         <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 pt-10">
 
-          {/* ── Tag filter bar ── */}
-          {allTags.length > 1 && (
-            <div className="flex flex-wrap gap-2 mb-8">
-              {allTags.map((tag) => (
+          {/* Search + tag filters. Filtering is instant on keystroke - there is
+              no submit, because the whole point is seeing the list narrow. */}
+          <div className="mb-8 space-y-3">
+            <div className="relative max-w-md">
+              <Search className="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-gray-400" />
+              <input
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search insights by title, topic or author"
+                aria-label="Search insights"
+                className="w-full rounded-full border border-gray-200 bg-white py-2.5 pl-10 pr-10 text-sm text-gray-800 placeholder:text-gray-400 focus:border-primaryBlue focus:outline-none focus:ring-1 focus:ring-primaryBlue"
+              />
+              {query && (
                 <button
-                  key={tag}
-                  onClick={() => setActiveTag(tag)}
-                  className={`text-xs font-bold px-4 py-1.5 rounded-full border transition ${
-                    activeTag === tag
-                      ? "bg-primaryBlue text-white border-primaryBlue"
-                      : "bg-white text-gray-600 border-gray-200 hover:border-primaryBlue hover:text-primaryBlue"
-                  }`}
+                  type="button"
+                  onClick={() => setQuery("")}
+                  aria-label="Clear search"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-700"
                 >
-                  {tag}
+                  <X className="size-3.5" />
                 </button>
-              ))}
+              )}
             </div>
-          )}
+
+            {allTags.length > 1 && (
+              <div className="flex flex-wrap gap-2">
+                {allTags.map((tag) => (
+                  <button
+                    key={tag}
+                    onClick={() => setActiveTag(tag)}
+                    className={`text-xs font-bold px-4 py-1.5 rounded-full border transition ${
+                      activeTag === tag
+                        ? "bg-primaryBlue text-white border-primaryBlue"
+                        : "bg-white text-gray-600 border-gray-200 hover:border-primaryBlue hover:text-primaryBlue"
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Result count, announced to screen readers so the filter is not
+                a silent change for anyone not watching the grid. */}
+            {(query || activeTag !== "All") && !isLoading && (
+              <p className="text-xs text-gray-500" role="status" aria-live="polite">
+                {filteredPosts.length === 0
+                  ? "No matching insights"
+                  : `${filteredPosts.length} ${filteredPosts.length === 1 ? "insight" : "insights"}`}
+                {query && <> for &ldquo;{query}&rdquo;</>}
+                {activeTag !== "All" && <> in {activeTag}</>}
+                {(query || activeTag !== "All") && (
+                  <button
+                    type="button"
+                    onClick={() => { setQuery(""); setActiveTag("All"); }}
+                    className="ml-2 font-semibold text-primaryBlue hover:underline"
+                  >
+                    Clear
+                  </button>
+                )}
+              </p>
+            )}
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
             {/* ── Main content ── */}
@@ -414,15 +477,21 @@ const Insights = ({ initialPosts = [] }) => {
               {/* Post grid */}
               {!isLoading && pagedPosts.length > 0 && (
                 <div className="grid sm:grid-cols-2 gap-5">
-                  {pagedPosts.map((post, idx) => (
-                    <InsightCard key={post.id} post={post} index={idx} />
-                  ))}
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    {pagedPosts.map((post, idx) => (
+                      <InsightCard key={post.id} post={post} index={idx} />
+                    ))}
+                  </AnimatePresence>
                 </div>
               )}
 
               {!isLoading && isSanityConfigured && !loadError && filteredPosts.length === 0 && (
                 <div className="rounded-2xl border border-gray-200 bg-white p-8 text-center text-gray-500">
-                  {activeTag === "All" ? "No insights published yet." : `No posts tagged "${activeTag}".`}
+                  {query
+                    ? `No insights match "${query}".`
+                    : activeTag === "All"
+                    ? "No insights published yet."
+                    : `No posts tagged "${activeTag}".`}
                 </div>
               )}
 
