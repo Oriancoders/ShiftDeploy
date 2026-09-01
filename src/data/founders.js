@@ -19,7 +19,10 @@ export const FOUNDERS = [
     initials: 'MA',
     role: 'Co-Founder',
     linkedin: 'https://www.linkedin.com/in/muhammad-ali-296943208/',
-    image: null,
+    // Self-hosted, not hotlinked. LinkedIn signs its CDN URLs with an expiry
+    // (the e= parameter) - the originals given to us died 16 days later, which
+    // would have turned both photos into broken images with no warning.
+    image: '/team/muhammad-ali.jpg',
     bio:
       'Ali builds the products businesses cannot run without. Six are live so far, ' +
       'across healthcare and retail: a POS that keeps shops trading when the internet ' +
@@ -43,7 +46,7 @@ export const FOUNDERS = [
     // TODO: add the public /in/ profile URL. Left null deliberately rather than
     // guessed - a sameAs pointing at the wrong person is worse than none.
     linkedin: null,
-    image: null,
+    image: '/team/sami-ullah.jpg',
     bio:
       'Sami leads frontend execution and technical direction. His background is ' +
       'hands-on frontend development with modern UI systems, performance optimisation ' +

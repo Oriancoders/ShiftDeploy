@@ -60,11 +60,11 @@ export default function FoundersSection() {
                   <img
                     src={person.image}
                     alt=""
-                    width={72}
-                    height={72}
+                    width={64}
+                    height={64}
                     loading="lazy"
                     decoding="async"
-                    className="size-18 shrink-0 rounded-full object-cover ring-2 ring-primaryBlue/15"
+                    className="size-16 shrink-0 rounded-full object-cover ring-2 ring-primaryBlue/15"
                   />
                 ) : (
                   // Initials rather than a broken image or a stock avatar.

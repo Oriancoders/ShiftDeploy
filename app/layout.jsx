@@ -134,6 +134,7 @@ const organizationSchema = {
     name: f.name,
     jobTitle: f.role,
     description: f.bio,
+    ...(f.image ? { image: `https://shiftdeploy.com${f.image}` } : {}),
     ...(f.focus?.length ? { knowsAbout: f.focus } : {}),
     // Only emit sameAs when the URL actually resolves to this person.
     ...(f.linkedin ? { sameAs: [f.linkedin] } : {}),
