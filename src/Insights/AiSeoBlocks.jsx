@@ -1,4 +1,5 @@
 import React from "react";
+import FaqAccordion from "./FaqAccordion.jsx";
 
 /**
  * The visible counterparts to the AI-SEO schema fields.
@@ -97,27 +98,7 @@ export const FaqSection = ({ value }) => {
       >
         {value.title || "Frequently asked questions"}
       </h2>
-      <div className="space-y-3">
-        {items.map((item, idx) => (
-          <details
-            key={idx}
-            className="group border border-gray-200 rounded-lg overflow-hidden"
-            // The most-asked question is open by default: it is the one a
-            // crawler reads without executing any JS.
-            open={item.isPrimary || idx === 0}
-          >
-            <summary className="flex items-center justify-between px-5 py-4 cursor-pointer font-semibold text-primaryBlue bg-gray-50 hover:bg-gray-100 list-none">
-              <h3 className="text-base font-semibold m-0">{item.question}</h3>
-              <span className="ml-3 text-primaryOrange group-open:rotate-180 transition-transform">
-                &#9660;
-              </span>
-            </summary>
-            <div className="px-5 py-4 text-gray-700 leading-relaxed bg-white">
-              {item.answer}
-            </div>
-          </details>
-        ))}
-      </div>
+      <FaqAccordion items={items} />
     </section>
   );
 };

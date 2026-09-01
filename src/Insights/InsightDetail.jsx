@@ -325,15 +325,21 @@ const renderCTA = (cta) => {
     right: "text-right",
   }[cta.alignment] || "text-center";
   
+  // Studio-authored CTAs use buttonText/buttonLink; ones from the admin editor
+  // use label/url. Reading only the first pair rendered an empty button.
+  const label = cta.buttonText || cta.label;
+  const href = cta.buttonLink || cta.url;
+  if (!label || !href) return null;
+
   return (
     <div className={`my-6 p-6 ${cta.darkModeVariant ? "bg-gray-900 text-white" : "bg-gray-100"} rounded-lg ${alignmentClass}`}>
-      <h3 className="text-xl font-semibold mb-2">{cta.title}</h3>
-      {cta.description && <p className="mb-4 text-gray-700 dark:text-gray-300">{cta.description}</p>}
+      {cta.title && <h3 className="text-xl font-semibold mb-2">{cta.title}</h3>}
+      {cta.description && <p className="mb-4 text-gray-700">{cta.description}</p>}
       <a
-        href={cta.buttonLink}
-        className={`inline-block px-6 py-3 rounded font-semibold transition ${buttonClass}`}
+        href={href}
+        className={`inline-block px-6 py-3 rounded font-semibold transition hover:-translate-y-0.5 hover:shadow-md ${buttonClass}`}
       >
-        {cta.buttonText}
+        {label}
       </a>
     </div>
   );
