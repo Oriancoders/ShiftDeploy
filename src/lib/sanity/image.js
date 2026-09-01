@@ -106,12 +106,20 @@ export function lqipUrl(image) {
   }
 }
 
-/** Social cards need a fixed 1200x630 crop, honouring the editor's hotspot. */
+/**
+ * Social cards need a fixed 1200x630 crop, honouring the editor's hotspot.
+ *
+ * Format is forced to PNG rather than left to auto=format. No major social
+ * platform renders SVG - Facebook, X, LinkedIn, Slack and WhatsApp all skip
+ * the preview entirely - and several of our cover images are SVG diagrams.
+ * auto=format also negotiates on the *crawler's* Accept header, which is not
+ * something we want deciding whether a share card appears at all.
+ */
 export function socialImageUrl(image) {
   const b = urlFor(image);
   if (!b) return null;
   try {
-    return b.width(1200).height(630).quality(85).fit('crop').auto('format').url();
+    return b.width(1200).height(630).quality(85).fit('crop').format('png').url();
   } catch {
     return null;
   }

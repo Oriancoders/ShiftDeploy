@@ -9,6 +9,13 @@
  */
 
 import { urlFor } from './sanity/image';
+import { portableTextToPlain } from './sanity/markdown';
+
+/** Real word count from the body, so wordCount is a measurement not a guess. */
+const countWords = (body) => {
+  const text = portableTextToPlain(body).trim();
+  return text ? text.split(/\s+/).length : 0;
+};
 
 const SITE = 'https://shiftdeploy.com';
 const ORG_ID = `${SITE}/#organization`;
@@ -23,7 +30,9 @@ const articleImages = (image, fallback) => {
   if (!b) return fallback ? [fallback] : undefined;
   const crop = (w, h) => {
     try {
-      return b.width(w).height(h).fit('crop').quality(85).auto('format').url();
+      // PNG, not auto=format: Google Images does not index SVG, and several
+      // covers are SVG diagrams.
+      return b.width(w).height(h).fit('crop').quality(85).format('png').url();
     } catch {
       return null;
     }
@@ -72,7 +81,9 @@ export const buildPostGraph = ({ post, slug, ogImage, readMinutes, seo }) => {
     ...(author.expertise?.length ? { knowsAbout: author.expertise } : {}),
     ...(author.credentials?.length ? { hasCredential: author.credentials } : {}),
     ...(authorSameAs.length ? { sameAs: authorSameAs } : {}),
-    ...(author.slug ? { url: `${SITE}/insights/author/${author.slug}` } : { url: SITE }),
+    // Points at the site, not /insights/author/<slug> - that route does not
+    // exist, and Google explicitly wants author.url to resolve.
+    url: SITE,
     worksFor: { '@id': ORG_ID },
   });
 
@@ -100,7 +111,11 @@ export const buildPostGraph = ({ post, slug, ogImage, readMinutes, seo }) => {
     author: { '@id': authorId },
     publisher: { '@id': ORG_ID },
     inLanguage: 'en-GB',
-    ...(readMinutes ? { timeRequired: `PT${readMinutes}M`, wordCount: readMinutes * 200 } : {}),
+    // timeRequired only. wordCount used to be readMinutes*200, which is a
+    // fabricated figure dressed as a measurement - if it disagrees with the
+    // visible text it is a trust signal working against us.
+    ...(readMinutes ? { timeRequired: `PT${readMinutes}M` } : {}),
+    ...(() => { const w = countWords(post.body); return w ? { wordCount: w } : {}; })(),
     ...(seo?.focusKeyword || seo?.secondaryKeywords?.length
       ? { keywords: [seo.focusKeyword, ...(seo.secondaryKeywords || [])].filter(Boolean).join(', ') }
       : {}),

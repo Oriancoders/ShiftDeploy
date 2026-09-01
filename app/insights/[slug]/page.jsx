@@ -11,6 +11,7 @@ import {
   resolveKeywords,
 } from '../../../src/lib/insightsData';
 import { buildPostGraph } from '../../../src/lib/structuredData';
+import { socialImageUrl } from '../../../src/lib/sanity/image';
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -32,11 +33,10 @@ export async function generateMetadata({ params }) {
     seo.seoDescription || post.directAnswer?.answer || post.excerpt || `Read ${post.title} on the ShiftDeploy blog.`;
   const canonicalHref = seo.canonicalUrl || `https://shiftdeploy.com/insights/${slug}`;
 
-  const sanityOgImage =
-    seo.openGraphImage ? buildSanityImageUrl(seo.openGraphImage, 1200, 630) : null;
-  const mainOgImage =
-    post.mainImage ? buildSanityImageUrl(post.mainImage, 1200, 630) : null;
-  const ogImage = sanityOgImage || mainOgImage || '/og-image.png';
+  // socialImageUrl forces PNG. Several covers are SVG diagrams, and no social
+  // platform renders SVG - the share card silently shows no image at all.
+  const ogImage =
+    socialImageUrl(seo.openGraphImage) || socialImageUrl(post.mainImage) || '/og-image.png';
 
   const ogTitle = seo.socialTitle || post.title;
   const ogDesc = seo.socialDescription || metaDesc;
@@ -71,8 +71,7 @@ export default async function InsightDetailPage({ params }) {
   const { slug } = await params;
   const post = await getInsightBySlug(slug);
 
-  const ogImage =
-    post?.mainImage ? buildSanityImageUrl(post.mainImage, 1200, 630) : 'https://shiftdeploy.com/og-image.png';
+  const ogImage = socialImageUrl(post?.mainImage) || 'https://shiftdeploy.com/og-image.png';
 
   const readMinutes = (() => {
     return getReadMinutes(post?.minutes, post?.readTime, post?.body);

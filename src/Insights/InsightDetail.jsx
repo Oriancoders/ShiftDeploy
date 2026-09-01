@@ -413,8 +413,12 @@ const INSIGHT_BY_SLUG_QUERY = `*[
   author->{
     name,
     jobTitle,
+    bio,
     "image": image.asset->url,
+    "slug": slug.current,
     expertise,
+    credentials,
+    sameAs,
     socialLinks
   },
   "mainImage": coalesce(mainImage, coverImage),
