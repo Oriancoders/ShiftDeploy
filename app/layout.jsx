@@ -70,8 +70,25 @@ export const metadata = {
   alternates: {
     canonical: 'https://shiftdeploy.com',
   },
-  // Add your Google Search Console verification code below when you have it
-  // verification: { google: 'YOUR_GSC_CODE_HERE' },
+  /**
+   * Search engine verification.
+   *
+   * Both values come from env so the codes are not committed and can differ
+   * per environment. Set them in Vercel:
+   *   NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION  (Search Console -> HTML tag method)
+   *   NEXT_PUBLIC_BING_SITE_VERIFICATION    (Bing Webmaster Tools -> meta tag)
+   *
+   * Each key is omitted entirely when its variable is unset, because an empty
+   * verification meta tag is worse than none - it looks like a failed attempt.
+   */
+  verification: {
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+      : {}),
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { other: { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION } }
+      : {}),
+  },
 };
 
 /**
