@@ -63,6 +63,7 @@ export async function generateMetadata({ params }) {
       title: author.name,
       description: description.slice(0, 200),
       url: `${SITE}/insights/author/${slug}`,
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
     },
   };
 }

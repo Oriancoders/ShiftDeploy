@@ -11,6 +11,7 @@ export const metadata = {
     description:
       'Explore ShiftDeploy\'s full deploy toolkit â€" ShiftSpeed, ShiftConvert, ShiftBuild, and ShiftFlow.',
     url: 'https://shiftdeploy.com/services',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
   },
 };
 

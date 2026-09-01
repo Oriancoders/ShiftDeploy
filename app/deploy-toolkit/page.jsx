@@ -14,6 +14,7 @@ export const metadata = {
       'The four problems we solve most often, and what working with us actually involves.',
     url: 'https://shiftdeploy.com/deploy-toolkit',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
   },
 };
 

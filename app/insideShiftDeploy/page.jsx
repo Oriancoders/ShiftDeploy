@@ -11,6 +11,7 @@ export const metadata = {
     description:
       'Discover the story, mindset, and philosophy behind ShiftDeploy.',
     url: 'https://shiftdeploy.com/insideShiftDeploy',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
   },
 };
 

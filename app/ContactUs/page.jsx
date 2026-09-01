@@ -11,6 +11,7 @@ export const metadata = {
     description:
       'Ready to shift into high gear? Contact ShiftDeploy for a free website performance audit.',
     url: 'https://shiftdeploy.com/ContactUs',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
   },
   robots: { index: true, follow: true },
 };

@@ -11,6 +11,7 @@ export const metadata = {
     description:
       'ShiftDeploy products that capture leads, book appointments, and grow your reputation around the clock.',
     url: 'https://shiftdeploy.com/product',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
   },
 };
 

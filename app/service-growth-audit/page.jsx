@@ -4,7 +4,7 @@ import ServiceGrowthAudit from '../../src/Pages/ServiceGrowthAudit/ServiceGrowth
 import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
-  title: 'Service Growth Audit | ShiftDeploy',
+  title: 'Service Growth Audit',
   description:
     'Request a Service Growth Audit to identify where website traffic, campaign attention, landing pages, and enquiry flow are leaking potential customer enquiries.',
   keywords: [

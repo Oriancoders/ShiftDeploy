@@ -14,6 +14,7 @@ export const metadata = {
       'Five phases, clear guarantees, and communication rituals that keep you in control of the work.',
     url: 'https://shiftdeploy.com/shift-protocol',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
   },
 };
 
