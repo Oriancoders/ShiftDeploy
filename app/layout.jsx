@@ -5,7 +5,6 @@ import GlobalProvider from '../src/GlobalProvider/GlobalProvider';
 import LazyGTM from '../src/utils/LazyGTM';
 import ScrollToTop from '../src/components/ScrollToTop';
 import JsonLd from '../src/components/JsonLd';
-import { FOUNDERS, COMPANY_LINKEDIN } from '../src/data/founders';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -139,45 +138,18 @@ const organizationSchema = {
     },
   ],
   sameAs: [
-    COMPANY_LINKEDIN,
+    'https://www.linkedin.com/company/shiftdeploy/',
     'https://x.com/shiftdeploy',
     'https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3gan3ow0g-OW0s3OJIJKIzQwQ0tB1V6A1',
   ],
-  // Named founders. An organisation with no people attached is exactly the gap
-  // that sends an assistant to a scraper for "who runs this company".
-  founder: FOUNDERS.map((f) => ({
-    '@type': 'Person',
-    '@id': `https://shiftdeploy.com/insideShiftDeploy#${f.slug}`,
-    name: f.name,
-    jobTitle: f.role,
-    // belief + story, flattened. `bio` was renamed when the section was
-    // rewritten; reading it here would have silently emitted undefined.
-    description: [f.belief, f.story].filter(Boolean).join(' ').split('\n\n').join(' '),
-    ...(f.image ? { image: `https://shiftdeploy.com${f.image}` } : {}),
-    ...(f.focus?.length ? { knowsAbout: f.focus } : {}),
-    // Only emit sameAs when the URL actually resolves to this person.
-    ...(f.linkedin ? { sameAs: [f.linkedin] } : {}),
-    worksFor: { '@id': 'https://shiftdeploy.com/#organization' },
-  })),
-  // Honest geography. We operate from Karachi and serve the UK remotely, and
-  // saying so is the safer position: a claimed UK address we do not have is
-  // both a Google Business Profile violation and the exact thing that makes a
-  // remote agency look like a front. addressCountry alone (no street) states
-  // where we are without pretending to a presence we lack.
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Karachi',
-    addressCountry: 'PK',
-  },
-  areaServed: [
-    { '@type': 'Country', name: 'United Kingdom' },
-    { '@type': 'Country', name: 'Pakistan' },
-  ],
+  // No address is published. We are a remote team and a service-area business
+  // in Google's terms: work is delivered to the client wherever they are, so
+  // areaServed carries the meaning a street address normally would.
+  areaServed: { '@type': 'Country', name: 'United Kingdom' },
   serviceArea: { '@type': 'Country', name: 'United Kingdom' },
   // A remote business is a service-area business in Google's terms: no
   // storefront, work delivered to the client wherever they are.
-  availableLanguage: ['en-GB', 'en', 'ur'],
-  knowsLanguage: ['English', 'Urdu'],
+  availableLanguage: ['en-GB', 'en'],
   knowsAbout: [
     'Core Web Vitals',
     'Largest Contentful Paint',

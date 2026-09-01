@@ -3,16 +3,14 @@ import { Clock, Video, Globe2, ShieldCheck } from 'lucide-react';
 /**
  * "How we work with UK clients."
  *
- * The site previously said nothing at all about where we are or how we
- * operate, which is the vacuum that makes a remote agency look evasive. The
- * fix is not a fabricated UK address - that is a Google Business Profile
- * violation and the actual scam signal. It is stating the arrangement plainly:
- * based in Karachi, working with UK clients remotely, meetings arranged when a
- * project warrants it.
+ * The site previously said nothing about how we operate, which is the vacuum
+ * that makes a remote agency look evasive. This answers the question a visitor
+ * is actually asking - will you be available, how do we meet, what access do
+ * you need - without claiming an office we do not have.
  *
  * Research on trust signals is consistent that transparency about a
- * distributed model strengthens credibility rather than undermining it. What
- * damages it is the absence of any answer.
+ * distributed model strengthens credibility. What damages it is either an
+ * absent answer or a fabricated address.
  */
 
 const POINTS = [
@@ -30,9 +28,9 @@ const POINTS = [
   },
   {
     icon: Globe2,
-    title: 'Based in Karachi, working with UK practices',
+    title: 'You talk to the people doing the work',
     body:
-      'We are a small remote team, not a UK office with a Pakistani back end. Saying so is deliberate: you should know exactly who you are hiring.',
+      'No account managers and no handoffs. The person who runs your audit is the person who writes the fix and answers your questions about it.',
   },
   {
     icon: ShieldCheck,
@@ -72,8 +70,8 @@ export default function HowWeWorkRemotely({ variant = 'light' }) {
               dark ? 'text-white/70' : 'text-gray-600'
             }`}
           >
-            We do not have a UK office, and we would rather tell you that than
-            let you find out. Here is what working with us actually looks like.
+            We are a small remote team working with clients across the UK.
+            Here is what that actually looks like day to day.
           </p>
         </div>
 
@@ -109,12 +107,6 @@ export default function HowWeWorkRemotely({ variant = 'light' }) {
           ))}
         </div>
 
-        <p
-          className={`mt-8 text-sm ${dark ? 'text-white/55' : 'text-gray-500'}`}
-        >
-          Registered and operating from Karachi, Pakistan. Serving clients
-          across the United Kingdom.
-        </p>
       </div>
     </section>
   );
