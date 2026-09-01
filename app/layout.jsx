@@ -73,25 +73,112 @@ export const metadata = {
   // verification: { google: 'YOUR_GSC_CODE_HERE' },
 };
 
+/**
+ * Organization entity.
+ *
+ * This is what an AI assistant reads when someone asks "who is ShiftDeploy,
+ * where are they, how do I contact them". When it is thin, the model falls
+ * back to third-party scrapers - we have seen it cite RocketReach for a phone
+ * number that is published in our own footer. Everything verifiable goes here.
+ *
+ * @id is stable so other schema on the site can reference this one node rather
+ * than redeclaring the organisation.
+ */
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': ['Organization', 'ProfessionalService'],
+  '@id': 'https://shiftdeploy.com/#organization',
   name: 'ShiftDeploy',
+  legalName: 'ShiftDeploy',
   url: 'https://shiftdeploy.com',
-  logo: 'https://shiftdeploy.com/og-image.png',
-  description: 'Performance-first web agency specialising in website speed optimisation, conversion rate optimisation, custom web development, and business automation.',
-  contactPoint: {
-    '@type': 'ContactPoint',
-    email: 'contact@shiftdeploy.com',
-    telephone: '+447311126710',
-    contactType: 'customer service',
-    availableLanguage: 'English',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://shiftdeploy.com/og-image.png',
+    width: 1200,
+    height: 630,
   },
+  image: 'https://shiftdeploy.com/og-image.png',
+  description:
+    'Performance-first web agency specialising in website speed optimisation, conversion rate optimisation, custom web development, and business automation. We work mostly with dental practices, clinics and service businesses in the UK.',
+  slogan: 'We fix what is blocking your growth.',
+  email: 'contact@shiftdeploy.com',
+  telephone: '+447311126710',
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      email: 'contact@shiftdeploy.com',
+      telephone: '+447311126710',
+      contactType: 'customer service',
+      availableLanguage: 'English',
+      areaServed: 'GB',
+    },
+    {
+      '@type': 'ContactPoint',
+      email: 'contact@shiftdeploy.com',
+      contactType: 'sales',
+      availableLanguage: 'English',
+      areaServed: 'GB',
+    },
+  ],
   sameAs: [
     'https://x.com/shiftdeploy',
     'https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3gan3ow0g-OW0s3OJIJKIzQwQ0tB1V6A1',
   ],
+  areaServed: { '@type': 'Country', name: 'United Kingdom' },
   serviceArea: { '@type': 'Place', name: 'United Kingdom' },
+  knowsAbout: [
+    'Core Web Vitals',
+    'Largest Contentful Paint',
+    'Interaction to Next Paint',
+    'Website speed optimisation',
+    'Conversion rate optimisation',
+    'Web development',
+    'Business process automation',
+  ],
+  // Named services, so an assistant asked "what do they do" has a list rather
+  // than a paragraph it has to parse.
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'ShiftDeploy services',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'ShiftSpeed',
+          description: 'Core Web Vitals and page speed optimisation.',
+          url: 'https://shiftdeploy.com/services/shiftspeed',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'ShiftConvert',
+          description: 'Conversion rate optimisation for booking and enquiry flows.',
+          url: 'https://shiftdeploy.com/services/shiftconvert',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'ShiftBuild',
+          description: 'Custom web development.',
+          url: 'https://shiftdeploy.com/services/shiftbuild',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'ShiftFlow',
+          description: 'Business process and workflow automation.',
+          url: 'https://shiftdeploy.com/services/shiftflow',
+        },
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }) {
