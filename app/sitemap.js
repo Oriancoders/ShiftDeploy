@@ -41,6 +41,8 @@ export default async function sitemap() {
     { url: `${BASE_URL}/services/shiftbuild`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/services/shiftflow`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/insideShiftDeploy`, lastModified: now, priority: 0.7, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/shift-protocol`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/deploy-toolkit`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/missions`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/insights`, lastModified: now, priority: 0.9, changeFrequency: 'weekly' },
     { url: `${BASE_URL}/digital-receptionist`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
