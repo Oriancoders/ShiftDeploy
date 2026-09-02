@@ -52,6 +52,7 @@ export default async function sitemap() {
     { url: `${BASE_URL}/missions`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/insights`, lastModified: now, priority: 0.9, changeFrequency: 'weekly' },
     { url: `${BASE_URL}/digital-receptionist`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
+    { url: `${BASE_URL}/plumbers`, lastModified: now, priority: 0.8, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/ContactUs`, lastModified: now, priority: 0.7, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/CaseStudies/SlackerIOT`, lastModified: now, priority: 0.7, changeFrequency: 'monthly' },
     { url: `${BASE_URL}/CaseStudies/BullseyesCase`, lastModified: now, priority: 0.7, changeFrequency: 'monthly' },
