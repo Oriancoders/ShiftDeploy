@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { m as motion, useInView, useReducedMotion } from 'framer-motion';
 import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
 import { Button, Eyebrow } from '../ui';
+import SearchResultVisual from './SearchResultVisual';
 
 const HEADLINE = ['Your', 'Competitors', 'Are', 'Stealing', 'Your', 'Calls.'];
 
@@ -84,6 +85,9 @@ const PlumbersHero = () => {
   return (
     <section className="relative bg-gradient-to-b from-white to-gray-50 pt-28 pb-16 sm:pt-40 sm:pb-20">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Copy left, proof right. The visual is the argument made concrete,
+            so it sits beside the headline rather than below the fold. */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-12 sm:mb-16">
         <motion.div initial="hidden" animate="show" variants={container}>
           <motion.div variants={word}>
             <Eyebrow className="mb-4 sm:mb-6">
@@ -94,7 +98,7 @@ const PlumbersHero = () => {
           {/* aria-label carries the full sentence so screen readers do not hear
               six separately-animated fragments. */}
           <h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight text-primaryBlue max-w-4xl [text-wrap:balance]"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight text-primaryBlue [text-wrap:balance]"
             aria-label="Your Competitors Are Stealing Your Calls."
           >
             <span aria-hidden="true">
@@ -114,7 +118,7 @@ const PlumbersHero = () => {
             initial={{ opacity: 0, y: reduce ? 0 : 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: reduce ? 0 : 0.6 }}
-            className="text-lg sm:text-xl mb-6 sm:mb-8 lg:mb-10 max-w-2xl leading-relaxed text-gray-700"
+            className="text-lg sm:text-xl mb-6 sm:mb-8 lg:mb-10 max-w-xl leading-relaxed text-gray-700"
           >
             Every day you&apos;re invisible on Google, someone else gets the
             boiler jobs, bathroom fits and emergency callouts that should be
@@ -125,7 +129,7 @@ const PlumbersHero = () => {
             initial={{ opacity: 0, y: reduce ? 0 : 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: reduce ? 0 : 0.9 }}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-12 sm:mb-16 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto"
           >
             <Button href="#booking" variant="primary">
               Get My Free Audit
@@ -136,6 +140,9 @@ const PlumbersHero = () => {
             </Button>
           </motion.div>
         </motion.div>
+
+          <SearchResultVisual />
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 border-t border-gray-200 pt-8 sm:pt-10">
           {STATS.map((s) => (
