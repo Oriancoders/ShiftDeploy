@@ -35,12 +35,12 @@ const Hero = () => {
             {/* Left Column: Text Content */}
             <div className="flex flex-col lg:items-start sm:items-center">
               <div className="hidden sm:block">
-                <Suspense fallback={<span className=" w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-4 sm:px-6 py-2 rounded-full text-white font-semibold text-xs sm:text-sm lg:text-base">
+                <Suspense fallback={<div className="w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-4 sm:px-6 py-2 rounded-full text-white font-semibold text-xs sm:text-sm lg:text-base">
                   <p className="flex items-center justify-center gap-x-2 italic">
                     Building <ArrowRight size={16} /> Optimisation{" "}
                     <ArrowRight size={16} /> Succeed
                   </p>
-                </span>}>
+                </div>}>
                   <CursorFollower
                     text={
                       <p className="flex items-center justify-center gap-x-2 italic">

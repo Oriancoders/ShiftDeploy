@@ -8,13 +8,13 @@ Live HTTP checks verified new homepage/service/package content, robots.txt, site
 
 The separate GitHub Actions deploy-hook job could not start because GitHub reported an account billing lock. Native Vercel deployment succeeded independently. Billing/account access remains an owner action; no payment settings were changed.
 
-## Scope
-
 ## Homepage loading follow-up
 
 Live browser verification exposed a full-screen loading fallback for below-fold homepage sections. The follow-up replaces it with an inline placeholder, imports the footer directly, and makes the hero audit link navigate to the existing contact page without depending on a lower section loading. `scripts/check-home-loading.mjs` deliberately holds the lower audit chunk and verifies that the hero remains unobscured and its audit link remains available.
 
 Follow-up verification: clean production build passed, 10 SEO unit tests passed, all 22 desktop/mobile route checks passed, and mocked enquiry/SEO browser checks passed with no browser errors. The initial local build failure was caused by a concurrent Next.js dev process sharing `.next`; stopping that process and clearing only generated build output resolved it.
+
+Commit `136b908` deployed successfully through native Vercel. Live desktop/mobile checks confirmed HTTP 200, the UK H1, an unobscured hero and the new contact link. The live screenshots also exposed an inline desktop badge placeholder wrapping around block content; its outer element was corrected to a block container in the final follow-up.
 
 ## Public content scope
 
