@@ -4,9 +4,9 @@ import ServiceGrowthAudit from '../../src/Pages/ServiceGrowthAudit/ServiceGrowth
 import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
-  title: 'Service Growth Audit',
+  title: 'Website Growth Audit for UK Service Businesses',
   description:
-    'Request a Service Growth Audit to identify where website traffic, campaign attention, landing pages, and enquiry flow are leaking potential customer enquiries.',
+    'Request a website growth audit for your UK service business. Review landing pages, campaigns and booking journeys to identify enquiry drop-offs.',
   keywords: [
     'service growth audit',
     'enquiry leakage audit',

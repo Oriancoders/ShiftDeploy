@@ -1,6 +1,6 @@
 import { getInsightList } from '../../src/lib/insightsData';
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
 /**
  * /llms.txt - a machine-readable map of the site for AI agents.
@@ -26,7 +26,7 @@ export async function GET() {
     '- [ShiftSpeed](https://shiftdeploy.com/services/shiftspeed): Core Web Vitals and page speed optimisation',
     '- [ShiftConvert](https://shiftdeploy.com/services/shiftconvert): conversion rate optimisation',
     '- [ShiftBuild](https://shiftdeploy.com/services/shiftbuild): custom web development',
-    '- [ShiftFlow](https://shiftdeploy.com/services/shiftflow): business process automation',
+    '- [ShiftFlow](https://shiftdeploy.com/services/shiftflow): website maintenance and ongoing technical support for UK businesses',
     '',
     '## Insights',
     '',
@@ -45,7 +45,7 @@ export async function GET() {
   return new Response(lines.join('\n'), {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+      'Cache-Control': 'public, max-age=0, s-maxage=60, must-revalidate',
     },
   });
 }

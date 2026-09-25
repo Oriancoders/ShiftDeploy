@@ -4,13 +4,13 @@ import JsonLd from '../../../src/components/JsonLd';
 import RelatedInsights from '../../../src/components/RelatedInsights';
 
 export const metadata = {
-  title: 'ShiftFlow | Business Automation & AI Workflows',
-  description: 'ShiftFlow automates your business operations with AI-powered workflows, saving time and reducing errors so your team can focus on growth.',
-  keywords: ['business automation', 'AI workflows', 'n8n automation', 'workflow automation UK', 'AI chatbot integration', 'process automation'],
+  title: 'Website Maintenance & Support UK | ShiftFlow',
+  description: 'Website maintenance and ongoing support for UK businesses. Monitoring, preventive fixes, security upkeep and performance reviews with a tailored scope.',
+  keywords: ['website maintenance UK', 'website support', 'performance monitoring', 'ongoing website optimisation'],
   alternates: { canonical: 'https://shiftdeploy.com/services/shiftflow' },
   openGraph: {
-    title: 'ShiftFlow | Business Automation & AI Workflows',
-    description: 'ShiftFlow automates your business operations with AI-powered workflows, saving time and reducing errors.',
+    title: 'Website Maintenance & Support UK | ShiftFlow',
+    description: 'Ongoing website maintenance and technical support for UK businesses.',
     url: 'https://shiftdeploy.com/services/shiftflow',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -19,11 +19,11 @@ export const metadata = {
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'ShiftFlow - Business Automation and AI Workflows',
+  name: 'ShiftFlow - Website Maintenance and Support',
   provider: { '@type': 'Organization', name: 'ShiftDeploy', url: 'https://shiftdeploy.com' },
-  description: 'AI-powered workflow automation that eliminates manual tasks, integrates your tools, and lets your team focus on growth.',
+  description: 'Ongoing website maintenance for UK businesses: monitoring, preventive fixes, security upkeep and performance checks.',
   url: 'https://shiftdeploy.com/services/shiftflow',
-  serviceType: 'Business Process Automation',
+  serviceType: 'Website Maintenance and Support',
   areaServed: { '@type': 'Place', name: 'United Kingdom' },
 };
 
@@ -35,10 +35,10 @@ export default function ShiftFlowPage() {
       {/* Links the service page into the blog. Without this the two were
           separate islands with no crawlable path between them. */}
       <RelatedInsights
-        tags={['Scheduling', 'Booking', 'Forms', 'Lead response']}
-        categories={['Conversion']}
-        heading={"Automation work we have written up"}
-        subheading={"What happens after the enquiry arrives."}
+        tags={['Core Web Vitals', 'JavaScript', 'Images', 'LCP']}
+        categories={['Web Performance', 'Engineering']}
+        heading={"Website performance and maintenance insights"}
+        subheading={"Keeping websites usable and reliable after launch."}
       />
     </>
   );

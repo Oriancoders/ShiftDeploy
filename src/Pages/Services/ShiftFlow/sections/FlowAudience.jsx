@@ -9,7 +9,7 @@ const FlowAudience = () => {
       icon: Users,
       title: "All Existing Clients",
       description: "Protect and improve your digital presence after launch with proactive monthly support.",
-      benefits: ["Lower downtime risk", "Steady optimization", "Protected digital investment"],
+      benefits: ["Lower downtime risk", "Steady optimisation", "Protected digital investment"],
     },
     {
       icon: Building2,

@@ -4,13 +4,13 @@ import JsonLd from '../../../src/components/JsonLd';
 import RelatedInsights from '../../../src/components/RelatedInsights';
 
 export const metadata = {
-  title: 'ShiftConvert | Conversion Rate Optimisation (CRO)',
-  description: 'ShiftConvert turns more visitors into customers. We audit, redesign, and A/B test your funnels to maximise conversions and revenue.',
+  title: 'Conversion Rate Optimisation UK | ShiftConvert',
+  description: 'Conversion rate optimisation for UK businesses. Improve landing pages, enquiry forms and booking journeys through audits, clearer messaging and testing.',
   keywords: ['conversion rate optimisation', 'CRO agency', 'A/B testing', 'funnel optimisation', 'landing page optimisation', 'increase conversions'],
   alternates: { canonical: 'https://shiftdeploy.com/services/shiftconvert' },
   openGraph: {
-    title: 'ShiftConvert | Conversion Rate Optimisation (CRO)',
-    description: 'ShiftConvert turns more visitors into customers. We audit, redesign, and A/B test your funnels to maximise conversions.',
+    title: 'Conversion Rate Optimisation UK | ShiftConvert',
+    description: 'Conversion rate optimisation for UK businesses, focused on completed enquiries and booking journeys.',
     url: 'https://shiftdeploy.com/services/shiftconvert',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },

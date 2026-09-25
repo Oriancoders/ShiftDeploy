@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { m as motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import { trackGeneratedLead } from '../../../lib/leadTracking';
 import Check from 'lucide-react/dist/esm/icons/check';
 import Loader2 from 'lucide-react/dist/esm/icons/loader-2';
 import { Button, Eyebrow, Section } from '../ui';
@@ -31,8 +32,8 @@ const SERVICE_TYPES = [
 
 const TRUST = [
   'UK-focused. We know the trades market',
-  'First website free. Zero risk to start',
-  'Results in 30 days or we work for free',
+  'A tailored quote before any paid work',
+  'Clear scope, milestones and progress reporting',
   'No long contracts. Cancel anytime',
   'Real case studies, not invented claims',
   'WhatsApp support. Real person, fast replies',
@@ -113,6 +114,7 @@ const PlumbersBooking = () => {
       }
       setSubmittedName(formData.from_name);
       setStatus('success');
+      trackGeneratedLead('plumbers_booking');
       setFormData(EMPTY);
       clearPackage();
     } catch (err) {

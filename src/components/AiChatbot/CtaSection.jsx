@@ -24,7 +24,7 @@ export default function CtaSection({ onPrimaryAction }) {
             transition={{ delay: 0.2 }}
             className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto"
           >
-            Implement our AI booking agent today and start seeing an immediate increase in your after-hours bookings and revenue.
+            Discuss your enquiry flow, calendar and handover requirements. We will explain what can be automated and provide a tailored quote.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -38,11 +38,11 @@ export default function CtaSection({ onPrimaryAction }) {
               onClick={() => onPrimaryAction?.()}
               className="bg-primaryOrange hover:bg-toOrange text-white px-10 py-5 rounded-lg font-bold text-lg transition-colors flex items-center justify-center shadow-lg shadow-primaryOrange/30"
             >
-              Start Your Free Trial <ChevronRight className="ml-2 size-5" />
+              Request a Consultation <ChevronRight className="ml-2 size-5" />
             </button>
-            <p className="mt-4 text-sm text-gray-400 sm:hidden">No credit card required. Cancel anytime.</p>
+            <p className="mt-4 text-sm text-gray-400 sm:hidden">Scope and pricing agreed before setup.</p>
           </motion.div>
-          <p className="mt-8 text-sm text-gray-400 hidden sm:block">No credit card required. Zero implementation fees. Setup in minutes.</p>
+          <p className="mt-8 text-sm text-gray-400 hidden sm:block">Setup, integrations and support agreed in your quote.</p>
         </div>
       </section>
     </>

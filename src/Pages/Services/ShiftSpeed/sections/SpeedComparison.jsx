@@ -164,7 +164,7 @@ export const SpeedComparison = () => {
                                 <span className="font-bold text-sm uppercase tracking-wide">After</span>
                             </div>
                             <h3 className="text-xl md:text-2xl font-semibold text-primaryBlue">
-                                ShiftSpeed™ Optimized
+                                ShiftSpeed™ Optimised
                             </h3>
                         </div>
 
@@ -187,7 +187,7 @@ export const SpeedComparison = () => {
                         {/* Optimizations List */}
                         <div className="bg-primaryBlue/5 rounded-xl p-4 border border-primaryBlue">
                             <div className="text-primaryBlue font-bold mb-3 text-xl uppercase tracking-wide">
-                                Optimizations Applied:
+                                Optimisations Applied:
                             </div>
                             <ul className="space-y-2">
                                 {afterOptimizations.map((opt, index) => (

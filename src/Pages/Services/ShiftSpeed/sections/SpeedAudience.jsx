@@ -9,7 +9,7 @@ const SpeedAudience = () => {
       icon: Stethoscope,
       title: "Dental & Medical",
       description: "Patients book appointments on mobile. Don't let them bounce to a competitor.",
-      benefits: ["Mobile booking optimization", "Patient trust building", "Reduced appointment dropout"]
+      benefits: ["Mobile booking optimisation", "Patient trust building", "Reduced appointment dropout"]
     },
     {
       icon: Briefcase,

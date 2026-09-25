@@ -81,7 +81,7 @@ function FinalCTASection() {
             <div className="flex items-start">
               <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 text-primaryOrange mr-3 mt-1 flex-shrink-0" />
               <p className="text-xs sm:text-md text-white font-medium">
-                A simple roadmap - optimize, improve UX, or rebuild - based on your goals
+                A simple roadmap - optimise, improve UX, or rebuild - based on your goals
               </p>
             </div>
           </div>

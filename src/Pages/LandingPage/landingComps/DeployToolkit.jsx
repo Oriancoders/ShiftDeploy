@@ -12,6 +12,8 @@ import {
   scaleOnHover,
 } from "../../../utils/animations";
 import emailjs from "@emailjs/browser";
+import { trackGeneratedLead } from '../../../lib/leadTracking';
+import { websiteDomain } from '../../../lib/websiteDomain';
 import Link from "next/link";
 const DeployToolkit = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -96,14 +98,12 @@ const DeployToolkit = () => {
     e.preventDefault();
     setMessage("");
 
-    // Remove https:// or http:// then validate domain
-    const domain = websiteInput.replace(/^https?:\/\//, "").trim();
-    const domainRegex = /^[a-zA-Z0-9.-]+\.(com|pk|net|org|io|co|dev|app)$/i;
+    const domain = websiteDomain(websiteInput);
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!domainRegex.test(domain)) {
+    if (!domain) {
       setMessage(
-        "Please enter a valid domain (like example.com or example.pk)"
+        "Please enter a valid website (like example.co.uk)"
       );
       return;
     }
@@ -112,8 +112,6 @@ const DeployToolkit = () => {
       setMessage("Please enter a valid email address");
       return;
     }
-
-    console.log("Domain:", domain, "Email:", emailInput);
 
     setLoading(true);
 
@@ -129,6 +127,7 @@ const DeployToolkit = () => {
         "QvcGHkk74en4u55cN"
       )
       .then(() => {
+        trackGeneratedLead('homepage_audit');
         setMessage(
           "Website audit request sent successfully! Check your email for the report within 24 hours"
         );
@@ -211,13 +210,16 @@ const DeployToolkit = () => {
                   style={{}}
                 >
                   <div className="flex flex-col gap-y-2">
-                    <h2
+                    <button
+                      type="button"
+                      aria-label="Close solution"
+                      title="Close solution"
                       className={` font-bold   inline-block  cursor-pointer`}
                       onClick={() => handleIndex(null)}
                     >
                       {" "}
                       <MoveLeft />
-                    </h2>
+                    </button>
 
                     <span className=" font-semibold text-xl">Our Solution</span>
                     {tool.solution}
@@ -278,11 +280,7 @@ const DeployToolkit = () => {
           <div className="flex sm:flex-row flex-col gap-4 2xl:gap-7 justify-evenly items-center w-full pt-6 2xl:pt-10 ">
             {/* Author */}
             <div className="flex items-center justify-center gap-4">
-              <img
-                src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE"
-                alt="Kamran Abbas"
-                className="size-12 sm:size-14 rounded-full ring-2 ring-white/30 object-cover"
-              />
+              <span aria-hidden="true" className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-gray-100 text-primaryBlue font-semibold mr-4">KA</span>
               <div className="text-left">
                 <div className="font-semibold text-md 2xl:text-lg leading-tight">
                   <a

@@ -47,7 +47,7 @@ const Footer = () => {
           <motion.div variants={fadeInUp} className="sm:col-span-2 lg:col-span-1">
             <motion.div whileHover={{ scale: 1.05 }} className="lg:max-w-60 sm:max-w-48 max-w-36">
               <img
-                src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_480/v1765145802/whiteV_vzhhvi.png"
+                src="/shiftdeploy-logo-white.png"
                 alt="ShiftDeploy"
                 width={775}
                 height={176}
@@ -56,8 +56,8 @@ const Footer = () => {
               />
             </motion.div>
             <p className="text-gray-300 mb-4 sm:mb-6 lg:mb-8 leading-relaxed text-xs sm:text-sm lg:text-base">
-              Helping businesses build faster websites, improve conversions, and grow with a
-              performance-first approach.
+              Websites, apps and digital products for UK businesses, with ongoing
+              performance and conversion support.
             </p>
 
             <div className="space-y-2 sm:space-y-3 lg:space-y-4">

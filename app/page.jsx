@@ -4,9 +4,9 @@ import Landing from '../src/Pages/LandingPage/Landing';
 import JsonLd from '../src/components/JsonLd';
 
 export const metadata = {
-  title: 'ShiftDeploy | Performance-First Web Agency',
+  title: 'Web & App Development for UK Businesses',
   description:
-    'We help businesses build faster websites, improve conversions, and grow with a performance-first approach. Book your free audit today.',
+    'Websites, apps and digital products for UK businesses. ShiftDeploy combines development, technical SEO and conversion optimisation. Discuss your project.',
   keywords: [
     'web performance agency', 'website speed optimisation', 'Core Web Vitals expert',
     'conversion rate optimisation', 'CRO agency UK', 'custom web development',
@@ -14,11 +14,11 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://shiftdeploy.com' },
   openGraph: {
-    title: 'ShiftDeploy | Performance-First Web Agency',
+    title: 'Web & App Development for UK Businesses',
     description:
-      'We help businesses build faster websites, improve conversions, and grow with a performance-first approach.',
+      'Websites, apps and digital products for UK businesses, with technical SEO, speed and conversion optimisation.',
     url: 'https://shiftdeploy.com',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy – Performance-First Web Agency' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy - Web and App Development for UK Businesses' }],
   },
 };
 

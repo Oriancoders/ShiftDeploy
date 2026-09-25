@@ -25,7 +25,7 @@ const industries = [
       "Clear treatment value propositions",
       "Low-friction enquiry and booking flows",
       "Trust-focused testimonial placement",
-      "Mobile-first lead capture optimization",
+      "Mobile-first lead capture optimisation",
     ],
     stat: "2.1x",
     statLabel: "More appointment requests",
@@ -39,7 +39,7 @@ const industries = [
       "Financial users need confidence at every step. Better UX structure and proof-driven copy can improve signups without increasing traffic.",
     benefits: [
       "Stronger risk-reversal messaging",
-      "Optimized multi-step onboarding flows",
+      "Optimised multi-step onboarding flows",
       "Improved CTA sequence and hierarchy",
       "Higher form completion quality",
     ],
@@ -210,7 +210,7 @@ export const IndustriesSection = () => {
               href="/ContactUs"
               className="bg-primaryOrange mt-12 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit group text-center"
             >
-              Optimize My Funnel
+              Optimise My Funnel
               <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

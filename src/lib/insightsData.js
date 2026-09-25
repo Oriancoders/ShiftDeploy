@@ -1,9 +1,10 @@
 import imageUrlBuilder from '@sanity/image-url';
-import { sanityClient } from './sanity/client';
-import { isSanityConfigured } from './sanity/config';
+import { sanityClient } from './sanity/client.js';
+import { isSanityConfigured } from './sanity/config.js';
+import { PUBLIC_POST_FILTER, INDEXABLE_POST_FILTER, INSIGHTS_FETCH_OPTIONS } from './sanity/publicContent.js';
 
 export const INSIGHTS_LIST_QUERY = `*[
-  _type in ["insight", "insights", "post", "blogPost"]
+  ${INDEXABLE_POST_FILTER}
 ] | order(coalesce(publishedAt, _createdAt) desc) {
   _id,
   title,
@@ -16,13 +17,13 @@ export const INSIGHTS_LIST_QUERY = `*[
   author->{ name },
   mainImage,
   minutes,
-  readTime,
+  "readTime": coalesce(readingTime, readTime),
   featured,
   status
 }`;
 
 export const INSIGHT_BY_SLUG_QUERY = `*[
-  _type in ["insight", "insights", "post", "blogPost"] &&
+  ${PUBLIC_POST_FILTER} &&
   slug.current == $slug
 ][0]{
   _id,
@@ -51,7 +52,7 @@ export const INSIGHT_BY_SLUG_QUERY = `*[
   },
   "mainImage": coalesce(mainImage, coverImage),
   minutes,
-  readTime,
+  "readTime": coalesce(readingTime, readTime),
   body,
   seoTitle,
   seoDescription,
@@ -66,7 +67,7 @@ export const INSIGHT_BY_SLUG_QUERY = `*[
   searchIntent,
   funnelStage,
   primaryCta,
-  internalLinks[]->{
+  "internalLinks": (internalLinks[]->)[${INDEXABLE_POST_FILTER}]{
     title,
     "slug": slug.current
   },
@@ -91,7 +92,7 @@ export const INSIGHT_BY_SLUG_QUERY = `*[
   theme,
   featured,
   status,
-  relatedPosts[]->{
+  "relatedPosts": (relatedPosts[]->)[${INDEXABLE_POST_FILTER}]{
     title,
     "slug": slug.current,
     excerpt,
@@ -233,19 +234,12 @@ export const normalizeInsightDetail = (doc) => ({
 
 export async function getInsightList() {
   if (!isSanityConfigured || !sanityClient) return [];
-  try {
-    const docs = await sanityClient.fetch(INSIGHTS_LIST_QUERY);
-    return Array.isArray(docs) ? docs.filter((doc) => doc?.title).map(normalizeInsightListItem) : [];
-  } catch {
-    return [];
-  }
+  const docs = await sanityClient.fetch(INSIGHTS_LIST_QUERY, {}, INSIGHTS_FETCH_OPTIONS);
+  return Array.isArray(docs) ? docs.filter((doc) => doc?.title).map(normalizeInsightListItem) : [];
 }
 
 export async function getInsightBySlug(slug) {
   if (!slug || !isSanityConfigured || !sanityClient) return null;
-  try {
-    return await sanityClient.fetch(INSIGHT_BY_SLUG_QUERY, { slug });
-  } catch {
-    return null;
-  }
+  // An upstream failure must not masquerade as a missing article and become a cached 404.
+  return sanityClient.fetch(INSIGHT_BY_SLUG_QUERY, { slug }, INSIGHTS_FETCH_OPTIONS);
 }

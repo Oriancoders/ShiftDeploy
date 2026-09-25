@@ -27,7 +27,7 @@ export const FlowComparison = () => {
     "Ticket-based, emergency-first maintenance",
     "Delayed plugin and security updates",
     "No routine performance validation",
-    "No monthly optimization cadence",
+    "No monthly optimisation cadence",
   ];
 
   const afterOptimizations = [
@@ -143,7 +143,7 @@ export const FlowComparison = () => {
             </div>
 
             <div className="bg-primaryBlue/5 rounded-xl p-4 border border-primaryBlue">
-              <div className="text-primaryBlue font-bold mb-3 text-xl uppercase tracking-wide">Optimizations Applied:</div>
+              <div className="text-primaryBlue font-bold mb-3 text-xl uppercase tracking-wide">Optimisations Applied:</div>
               <ul className="space-y-2">
                 {afterOptimizations.map((opt, index) => (
                   <li key={opt?.id ?? opt?.slug ?? opt?.title ?? opt?.name ?? index} className="flex items-start gap-2 text-md text-primaryBlue">

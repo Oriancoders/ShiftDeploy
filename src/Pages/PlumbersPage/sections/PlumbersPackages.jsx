@@ -18,10 +18,10 @@ const PlumbersPackages = () => {
       <div className="mb-12 text-center max-w-2xl mx-auto">
         <Eyebrow className="mb-4">Pricing</Eyebrow>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primaryBlue mb-4">
-          Simple Pricing. No Contracts. No Surprises.
+          Website Packages for UK Plumbers
         </h2>
         <p className="text-lg text-gray-700">
-          Cancel anytime. No results in 60 days and we work free.
+          Choose a starting scope. We tailor the quote to your services, locations and website requirements.
         </p>
       </div>
 
@@ -57,7 +57,7 @@ const PlumbersPackages = () => {
               {p.name}
             </h3>
             <div className="mb-6">
-              <span className="text-3xl sm:text-4xl font-bold text-primaryBlue">
+              <span className="text-2xl font-bold text-primaryBlue">
                 {p.price}
               </span>
               <p className="text-sm text-gray-600 mt-1">{p.priceNote}</p>
@@ -106,23 +106,22 @@ const PlumbersPackages = () => {
           </span>
         </motion.div>
         <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primaryBlue mb-3">
-          New Client? Get Your First Website FREE.
+          Need Your First Business Website?
         </h3>
         <p className="text-lg text-gray-700 mb-6 max-w-xl mx-auto">
-          We build at zero cost to prove our value. Just cover hosting, £20/month.
-          No catch.
+          Tell us about your plumbing business and service area. We will outline the build, hosting and support costs.
         </p>
         <div className="flex justify-center [&>*]:w-full sm:[&>*]:w-auto">
           <Button
             onClick={() => selectPackage(FREE_OFFER_VALUE)}
             variant="primary"
           >
-            Claim Free Website
+            Request a Website Quote
             <ArrowRight className="w-5 h-5" aria-hidden="true" />
           </Button>
         </div>
         <p className="text-sm text-gray-500 mt-4">
-          Only 3 spots available this month
+          Scope and delivery dates agreed before work starts
         </p>
       </motion.div>
     </Section>

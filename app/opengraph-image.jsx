@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'ShiftDeploy – Performance-First Web Agency';
+export const alt = 'ShiftDeploy - Web and App Development for UK Businesses';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -58,7 +58,7 @@ export default async function Image() {
             }}>
               S
             </div>
-            <span style={{ fontSize: '28px', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.5px' }}>
+            <span style={{ fontSize: '28px', fontWeight: 700, color: '#ffffff', letterSpacing: '0' }}>
               ShiftDeploy
             </span>
           </div>
@@ -66,19 +66,19 @@ export default async function Image() {
           {/* Main headline */}
           <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
             <div style={{
-              fontSize: '68px', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-2px',
+              fontSize: '68px', fontWeight: 800, lineHeight: 1.05, letterSpacing: '0',
               color: '#ffffff', marginBottom: '28px', maxWidth: '820px',
               display: 'flex', flexWrap: 'wrap',
             }}>
-              Performance-First{' '}
-              <span style={{ color: '#F76707' }}>Web Agency</span>
+              Web &amp; App{' '}
+              <span style={{ color: '#F76707', marginLeft: '14px' }}>Development</span>
             </div>
 
             <div style={{
               fontSize: '26px', color: 'rgba(255,255,255,0.72)', lineHeight: 1.5,
               maxWidth: '680px', fontWeight: 400,
             }}>
-              Faster websites. Higher conversions. Smarter automation.
+              For UK businesses. Development, technical SEO and website optimisation.
             </div>
           </div>
 

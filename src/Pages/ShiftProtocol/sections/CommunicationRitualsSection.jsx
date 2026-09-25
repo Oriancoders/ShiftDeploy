@@ -1,5 +1,6 @@
 'use client';
 import { CheckCircle, Clock, MessageSquare, Users, Zap } from "lucide-react"
+import { SiClickup, SiFigma } from 'react-icons/si';
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link";
 
@@ -57,7 +58,7 @@ function CommunicationRitualsSection() {
     {
       name: "ClickUp",
       purpose: "Task tracking and sprint planning",
-      icon: "https://images.seeklogo.com/logo-png/38/2/clickup-symbol-logo-png_seeklogo-389754.png"
+      BrandIcon: SiClickup
     },
     {
       name: "GitHub",
@@ -67,7 +68,7 @@ function CommunicationRitualsSection() {
     {
       name: "Figma",
       purpose: "Design files and prototypes",
-      icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/1365px-Figma-logo.svg.png"
+      BrandIcon: SiFigma
     },
   ];
 
@@ -121,7 +122,7 @@ function CommunicationRitualsSection() {
                 {/* Fear */}
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-primaryOrange mb-2 uppercase tracking-wide">Your Fear:</h4>
-                  <p className="sm:text-md text-xs text-gray-700 italic">"{ritual.fear}"</p>
+                  <p className="sm:text-md text-xs text-gray-700 italic">&quot;{ritual.fear}&quot;</p>
                 </div>
 
                 {/* Ritual */}
@@ -156,7 +157,7 @@ function CommunicationRitualsSection() {
             {tools.map((tool, index) => (
               <div key={tool?.id ?? tool?.slug ?? tool?.title ?? tool?.name ?? index} className="text-center">
                 <div className="size-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center mx-auto mb-4 hover:from-blue-50 hover:to-indigo-50 transition-colors duration-300">
-                  <img src={tool.icon} alt={tool.name} className="size-10 object-contain" />
+                  {tool.BrandIcon ? <tool.BrandIcon className="size-10 text-primaryBlue" aria-hidden="true" /> : <img src={tool.icon} alt={tool.name} className="size-10 object-contain" />}
                 </div>
                 <h4 className="font-semibold text-primaryBlue mb-2">{tool.name}</h4>
                 <p className="text-sm text-gray-600">{tool.purpose}</p>

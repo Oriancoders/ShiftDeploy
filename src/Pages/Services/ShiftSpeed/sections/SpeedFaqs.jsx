@@ -36,7 +36,7 @@ function SpeedFaqs() {
       "The audit requires no backend access. If you choose to proceed with implementation later, we follow standard security practices, work within your access policies, and only request what’s necessary.",
   },
   {
-    question: "What happens after optimization is complete?",
+    question: "What happens after optimisation is complete?",
     answer:
       "You receive a before-and-after report showing what changed and why it matters. From there, some clients stop, others continue with ongoing monitoring or improvements. There’s no forced long-term commitment.",
   },
@@ -81,7 +81,7 @@ function SpeedFaqs() {
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             Questions? <br/>
             <span className="text-primaryOrange">
-              We've got answers.
+              We&apos;ve got answers.
             </span>
           </h2>
         </div>
@@ -130,7 +130,7 @@ function SpeedFaqs() {
               className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit mb-12 mx-auto"
             >
 
-              Can't Find an Answer? Ask Us
+              Can&apos;t Find an Answer? Ask Us
               <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
             </Link >
 

@@ -38,17 +38,17 @@ export default function ProblemCard() {
       </ul>
 
       <div className="bg-gradient-to-r from-red-50 to-white p-5 rounded-2xl mt-auto border border-red-100/50 relative z-10">
-        <div className="flex justify-between items-end">
+        <div className="grid grid-cols-2 gap-3 items-end">
           <div>
-            <p className="text-red-800/60 text-xs font-bold uppercase tracking-wider mb-1">Estimated Loss</p>
-            <p className="text-red-600 font-extrabold text-2xl">
-              ~$2,400<span className="text-red-400 text-base font-semibold">/mo</span>
+            <p className="text-red-800/60 text-xs font-bold uppercase tracking-wider mb-1">Enquiry handling</p>
+            <p className="text-red-600 font-extrabold text-lg">
+              Manual follow-up
             </p>
           </div>
           <div className="text-right">
-            <p className="text-red-800/60 text-xs font-bold uppercase tracking-wider mb-1">Lost Clients</p>
+            <p className="text-red-800/60 text-xs font-bold uppercase tracking-wider mb-1">After hours</p>
             <p className="text-red-600 font-extrabold text-2xl">
-              12+<span className="text-red-400 text-base font-semibold">/mo</span>
+              May wait
             </p>
           </div>
         </div>

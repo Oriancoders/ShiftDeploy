@@ -12,7 +12,7 @@ const SpeedPricing = () => {
       features: [
         "Comprehensive speed analysis",
         "Lighthouse performance audit",
-        "Detailed optimization roadmap",
+        "Detailed optimisation roadmap",
         "Priority fix recommendations"
       ],
       cta: "Get Audit Report",
@@ -21,16 +21,16 @@ const SpeedPricing = () => {
     {
       name: "Rapid Load",
       price: "$1,497", 
-      description: "Full Code Optimization",
+      description: "Full Code Optimisation",
       features: [
-        "Complete performance optimization",
+        "Complete performance optimisation",
         "Sub-2 second load guarantee",
         "Mobile-first architecture",
         "30-day performance monitoring",
-        "Google Core Web Vitals optimization",
+        "Google Core Web Vitals optimisation",
         "Priority support included"
       ],
-      cta: "Optimize My Site",
+      cta: "Optimise My Site",
       popular: true
     },
     {
@@ -42,7 +42,7 @@ const SpeedPricing = () => {
         "Enterprise CDN setup",
         "Monthly performance reports",
         "Ongoing speed maintenance",
-        "Advanced security optimizations",
+        "Advanced security optimisations",
         "Dedicated account manager"
       ],
       cta: "Go Enterprise",

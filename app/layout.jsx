@@ -16,11 +16,11 @@ const inter = Inter({
 export const metadata = {
   metadataBase: new URL('https://shiftdeploy.com'),
   title: {
-    default: 'ShiftDeploy | Performance-First Web Agency',
+    default: 'ShiftDeploy | Web & App Development for UK Businesses',
     template: '%s | ShiftDeploy',
   },
   description:
-    'Helping businesses build faster websites, improve conversions, and grow with a performance-first approach. Expert web development, CRO, and automation.',
+    'Websites, apps and digital products for UK businesses. Development, technical SEO, speed optimisation and conversion improvements from ShiftDeploy.',
   keywords: [
     'web agency',
     'performance web development',
@@ -40,15 +40,15 @@ export const metadata = {
     locale: 'en_GB',
     url: 'https://shiftdeploy.com',
     siteName: 'ShiftDeploy',
-    title: 'ShiftDeploy | Performance-First Web Agency',
+    title: 'ShiftDeploy | Web & App Development for UK Businesses',
     description:
-      'Helping businesses build faster websites, improve conversions, and grow with a performance-first approach.',
+      'Websites, apps and digital products for UK businesses, with technical SEO, speed and conversion optimisation.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'ShiftDeploy – Performance-First Web Agency',
+        alt: 'ShiftDeploy - Web and App Development for UK Businesses',
       },
     ],
   },
@@ -56,9 +56,9 @@ export const metadata = {
     card: 'summary_large_image',
     site: '@shiftdeploy',
     creator: '@shiftdeploy',
-    title: 'ShiftDeploy | Performance-First Web Agency',
+    title: 'ShiftDeploy | Web & App Development for UK Businesses',
     description:
-      'Helping businesses build faster websites, improve conversions, and grow with a performance-first approach.',
+      'Websites, apps and digital products for UK businesses, with technical SEO, speed and conversion optimisation.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -197,7 +197,7 @@ const organizationSchema = {
         itemOffered: {
           '@type': 'Service',
           name: 'ShiftFlow',
-          description: 'Business process and workflow automation.',
+          description: 'Website maintenance and ongoing technical support.',
           url: 'https://shiftdeploy.com/services/shiftflow',
         },
       },

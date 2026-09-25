@@ -3,16 +3,16 @@ import AiChatbotLanding from '../../src/Pages/AiChatbotLanding';
 import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
-  title: 'Digital Receptionist | AI Booking 24/7',
+  title: 'AI Receptionist for UK Businesses',
   description:
-    "ShiftDeploy's Digital Receptionist is an AI chatbot that answers questions, captures leads, and books appointments 24/7 - so you never miss a customer.",
+    "AI receptionist setup for UK businesses. Connect website enquiries, FAQs and booking workflows with your team. Request a tailored quote.",
   keywords: [
     'AI receptionist', 'AI chatbot for business', '24/7 customer service bot',
     'lead capture chatbot', 'appointment booking AI', 'digital receptionist software',
   ],
   alternates: { canonical: 'https://shiftdeploy.com/digital-receptionist' },
   openGraph: {
-    title: 'Digital Receptionist | AI Booking 24/7',
+    title: 'AI Receptionist for UK Businesses',
     description: 'An AI chatbot that answers questions, captures leads, and books appointments 24/7.',
     url: 'https://shiftdeploy.com/digital-receptionist',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],

@@ -1,4 +1,5 @@
 export const revalidate = 3600;
+import { notFound } from 'next/navigation';
 import InsightDetail from '../../../src/Insights/InsightDetail';
 import JsonLd from '../../../src/components/JsonLd';
 import {
@@ -73,6 +74,7 @@ export async function generateMetadata({ params }) {
 export default async function InsightDetailPage({ params }) {
   const { slug } = await params;
   const post = await getInsightBySlug(slug);
+  if (!post) notFound();
 
   const ogImage = socialImageUrl(post?.mainImage) || 'https://shiftdeploy.com/og-image.png';
 

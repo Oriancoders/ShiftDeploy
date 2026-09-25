@@ -31,6 +31,7 @@ lerna-debug.log*
 
 # Caches
 .cache/
+.npm-cache/
 .eslintcache
 *.tsbuildinfo
 

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { trackGeneratedLead } from '../../lib/leadTracking';
 import { m as motion, useReducedMotion } from 'framer-motion';
 import {
   ArrowRight,
@@ -97,9 +98,9 @@ const packages = [
 ];
 
 const formatCurrency = (value) =>
-  new Intl.NumberFormat('en-US', {
+  new Intl.NumberFormat('en-GB', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'GBP',
     maximumFractionDigits: 0,
   }).format(value);
 
@@ -555,6 +556,7 @@ export default function ServiceGrowthAudit() {
       ]);
 
       setFormStatus('success');
+      trackGeneratedLead('service_growth_audit');
       setFormMessage('Audit request sent successfully.');
       setSubmitted(true);
       setAuditForm(INITIAL_AUDIT_FORM);
@@ -639,14 +641,14 @@ export default function ServiceGrowthAudit() {
                 Service growth audit
               </motion.div>
               <motion.h1 variants={fadeUp} className="text-4xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Your Digital Partner,
+                Website Growth Audit
                 <br />
-                For Visibility
+                for UK
                 <br />
-                <span className="text-primaryOrange">And Growth</span>
+                <span className="text-primaryOrange">Service Businesses</span>
               </motion.h1>
               <motion.p variants={fadeUp} className="mt-7 max-w-2xl border-l-4 border-secondaryBlue pl-5 text-lg leading-relaxed text-blue-100/85 md:text-xl">
-                We audit your website, campaigns, landing pages and enquiry flow to identify where attention is being lost before it becomes a customer enquiry.
+                We audit your website, campaigns, landing pages and enquiry flow to help your UK service business identify where potential customers drop out.
               </motion.p>
               <motion.div variants={fadeUp} className="mt-9 flex flex-col gap-4 ">
                 <button
@@ -856,7 +858,7 @@ export default function ServiceGrowthAudit() {
                 variants={fadeUp}
                 className="mx-auto mt-7 max-w-4xl text-center text-xl font-bold italic leading-relaxed text-white md:text-2xl"
               >
-                "ShiftDeploy is highly recommended .... they have consistently met deadlines, and their after sales service is outstanding!"
+                &quot;ShiftDeploy is highly recommended .... they have consistently met deadlines, and their after sales service is outstanding!&quot;
               </motion.blockquote>
 
               <motion.div variants={fadeUp} className="my-10 h-px w-full bg-white/15" />
@@ -981,7 +983,7 @@ export default function ServiceGrowthAudit() {
                   <RangeInput label="enquiry rate" min={1} max={15} suffix="%" value={calculator.enquiryRate} onChange={(value) => updateCalculator('enquiryRate', value)} />
                 </motion.div>
                 <motion.div variants={fadeUp}>
-                  <RangeInput label="customer value" min={100} max={10000} step={100} prefix="$" value={calculator.customerValue} onChange={(value) => updateCalculator('customerValue', value)} />
+                  <RangeInput label="customer value (GBP)" min={100} max={10000} step={100} prefix={'\u00a3'} value={calculator.customerValue} onChange={(value) => updateCalculator('customerValue', value)} />
                 </motion.div>
                 <motion.p variants={fadeUp} className="rounded-2xl bg-blue-50 px-4 py-3 text-sm leading-relaxed text-primaryBlue">
                   This calculator uses conservative assumptions to guide the audit conversation, not to promise a guaranteed return.

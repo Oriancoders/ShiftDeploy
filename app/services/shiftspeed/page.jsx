@@ -4,13 +4,13 @@ import JsonLd from '../../../src/components/JsonLd';
 import RelatedInsights from '../../../src/components/RelatedInsights';
 
 export const metadata = {
-  title: 'ShiftSpeed | Core Web Vitals & Page Speed Optimisation',
-  description: 'ShiftSpeed makes your website lightning-fast. We optimise Core Web Vitals, cut load times, and improve Google rankings through expert performance engineering.',
+  title: 'Website Speed Optimisation UK | ShiftSpeed',
+  description: 'Website speed optimisation for UK businesses. Audit and improve LCP, INP and CLS, reduce loading delays and make booking journeys easier to use.',
   keywords: ['Core Web Vitals', 'page speed optimisation', 'LCP fix', 'CLS fix', 'website speed', 'Google PageSpeed', 'performance engineering'],
   alternates: { canonical: 'https://shiftdeploy.com/services/shiftspeed' },
   openGraph: {
-    title: 'ShiftSpeed | Core Web Vitals & Page Speed Optimisation',
-    description: 'ShiftSpeed makes your website lightning-fast. We optimise Core Web Vitals, cut load times, and improve Google rankings.',
+    title: 'Website Speed Optimisation UK | ShiftSpeed',
+    description: 'Website speed optimisation for UK businesses, focused on Core Web Vitals, mobile usability and booking journeys.',
     url: 'https://shiftdeploy.com/services/shiftspeed',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -21,7 +21,7 @@ const schema = {
   '@type': 'Service',
   name: 'ShiftSpeed - Website Speed Optimisation',
   provider: { '@type': 'Organization', name: 'ShiftDeploy', url: 'https://shiftdeploy.com' },
-  description: 'Expert Core Web Vitals and page speed optimisation service. We cut load times, fix LCP/CLS/INP scores, and improve Google rankings.',
+  description: 'Core Web Vitals and website speed optimisation for UK businesses. We diagnose loading, responsiveness and layout stability issues.',
   url: 'https://shiftdeploy.com/services/shiftspeed',
   serviceType: 'Website Performance Optimisation',
   areaServed: { '@type': 'Place', name: 'United Kingdom' },

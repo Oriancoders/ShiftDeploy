@@ -4,6 +4,7 @@ import { revalidatePath, revalidateTag } from 'next/cache';
 import { assertAdmin } from '../../../src/lib/auth';
 import { sanityWriteClient } from '../../../src/lib/sanity/server';
 import { slugExistsQuery } from '../../../src/lib/sanity/queries';
+import { buildPostPatch, validatePostEdit, validatePublication } from '../../../src/lib/sanity/postEditing';
 
 /* ------------------------------------------------------------------ */
 /* Helpers                                                              */
@@ -39,6 +40,8 @@ function refreshInsights() {
   revalidateTag('insights');
   revalidatePath('/insights', 'layout');
   revalidatePath('/admin/insights', 'layout');
+  revalidatePath('/sitemap.xml');
+  revalidatePath('/llms.txt');
 }
 
 async function ensureUniqueSlug(type, wanted, excludeId) {
@@ -76,6 +79,20 @@ function clean(obj) {
 /** Attach a stable _key to each array member, which Sanity requires. */
 function keyed(arr, prefix) {
   return (arr || []).map((item, i) => ({ _key: `${prefix}${i}`, ...item }));
+}
+
+async function saveManagedDocument(client, existing, input, doc, fields) {
+  if (!existing) return client.create(doc);
+  if (!input.revision || input.revision !== existing._rev) {
+    throw new Error('This entry has changed. Reopen it before saving.');
+  }
+  const set = {};
+  const unset = [];
+  for (const field of fields) {
+    if (doc[field] === undefined) unset.push(field);
+    else set[field] = doc[field];
+  }
+  return client.patch(existing._id).ifRevisionId(input.revision).set(set).unset(unset).commit();
 }
 
 /* ------------------------------------------------------------------ */
@@ -158,6 +175,8 @@ export async function savePost(input) {
   try {
     await assertAdmin();
     const client = requireClient();
+    const existing = input.id ? await client.getDocument(input.id) : null;
+    validatePostEdit(existing, input);
 
     const title = String(input.title || '').trim();
     if (!title) return { ok: false, message: 'Title is required.' };
@@ -173,9 +192,10 @@ export async function savePost(input) {
       return { ok: false, message: 'Cover image needs alt text before publishing.' };
     }
 
-    const wantedSlug = slugify(input.slug || title);
+    const lockedSlug = existing && (existing.status === 'published' || existing.publishedAt);
+    const wantedSlug = lockedSlug ? existing.slug.current : slugify(input.slug || title);
     if (!wantedSlug) return { ok: false, message: 'Slug is required.' };
-    const slug = await ensureUniqueSlug('post', wantedSlug, input.id);
+    const slug = lockedSlug ? wantedSlug : await ensureUniqueSlug('post', wantedSlug, input.id);
 
     const now = new Date().toISOString();
     const ai = input.aiSeo || {};
@@ -186,7 +206,7 @@ export async function savePost(input) {
       slug: { _type: 'slug', current: slug },
       excerpt: String(input.excerpt).trim(),
       status: input.status,
-      publishedAt: publishing ? input.publishedAt || now : input.publishedAt,
+      publishedAt: existing?.publishedAt || (publishing ? now : undefined),
       updatedAt: now,
       featured: Boolean(input.featured),
       readingTime: input.readingTime || undefined,
@@ -256,7 +276,7 @@ export async function savePost(input) {
         secondaryKeywords: input.seo?.secondaryKeywords,
         semanticKeywords: input.seo?.semanticKeywords,
         canonicalUrl: input.seo?.canonicalUrl,
-        noIndex: input.seo?.noIndex || undefined,
+        noIndex: Boolean(input.seo?.noIndex),
         searchIntent: input.seo?.searchIntent,
         funnelStage: input.seo?.funnelStage,
         targetAudience: input.seo?.targetAudience,
@@ -268,12 +288,15 @@ export async function savePost(input) {
       },
     });
 
+    if (publishing) validatePublication(doc);
     let id = input.id;
+    let saved;
     if (id) {
-      await client.createOrReplace({ ...doc, _id: id });
+      const { set, unset } = buildPostPatch(existing, doc);
+      saved = await client.patch(id).ifRevisionId(input.revision).set(set).unset(unset).commit();
     } else {
-      const created = await client.create(doc);
-      id = created._id;
+      saved = await client.create(doc);
+      id = saved._id;
     }
 
     refreshInsights();
@@ -282,6 +305,8 @@ export async function savePost(input) {
       message: publishing ? 'Published.' : 'Draft saved.',
       id,
       slug,
+      revision: saved._rev,
+      publishedAt: saved.publishedAt,
     };
   } catch (err) {
     return fail(err);
@@ -292,10 +317,15 @@ export async function setPostStatus(id, status) {
   try {
     await assertAdmin();
     const client = requireClient();
-
-    const patch = client.patch(id).set({ status, updatedAt: new Date().toISOString() });
+    if (!['draft', 'published'].includes(status)) throw new Error('Invalid post status.');
+    const existing = await client.getDocument(id);
+    if (!existing || existing._type !== 'post') throw new Error('Post not found.');
+    const now = new Date().toISOString();
+    const patch = client.patch(id).ifRevisionId(existing._rev).set({ status, updatedAt: now });
     if (status === 'published') {
-      patch.setIfMissing({ publishedAt: new Date().toISOString() });
+      const publishedAt = existing.publishedAt || now;
+      validatePublication({ ...existing, publishedAt });
+      patch.set({ publishedAt });
     }
     await patch.commit();
 
@@ -325,10 +355,12 @@ export async function saveAuthor(input) {
   try {
     await assertAdmin();
     const client = requireClient();
+    const existing = input.id ? await client.getDocument(input.id) : null;
+    if (input.id && (!existing || existing._type !== 'author')) throw new Error('Author not found.');
 
     const name = String(input.name || '').trim();
     if (!name) return { ok: false, message: 'Name is required.' };
-    const slug = await ensureUniqueSlug('author', slugify(input.slug || name), input.id);
+    const slug = existing?.slug?.current || await ensureUniqueSlug('author', slugify(name), input.id);
 
     const doc = clean({
       _type: 'author',
@@ -342,8 +374,8 @@ export async function saveAuthor(input) {
       image: toSanityImage(input.image),
     });
 
-    if (input.id) await client.createOrReplace({ ...doc, _id: input.id });
-    else await client.create(doc);
+    await saveManagedDocument(client, existing, input, doc,
+      ['name', 'slug', 'jobTitle', 'bio', 'expertise', 'credentials', 'sameAs']);
 
     refreshInsights();
     return { ok: true, message: 'Author saved.' };
@@ -367,10 +399,12 @@ export async function saveCategory(input) {
   try {
     await assertAdmin();
     const client = requireClient();
+    const existing = input.id ? await client.getDocument(input.id) : null;
+    if (input.id && (!existing || existing._type !== 'category')) throw new Error('Category not found.');
 
     const title = String(input.title || '').trim();
     if (!title) return { ok: false, message: 'Title is required.' };
-    const slug = await ensureUniqueSlug('category', slugify(input.slug || title), input.id);
+    const slug = existing?.slug?.current || await ensureUniqueSlug('category', slugify(title), input.id);
 
     const doc = clean({
       _type: 'category',
@@ -381,8 +415,8 @@ export async function saveCategory(input) {
       color: input.color,
     });
 
-    if (input.id) await client.createOrReplace({ ...doc, _id: input.id });
-    else await client.create(doc);
+    await saveManagedDocument(client, existing, input, doc,
+      ['title', 'slug', 'description', 'topicCluster', 'color']);
 
     refreshInsights();
     return { ok: true, message: 'Category saved.' };

@@ -359,13 +359,13 @@ const BuildHero = () => {
             >
               <h1>
                 <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                  Websites Built to
+                  Web Development
                 </span>
                 <br />
-                <span className="text-primaryOrange">Grow, Not Just Exist</span>
+                <span className="text-primaryOrange">for UK Businesses</span>
                 <br />
                 <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                  for Growing Businesses
+                  Websites &amp; Web Apps
                 </span>
               </h1>
             </motion.div>
@@ -376,11 +376,11 @@ const BuildHero = () => {
               transition={{ duration: 0.3, delay: 0.2 }}
               className="text-xl mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl lg:mx-0 leading-relaxed sm:px-0 lg:text-left sm:text-center text-left text-gray-700"
             >
-              ShiftBuild designs and develops scalable, conversion-ready business websites with performance, CRO,
-              and SEO architecture built in from day one.
+              ShiftBuild designs and develops bespoke websites and web apps for UK businesses,
+              with accessible journeys, technical SEO and performance built into the project.
               <span className="font-semibold text-[#0C1F3A]">
                 {" "}
-                No fragile rebuild cycle. No technical debt trap.
+                Discuss your scope, integrations and launch plan for a tailored quote.
               </span>
             </motion.p>
 

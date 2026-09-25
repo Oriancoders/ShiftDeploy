@@ -33,7 +33,7 @@ export default function SectionHeader() {
         transition={{ delay: 0.2 }}
         className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
       >
-        Service businesses lose up to <strong className="text-red-500 font-bold">30% of their potential bookings</strong> simply because clients try to reach out outside of normal business hours.
+        Customers may enquire outside your opening hours. A connected booking flow can help them take the next step without waiting for your team to return.
       </motion.p>
     </div>
   );

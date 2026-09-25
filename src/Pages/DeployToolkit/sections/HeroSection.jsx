@@ -28,7 +28,7 @@ const SERVICES = [
   },
   {
     name: "ShiftFlow™",
-    tagline: "Smart ops automation",
+    tagline: "Website maintenance & support",
     icon: Workflow,
     color: "#a855f7",
     href: "/services/shiftflow",
@@ -79,9 +79,9 @@ function HeroSection() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 leading-[1.1]"
           >
-            <span className="text-primaryBlue">Fix what's slowing</span>
+            <span className="text-primaryBlue">Web Development &amp; Optimisation</span>
             <br />
-            <span className="text-primaryOrange">your growth.</span>
+            <span className="text-primaryOrange">for UK Businesses</span>
           </motion.h1>
 
           <motion.p
@@ -90,7 +90,8 @@ function HeroSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-base sm:text-lg lg:text-xl text-gray-600 mb-7 max-w-xl mx-auto"
           >
-            Pick the model. We diagnose, fix, and ship - end-to-end.
+            Bespoke website builds, speed improvements, conversion optimisation and ongoing support.
+            Start with the problem you need to solve; we will agree the scope and a tailored quote.
           </motion.p>
 
           <motion.div

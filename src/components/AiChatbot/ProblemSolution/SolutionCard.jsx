@@ -20,7 +20,7 @@ export default function SolutionCard() {
       </div>
 
       <div className="relative z-10">
-        <h3 className="text-2xl md:text-3xl font-semibold mb-2 text-white tracking-tight flex items-center">
+        <h3 className="text-2xl md:text-3xl font-semibold mb-2 text-white flex flex-wrap gap-2 items-center">
           With Shift Receptionist <span className="ml-3 px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full border border-green-500/30 uppercase tracking-widest font-semibold">Winning</span>
         </h3>
         <div className="h-1 w-12 bg-primaryOrange rounded-full mb-6" />
@@ -46,17 +46,17 @@ export default function SolutionCard() {
 
       <div className="bg-white/10 p-5 rounded-2xl mt-auto border border-white/20 backdrop-blur-sm z-10 relative overflow-hidden group">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-        <div className="flex justify-between items-end relative z-10">
+        <div className="grid grid-cols-2 gap-3 items-end relative z-10">
           <div>
-            <p className="text-blue-200/70 text-xs font-bold uppercase tracking-wider mb-1">New Revenue</p>
-            <p className="text-white font-extrabold text-2xl flex items-center">
-              <span className="text-green-400 mr-1">+</span>$2,400<span className="text-blue-200 text-base font-semibold">/mo</span>
+            <p className="text-blue-200/70 text-xs font-bold uppercase tracking-wider mb-1">Enquiry handling</p>
+            <p className="text-white font-extrabold text-lg flex items-center">
+              Connected flow
             </p>
           </div>
           <div className="text-right">
-            <p className="text-blue-200/70 text-xs font-bold uppercase tracking-wider mb-1">ROI</p>
-            <p className="text-green-400 font-extrabold text-2xl">
-              450%<span className="text-blue-200 text-base font-semibold">↑</span>
+            <p className="text-blue-200/70 text-xs font-bold uppercase tracking-wider mb-1">Outcome</p>
+            <p className="text-green-400 font-extrabold text-lg">
+              Track bookings
             </p>
           </div>
         </div>

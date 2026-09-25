@@ -2,14 +2,14 @@
 import Toolkit_Landing from '../../src/Pages/DeployToolkit/Toolkit_Landing';
 
 export const metadata = {
-  title: 'Our Services | Web Performance, CRO & Automation',
+  title: 'Web Development & Optimisation Services UK',
   description:
-    'Explore ShiftDeploy\'s full deploy toolkit â€" ShiftSpeed, ShiftConvert, ShiftBuild, and ShiftFlow. Solutions built to grow your business.',
+    'Website development, speed optimisation, conversion improvements and ongoing maintenance for UK businesses. Request a tailored quote.',
   alternates: { canonical: 'https://shiftdeploy.com/services' },
   openGraph: {
-    title: 'Our Services | Web Performance, CRO & Automation',
+    title: 'Web Development & Optimisation Services UK',
     description:
-      'Explore ShiftDeploy\'s full deploy toolkit â€" ShiftSpeed, ShiftConvert, ShiftBuild, and ShiftFlow.',
+      'Website development, speed optimisation, conversion improvements and ongoing maintenance for UK businesses. Request a tailored quote.',
     url: 'https://shiftdeploy.com/services',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
   },

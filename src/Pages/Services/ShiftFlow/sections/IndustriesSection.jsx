@@ -20,7 +20,7 @@ const industries = [
     label: "Existing Clients",
     title: "Protect What You Have Already Built",
     description:
-      "ShiftFlow preserves previous investments by keeping your site stable, secure, and continuously optimized over time.",
+      "ShiftFlow preserves previous investments by keeping your site stable, secure, and continuously optimised over time.",
     benefits: [
       "Continuous technical oversight",
       "Preventive maintenance routines",
@@ -56,11 +56,11 @@ const industries = [
     benefits: [
       "Performance drift prevention",
       "Security hygiene maintenance",
-      "Optimization continuity",
+      "Optimisation continuity",
       "Reduced emergency interventions",
     ],
     stat: "Monthly",
-    statLabel: "Optimization cycles",
+    statLabel: "Optimisation cycles",
   },
   {
     id: "critical-platforms",
@@ -102,7 +102,7 @@ export const IndustriesSection = () => {
           </h2>
           <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
             ShiftFlow keeps websites stable and improving through proactive monitoring,
-            preventive fixes, and monthly optimization discipline.
+            preventive fixes, and monthly optimisation discipline.
           </p>
         </motion.div>
 

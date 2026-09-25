@@ -21,16 +21,16 @@ const ConvertPricing = () => {
     {
       name: "Conversion Sprint",
       price: "$1,997",
-      description: "Rapid Funnel Optimization",
+      description: "Rapid Funnel Optimisation",
       features: [
         "Everything in Conversion Audit",
         "High-impact page redesign support",
-        "CTA and form flow optimization",
+        "CTA and form flow optimisation",
         "Trust architecture improvements",
         "Implementation handoff guidance",
         "30-day impact tracking",
       ],
-      cta: "Optimize My Funnel",
+      cta: "Optimise My Funnel",
       popular: true,
     },
     {
@@ -39,7 +39,7 @@ const ConvertPricing = () => {
       description: "Full-Funnel Scale Program",
       features: [
         "Everything in Conversion Sprint",
-        "Multi-page funnel optimization",
+        "Multi-page funnel optimisation",
         "Advanced lead quality strategy",
         "Experimentation and iteration cycles",
         "Monthly performance reviews",

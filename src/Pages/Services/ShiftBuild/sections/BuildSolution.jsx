@@ -30,7 +30,7 @@ const BuildSolution = () => {
     {
       icon: Shield,
       title: "Future-Proof",
-      description: "Prepare for speed and conversion optimization",
+      description: "Prepare for speed and conversion optimisation",
       detail:
         "ShiftBuild ensures your site is ready for ShiftSpeed and ShiftConvert so growth initiatives can compound over time.",
     },

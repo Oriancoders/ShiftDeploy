@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { m as motion } from 'framer-motion';
-import { DollarSign, CalendarCheck, Bell } from 'lucide-react';
+import { CalendarCheck, Bell } from 'lucide-react';
 import ChatInterface from './ChatInterface';
 import { floatingAnimation1, floatingAnimation2 } from './constants';
 
@@ -28,7 +28,7 @@ export default function HeroRightVisual({ reduceMotion, animateEnabled }) {
         <div>
           <p className="text-white font-bold text-[15px] leading-tight">Booking at 2:15 AM</p>
           <p className="text-gray-400 text-xs mt-0.5 flex items-center">
-            <DollarSign className="size-3 text-green-500 mr-0.5" /> <strong className="text-green-500 font-bold">+$150</strong> Value Secured
+            Illustrative booking flow
           </p>
         </div>
       </motion.div>
@@ -44,8 +44,8 @@ export default function HeroRightVisual({ reduceMotion, animateEnabled }) {
           <span className="absolute -top-1 -right-1 size-3 bg-red-500 rounded-full border-2 border-[#1a2b45] animate-pulse" />
         </div>
         <div>
-          <p className="text-white font-bold text-[15px] leading-tight drop-shadow-md">New Client Saved</p>
-          <p className="text-gray-400 text-xs mt-0.5">They almost bounced.</p>
+          <p className="text-white font-bold text-[15px] leading-tight drop-shadow-md">Enquiry Captured</p>
+          <p className="text-gray-400 text-xs mt-0.5">Ready for your team.</p>
         </div>
       </motion.div>
     </motion.div>

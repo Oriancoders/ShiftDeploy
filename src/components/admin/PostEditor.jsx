@@ -373,6 +373,8 @@ export default function PostEditor({ post, authors, categories }) {
   const [pending, startTransition] = useTransition();
   const [tab, setTab] = useState('write');
   const [feedback, setFeedback] = useState(null);
+  const [revision, setRevision] = useState(post?._rev);
+  const [publishedAt, setPublishedAt] = useState(post?.publishedAt);
 
   const [title, setTitle] = useState(post?.title ?? '');
   const [slug, setSlug] = useState(post?.slug ?? '');
@@ -477,11 +479,12 @@ export default function PostEditor({ post, authors, categories }) {
     startTransition(async () => {
       const res = await savePost({
         id: post?._id,
+        revision,
         title,
         slug: effectiveSlug,
         excerpt,
         status: nextStatus,
-        publishedAt: post?.publishedAt,
+        publishedAt,
         featured,
         authorId: authorId || undefined,
         categoryIds,
@@ -506,6 +509,10 @@ export default function PostEditor({ post, authors, categories }) {
       });
 
       if (res.ok) {
+        setRevision(res.revision);
+        setPublishedAt(res.publishedAt);
+        setSlug(res.slug);
+        setSlugTouched(true);
         setStatus(nextStatus);
         setFeedback({ ok: true, message: res.message });
         if (!post?._id && res.id) router.replace(`/admin/insights/${res.id}`);
@@ -600,6 +607,7 @@ export default function PostEditor({ post, authors, categories }) {
             <Field label="URL slug" hint={`Published at /insights/${effectiveSlug || '…'}`}>
               <Text
                 value={effectiveSlug}
+                readOnly={Boolean(publishedAt || status === 'published')}
                 onChange={(e) => { setSlugTouched(true); setSlug(e.target.value); }}
               />
             </Field>

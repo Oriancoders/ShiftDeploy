@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { sanityClient } from '../../../src/lib/sanity/client';
 import { isSanityConfigured } from '../../../src/lib/sanity/config';
+import { PUBLIC_POST_FILTER } from '../../../src/lib/sanity/publicContent';
 
 export const runtime = 'edge';
 export const size = { width: 1200, height: 630 };
@@ -10,8 +11,9 @@ async function getPostTitle(slug) {
   if (!isSanityConfigured || !sanityClient) return null;
   try {
     return await sanityClient.fetch(
-      `*[_type == "post" && slug.current == $slug][0]{ title, excerpt, "author": author->name, "category": categories[0]->title }`,
-      { slug }
+      `*[${PUBLIC_POST_FILTER} && slug.current == $slug][0]{ title, excerpt, "author": author->name, "category": categories[0]->title }`,
+      { slug },
+      { cache: 'no-store' }
     );
   } catch {
     return null;

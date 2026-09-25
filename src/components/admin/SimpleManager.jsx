@@ -69,6 +69,7 @@ export default function SimpleManager({ items, fields, onSave, onDelete, labelKe
                   onClick={() =>
                     setEditing({
                       id: item._id,
+                      revision: item._rev,
                       ...Object.fromEntries(
                         fields.map((f) => [
                           f.name,

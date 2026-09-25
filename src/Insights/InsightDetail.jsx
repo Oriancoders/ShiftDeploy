@@ -671,7 +671,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                       eagerly at high priority and never lazily. */}
                   <SanityImage
                     image={heroImage}
-                    alt={heroImage.alt || post.title || "Insight cover image"}
+                    alt={/^(hero(?: image)?|image)$/i.test(heroImage.alt?.trim() || '') ? post.title : heroImage.alt || post.title || "Insight cover image"}
                     sizes="(max-width: 1024px) 100vw, 896px"
                     maxWidth={1792}
                     priority
@@ -1131,6 +1131,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                     // ============ TEXT BLOCK ============
                     if (block._type === "block" || !block._type) {
                       if (!block.children || !Array.isArray(block.children)) return null;
+                      if (/^h[1-6]$/.test(block.style || '') && block.children.every((child) => !child?.text?.trim())) return null;
 
                       const textContent = renderTextWithMarks(block.children, block.markDefs);
                       const alignmentClass = getAlignmentClass(block);

@@ -52,7 +52,7 @@ const BuildProblem = () => {
       title: "No Base for Conversion Growth",
       description:
         "If the build foundation is weak, performance and conversion work cannot scale. Growth gets capped before it starts.",
-      stat: "Optimization stalls",
+      stat: "Optimisation stalls",
     },
   ];
 

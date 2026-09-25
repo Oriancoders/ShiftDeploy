@@ -6,7 +6,7 @@ const Detailed = () => {
         <section className='bg-gray-50 overflow-hidden flex flex-col items-center justify-center pb-20'>
             <div className='max-w-7xl mx-auto px-6  relative z-10 mt-10'>
                 <section id='P_1' className='space-y-4 mb-10'>
-                    <h1 className='text-3xl font-bold text-primaryBlue'>1) How ShiftDeploy Protects Your Privacy</h1>
+                    <h2 className='text-3xl font-bold text-primaryBlue'>1) How ShiftDeploy Protects Your Privacy</h2>
                     <p>
                         At ShiftDeploy, privacy and data protection are built into how we operate. This Privacy Policy explains how we collect, use, and safeguard information when you interact with our website, request performance audits, or engage our services.
                     </p>
@@ -20,7 +20,7 @@ const Detailed = () => {
                 </section>
 
                 <section id='P_2' className='space-y-4 mb-10'>
-                    <h1 className='text-3xl font-bold text-primaryBlue'>2) What Information ShiftDeploy Collects</h1>
+                    <h2 className='text-3xl font-bold text-primaryBlue'>2) What Information ShiftDeploy Collects</h2>
                     <p>
                         To deliver our services effectively, ShiftDeploy collects information in two primary ways: information you provide directly, and limited technical data collected automatically through website usage.
                     </p>
@@ -49,7 +49,7 @@ const Detailed = () => {
                 </section>
 
                 <section id='P_3' className='space-y-4 mb-10'>
-                    <h1 className='text-3xl font-bold text-primaryBlue'>3) How ShiftDeploy Uses Your Information</h1>
+                    <h2 className='text-3xl font-bold text-primaryBlue'>3) How ShiftDeploy Uses Your Information</h2>
                     <p>
                         We use collected data solely to deliver and improve our performance optimization services.
                     </p>
@@ -72,7 +72,7 @@ const Detailed = () => {
                 </section>
 
                 <section id='P_4' className='space-y-4 mb-10'>
-                    <h1 className='text-3xl font-bold text-primaryBlue'>4) Cookies, Analytics & Tracking Technologies</h1>
+                    <h2 className='text-3xl font-bold text-primaryBlue'>4) Cookies, Analytics & Tracking Technologies</h2>
                     <p>
                         ShiftDeploy uses cookies and analytics tools to understand website performance and visitor interaction.
                     </p>
@@ -98,7 +98,7 @@ const Detailed = () => {
                 </section>
 
                 <section id='P_5' className='space-y-4 mb-10'>
-                    <h1 className='text-3xl font-bold text-primaryBlue'>5) Third-Party Services We Depend On</h1>
+                    <h2 className='text-3xl font-bold text-primaryBlue'>5) Third-Party Services We Depend On</h2>
                     <p>
                         To operate efficiently, ShiftDeploy relies on selected third-party providers for hosting, analytics, communication, and payment processing.
                     </p>
@@ -119,7 +119,7 @@ const Detailed = () => {
                 </section>
 
                 <section id='P_6' className='space-y-4 mb-10'>
-                    <h1 className='text-3xl font-bold text-primaryBlue'>6) How Long ShiftDeploy Keeps Your Data</h1>
+                    <h2 className='text-3xl font-bold text-primaryBlue'>6) How Long ShiftDeploy Keeps Your Data</h2>
                     <p>
                         We retain data only for as long as necessary to deliver services, fulfill contractual obligations, and comply with legal requirements.
                     </p>
@@ -138,7 +138,7 @@ const Detailed = () => {
                 </section>
 
                 <section id='P_7' className='space-y-4 mb-10'>
-                    <h1 className='text-3xl font-bold text-primaryBlue'>7) How ShiftDeploy Secures Your Data</h1>
+                    <h2 className='text-3xl font-bold text-primaryBlue'>7) How ShiftDeploy Secures Your Data</h2>
                     <p>
                         We implement reasonable technical and organizational safeguards to protect personal and business information.
                     </p>
@@ -176,7 +176,7 @@ const Detailed = () => {
                 </section>
 
                 <section id='P_9' className='space-y-4 mb-10'>
-                    <h1 className='text-3xl font-bold text-primaryBlue'>9) How ShiftDeploy Handles International Data Transfers</h1>
+                    <h2 className='text-3xl font-bold text-primaryBlue'>9) How ShiftDeploy Handles International Data Transfers</h2>
                     <p>
                         As ShiftDeploy serves clients across regions, some data may be processed using international hosting or service providers.
                     </p>
@@ -189,7 +189,7 @@ const Detailed = () => {
                 </section>
 
                 <section id='P_10' className='space-y-4 mb-10'>
-                    <h1 className='text-3xl font-bold text-primaryBlue'>10) Children’s Privacy at ShiftDeploy</h1>
+                    <h2 className='text-3xl font-bold text-primaryBlue'>10) Children’s Privacy at ShiftDeploy</h2>
                     <p>
                         ShiftDeploy’s services are intended for businesses and professionals. We do not knowingly collect personal data from individuals under 16 years of age.
                     </p>
@@ -202,7 +202,7 @@ const Detailed = () => {
                 </section>
 
                 <section id='P_11' className='space-y-4 mb-10'>
-                    <h1 className='text-3xl font-bold text-primaryBlue'>11) Updates to ShiftDeploy’s Privacy Policy</h1>
+                    <h2 className='text-3xl font-bold text-primaryBlue'>11) Updates to ShiftDeploy’s Privacy Policy</h2>
                     <p>
                         This Privacy Policy may be updated periodically to reflect operational or legal changes. The “Last Updated” date indicates the most recent revision.
                     </p>
@@ -215,7 +215,7 @@ const Detailed = () => {
                 </section>
 
                 <section id='P_12' className='space-y-4 mb-10'>
-                    <h1 className='text-3xl font-bold text-primaryBlue'>12) Updates to ShiftDeploy’s Privacy Policy</h1>
+                    <h2 className='text-3xl font-bold text-primaryBlue'>12) Updates to ShiftDeploy’s Privacy Policy</h2>
                     <p>
                         If you have questions regarding this Privacy Policy or how we handle data, please contact:
                     </p>

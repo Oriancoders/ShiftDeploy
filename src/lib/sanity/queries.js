@@ -1,3 +1,5 @@
+import { INDEXABLE_POST_FILTER } from './publicContent.js';
+
 /** GROQ queries. Public queries live alongside the admin ones for one source of truth. */
 
 /** Admin list view: every post regardless of status, newest first. */
@@ -31,11 +33,11 @@ export const adminPostByIdQuery = `*[_type == "post" && _id == $id][0]{
 export const slugExistsQuery = `count(*[_type == $type && slug.current == $slug && _id != $excludeId && !(_id in path("drafts.**"))])`;
 
 export const adminAuthorsQuery = `*[_type == "author"] | order(name asc){
-  _id, name, "slug": slug.current, jobTitle, bio, "imageUrl": image.asset->url
+  _id, _rev, name, "slug": slug.current, jobTitle, bio, expertise, credentials, sameAs, "imageUrl": image.asset->url
 }`;
 
 export const adminCategoriesQuery = `*[_type == "category"] | order(title asc){
-  _id, title, "slug": slug.current, description, topicCluster, color
+  _id, _rev, title, "slug": slug.current, description, topicCluster, color
 }`;
 
 /** Author profile page: the author plus everything they have written. */
@@ -49,7 +51,7 @@ export const authorBySlugQuery = `*[_type == "author" && slug.current == $slug][
   sameAs,
   "slug": slug.current,
   "imageUrl": image.asset->url,
-  "posts": *[_type == "post" && author._ref == ^._id && status == "published"]
+  "posts": *[${INDEXABLE_POST_FILTER} && author._ref == ^._id]
     | order(coalesce(publishedAt, _createdAt) desc){
       title,
       "slug": slug.current,

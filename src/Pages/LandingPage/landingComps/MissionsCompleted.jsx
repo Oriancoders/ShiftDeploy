@@ -65,11 +65,12 @@ const MissionsCompleted = () => {
     {
       title: "Smart EV Charging Platform",
       client: "Slacker IoT",
+      imageAlt: "Slacker IoT EV charging dashboard showing battery, power and session data",
       category: "ShiftBuild",
       description:
         "Built an end-to-end EV charging platform from scratch, including the customer dashboard, admin controls, and billing flows.",
       image:
-        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,/v1765189441/pexels-photo-110844_k1hftn.jpg",
+        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764978775/ev_dashboard_lak5oh.png",
       results: [
         "Live device status and session tracking",
         "Automated billing and payment capture",
@@ -80,11 +81,12 @@ const MissionsCompleted = () => {
     {
       title: "Conversion-Focused E-commerce Platform",
       client: "K2 Traders",
+      imageAlt: "K2 Traders website homepage and product navigation",
       category: "ShiftBuild",
       description:
         "Built a new e-commerce website from scratch with a cleaner shopping flow, faster pages, and a setup that’s easy to maintain.",
       image:
-        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1765189459/pexels-photo-230544_i6mjcv.jpg",
+        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764979152/k2_traders_vj05aq.png",
       results: [
         "Faster page loads across key pages",
         "Mobile-first shopping and checkout flow",
@@ -95,11 +97,12 @@ const MissionsCompleted = () => {
     {
       title: "Modern Investment Platform for Digital Trust",
       client: "Bullseyes Investments",
+      imageAlt: "Bullseye Investments website homepage showing its financial services offer",
       category: "ShiftConvert",
       description:
         "Designed and built a brokerage website focused on clear positioning, structured CTAs, and seamless access to the client portal.",
       image:
-        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1765189477/pexels-photo-1181472_bmrhta.jpg",
+        "https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto/v1764978786/bullseyes_x1ifpw.png",
       results: [
         "Clear service positioning",
 
@@ -182,8 +185,8 @@ const MissionsCompleted = () => {
               >
                 <img
                   src={project.image}
-                  alt={project.title}
-                  className="size-full object-cover sm:rounded-none"
+                  alt={project.imageAlt}
+                  className="size-full object-contain bg-gray-100 sm:rounded-none"
                   loading="lazy"
                 />
               </div>

@@ -26,7 +26,7 @@ function WhatWeSolveSection() {
     },
     {
       pain: "Small updates keep turning into big headaches. Things break, and nobody truly owns the site long-term.",
-      fix: "ShiftFlow™: Ongoing care that keeps your site stable, fast, and improving - regular checkups, updates, and monthly optimizations with one accountable partner.",
+      fix: "ShiftFlow™: Ongoing care that keeps your site stable, fast, and improving - regular checkups, updates, and monthly optimisations with one accountable partner.",
       icon: <Zap className="w-4 sm:w-6 h-4 sm:h-6" />,
     },
     {
@@ -97,7 +97,7 @@ function WhatWeSolveSection() {
                       </div>
                     </div>
                     <blockquote className="text-sm sm:text-lg text-primaryOrange italic leading-relaxed font-medium">
-                      "{problem.pain}"
+                      &quot;{problem.pain}&quot;
                     </blockquote>
                   </div>
                 </div>
@@ -137,4 +137,3 @@ function WhatWeSolveSection() {
 }
 
 export default WhatWeSolveSection
-

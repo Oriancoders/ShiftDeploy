@@ -3,9 +3,9 @@ import React from "react";
 export const portableTextComponents = {
   block: {
     h1: ({ children }) => (
-      <h1 className="text-3xl sm:text-4xl font-semibold text-primaryBlue mt-10 mb-4 leading-tight">
+      <h2 className="text-3xl sm:text-4xl font-semibold text-primaryBlue mt-10 mb-4 leading-tight">
         {children}
-      </h1>
+      </h2>
     ),
     h2: ({ children }) => (
       <h2 className="text-2xl sm:text-3xl font-semibold text-primaryBlue mt-10 mb-3 leading-tight">

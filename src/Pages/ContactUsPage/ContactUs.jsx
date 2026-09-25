@@ -6,6 +6,7 @@ import { fadeInUp, staggerContainer } from '../../utils/animations';
 import Footer from '../../components/Footer';
 import Navigation from '../../components/Navigation';
 import emailjs from "@emailjs/browser";
+import { trackGeneratedLead } from '../../lib/leadTracking';
 import { useRouter } from 'next/navigation';
 import { FaXTwitter } from 'react-icons/fa6';
 import { FaLinkedin, } from 'react-icons/fa';
@@ -59,11 +60,11 @@ const ContactUs = () => {
       )
       .then(
         () => {
+          trackGeneratedLead('contact');
           setFormStatus("success");
           setTimeout(() => {
             router.push("/thankyou")
           }, 1000)
-          console.log("form data yera ", formData)
           setFormData({ name: "", email: "", company: "", message: "", phone: "", budget: "", timeline: "" });
           setTimeout(() => setFormStatus(null), 15000);
 
@@ -345,7 +346,7 @@ const ContactUs = () => {
                       className="flex items-center gap-x-3 text-green-600 bg-green-50 p-4 rounded-xl border border-green-200"
                     >
                       <CheckCircle className="size-5 flex-shrink-0" />
-                      <span className="text-sm sm:text-base">Message sent successfully! We'll get back to you soon.</span>
+                      <span className="text-sm sm:text-base">Message sent successfully! We&apos;ll get back to you soon.</span>
                     </motion.div>
                   )}
 

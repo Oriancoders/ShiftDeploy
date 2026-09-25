@@ -1,4 +1,5 @@
 import React from "react";
+import { SiReact } from 'react-icons/si';
 
 /**
  * TrustStrip
@@ -11,7 +12,7 @@ import React from "react";
 
 const LOGO_URLS = [
   // Replace these with your hosted logo URLs (PNG/SVG). Keep sizes similar for best results.
-  "https://cdn.worldvectorlogo.com/logos/react-2.svg",
+  null,
   "https://cdn.worldvectorlogo.com/logos/nextjs-2.svg",
   "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg",
   "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg",
@@ -23,12 +24,13 @@ const LOGO_URLS = [
 ];
 
 const TrustStrip = ({ speed = 28 }) => {
+  const names = ['React', 'Next.js', 'Node.js', 'MongoDB', 'Docker', 'Kubernetes', 'AWS', 'Microsoft Azure', 'Vercel'];
   // We duplicate the list to create a smooth seamless loop
   const logos = [...LOGO_URLS, ...LOGO_URLS];
 
   return (
     <div className="w-full overflow-hidden bg-gray-50 py-20">
-        <h2 className="text-3xl sm:text-4xl font-semibold text-primaryBlue mb-6 leading-tight text-center px-6">Our Circle of Trust &amp; Technology Excellence</h2>
+        <h2 className="text-3xl sm:text-4xl font-semibold text-primaryBlue mb-6 leading-tight text-center px-6">Technologies We Work With</h2>
       {/* Inline styles for keyframes so you don't need to change tailwind config */}
       <style>{`
         @keyframes trust-marquee {
@@ -63,9 +65,9 @@ const TrustStrip = ({ speed = 28 }) => {
               className="flex-shrink-0"
               style={{ width: "140px" }} /* adjust per design */
             >
-              <img
+              {src ? <img
                 src={src}
-                alt={`logo-${i}`}
+                alt={i < names.length ? names[i] : ''}
                 className="mx-auto w-full object-contain filter grayscale transition-filter duration-200 ease-in-out logo-focus"
                 // Accessibility: make logos keyboard-focusable so keyboard users can remove grayscale
                 tabIndex={0}
@@ -84,7 +86,7 @@ const TrustStrip = ({ speed = 28 }) => {
                 onBlur={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
                 onMouseEnter={(e) => (e.currentTarget.style.filter = "none")}
                 onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
-              />
+              /> : <SiReact className="mx-auto size-12 text-gray-600" role="img" aria-label={i < names.length ? 'React' : undefined} aria-hidden={i >= names.length} />}
             </div>
           ))}
         </div>

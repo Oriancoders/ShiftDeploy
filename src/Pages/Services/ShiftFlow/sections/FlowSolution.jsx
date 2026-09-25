@@ -30,7 +30,7 @@ const FlowSolution = () => {
     {
       icon: Wrench,
       title: "Improve",
-      description: "Ship small monthly optimizations",
+      description: "Ship small monthly optimisations",
       detail:
         "Each cycle includes practical improvements that prevent decay, protect ROI, and support stable long-term growth.",
     },
@@ -51,7 +51,7 @@ const FlowSolution = () => {
           </h2>
           <p className="sm:text-xl text-gray-600 max-w-3xl mx-auto">
             ShiftFlow replaces reactive ticket queues with structured monitoring,
-            preventive maintenance, and ongoing optimization cycles.
+            preventive maintenance, and ongoing optimisation cycles.
           </p>
         </motion.div>
 

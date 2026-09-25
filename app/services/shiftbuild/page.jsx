@@ -4,13 +4,13 @@ import JsonLd from '../../../src/components/JsonLd';
 import RelatedInsights from '../../../src/components/RelatedInsights';
 
 export const metadata = {
-  title: 'ShiftBuild | Custom Web Development & Design',
-  description: 'ShiftBuild delivers custom-built websites and web apps engineered for speed, SEO, and conversions - from design to deployment.',
+  title: 'Web Development for UK Businesses | ShiftBuild',
+  description: 'Bespoke websites and web apps for UK businesses, built with technical SEO, performance and clear enquiry journeys. Request a tailored project quote.',
   keywords: ['custom web development', 'web design agency', 'Next.js development', 'React development', 'bespoke website design', 'web app development UK'],
   alternates: { canonical: 'https://shiftdeploy.com/services/shiftbuild' },
   openGraph: {
-    title: 'ShiftBuild | Custom Web Development & Design',
-    description: 'ShiftBuild delivers custom-built websites and web apps engineered for speed, SEO, and conversions.',
+    title: 'Web Development for UK Businesses | ShiftBuild',
+    description: 'Bespoke web development for UK businesses, from website redesigns to custom web apps.',
     url: 'https://shiftdeploy.com/services/shiftbuild',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },

@@ -131,10 +131,10 @@ function HeroTerms() {
                     </div>
 
                     <div className="w-full text-left">
-                        <h1 className="text-3xl text-primaryBlue font-semibold text-left mt-6 relative inline 
-                     ">What is in this page
+                        <h2 className="text-3xl text-primaryBlue font-semibold text-left mt-6 relative inline
+                     ">On this page
                             <span className="absolute h-1 bg-primaryOrange w-full left-0 -bottom-2 rounded-full" />
-                        </h1>
+                        </h2>
                     </div>
                     <div className="grid sm:grid-cols-2 grid-cols-1 w-full text-left mt-6">
                         {SECTIONS.map((section, index) => (

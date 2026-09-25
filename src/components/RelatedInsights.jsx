@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import SanityImage from './SanityImage';
 import { sanityClient } from '../lib/sanity/client';
 import { isSanityConfigured } from '../lib/sanity/config';
+import { INDEXABLE_POST_FILTER, INSIGHTS_FETCH_OPTIONS } from '../lib/sanity/publicContent';
 
 /**
  * Shows the most relevant blog posts on a service page.
@@ -19,8 +20,7 @@ async function getRelated({ tags = [], categories = [], limit = 3 }) {
   if (!isSanityConfigured || !sanityClient) return [];
   try {
     return await sanityClient.fetch(
-      `*[_type == "post"
-         && status == "published"
+      `*[${INDEXABLE_POST_FILTER}
          && (count((tags[])[@ in $tags]) > 0 || count((categories[]->title)[@ in $cats]) > 0)
         ] | order(coalesce(publishedAt, _createdAt) desc)[0...$limit]{
           title,
@@ -30,7 +30,8 @@ async function getRelated({ tags = [], categories = [], limit = 3 }) {
           "date": coalesce(publishedAt, _createdAt),
           "readMinutes": readingTime
         }`,
-      { tags, cats: categories, limit }
+      { tags, cats: categories, limit },
+      INSIGHTS_FETCH_OPTIONS
     );
   } catch {
     return [];

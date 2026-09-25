@@ -42,14 +42,14 @@ const Hero = () => {
               <div className="hidden sm:block">
                 <Suspense fallback={<span className=" w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-4 sm:px-6 py-2 rounded-full text-white font-semibold text-xs sm:text-sm lg:text-base">
                   <p className="flex items-center justify-center gap-x-2 italic">
-                    Building <ArrowRight size={16} /> Optimization{" "}
+                    Building <ArrowRight size={16} /> Optimisation{" "}
                     <ArrowRight size={16} /> Succeed
                   </p>
                 </span>}>
                   <CursorFollower
                     text={
                       <p className="flex items-center justify-center gap-x-2 italic">
-                        Building <ArrowRight size={16} /> Optimization{" "}
+                        Building <ArrowRight size={16} /> Optimisation{" "}
                         <ArrowRight size={16} /> Succeed
                       </p>
                     }
@@ -65,30 +65,25 @@ const Hero = () => {
               {/* //for mobile  */}
               <span className="block sm:hidden w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-4 sm:px-6 py-2 rounded-full text-white font-semibold text-xs sm:text-sm lg:text-base">
                 <p className="flex items-center justify-center gap-x-2 italic">
-                  Building <ArrowRight size={16} /> Optimization{" "}
+                  Building <ArrowRight size={16} /> Optimisation{" "}
                   <ArrowRight size={16} /> Succeed
                 </p>
               </span>
 
-              <div className="text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left">
+              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left">
                 <h1>
                   <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
                    
-                    Your Technical Partner,
+                    Web &amp; App Development
                   </span>
                   <br />
-                  <span className="text-primaryOrange"> We Fix What's 
-</span>
-                  <br />
-                  <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                    Blocking Your Growth
-                  </span>
+                  <span className="text-primaryOrange"> for UK Businesses</span>
                 </h1>
               </div>
 
               <p className="text-xl mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl lg:mx-0 leading-relaxed sm:px-0 lg:text-left sm:text-center text-left text-gray-700">
-                Get a free performance audit showing how booking flow, speed and usability
-                affect real visitors, without making changes to your site.
+                Websites, apps and digital products for UK businesses.
+                We build, fix and optimise for speed, technical SEO and customer enquiries.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 sm:mb-16">

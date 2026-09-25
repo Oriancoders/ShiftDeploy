@@ -1,66 +1,17 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
-import { m as motion, useInView, useReducedMotion } from 'framer-motion';
+import React from 'react';
+import { m as motion, useReducedMotion } from 'framer-motion';
 import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right';
 import { Button, Eyebrow } from '../ui';
 import SearchResultVisual from './SearchResultVisual';
 
-const HEADLINE = ['Your', 'Competitors', 'Are', 'Stealing', 'Your', 'Calls.'];
+const HEADLINE = ['Websites', '&', 'Local', 'SEO', 'for', 'UK', 'Plumbers'];
 
 const STATS = [
-  { to: 40000, suffix: '+', label: 'UK Plumbers Have No Web Presence' },
-  { to: 3.2, suffix: 'x', label: 'More Enquiries After 90 Days', decimals: 1 },
-  { to: 30, suffix: '', label: 'Days to First Results or We Work Free' },
+  { value: 'Mobile-first', label: 'Websites built for customers on the move' },
+  { value: 'Local search', label: 'Clear services and service-area information' },
+  { value: 'Enquiry flow', label: 'Simple ways to request a quote or callout' },
 ];
-
-/**
- * Counts up only once, when it scrolls into view.
- *
- * rAF rather than setInterval: setInterval drifts under load and keeps firing
- * off-screen. `once: true` on useInView means this never re-runs on scroll-back,
- * and reduced-motion users get the final value immediately.
- */
-function CountUp({ to, suffix = '', decimals = 0 }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-  const reduce = useReducedMotion();
-  const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    if (reduce) {
-      setValue(to);
-      return;
-    }
-
-    const DURATION = 1600;
-    let frame;
-    const start = performance.now();
-
-    const tick = (now) => {
-      const p = Math.min((now - start) / DURATION, 1);
-      // easeOutExpo - fast start, soft landing
-      const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
-      setValue(to * eased);
-      if (p < 1) frame = requestAnimationFrame(tick);
-    };
-
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [inView, to, reduce]);
-
-  const shown =
-    decimals > 0
-      ? value.toFixed(decimals)
-      : Math.round(value).toLocaleString('en-GB');
-
-  return (
-    <span ref={ref}>
-      {shown}
-      {suffix}
-    </span>
-  );
-}
 
 const PlumbersHero = () => {
   const reduce = useReducedMotion();
@@ -91,7 +42,7 @@ const PlumbersHero = () => {
         <motion.div initial="hidden" animate="show" variants={container}>
           <motion.div variants={word}>
             <Eyebrow className="mb-4 sm:mb-6">
-              UK Plumbers Only &middot; Limited Spots This Month
+              Website and Enquiry Support
             </Eyebrow>
           </motion.div>
 
@@ -99,7 +50,7 @@ const PlumbersHero = () => {
               six separately-animated fragments. */}
           <h1
             className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight text-primaryBlue [text-wrap:balance]"
-            aria-label="Your Competitors Are Stealing Your Calls."
+            aria-label="Websites and Local SEO for UK Plumbers"
           >
             <span aria-hidden="true">
               {HEADLINE.map((w, i) => (
@@ -108,7 +59,7 @@ const PlumbersHero = () => {
                   variants={word}
                   className="inline-block mr-[0.25em]"
                 >
-                  {w}
+                  {w}{' '}
                 </motion.span>
               ))}
             </span>
@@ -120,9 +71,8 @@ const PlumbersHero = () => {
             transition={{ duration: 0.6, delay: reduce ? 0 : 0.6 }}
             className="text-lg sm:text-xl mb-6 sm:mb-8 lg:mb-10 max-w-xl leading-relaxed text-gray-700"
           >
-            Every day you&apos;re invisible on Google, someone else gets the
-            boiler jobs, bathroom fits and emergency callouts that should be
-            yours. We fix that in 30 days.
+            Help local customers find your plumbing services, understand your service area
+            and request a callout. We review your website, local visibility and enquiry journey.
           </motion.p>
 
           <motion.div
@@ -136,7 +86,7 @@ const PlumbersHero = () => {
               <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </Button>
             <Button href="#packages" variant="secondary">
-              Claim Free Website
+              Explore Website Packages
             </Button>
           </motion.div>
         </motion.div>
@@ -148,7 +98,7 @@ const PlumbersHero = () => {
           {STATS.map((s) => (
             <div key={s.label}>
               <div className="text-3xl sm:text-4xl font-bold text-primaryOrange mb-1 sm:mb-2">
-                <CountUp to={s.to} suffix={s.suffix} decimals={s.decimals} />
+                {s.value}
               </div>
               <p className="text-gray-600 leading-snug">{s.label}</p>
             </div>

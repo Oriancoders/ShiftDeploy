@@ -21,11 +21,11 @@ const FlowPricing = () => {
     {
       name: "Flow Pro",
       price: "$1,197/mo",
-      description: "Proactive Support & Optimization",
+      description: "Proactive Support & Optimisation",
       features: [
         "Everything in Flow Starter",
         "Preventive fixes and hardening",
-        "Monthly optimization improvements",
+        "Monthly optimisation improvements",
         "Priority incident response",
         "Performance trend reporting",
         "Dedicated monthly review",
@@ -42,7 +42,7 @@ const FlowPricing = () => {
         "Expanded monitoring coverage",
         "Advanced operational support",
         "Risk and resilience planning",
-        "Custom optimization roadmap",
+        "Custom optimisation roadmap",
         "Executive reporting cadence",
       ],
       cta: "Activate Critical Ops",
@@ -126,7 +126,7 @@ const FlowPricing = () => {
             <p className="text-gray-600 mb-4">
               <strong>Onboarding:</strong> Initial setup typically completes within one week.
             </p>
-            <p className="text-sm text-gray-500">After onboarding, ShiftFlow runs on consistent monthly support and optimization cycles.</p>
+            <p className="text-sm text-gray-500">After onboarding, ShiftFlow runs on consistent monthly support and optimisation cycles.</p>
           </div>
         </motion.div>
       </div>

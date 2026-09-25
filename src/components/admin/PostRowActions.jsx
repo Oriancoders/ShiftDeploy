@@ -8,8 +8,18 @@ export default function PostRowActions({ id, slug, status }) {
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [confirming, setConfirming] = useState(false);
+  const [error, setError] = useState('');
 
-  const run = (fn) => startTransition(async () => { await fn(); router.refresh(); });
+  const run = (fn) => startTransition(async () => {
+    setError('');
+    const result = await fn();
+    if (!result.ok) {
+      setError(result.message);
+      setConfirming(false);
+      return;
+    }
+    router.refresh();
+  });
 
   if (confirming) {
     return (
@@ -32,6 +42,7 @@ export default function PostRowActions({ id, slug, status }) {
 
   return (
     <span className="inline-flex items-center gap-3 text-xs">
+      {error && <span role="alert" className="text-red-600">{error}</span>}
       {status === 'published' && (
         <a
           href={`/insights/${slug}`}

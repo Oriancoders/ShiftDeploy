@@ -52,7 +52,7 @@ const industries = [
     label: "Businesses Planning Growth",
     title: "Build for Multi-Year Adaptability",
     description:
-      "If your business is scaling, your website should scale with it. ShiftBuild reduces future rebuild risk and supports ongoing optimization.",
+      "If your business is scaling, your website should scale with it. ShiftBuild reduces future rebuild risk and supports ongoing optimisation.",
     benefits: [
       "Growth-driven design decisions",
       "Future expansion without full rebuild",

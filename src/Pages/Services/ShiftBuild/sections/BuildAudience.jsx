@@ -21,7 +21,7 @@ const BuildAudience = () => {
       icon: TrendingUp,
       title: "Growth-Focused Businesses",
       description: "Scale content, services, and locations without full redesign cycles.",
-      benefits: ["Lifecycle-driven website model", "Future optimization readiness", "Performance + conversion support"],
+      benefits: ["Lifecycle-driven website model", "Future optimisation readiness", "Performance + conversion support"],
     },
   ];
 

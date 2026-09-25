@@ -60,7 +60,7 @@ const DigitalReceptionist = ({
                                 {/* Optimized Poster Image */}
                                 <img
                                     src={posterSrc}
-                                    alt="Video thumbnail"
+                                    alt="ShiftDeploy digital receptionist demonstration"
                                     className="size-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                                     width="1280"
                                     height="720"

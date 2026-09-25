@@ -17,7 +17,7 @@ const industries = [
       "Instant appointment and enquiry forms",
       "Fast-loading service and treatment pages",
       "Mobile-first performance for urgent searches",
-      "Optimized integrations with booking systems",
+      "Optimised integrations with booking systems",
     ],
     stat: "2.8x",
     statLabel: "Higher appointment conversions",
@@ -32,7 +32,7 @@ const industries = [
       "In financial products, every delay raises doubt. Clients expect instant access, instant calculations, and instant feedback - without compromising security.",
     benefits: [
       "Fast, secure user dashboards",
-      "Optimized calculators and interactive tools",
+      "Optimised calculators and interactive tools",
       "Performance monitoring without downtime",
       "Trust-first speed for high-stakes decisions",
     ],
@@ -48,7 +48,7 @@ const industries = [
       "Your buyers judge your product before they ever sign up. Slow landing pages, delayed dashboards, or broken onboarding quietly kill conversions.",
     benefits: [
       "Lightning-fast landing and pricing pages",
-      "Optimized onboarding and dashboards",
+      "Optimised onboarding and dashboards",
       "Reduced churn from performance friction",
       "Performance-ready scaling as traffic grows",
     ],
@@ -66,7 +66,7 @@ const industries = [
     benefits: [
       "Instant-loading service pages",
       "Fast lead capture on mobile",
-      "Optimized for local search performance",
+      "Optimised for local search performance",
       "Reduced bounce from paid traffic",
     ],
     stat: "41%",
@@ -227,7 +227,7 @@ export const IndustriesSection = () => {
               className="bg-primaryOrange mt-12 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl  mb-6 font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange text-md w-fit group text-center"
 
             >
-              Optimize My {activeIndustry.label.slice(0, -1)} Site
+              Optimise My {activeIndustry.label.slice(0, -1)} Site
               <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
             </Link >
           </div>

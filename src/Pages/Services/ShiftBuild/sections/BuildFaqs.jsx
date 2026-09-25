@@ -17,7 +17,7 @@ function BuildFaqs() {
     {
       question: "How is this different from regular web design?",
       answer:
-        "Most web projects stop at launch. ShiftBuild is lifecycle-driven, with modular architecture and growth-ready foundations for performance and conversion optimization.",
+        "Most web projects stop at launch. ShiftBuild is lifecycle-driven, with modular architecture and growth-ready foundations for performance and conversion optimisation.",
     },
     {
       question: "How long does implementation take?",
@@ -79,7 +79,7 @@ function BuildFaqs() {
         <div className="text-center mb-12 sm:mb-20">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">
             Questions? <br />
-            <span className="text-primaryOrange">We've got answers.</span>
+            <span className="text-primaryOrange">We&apos;ve got answers.</span>
           </h2>
         </div>
 
@@ -125,7 +125,7 @@ function BuildFaqs() {
             href="/ContactUs"
             className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm w-fit mb-12 mx-auto"
           >
-            Can't Find an Answer? Ask Us
+            Can&apos;t Find an Answer? Ask Us
             <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6" />
           </Link>
         </div>

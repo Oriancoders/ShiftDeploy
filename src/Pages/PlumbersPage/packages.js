@@ -9,24 +9,24 @@
 export const PACKAGES = [
   {
     name: 'Starter',
-    price: '£200',
-    priceNote: 'one-time + £20/month',
+    price: 'Tailored quote',
+    priceNote: 'Setup and ongoing support agreed before work starts',
     features: [
       '5-page professional website',
       'Mobile optimised',
       'Google Business Profile setup',
       'Basic local SEO (5 keywords)',
-      '1 year free hosting',
+      'Hosting requirements agreed in your quote',
       'SSL included',
     ],
     cta: 'Start Here',
     variant: 'secondary',
-    packageValue: 'Starter: £200 + £20/mo',
+    packageValue: 'Starter - tailored quote',
   },
   {
     name: 'Premium',
-    price: '£499',
-    priceNote: 'one-time + £40/month',
+    price: 'Tailored quote',
+    priceNote: 'Setup and ongoing support agreed before work starts',
     featured: true,
     features: [
       'Everything in Starter',
@@ -38,12 +38,12 @@ export const PACKAGES = [
     ],
     cta: 'Get Premium',
     variant: 'primary',
-    packageValue: 'Premium: £499 + £40/mo',
+    packageValue: 'Premium - tailored quote',
   },
   {
     name: 'Full CMS',
-    price: '£1,299',
-    priceNote: 'one-time (or £120/mo × 12)',
+    price: 'Tailored quote',
+    priceNote: 'Setup and ongoing support agreed before work starts',
     features: [
       'Everything in Premium',
       'Full CMS, edit content yourself',
@@ -54,12 +54,12 @@ export const PACKAGES = [
     ],
     cta: 'Let’s Talk',
     variant: 'secondary',
-    packageValue: 'Full CMS: £1,299',
+    packageValue: 'Full CMS - tailored quote',
   },
 ];
 
 /* The free-offer banner is not a priced package but is selectable in the form. */
-export const FREE_OFFER_VALUE = 'Free Website Offer';
+export const FREE_OFFER_VALUE = 'New website - tailored quote';
 
 /* Exactly what the booking <select> renders under its "Packages" optgroup. */
 export const PACKAGE_OPTIONS = [

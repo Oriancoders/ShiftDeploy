@@ -5,7 +5,7 @@ import SolutionCard from './ProblemSolution/SolutionCard';
 
 export default function ProblemSolutionSection() {
   return (
-    <section className="py-20 md:py-32 bg-gray-50">
+    <section className="py-20 md:py-32 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
         <SectionHeader />
 

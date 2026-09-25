@@ -7,6 +7,7 @@ import SanityImage from '../../../../src/components/SanityImage';
 import { sanityClient } from '../../../../src/lib/sanity/client';
 import { isSanityConfigured } from '../../../../src/lib/sanity/config';
 import { authorBySlugQuery, authorSlugsQuery } from '../../../../src/lib/sanity/queries';
+import { INSIGHTS_FETCH_OPTIONS } from '../../../../src/lib/sanity/publicContent';
 
 export const revalidate = 3600;
 
@@ -29,7 +30,7 @@ const SITE = 'https://shiftdeploy.com';
 export async function generateStaticParams() {
   if (!isSanityConfigured || !sanityClient) return [];
   try {
-    const slugs = await sanityClient.fetch(authorSlugsQuery);
+    const slugs = await sanityClient.fetch(authorSlugsQuery, {}, INSIGHTS_FETCH_OPTIONS);
     return (slugs || []).filter(Boolean).map((slug) => ({ slug }));
   } catch {
     return [];
@@ -38,11 +39,7 @@ export async function generateStaticParams() {
 
 async function getAuthor(slug) {
   if (!isSanityConfigured || !sanityClient) return null;
-  try {
-    return await sanityClient.fetch(authorBySlugQuery, { slug });
-  } catch {
-    return null;
-  }
+  return sanityClient.fetch(authorBySlugQuery, { slug }, INSIGHTS_FETCH_OPTIONS);
 }
 
 export async function generateMetadata({ params }) {
@@ -57,6 +54,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${author.name} | ShiftDeploy Insights`,
     description: description.slice(0, 160),
+    robots: author.posts?.length ? undefined : { index: false, follow: true },
     alternates: { canonical: `${SITE}/insights/author/${slug}` },
     openGraph: {
       type: 'profile',

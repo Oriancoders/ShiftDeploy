@@ -1,5 +1,5 @@
 import { createClient } from '@sanity/client';
-import { sanityConfig, isSanityConfigured } from './config';
+import { sanityConfig, isSanityConfigured } from './config.js';
 
 /**
  * Public read client. No token, published content only.

@@ -449,15 +449,7 @@ const BullsEyesCase = () => {
                   <h3 className="text-xl sm:text-2xl font-semibold text-slate-800 mb-6">
                     Key Highlights
                   </h3>
-                  <div
-                    style={{
-                      backgroundImage: `url('https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979474/keystatic_elynmv.png')`,
-                      backgroundSize: '110%',
-                      backgroundPosition: 'center',
-                      backgroundRepeat: 'no-repeat',
-                    }}
-                    className="image-placeholder w-full h-52 sm:h-64 mb-6 flex items-center justify-center text-gray-500"
-                  ></div>
+                  <img src="https://res.cloudinary.com/dbazbq7u9/image/upload/v1764979474/keystatic_elynmv.png" alt="Project scope and delivery summary" loading="lazy" decoding="async" className="w-full h-52 sm:h-64 mb-6 object-contain" />
                 </div>
               </div>
             </div>
@@ -494,14 +486,7 @@ const BullsEyesCase = () => {
                       </h3>
                     </div>
 
-                    <div
-                      style={{
-                        backgroundImage: `url(${category.image})`,
-                        backgroundSize: `${category.size || 'cover'}`,
-                        backgroundPosition: 'center',
-                      }}
-                      className="image-placeholder w-full h-32 sm:h-60 md:h-80 rounded-xl mb-6 flex items-center justify-center text-gray-500"
-                    ></div>
+                    <img src={category.image} alt={`${category.category} architecture illustration`} loading="lazy" decoding="async" className="w-full h-32 sm:h-60 md:h-80 rounded-xl mb-6 object-contain" />
 
                     <div className="space-y-6">
                       {category.technologies.map((tech, techIndex) => (

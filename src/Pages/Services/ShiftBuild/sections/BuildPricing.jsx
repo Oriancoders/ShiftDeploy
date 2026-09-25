@@ -42,7 +42,7 @@ const BuildPricing = () => {
         "Advanced architecture planning",
         "Multi-service or multi-location setup",
         "Extended migration support",
-        "Post-launch optimization runway",
+        "Post-launch optimisation runway",
         "Priority strategy support",
       ],
       cta: "Scale My Website",

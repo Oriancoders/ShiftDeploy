@@ -6,8 +6,8 @@ const DetailedTerms = () => {
     <section className='bg-gray-50 overflow-hidden flex flex-col items-center justify-center pb-20'>
       <div className='max-w-7xl mx-auto px-6  relative z-10 mt-10'>
         <section id='P_1' className='space-y-4 mb-10'>
-          <h1 className='text-3xl font-bold text-primaryBlue'>1) How ShiftDeploy Operates
-          </h1>
+          <h2 className='text-3xl font-bold text-primaryBlue'>1) How ShiftDeploy Operates
+          </h2>
           <p>
             Welcome to ShiftDeploy. These Terms of Service explain the rules that apply
             when you visit our website, engage with our services, or collaborate with
@@ -24,8 +24,8 @@ const DetailedTerms = () => {
         </section>
 
         <section id='P_2' className='space-y-4 mb-10'>
-          <h1 className='text-3xl font-bold text-primaryBlue'>2) When These Terms Apply
-          </h1>
+          <h2 className='text-3xl font-bold text-primaryBlue'>2) When These Terms Apply
+          </h2>
           <p>
             These Terms apply to all visitors of our website, prospective clients,
             existing clients, and any entity or individual interacting with ShiftDeploy
@@ -42,8 +42,8 @@ const DetailedTerms = () => {
         </section>
 
         <section id='P_3' className='space-y-4 mb-10'>
-          <h1 className='text-3xl font-bold text-primaryBlue'>3) Who Can Use Our Services
-          </h1>
+          <h2 className='text-3xl font-bold text-primaryBlue'>3) Who Can Use Our Services
+          </h2>
           <p>
             Our services are intended for business use by individuals aged 18 or older
             who are authorized to represent an organization or act on their own behalf.
@@ -60,8 +60,8 @@ const DetailedTerms = () => {
         </section>
 
         <section id='P_4' className='space-y-4 mb-10'>
-          <h1 className='text-3xl font-bold text-primaryBlue'>4) Proper Use of Our Website
-          </h1>
+          <h2 className='text-3xl font-bold text-primaryBlue'>4) Proper Use of Our Website
+          </h2>
           <p>
             You agree to use ShiftDeploy’s website and digital platforms responsibly.
             You may not attempt to disrupt, modify, or exploit the site in any way that
@@ -77,8 +77,8 @@ const DetailedTerms = () => {
         </section>
 
         <section id='P_5' className='space-y-4 mb-10'>
-          <h1 className='text-3xl font-bold text-primaryBlue'>5) Your Account & Obligations
-          </h1>
+          <h2 className='text-3xl font-bold text-primaryBlue'>5) Your Account & Obligations
+          </h2>
           <p>
             In some cases, you may need to create an account or provide access
             credentials to collaborate with ShiftDeploy. You are responsible for
@@ -98,8 +98,8 @@ const DetailedTerms = () => {
         </section>
 
         <section id='P_6' className='space-y-4 mb-10'>
-          <h1 className='text-3xl font-bold text-primaryBlue'>6) How Projects Are Engaged
-          </h1>
+          <h2 className='text-3xl font-bold text-primaryBlue'>6) How Projects Are Engaged
+          </h2>
           <p>
             Every project or engagement with ShiftDeploy begins with a shared
             understanding of scope, deliverables, and timelines. These details are
@@ -124,8 +124,8 @@ const DetailedTerms = () => {
         </section>
 
         <section id='P_7' className='space-y-4 mb-10'>
-          <h1 className='text-3xl font-bold text-primaryBlue'>7) Payments, Refunds & Billing
-          </h1>
+          <h2 className='text-3xl font-bold text-primaryBlue'>7) Payments, Refunds & Billing
+          </h2>
           <p>
             ShiftDeploy operates on a transparent billing structure. Payment terms and
             schedules are outlined in each client agreement or invoice.
@@ -146,8 +146,8 @@ const DetailedTerms = () => {
         </section>
 
         <section id='P_8' className='space-y-4 mb-10'>
-          <h1 className='text-3xl font-bold text-primaryBlue'>8) Timelines, Revisions & Delivery
-          </h1>
+          <h2 className='text-3xl font-bold text-primaryBlue'>8) Timelines, Revisions & Delivery
+          </h2>
           <p>
             ShiftDeploy aims to meet all mutually agreed deadlines. Project timelines
             depend on both technical factors and client responsiveness.
@@ -165,8 +165,8 @@ const DetailedTerms = () => {
 
 
         <section id='P_9' className='space-y-4 mb-10'>
-          <h1 className='text-3xl font-bold text-primaryBlue'>9) Ownership & Intellectual Rights
-          </h1>
+          <h2 className='text-3xl font-bold text-primaryBlue'>9) Ownership & Intellectual Rights
+          </h2>
           <p>
             Unless otherwise stated in writing, all intellectual property created by
             ShiftDeploy during a client project - including but not limited to software

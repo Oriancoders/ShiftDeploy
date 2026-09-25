@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import { sanityClient } from "../lib/sanity/client";
 import { isSanityConfigured } from "../lib/sanity/config";
+import { INDEXABLE_POST_FILTER } from '../lib/sanity/publicContent';
 
 // ── Image builder ──────────────────────────────────────────────────────────────
 const imageBuilder = sanityClient ? imageUrlBuilder(sanityClient) : null;
@@ -19,7 +20,7 @@ const getImageUrl = (image, width = 800) => {
 
 // ── GROQ query - now includes mainImage ──────────────────────────────────────
 const INSIGHTS_QUERY = `*[
-  _type in ["insight", "insights", "post", "blogPost"]
+  ${INDEXABLE_POST_FILTER}
 ] | order(coalesce(publishedAt, _createdAt) desc) {
   _id,
   title,

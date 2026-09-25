@@ -383,13 +383,13 @@ const SpeedHero = () => {
             >
               <h1>
                 <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                  Stop Losing
+                  Website Speed
                 </span>
                 <br />
-                <span className="text-primaryOrange">High-Value Clients</span>
+                <span className="text-primaryOrange">Optimisation</span>
                 <br />
                 <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                  to Slow Website
+                  for UK Businesses
                 </span>
               </h1>
             </motion.div>
@@ -400,10 +400,11 @@ const SpeedHero = () => {
               transition={{ duration: 0.3, delay: 0.2 }}
               className="text-xl mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl lg:mx-0 leading-relaxed sm:px-0 lg:text-left sm:text-center text-left text-gray-700"
             >
-              We re-engineer service business websites to load in under 2.5 seconds.
+              We diagnose and fix slow websites for UK businesses, focusing on Core Web Vitals,
+              mobile usability and the pages where visitors enquire or book.
               <span className="font-semibold text-[#0C1F3A]">
                 {" "}
-                Better Google Rankings, Higher Conversions, Zero Frustration.
+                Get a prioritised audit before agreeing the scope of any changes.
               </span>
             </motion.p>
 

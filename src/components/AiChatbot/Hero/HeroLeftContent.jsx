@@ -14,7 +14,7 @@ export default function HeroLeftContent({ animateEnabled, onPrimaryAction, onDem
             <span className="animate-ping absolute inline-flex size-full rounded-full bg-primaryOrange opacity-75" />
             <span className="relative inline-flex rounded-full size-3 bg-primaryOrange" />
           </span>
-          Recoup 30% of Lost Clients
+          Enquiry and Booking Support
         </div>
       </motion.div>
 
@@ -25,31 +25,14 @@ export default function HeroLeftContent({ animateEnabled, onPrimaryAction, onDem
           </svg>
         </motion.div>
 
-        <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-semibold leading-[1.05] mb-6 text-white drop-shadow-xl relative z-10 tracking-tight">
-          Capture Bookings.
-          <br />
-          <span className="relative">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primaryOrange via-primaryOrange to-primaryOrange animate-text-gradient bg-300%">Even While You</span>
-            <motion.span
-              className="inline-block mx-2 transform-gpu [will-change:transform]"
-              animate={animateEnabled ? { rotate: [0, -10, 10, -10, 0] } : undefined}
-              transition={animateEnabled ? { duration: 2, repeat: Infinity, repeatDelay: 3 } : undefined}
-            >
-              😴
-            </motion.span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primaryOrange via-primaryOrange to-primaryOrange animate-text-gradient bg-300%">Sleep.</span>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
-              className="absolute -bottom-2 left-0 right-0 h-2 bg-gradient-to-r from-primaryOrange to-transparent origin-left rounded-full"
-            />
-          </span>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6 text-white relative z-10">
+          AI Receptionist<br />
+          <span className="text-primaryOrange">for UK Businesses</span>
         </h1>
       </motion.div>
 
       <motion.p variants={fadeIn} className="text-lg md:text-xl text-blue-100/80 mb-10 max-w-xl leading-relaxed mix-blend-screen border-l-4 border-secondaryBlue pl-4">
-        Your business doesn't have to stop when your doors close. Deploy an autonomous AI receptionist that engages, qualifies, and schedules leads 24/7.
+        Help visitors ask questions and request appointments outside office hours. We configure your receptionist around your UK business, booking tools and team handover.
       </motion.p>
 
       <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-5">
@@ -72,19 +55,7 @@ export default function HeroLeftContent({ animateEnabled, onPrimaryAction, onDem
         </button>
       </motion.div>
 
-      <motion.div variants={fadeIn} className="mt-12 flex items-center gap-8 justify-start">
-        <div className="flex -gap-x-4">
-          {[1, 2, 3, 4].map((i) => (
-            <img key={i} className="size-10 rounded-full border-2 border-primaryBlue z-10" src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="avatar" loading="lazy" decoding="async" />
-          ))}
-        </div>
-        <div className="text-sm">
-          <div className="flex items-center text-primaryOrange font-bold">
-            ★★★★★ <span className="text-white ml-2">5.0</span>
-          </div>
-          <p className="text-gray-400">Valuable for a vast category of businesses</p>
-        </div>
-      </motion.div>
+
     </motion.div>
   );
 }

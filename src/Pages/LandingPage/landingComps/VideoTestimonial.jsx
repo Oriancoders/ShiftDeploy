@@ -25,7 +25,7 @@ const VideoTestimonial = ({
                 {/* Optimized Poster Image */}
                 <img 
                   src={posterSrc} 
-                  alt="Video thumbnail" 
+                  alt="Client video testimonial about working with ShiftDeploy"
                   className="size-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                   width="1280"
                   height="720"
@@ -63,7 +63,7 @@ const VideoTestimonial = ({
             </h2>
 
             <p className="text-lg text-gray-700 italic mb-8 leading-relaxed max-w-2xl mx-auto md:mx-0">
-              "We focus on fixing the performance and conversion problems that quietly cost businesses traffic, trust, and revenue."
+              &quot;We focus on fixing the performance and conversion problems that quietly cost businesses traffic, trust, and revenue.&quot;
             </p>
 
             <div className="border-l-4 border-primaryOrange pl-4 text-left mx-auto md:mx-0 w-fit">

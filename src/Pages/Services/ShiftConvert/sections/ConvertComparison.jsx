@@ -141,7 +141,7 @@ export const ConvertComparison = () => {
                 <TrendingUp className="size-4" />
                 <span className="font-bold text-sm uppercase tracking-wide">After</span>
               </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-primaryBlue">ShiftConvert Optimized</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-primaryBlue">ShiftConvert Optimised</h3>
             </div>
 
             <div className="space-y-3 mb-6">
@@ -160,7 +160,7 @@ export const ConvertComparison = () => {
             </div>
 
             <div className="bg-primaryBlue/5 rounded-xl p-4 border border-primaryBlue">
-              <div className="text-primaryBlue font-bold mb-3 text-xl uppercase tracking-wide">Optimizations Applied:</div>
+              <div className="text-primaryBlue font-bold mb-3 text-xl uppercase tracking-wide">Optimisations Applied:</div>
               <ul className="space-y-2">
                 {afterOptimizations.map((opt, index) => (
                   <li key={opt?.id ?? opt?.slug ?? opt?.title ?? opt?.name ?? index} className="flex items-start gap-2 text-md text-primaryBlue">

@@ -325,13 +325,13 @@ const ConvertHero = () => {
             >
               <h1>
                 <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                  Stop Losing
+                  Conversion Rate
                 </span>
                 <br />
-                <span className="text-primaryOrange">Ready-To-Buy Visitors</span>
+                <span className="text-primaryOrange">Optimisation</span>
                 <br />
                 <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                  to Confusing Pages
+                  for UK Businesses
                 </span>
               </h1>
             </motion.div>
@@ -342,10 +342,11 @@ const ConvertHero = () => {
               transition={{ duration: 0.3, delay: 0.2 }}
               className="text-xl mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl lg:mx-0 leading-relaxed sm:px-0 lg:text-left sm:text-center text-left text-gray-700"
             >
-              We optimize messaging, page flow, and CTAs so more visitors take action.
+              We help UK businesses improve enquiry forms, booking journeys and landing pages
+              through clearer messaging, usability reviews and conversion testing.
               <span className="font-semibold text-[#0C1F3A]">
                 {" "}
-                Clearer journeys, stronger trust signals, and measurable conversion gains.
+                Measure completed enquiries, not just button clicks.
               </span>
             </motion.p>
 

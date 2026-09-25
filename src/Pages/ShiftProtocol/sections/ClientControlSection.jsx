@@ -141,10 +141,10 @@ function ClientControlSection() {
               ))}
             </div>
             <blockquote className="sm:text-xl text-gray-700 italic leading-relaxed mb-8 max-w-4xl mx-auto">
-              "Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is outstanding!"
+              &quot;Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is outstanding!&quot;
             </blockquote>
             <div className="flex items-center justify-center">
-              <img src="https://media.licdn.com/dms/image/v2/C5103AQHbnRvtGSPXEA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1562495944539?e=1771459200&v=beta&t=PjF3rjFdmQkUD0_Ucebz1nlWhlUU3sdVKA0jR22yfKE" alt="Kamran Abbas" className="w-12 sm:w-15 h-12 sm:h-15 rounded-full mr-4" />
+              <span aria-hidden="true" className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-gray-100 text-primaryBlue font-semibold mr-4">KA</span>
               <div className="text-left">
                 <div className="font-semibold text-gray-900 sm:text-lg"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/" target="_blank" rel="noopener noreferrer">Kamran Abbas</a></div>
                 <div className="text-gray-600">Chief Strategist at Bullseye Investment Private Limited</div>

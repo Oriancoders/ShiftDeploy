@@ -76,7 +76,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
             <m.div whileHover={{ scale: 1.05 }} className="2xl:max-w-60 sm:max-w-48 max-w-36">
               <Link href="/">
                 <img
-                  src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_480/v1765145802/coloredV_zxupgq.png"
+                  src="/shiftdeploy-logo.png"
                   alt="ShiftDeploy"
                   width={775}
                   height={176}
