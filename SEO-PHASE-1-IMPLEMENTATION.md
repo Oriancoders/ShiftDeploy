@@ -1,5 +1,7 @@
 # Phase 1 implementation
 
+Deployment update, 2026-09-26: Phase 1 code is now deployed with the UK-content changes in commit `5ec7d52`. See UK-CONTENT-DEPLOYMENT-2026-09-26.md for live verification. The dated notes below describe the original pre-deployment checks.
+
 Date: 2026-09-25. Scope: the audit's initial technical publishing, discovery and measurement foundation. Changes are local, not deployed. No live Sanity documents were mutated and no real test emails were delivered.
 
 ## Research applied

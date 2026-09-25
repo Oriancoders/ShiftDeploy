@@ -1,6 +1,22 @@
 # UK content review and deployment
 
+Production deployed successfully on 2026-09-26 from commit `5ec7d52f0086af24d587117cd13ce40c497a1c8d` to https://shiftdeploy.com. [Vercel deployment](https://vercel.com/oriancodesolutions-5305s-projects/shift-deploy/5ScHXxBWWuDZpfpg9fcx1VzsW12K). This post-deployment result was recorded locally after the production commit.
+
+Final local crawl: 31 pages, 1,079 rendered headings, 1,461 paragraphs and 204 image instances. Every page returned 200 with one H1; no empty headings or missing image alt attributes; all 204 image instances loaded. These counts include repeated shared UI, not 204 unique assets. Desktop/mobile checks across 11 routes passed. Targeted lint: zero errors, 29 image/hook warnings.
+
+Live HTTP checks verified new homepage/service/package content, robots.txt, sitemap.xml, updated llms.txt and the local logo asset. A nonexistent article returned 404 with noindex. No real enquiry was sent. A live browser network-idle wait timed out due to outstanding traffic; this is not a page-speed or Core Web Vitals measurement.
+
+The separate GitHub Actions deploy-hook job could not start because GitHub reported an account billing lock. Native Vercel deployment succeeded independently. Billing/account access remains an owner action; no payment settings were changed.
+
 ## Scope
+
+## Homepage loading follow-up
+
+Live browser verification exposed a full-screen loading fallback for below-fold homepage sections. The follow-up replaces it with an inline placeholder, imports the footer directly, and makes the hero audit link navigate to the existing contact page without depending on a lower section loading. `scripts/check-home-loading.mjs` deliberately holds the lower audit chunk and verifies that the hero remains unobscured and its audit link remains available.
+
+Follow-up verification: clean production build passed, 10 SEO unit tests passed, all 22 desktop/mobile route checks passed, and mocked enquiry/SEO browser checks passed with no browser errors. The initial local build failure was caused by a concurrent Next.js dev process sharing `.next`; stopping that process and clearing only generated build output resolved it.
+
+## Public content scope
 
 Reviewed the 31 public sitemap routes, including all eight published Sanity articles and the author page. The automated inventory records rendered H1-H6 headings, paragraphs, image sources/alt text and CSS background images. Repeated navigation/footer elements are included. Admin screens and private analytics data are outside this public-content inventory.
 

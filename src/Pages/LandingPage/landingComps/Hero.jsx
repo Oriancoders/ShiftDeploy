@@ -14,11 +14,6 @@ const CursorFollower = lazy(() => import("../../../utils/CursorFollower"));
 
 const Hero = () => {
 
-  const scrollToProblemSolving = () => {
-    const el = document.getElementById("problem-solving");
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   return (
     <>
@@ -88,13 +83,12 @@ const Hero = () => {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 sm:mb-16">
                 <div>
-                  <button
-                    type="button"
-                    onClick={scrollToProblemSolving}
+                  <Link
+                    href="/ContactUs"
                     className="bg-primaryOrange border-2 border-primaryOrange hover:border-toOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md sm:w-fit w-full"
                   >
                     Get Free Audit
-                  </button>
+                  </Link>
                 </div>
 
                 <div>

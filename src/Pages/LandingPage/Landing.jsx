@@ -1,7 +1,7 @@
 'use client';
 import React, { lazy, Suspense, useEffect } from 'react';
 import Navigation from '../../components/Navigation';
-import ShiftDeployLoader from '../../components/ShiftDeployLoader';
+import Footer from '../../components/Footer';
 // TrustStrip will be lazy-loaded below to keep initial bundle small
 
 // ✅ FIX 1: Import Hero DIRECTLY. No lazy loading for what the user sees first.
@@ -16,7 +16,6 @@ const ShiftProtocol = lazy(() => import('./landingComps/ShiftProtocol'));
 const MissionsCompleted = lazy(() => import('./landingComps/MissionsCompleted'));
 const VideoTestimonial = lazy(() => import('./landingComps/VideoTestimonial'));
 const TrustStrip = lazy(() => import('../../components/TrustStrip'));
-const Footer = lazy(() => import('../../components/Footer'));
 
 const Landing = () => {
 
@@ -37,7 +36,7 @@ const Landing = () => {
         <Hero />
         
         {/* ✅ FIX 4: Only wrap the heavy, lower-down stuff in Suspense */}
-        <Suspense fallback={<ShiftDeployLoader />}>
+        <Suspense fallback={<div className="min-h-48" aria-hidden="true" />}>
           <DigitalReceptionist />
           <ReviewYourDoctor />
           <InsideShiftDeploy />
