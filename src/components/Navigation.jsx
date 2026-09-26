@@ -54,10 +54,10 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
     },
     { label: 'About us', path: '/about' },
     {
-      label: 'Product',
+      label: 'Products',
       path: '/product',
       subPaths: [
-        { label: 'Digital Receptionist', path: '/digital-receptionist' },
+        { label: 'AI receptionist', path: '/digital-receptionist' },
         { label: 'Review Your Doctor', path: '/review-your-doctor' },
       ],
     },

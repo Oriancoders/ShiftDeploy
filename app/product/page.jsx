@@ -1,20 +1,22 @@
 export const revalidate = 3600;
-import ProductLanding from '../../src/Pages/ProductLanding';
+import ProductsPage from '../../src/Pages/ProductsPage';
+
+const title = 'Our Products: AI Receptionist & Review Software';
+const description =
+  'Ready-made tools that work while you don’t: an AI receptionist that answers every call, and Google review software for UK private clinics.';
 
 export const metadata = {
-  title: 'Our Products | Digital Receptionist & Review Your Doctor',
-  description:
-    'Explore ShiftDeploy products - the Digital Receptionist AI that captures and books leads 24/7, and Review Your Doctor, the GDPR-compliant patient review platform.',
+  title,
+  description,
   alternates: { canonical: 'https://shiftdeploy.com/product' },
   openGraph: {
-    title: 'Our Products | Digital Receptionist & Review Your Doctor',
-    description:
-      'ShiftDeploy products that capture leads, book appointments, and grow your reputation around the clock.',
+    title: `${title} | ShiftDeploy`,
+    description,
     url: 'https://shiftdeploy.com/product',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy products' }],
   },
 };
 
-export default function ProductPage() {
-  return <ProductLanding />;
+export default function Page() {
+  return <ProductsPage />;
 }
