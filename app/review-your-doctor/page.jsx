@@ -1,6 +1,5 @@
 export const revalidate = 3600;
 import ReviewYourDoctorLanding from '../../src/Pages/ReviewYourDoctorLanding';
-import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
   title: 'Get More Google Reviews for Your Clinic',
@@ -21,29 +20,9 @@ export const metadata = {
   },
 };
 
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'Review Your Doctor',
-  applicationCategory: 'HealthApplication',
-  operatingSystem: 'Web',
-  description:
-    'Patient review software for UK private clinics that grows 5-star Google reviews and captures negative feedback privately, built with UK GDPR in mind.',
-  url: 'https://reviewyourdoctor.shiftdeploy.com',
-  offers: {
-    '@type': 'Offer',
-    price: '49',
-    priceCurrency: 'GBP',
-    availability: 'https://schema.org/InStock',
-    description: '30-day free trial, then £49/month.',
-  },
-  provider: { '@type': 'Organization', name: 'ShiftDeploy', url: 'https://shiftdeploy.com' },
-};
-
 export default function ReviewYourDoctorPage() {
   return (
     <>
-      <JsonLd data={schema} />
       <ReviewYourDoctorLanding />
     </>
   );

@@ -1,310 +1,185 @@
-'use client';
-import React, { useRef } from 'react';
-import { LazyMotion, domAnimation, m as motion, useInView } from 'framer-motion';
-import {
-  QrCode, Star, BellRing, ShieldCheck, BarChart3, ArrowUpRight,
-  MailCheck, ReceiptText, UsersRound, Palette, Check,
-} from 'lucide-react';
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
-import { fadeInUp, staggerContainer } from '../utils/animations';
+import { Check, ArrowRight, ArrowUpRight, Star, QrCode, BellRing, MailCheck, ReceiptText, ShieldCheck } from 'lucide-react';
+import ServiceDetail from '../components/ServiceDetail';
 
 const LIVE_URL = 'https://reviewyourdoctor.shiftdeploy.com';
+const SIGNUP_URL = `${LIVE_URL}/signup`;
 
-// Paste a YouTube/Vimeo EMBED url here to show the demo video section
-// (e.g. 'https://www.youtube.com/embed/XXXXXXXXXXX'). Leave empty to hide it.
-const DEMO_VIDEO_EMBED = '';
-
-const steps = [
-  { icon: QrCode, title: 'Ask at the right moment', desc: 'Patient scans the QR at the counter, or taps the link in their receipt email.' },
-  { icon: Star, title: 'They rate and choose', desc: 'One tap on their own phone. Every patient gets the same choice: Google review or private feedback.' },
-  { icon: BellRing, title: 'You catch problems early', desc: 'Private feedback alerts the manager instantly and lands in your resolve worklist.' },
-  { icon: MailCheck, title: 'Resolve, then win back', desc: 'Fix the issue, and one click asks the now-happy patient for the review they want to give.' },
+const pains = [
+  { title: 'Happy patients stay quiet', body: 'Most satisfied patients never think to leave a review, even when they loved their visit.' },
+  { title: 'One bad review stands out', body: 'With only a few reviews, a single unhappy patient can shape how everyone sees you.' },
+  { title: 'Complaints reach Google first', body: 'You find out about a problem when it’s already public, not when you could fix it.' },
+  { title: 'Asking feels awkward', body: 'Your team is busy, and asking every patient for a review rarely happens.' },
 ];
 
-const features = [
-  { icon: Star, title: 'Public review growth', desc: 'More genuine 5-star Google reviews, by asking every patient at the right moment.' },
-  { icon: BellRing, title: 'Never miss a complaint', desc: 'Unhappy patients are heard privately and land in a resolve worklist before anything goes public.' },
-  { icon: MailCheck, title: 'Automated follow-ups', desc: 'Email sequences to unhappy patients, sent in your clinic\'s name with replies to your inbox. Resolved patients get a one-click review invite.' },
-  { icon: ReceiptText, title: 'Billing without a billing system', desc: 'Add a patient, click send: a branded PDF receipt lands in their email, with revenue analytics on your dashboard.' },
-  { icon: UsersRound, title: 'Patient records built in', desc: 'A simple patient book, deduplicated automatically, linked to their feedback and receipts.' },
-  { icon: Palette, title: 'Your brand, your voice', desc: 'Your logo on the QR poster and receipts, fully customisable emails, sent as your clinic.' },
-  { icon: ShieldCheck, title: 'Compliance-first', desc: 'UK GDPR, a published DPA, consent at signup, and an equal review choice for every patient, in line with Google’s review rules.' },
-  { icon: BarChart3, title: 'Live dashboard', desc: 'Ratings, trends, private feedback and revenue update in real time.' },
+const gets = [
+  { icon: QrCode, title: 'One poster at reception', label: 'QR review poster', body: 'Patients scan a branded code with their own phone. No app, no hardware, no staff training.' },
+  { icon: Star, title: 'More 5-star Google reviews', label: 'Google review growth', body: 'Every patient is asked at the right moment, and a Google review takes two taps.' },
+  { icon: BellRing, title: 'Problems reach you first', label: 'Private feedback and alerts', body: 'Unhappy patients can tell you privately, and the manager is alerted straight away.' },
+  { icon: MailCheck, title: 'Win unhappy patients back', label: 'Automatic follow-ups', body: 'Follow-up emails go out in your clinic’s name, and once it’s resolved, one click invites a review.' },
+  { icon: ReceiptText, title: 'Receipts without a billing system', label: 'Patient billing', body: 'Add a patient, click send, and a branded PDF receipt lands in their email.' },
+  { icon: ShieldCheck, title: 'Built with UK GDPR in mind', label: 'Fair to Google’s rules', body: 'Consent at signup, a published DPA, and the same review choice for every patient.' },
+];
+
+const steps = [
+  { title: 'Start your free trial', body: 'Sign up in minutes. No card needed to start.' },
+  { title: 'Print your poster', body: 'Put your branded QR poster at reception, or send the link in receipts.' },
+  { title: 'Patients rate their visit', body: 'Every patient chooses a Google review or private feedback, in seconds.' },
+  { title: 'Watch reviews grow', body: 'See ratings, feedback and trends on your live dashboard.' },
 ];
 
 const plans = [
+  { name: 'Starter', price: '£49', points: ['Branded QR poster and review requests', 'Private feedback and instant alerts', 'Live dashboard and patient records'] },
+  { name: 'Growth', price: '£69', popular: true, points: ['Everything in Starter', 'Automatic follow-up emails', 'One-click win-back review invites'] },
+  { name: 'Pro', price: '£79', points: ['Everything in Growth', 'Patient billing and PDF receipts', 'Custom emails and revenue reports'] },
+];
+
+const faqs = [
   {
-    name: 'Starter',
-    price: '£49',
-    points: ['Branded QR poster + review funnel', 'Private feedback + instant alerts', 'Live dashboard + patient records'],
-    highlight: false,
+    q: 'How can my clinic get more Google reviews?',
+    a: 'Ask every patient at the right moment and make it quick. With Review Your Doctor, patients scan a code at reception and can leave a Google review in two taps.',
   },
   {
-    name: 'Growth',
-    price: '£69',
-    points: ['Everything in Starter', 'Automated follow-up email sequences', 'One-click win-back review invites'],
-    highlight: true,
+    q: 'Is it allowed to ask patients for reviews?',
+    a: 'Yes. Google allows businesses to ask for reviews, as long as every customer gets the same chance to leave one. Review Your Doctor gives every patient the same choice.',
   },
   {
-    name: 'Pro',
-    price: '£79',
-    points: ['Everything in Growth', 'Patient billing + PDF receipts by email', 'Custom emails + revenue analytics'],
-    highlight: false,
+    q: 'What happens when a patient is unhappy?',
+    a: 'They can tell you privately. The manager is alerted straight away, so you can put things right, and then invite them to leave a review once it’s resolved.',
+  },
+  {
+    q: 'Do patients need to download an app?',
+    a: 'No. Patients scan the QR code with their phone’s camera and rate their visit in their web browser.',
+  },
+  {
+    q: 'Is it UK GDPR compliant?',
+    a: 'It’s built with UK GDPR in mind, with consent at signup and a published data processing agreement.',
+  },
+  {
+    q: 'How much does it cost?',
+    a: 'Every plan starts with a free 30-day trial. After that, plans are £49, £69 or £79 a month, depending on the features you need.',
+  },
+  {
+    q: 'How quickly can we start?',
+    a: 'In minutes. Sign up, print your branded poster and put it at reception.',
   },
 ];
 
-function Section({ children, className = '' }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
+function ReviewPhoneVisual() {
   return (
-    <motion.div
-      ref={ref}
-      variants={staggerContainer}
-      initial="initial"
-      animate={inView ? 'animate' : 'initial'}
-      className={className}
-    >
-      {children}
-    </motion.div>
+    <figure className="w-full max-w-sm mx-auto lg:ml-auto lg:mr-0">
+      <div className="rounded-[2rem] border border-gray-100 bg-white p-6 shadow-2xl">
+        <p className="text-sm font-bold text-primaryBlue">Your clinic</p>
+        <p className="text-xs text-gray-500">How was your visit today?</p>
+        <div className="my-5 flex justify-center gap-1.5">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <Star key={i} className="size-8 fill-amber-400 text-amber-400" aria-hidden="true" />
+          ))}
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-center">
+            <p className="text-sm font-bold text-emerald-700">Leave a Google review</p>
+            <p className="mt-0.5 text-xs text-emerald-700/80">Two taps</p>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-gray-50 p-3 text-center">
+            <p className="text-sm font-bold text-primaryBlue">Tell the clinic privately</p>
+            <p className="mt-0.5 text-xs text-gray-500">Goes to the manager</p>
+          </div>
+        </div>
+      </div>
+      <figcaption className="mt-4 text-center text-sm text-gray-600">What your patients see on their phone.</figcaption>
+    </figure>
   );
 }
 
-const ReviewYourDoctorLanding = () => {
+function Pricing() {
   return (
-    <LazyMotion features={domAnimation}>
-      <Navigation isDarkBg />
-
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-primaryBlue pt-28 pb-20 sm:pt-36 sm:pb-28">
-        <div className="pointer-events-none absolute -right-32 -top-24 size-96 rounded-full bg-emerald-500/20 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -left-20 size-80 rounded-full bg-primaryOrange/20 blur-3xl" />
-        <Section className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
-          <motion.span
-            variants={fadeInUp}
-            className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-emerald-300 ring-1 ring-white/15"
-          >
-            <Star className="size-4 fill-emerald-300 text-emerald-300" />
-            A ShiftDeploy product
-          </motion.span>
-          <motion.div variants={fadeInUp} className="mt-8 flex justify-center">
-            <div className="grid size-20 place-items-center rounded-3xl bg-white shadow-lg shadow-emerald-900/20 ring-1 ring-white/20">
-              <img
-                src="/products/review-your-doctor/icon.png"
-                alt="Review Your Doctor logo"
-                className="size-14 object-contain"
-              />
-            </div>
-          </motion.div>
-          <motion.h1
-            variants={fadeInUp}
-            className="mt-6 text-4xl font-bold leading-tight text-white sm:text-6xl"
-          >
-            Review Your Doctor
-          </motion.h1>
-          <motion.p
-            variants={fadeInUp}
-            className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-gray-300"
-          >
-            Patient review software that helps UK private clinics get more 5-star Google reviews,
-            and hear about any problem privately before it goes public. Built with UK GDPR in mind.
-          </motion.p>
-          <motion.div variants={fadeInUp} className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
-            <a
-              href={`${LIVE_URL}/signup`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl bg-primaryOrange px-8 py-4 font-bold text-white transition-colors hover:bg-toOrange"
-            >
-              Start free trial
-            </a>
-            <a
-              href={LIVE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl border-2 border-white/30 bg-white/5 px-8 py-4 font-bold text-white transition-colors hover:bg-white hover:text-primaryBlue"
-            >
-              Visit the live site <ArrowUpRight className="size-5" />
-            </a>
-          </motion.div>
-          <motion.p variants={fadeInUp} className="mt-4 text-sm text-gray-400">
-            Free trial, then plans from £49/month.
-          </motion.p>
-        </Section>
-      </section>
-
-      {/* DEMO VIDEO */}
-      {DEMO_VIDEO_EMBED && (
-        <section className="bg-white py-20 sm:py-24">
-          <Section className="mx-auto max-w-4xl px-4 sm:px-6">
-            <motion.h2 variants={fadeInUp} className="text-center text-3xl font-bold text-primaryBlue sm:text-4xl">
-              See it in action
-            </motion.h2>
-            <motion.p variants={fadeInUp} className="mx-auto mt-3 max-w-2xl text-center text-gray-600">
-              A quick walkthrough: from the patient scan to the resolved complaint and the receipt email.
-            </motion.p>
-            <motion.div
-              variants={fadeInUp}
-              className="mt-10 overflow-hidden rounded-2xl border border-gray-100 shadow-xl shadow-emerald-900/10"
-            >
-              <div className="relative aspect-video w-full">
-                <iframe
-                  src={DEMO_VIDEO_EMBED}
-                  title="Review Your Doctor demo"
-                  className="absolute inset-0 h-full w-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                />
-              </div>
-            </motion.div>
-          </Section>
-        </section>
-      )}
-
-      {/* Reuse the rich product section */}
-
-      {/* HOW IT WORKS */}
-      <section className="bg-gray-50 py-20 sm:py-24">
-        <Section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.h2 variants={fadeInUp} className="text-center text-3xl font-bold text-primaryBlue sm:text-4xl">
-            How it works
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="mx-auto mt-3 max-w-2xl text-center text-gray-600">
-            From scan to review in under a minute, no hardware and no staff training.
-          </motion.p>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((s, i) => (
-              <motion.div
-                key={s.title}
-                variants={fadeInUp}
-                className="relative rounded-2xl border border-gray-100 bg-white p-6 shadow-sm"
+    <section id="pricing" className="bg-gray-50 py-14 sm:py-20 scroll-mt-20">
+      <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mb-10">
+          <p className="text-sm sm:text-base font-semibold text-orange-700 mb-3">Pricing</p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-primaryBlue text-balance">Simple plans, free for 30 days</h2>
+          <p className="mt-3 text-lg sm:text-xl text-gray-700">Start free, then pick the plan that suits your clinic. No card needed to start.</p>
+        </div>
+        <ul className="grid gap-6 md:grid-cols-3">
+          {plans.map(({ name, price, points, popular }) => (
+            <li key={name} className={`relative flex flex-col rounded-2xl bg-white p-6 sm:p-8 ${popular ? 'border-2 border-primaryOrange shadow-xl' : 'border border-gray-200'}`}>
+              {popular && <p className="absolute -top-3 left-6 rounded-full bg-primaryOrange px-3 py-1 text-xs font-bold text-white">Most popular</p>}
+              <h3 className="text-xl font-bold text-primaryBlue">{name}</h3>
+              <p className="mt-2 text-4xl font-bold text-primaryBlue">{price}<span className="text-base font-medium text-gray-600"> a month</span></p>
+              <ul className="mt-5 space-y-2 flex-1">
+                {points.map((pt) => (
+                  <li key={pt} className="flex items-start gap-2 text-gray-700">
+                    <Check className="size-5 mt-0.5 shrink-0 text-green-700" aria-hidden="true" /> {pt}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={SIGNUP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`mt-6 min-h-[48px] inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-bold transition-colors ${popular ? 'bg-primaryOrange hover:bg-toOrange text-white' : 'border-2 border-primaryBlue text-primaryBlue hover:bg-primaryBlue hover:text-white'}`}
               >
-                <span className="absolute right-5 top-5 text-5xl font-black text-gray-300">{i + 1}</span>
-                <div className="grid size-12 place-items-center rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 text-white">
-                  <s.icon className="size-6" />
-                </div>
-                <p className="mt-4 font-bold text-gray-900">{s.title}</p>
-                <p className="mt-1 text-sm text-gray-600">{s.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </Section>
-      </section>
-
-      {/* WHY CLINICS LOVE IT */}
-      <section className="bg-white py-20 sm:py-24">
-        <Section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.h2 variants={fadeInUp} className="text-center text-3xl font-bold text-primaryBlue sm:text-4xl">
-            Why clinics choose it
-          </motion.h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-            {features.map((f) => (
-              <motion.div
-                key={f.title}
-                variants={fadeInUp}
-                className="flex gap-4 rounded-2xl border border-gray-100 bg-gray-50 p-6"
-              >
-                <div className="grid size-12 flex-shrink-0 place-items-center rounded-xl bg-emerald-50 text-emerald-600">
-                  <f.icon className="size-6" />
-                </div>
-                <div>
-                  <p className="font-bold text-gray-900">{f.title}</p>
-                  <p className="mt-1 text-sm text-gray-600">{f.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </Section>
-      </section>
-
-      {/* PLANS */}
-      <section className="bg-gray-50 py-20 sm:py-24">
-        <Section className="mx-auto max-w-6xl px-4 sm:px-6">
-          <motion.h2 variants={fadeInUp} className="text-center text-3xl font-bold text-primaryBlue sm:text-4xl">
-            Simple plans, free trial on all of them
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="mx-auto mt-3 max-w-2xl text-center text-gray-600">
-            Start free, pick a plan when you are ready. Monthly or yearly billing.
-          </motion.p>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {plans.map((p) => (
-              <motion.div
-                key={p.name}
-                variants={fadeInUp}
-                className={`relative flex flex-col rounded-2xl border bg-white p-7 shadow-sm ${
-                  p.highlight ? 'border-emerald-500 ring-2 ring-emerald-500/20' : 'border-gray-100'
-                }`}
-              >
-                {p.highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-emerald-500 px-3 py-1 text-xs font-bold text-white">
-                    Most popular
-                  </span>
-                )}
-                <p className="font-bold text-gray-900">{p.name}</p>
-                <p className="mt-2 text-4xl font-black text-primaryBlue">
-                  {p.price}
-                  <span className="text-base font-medium text-gray-500">/month</span>
-                </p>
-                <ul className="mt-5 space-y-2.5">
-                  {p.points.map((pt) => (
-                    <li key={pt} className="flex items-start gap-2 text-sm text-gray-600">
-                      <Check className="mt-0.5 size-4 flex-shrink-0 text-emerald-600" />
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href={`${LIVE_URL}/signup`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`mt-7 rounded-xl px-6 py-3 text-center font-bold transition-colors ${
-                    p.highlight
-                      ? 'bg-primaryOrange text-white hover:bg-toOrange'
-                      : 'border-2 border-primaryBlue text-primaryBlue hover:bg-primaryBlue hover:text-white'
-                  }`}
-                >
-                  Start free trial
-                </a>
-              </motion.div>
-            ))}
-          </div>
-        </Section>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-primaryBlue py-20 sm:py-24">
-        <Section className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <motion.h2 variants={fadeInUp} className="text-3xl font-bold text-white sm:text-4xl">
-            Grow your clinic&apos;s reputation, the compliant way
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="mx-auto mt-4 max-w-xl text-gray-300">
-            Launch in minutes with one branded QR poster. Start your free 30-day trial today.
-          </motion.p>
-          <motion.div variants={fadeInUp} className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-            <a
-              href={`${LIVE_URL}/signup`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-xl bg-primaryOrange px-8 py-4 font-bold text-white transition-colors hover:bg-toOrange"
-            >
-              Start free trial
-            </a>
-            <a
-              href={LIVE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl border-2 border-white/30 px-8 py-4 font-bold text-white transition-colors hover:bg-white hover:text-primaryBlue"
-            >
-              reviewyourdoctor.shiftdeploy.com <ArrowUpRight className="size-5" />
-            </a>
-          </motion.div>
-        </Section>
-      </section>
-
-      <Footer />
-    </LazyMotion>
+                Start free trial <ArrowRight size={18} aria-hidden="true" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
-};
+}
 
-export default ReviewYourDoctorLanding;
+export default function ReviewYourDoctorLanding() {
+  return (
+    <ServiceDetail
+      slug="review-your-doctor"
+      path="/review-your-doctor"
+      parent={{ label: 'Products', href: '/product' }}
+      crumb="Review Your Doctor"
+      h1="More 5-star Google reviews"
+      h1Accent="for your clinic."
+      intro="Review Your Doctor makes it quick and easy for every patient to leave a Google review, and lets you hear about any problem privately before it goes public."
+      ctaLabel="Start your free trial"
+      ctaHref={SIGNUP_URL}
+      visual={<ReviewPhoneVisual />}
+      ticks={['Free for 30 days', 'No card needed', 'Live in minutes']}
+      secondary={
+        <a href={LIVE_URL} target="_blank" rel="noopener noreferrer" className="min-h-[44px] inline-flex items-center gap-2 font-bold text-primaryBlue hover:text-primaryOrange">
+          See it live <ArrowUpRight size={18} aria-hidden="true" />
+        </a>
+      }
+      pains={{ title: 'Why good clinics end up with too few reviews', items: pains }}
+      gets={{ eyebrow: 'What it does', title: 'Everything you need to grow your reputation', items: gets }}
+      steps={{ title: 'From sign-up to more reviews in minutes', items: steps }}
+      faqs={faqs}
+      faqEyebrow="Questions about getting more reviews"
+      finalTitle="Grow your clinic’s reputation, the fair way"
+      finalText="Start your free 30-day trial today. Put one poster at reception and watch the reviews come in."
+      service={{
+        name: 'Review Your Doctor: Google review software for UK private clinics',
+        type: 'Review management software',
+        description: 'Patient review software that helps UK private clinics get more 5-star Google reviews and handle problems privately first.',
+      }}
+      extraSchema={[
+        {
+          '@context': 'https://schema.org',
+          '@type': 'SoftwareApplication',
+          name: 'Review Your Doctor',
+          applicationCategory: 'BusinessApplication',
+          operatingSystem: 'Web',
+          url: LIVE_URL,
+          description: 'Google review and patient feedback software for UK private clinics.',
+          offers: plans.map(({ name, price }) => ({
+            '@type': 'Offer',
+            name,
+            price: price.replace('£', ''),
+            priceCurrency: 'GBP',
+          })),
+          publisher: { '@id': 'https://shiftdeploy.com/#organization' },
+        },
+      ]}
+    >
+      <Pricing />
+    </ServiceDetail>
+  );
+}

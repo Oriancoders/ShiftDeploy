@@ -33,8 +33,11 @@ function Ticks({ items, dark }) {
 export default function ServiceDetail({
   slug, crumb, h1, h1Accent, intro, ctaLabel, visual, ticks, pains, gets, audiences, steps, proof,
   faqs, faqEyebrow, finalTitle, finalText, service, stats, children,
-  path, parent = { label: 'Services', href: '/services' }, secondary,
+  path, parent = { label: 'Services', href: '/services' }, secondary, ctaHref = '/ContactUs', extraSchema = [],
 }) {
+  const external = ctaHref.startsWith('http');
+  const CtaTag = external ? 'a' : Link;
+  const ctaProps = external ? { href: ctaHref, target: '_blank', rel: 'noopener noreferrer' } : { href: ctaHref, prefetch: false };
   const url = `https://shiftdeploy.com${path || `/services/${slug}`}`;
   const schema = [
     {
@@ -61,6 +64,7 @@ export default function ServiceDetail({
         { '@type': 'ListItem', position: 3, name: crumb, item: url },
       ],
     },
+    ...extraSchema,
   ];
 
   return (
@@ -85,9 +89,9 @@ export default function ServiceDetail({
               </h1>
               <p className="text-lg sm:text-xl mt-6 max-w-xl leading-relaxed text-gray-700">{intro}</p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8">
-                <Link href="/ContactUs" prefetch={false} className={primaryBtn}>
+                <CtaTag {...ctaProps} className={primaryBtn}>
                   {ctaLabel} <ArrowRight size={20} aria-hidden="true" />
-                </Link>
+                </CtaTag>
                 <a href="tel:+447311126710" className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white text-lg px-7 py-4 rounded-xl font-bold inline-flex items-center justify-center gap-2 transition-colors">
                   <Phone size={20} aria-hidden="true" /> 07311 126710
                 </a>
@@ -207,9 +211,9 @@ export default function ServiceDetail({
           <h2 className="text-3xl sm:text-4xl font-bold text-balance">{finalTitle}</h2>
           <p className="mt-4 text-lg sm:text-xl text-white/85 max-w-2xl mx-auto">{finalText}</p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-            <Link href="/ContactUs" prefetch={false} className={primaryBtn}>
+            <CtaTag {...ctaProps} className={primaryBtn}>
               {ctaLabel} <ArrowRight size={20} aria-hidden="true" />
-            </Link>
+            </CtaTag>
             <a href="tel:+447311126710" className="border-2 border-white text-white hover:bg-white hover:text-primaryBlue text-lg px-7 py-4 rounded-xl font-bold inline-flex items-center justify-center gap-2 transition-colors">
               <Phone size={20} aria-hidden="true" /> Or call 07311 126710
             </a>
