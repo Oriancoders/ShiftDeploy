@@ -4,7 +4,7 @@ import RelatedInsights from '../../../src/components/RelatedInsights';
 
 const title = 'Never Miss a Call: 24/7 Answering Service';
 const description =
-  'Missed calls cost you work. Out of hours call answering, missed call text back and instant WhatsApp auto replies, so every enquiry gets an answer.';
+  'Missed calls cost you work. Out-of-hours call answering and instant WhatsApp replies, so every enquiry gets an answer.';
 
 export const metadata = {
   title,

@@ -289,7 +289,7 @@ const renderCallout = (callout) => {
           <Icon className={`flex-shrink-0 size-5 mt-0.5 ${styles.iconColor}`} />
         )}
         <div className={`flex-1 ${styles.textColor}`}>
-          {callout.title && <h4 className="font-semibold mb-2">{callout.title}</h4>}
+          {callout.title && <p className="font-semibold mb-2">{callout.title}</p>}
           {/* content is Portable Text on callouts authored in Studio, but a
               plain string on ones created through the admin editor. Handle
               both rather than assuming an array. */}
