@@ -1,5 +1,5 @@
 import React from 'react';
-import { responsiveImage, lqipUrl } from '../lib/sanity/image';
+import { responsiveImage } from '../lib/sanity/image';
 
 /**
  * The one place images get rendered on the public site.
@@ -25,7 +25,6 @@ export default function SanityImage({
   const img = responsiveImage(image, { maxWidth, sizes });
   if (!img) return null;
 
-  const lqip = lqipUrl(image);
 
   const el = (
     <img
@@ -33,22 +32,15 @@ export default function SanityImage({
       srcSet={img.srcSet}
       sizes={img.sizes}
       alt={alt || ''}
-      width={img.width}
-      height={img.height}
+      // Attributes keep the aspect ratio for layout; CSS sets the real size.
+      width={img.width > 400 ? 400 : img.width}
+      height={img.width > 400 ? Math.round((img.height * 400) / img.width) : img.height}
       // The LCP image must not be lazy - that is a guaranteed CWV failure.
       loading={priority ? 'eager' : 'lazy'}
       fetchPriority={priority ? 'high' : 'auto'}
       decoding={priority ? 'sync' : 'async'}
       className={className}
-      style={
-        lqip
-          ? {
-              backgroundImage: `url(${lqip})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }
-          : undefined
-      }
+      style={{ maxWidth: '100%' }}
     />
   );
 
