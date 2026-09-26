@@ -56,8 +56,8 @@ const Footer = () => {
               className="w-44"
             />
             <p className="mt-5 text-gray-300 leading-relaxed max-w-sm">
-              We help service businesses stop losing work, with AI call answering, websites
-              that bring enquiries and admin that runs itself.
+              We help service businesses stop losing work, with the right fix for each problem:
+              AI call answering, WhatsApp automation, apps, websites and automation.
             </p>
 
             <ul className="mt-6 space-y-3">

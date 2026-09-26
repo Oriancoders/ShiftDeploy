@@ -60,7 +60,7 @@ const DeployToolkit = () => {
     <section id="deploy-toolkit" className="w-full bg-gray-50 py-16 sm:py-24 text-textColor scroll-mt-20">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
         <div>
-          <p className="text-sm sm:text-base font-semibold text-primaryOrange mb-4">Free website audit</p>
+          <p className="text-sm sm:text-base font-semibold text-orange-700 mb-4">Free website audit</p>
           <h2 className="text-3xl sm:text-5xl font-bold leading-[1.1] text-primaryBlue text-balance">
             Is your website losing you work?
             <span className="block text-primaryOrange">Find out for free.</span>

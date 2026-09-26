@@ -10,6 +10,7 @@ import DeployToolkit from './landingComps/DeployToolkit';
 import ShiftProtocol from './landingComps/ShiftProtocol';
 import MissionsCompleted from './landingComps/MissionsCompleted';
 import VideoTestimonial from './landingComps/VideoTestimonial';
+import HomeFaq from './landingComps/HomeFaq';
 
 export default function Landing() {
   return (
@@ -25,6 +26,7 @@ export default function Landing() {
         <VideoTestimonial />
         <InsideShiftDeploy />
         <DeployToolkit />
+        <HomeFaq />
         <ShiftProtocol />
       </main>
       <Footer />

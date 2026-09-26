@@ -75,7 +75,7 @@ const ReviewYourDoctor = () => {
     <section className="w-full overflow-hidden bg-gray-50 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl 2xl:max-w-[80%] px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
-          <p className="text-sm sm:text-base font-semibold text-primaryOrange mb-4">Get more Google reviews</p>
+          <p className="text-sm sm:text-base font-semibold text-orange-700 mb-4">Get more Google reviews</p>
           <h2 className="text-3xl sm:text-5xl font-bold leading-[1.1] text-primaryBlue text-balance">
             Happy customers rarely leave reviews.
             <span className="block text-primaryOrange">Now they will.</span>

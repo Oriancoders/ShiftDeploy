@@ -29,7 +29,7 @@ export default async function Image() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={logo} width={560} height={127} alt="" />
         <div style={{ marginTop: '44px', fontSize: '30px', fontWeight: 600, color: '#0C1F3A', display: 'flex' }}>
-          AI receptionist · Web design · Automation
+          AI · WhatsApp · Apps · Websites · Automation
         </div>
         <div style={{ marginTop: '14px', fontSize: '24px', color: '#F76707', display: 'flex' }}>
           Stop losing customers you never knew you had.

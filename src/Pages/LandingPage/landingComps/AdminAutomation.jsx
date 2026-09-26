@@ -10,7 +10,7 @@ const jobs = [
   {
     icon: MessageSquareReply,
     title: 'Enquiry follow-ups',
-    body: 'Every enquiry gets a reply and a nudge later, even when you’re flat out.',
+    body: 'Every enquiry gets a reply on WhatsApp, text or email, and a nudge later.',
   },
   {
     icon: ReceiptPoundSterling,
@@ -24,7 +24,7 @@ export default function AdminAutomation() {
     <section id="admin" className="w-full bg-white py-16 sm:py-24 border-y border-gray-100 scroll-mt-20">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
-          <p className="text-sm sm:text-base font-semibold text-primaryOrange mb-4">
+          <p className="text-sm sm:text-base font-semibold text-orange-700 mb-4">
             Business automation
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold leading-[1.1] text-primaryBlue text-balance">
@@ -55,7 +55,7 @@ export default function AdminAutomation() {
             prefetch={false}
             className="bg-primaryOrange hover:bg-toOrange border-2 border-primaryOrange text-white text-lg px-7 py-4 rounded-xl font-bold inline-flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto"
           >
-            Tell us what eats your time <ArrowRight size={20} aria-hidden="true" />
+            Get your free check <ArrowRight size={20} aria-hidden="true" />
           </Link>
         </div>
       </div>

@@ -37,7 +37,7 @@ const MissionsCompleted = () => {
     <section id="missions-completed" className="py-16 sm:py-24 bg-white text-primaryBlue scroll-mt-20">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
-          <p className="text-sm sm:text-base font-semibold text-primaryOrange mb-4">Work we’ve done</p>
+          <p className="text-sm sm:text-base font-semibold text-orange-700 mb-4">Work we’ve done</p>
           <h2 className="text-3xl sm:text-5xl font-bold leading-[1.1] text-primaryBlue text-balance">
             Real businesses.
             <span className="block text-primaryOrange">Real work, delivered.</span>
@@ -60,7 +60,7 @@ const MissionsCompleted = () => {
                   <CloudinaryImage src={image} alt={imageAlt} className="size-full object-contain" loading="lazy" />
                 </div>
                 <div className="flex flex-1 flex-col p-6 sm:p-8">
-                  <p className="text-sm font-semibold text-primaryOrange">
+                  <p className="text-sm font-semibold text-orange-700">
                     {client} · {service}
                   </p>
                   <h3 className="mt-2 text-xl font-bold text-primaryBlue">{title}</h3>

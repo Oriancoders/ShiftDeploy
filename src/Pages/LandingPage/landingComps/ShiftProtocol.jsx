@@ -4,11 +4,11 @@ import Link from 'next/link';
 const steps = [
   {
     title: 'Free check',
-    body: 'Tell us about your business. We look at your calls, website and admin to find where work is slipping away.',
+    body: 'Tell us about your business. We look at your calls, messages, website and admin to find where work is slipping away.',
   },
   {
     title: 'A clear plan and quote',
-    body: 'You get a plain-English plan: what to fix first, what can wait, and what it costs. No pressure.',
+    body: 'The simplest fix for your problem, whether that’s AI, WhatsApp, an app or a website, with a clear price. No pressure.',
   },
   {
     title: 'We fix it',
@@ -22,23 +22,23 @@ const steps = [
 
 const ShiftProtocol = () => {
   return (
-    <section id="the-shift-protocol" className="bg-white scroll-mt-20">
+    <section id="the-shift-protocol" className="bg-gray-50 scroll-mt-20">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
-          <p className="text-sm sm:text-base font-semibold text-primaryOrange mb-4">How it works</p>
+          <p className="text-sm sm:text-base font-semibold text-orange-700 mb-4">How it works</p>
           <h2 className="text-3xl sm:text-5xl font-bold leading-[1.1] text-primaryBlue text-balance">
             Four simple steps.
             <span className="block text-primaryOrange">No jargon, no surprises.</span>
           </h2>
           <p className="text-lg sm:text-xl mt-6 leading-relaxed text-gray-700">
-            Whether it’s AI call answering, a new website or business automation, every
-            project starts the same way.
+            Whether the answer is AI, WhatsApp, an app or a website, every project starts
+            the same way: with your problem.
           </p>
         </div>
 
         <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map(({ title, body }, i) => (
-            <li key={title} className="rounded-2xl border border-gray-200 bg-gray-50 p-6 sm:p-8">
+            <li key={title} className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8">
               <span className="flex size-10 items-center justify-center rounded-full bg-primaryBlue text-white font-bold">
                 {i + 1}
               </span>
@@ -52,7 +52,7 @@ const ShiftProtocol = () => {
       <div className="bg-primaryBlue text-white px-4 py-14 sm:py-20 text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-balance">Ready to stop losing work?</h2>
         <p className="mt-4 text-lg sm:text-xl text-white/85 max-w-2xl mx-auto">
-          Get a free check of your calls, website and admin. We’ll show you where the
+          Get a free check of your calls, messages, website and admin. We’ll show you where the
           biggest leaks are and the simplest way to fix them.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">

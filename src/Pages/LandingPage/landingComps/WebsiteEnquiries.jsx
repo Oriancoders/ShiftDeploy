@@ -30,7 +30,7 @@ export default function WebsiteEnquiries() {
     <section id="website" className="w-full bg-gray-50 py-16 sm:py-24 scroll-mt-20">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
-          <p className="text-sm sm:text-base font-semibold text-primaryOrange mb-4">
+          <p className="text-sm sm:text-base font-semibold text-orange-700 mb-4">
             Web design &amp; local SEO
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold leading-[1.1] text-primaryBlue text-balance">

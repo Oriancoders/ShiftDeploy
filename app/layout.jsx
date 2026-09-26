@@ -21,7 +21,7 @@ export const metadata = {
     template: '%s | ShiftDeploy',
   },
   description:
-    'AI receptionist and telephone answering, web design, local SEO and business automation for UK service businesses. Stop missing calls and get more enquiries.',
+    'Losing customers to missed calls, slow replies or admin? ShiftDeploy fixes it with the right tool: AI receptionist, WhatsApp automation, apps or websites.',
   keywords: [
     'web agency',
     'performance web development',
@@ -117,7 +117,7 @@ const organizationSchema = {
   },
   image: 'https://shiftdeploy.com/og-image.png',
   description:
-    'ShiftDeploy helps UK service businesses stop losing work with an AI receptionist and telephone answering, web design and local SEO, website speed and conversion optimisation, and business automation.',
+    'ShiftDeploy helps UK service businesses stop losing work. We start with the problem and fix it with the right tool: an AI receptionist and telephone answering, WhatsApp automation, mobile and web apps, web design and local SEO, or business automation.',
   slogan: 'Stop losing customers you never knew you had.',
   email: 'contact@shiftdeploy.com',
   telephone: '+447311126710',
@@ -153,6 +153,8 @@ const organizationSchema = {
   knowsAbout: [
     'AI receptionist',
     'Telephone answering',
+    'WhatsApp automation',
+    'Mobile app development',
     'Web design',
     'Local SEO',
     'Core Web Vitals',

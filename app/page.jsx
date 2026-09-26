@@ -4,21 +4,21 @@ import Landing from '../src/Pages/LandingPage/Landing';
 import JsonLd from '../src/components/JsonLd';
 
 export const metadata = {
-  title: 'Losing Customers? AI Receptionist & Web Design | ShiftDeploy',
+  title: 'Losing Customers? AI, Apps & Automation | ShiftDeploy',
   description:
-    'AI receptionist and telephone answering, web design, local SEO and business automation for UK service businesses. Stop missing calls and get more enquiries.',
+    'Losing customers to missed calls, slow replies or admin? We fix it with the right tool: AI receptionist, WhatsApp automation, an app or a website.',
   keywords: [
-    'AI receptionist UK', 'telephone answering service', 'virtual receptionist', 'call answering service for small business', 'missed call text back',
+    'AI receptionist UK', 'telephone answering service', 'WhatsApp automation for business', 'mobile app development UK', 'virtual receptionist', 'call answering service for small business', 'missed call text back',
     'small business web design UK', 'local SEO', 'website speed optimisation',
     'business automation UK', 'get more Google reviews', 'ShiftDeploy',
   ],
   alternates: { canonical: 'https://shiftdeploy.com' },
   openGraph: {
-    title: 'Losing Customers? AI Receptionist & Web Design | ShiftDeploy',
+    title: 'Losing Customers? AI, Apps & Automation | ShiftDeploy',
     description:
-      'Stop losing customers you never knew you had. AI call answering, websites that bring enquiries and business automation.',
+      'Stop losing customers you never knew you had. We fix it with the right tool: AI call answering, WhatsApp automation, an app or a website.',
     url: 'https://shiftdeploy.com',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy logo - AI receptionist, web design and automation' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy logo - AI, apps and automation that stop you losing customers' }],
   },
 };
 

@@ -41,7 +41,7 @@ const VideoTestimonial = ({
         </div>
 
         <div>
-          <p className="text-sm sm:text-base font-semibold text-primaryOrange mb-4">Client review</p>
+          <p className="text-sm sm:text-base font-semibold text-orange-700 mb-4">Client review</p>
           <h2 className="text-3xl sm:text-5xl font-bold leading-[1.1] text-primaryBlue text-balance">
             Don’t take our word for it.
             <span className="block text-primaryOrange">Hear it from a client.</span>

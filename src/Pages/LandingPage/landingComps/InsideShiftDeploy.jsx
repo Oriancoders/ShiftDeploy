@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, PhoneCall, LayoutTemplate, Gauge, MousePointerClick, ShieldCheck, Workflow } from 'lucide-react';
+import { ArrowRight, PhoneCall, MessageCircle, Smartphone, LayoutTemplate, Gauge, MousePointerClick, ShieldCheck, Workflow } from 'lucide-react';
 
 const services = [
   {
@@ -7,6 +7,20 @@ const services = [
     title: 'AI receptionist & call answering',
     body: 'A virtual receptionist that answers every call and books it in, even when you’re closed.',
     href: '/digital-receptionist',
+  },
+  {
+    icon: MessageCircle,
+    title: 'WhatsApp & chat automation',
+    body: 'Instant replies, bookings and reminders on WhatsApp, where your customers already are.',
+    href: '/ContactUs',
+    cta: 'Ask us about it',
+  },
+  {
+    icon: Smartphone,
+    title: 'Mobile & web apps',
+    body: 'Booking, ordering or customer apps built around how your business actually runs.',
+    href: '/ContactUs',
+    cta: 'Ask us about it',
   },
   {
     icon: LayoutTemplate,
@@ -46,18 +60,18 @@ const InsideShiftDeploy = () => {
     <section id="inside-shiftdeploy" className="py-16 sm:py-24 text-textColor bg-white scroll-mt-20">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
-          <p className="text-sm sm:text-base font-semibold text-primaryOrange mb-4">Our services</p>
+          <p className="text-sm sm:text-base font-semibold text-orange-700 mb-4">Our services</p>
           <h2 className="text-3xl sm:text-5xl font-bold leading-[1.1] text-primaryBlue text-balance">
             Everything that wins you more work.
             <span className="block text-primaryOrange">One team to sort it.</span>
           </h2>
           <p className="text-lg sm:text-xl mt-6 leading-relaxed text-gray-700">
-            Web design, SEO, AI call answering and automation for service businesses. No
-            juggling different suppliers.
+            We don’t start with a website. We start with your problem, then pick the fix that
+            works: AI, WhatsApp, an app, a website or automation.
           </p>
         </div>
 
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {services.map(({ icon: Icon, title, body, href, cta = 'Find out more' }) => (
             <li key={title}>
               <Link

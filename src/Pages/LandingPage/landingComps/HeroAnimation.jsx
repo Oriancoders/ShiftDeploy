@@ -2,7 +2,7 @@ import { PhoneMissed, MessageSquareText, CalendarCheck } from 'lucide-react';
 
 export const heroFixes = [
   { href: '#calls', label: 'Every call answered' },
-  { href: '#website', label: 'A website that brings enquiries' },
+  { href: '#website', label: 'More enquiries coming in' },
   { href: '#admin', label: 'Your evenings back' },
 ];
 

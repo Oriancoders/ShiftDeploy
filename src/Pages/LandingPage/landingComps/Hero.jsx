@@ -8,7 +8,7 @@ export default function Hero() {
       <div className="w-full max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-center">
           <div className="min-w-0">
-            <p className="text-sm sm:text-base font-semibold text-primaryOrange mb-4">
+            <p className="text-sm sm:text-base font-semibold text-orange-700 mb-4">
               For busy business owners
             </p>
             <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold leading-[1.1] text-primaryBlue text-balance">
@@ -16,8 +16,8 @@ export default function Hero() {
               <span className="block text-primaryOrange xl:whitespace-nowrap">you never knew you had.</span>
             </h1>
             <p className="text-lg sm:text-xl mt-6 max-w-xl leading-relaxed text-gray-700">
-              Call answering, websites and automation for service businesses. We find where
-              you’re losing work, fix it, and show you what came back.
+              Missed calls, slow replies, enquiries that go nowhere. We find where your business
+              is losing customers, fix it, and show you the extra work it brings in.
             </p>
             <nav aria-label="What we fix" className="mt-6 flex flex-wrap gap-2">
               {heroFixes.map(({ href, label }) => (
