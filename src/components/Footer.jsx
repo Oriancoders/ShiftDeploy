@@ -18,7 +18,7 @@ const columns = [
   {
     heading: 'Company',
     links: [
-      { name: 'About ShiftDeploy', href: '/insideShiftDeploy' },
+      { name: 'About us', href: '/about' },
       { name: 'Our products', href: '/product' },
       { name: 'Work we’ve done', href: '/missions' },
       { name: 'Insights', href: '/insights' },

@@ -120,10 +120,10 @@ function ClientControlSection() {
 
             </Link>
  
-            <Link href={"/insideShiftDeploy"}
+            <Link href={"/about"}
               className="bg-white  border-2 border-primaryBlue text-primaryBlue px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4  rounded-lg sm:rounded-xl lg:rounded-2xl font-bold  sm:hover:shadow-xl flex items-center justify-center gap-x-2 text-md"
             >
-              <span>View Inside ShiftDeploy</span>
+              <span>About us</span>
 
             </Link>
 

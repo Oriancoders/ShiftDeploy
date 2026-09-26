@@ -7,6 +7,11 @@ const nextConfig = {
     ],
   },
   transpilePackages: ['@n8n/chat'],
+  async redirects() {
+    return [
+      { source: '/insideShiftDeploy', destination: '/about', permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

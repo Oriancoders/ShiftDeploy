@@ -52,7 +52,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
         { label: 'Automate your admin', path: '/services/shiftflow' },
       ],
     },
-    { label: 'Inside ShiftDeploy', path: '/insideShiftDeploy' },
+    { label: 'About us', path: '/about' },
     {
       label: 'Product',
       path: '/product',

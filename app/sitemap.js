@@ -21,7 +21,7 @@ export default async function sitemap() {
   // Unknown modification dates are omitted; regeneration is not a content edit.
   const staticRoutes = [
     '', '/services', '/services/shiftspeed', '/services/shiftconvert',
-    '/services/shiftbuild', '/services/shiftflow', '/insideShiftDeploy',
+    '/services/shiftbuild', '/services/shiftflow', '/about',
     '/product', '/review-your-doctor', '/service-growth-audit', '/shift-protocol',
     '/deploy-toolkit', '/missions', '/insights', '/digital-receptionist', '/plumbers',
     '/ContactUs', '/CaseStudies/SlackerIOT', '/CaseStudies/BullseyesCase',
