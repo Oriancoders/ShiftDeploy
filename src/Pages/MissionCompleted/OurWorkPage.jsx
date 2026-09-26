@@ -7,8 +7,9 @@ import JsonLd from '../../components/JsonLd';
 
 const container = 'max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8';
 
-const projects = [
+const allProjects = [
   {
+    hidden: true,
     client: 'Fluid Plumbing Solutions, Hull',
     service: 'Website & local SEO',
     title: 'From nothing online to found on Google',
@@ -54,6 +55,8 @@ const projects = [
     href: '/CaseStudies/SlackerIOT',
   },
 ];
+
+const projects = allProjects.filter((p) => !p.hidden);
 
 const quotes = [
   { quote: 'Better than anything I’ve seen.', name: 'Farjad Abbas', role: 'Head of Business Development, Bullseye Investments' },
