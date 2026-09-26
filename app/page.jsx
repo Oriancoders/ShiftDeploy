@@ -4,7 +4,7 @@ import Landing from '../src/Pages/LandingPage/Landing';
 import JsonLd from '../src/components/JsonLd';
 
 export const metadata = {
-  title: 'AI Receptionist, Web Design & Automation | ShiftDeploy',
+  title: 'ShiftDeploy | AI Receptionist, Web Design & Automation',
   description:
     'AI receptionist and telephone answering, web design, local SEO and business automation for UK service businesses. Stop missing calls and get more enquiries.',
   keywords: [
@@ -14,11 +14,11 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://shiftdeploy.com' },
   openGraph: {
-    title: 'AI Receptionist, Web Design & Automation | ShiftDeploy',
+    title: 'ShiftDeploy | AI Receptionist, Web Design & Automation',
     description:
       'Stop losing customers you never knew you had. AI call answering, websites that bring enquiries and business automation.',
     url: 'https://shiftdeploy.com',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy - AI receptionist, web design and automation' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy logo - AI receptionist, web design and automation' }],
   },
 };
 
