@@ -163,7 +163,7 @@ export const normalizeTags = (rawTags, rawCategories) => {
     ? rawCategories.map((cat) => cat?.title || '').filter(Boolean)
     : [];
   const combined = [...fromTags, ...fromCategories];
-  return combined.length > 0 ? Array.from(new Set(combined)) : ['Insights'];
+  return combined.length > 0 ? Array.from(new Set(combined)) : ['Guides'];
 };
 
 const getPortableTextWordCount = (body) => {

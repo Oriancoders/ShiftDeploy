@@ -70,7 +70,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
         { label: 'K2 Traders', path: '/CaseStudies/K2TradersCase' },
       ],
     },
-    { label: 'Insights', path: '/insights' },
+    { label: 'Blog', path: '/insights' },
   ];
 
   const handleAuditClick = () => {

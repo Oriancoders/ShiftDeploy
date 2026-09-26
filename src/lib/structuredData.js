@@ -197,7 +197,7 @@ export const buildPostGraph = ({ post, slug, ogImage, readMinutes, seo }) => {
     '@id': `${url}#breadcrumb`,
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: SITE },
-      { '@type': 'ListItem', position: 2, name: 'Insights', item: `${SITE}/insights` },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE}/insights` },
       { '@type': 'ListItem', position: 3, name: post.title || slug, item: url },
     ],
   });

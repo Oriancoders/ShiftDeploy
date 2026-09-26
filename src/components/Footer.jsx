@@ -21,7 +21,7 @@ const columns = [
       { name: 'About us', href: '/about' },
       { name: 'Our products', href: '/product' },
       { name: 'Work we’ve done', href: '/missions' },
-      { name: 'Insights', href: '/insights' },
+      { name: 'Blog', href: '/insights' },
       { name: 'Free growth audit', href: '/service-growth-audit' },
       { name: 'Contact us', href: '/ContactUs' },
     ],

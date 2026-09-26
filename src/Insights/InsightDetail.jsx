@@ -504,7 +504,7 @@ const normalizeTags = (rawTags, rawCategories) => {
     : [];
 
   const combined = [...fromTags, ...fromCategories];
-  return combined.length > 0 ? Array.from(new Set(combined)) : ["Insights"];
+  return combined.length > 0 ? Array.from(new Set(combined)) : ["Guides"];
 };
 
 const formatDate = (iso) => {
@@ -615,7 +615,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
         <div className="absolute top-0 right-0 size-96 rounded-full opacity-10" style={{background:'radial-gradient(circle,#F76707,transparent 70%)',transform:'translate(30%,-30%)'}} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-12 relative z-10">
           <Link href="/insights" className="inline-flex items-center gap-2 text-sm font-semibold text-white/70 hover:text-white transition mb-6">
-            ← Back to Insights
+            ← Back to the blog
           </Link>
           {post && (
             <>
@@ -647,7 +647,7 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
             </>
           )}
           {!post && (
-            <h1 className="text-3xl font-semibold text-white">Insight</h1>
+            <h1 className="text-3xl font-semibold text-white">Article</h1>
           )}
         </div>
       </div>

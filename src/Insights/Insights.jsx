@@ -47,7 +47,7 @@ const normalizeTags = (rawTags, rawCategories) => {
     ? rawCategories.map((c) => c?.title || "").filter(Boolean)
     : [];
   const combined = [...fromTags, ...fromCats];
-  return combined.length > 0 ? Array.from(new Set(combined)) : ["Insights"];
+  return combined.length > 0 ? Array.from(new Set(combined)) : ["Guides"];
 };
 
 const formatDate = (iso) => {
@@ -241,7 +241,7 @@ const Pagination = ({ page, totalPages, onPrev, onNext, onGo }) => {
       </button>
       {pages.map((p) => (
         <button key={p} onClick={() => onGo(p)}
-          className={`size-9 rounded-xl text-sm font-bold transition ${p === page ? "bg-primaryBlue text-white" : "bg-white border border-gray-200 text-gray-700 hover:border-primaryBlue hover:text-primaryBlue"}`}>
+          className={`size-11 rounded-xl text-sm font-bold transition ${p === page ? "bg-primaryBlue text-white" : "bg-white border border-gray-200 text-gray-700 hover:border-primaryBlue hover:text-primaryBlue"}`}>
           {p}
         </button>
       ))}
@@ -318,11 +318,17 @@ const Insights = ({ initialPosts = [] }) => {
   }, [safeInitialPosts.length]);
 
   // Collect all unique tags
+  // Most-used topics first; only a handful show until the reader asks for more (Hick's law).
   const allTags = useMemo(() => {
-    const set = new Set();
-    sanityPosts.forEach((p) => p.tags.forEach((t) => set.add(t)));
-    return ["All", ...Array.from(set)];
+    const counts = new Map();
+    sanityPosts.forEach((p) => p.tags.forEach((t) => counts.set(t, (counts.get(t) || 0) + 1)));
+    return ["All", ...Array.from(counts.keys()).sort((a, b) => counts.get(b) - counts.get(a))];
   }, [sanityPosts]);
+  const [showAllTags, setShowAllTags] = useState(false);
+  const TOP_TAGS = 7;
+  const visibleTags = showAllTags || allTags.length <= TOP_TAGS + 1
+    ? allTags
+    : [...allTags.slice(0, TOP_TAGS), ...(allTags.slice(TOP_TAGS).includes(activeTag) ? [activeTag] : [])];
 
   const filteredPosts = useMemo(() => {
     let base = [...sanityPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -365,14 +371,16 @@ const Insights = ({ initialPosts = [] }) => {
         <div className="absolute top-0 right-0 size-80 rounded-full opacity-10" style={{ background: "radial-gradient(circle,#F76707,transparent 70%)", transform: "translate(30%,-30%)" }} />
         <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-14 relative z-10">
           <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
-            <p className="text-xs font-bold tracking-widest text-primaryOrange uppercase mb-3"></p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
-              Insights<span className="text-primaryOrange">.</span>
+            <p className="text-sm sm:text-base font-semibold text-primaryOrange mb-3">Blog</p>
+            <h1 className="text-[2rem] leading-[1.15] sm:text-5xl lg:text-6xl font-bold text-white text-balance">
+              Plain-English guides
+              <span className="block text-primaryOrange">to help you win more work.</span>
             </h1>
-            <p className="mt-4 max-w-2xl text-white/60 text-base sm:text-lg leading-relaxed">
-              Evidence-driven memos from real audits, performance, UX friction, and conversion mechanics. No fluff.
+            <p className="mt-5 max-w-2xl text-white/80 text-lg sm:text-xl leading-relaxed">
+              Practical tips for service businesses on getting found on Google, answering every
+              enquiry, winning more jobs and cutting down on admin.
             </p>
-            <div className="mt-4 flex items-center gap-4 text-sm text-white/50">
+            <div className="mt-4 flex items-center gap-4 text-sm text-white/70">
               <span>{sanityPosts.length} articles published</span>
               {sanityPosts.length > 0 && <><span>·</span><span>Updated regularly</span></>}
             </div>
@@ -392,9 +400,9 @@ const Insights = ({ initialPosts = [] }) => {
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search insights by title, topic or author"
-                aria-label="Search insights"
-                className="w-full rounded-full border border-gray-200 bg-white py-2.5 pl-10 pr-10 text-sm text-gray-800 placeholder:text-gray-400 focus:border-primaryBlue focus:outline-none focus:ring-1 focus:ring-primaryBlue"
+                placeholder="Search the blog by title, topic or author"
+                aria-label="Search the blog"
+                className="w-full min-h-[44px] rounded-full border border-gray-200 bg-white py-2.5 pl-10 pr-10 text-base text-gray-800 placeholder:text-gray-400 focus:border-primaryBlue focus:outline-none focus:ring-1 focus:ring-primaryBlue"
               />
               {query && (
                 <button
@@ -410,11 +418,11 @@ const Insights = ({ initialPosts = [] }) => {
 
             {allTags.length > 1 && (
               <div className="flex flex-wrap gap-2">
-                {allTags.map((tag) => (
+                {visibleTags.map((tag) => (
                   <button
                     key={tag}
                     onClick={() => setActiveTag(tag)}
-                    className={`text-xs font-bold px-4 py-1.5 rounded-full border transition ${
+                    className={`min-h-[44px] text-sm font-bold px-4 rounded-full border transition ${
                       activeTag === tag
                         ? "bg-primaryBlue text-white border-primaryBlue"
                         : "bg-white text-gray-600 border-gray-200 hover:border-primaryBlue hover:text-primaryBlue"
@@ -423,6 +431,16 @@ const Insights = ({ initialPosts = [] }) => {
                     {tag}
                   </button>
                 ))}
+                {allTags.length > TOP_TAGS + 1 && (
+                  <button
+                    type="button"
+                    onClick={() => setShowAllTags((v) => !v)}
+                    aria-expanded={showAllTags}
+                    className="min-h-[44px] text-sm font-bold px-4 rounded-full text-primaryBlue underline underline-offset-2 hover:text-primaryOrange"
+                  >
+                    {showAllTags ? 'Show fewer topics' : `Show all ${allTags.length - 1} topics`}
+                  </button>
+                )}
               </div>
             )}
 
@@ -431,8 +449,8 @@ const Insights = ({ initialPosts = [] }) => {
             {(query || activeTag !== "All") && !isLoading && (
               <p className="text-xs text-gray-500" role="status" aria-live="polite">
                 {filteredPosts.length === 0
-                  ? "No matching insights"
-                  : `${filteredPosts.length} ${filteredPosts.length === 1 ? "insight" : "insights"}`}
+                  ? "No matching articles"
+                  : `${filteredPosts.length} ${filteredPosts.length === 1 ? "article" : "articles"}`}
                 {query && <> for &ldquo;{query}&rdquo;</>}
                 {activeTag !== "All" && <> in {activeTag}</>}
                 {(query || activeTag !== "All") && (
@@ -489,9 +507,9 @@ const Insights = ({ initialPosts = [] }) => {
               {!isLoading && isSanityConfigured && !loadError && filteredPosts.length === 0 && (
                 <div className="rounded-2xl border border-gray-200 bg-white p-8 text-center text-gray-500">
                   {query
-                    ? `No insights match "${query}".`
+                    ? `No articles match "${query}".`
                     : activeTag === "All"
-                    ? "No insights published yet."
+                    ? "No articles published yet."
                     : `No posts tagged "${activeTag}".`}
                 </div>
               )}
@@ -527,35 +545,13 @@ const Insights = ({ initialPosts = [] }) => {
                   </div>
                 </div>
 
-                {/* Topics cloud */}
-                {allTags.length > 1 && (
-                  <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
-                    <h3 className="text-sm font-semibold text-primaryBlue mb-3">Browse by Topic</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {allTags.filter((t) => t !== "All").map((tag) => (
-                        <button
-                          key={tag}
-                          onClick={() => setActiveTag(tag)}
-                          className={`text-xs font-semibold px-3 py-1 rounded-full border transition ${
-                            activeTag === tag
-                              ? "bg-primaryOrange text-white border-primaryOrange"
-                              : "bg-orange-50 text-orange-700 border-orange-100 hover:border-primaryOrange"
-                          }`}
-                        >
-                          {tag}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
                 {/* CTA box */}
                 <div className="bg-gradient-to-br from-primaryBlue to-toBlue rounded-2xl p-5 text-white">
-                  <p className="text-xs font-bold text-primaryOrange uppercase tracking-wider mb-2">Free Audit</p>
-                  <h3 className="font-semibold text-lg leading-snug mb-2">Is your site leaving money on the table?</h3>
-                  <p className="text-white/60 text-sm mb-4 leading-relaxed">Get a performance & conversion audit from ShiftDeploy, no fluff, actionable results.</p>
-                  <Link href="/ContactUs" className="inline-flex items-center gap-2 bg-primaryOrange text-white text-sm font-semibold px-4 py-2.5 rounded-xl hover:bg-orange-600 transition">
-                    Get Free Audit <ArrowRight className="size-4" />
+                  <p className="text-sm font-semibold text-primaryOrange mb-2">Free check</p>
+                  <h3 className="font-semibold text-lg leading-snug mb-2">Losing customers you don’t know about?</h3>
+                  <p className="text-white/80 text-sm mb-4 leading-relaxed">We’ll show you where your business is losing work and the simplest way to fix it. Free, no obligation.</p>
+                  <Link href="/ContactUs" prefetch={false} className="min-h-[44px] inline-flex items-center gap-2 bg-primaryOrange text-white text-sm font-bold px-4 rounded-xl hover:bg-toOrange transition">
+                    Get your free check <ArrowRight className="size-4" />
                   </Link>
                 </div>
 

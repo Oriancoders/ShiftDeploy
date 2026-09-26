@@ -4,18 +4,18 @@ import { getInsightList } from '../../src/lib/insightsData';
 import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
-  title: 'Insights: Practical Tips to Win More Work',
+  title: 'Blog: Tips to Get More Customers and Save Time',
   description:
     'Practical, plain-English tips for service businesses on getting found, answering every enquiry, winning more jobs and cutting admin.',
   keywords: [
-    'web performance blog', 'CRO articles', 'Core Web Vitals guide', 'website speed tips',
-    'conversion optimisation tips', 'business automation insights', 'digital growth blog',
+    'small business tips UK', 'how to get more customers', 'get more Google reviews',
+    'missed calls small business', 'business automation tips', 'local SEO tips', 'ShiftDeploy blog',
   ],
   alternates: { canonical: 'https://shiftdeploy.com/insights' },
   openGraph: {
-    title: 'Insights: Practical Tips to Win More Work',
+    title: 'Blog: Tips to Get More Customers and Save Time | ShiftDeploy',
     description:
-      'Expert articles on web performance, conversion rate optimisation, automation, and digital growth strategies.',
+      'Plain-English guides for service businesses on getting found, answering every enquiry, winning more jobs and cutting admin.',
     url: 'https://shiftdeploy.com/insights',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -24,9 +24,9 @@ export const metadata = {
 const blogSchema = {
   '@context': 'https://schema.org',
   '@type': 'Blog',
-  name: 'ShiftDeploy Insights',
+  name: 'ShiftDeploy Blog',
   url: 'https://shiftdeploy.com/insights',
-  description: 'Expert articles on web performance, CRO, automation, and digital growth from ShiftDeploy.',
+  description: 'Plain-English guides for service businesses on getting found, answering every enquiry, winning more jobs and cutting admin.',
   publisher: {
     '@type': 'Organization',
     name: 'ShiftDeploy',
