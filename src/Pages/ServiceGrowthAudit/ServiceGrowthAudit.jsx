@@ -42,56 +42,56 @@ const auditAreas = [
   {
     icon: Gauge,
     title: 'Website Experience',
-    text: 'Speed, clarity, mobile flow, and page friction.',
+    text: 'How fast and clear it is, especially on a phone.',
   },
   {
     icon: MousePointerClick,
     title: 'Landing Pages',
-    text: 'Message match, CTA hierarchy, and conversion focus.',
+    text: 'Whether each page makes it obvious what to do next.',
   },
   {
     icon: Signal,
     title: 'Campaign Flow',
-    text: 'How ads, pages, offers, and intent connect.',
+    text: 'Whether your ads send people to the right page.',
   },
   {
     icon: MessageSquare,
     title: 'Enquiry Journey',
-    text: 'Forms, calls, booking steps, and response paths.',
+    text: 'How easy it is to call, book or send an enquiry.',
   },
   {
     icon: ShieldCheck,
     title: 'Trust Signals',
-    text: 'Proof, credibility, positioning, and risk reduction.',
+    text: 'Reviews, proof and reasons to choose you.',
   },
   {
     icon: BarChart3,
     title: 'Tracking',
-    text: 'Visibility across traffic, leads, and lost steps.',
+    text: 'Whether you can see where enquiries come from.',
   },
 ];
 
 const packages = [
   {
-    name: 'Growth Activation System',
-    description: 'For businesses that need campaigns and conversion flow improved together.',
+    name: 'Ads and enquiries package',
+    description: 'For businesses running ads that need more enquiries from them.',
     features: [
-      'Meta campaign management',
-      'Landing page optimisation',
-      'Enquiry flow improvement',
-      'Conversion tracking',
-      'Performance optimisation',
+      'Facebook and Instagram ads managed for you',
+      'Better landing pages',
+      'Easier ways to enquire and book',
+      'Tracking that shows which ads bring enquiries',
+      'A faster website',
     ],
   },
   {
-    name: 'Managed Digital Growth Partner',
-    description: 'For businesses that want wider visibility, positioning, and growth oversight.',
+    name: 'Ongoing growth partner',
+    description: 'For businesses that want one team looking after their online growth.',
     features: [
-      'Full digital growth oversight',
-      'Website and conversion management',
-      'Campaign and content coordination',
-      'Visibility and trust improvement',
-      'Ongoing growth strategy',
+      'One team for your website, ads and enquiries',
+      'Your website looked after and improved',
+      'Ads and content planned together',
+      'More reviews and better visibility',
+      'A clear plan, reviewed regularly',
     ],
     highlighted: true,
   },
@@ -177,7 +177,7 @@ const navItems = [
 
 const problemLeaks = [
   {
-    title: 'Weak landing pages',
+    title: 'Unclear pages',
     icon: MousePointerClick,
     text: 'Visitors arrive, but the next step is not obvious enough.',
   },
@@ -189,17 +189,17 @@ const problemLeaks = [
   {
     title: 'Poor booking flow',
     icon: MessageSquare,
-    text: 'A ready prospect has to work too hard to contact, book, or ask a question.',
+    text: 'A ready customer has to work too hard to call, book or ask a question.',
   },
   {
     title: 'Missed follow up',
     icon: Signal,
-    text: 'Enquiries exist, but response timing or next-step handling creates drop-off.',
+    text: 'Enquiries come in, but slow replies mean customers go elsewhere.',
   },
   {
-    title: 'Enquiry leakage',
+    title: 'Lost enquiries',
     icon: Target,
-    text: 'Attention is present, but parts of the journey quietly lose commercial intent.',
+    text: 'People are interested, but somewhere along the way they give up.',
   },
 ];
 
@@ -641,14 +641,12 @@ export default function ServiceGrowthAudit() {
                 Service growth audit
               </motion.div>
               <motion.h1 variants={fadeUp} className="text-4xl font-extrabold leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                Website Growth Audit
+                Find where your website
                 <br />
-                for UK
-                <br />
-                <span className="text-primaryOrange">Service Businesses</span>
+                <span className="text-primaryOrange">is losing enquiries.</span>
               </motion.h1>
               <motion.p variants={fadeUp} className="mt-7 max-w-2xl border-l-4 border-secondaryBlue pl-5 text-lg leading-relaxed text-blue-100/85 md:text-xl">
-                We audit your website, campaigns, landing pages and enquiry flow to help your UK service business identify where potential customers drop out.
+                A free growth audit for service businesses. We check your website, ads and enquiry forms and show you exactly where interested customers give up.
               </motion.p>
               <motion.div variants={fadeUp} className="mt-9 flex flex-col gap-4 ">
                 <button
@@ -836,9 +834,9 @@ export default function ServiceGrowthAudit() {
           <div className="absolute right-[-10%] bottom-10 size-80 rounded-full bg-primaryOrange/10 blur-[120px]" />
           <div className="container mx-auto max-w-6xl px-4 md:px-8">
             <SectionHeader
-              eyebrow="Proof before promise"
-              title="Trusted by businesses that care about execution."
-              text="Before we ask you to think through systems, we show the pattern: clear work, reliable delivery, and support after launch."
+              eyebrow="What clients say"
+              title="Trusted to deliver what we promise."
+              text="Clear work, delivered on time, and support after launch."
             />
 
             <motion.div
@@ -892,9 +890,9 @@ export default function ServiceGrowthAudit() {
           <div className="absolute bottom-10 right-[-12%] size-80 rounded-full bg-primaryOrange/5 blur-[120px]" />
           <div className="container mx-auto max-w-6xl px-4 md:px-8">
             <SectionHeader
-              eyebrow="The real constraint"
+              eyebrow="The real problem"
               title="More traffic is not always the problem."
-              text="People may already visit. Ads may already get clicks. Attention may already exist. The problem is often what happens after that attention arrives."
+              text="People may already visit your website. Your ads may already get clicks. The problem is usually what happens next."
             />
             <motion.div
               variants={stagger}
@@ -929,8 +927,8 @@ export default function ServiceGrowthAudit() {
               <motion.div variants={fadeUp} className="mx-auto mt-8 max-w-5xl rounded-3xl bg-primaryBlue p-6 text-white shadow-[0_18px_60px_rgba(12,31,58,0.16)] md:p-8">
                 <div className="grid gap-5 md:grid-cols-[0.8fr_1.2fr] md:items-center">
                   <div>
-                    <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-100/60">Audit lens</p>
-                    <h3 className="mt-2 text-2xl font-semibold">We map the gap between attention and enquiry.</h3>
+                    <p className="text-sm font-bold uppercase tracking-[0.18em] text-blue-100/60">How we look at it</p>
+                    <h3 className="mt-2 text-2xl font-semibold">We find where interested people give up.</h3>
                   </div>
                   <div className="grid gap-3 sm:grid-cols-4">
                     {['Attention', 'Trust', 'Action', 'Follow up'].map((step, index) => (
@@ -964,9 +962,9 @@ export default function ServiceGrowthAudit() {
         <section id="calculator" className="scroll-mt-24 bg-white py-20 md:py-32">
           <div className="container mx-auto max-w-6xl px-4 md:px-8">
             <SectionHeader
-              eyebrow="Enquiry Leakage Calculator"
-              title="Estimate where opportunity may be slipping."
-              text="Adjust the three core inputs. We estimate possible leakage from traffic, current enquiry rate, and average customer value."
+              eyebrow="Lost enquiries calculator"
+              title="See roughly what lost enquiries could be costing you."
+              text="Move the three sliders. We estimate what you could be missing from your visitors, how many enquire and what a customer is worth."
             />
             <div className="grid gap-8 lg:grid-cols-[0.95fr_1fr]">
               <motion.div
@@ -1009,7 +1007,7 @@ export default function ServiceGrowthAudit() {
                     </div>
                     <div>
                       <p className="text-3xl font-extrabold text-primaryOrange">{formatCurrency(results.estimatedLeakage)}</p>
-                      <p className="mt-1 text-sm text-gray-500">estimated leakage</p>
+                      <p className="mt-1 text-sm text-gray-500">estimated missed value</p>
                     </div>
                     <div>
                       <p className="text-3xl font-extrabold text-primaryBlue">{formatCurrency(results.possibleOpportunity)}</p>
@@ -1041,7 +1039,7 @@ export default function ServiceGrowthAudit() {
 
         <section id="audit-areas" className="scroll-mt-24 bg-gray-50 py-20 md:py-28">
           <div className="container mx-auto max-w-6xl px-4 md:px-8">
-            <SectionHeader eyebrow="What We Check" title="What We Check" text="A focused review of the places where attention usually fails to become an enquiry." />
+            <SectionHeader eyebrow="What We Check" title="What We Check" text="A focused check of the places where interested people usually give up." />
             <motion.div
               variants={stagger}
               initial="hidden"
@@ -1067,7 +1065,7 @@ export default function ServiceGrowthAudit() {
             <SectionHeader
               eyebrow="After the audit"
               title="What happens after the audit"
-              text="Every plan is customized after the audit. We only recommend the system your current situation actually needs."
+              text="Every plan is tailored after the audit. We only recommend what your business actually needs."
             />
             <motion.div
               variants={stagger}
@@ -1077,10 +1075,10 @@ export default function ServiceGrowthAudit() {
               className="grid gap-5 md:grid-cols-4"
             >
               {[
-                'We review your current system',
-                'We identify where enquiries leak',
+                'We look at what you have now',
+                'We find where enquiries are lost',
                 'We recommend the right plan',
-                'We build or manage the growth system',
+                'We build it, or look after it for you',
               ].map((step, index) => (
                 <motion.div key={step} variants={fadeUp} className="relative rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
                   <div className="mb-6 flex size-11 items-center justify-center rounded-xl bg-primaryOrange text-lg font-extrabold text-white">{index + 1}</div>
@@ -1095,7 +1093,7 @@ export default function ServiceGrowthAudit() {
           <div className="container mx-auto max-w-6xl px-4 md:px-8">
             <SectionHeader
               eyebrow="Packages"
-              title="Systems recommended after the audit"
+              title="What we might recommend after the audit"
               text="These are starting points. The audit determines what is useful, what can wait, and what should not be built at all."
             />
             <motion.div

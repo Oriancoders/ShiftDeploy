@@ -4,12 +4,12 @@ import ServiceGrowthAudit from '../../src/Pages/ServiceGrowthAudit/ServiceGrowth
 import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
-  title: 'Website Growth Audit for UK Service Businesses',
+  title: 'Free Growth Audit: Find Your Lost Enquiries',
   description:
-    'Request a website growth audit for your UK service business. Review landing pages, campaigns and booking journeys to identify enquiry drop-offs.',
+    'A free growth audit for service businesses. We check your website, ads and enquiry forms and show you where interested customers give up.',
   keywords: [
     'service growth audit',
-    'enquiry leakage audit',
+    'free website audit',
     'landing page audit',
     'campaign flow audit',
     'conversion audit',
