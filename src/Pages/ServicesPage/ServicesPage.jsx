@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {
-  ArrowRight, ArrowDown, Check, Phone, PhoneCall, MessageCircle, LayoutTemplate, Gauge,
-  MousePointerClick, Star, Workflow, Smartphone, ShieldCheck,
+  ArrowRight, ArrowDown, Check, Phone, PhoneCall, MessageCircle, MessageSquareText, LayoutTemplate, MapPin,
+  MousePointerClick, Star, Send, BellRing, ReceiptPoundSterling, Bot, Smartphone,
 } from 'lucide-react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
@@ -10,105 +10,47 @@ import ShiftProtocol from '../LandingPage/landingComps/ShiftProtocol';
 
 const problems = [
   {
+    id: 'get-found',
+    href: '/services/shiftbuild',
+    problem: '“Not enough people find me.”',
+    intro: 'People nearby search on Google and pick from the first few businesses they see.',
+    services: [
+      { icon: MapPin, name: 'Show up on Google Maps', label: 'Google Business Profile & local SEO', body: 'Appear when people nearby search for what you do.', gets: ['Found in local search', 'A complete Google profile', 'More calls from Google'] },
+      { icon: Star, name: 'More 5-star reviews', label: 'Google review system', body: 'Happy customers leave a review in two taps.', gets: ['More reviews, faster', 'Problems reach you first', 'No app needed'] },
+      { icon: LayoutTemplate, name: 'A website that brings in calls', label: 'Web design', body: 'Clear, fast on a phone and easy to call or book from.', gets: ['Tells people why you', 'Fast on a phone', 'Easy to get in touch'] },
+    ],
+  },
+  {
     id: 'missed-calls',
-    problem: '“I keep missing calls.”',
+    href: '/services/shiftspeed',
+    problem: '“I keep missing calls and messages.”',
     intro: 'Every call you can’t answer is a customer who rings someone else.',
     services: [
-      {
-        icon: PhoneCall,
-        name: 'AI receptionist & call answering',
-        body: 'A virtual receptionist that answers every call, day or night, takes details and books appointments.',
-        gets: ['Answers when you’re busy or closed', 'Books straight into your diary', 'Texts you the details'],
-        href: '/digital-receptionist',
-      },
-      {
-        icon: MessageCircle,
-        name: 'WhatsApp & chat automation',
-        body: 'Instant replies on WhatsApp, where many of your customers would rather message than call.',
-        gets: ['Replies in seconds, any hour', 'Lets customers book or ask questions', 'Sends reminders automatically'],
-        href: '/ContactUs',
-        cta: 'Ask us about it',
-      },
+      { icon: PhoneCall, name: 'Every call answered', label: 'AI receptionist', body: 'Answers day or night, takes details and books appointments.', gets: ['Answers when you’re busy', 'Books into your diary', 'Texts you the details'], href: '/digital-receptionist' },
+      { icon: MessageSquareText, name: 'A text back when you miss a call', label: 'Missed call text back', body: 'The caller gets a friendly text straight away.', gets: ['Stops them ringing others', 'Lets them book or reply', 'Works automatically'] },
+      { icon: MessageCircle, name: 'Instant WhatsApp replies', label: 'WhatsApp automation', body: 'Answers in seconds, bookings at any hour.', gets: ['Replies in seconds', 'Book or ask questions', 'Reminders sent for you'] },
     ],
   },
   {
-    id: 'website',
-    problem: '“My website doesn’t bring in enquiries.”',
-    intro: 'It looks fine, but nobody calls. Usually it’s slow, hard to find on Google, or unclear.',
+    id: 'win-jobs',
+    href: '/services/shiftconvert',
+    problem: '“Quotes go quiet and people don’t turn up.”',
+    intro: 'The work is there. It slips away after the enquiry comes in.',
     services: [
-      {
-        icon: LayoutTemplate,
-        name: 'Web design & local SEO',
-        body: 'A website built to be found by nearby customers and turn visits into calls and bookings.',
-        gets: ['Shows up when locals search', 'Clear on a phone', 'Easy to call or book from'],
-        href: '/services/shiftbuild',
-      },
-      {
-        icon: Gauge,
-        name: 'Website speed optimisation',
-        body: 'Pages that load fast on a phone, so visitors don’t give up and go to a competitor.',
-        gets: ['Faster on mobile', 'Better for Google rankings', 'Before-and-after report'],
-        href: '/services/shiftspeed',
-      },
-      {
-        icon: MousePointerClick,
-        name: 'Conversion rate optimisation',
-        body: 'More calls and bookings from the visitors you already get, without a full redesign.',
-        gets: ['Clearer wording and buttons', 'Simpler enquiry forms', 'Changes you can measure'],
-        href: '/services/shiftconvert',
-      },
-    ],
-  },
-  {
-    id: 'reviews',
-    problem: '“Happy customers never leave reviews.”',
-    intro: 'One bad review stands out when the happy ones stay quiet.',
-    services: [
-      {
-        icon: Star,
-        name: 'Google review system',
-        body: 'A QR code at your front desk lets customers leave a Google review in two taps, and tell you privately if something went wrong.',
-        gets: ['More Google reviews', 'Problems reach you first', 'No app, no staff training'],
-        href: '/review-your-doctor',
-        cta: 'See it for clinics',
-      },
+      { icon: Send, name: 'Quotes followed up for you', label: 'Automatic follow-ups', body: 'A polite nudge after every quote, without you remembering.', gets: ['Every quote chased', 'Friendly, not pushy', 'More jobs won'] },
+      { icon: BellRing, name: 'Fewer no-shows', label: 'Appointment reminders', body: 'Text or WhatsApp reminders before every appointment.', gets: ['Fewer empty slots', 'Sent automatically', 'Easy to reschedule'] },
+      { icon: MousePointerClick, name: 'Easier to say yes', label: 'Online booking & conversion', body: 'Online booking and a website that makes enquiring easy.', gets: ['Book in seconds', 'Shorter forms', 'Clear next steps'] },
     ],
   },
   {
     id: 'admin',
+    href: '/services/shiftflow',
     problem: '“Admin eats my evenings.”',
-    intro: 'Reminders, follow-ups and invoices that you do by hand, every single day.',
+    intro: 'Invoices, reminders and chasing payments, after a full day’s work.',
     services: [
-      {
-        icon: Workflow,
-        name: 'Business automation',
-        body: 'The repetitive jobs happen on time, on their own, so you get your evenings back.',
-        gets: ['Appointment reminders', 'Enquiry follow-ups', 'Invoices and payment chasers'],
-        href: '/ContactUs',
-        cta: 'Ask us about it',
-      },
-      {
-        icon: Smartphone,
-        name: 'Mobile & web apps',
-        body: 'Booking, ordering or customer apps built around how your business actually runs.',
-        gets: ['Built for your way of working', 'Works on any phone', 'Grows with your business'],
-        href: '/ContactUs',
-        cta: 'Ask us about it',
-      },
-    ],
-  },
-  {
-    id: 'maintenance',
-    problem: '“Nobody looks after my website.”',
-    intro: 'Small updates turn into big headaches, and things quietly break.',
-    services: [
-      {
-        icon: ShieldCheck,
-        name: 'Website maintenance & support',
-        body: 'We keep your site secure, up to date and working, with one team you can call.',
-        gets: ['Updates and security', 'Problems fixed quickly', 'Regular check-ups'],
-        href: '/services/shiftflow',
-      },
+      { icon: ReceiptPoundSterling, name: 'Get paid without chasing', label: 'Invoice automation', body: 'Invoices and polite payment reminders that go out on their own.', gets: ['Invoices sent on time', 'Automatic reminders', 'Less chasing'] },
+      { icon: Bot, name: 'An assistant for the boring jobs', label: 'AI assistant & business automation', body: 'Sorts enquiries, drafts replies and stops the copying and pasting.', gets: ['Details entered once', 'Replies drafted for you', 'Works with your tools'] },
+      { icon: Smartphone, name: 'Tools built around you', label: 'Apps & website maintenance', body: 'Custom apps, and a website looked after every month.', gets: ['Apps for bookings or jobs', 'Website kept updated', 'One team to call'] },
     ],
   },
 ];
@@ -123,8 +65,8 @@ const faqs = [
     a: 'Yes. Many businesses start with one fix, like call answering, and add others later. You only pay for what solves your problem.',
   },
   {
-    q: 'Do I need a new website?',
-    a: 'Often not. Many websites only need to load faster, explain things more clearly and make it easier to call or book. If a rebuild is better, we’ll explain why.',
+    q: 'Do you only build websites?',
+    a: 'No. The fix might be an AI receptionist, instant WhatsApp replies, automatic reminders, an app or a website. We pick whatever solves your problem best.',
   },
   {
     q: 'Do you work with my existing developer or team?',
@@ -149,7 +91,7 @@ const schema = [
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'ShiftDeploy services',
-    itemListElement: problems.flatMap((p) => p.services).map((s, i) => ({
+    itemListElement: problems.flatMap((p) => p.services.map((sv) => ({ ...sv, href: sv.href || p.href }))).map((s, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       item: {
@@ -158,7 +100,7 @@ const schema = [
         description: s.body,
         provider: { '@id': 'https://shiftdeploy.com/#organization' },
         areaServed: { '@type': 'Country', name: 'United Kingdom' },
-        ...(s.href.startsWith('/ContactUs') ? {} : { url: `https://shiftdeploy.com${s.href}` }),
+        url: `https://shiftdeploy.com${s.href}`,
       },
     })),
   },
@@ -194,8 +136,8 @@ export default function ServicesPage() {
               <span className="block text-primaryOrange">We’ll pick the right fix.</span>
             </h1>
             <p className="text-lg sm:text-xl mt-6 max-w-3xl mx-auto leading-relaxed text-gray-700">
-              AI call answering, WhatsApp automation, web design and local SEO, apps and business
-              automation for service businesses. Find your problem below.
+              Whether it’s getting found, answering every enquiry, winning the job or cutting the
+              admin, we fix it with whatever works best. Find your problem below.
             </p>
             <nav aria-label="Jump to a problem" className="mt-8 -mx-4 px-4 flex overflow-x-auto snap-x gap-2 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0 sm:flex-wrap sm:justify-center sm:overflow-visible">
               {problems.map(({ id, problem }) => (
@@ -211,18 +153,23 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {problems.map(({ id, problem, intro, services }, i) => (
+        {problems.map(({ id, href, problem, intro, services }, i) => (
           <section key={id} id={id} className={`scroll-mt-20 py-14 sm:py-20 ${i % 2 ? 'bg-gray-50' : 'bg-white'}`}>
             <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="max-w-3xl mb-8 sm:mb-10">
-                <h2 className="text-3xl sm:text-4xl font-bold text-primaryBlue text-balance">{problem}</h2>
-                <p className="mt-3 text-lg sm:text-xl text-gray-700">{intro}</p>
+              <div className="mb-8 sm:mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+                <div className="max-w-3xl">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-primaryBlue text-balance">{problem}</h2>
+                  <p className="mt-3 text-lg sm:text-xl text-gray-700">{intro}</p>
+                </div>
+                <Link href={href} prefetch={false} className="shrink-0 inline-flex items-center gap-2 font-bold text-primaryBlue hover:text-primaryOrange">
+                  See how we fix this <ArrowRight size={18} aria-hidden="true" />
+                </Link>
               </div>
-              <ul className={`grid gap-6 ${services.length > 2 ? 'md:grid-cols-3' : services.length === 2 ? 'md:grid-cols-2' : 'max-w-2xl'}`}>
-                {services.map(({ icon: Icon, name, body, gets, href, cta = 'Find out more' }) => (
+              <ul className="grid gap-6 md:grid-cols-3">
+                {services.map(({ icon: Icon, name, label, body, gets, href: itemHref }) => (
                   <li key={name}>
                     <Link
-                      href={href}
+                      href={itemHref || href}
                       prefetch={false}
                       className={`group flex h-full flex-col rounded-2xl border border-gray-200 p-6 sm:p-8 hover:border-primaryOrange hover:shadow-lg transition ${i % 2 ? 'bg-white' : 'bg-gray-50'}`}
                     >
@@ -230,6 +177,7 @@ export default function ServicesPage() {
                         <Icon className="size-6 text-primaryOrange" aria-hidden="true" />
                       </span>
                       <h3 className="mt-5 text-xl font-bold text-primaryBlue">{name}</h3>
+                      <p className="mt-1 text-sm font-semibold text-orange-700">{label}</p>
                       <p className="mt-2 text-gray-700 sm:text-lg">{body}</p>
                       <ul className="mt-4 space-y-2 flex-1">
                         {gets.map((g) => (
@@ -240,7 +188,7 @@ export default function ServicesPage() {
                         ))}
                       </ul>
                       <span className="mt-6 inline-flex items-center gap-2 font-bold text-primaryBlue group-hover:text-primaryOrange">
-                        {cta} <ArrowRight size={18} aria-hidden="true" />
+                        Find out more <ArrowRight size={18} aria-hidden="true" />
                       </span>
                     </Link>
                   </li>

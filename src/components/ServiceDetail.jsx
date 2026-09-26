@@ -32,7 +32,7 @@ function Ticks({ items, dark }) {
 // hero, problems, what you get, (who it's for), steps, FAQ, final call to action.
 export default function ServiceDetail({
   slug, crumb, h1, h1Accent, intro, ctaLabel, visual, ticks, pains, gets, audiences, steps, proof,
-  faqs, faqEyebrow, finalTitle, finalText, service, children,
+  faqs, faqEyebrow, finalTitle, finalText, service, stats, children,
 }) {
   const url = `https://shiftdeploy.com/services/${slug}`;
   const schema = [
@@ -100,6 +100,20 @@ export default function ServiceDetail({
         <section className="bg-white py-14 sm:py-20">
           <div className={container}>
             <SectionHead eyebrow="Sound familiar?" title={pains.title} />
+            {stats && (
+              <ul className="mb-8 grid gap-4 sm:grid-cols-2">
+                {stats.map(({ figure, text, source, url: href }) => (
+                  <li key={figure} className="rounded-2xl bg-primaryBlue p-6 text-white">
+                    <p className="text-3xl sm:text-4xl font-bold text-primaryOrange">{figure}</p>
+                    <p className="mt-2 sm:text-lg">{text}</p>
+                    <p className="mt-3 text-sm text-white/70">
+                      Source:{' '}
+                      <a href={href} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white">{source}</a>
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            )}
             <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {pains.items.map(({ title, body }) => (
                 <li key={title} className="rounded-2xl border border-gray-200 bg-gray-50 p-6">
@@ -113,15 +127,21 @@ export default function ServiceDetail({
 
         <section className="bg-gray-50 py-14 sm:py-20">
           <div className={container}>
-            <SectionHead eyebrow="What you get" title={gets.title} />
+            <SectionHead eyebrow={gets.eyebrow || 'How we fix it'} title={gets.title} />
             <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {gets.items.map(({ icon: Icon, title, body }) => (
-                <li key={title} className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8">
+              {gets.items.map(({ icon: Icon, title, label, body, href, cta = 'Find out more' }) => (
+                <li key={title} className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 sm:p-8">
                   <span className="flex size-12 items-center justify-center rounded-full bg-orange-50">
                     <Icon className="size-6 text-primaryOrange" aria-hidden="true" />
                   </span>
                   <h3 className="mt-5 text-xl font-bold text-primaryBlue">{title}</h3>
-                  <p className="mt-2 text-gray-700 sm:text-lg">{body}</p>
+                  {label && <p className="mt-1 text-sm font-semibold text-orange-700">{label}</p>}
+                  <p className="mt-2 text-gray-700 sm:text-lg flex-1">{body}</p>
+                  {href && (
+                    <Link href={href} prefetch={false} className="mt-4 inline-flex items-center gap-2 font-bold text-primaryBlue hover:text-primaryOrange">
+                      {cta} <ArrowRight size={18} aria-hidden="true" />
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

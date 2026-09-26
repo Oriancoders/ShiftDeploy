@@ -1,9 +1,9 @@
 export const revalidate = 3600;
 import ServicesPage from '../../src/Pages/ServicesPage/ServicesPage';
 
-const title = 'AI Receptionist, Websites & Automation Services';
+const title = 'How We Help Service Businesses Win More Work';
 const description =
-  'Missing calls, a quiet website or evening admin? Find your problem and the fix: AI receptionist, WhatsApp automation, web design, local SEO and apps.';
+  'Not found on Google, missing calls, quotes going quiet or buried in admin? Find your problem and the fix: AI receptionist, automation, apps or websites.';
 
 export const metadata = {
   title,

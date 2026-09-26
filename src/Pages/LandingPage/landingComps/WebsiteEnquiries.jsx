@@ -6,7 +6,7 @@ const fixes = [
     icon: Smartphone,
     problem: 'Slow to load on a phone',
     fix: 'We make it load fast, so people don’t give up and go to a competitor.',
-    href: '/services/shiftspeed',
+    href: '/services/shiftbuild',
     link: 'Website speed',
   },
   {

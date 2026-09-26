@@ -1,33 +1,33 @@
 export const revalidate = 3600;
-import WebDesignPage from '../../../src/Pages/Services/ShiftBuild/WebDesignPage';
+import GetFoundPage from '../../../src/Pages/Services/GetFoundPage';
 import RelatedInsights from '../../../src/components/RelatedInsights';
 
-const title = 'Web Design & Local SEO for Service Businesses';
+const title = 'Get More Local Customers From Google';
 const description =
-  'A website that makes your phone ring. Web design and local SEO for trades, clinics and local services. Fast, found on Google, easy to call or book.';
+  'More customers finding you first. Google Maps, local SEO, more Google reviews and a website that brings in calls, for local service businesses.';
 
 export const metadata = {
   title,
   description,
-  keywords: ['web design', 'website design for small business', 'local SEO', 'web design for trades', 'website for plumbers', 'small business website UK'],
+  keywords: ['how to get more customers', 'local SEO', 'get on Google Maps', 'more Google reviews', 'web design for small business', 'Google Business Profile help'],
   alternates: { canonical: 'https://shiftdeploy.com/services/shiftbuild' },
   openGraph: {
     title: `${title} | ShiftDeploy`,
     description,
     url: 'https://shiftdeploy.com/services/shiftbuild',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy web design and local SEO' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
   },
 };
 
-export default function ShiftBuildPage() {
+export default function Page() {
   return (
-    <WebDesignPage>
+    <GetFoundPage>
       <RelatedInsights
         tags={['CMS', 'Images', 'AVIF', 'WebP', 'JavaScript']}
         categories={['Engineering']}
-        heading="Tips from our web projects"
-        subheading="Practical lessons from websites we have built."
+        heading="Tips for getting found online"
+        subheading="How local businesses get found and chosen."
       />
-    </WebDesignPage>
+    </GetFoundPage>
   );
 }

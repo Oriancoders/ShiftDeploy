@@ -1,33 +1,33 @@
 export const revalidate = 3600;
-import CarePage from '../../../src/Pages/Services/ShiftFlow/CarePage';
+import AdminPage from '../../../src/Pages/Services/AdminPage';
 import RelatedInsights from '../../../src/components/RelatedInsights';
 
-const title = 'Website Maintenance & Support for Businesses';
+const title = 'Business Automation & AI Assistants';
 const description =
-  'Website maintenance and support with a fixed monthly price. Updates, security checks, monitoring and small changes, handled by one team you can call.';
+  'Get your evenings back. Automate invoices, payment chasers and repetitive admin with AI assistants, custom apps and website maintenance.';
 
 export const metadata = {
   title,
   description,
-  keywords: ['website maintenance', 'website support', 'website maintenance UK', 'website management', 'website security checks', 'website updates'],
+  keywords: ['business automation', 'automate admin', 'AI agent for small business', 'invoice automation', 'custom app development', 'website maintenance'],
   alternates: { canonical: 'https://shiftdeploy.com/services/shiftflow' },
   openGraph: {
     title: `${title} | ShiftDeploy`,
     description,
     url: 'https://shiftdeploy.com/services/shiftflow',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy website maintenance and support' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
   },
 };
 
-export default function ShiftFlowPage() {
+export default function Page() {
   return (
-    <CarePage>
+    <AdminPage>
       <RelatedInsights
         tags={['Core Web Vitals', 'JavaScript', 'Images', 'LCP']}
         categories={['Web Performance', 'Engineering']}
-        heading="Tips for keeping your website healthy"
-        subheading="How to keep a business website fast, safe and working after launch."
+        heading="Tips for saving time on admin"
+        subheading="Practical ways to take repetitive work off your plate."
       />
-    </CarePage>
+    </AdminPage>
   );
 }

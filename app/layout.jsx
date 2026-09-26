@@ -210,8 +210,8 @@ const organizationSchema = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'ShiftSpeed',
-          description: 'Core Web Vitals and page speed optimisation.',
+          name: 'Never miss a call or enquiry',
+          description: 'AI receptionist, missed call text back, WhatsApp automation and instant enquiry replies.',
           url: 'https://shiftdeploy.com/services/shiftspeed',
         },
       },
@@ -219,8 +219,8 @@ const organizationSchema = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'ShiftConvert',
-          description: 'Conversion rate optimisation for booking and enquiry flows.',
+          name: 'Win more jobs',
+          description: 'Automatic quote follow-ups, appointment reminders, online booking and conversion rate optimisation.',
           url: 'https://shiftdeploy.com/services/shiftconvert',
         },
       },
@@ -228,8 +228,8 @@ const organizationSchema = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'ShiftBuild',
-          description: 'Custom web development.',
+          name: 'Get found by more customers',
+          description: 'Local SEO, Google Business Profile, Google reviews and web design for service businesses.',
           url: 'https://shiftdeploy.com/services/shiftbuild',
         },
       },
@@ -237,8 +237,8 @@ const organizationSchema = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'ShiftFlow',
-          description: 'Website maintenance and ongoing technical support.',
+          name: 'Automate your admin',
+          description: 'Invoice automation, AI assistants, business automation, custom apps and website maintenance.',
           url: 'https://shiftdeploy.com/services/shiftflow',
         },
       },

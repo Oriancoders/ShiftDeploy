@@ -12,15 +12,13 @@ const services = [
     icon: MessageCircle,
     title: 'WhatsApp & chat automation',
     body: 'Instant replies, bookings and reminders on WhatsApp, where your customers already are.',
-    href: '/ContactUs',
-    cta: 'Ask us about it',
+    href: '/services/shiftspeed',
   },
   {
     icon: Smartphone,
     title: 'Mobile & web apps',
     body: 'Booking, ordering or customer apps built around how your business actually runs.',
-    href: '/ContactUs',
-    cta: 'Ask us about it',
+    href: '/services/shiftflow',
   },
   {
     icon: LayoutTemplate,
@@ -32,7 +30,7 @@ const services = [
     icon: Gauge,
     title: 'Website speed optimisation',
     body: 'Pages that load fast on a phone, so visitors don’t give up and leave.',
-    href: '/services/shiftspeed',
+    href: '/services/shiftbuild',
   },
   {
     icon: MousePointerClick,
@@ -50,8 +48,7 @@ const services = [
     icon: Workflow,
     title: 'Business automation',
     body: 'Reminders, follow-ups and invoices that go out without you chasing.',
-    href: '/ContactUs',
-    cta: 'Ask us about it',
+    href: '/services/shiftflow',
   },
 ];
 
