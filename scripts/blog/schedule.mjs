@@ -263,7 +263,11 @@ async function main() {
   }
 
   /* ---- write ---- */
-  for (const a of Object.values(AUTHORS)) await client.createOrReplace(a);
+  // Update author details without wiping fields set in the admin, like their photo.
+  for (const { _id, _type, ...fields } of Object.values(AUTHORS)) {
+    await client.createIfNotExists({ _id, _type, ...fields });
+    await client.patch(_id).set(fields).commit();
+  }
   for (const e of entries) {
     const plan = { order: e.order, scheduledFor: e.publishAt, keywordNumbers: e.keywordNumbers, cluster: e.cluster, calendar: CALENDAR_ID };
     if (e.source === 'draft') {
