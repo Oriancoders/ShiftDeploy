@@ -184,6 +184,30 @@ const organizationSchema = {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
+          name: 'WhatsApp and chat automation',
+          description: 'Instant WhatsApp replies, bookings and appointment reminders for service businesses.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Mobile and web app development',
+          description: 'Booking, ordering and customer apps built around how a business runs.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Business automation',
+          description: 'Appointment reminders, enquiry follow-ups and invoice chasers that run automatically.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
           name: 'ShiftSpeed',
           description: 'Core Web Vitals and page speed optimisation.',
           url: 'https://shiftdeploy.com/services/shiftspeed',
