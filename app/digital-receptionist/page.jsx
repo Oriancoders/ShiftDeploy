@@ -1,42 +1,23 @@
 export const revalidate = 3600;
-import AiChatbotLanding from '../../src/Pages/AiChatbotLanding';
-import JsonLd from '../../src/components/JsonLd';
+import ReceptionistPage from '../../src/Pages/ReceptionistPage';
+
+const title = 'AI Receptionist for Calls, Chat & WhatsApp';
+const description =
+  'An AI receptionist that answers your phone, website chat and WhatsApp 24/7, books appointments and texts you every enquiry. Keep your number. Free demo.';
 
 export const metadata = {
-  title: 'AI Receptionist for UK Businesses',
-  description:
-    "AI receptionist setup for UK businesses. Connect website enquiries, FAQs and booking workflows with your team. Request a tailored quote.",
-  keywords: [
-    'AI receptionist', 'AI chatbot for business', '24/7 customer service bot',
-    'lead capture chatbot', 'appointment booking AI', 'digital receptionist software',
-  ],
+  title,
+  description,
+  keywords: ['AI receptionist', 'AI receptionist UK', 'virtual receptionist', 'AI phone answering', 'AI chatbot for business', 'WhatsApp automation', 'call answering service'],
   alternates: { canonical: 'https://shiftdeploy.com/digital-receptionist' },
   openGraph: {
-    title: 'AI Receptionist for UK Businesses',
-    description: 'An AI chatbot that answers questions, captures leads, and books appointments 24/7.',
+    title: `${title} | ShiftDeploy`,
+    description,
     url: 'https://shiftdeploy.com/digital-receptionist',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy AI receptionist' }],
   },
 };
 
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'ShiftDeploy Digital Receptionist',
-  applicationCategory: 'BusinessApplication',
-  operatingSystem: 'Web',
-  description: 'AI-powered chatbot that handles customer questions, captures leads, and books appointments 24/7 for businesses.',
-  url: 'https://shiftdeploy.com/digital-receptionist',
-  offers: { '@type': 'Offer', availability: 'https://schema.org/InStock' },
-  provider: { '@type': 'Organization', name: 'ShiftDeploy', url: 'https://shiftdeploy.com' },
-};
-
-export default function DigitalReceptionistPage() {
-  return (
-    <>
-      <JsonLd data={schema} />
-      <AiChatbotLanding />
-    </>
-  );
+export default function Page() {
+  return <ReceptionistPage />;
 }
-

@@ -33,8 +33,9 @@ function Ticks({ items, dark }) {
 export default function ServiceDetail({
   slug, crumb, h1, h1Accent, intro, ctaLabel, visual, ticks, pains, gets, audiences, steps, proof,
   faqs, faqEyebrow, finalTitle, finalText, service, stats, children,
+  path, parent = { label: 'Services', href: '/services' }, secondary,
 }) {
-  const url = `https://shiftdeploy.com/services/${slug}`;
+  const url = `https://shiftdeploy.com${path || `/services/${slug}`}`;
   const schema = [
     {
       '@context': 'https://schema.org',
@@ -56,7 +57,7 @@ export default function ServiceDetail({
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://shiftdeploy.com' },
-        { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://shiftdeploy.com/services' },
+        { '@type': 'ListItem', position: 2, name: parent.label, item: `https://shiftdeploy.com${parent.href}` },
         { '@type': 'ListItem', position: 3, name: crumb, item: url },
       ],
     },
@@ -74,7 +75,7 @@ export default function ServiceDetail({
           <div className={`${container} grid gap-12 lg:grid-cols-[1.3fr_1fr] items-center`}>
             <div>
               <nav aria-label="Breadcrumb" className="text-sm text-gray-600 mb-4">
-                <Link href="/services" prefetch={false} className="hover:text-primaryOrange">Services</Link>
+                <Link href={parent.href} prefetch={false} className="hover:text-primaryOrange">{parent.label}</Link>
                 <span aria-hidden="true"> / </span>
                 <span className="font-semibold text-orange-700">{crumb}</span>
               </nav>
@@ -92,6 +93,7 @@ export default function ServiceDetail({
                 </a>
               </div>
               <div className="mt-6"><Ticks items={ticks} /></div>
+              {secondary && <div className="mt-4">{secondary}</div>}
             </div>
             {visual}
           </div>

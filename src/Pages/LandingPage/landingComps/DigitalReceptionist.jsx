@@ -36,7 +36,8 @@ const DigitalReceptionist = ({
           </h2>
           <p className="text-lg sm:text-xl mt-6 leading-relaxed text-gray-700">
             Our AI receptionist is a telephone answering service that never takes a day off.
-            It answers your calls, day or night, and books the appointment for you.
+            It answers your calls, website chats and WhatsApps, day or night, and books the
+            appointment for you.
           </p>
         </div>
 
