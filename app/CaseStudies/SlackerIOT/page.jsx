@@ -2,7 +2,7 @@
 // of the case study copy in the server HTML - invisible to crawlers and AI
 // engines. Static with hourly revalidation renders the whole page.
 export const revalidate = 3600;
-import SlackerIOT from '../../../src/Pages/CaseStudies/SlackerIOT';
+import SlackerIOTCase from '../../../src/Pages/CaseStudies/SlackerIOTPage';
 
 export const metadata = {
   title: 'Slacker IoT Case Study: EV Charging Platform',
@@ -19,5 +19,5 @@ export const metadata = {
 };
 
 export default function SlackerIOTPage() {
-  return <SlackerIOT />;
+  return <SlackerIOTCase />;
 }
