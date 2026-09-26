@@ -2,13 +2,14 @@ import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
 import Hero from './landingComps/Hero';
 import DigitalReceptionist from './landingComps/DigitalReceptionist';
+import WebsiteEnquiries from './landingComps/WebsiteEnquiries';
+import AdminAutomation from './landingComps/AdminAutomation';
 import ReviewYourDoctor from './landingComps/ReviewYourDoctor';
 import InsideShiftDeploy from './landingComps/InsideShiftDeploy';
 import DeployToolkit from './landingComps/DeployToolkit';
 import ShiftProtocol from './landingComps/ShiftProtocol';
 import MissionsCompleted from './landingComps/MissionsCompleted';
 import VideoTestimonial from './landingComps/VideoTestimonial';
-import TrustStrip from '../../components/TrustStrip';
 
 export default function Landing() {
   return (
@@ -17,13 +18,14 @@ export default function Landing() {
       <main>
         <Hero />
         <DigitalReceptionist />
+        <WebsiteEnquiries />
+        <AdminAutomation />
         <ReviewYourDoctor />
-        <InsideShiftDeploy />
-        <VideoTestimonial />
-        <DeployToolkit />
-        <TrustStrip />
-        <ShiftProtocol />
         <MissionsCompleted />
+        <VideoTestimonial />
+        <InsideShiftDeploy />
+        <DeployToolkit />
+        <ShiftProtocol />
       </main>
       <Footer />
     </div>

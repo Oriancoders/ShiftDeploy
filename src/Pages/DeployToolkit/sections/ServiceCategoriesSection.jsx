@@ -91,7 +91,7 @@ function ServiceCategoriesSection() {
     return () => { observer.disconnect(); __tids.forEach(clearTimeout); }}, [])
 
   return (
-    <section className="pt-10 pb-5 sm:pt-24 bg-gray-50">
+    <section id="how-it-works" className="pt-10 pb-5 sm:pt-24 bg-gray-50 scroll-mt-20">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-6">
         <div className="text-center mb-12 sm:mb-20">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-semibold text-primaryBlue mb-6">

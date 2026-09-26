@@ -1,42 +1,62 @@
-import { Gauge, LayoutTemplate, ShieldCheck } from 'lucide-react';
+import { PhoneMissed, MessageSquareText, CalendarCheck } from 'lucide-react';
 
-const capabilities = [
-  { icon: Gauge, title: 'Fast websites', detail: 'Speed & usability', colour: 'text-primaryOrange' },
-  { icon: LayoutTemplate, title: 'Web & mobile apps', detail: 'Built around your users', colour: 'text-primaryBlue' },
-  { icon: ShieldCheck, title: 'Ongoing support', detail: 'Reliable day to day', colour: 'text-emerald-600' },
+export const heroFixes = [
+  { href: '#calls', label: 'Every call answered' },
+  { href: '#website', label: 'A website that brings enquiries' },
+  { href: '#admin', label: 'Your evenings back' },
+];
+
+const steps = [
+  {
+    icon: PhoneMissed,
+    tone: 'bg-red-50 text-red-600',
+    time: '2:14 pm',
+    title: 'Missed call',
+    body: 'You were with a customer.',
+  },
+  {
+    icon: MessageSquareText,
+    tone: 'bg-blue-50 text-primaryBlue',
+    time: '2:14 pm',
+    title: 'Text sent for you',
+    body: '“Sorry we missed you. Pick a time that suits you here.”',
+  },
+  {
+    icon: CalendarCheck,
+    tone: 'bg-green-50 text-green-700',
+    time: '2:21 pm',
+    title: 'New booking',
+    body: 'Thursday, 10:00 am. Added to your diary.',
+  },
 ];
 
 export default function HeroAnimation() {
   return (
-    <div className="hero-performance w-full max-w-xl grid grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-center gap-3 sm:gap-5">
-      <svg viewBox="0 0 240 180" className="w-full block" aria-hidden="true">
-        <defs>
-          <linearGradient id="hero-speed-arc" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#ef4444" />
-            <stop offset="45%" stopColor="#facc15" />
-            <stop offset="100%" stopColor="#22c55e" />
-          </linearGradient>
-        </defs>
-        <path d="M 25 110 A 95 95 0 0 1 215 110" fill="none" stroke="#e5e7eb" strokeWidth="10" strokeLinecap="round" />
-        <path d="M 25 110 A 95 95 0 0 1 215 110" fill="none" stroke="url(#hero-speed-arc)" strokeWidth="10" strokeLinecap="round" />
-        <g className="hero-speed-needle">
-          <path d="M 116 110 L 120 35 L 124 110 Z" fill="#f76707" />
-        </g>
-        <circle cx="120" cy="110" r="11" fill="#0b1d30" />
-        <circle cx="120" cy="110" r="4" fill="#f76707" />
-        <text x="120" y="153" textAnchor="middle" fontSize="18" fontWeight="800" fill="#0b1d30">Built for speed</text>
-      </svg>
-      <div className="grid gap-2 sm:gap-3 min-w-0">
-        {capabilities.map(({ icon: Icon, title, detail, colour }) => (
-          <div key={title} className="flex items-center gap-2 sm:gap-3 border border-gray-200 bg-white rounded-lg p-2.5 sm:p-4 min-w-0">
-            <Icon className={`size-5 sm:size-6 shrink-0 ${colour}`} aria-hidden="true" />
-            <div className="min-w-0">
-              <p className="text-xs sm:text-sm font-bold text-primaryBlue leading-snug">{title}</p>
-              <p className="hidden sm:block text-xs text-gray-600 mt-1">{detail}</p>
-            </div>
-          </div>
-        ))}
+    <figure className="w-full max-w-sm mx-auto lg:ml-auto lg:mr-0">
+      <div className="rounded-[2rem] bg-primaryBlue p-3 shadow-2xl">
+        <div className="rounded-[1.5rem] bg-gray-100 px-4 pt-5 pb-6">
+          <p className="text-center text-xs font-semibold text-gray-500 mb-4">Your phone, while you work</p>
+          <ol className="grid gap-3">
+            {steps.map(({ icon: Icon, tone, time, title, body }) => (
+              <li key={title} className="flex gap-3 rounded-2xl bg-white p-4 shadow-sm">
+                <span className={`flex size-10 shrink-0 items-center justify-center rounded-full ${tone}`}>
+                  <Icon className="size-5" aria-hidden="true" />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <p className="font-bold text-primaryBlue">{title}</p>
+                    <p className="text-xs text-gray-500 shrink-0">{time}</p>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-0.5 leading-snug">{body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
-    </div>
+      <figcaption className="mt-4 text-center text-sm text-gray-600">
+        One example of work that no longer slips away.
+      </figcaption>
+    </figure>
   );
 }

@@ -104,11 +104,11 @@ function HeroSection() {
               href="/ContactUs"
               className="group bg-primaryOrange text-white px-7 py-3.5 rounded-xl font-bold flex items-center gap-2 hover:bg-toOrange transition-colors shadow-lg shadow-primaryOrange/25"
             >
-              Get Free Audit
+              Get your free check
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
-              href="#problem-solving"
+              href="#how-it-works"
               className="text-primaryBlue font-semibold hover:underline px-4 py-2 text-sm sm:text-base"
             >
               See how it works ↓

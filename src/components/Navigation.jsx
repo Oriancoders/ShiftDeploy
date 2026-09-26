@@ -62,11 +62,11 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
       ],
     },
     {
-      label: 'Missions Completed',
+      label: 'Our work',
       path: '/missions',
       subPaths: [
-        { label: 'Slacker IOT', path: '/CaseStudies/SlackerIOT' },
-        { label: 'BullsEyes Investments', path: '/CaseStudies/BullseyesCase' },
+        { label: 'Slacker IoT', path: '/CaseStudies/SlackerIOT' },
+        { label: 'Bullseye Investments', path: '/CaseStudies/BullseyesCase' },
         { label: 'K2 Traders', path: '/CaseStudies/K2TradersCase' },
       ],
     },
@@ -175,14 +175,14 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                   onClick={handleAuditClick}
                   className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base whitespace-nowrap"
                 >
-                  Get Free Audit
+                  Get your free check
                 </button>
               ) : (
                 <Link prefetch={false}
                   href="/ContactUs"
                   className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base whitespace-nowrap"
                 >
-                  Get Free Audit
+                  Get your free check
                 </Link>
               )}
             </div>
@@ -301,7 +301,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                     onClick={handleAuditClick}
                     className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
                   >
-                    Get Free Audit
+                    Get your free check
                   </button>
                 ) : (
                   <Link prefetch={false}
@@ -309,7 +309,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                     onClick={() => setIsOpen(false)}
                     className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"
                   >
-                    Get Free Audit
+                    Get your free check
                   </Link>
                 )}
               </div>

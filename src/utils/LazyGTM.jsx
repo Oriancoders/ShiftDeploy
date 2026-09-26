@@ -1,35 +1,45 @@
 'use client';
 import { useEffect } from 'react';
+import { getConsent, CONSENT_EVENT } from '../lib/cookieConsent';
 
 const GTM_ID = 'GTM-MQPM36RX';
 
+function gtag() {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(arguments);
+}
+
+// Consent Mode v2: the banner only asks about analytics, so advertising stays denied.
+function loadGTM() {
+  if (window.gtmLoaded) return;
+  window.gtmLoaded = true;
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+  });
+  gtag('consent', 'update', { analytics_storage: 'granted' });
+  window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+  document.head.appendChild(script);
+}
+
+// Analytics cookies need prior consent under PECR, so GTM only loads after "Accept".
 const LazyGTM = () => {
   useEffect(() => {
-    const loadGTM = () => {
-      if (window.gtmLoaded) return;
-      window.gtmLoaded = true;
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, 'script', 'dataLayer', GTM_ID);
-    };
+    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 2000));
+    if (getConsent() === 'granted') idle(loadGTM);
 
-    const timer = setTimeout(loadGTM, 4000);
-    const activityEvents = ['mousedown', 'mousemove', 'keydown', 'scroll', 'touchstart'];
-    activityEvents.forEach((event) =>
-      window.addEventListener(event, loadGTM, { once: true, passive: true })
-    );
-
-    return () => {
-      clearTimeout(timer);
-      activityEvents.forEach((event) => window.removeEventListener(event, loadGTM));
+    const onChange = (e) => {
+      if (e.detail === 'granted') loadGTM();
     };
+    window.addEventListener(CONSENT_EVENT, onChange);
+    return () => window.removeEventListener(CONSENT_EVENT, onChange);
   }, []);
 
   return null;

@@ -3,6 +3,7 @@ import 'highlight.js/styles/atom-one-dark.css';
 import { Inter } from 'next/font/google';
 import GlobalProvider from '../src/GlobalProvider/GlobalProvider';
 import LazyGTM from '../src/utils/LazyGTM';
+import CookieConsent from '../src/components/CookieConsent';
 import ScrollToTop from '../src/components/ScrollToTop';
 import JsonLd from '../src/components/JsonLd';
 
@@ -16,11 +17,11 @@ const inter = Inter({
 export const metadata = {
   metadataBase: new URL('https://shiftdeploy.com'),
   title: {
-    default: 'ShiftDeploy | Web & App Development for UK Businesses',
+    default: 'ShiftDeploy | AI Receptionist, Web Design & Automation',
     template: '%s | ShiftDeploy',
   },
   description:
-    'Websites, apps and digital products for UK businesses. Development, technical SEO, speed optimisation and conversion improvements from ShiftDeploy.',
+    'AI receptionist and telephone answering, web design, local SEO and business automation for UK service businesses. Stop missing calls and get more enquiries.',
   keywords: [
     'web agency',
     'performance web development',
@@ -40,15 +41,15 @@ export const metadata = {
     locale: 'en_GB',
     url: 'https://shiftdeploy.com',
     siteName: 'ShiftDeploy',
-    title: 'ShiftDeploy | Web & App Development for UK Businesses',
+    title: 'ShiftDeploy | AI Receptionist, Web Design & Automation',
     description:
-      'Websites, apps and digital products for UK businesses, with technical SEO, speed and conversion optimisation.',
+      'AI call answering, websites that bring enquiries and business automation for UK service businesses.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'ShiftDeploy - Web and App Development for UK Businesses',
+        alt: 'ShiftDeploy - AI receptionist, web design and automation',
       },
     ],
   },
@@ -56,9 +57,9 @@ export const metadata = {
     card: 'summary_large_image',
     site: '@shiftdeploy',
     creator: '@shiftdeploy',
-    title: 'ShiftDeploy | Web & App Development for UK Businesses',
+    title: 'ShiftDeploy | AI Receptionist, Web Design & Automation',
     description:
-      'Websites, apps and digital products for UK businesses, with technical SEO, speed and conversion optimisation.',
+      'AI call answering, websites that bring enquiries and business automation for UK service businesses.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -110,14 +111,14 @@ const organizationSchema = {
   url: 'https://shiftdeploy.com',
   logo: {
     '@type': 'ImageObject',
-    url: 'https://shiftdeploy.com/og-image.png',
-    width: 1200,
-    height: 630,
+    url: 'https://shiftdeploy.com/shiftdeploy-logo.png',
+    width: 775,
+    height: 176,
   },
   image: 'https://shiftdeploy.com/og-image.png',
   description:
-    'Performance-first web agency specialising in website speed optimisation, conversion rate optimisation, custom web development, and business automation. We work mostly with dental practices, clinics and service businesses in the UK.',
-  slogan: 'We fix what is blocking your growth.',
+    'ShiftDeploy helps UK service businesses stop losing work with an AI receptionist and telephone answering, web design and local SEO, website speed and conversion optimisation, and business automation.',
+  slogan: 'Stop losing customers you never knew you had.',
   email: 'contact@shiftdeploy.com',
   telephone: '+447311126710',
   contactPoint: [
@@ -140,7 +141,6 @@ const organizationSchema = {
   sameAs: [
     'https://www.linkedin.com/company/shiftdeploy/',
     'https://x.com/shiftdeploy',
-    'https://join.slack.com/t/shiftdeployworkspace/shared_invite/zt-3gan3ow0g-OW0s3OJIJKIzQwQ0tB1V6A1',
   ],
   // No address is published. We are a remote team and a service-area business
   // in Google's terms: work is delivered to the client wherever they are, so
@@ -151,6 +151,10 @@ const organizationSchema = {
   // storefront, work delivered to the client wherever they are.
   availableLanguage: ['en-GB', 'en'],
   knowsAbout: [
+    'AI receptionist',
+    'Telephone answering',
+    'Web design',
+    'Local SEO',
     'Core Web Vitals',
     'Largest Contentful Paint',
     'Interaction to Next Paint',
@@ -165,6 +169,15 @@ const organizationSchema = {
     '@type': 'OfferCatalog',
     name: 'ShiftDeploy services',
     itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'AI receptionist and call answering',
+          description: 'AI telephone answering that answers calls day or night and books appointments.',
+          url: 'https://shiftdeploy.com/digital-receptionist',
+        },
+      },
       {
         '@type': 'Offer',
         itemOffered: {
@@ -218,20 +231,12 @@ export default function RootLayout({ children }) {
       </head>
       <body className="overflow-x-hidden">
         <JsonLd data={organizationSchema} />
-        {/* GTM noscript fallback */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-MQPM36RX"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
 
         <GlobalProvider>
           <LazyGTM />
           <ScrollToTop />
           <div className="bg-white min-h-screen">{children}</div>
+          <CookieConsent />
         </GlobalProvider>
       </body>
     </html>

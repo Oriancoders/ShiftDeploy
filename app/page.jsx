@@ -4,21 +4,21 @@ import Landing from '../src/Pages/LandingPage/Landing';
 import JsonLd from '../src/components/JsonLd';
 
 export const metadata = {
-  title: 'Web & App Development for UK Businesses',
+  title: 'AI Receptionist, Web Design & Automation | ShiftDeploy',
   description:
-    'Websites, apps and digital products for UK businesses. ShiftDeploy combines development, technical SEO and conversion optimisation. Discuss your project.',
+    'AI receptionist and telephone answering, web design, local SEO and business automation for UK service businesses. Stop missing calls and get more enquiries.',
   keywords: [
-    'web performance agency', 'website speed optimisation', 'Core Web Vitals expert',
-    'conversion rate optimisation', 'CRO agency UK', 'custom web development',
-    'business automation', 'AI chatbot agency', 'ShiftDeploy',
+    'AI receptionist UK', 'telephone answering service', 'virtual receptionist', 'call answering service for small business', 'missed call text back',
+    'small business web design UK', 'local SEO', 'website speed optimisation',
+    'business automation UK', 'get more Google reviews', 'ShiftDeploy',
   ],
   alternates: { canonical: 'https://shiftdeploy.com' },
   openGraph: {
-    title: 'Web & App Development for UK Businesses',
+    title: 'AI Receptionist, Web Design & Automation | ShiftDeploy',
     description:
-      'Websites, apps and digital products for UK businesses, with technical SEO, speed and conversion optimisation.',
+      'Stop losing customers you never knew you had. AI call answering, websites that bring enquiries and business automation.',
     url: 'https://shiftdeploy.com',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy - Web and App Development for UK Businesses' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy - AI receptionist, web design and automation' }],
   },
 };
 

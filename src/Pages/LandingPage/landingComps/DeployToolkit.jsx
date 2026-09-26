@@ -1,357 +1,174 @@
 'use client';
-import React, { useRef, useState } from "react";
-import { m as motion } from 'framer-motion';
-import {
-
-  ArrowRight,
-  Star,
-} from "lucide-react";
-import {
-  staggerContainer,
-} from "../../../utils/animations";
+import { useState } from 'react';
+import { ArrowRight, Check, Star } from 'lucide-react';
 import { trackGeneratedLead } from '../../../lib/leadTracking';
 import { websiteDomain } from '../../../lib/websiteDomain';
-import Link from "next/link";
-const DeployToolkit = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
-  const [emailInput, setEmailInput] = useState("");
-  const [websiteInput, setWebsiteInput] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
 
-  const formRef = useRef();
-
-  const handleIndex = (index) => {
-    setActiveIndex(index);
-  };
-  const tools = [
-  {
-    title: "Slow Website Performance",
-    description:
-      "Your website takes too long to load, especially on mobile, and users leave before they engage.",
-    problem:
-      "Slow load times increase bounce rates, hurt search rankings, and quietly reduce conversions and ad ROI.",
-    solution:
-      "This is where ShiftSpeed comes in. We start with a deep performance audit and fix real bottlenecks at code and page level to improve Core Web Vitals and load times.",
-    result: "30 to 60% faster load times",
-  },
-  {
-    title: "Low Conversion Rates",
-    description:
-      "People visit your site, but they do not book, enquire, or sign up at the rate they should.",
-    problem:
-      "Unclear messaging, weak trust signals, and friction in key pages stop users from making decisions.",
-    solution:
-      "After speed is fixed, Our ShiftConvert model is designed to focus on user behaviour, trust, and clarity. We improve layouts, CTAs, and funnels to increase conversions.",
-    result: "20 to 100% more leads",
-  },
-  {
-    title: "Poor Core Web Vitals and SEO Impact",
-    description:
-      "Your site struggles with Google’s performance metrics and loses visibility as a result.",
-    problem:
-      "Failing Core Web Vitals lowers rankings and limits organic traffic growth, even with good content.",
-    solution:
-      "Our ShiftSpeed model directly targets these issues by optimising rendering, reducing JavaScript weight, and improving real user metrics, not just lab scores.",
-    result: "Stronger rankings and visibility",
-  },
-  {
-    title: "Outdated or Hard to Improve Website",
-    description:
-      "Your website works, but it is difficult to change, optimise, or scale as the business grows.",
-    problem:
-      "Older builds create technical debt and force expensive redesigns instead of continuous improvement.",
-    solution:
-      "Here the ShiftBuild model creates performance-first websites that are modular, flexible, and designed to support ongoing optimisation over time.",
-    result: "Future-ready website foundation",
-  },
-  {
-    title: "Performance Drops After Launch",
-    description:
-      "Even well-built websites slowly get slower, riskier, and harder to manage without oversight.",
-    problem:
-      "Updates, plugins, and small changes add up, causing performance and stability to decline month by month.",
-    solution:
-      "ShiftFlow keeps your site healthy with proactive monitoring, regular performance checks, and continuous improvements.",
-    result: "Stable long-term performance",
-  },
-  {
-    title: "No Clear Technical Ownership",
-    description:
-      "When something breaks or numbers drop, no one takes full responsibility for fixing it properly.",
-    problem:
-      "Multiple vendors lead to delays, guesswork, and missed opportunities for improvement.",
-    solution:
-      "ShiftDeploy brings everything together. Through ShiftSpeed, ShiftConvert, ShiftBuild, and ShiftFlow, we own performance and conversion outcomes end to end.",
-    result: "One accountable expert team",
-  },
+const checks = [
+  'How fast it loads on a phone',
+  'How easily people find you on Google',
+  'What stops visitors calling or booking',
 ];
 
-
+const DeployToolkit = () => {
+  const [emailInput, setEmailInput] = useState('');
+  const [websiteInput, setWebsiteInput] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [sent, setSent] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setMessage("");
+    setMessage('');
+    setSent(false);
 
     const domain = websiteDomain(websiteInput);
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!domain) {
-      setMessage(
-        "Please enter a valid website (like example.co.uk)"
-      );
+      setMessage('Please enter a valid website, like example.co.uk');
       return;
     }
-
     if (!emailRegex.test(emailInput)) {
-      setMessage("Please enter a valid email address");
+      setMessage('Please enter a valid email address');
       return;
     }
 
     setLoading(true);
-
     import('@emailjs/browser')
       .then(({ default: emailjs }) => emailjs.send(
-        "service_tvail12",
-        "template_5vz2597",
-        {
-          website: domain,
-          email: emailInput,
-          current_date: new Date().toLocaleDateString(),
-        },
-        "QvcGHkk74en4u55cN"
+        'service_tvail12',
+        'template_5vz2597',
+        { website: domain, email: emailInput, current_date: new Date().toLocaleDateString() },
+        'QvcGHkk74en4u55cN'
       ))
       .then(() => {
         trackGeneratedLead('homepage_audit');
-        setMessage(
-          "Website audit request sent successfully! Check your email for the report within 24 hours"
-        );
-        setLoading(false);
-        setWebsiteInput("");
-        setEmailInput("");
+        setSent(true);
+        setMessage('Thanks. Your free website audit will be in your inbox within 24 hours.');
+        setWebsiteInput('');
+        setEmailInput('');
       })
-      .catch(() => {
-        setMessage("Failed to send. Please try again.");
-      })
+      .catch(() => setMessage('Sorry, that didn’t send. Please try again.'))
       .finally(() => setLoading(false));
   };
+
   return (
-    <section
-      id="deploy-toolkit"
-      className="pt-12  text-textColor bg-gradient-to-b from-gray-50 to-gray-50"
-    >
-      <div className=" mx-auto flex flex-col justify-center items-center ">
-        <motion.div
-          variants={staggerContainer}
-          initial={false}
-          animate="animate"
-          className="text-center mb-8"
-        >
-          <motion.h2 className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6">
-            What
-            <span className="text-primaryOrange pl-3">We Shift</span>
-          </motion.h2>
-
-          <motion.p className="sm:text-lg max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 leading-relaxed px-4 sm:px-0 text-gray-700">
-            We focus on fixing the performance and conversion problems that quietly
-            cost businesses traffic, trust, and revenue.
-          </motion.p>
-
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 px-4 sm:px-6 lg:px-8 max-w-7xl 2xl:max-w-[80%]">
-          {tools.map((tool, index) => (
-            <article key={tool.title} className="border border-gray-200 rounded-lg p-5 sm:p-6 bg-white flex flex-col items-start">
-              <h3 className="text-xl font-semibold mb-3 text-primaryBlue">{tool.title}</h3>
-              <p className="mb-4 leading-relaxed text-gray-700">{tool.description}</p>
-              <p className="text-sm text-gray-600 mb-4"><span className="font-semibold text-primaryOrange">Problem: </span>{tool.problem}</p>
-              <button
-                type="button"
-                aria-expanded={activeIndex === index}
-                aria-controls={`tool-solution-${index}`}
-                onClick={() => handleIndex(activeIndex === index ? null : index)}
-                className="mt-auto inline-flex items-center gap-2 py-2 font-semibold text-primaryBlue"
-              >
-                <ArrowRight size={18} aria-hidden="true" />
-                {activeIndex === index ? 'Hide solution' : 'Reveal solution'}
-              </button>
-              <div id={`tool-solution-${index}`} hidden={activeIndex !== index} className="mt-3 pt-4 border-t border-gray-200 text-sm leading-relaxed text-gray-700">
-                <p>{tool.solution}</p>
-                <p className="mt-3 font-semibold text-primaryBlue">{tool.result}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <Link
-          href={"/insideShiftDeploy"}
-          className="bg-primaryOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-sm mb-12 group "
-        >
-           Why ShiftDeploy 
-          <ArrowRight className="w-4 sm:w-5 lg:w-6 h-4 sm:h-5 lg:h-6 group-hover:ml-3 transition-all duration-300" />
-        </Link>
-
-        {/* Problem-solving CTA */}
-
-        <section id="problem-solving" className="w-full  bg-gradient-to-br from-primaryBlue to-toBlue text-white ">
-          <div className="w-full  p-4 sm:p-8 lg:p-16  drop-shadow-sm flex lg:flex-row flex-col  2xl:max-w-[90%] max-w-7xl mx-auto  gap-10">
-            <div className="flex-1 ">
-              <h2 className="text-xxl sm:text-2xl 2xl:text-3xl font-semibold  mb-4 sm:mb-6 leading-normal">
-                If your website is slow, underperforming, or not converting.
-                We’ve fixed this problem before.
-
-              </h2>
-              <p className="text-sm sm:text-base 2xl:text-xl mb-6 sm:mb-8  mx-auto leading-relaxed">
-                We help businesses identify performance bottlenecks, fix conversion leaks,
-                and build websites that support long-term growth, not just launch and decay.
-
-              </p>
-
-               
-        {/* Content */}
-        <div className="relative  p-6 2xl:p-12  text-center text-white bg-white/10 backdrop-blur-lg  w-full sm:w-fit mx-auto rounded-2xl">
-
-
-          {/* Stars */}
-          <div className="flex justify-center mb-6">
-            {[...Array(5)].map((_, i) => (
-              <Star key={_?.id ?? _?.slug ?? _?.title ?? _?.name ?? i} className="w-4 2xl:w-6 h-4 2xl:h-6 text-yellow-400 fill-current" />
+    <section id="deploy-toolkit" className="w-full bg-gray-50 py-16 sm:py-24 text-textColor scroll-mt-20">
+      <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div>
+          <p className="text-sm sm:text-base font-semibold text-primaryOrange mb-4">Free website audit</p>
+          <h2 className="text-3xl sm:text-5xl font-bold leading-[1.1] text-primaryBlue text-balance">
+            Is your website losing you work?
+            <span className="block text-primaryOrange">Find out for free.</span>
+          </h2>
+          <p className="text-lg sm:text-xl mt-6 leading-relaxed text-gray-700">
+            Send us your website and we’ll email you a plain-English report within 24 hours.
+            We check:
+          </p>
+          <ul className="mt-6 grid gap-3">
+            {checks.map((item) => (
+              <li key={item} className="flex items-center gap-3 text-lg text-primaryBlue font-semibold">
+                <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-green-100">
+                  <Check className="size-4 text-green-700" aria-hidden="true" />
+                </span>
+                {item}
+              </li>
             ))}
-          </div>
+          </ul>
 
-          {/* Quote */}
-          <blockquote className="2xl:text-xl italic leading-relaxed mb-8 max-w-4xl mx-auto text-white">
-            “Shift Deploy is highly recommended …. they have consistently met deadlines, and their after sales service is
-            outstanding!”
-          </blockquote>
-
-          <hr className="border-t border-white/20 " />
-          <div className="flex sm:flex-row flex-col gap-4 2xl:gap-7 justify-evenly items-center w-full pt-6 2xl:pt-10 ">
-            {/* Author */}
-            <div className="flex items-center justify-center gap-4">
-              <span aria-hidden="true" className="inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-gray-100 text-primaryBlue font-semibold mr-4">KA</span>
-              <div className="text-left">
-                <div className="font-semibold text-md 2xl:text-lg leading-tight">
-                  <a
-                    href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
-                    target="_blank" rel="noopener noreferrer"
-                    className="hover:underline underline-offset-4"
-                  >
-                    Kamran Abbas
-                  </a>
-                </div>
-                <div className="text-white/75 text-sm 2xl:text-base">
-                  Chief Strategist at Bullseye Investment Private Limited
-                </div>
-              </div>
+          <figure className="mt-10 rounded-2xl border border-gray-200 bg-white p-6">
+            <div className="flex gap-1" aria-label="5 out of 5 stars">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <Star key={i} className="size-5 text-amber-400 fill-current" aria-hidden="true" />
+              ))}
             </div>
-            {/* Bottom-left CTA */}
-
-            <a
-              href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
-              target="_blank" rel="noopener noreferrer"
-              className="sm:w-fit w-full  inline-flex items-center justify-center gap-2 bg-primaryOrange hover:bg-toOrange border border-white/20 text-white px-4 sm:px-5 py-3 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/40"
-            >
-              <span className="flex-1 text-sm 2xl:text-md">Visit Source</span>
-              <ArrowRight className="size-4 -rotate-45" />
-            </a>
-          </div>
-
-        </div>
-            </div>
-
-            <div className="flex flex-col gap-6">
-              <form
-                ref={formRef}
-                onSubmit={handleSubmit}
-                className="flex-1 gap-y-8"
-              >
-                <img
-                  // 1. Cloudinary Optimization (Mobile vs Desktop)
-                  srcSet={`
-    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_600/v1765189190/shiftdeploy_audit_ht8dlu.png 600w,
-    https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1765189190/shiftdeploy_audit_ht8dlu.png 1200w
-  `}
-                  // 2. Sizes Attribute
-                  // "Full width on mobile, but cap it at 1200px wide on desktop"
-                  sizes="(max-width: 768px) 100vw, 1200px"
-                  // 3. Fallback
-                  src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1765189190/shiftdeploy_audit_ht8dlu.png"
-                  alt="ShiftDeploy Audit Report"
-                  className="w-full lg:h-[350px] aspect-video object-cover rounded-lg"
-                  // 4. Performance Setting (Lazy because it's below the fold)
-                  loading="lazy"
-                />
-
-                <div className="flex flex-col gap-4">
-                  {/* Website Input */}
-                  <div className="flex flex-col sm:flex-row justify-between sm:items-center sm:bg-white rounded-lg sm:rounded-2xl w-full overflow-hidden">
-                    <input
-                      name="websiteInput"
-                      type="text"
-                      value={websiteInput}
-                      onChange={(e) => setWebsiteInput(e.target.value)}
-                      placeholder="Enter your website"
-                      className="p-4 outline-none border-none text-textColor h-full sm:rounded-none rounded-lg flex-1"
-                    />
-                  </div>
-
-                  {/* Email Input */}
-                  <div className="flex flex-col sm:flex-row justify-between sm:items-center sm:bg-white rounded-lg sm:rounded-2xl w-full overflow-hidden gap-y-4">
-                    <input
-                      name="emailInput"
-                      type="email"
-                      value={emailInput}
-                      onChange={(e) => setEmailInput(e.target.value)}
-                      placeholder="Enter your email"
-                      className="p-4 outline-none border-none text-textColor h-full sm:rounded-none rounded-lg flex-1"
-                    />
-                    <button
-                      disabled={loading}
-                      className="bg-primaryOrange disabled:bg-gray-600 text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-4 rounded-lg sm:rounded-none sm:rounded-r-2xl font-bold flex items-center justify-center gap-x-2 sm:hover:bg-toOrange disabled:hover:bg-slate-600 text-sm sm:w-fit w-full"
-                      aria-label="Audit Request Sending Button"
-                    >
-                      {loading ? (
-                        <>
-                          Sending request
-                          <div className="size-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        </>
-                      ) : (
-                        <>
-                          Send me free audit
-                          <ArrowRight className="size-5" />
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              </form>
-
-              {message && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                  className={`mt-4 p-4 sm:p-5 rounded-lg sm:rounded-xl font-semibold text-sm sm:text-base flex items-center gap-3 ${message.includes("successfully")
-                    ? "bg-green-100 text-green-700 border border-green-300"
-                    : "bg-red-100 text-red-700 border border-red-300"
-                    }`}
+            <blockquote className="mt-3 text-lg text-gray-700">
+              “ShiftDeploy is highly recommended. They have consistently met deadlines, and their
+              after-sales service is outstanding.”
+            </blockquote>
+            <figcaption className="mt-4 flex items-center gap-3">
+              <span aria-hidden="true" className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-gray-100 text-primaryBlue font-semibold">KA</span>
+              <span className="text-sm">
+                <a
+                  href="https://www.linkedin.com/feed/update/urn:li:activity:7415328654185947136/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-primaryBlue underline underline-offset-2 hover:text-primaryOrange"
                 >
-                  <div
-                    className={`size-5 rounded-full flex items-center justify-center flex-shrink-0 font-bold ${message.includes("successfully")
-                      ? "bg-green-500 text-white"
-                      : "bg-red-500 text-white"
-                      }`}
-                  >
-                    {message.includes("successfully") ? "✓" : "!"}
-                  </div>
-                  {message}
-                </motion.div>
-              )}
-            </div>
-          </div>
-        </section>
+                  Kamran Abbas
+                </a>
+                <span className="block text-gray-600">Chief Strategist, Bullseye Investments</span>
+              </span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <form onSubmit={handleSubmit} noValidate className="rounded-2xl bg-white border border-gray-200 shadow-xl p-6 sm:p-8">
+          <img
+            srcSet="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_600/v1765189190/shiftdeploy_audit_ht8dlu.png 600w, https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1765189190/shiftdeploy_audit_ht8dlu.png 1200w"
+            sizes="(max-width: 1024px) 100vw, 600px"
+            src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1765189190/shiftdeploy_audit_ht8dlu.png"
+            alt="Example of a ShiftDeploy website audit report"
+            className="w-full aspect-video object-cover rounded-lg"
+            width="1200"
+            height="675"
+            loading="lazy"
+          />
+
+          <label htmlFor="audit-website" className="block mt-6 font-semibold text-primaryBlue">Your website</label>
+          <input
+            id="audit-website"
+            name="websiteInput"
+            type="text"
+            inputMode="url"
+            autoComplete="url"
+            value={websiteInput}
+            onChange={(e) => setWebsiteInput(e.target.value)}
+            placeholder="yourbusiness.co.uk"
+            className="mt-2 w-full rounded-xl border border-gray-300 px-4 py-3.5 text-lg focus:border-primaryOrange focus:outline-none focus:ring-2 focus:ring-primaryOrange/30"
+          />
+
+          <label htmlFor="audit-email" className="block mt-4 font-semibold text-primaryBlue">Where should we send it?</label>
+          <input
+            id="audit-email"
+            name="emailInput"
+            type="email"
+            autoComplete="email"
+            value={emailInput}
+            onChange={(e) => setEmailInput(e.target.value)}
+            placeholder="you@yourbusiness.co.uk"
+            className="mt-2 w-full rounded-xl border border-gray-300 px-4 py-3.5 text-lg focus:border-primaryOrange focus:outline-none focus:ring-2 focus:ring-primaryOrange/30"
+          />
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="mt-6 w-full bg-primaryOrange hover:bg-toOrange disabled:bg-gray-500 text-white text-lg px-7 py-4 rounded-xl font-bold inline-flex items-center justify-center gap-2 shadow-lg"
+          >
+            {loading ? (
+              <>
+                Sending
+                <span className="size-5 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden="true" />
+              </>
+            ) : (
+              <>
+                Send my free audit <ArrowRight size={20} aria-hidden="true" />
+              </>
+            )}
+          </button>
+
+          <p className="mt-3 text-center text-sm text-gray-600">Free, no obligation. We won’t share your details.</p>
+
+          {message && (
+            <p
+              role="status"
+              className={`mt-4 rounded-xl p-4 font-semibold ${sent ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}
+            >
+              {message}
+            </p>
+          )}
+        </form>
       </div>
     </section>
   );

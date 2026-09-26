@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'ShiftDeploy - Web and App Development for UK Businesses';
+export const alt = 'ShiftDeploy - Stop losing customers you never knew you had';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -70,21 +70,21 @@ export default async function Image() {
               color: '#ffffff', marginBottom: '28px', maxWidth: '820px',
               display: 'flex', flexWrap: 'wrap',
             }}>
-              Web &amp; App{' '}
-              <span style={{ color: '#F76707', marginLeft: '14px' }}>Development</span>
+              Stop losing customers{' '}
+              <span style={{ color: '#F76707' }}>you never knew you had.</span>
             </div>
 
             <div style={{
               fontSize: '26px', color: 'rgba(255,255,255,0.72)', lineHeight: 1.5,
               maxWidth: '680px', fontWeight: 400,
             }}>
-              For UK businesses. Development, technical SEO and website optimisation.
+              AI receptionist, web design and automation for service businesses.
             </div>
           </div>
 
           {/* Bottom row: services pills */}
           <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-            {['ShiftSpeed', 'ShiftConvert', 'ShiftBuild', 'ShiftFlow'].map((s) => (
+            {['AI receptionist', 'Web design', 'Local SEO', 'Automation'].map((s) => (
               <div key={s} style={{
                 padding: '8px 20px', borderRadius: '999px',
                 border: '1px solid rgba(255,255,255,0.18)',

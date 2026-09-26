@@ -90,7 +90,7 @@ const Detailed = () => {
 
                     <h3 className="text-lg font-semibold mt-4 mb-2">3. Managing Cookies</h3>
                     <p>
-                        You may control or disable cookies through your browser settings. Disabling essential cookies may affect website functionality.
+                        We only set analytics cookies if you choose Accept in our cookie banner. You can change your choice at any time using Cookie settings in the website footer, or control cookies through your browser settings. Disabling essential cookies may affect website functionality.
                     </p>
 
 
