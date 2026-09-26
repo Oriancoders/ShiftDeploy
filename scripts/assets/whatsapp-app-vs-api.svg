@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="t d">
+  <title id="t">WhatsApp Business app compared with the WhatsApp Business API</title>
+  <desc id="d">Side-by-side comparison. The free WhatsApp Business app is run by hand on one phone with basic away messages. The WhatsApp Business API connects to your booking system, replies automatically 24/7, sends reminders and lets the whole team share one number.</desc>
+  <rect width="1200" height="675" fill="#ffffff"/>
+  <text x="60" y="78" font-family="Segoe UI, system-ui, sans-serif" font-size="38" font-weight="700" fill="#0B2A4A">WhatsApp Business app vs WhatsApp Business API</text>
+  <text x="60" y="118" font-family="Segoe UI, system-ui, sans-serif" font-size="22" fill="#4B5563">Same WhatsApp for your customers. Very different amount of work for you.</text>
+
+  <rect x="60" y="160" width="520" height="455" rx="22" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="2"/>
+  <text x="95" y="215" font-family="Segoe UI, system-ui, sans-serif" font-size="30" font-weight="700" fill="#0B2A4A">The free app</text>
+  <text x="95" y="250" font-family="Segoe UI, system-ui, sans-serif" font-size="20" fill="#6B7280">Good when you're just starting</text>
+  <g font-family="Segoe UI, system-ui, sans-serif" font-size="22" fill="#374151">
+    <text x="95" y="315">•  You reply by hand, one chat at a time</text>
+    <text x="95" y="365">•  One phone, a few linked devices</text>
+    <text x="95" y="415">•  Basic away and greeting messages</text>
+    <text x="95" y="465">•  No link to your diary or booking system</text>
+    <text x="95" y="515">•  Messages wait when you're busy</text>
+    <text x="95" y="575" font-weight="700" fill="#0B2A4A">Cost: free</text>
+  </g>
+
+  <rect x="620" y="160" width="520" height="455" rx="22" fill="#FFF7ED" stroke="#F97316" stroke-width="3"/>
+  <text x="655" y="215" font-family="Segoe UI, system-ui, sans-serif" font-size="30" font-weight="700" fill="#0B2A4A">The Business API</text>
+  <text x="655" y="250" font-family="Segoe UI, system-ui, sans-serif" font-size="20" fill="#C2410C">When WhatsApp brings in real work</text>
+  <g font-family="Segoe UI, system-ui, sans-serif" font-size="22" fill="#374151">
+    <text x="655" y="315">•  Instant replies, day and night</text>
+    <text x="655" y="365">•  Bookings go straight into your diary</text>
+    <text x="655" y="415">•  Automatic reminders and follow-ups</text>
+    <text x="655" y="465">•  Your whole team on one number</text>
+    <text x="655" y="515">•  Works with an AI receptionist</text>
+    <text x="655" y="575" font-weight="700" fill="#0B2A4A">Cost: pay per message sent</text>
+  </g>
+</svg>
