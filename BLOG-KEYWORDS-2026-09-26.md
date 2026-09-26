@@ -30,7 +30,7 @@ Site rule: keep "UK" and "small business" out of visible headings where the keyw
 | 9 | how to get more patients dental practice | High job value per new patient | How to Get More Patients for Your Dental Practice |
 | 10 | how much does a website cost uk | Big volume, price intent | How Much Does a Website Cost? What You Should Actually Pay |
 
-Already published: **WhatsApp Business API** guide (`/insights/whatsapp-business-api-guide`).
+Already published: **WhatsApp Business API** guide (`/insights/whatsapp-business-api-guide`, 26 Sep 2026). Section F (8 posts) is drafted, see below.
 
 ---
 
@@ -149,16 +149,23 @@ Already published: **WhatsApp Business API** guide (`/insights/whatsapp-business
 
 ## F. Websites and marketing (8) → /services/shiftbuild, /services/shiftconvert
 
-| # | Keyword | Stage |
-|---|---|---|
-| 89 | how much does a website cost uk | Buy |
-| 90 | average cost of a website for small business | Buy |
-| 91 | website design for tradesmen | Buy |
-| 92 | website not getting leads | Problem |
-| 93 | marketing for dental practice | Buy |
-| 94 | marketing for aesthetic clinic | Buy |
-| 95 | marketing for plumbers | Buy |
-| 96 | marketing for physiotherapy clinic | Buy |
+All eight are written and saved as **drafts** in /admin/insights (script: `scripts/seed-website-marketing-drafts.mjs`).
+Publish on the date shown. Tuesdays and Thursdays, two a week, the dental post second because it has the highest job value.
+
+| # | Keyword | Stage | Status | URL once published | Publish on |
+|---|---|---|---|---|---|
+| 89 | how much does a website cost uk | Buy | Draft | /insights/how-much-does-a-website-cost | Tue 29 Sep 2026 |
+| 93 | marketing for dental practice | Buy | Draft | /insights/marketing-for-dental-practice | Thu 1 Oct 2026 |
+| 92 | website not getting leads | Problem | Draft | /insights/website-not-getting-leads | Tue 6 Oct 2026 |
+| 95 | marketing for plumbers | Buy | Draft | /insights/marketing-for-plumbers | Thu 8 Oct 2026 |
+| 94 | marketing for aesthetic clinic | Buy | Draft | /insights/marketing-for-aesthetic-clinic | Tue 13 Oct 2026 |
+| 91 | website design for tradesmen | Buy | Draft | /insights/website-design-for-tradesmen | Thu 15 Oct 2026 |
+| 96 | marketing for physiotherapy clinic | Buy | Draft | /insights/marketing-for-physiotherapy-clinic | Tue 20 Oct 2026 |
+| 90 | average cost of a website for small business | Buy | Draft | /insights/average-cost-of-a-website | Thu 22 Oct 2026 |
+
+#90 goes last on purpose: it links to #89 and covers running costs, so the two don’t compete for the same search. Publish it at least three weeks after #89.
+
+After each one goes live: request indexing in Search Console, and share it on LinkedIn and your Google Business Profile the same day.
 
 ## G. Automation and CRM (4) → /services/shiftflow
 
