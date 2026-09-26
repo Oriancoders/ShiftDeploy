@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic';
+import BreadcrumbSchema from '../../src/components/BreadcrumbSchema';
 import PrivacyPolicy from '../../src/Pages/PrivacyPolicy/PrivacyPolicy';
 
 export const metadata = {
@@ -11,5 +12,10 @@ export const metadata = {
 };
 
 export default function PrivacyPolicyPage() {
-  return <PrivacyPolicy />;
+  return (
+    <>
+      <BreadcrumbSchema items={[['Privacy policy', '/privacy-policy']]} />
+      <PrivacyPolicy />
+    </>
+  );
 }

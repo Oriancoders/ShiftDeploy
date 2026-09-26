@@ -4,6 +4,7 @@ import CloudinaryImage from './CloudinaryImage';
 import Navigation from './Navigation';
 import Footer from './Footer';
 import JsonLd from './JsonLd';
+import ShareLinks from './ShareLinks';
 
 const container = 'max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8';
 const CAR = '-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0 sm:grid sm:gap-6 sm:overflow-visible sm:pb-0';
@@ -22,7 +23,7 @@ function SectionHead({ eyebrow, title, text }) {
 // Shared layout for case studies: problem, what we built, timeline, challenges, results.
 export default function CaseStudyDetail({
   slug, client, service, h1, h1Accent, intro, facts, image, imageAlt, problem, built, phases,
-  challenges, results, quote, cta, related, published, updated = '2026-09-26',
+  challenges, results, quote, note, cta, related, published, updated = '2026-09-26',
 }) {
   const url = `https://shiftdeploy.com/CaseStudies/${slug}`;
   const schema = [
@@ -80,7 +81,7 @@ export default function CaseStudyDetail({
               ))}
             </dl>
             <div className="mt-10 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
-              <CloudinaryImage src={image} alt={imageAlt} className="w-full h-auto" width="1280" height="720" loading="eager" />
+              <CloudinaryImage src={image} alt={imageAlt} className="w-full h-auto" width="1280" height="720" loading="eager" fetchPriority="high" />
             </div>
           </div>
         </section>
@@ -164,6 +165,7 @@ export default function CaseStudyDetail({
                   </li>
                 ))}
               </ul>
+              {note && <p className="mt-6 text-sm text-gray-600">{note}</p>}
             </div>
             {quote && (
               <figure className="rounded-2xl border border-gray-200 bg-gray-50 p-6 sm:p-8 self-start">
@@ -174,6 +176,12 @@ export default function CaseStudyDetail({
                 </figcaption>
               </figure>
             )}
+          </div>
+        </section>
+
+        <section className="bg-white pb-10">
+          <div className={container}>
+            <ShareLinks url={url} title={`${client} case study | ShiftDeploy`} />
           </div>
         </section>
 

@@ -1,4 +1,5 @@
 export const revalidate = 1800;
+import BreadcrumbSchema from '../../src/components/BreadcrumbSchema';
 import Insights from '../../src/Insights/Insights';
 import { getInsightList } from '../../src/lib/insightsData';
 import JsonLd from '../../src/components/JsonLd';
@@ -40,6 +41,7 @@ export default async function InsightsPage() {
 
   return (
     <>
+      <BreadcrumbSchema items={[['Blog', '/insights']]} />
       <JsonLd data={blogSchema} />
       <Insights initialPosts={posts} />
     </>

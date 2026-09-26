@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic';
+import BreadcrumbSchema from '../../src/components/BreadcrumbSchema';
 import Terms_Of_Services from '../../src/Pages/Terms_Of_Services/Terms_Of_Services';
 
 export const metadata = {
@@ -11,5 +12,10 @@ export const metadata = {
 };
 
 export default function TermsOfServicesPage() {
-  return <Terms_Of_Services />;
+  return (
+    <>
+      <BreadcrumbSchema items={[['Terms of service', '/terms-of-services']]} />
+      <Terms_Of_Services />
+    </>
+  );
 }

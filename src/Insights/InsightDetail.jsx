@@ -11,6 +11,7 @@ import { PortableText } from "@portabletext/react";
 import { portableTextComponents } from "./portableTextComponents.jsx";
 import MediaSlider from "./MediaSlider.jsx";
 import SanityImage from "../components/SanityImage";
+import ShareLinks from "../components/ShareLinks";
 import { DirectAnswer, KeyTakeaways, FaqSection, HowToSteps, Citations } from "./AiSeoBlocks.jsx";
 // Initialize the image URL builder
 const imageBuilder = sanityClient
@@ -600,7 +601,7 @@ const MoreInsightsSection = ({ insights }) => {
   );
 };
 
-const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
+const InsightDetail = ({ slug, initialPost = null, initialMoreInsights = [] }) => {
   const post = initialPost;
   const moreInsights = Array.isArray(initialMoreInsights) ? initialMoreInsights : [];
   const heroImage = post?.mainImage || post?.coverImage || null;
@@ -1224,6 +1225,10 @@ const InsightDetail = ({ initialPost = null, initialMoreInsights = [] }) => {
                     </ul>
                   )}
                 </div>
+              </div>
+
+              <div className="mx-6 sm:mx-10 mb-8">
+                <ShareLinks url={`https://shiftdeploy.com/insights/${slug}`} title={post.title} />
               </div>
 
               {/* Related Posts */}

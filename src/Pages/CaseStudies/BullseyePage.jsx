@@ -65,6 +65,7 @@ export default function BullseyePage() {
           'Ongoing support and improvements from our team',
         ],
       }}
+      note="This case study describes our website work only. It isn’t financial advice."
       quote={{ text: 'Better than anything I’ve seen.', name: 'Farjad Abbas', role: 'Head of Business Development, Bullseye Investments' }}
       related={{ text: 'Want a website that turns visitors into clients?', href: '/services/shiftconvert', label: 'See how we help you win more work' }}
       cta={{ title: 'Does your website build trust?', text: 'Get a free check. We’ll show you what visitors see first, and how to make the next step obvious.' }}

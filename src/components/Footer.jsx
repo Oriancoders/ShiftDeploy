@@ -47,10 +47,10 @@ const Footer = () => {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div className="sm:col-span-2 lg:col-span-1">
             <img
-              src="/shiftdeploy-logo-white.png"
+              src="/shiftdeploy-logo-white.webp"
               alt="ShiftDeploy"
-              width={775}
-              height={176}
+              width={480}
+              height={109}
               loading="lazy"
               decoding="async"
               className="w-44"
@@ -115,6 +115,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-6 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-300">
           <p>© {currentYear} ShiftDeploy. All rights reserved.</p>
+          <p>Website last updated <time dateTime="2026-09-26">26 September 2026</time></p>
           <div className="flex gap-6">
             <Link prefetch={false} href="/privacy-policy" className="hover:text-primaryOrange">Privacy policy</Link>
             <Link prefetch={false} href="/terms-of-services" className="hover:text-primaryOrange">Terms of service</Link>

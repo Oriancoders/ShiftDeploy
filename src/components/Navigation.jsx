@@ -97,10 +97,11 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
             <m.div whileHover={{ scale: 1.05 }} className="2xl:max-w-60 sm:max-w-48 max-w-36">
               <Link prefetch={false} href="/">
                 <img
-                  src="/shiftdeploy-logo.png"
+                  src="/shiftdeploy-logo.webp"
                   alt="ShiftDeploy"
-                  width={775}
-                  height={176}
+                  width={480}
+                  height={109}
+                  style={{ maxWidth: '100%', height: 'auto' }}
                   fetchPriority="high"
                 />
               </Link>

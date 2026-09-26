@@ -1,4 +1,5 @@
 export const revalidate = 3600;
+import BreadcrumbSchema from '../../src/components/BreadcrumbSchema';
 
 import ServiceGrowthAudit from '../../src/Pages/ServiceGrowthAudit/ServiceGrowthAudit';
 import JsonLd from '../../src/components/JsonLd';
@@ -39,6 +40,7 @@ const schema = {
 export default function ServiceGrowthAuditPage() {
   return (
     <>
+      <BreadcrumbSchema items={[['Free growth audit', '/service-growth-audit']]} />
       <JsonLd data={schema} />
       <ServiceGrowthAudit />
     </>

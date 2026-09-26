@@ -1,4 +1,5 @@
 export const revalidate = 3600;
+import BreadcrumbSchema from '../../src/components/BreadcrumbSchema';
 import ContactUs from '../../src/Pages/ContactUsPage/ContactUs';
 
 const title = 'Contact Us: Get Your Free Check';
@@ -19,5 +20,10 @@ export const metadata = {
 };
 
 export default function ContactUsPage() {
-  return <ContactUs />;
+  return (
+    <>
+      <BreadcrumbSchema items={[['Contact us', '/ContactUs']]} />
+      <ContactUs />
+    </>
+  );
 }

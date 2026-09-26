@@ -7,6 +7,7 @@ const nextConfig = {
     ],
   },
   transpilePackages: ['@n8n/chat'],
+  htmlLimitedBots: /.*/,
   async redirects() {
     return [
       { source: '/insideShiftDeploy', destination: '/about', permanent: true },

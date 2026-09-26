@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic';
+import BreadcrumbSchema from '../../../src/components/BreadcrumbSchema';
 import AiChatbotDemo from '../../../src/Pages/AiChatbotDemo';
 
 export const metadata = {
@@ -16,5 +17,10 @@ export const metadata = {
 };
 
 export default function AiChatbotDemoPage() {
-  return <AiChatbotDemo />;
+  return (
+    <>
+      <BreadcrumbSchema items={[['Products', '/product'], ['AI receptionist', '/digital-receptionist'], ['Demo', '/digital-receptionist/demo']]} />
+      <AiChatbotDemo />
+    </>
+  );
 }

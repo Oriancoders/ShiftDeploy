@@ -1,4 +1,5 @@
 export const revalidate = 3600;
+import BreadcrumbSchema from '../../src/components/BreadcrumbSchema';
 import PlumbersPage from '../../src/Pages/PlumbersPage/PlumbersPage';
 import JsonLd from '../../src/components/JsonLd';
 
@@ -43,6 +44,7 @@ const schema = {
 export default function Plumbers() {
   return (
     <>
+      <BreadcrumbSchema items={[['Plumbers', '/plumbers']]} />
       <JsonLd data={schema} />
       <PlumbersPage />
     </>
