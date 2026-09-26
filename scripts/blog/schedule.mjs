@@ -17,7 +17,7 @@
  * (_id content-calendar-2026) lists the whole programme.
  * `node scripts/blog/status.mjs` prints what is live and what is still queued.
  */
-import { sanity, key, expandBody, coverSvg, AUTHOR_ID } from './lib.mjs';
+import { sanity, key, expandBody, coverSvg, AUTHORS, authorFor } from './lib.mjs';
 import p1 from './posts-01-costs.mjs';
 import p2 from './posts-02-receptionist-health.mjs';
 import p3 from './posts-03-receptionist-trades.mjs';
@@ -157,7 +157,7 @@ function toDoc(p, heroRef, when, plan) {
     featured: false,
     excerpt: p.excerpt,
     mainImage: { _type: 'image', asset: { _type: 'reference', _ref: heroRef }, alt: p.coverAlt },
-    author: { _type: 'reference', _ref: AUTHOR_ID },
+    author: { _type: 'reference', _ref: authorFor(plan.cluster) },
     categories: p.cats.map((ref) => ({ _type: 'reference', _ref: ref, _key: key() })),
     tags: p.tags,
     schemaType: 'BlogPosting',
@@ -249,6 +249,7 @@ async function main() {
       focusKeyword: spec?.focusKeyword || draftById.get(id)?.focusKeyword,
       keywordNumbers: meta.keywords,
       cluster: meta.cluster,
+      author: authorFor(meta.cluster),
       source: spec ? 'new' : 'draft',
     };
   });
@@ -262,10 +263,11 @@ async function main() {
   }
 
   /* ---- write ---- */
+  for (const a of Object.values(AUTHORS)) await client.createOrReplace(a);
   for (const e of entries) {
     const plan = { order: e.order, scheduledFor: e.publishAt, keywordNumbers: e.keywordNumbers, cluster: e.cluster, calendar: CALENDAR_ID };
     if (e.source === 'draft') {
-      await client.patch(e.postId).set({ status: 'published', publishedAt: e.publishAt, updatedAt: e.publishAt, contentPlan: plan }).commit();
+      await client.patch(e.postId).set({ status: 'published', publishedAt: e.publishAt, updatedAt: e.publishAt, contentPlan: plan, author: { _type: 'reference', _ref: authorFor(plan.cluster) } }).commit();
     } else {
       const p = specs.get(e.postId);
       const existing = await client.fetch('*[_id == $id][0]{"hero": mainImage.asset._ref}', { id: p.id });

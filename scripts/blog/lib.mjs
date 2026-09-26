@@ -127,6 +127,39 @@ ${title}${chips}
 }
 
 export const AUTHOR_ID = '836dce1e-e110-4072-8f5f-9e6db71c4672';
+
+/* Real people behind the posts. Bios stick to what they do; no invented credentials. */
+export const AUTHORS = {
+  ali: {
+    _id: 'author-muhammad-ali',
+    _type: 'author',
+    name: 'Muhammad Ali',
+    slug: { _type: 'slug', current: 'muhammad-ali' },
+    jobTitle: 'Co-Founder, ShiftDeploy',
+    bio: 'Muhammad Ali is a co-founder of ShiftDeploy and a full-stack engineer. He builds the AI receptionists, WhatsApp automation and booking systems that help clinics, trades and local service businesses answer every enquiry.',
+    expertise: ['AI receptionists', 'WhatsApp automation', 'Business automation', 'Booking systems', 'Web development'],
+    sameAs: ['https://www.linkedin.com/in/muhammad-ali-296943208/', 'https://shiftdeploy.com'],
+    socialLinks: [{ _key: 'li', platform: 'linkedin', url: 'https://www.linkedin.com/in/muhammad-ali-296943208/' }],
+  },
+  sami: {
+    _id: 'author-samiullah',
+    _type: 'author',
+    name: 'Samiullah',
+    slug: { _type: 'slug', current: 'samiullah' },
+    jobTitle: 'Co-Founder, ShiftDeploy',
+    bio: 'Samiullah is a co-founder of ShiftDeploy. He works with clinics, trades and local service businesses on getting found on Google, earning more reviews and turning more enquiries into booked work.',
+    expertise: ['Local SEO', 'Google Business Profile', 'Google reviews', 'Marketing for service businesses', 'AI search'],
+    sameAs: ['https://www.linkedin.com/in/sammiiiullah/', 'https://shiftdeploy.com'],
+    socialLinks: [{ _key: 'li', platform: 'linkedin', url: 'https://www.linkedin.com/in/sammiiiullah/' }],
+  },
+};
+
+/* Who writes which cluster. Anything not listed stays with the technical team. */
+const CLUSTER_AUTHOR = {
+  'AI receptionist': 'ali', WhatsApp: 'ali', Automation: 'ali',
+  'Google Maps': 'sami', 'Local SEO': 'sami', Reviews: 'sami', 'AI search': 'sami', 'More customers': 'sami', Marketing: 'sami',
+};
+export const authorFor = (cluster) => AUTHORS[CLUSTER_AUTHOR[cluster]]?._id || AUTHOR_ID;
 export const CAT = {
   local: 'category-websites-local-marketing',
   conversion: 'category-conversion',
