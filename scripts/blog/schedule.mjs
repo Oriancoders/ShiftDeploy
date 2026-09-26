@@ -1,5 +1,7 @@
 /**
- * Schedules the blog programme: one post a day at 09:00 UK time.
+ * Schedules the blog programme: four posts a week, on random days, at a random
+ * time between 07:30 and 11:30 UK time. The random choices are seeded, so
+ * re-running the script gives the same dates.
  *
  *   node scripts/blog/schedule.mjs            dry run: checks everything, writes nothing
  *   node scripts/blog/schedule.mjs --apply    writes posts and the calendar to Sanity
@@ -105,9 +107,37 @@ const ORDER = [
   'post-booking-system-for-aesthetics',
 ];
 
-/* 09:00 in London: BST (UTC+1) until 25 October 2026, GMT after. */
-function publishAt(day) {
-  return day < '2026-10-25' ? `${day}T08:00:00.000Z` : `${day}T09:00:00.000Z`;
+/* Seeded random numbers, so the schedule is stable between runs. */
+function rng(seed) {
+  let s = seed >>> 0;
+  return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 2 ** 32);
+}
+const POSTS_PER_WEEK = 4;
+
+/* Four random days in each Monday-to-Sunday week, starting with START's week. */
+function scheduleSlots(count) {
+  const rand = rng(20260928);
+  const slots = [];
+  for (let week = 0; slots.length < count; week++) {
+    const days = [0, 1, 2, 3, 4, 5, 6];
+    for (let i = days.length - 1; i > 0; i--) {
+      const j = Math.floor(rand() * (i + 1));
+      [days[i], days[j]] = [days[j], days[i]];
+    }
+    for (const d of days.slice(0, POSTS_PER_WEEK).sort((a, b) => a - b)) {
+      if (slots.length < count) slots.push({ day: addDays(START, week * 7 + d), minutes: 450 + Math.floor(rand() * 240) });
+    }
+  }
+  return slots;
+}
+
+/* Local UK time to UTC: BST (UTC+1) until 25 October 2026, then GMT until 28 March 2027. */
+function publishAt({ day, minutes }) {
+  const bst = day < '2026-10-25' || day >= '2027-03-28';
+  const total = minutes - (bst ? 60 : 0);
+  const hh = String(Math.floor(total / 60)).padStart(2, '0');
+  const mm = String(total % 60).padStart(2, '0');
+  return `${day}T${hh}:${mm}:00.000Z`;
 }
 function addDays(iso, n) {
   const d = new Date(`${iso}T12:00:00Z`);
@@ -202,15 +232,17 @@ async function main() {
   }
 
   /* ---- plan ---- */
+  const slots = scheduleSlots(ORDER.length);
   const entries = ORDER.map((id, i) => {
-    const day = addDays(START, i);
+    const slot = slots[i];
+    const day = slot.day;
     const spec = specs.get(id);
     const meta = spec || DRAFTS[id];
     return {
       _key: key(),
       order: i + 1,
       date: day,
-      publishAt: publishAt(day),
+      publishAt: publishAt(slot),
       postId: id,
       slug: slugOf(id),
       title: spec?.title,
@@ -221,8 +253,8 @@ async function main() {
     };
   });
 
-  console.log(`${entries.length} posts, ${entries[0].date} to ${entries.at(-1).date}, one a day at 09:00 UK time. All 100 keywords covered.`);
-  for (const e of entries) console.log(`${String(e.order).padStart(2)}  ${e.date}  ${e.slug}`);
+  console.log(`${entries.length} posts, ${entries[0].date} to ${entries.at(-1).date}, four a week on random days, 07:30-11:30 UK time. All 100 keywords covered.`);
+  for (const e of entries) console.log(`${String(e.order).padStart(2)}  ${e.date}  ${e.publishAt.slice(11, 16)}Z  ${e.slug}`);
 
   if (!APPLY) {
     console.log('\nDry run. Re-run with --apply to write to Sanity.');
@@ -250,9 +282,9 @@ async function main() {
   await client.createOrReplace({
     _id: CALENDAR_ID,
     _type: 'contentCalendar',
-    title: 'Blog programme, Sept to Nov 2026',
+    title: 'Blog programme, Sept 2026 to Jan 2027',
     keywordPlan: 'BLOG-KEYWORDS-2026-09-26.md',
-    cadence: 'One post a day at 09:00 UK time',
+    cadence: 'Four posts a week on random days, between 07:30 and 11:30 UK time',
     createdAt: new Date().toISOString(),
     alreadyLive: Object.entries(LIVE).map(([postId, l]) => ({ _key: key(), postId, slug: l.slug, date: l.date, focusKeyword: l.focusKeyword, cluster: l.cluster })),
     entries: entries.map((e) => ({ ...e, post: { _type: 'reference', _ref: e.postId, _weak: true } })),
