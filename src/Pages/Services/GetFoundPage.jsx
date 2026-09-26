@@ -64,7 +64,7 @@ const faqs = [
 
 function SearchResultMock() {
   return (
-    <figure className="w-full max-w-md mx-auto lg:ml-auto lg:mr-0">
+    <div className="w-full max-w-md mx-auto lg:ml-auto lg:mr-0">
       <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-2xl">
         <div className="flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2.5 text-gray-600">
           <Search className="size-4" aria-hidden="true" />
@@ -91,8 +91,8 @@ function SearchResultMock() {
           <p className="text-sm text-gray-500">Fewer reviews · Further away</p>
         </div>
       </div>
-      <figcaption className="mt-4 text-center text-sm text-gray-600">Example: found first, called first.</figcaption>
-    </figure>
+      <p className="mt-4 text-center text-sm text-gray-600">Example: found first, called first.</p>
+    </div>
   );
 }
 

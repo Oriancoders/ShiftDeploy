@@ -62,7 +62,7 @@ function QuoteVisual() {
     { day: 'Wednesday', text: '“Yes please, when can you start?”', tone: 'text-green-700 font-semibold' },
   ];
   return (
-    <figure className="w-full max-w-md mx-auto lg:ml-auto lg:mr-0">
+    <div className="w-full max-w-md mx-auto lg:ml-auto lg:mr-0">
       <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl">
         <p className="text-sm font-semibold text-gray-500">A quote that didn’t go quiet</p>
         <ol className="mt-5 space-y-4">
@@ -77,8 +77,8 @@ function QuoteVisual() {
           ))}
         </ol>
       </div>
-      <figcaption className="mt-4 text-center text-sm text-gray-600">Example: the follow-up that wins the job.</figcaption>
-    </figure>
+      <p className="mt-4 text-center text-sm text-gray-600">Example: the follow-up that wins the job.</p>
+    </div>
   );
 }
 

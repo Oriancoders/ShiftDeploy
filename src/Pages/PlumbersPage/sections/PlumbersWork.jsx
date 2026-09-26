@@ -57,9 +57,10 @@ const PlumbersWork = () => (
       >
         <img
           src="/fluid-plumbing-hull.webp"
-          alt="Homepage of the Fluid Plumbing Solutions website we built, showing the headline “Plumbing in Hull, done properly.” with WhatsApp and 24/7 call buttons."
-          width={1200}
-          height={672}
+          alt="Fluid Plumbing Solutions homepage we built, with WhatsApp and 24/7 call buttons"
+          width={375}
+          height={210}
+          style={{ maxWidth: '100%' }}
           loading="lazy"
           decoding="async"
           className="w-full h-auto block"

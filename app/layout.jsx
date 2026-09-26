@@ -121,6 +121,7 @@ const organizationSchema = {
   description:
     'ShiftDeploy helps UK service businesses stop losing work. We start with the problem and fix it with the right tool: an AI receptionist and telephone answering, WhatsApp automation, mobile and web apps, web design and local SEO, or business automation.',
   slogan: 'Stop losing customers you never knew you had.',
+  address: { '@type': 'PostalAddress', addressCountry: 'GB' },
   email: 'contact@shiftdeploy.com',
   telephone: '+447311126710',
   contactPoint: [
@@ -144,7 +145,7 @@ const organizationSchema = {
     'https://www.linkedin.com/company/shiftdeploy/',
     'https://x.com/shiftdeploy',
   ],
-  // No address is published. We are a remote team and a service-area business
+  // No street address is published (address carries the country only). We are a remote team and a service-area business
   // in Google's terms: work is delivered to the client wherever they are, so
   // areaServed carries the meaning a street address normally would.
   areaServed: { '@type': 'Country', name: 'United Kingdom' },

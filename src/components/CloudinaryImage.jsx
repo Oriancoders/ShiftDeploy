@@ -16,7 +16,7 @@ export default function CloudinaryImage({ src, alt, sizes = '(max-width: 767px) 
       srcSet={[480, 768, 960, 1280].map(width => `${sizedUrl(src, width)} ${width}w`).join(', ')}
       sizes={sizes}
       alt={alt}
-      style={{ maxWidth: '100%', height: 'auto', ...props.style }}
+      style={{ maxWidth: '100%', ...props.style }}
       decoding="async"
     />
   );

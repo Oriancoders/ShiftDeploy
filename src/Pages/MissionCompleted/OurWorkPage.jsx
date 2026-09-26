@@ -119,7 +119,7 @@ export default function OurWorkPage() {
               <article key={client} className="grid gap-8 lg:grid-cols-2 items-center rounded-2xl border border-gray-200 bg-gray-50 p-6 sm:p-10">
                 <div className={i % 2 ? 'lg:order-2' : ''}>
                   <div className="aspect-[16/10] overflow-hidden rounded-xl bg-white">
-                    <CloudinaryImage src={image} alt={imageAlt} className="size-full object-contain" width="960" height="600" loading={i === 0 ? 'eager' : 'lazy'} />
+                    <CloudinaryImage src={image} alt={imageAlt} className="size-full object-contain" width="384" height="240" loading={i === 0 ? 'eager' : 'lazy'} />
                   </div>
                 </div>
                 <div>
@@ -158,9 +158,9 @@ export default function OurWorkPage() {
             <h2 className="text-3xl sm:text-4xl font-bold text-primaryBlue">In their words</h2>
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               {quotes.map(({ quote, name, role, href }) => (
-                <figure key={name} className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8">
+                <div key={name} className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8">
                   <blockquote className="text-xl font-semibold text-primaryBlue">“{quote}”</blockquote>
-                  <figcaption className="mt-4">
+                  <p className="mt-4">
                     {href ? (
                       <a href={href} target="_blank" rel="noopener noreferrer" className="min-h-[44px] inline-flex items-center gap-1.5 font-bold text-primaryBlue underline underline-offset-2 hover:text-primaryOrange">
                         {name} <ArrowUpRight size={16} aria-hidden="true" />
@@ -169,8 +169,8 @@ export default function OurWorkPage() {
                       <span className="block font-bold text-primaryBlue">{name}</span>
                     )}
                     <span className="block text-gray-600">{role}</span>
-                  </figcaption>
-                </figure>
+                  </p>
+                </div>
               ))}
             </div>
           </div>

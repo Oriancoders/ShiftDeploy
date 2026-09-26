@@ -49,8 +49,8 @@ const Footer = () => {
             <img
               src="/shiftdeploy-logo-white.webp"
               alt="ShiftDeploy"
-              width={480}
-              height={109}
+              width={352}
+              height={80}
               loading="lazy"
               decoding="async"
               className="w-44"

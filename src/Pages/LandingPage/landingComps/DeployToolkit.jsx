@@ -80,7 +80,7 @@ const DeployToolkit = () => {
             ))}
           </ul>
 
-          <figure className="mt-10 rounded-2xl border border-gray-200 bg-white p-6">
+          <div className="mt-10 rounded-2xl border border-gray-200 bg-white p-6">
             <div className="flex gap-1" aria-label="5 out of 5 stars">
               {[0, 1, 2, 3, 4].map((i) => (
                 <Star key={i} className="size-5 text-amber-400 fill-current" aria-hidden="true" />
@@ -90,7 +90,7 @@ const DeployToolkit = () => {
               “ShiftDeploy is highly recommended. They have consistently met deadlines, and their
               after-sales service is outstanding.”
             </blockquote>
-            <figcaption className="mt-4 flex items-center gap-3">
+            <p className="mt-4 flex items-center gap-3">
               <span aria-hidden="true" className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-gray-100 text-primaryBlue font-semibold">KA</span>
               <span className="text-sm">
                 <a
@@ -103,8 +103,8 @@ const DeployToolkit = () => {
                 </a>
                 <span className="block text-gray-600">Chief Strategist, Bullseye Investments</span>
               </span>
-            </figcaption>
-          </figure>
+            </p>
+          </div>
         </div>
 
         <form onSubmit={handleSubmit} noValidate className="rounded-2xl bg-white border border-gray-200 shadow-xl p-6 sm:p-8">
@@ -114,8 +114,9 @@ const DeployToolkit = () => {
             src="https://res.cloudinary.com/dbazbq7u9/image/upload/f_auto,q_auto,w_1200/v1765189190/shiftdeploy_audit_ht8dlu.png"
             alt="Example of a ShiftDeploy website audit report"
             className="w-full aspect-video object-cover rounded-lg"
-            width="1200"
-            height="675"
+            width="384"
+            height="216"
+            style={{ maxWidth: '100%' }}
             loading="lazy"
           />
 

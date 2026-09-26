@@ -66,7 +66,7 @@ const faqs = [
 
 function ReviewPhoneVisual() {
   return (
-    <figure className="w-full max-w-sm mx-auto lg:ml-auto lg:mr-0">
+    <div className="w-full max-w-sm mx-auto lg:ml-auto lg:mr-0">
       <div className="rounded-[2rem] border border-gray-100 bg-white p-6 shadow-2xl">
         <p className="text-sm font-bold text-primaryBlue">Your clinic</p>
         <p className="text-xs text-gray-500">How was your visit today?</p>
@@ -86,8 +86,8 @@ function ReviewPhoneVisual() {
           </div>
         </div>
       </div>
-      <figcaption className="mt-4 text-center text-sm text-gray-600">What your patients see on their phone.</figcaption>
-    </figure>
+      <p className="mt-4 text-center text-sm text-gray-600">What your patients see on their phone.</p>
+    </div>
   );
 }
 

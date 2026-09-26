@@ -32,7 +32,7 @@ const steps = [
 
 export default function HeroAnimation() {
   return (
-    <figure className="w-full max-w-sm mx-auto lg:ml-auto lg:mr-0">
+    <div className="w-full max-w-sm mx-auto lg:ml-auto lg:mr-0">
       <div className="rounded-[2rem] bg-primaryBlue p-3 shadow-2xl">
         <div className="rounded-[1.5rem] bg-gray-100 px-4 pt-5 pb-6">
           <p className="text-center text-xs font-semibold text-gray-500 mb-4">Your phone, while you work</p>
@@ -54,9 +54,9 @@ export default function HeroAnimation() {
           </ol>
         </div>
       </div>
-      <figcaption className="mt-4 text-center text-sm text-gray-600">
+      <p className="mt-4 text-center text-sm text-gray-600">
         One example of work that no longer slips away.
-      </figcaption>
-    </figure>
+      </p>
+    </div>
   );
 }

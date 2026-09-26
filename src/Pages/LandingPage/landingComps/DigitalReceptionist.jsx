@@ -54,8 +54,8 @@ const DigitalReceptionist = ({
                     src={posterSrc}
                     alt="ShiftDeploy digital receptionist demonstration"
                     className="size-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                    width="1280"
-                    height="720"
+                    width="384"
+                    height="216"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />

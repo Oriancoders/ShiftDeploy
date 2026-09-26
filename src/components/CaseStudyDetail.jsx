@@ -33,6 +33,7 @@ export default function CaseStudyDetail({
       headline: `${h1} ${h1Accent}`,
       description: intro,
       url,
+      mainEntityOfPage: url,
       image,
       datePublished: published,
       dateModified: updated,
@@ -81,7 +82,7 @@ export default function CaseStudyDetail({
               ))}
             </dl>
             <div className="mt-10 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-xl">
-              <CloudinaryImage src={image} alt={imageAlt} className="w-full h-auto" width="1280" height="720" loading="eager" fetchPriority="high" />
+              <CloudinaryImage src={image} alt={imageAlt} className="w-full h-auto" width="384" height="216" loading="eager" fetchPriority="high" />
             </div>
           </div>
         </section>
@@ -168,13 +169,13 @@ export default function CaseStudyDetail({
               {note && <p className="mt-6 text-sm text-gray-600">{note}</p>}
             </div>
             {quote && (
-              <figure className="rounded-2xl border border-gray-200 bg-gray-50 p-6 sm:p-8 self-start">
+              <div className="rounded-2xl border border-gray-200 bg-gray-50 p-6 sm:p-8 self-start">
                 <blockquote className="text-xl font-semibold text-primaryBlue">“{quote.text}”</blockquote>
-                <figcaption className="mt-4">
+                <p className="mt-4">
                   <span className="block font-bold text-primaryBlue">{quote.name}</span>
                   <span className="text-gray-600">{quote.role}</span>
-                </figcaption>
-              </figure>
+                </p>
+              </div>
             )}
           </div>
         </section>

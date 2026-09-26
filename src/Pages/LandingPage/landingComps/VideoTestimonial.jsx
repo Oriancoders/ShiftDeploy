@@ -24,8 +24,8 @@ const VideoTestimonial = ({
                 src={posterSrc}
                 alt="Farjad Abbas of Bullseye Investments talking about working with ShiftDeploy"
                 className="size-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                width="1280"
-                height="720"
+                width="384"
+                height="216"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
@@ -51,13 +51,13 @@ const VideoTestimonial = ({
             Investments’ new website.
           </p>
 
-          <figure className="mt-6 border-l-4 border-primaryOrange pl-4">
+          <div className="mt-6 border-l-4 border-primaryOrange pl-4">
             <blockquote className="text-2xl font-semibold text-primaryBlue">“Better than anything I’ve seen.”</blockquote>
-            <figcaption className="mt-2">
+            <p className="mt-2">
               <span className="block font-bold text-primaryBlue">Farjad Abbas</span>
               <span className="text-gray-600">Head of Business Development, Bullseye Investments</span>
-            </figcaption>
-          </figure>
+            </p>
+          </div>
 
           <Link
             href="/CaseStudies/BullseyesCase"

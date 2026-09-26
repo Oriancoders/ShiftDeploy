@@ -99,8 +99,8 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                 <img
                   src="/shiftdeploy-logo.webp"
                   alt="ShiftDeploy"
-                  width={480}
-                  height={109}
+                  width={352}
+                  height={80}
                   style={{ maxWidth: '100%', height: 'auto' }}
                   fetchPriority="high"
                 />

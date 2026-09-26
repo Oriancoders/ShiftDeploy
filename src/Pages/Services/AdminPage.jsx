@@ -58,7 +58,7 @@ const faqs = [
 function WeekVisual() {
   const rows = ['Invoices sent', 'Payment reminders sent', 'Appointment reminders sent', 'Website updates done'];
   return (
-    <figure className="w-full max-w-md mx-auto lg:ml-auto lg:mr-0">
+    <div className="w-full max-w-md mx-auto lg:ml-auto lg:mr-0">
       <div className="rounded-2xl border border-gray-200 bg-white p-6 shadow-2xl">
         <p className="text-sm font-semibold text-gray-500">This week, done for you</p>
         <p className="mt-1 text-xl font-bold text-primaryBlue">Nothing for you to chase</p>
@@ -71,8 +71,8 @@ function WeekVisual() {
           ))}
         </ul>
       </div>
-      <figcaption className="mt-4 text-center text-sm text-gray-600">Example of the admin that runs on its own.</figcaption>
-    </figure>
+      <p className="mt-4 text-center text-sm text-gray-600">Example of the admin that runs on its own.</p>
+    </div>
   );
 }
 

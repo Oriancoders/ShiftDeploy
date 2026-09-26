@@ -27,6 +27,7 @@ const websiteSchema = {
   '@type': 'WebSite',
   name: 'ShiftDeploy',
   url: 'https://shiftdeploy.com',
+  publisher: { '@id': 'https://shiftdeploy.com/#organization' },
   potentialAction: {
     '@type': 'SearchAction',
     target: { '@type': 'EntryPoint', urlTemplate: 'https://shiftdeploy.com/insights?q={search_term_string}' },

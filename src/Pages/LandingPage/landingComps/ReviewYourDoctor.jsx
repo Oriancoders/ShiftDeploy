@@ -20,7 +20,7 @@ const steps = [
 
 function FlowMock() {
   return (
-    <figure className="relative mx-auto w-full max-w-sm lg:ml-auto lg:mr-0">
+    <div className="relative mx-auto w-full max-w-sm lg:ml-auto lg:mr-0">
       <div className="relative rounded-[2rem] border border-gray-100 bg-white p-6 shadow-2xl">
         <div className="mb-5 flex items-center gap-3">
           <div className="grid size-10 place-items-center rounded-xl bg-emerald-50 ring-1 ring-emerald-100">
@@ -65,8 +65,8 @@ function FlowMock() {
         <ShieldCheck className="size-4" aria-hidden="true" />
         UK GDPR ready
       </div>
-      <figcaption className="mt-4 text-center text-sm text-gray-600">What your customers see on their phone.</figcaption>
-    </figure>
+      <p className="mt-4 text-center text-sm text-gray-600">What your customers see on their phone.</p>
+    </div>
   );
 }
 
