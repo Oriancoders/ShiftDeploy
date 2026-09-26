@@ -1,45 +1,33 @@
 export const revalidate = 3600;
-import ShiftConvert from '../../../src/Pages/Services/ShiftConvert/ShiftConvert';
-import JsonLd from '../../../src/components/JsonLd';
+import ConvertPage from '../../../src/Pages/Services/ShiftConvert/ConvertPage';
 import RelatedInsights from '../../../src/components/RelatedInsights';
 
+const title = 'Conversion Rate Optimisation: More Enquiries';
+const description =
+  'Website getting visitors but not enquiries? We find what puts people off and fix it, so more visitors call, book or enquire, without a full redesign.';
+
 export const metadata = {
-  title: 'Conversion Rate Optimisation UK | ShiftConvert',
-  description: 'Conversion rate optimisation for UK businesses. Improve landing pages, enquiry forms and booking journeys through audits, clearer messaging and testing.',
-  keywords: ['conversion rate optimisation', 'CRO agency', 'A/B testing', 'funnel optimisation', 'landing page optimisation', 'increase conversions'],
+  title,
+  description,
+  keywords: ['conversion rate optimisation', 'website not getting enquiries', 'more website enquiries', 'increase website leads', 'CRO UK', 'improve enquiry form'],
   alternates: { canonical: 'https://shiftdeploy.com/services/shiftconvert' },
   openGraph: {
-    title: 'Conversion Rate Optimisation UK | ShiftConvert',
-    description: 'Conversion rate optimisation for UK businesses, focused on completed enquiries and booking journeys.',
+    title: `${title} | ShiftDeploy`,
+    description,
     url: 'https://shiftdeploy.com/services/shiftconvert',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy conversion rate optimisation' }],
   },
-};
-
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'ShiftConvert - Conversion Rate Optimisation',
-  provider: { '@type': 'Organization', name: 'ShiftDeploy', url: 'https://shiftdeploy.com' },
-  description: 'Data-driven CRO: funnel audits, A/B testing, landing page redesigns to turn more visitors into paying customers.',
-  url: 'https://shiftdeploy.com/services/shiftconvert',
-  serviceType: 'Conversion Rate Optimisation',
-  areaServed: { '@type': 'Place', name: 'United Kingdom' },
 };
 
 export default function ShiftConvertPage() {
   return (
-    <>
-      <JsonLd data={schema} />
-      <ShiftConvert />
-      {/* Links the service page into the blog. Without this the two were
-          separate islands with no crawlable path between them. */}
+    <ConvertPage>
       <RelatedInsights
         tags={['Conversion rate', 'Forms', 'Booking pages', 'Lead capture', 'Lead response']}
         categories={['Conversion']}
-        heading={"Conversion work we have written up"}
-        subheading={"Where booking and enquiry flows actually lose people."}
+        heading="Tips for getting more enquiries"
+        subheading="Where booking and enquiry pages lose people, and how to fix it."
       />
-    </>
+    </ConvertPage>
   );
 }

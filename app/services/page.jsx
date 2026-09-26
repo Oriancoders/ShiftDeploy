@@ -1,21 +1,22 @@
-﻿export const revalidate = 3600;
-import Toolkit_Landing from '../../src/Pages/DeployToolkit/Toolkit_Landing';
+export const revalidate = 3600;
+import ServicesPage from '../../src/Pages/ServicesPage/ServicesPage';
+
+const title = 'AI Receptionist, Websites & Automation Services';
+const description =
+  'Missing calls, a quiet website or evening admin? Find your problem and the fix: AI receptionist, WhatsApp automation, web design, local SEO and apps.';
 
 export const metadata = {
-  title: 'Web Development & Optimisation Services UK',
-  description:
-    'Website development, speed optimisation, conversion improvements and ongoing maintenance for UK businesses. Request a tailored quote.',
+  title,
+  description,
   alternates: { canonical: 'https://shiftdeploy.com/services' },
   openGraph: {
-    title: 'Web Development & Optimisation Services UK',
-    description:
-      'Website development, speed optimisation, conversion improvements and ongoing maintenance for UK businesses. Request a tailored quote.',
+    title: `${title} | ShiftDeploy`,
+    description,
     url: 'https://shiftdeploy.com/services',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy services' }],
   },
 };
 
-export default function ServicesPage() {
-  return <Toolkit_Landing />;
+export default function Page() {
+  return <ServicesPage />;
 }
-

@@ -1,45 +1,33 @@
 export const revalidate = 3600;
-import ShiftBuild from '../../../src/Pages/Services/ShiftBuild/ShiftBuild';
-import JsonLd from '../../../src/components/JsonLd';
+import WebDesignPage from '../../../src/Pages/Services/ShiftBuild/WebDesignPage';
 import RelatedInsights from '../../../src/components/RelatedInsights';
 
+const title = 'Web Design & Local SEO for Service Businesses';
+const description =
+  'A website that makes your phone ring. Web design and local SEO for trades, clinics and local services. Fast, found on Google, easy to call or book.';
+
 export const metadata = {
-  title: 'Web Development for UK Businesses | ShiftBuild',
-  description: 'Bespoke websites and web apps for UK businesses, built with technical SEO, performance and clear enquiry journeys. Request a tailored project quote.',
-  keywords: ['custom web development', 'web design agency', 'Next.js development', 'React development', 'bespoke website design', 'web app development UK'],
+  title,
+  description,
+  keywords: ['web design', 'website design for small business', 'local SEO', 'web design for trades', 'website for plumbers', 'small business website UK'],
   alternates: { canonical: 'https://shiftdeploy.com/services/shiftbuild' },
   openGraph: {
-    title: 'Web Development for UK Businesses | ShiftBuild',
-    description: 'Bespoke web development for UK businesses, from website redesigns to custom web apps.',
+    title: `${title} | ShiftDeploy`,
+    description,
     url: 'https://shiftdeploy.com/services/shiftbuild',
-    images: [{ url: '/og-image.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy web design and local SEO' }],
   },
-};
-
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'ShiftBuild - Custom Web Development',
-  provider: { '@type': 'Organization', name: 'ShiftDeploy', url: 'https://shiftdeploy.com' },
-  description: 'Custom website and web application development using Next.js and React, engineered for speed, SEO, and high conversions.',
-  url: 'https://shiftdeploy.com/services/shiftbuild',
-  serviceType: 'Web Development',
-  areaServed: { '@type': 'Place', name: 'United Kingdom' },
 };
 
 export default function ShiftBuildPage() {
   return (
-    <>
-      <JsonLd data={schema} />
-      <ShiftBuild />
-      {/* Links the service page into the blog. Without this the two were
-          separate islands with no crawlable path between them. */}
+    <WebDesignPage>
       <RelatedInsights
         tags={['CMS', 'Images', 'AVIF', 'WebP', 'JavaScript']}
         categories={['Engineering']}
-        heading={"How we build"}
-        subheading={"Engineering decisions from projects we have shipped."}
+        heading="Tips from our web projects"
+        subheading="Practical lessons from websites we have built."
       />
-    </>
+    </WebDesignPage>
   );
 }
