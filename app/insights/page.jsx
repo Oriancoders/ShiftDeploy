@@ -4,16 +4,16 @@ import { getInsightList } from '../../src/lib/insightsData';
 import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
-  title: 'Insights | Web Performance, CRO & Growth Blog',
+  title: 'Insights: Practical Tips to Win More Work',
   description:
-    'Expert articles on web performance, conversion rate optimisation, automation, and digital growth strategies from the ShiftDeploy team.',
+    'Practical, plain-English tips for service businesses on getting found, answering every enquiry, winning more jobs and cutting admin.',
   keywords: [
     'web performance blog', 'CRO articles', 'Core Web Vitals guide', 'website speed tips',
     'conversion optimisation tips', 'business automation insights', 'digital growth blog',
   ],
   alternates: { canonical: 'https://shiftdeploy.com/insights' },
   openGraph: {
-    title: 'Insights | Web Performance, CRO & Growth Blog',
+    title: 'Insights: Practical Tips to Win More Work',
     description:
       'Expert articles on web performance, conversion rate optimisation, automation, and digital growth strategies.',
     url: 'https://shiftdeploy.com/insights',

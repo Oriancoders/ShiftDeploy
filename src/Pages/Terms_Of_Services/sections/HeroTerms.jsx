@@ -112,7 +112,7 @@ function HeroTerms() {
                     <h1 className="text-3xl sm:text-5xl md:text-7xl font-semibold text-primaryBlue mb-6 leading-normal">
                         ShiftDeploy  <br />
                         <span className="text-primaryOrange">
-                            Terms Of Services
+                            Terms of Service
                         </span>
                     </h1>
 

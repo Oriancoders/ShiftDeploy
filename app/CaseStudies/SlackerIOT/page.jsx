@@ -5,14 +5,14 @@ export const revalidate = 3600;
 import SlackerIOT from '../../../src/Pages/CaseStudies/SlackerIOT';
 
 export const metadata = {
-  title: 'Slacker IOT Case Study',
+  title: 'Slacker IoT Case Study: EV Charging Platform',
   description:
-    'How ShiftDeploy helped Slacker IOT achieve measurable performance improvements and business growth through our performance-first approach.',
+    'How we built Slacker IoT a complete EV charging platform with a customer dashboard, admin controls and automatic billing.',
   alternates: { canonical: 'https://shiftdeploy.com/CaseStudies/SlackerIOT' },
   openGraph: {
-    title: 'Slacker IOT Case Study | ShiftDeploy',
+    title: 'Slacker IoT Case Study: EV Charging Platform | ShiftDeploy',
     description:
-      'How ShiftDeploy helped Slacker IOT achieve measurable performance improvements and business growth.',
+      'How we built Slacker IoT a complete EV charging platform with a customer dashboard, admin controls and automatic billing.',
     url: 'https://shiftdeploy.com/CaseStudies/SlackerIOT',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
   },

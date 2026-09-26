@@ -5,14 +5,14 @@ export const revalidate = 3600;
 import K2TradersCase from '../../../src/Pages/CaseStudies/K2Traders';
 
 export const metadata = {
-  title: 'K2 Traders Case Study',
+  title: 'K2 Traders Case Study: Online Shop',
   description:
-    'How ShiftDeploy helped K2 Traders build a faster, higher-converting website that drives real business results.',
+    'How we built K2 Traders an online shop that is quick to buy from on a phone, with no monthly hosting bill.',
   alternates: { canonical: 'https://shiftdeploy.com/CaseStudies/K2TradersCase' },
   openGraph: {
-    title: 'K2 Traders Case Study | ShiftDeploy',
+    title: 'K2 Traders Case Study: Online Shop | ShiftDeploy',
     description:
-      'How ShiftDeploy helped K2 Traders build a faster, higher-converting website.',
+      'How we built K2 Traders an online shop that is quick to buy from on a phone, with no monthly hosting bill.',
     url: 'https://shiftdeploy.com/CaseStudies/K2TradersCase',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
   },

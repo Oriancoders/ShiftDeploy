@@ -103,7 +103,7 @@ function HeroPolicy() {
 
                     {/* Main Headlines */}
                     <h1 className="text-3xl sm:text-5xl md:text-7xl font-semibold text-primaryBlue mb-6 leading-normal">
-                        ShiftDeploy Community  <br />
+                        ShiftDeploy <br />
                         <span className="text-primaryOrange">
                             Privacy Policy
                         </span>
@@ -115,7 +115,7 @@ function HeroPolicy() {
                             }`}
                     >
                         <p className="sm:text-xl text-gray-700 max-w-4xl mx-auto mb-8 leading-relaxed">
-                            ShiftDeploy is a technology agency building full-stack applications, cloud & DevOps solutions. This Privacy Policy explains what information we collect, how we use it, and your rights.
+                            ShiftDeploy helps service businesses stop losing work with AI receptionists, automation, apps and websites. This Privacy Policy explains what information we collect, how we use it, and your rights.
                         </p>
 
                     </div>

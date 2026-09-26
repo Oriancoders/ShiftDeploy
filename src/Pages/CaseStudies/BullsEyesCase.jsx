@@ -328,7 +328,7 @@ const BullsEyesCase = () => {
                   className="inline-flex items-center gap-x-2 bg-primaryOrange backdrop-blur-sm rounded-full px-6 py-3 mb-8"
                 >
                   <span className="text-white font-semibold text-xs sm:text-lg">
-                    Case Study - Bullseyes Investments
+                    Case Study - Bullseye Investments
                   </span>
                 </motion.div>
 
@@ -352,7 +352,7 @@ const BullsEyesCase = () => {
                 >
                   ShiftDeploy helped{" "}
                   <span className="text-primaryOrange font-semibold">
-                    Bullseyes Investments Pvt. Ltd.
+                    Bullseye Investments Pvt. Ltd.
                   </span>{" "}
                   improve website clarity, present services more simply, and create a smoother path
                   for prospects to take action.
@@ -371,7 +371,7 @@ const BullsEyesCase = () => {
                 <p className="sm:text-xl text-gray-700 leading-relaxed p-2">
                   ShiftDeploy partnered with{" "}
                   <span className="text-primaryOrange font-semibold">
-                    Bullseyes Investments Pvt. Ltd.
+                    Bullseye Investments Pvt. Ltd.
                   </span>{" "}
                   to create a modern corporate website that feels trustworthy, is easy to navigate,
                   and guides prospects toward onboarding. The focus was on clarity, credibility, and
@@ -695,7 +695,7 @@ const BullsEyesCase = () => {
                   Results & Impact
                 </h2>
                 <p className="sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-                  The new website improved how Bullseyes presents its services, made onboarding
+                  The new website improved how Bullseye presents its services, made onboarding
                   steps clearer, and helped visitors find key information faster.
                 </p>
               </motion.div>
@@ -735,7 +735,7 @@ const BullsEyesCase = () => {
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="text-lg sm:text-xl font-semibold text-white mb-4">
-                      For Bullseyes Investments
+                      For Bullseye Investments
                     </h4>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-x-3">

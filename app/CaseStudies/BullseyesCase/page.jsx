@@ -5,14 +5,14 @@ export const revalidate = 3600;
 import BullsEyesCase from '../../../src/Pages/CaseStudies/BullsEyesCase';
 
 export const metadata = {
-  title: 'BullsEyes Investments Case Study',
+  title: 'Bullseye Investments Case Study: Website Redesign',
   description:
-    'How ShiftDeploy helped BullsEyes Investments improve their web performance, conversions, and online presence.',
+    'How we redesigned Bullseye Investments’ website so visitors understand the offer quickly and reach the client portal easily.',
   alternates: { canonical: 'https://shiftdeploy.com/CaseStudies/BullseyesCase' },
   openGraph: {
-    title: 'BullsEyes Investments Case Study | ShiftDeploy',
+    title: 'Bullseye Investments Case Study: Website Redesign | ShiftDeploy',
     description:
-      'How ShiftDeploy helped BullsEyes Investments improve their web performance and conversions.',
+      'How we redesigned Bullseye Investments’ website so visitors understand the offer quickly and reach the client portal easily.',
     url: 'https://shiftdeploy.com/CaseStudies/BullseyesCase',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }],
   },
