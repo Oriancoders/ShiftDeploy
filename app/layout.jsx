@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import GlobalProvider from '../src/GlobalProvider/GlobalProvider';
 import LazyGTM from '../src/utils/LazyGTM';
 import CookieConsent from '../src/components/CookieConsent';
+import MobileTabBar from '../src/components/MobileTabBar';
 import ScrollToTop from '../src/components/ScrollToTop';
 import JsonLd from '../src/components/JsonLd';
 
@@ -263,7 +264,8 @@ export default function RootLayout({ children }) {
         <GlobalProvider>
           <LazyGTM />
           <ScrollToTop />
-          <div className="bg-white min-h-screen">{children}</div>
+          <div className="bg-white min-h-screen pb-20 lg:pb-0">{children}</div>
+          <MobileTabBar />
           <CookieConsent />
         </GlobalProvider>
       </body>

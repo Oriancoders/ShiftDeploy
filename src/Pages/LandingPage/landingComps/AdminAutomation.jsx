@@ -37,9 +37,9 @@ export default function AdminAutomation() {
           </p>
         </div>
 
-        <ul className="grid gap-6 md:grid-cols-3">
+        <ul className="-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:px-0 md:grid md:gap-6 md:overflow-visible md:pb-0 md:grid-cols-3">
           {jobs.map(({ icon: Icon, title, body }) => (
-            <li key={title} className="rounded-2xl border border-gray-200 bg-gray-50 p-6 sm:p-8">
+            <li key={title} className="snap-start shrink-0 w-[82%] md:w-auto rounded-2xl border border-gray-200 bg-gray-50 p-6 sm:p-8">
               <span className="flex size-12 items-center justify-center rounded-full bg-white shadow-sm">
                 <Icon className="size-6 text-primaryOrange" aria-hidden="true" />
               </span>

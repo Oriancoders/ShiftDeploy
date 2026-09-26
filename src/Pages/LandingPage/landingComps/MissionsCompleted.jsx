@@ -48,9 +48,9 @@ const MissionsCompleted = () => {
           </p>
         </div>
 
-        <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:px-0 md:grid md:gap-6 md:overflow-visible md:pb-0 md:grid-cols-2 lg:grid-cols-3">
           {projects.map(({ title, client, service, image, imageAlt, results, url }) => (
-            <li key={client}>
+            <li key={client} className="snap-start shrink-0 w-[85%] md:w-auto">
               <Link
                 href={url}
                 prefetch={false}

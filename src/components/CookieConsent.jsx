@@ -25,7 +25,7 @@ export default function CookieConsent() {
       role="dialog"
       aria-live="polite"
       aria-label="Cookie preferences"
-      className="fixed inset-x-0 bottom-0 z-[60] p-3 sm:p-4"
+      className="fixed inset-x-0 bottom-20 lg:bottom-0 z-[60] p-3 sm:p-4"
     >
       <div className="mx-auto max-w-4xl rounded-2xl border border-gray-200 bg-white p-5 sm:p-6 shadow-2xl sm:flex sm:items-center sm:gap-6">
         <p className="text-sm sm:text-base text-gray-700 leading-relaxed">

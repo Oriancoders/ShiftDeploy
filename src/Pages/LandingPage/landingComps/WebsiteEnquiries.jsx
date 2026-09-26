@@ -43,9 +43,9 @@ export default function WebsiteEnquiries() {
           </p>
         </div>
 
-        <ul className="grid gap-6 md:grid-cols-3">
+        <ul className="-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:px-0 md:grid md:gap-6 md:overflow-visible md:pb-0 md:grid-cols-3">
           {fixes.map(({ icon: Icon, problem, fix, href, link }) => (
-            <li key={problem} className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm">
+            <li key={problem} className="snap-start shrink-0 w-[82%] md:w-auto flex flex-col rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm">
               <span className="flex size-12 items-center justify-center rounded-full bg-orange-50">
                 <Icon className="size-6 text-primaryOrange" aria-hidden="true" />
               </span>

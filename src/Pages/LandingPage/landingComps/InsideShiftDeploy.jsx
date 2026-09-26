@@ -71,9 +71,9 @@ const InsideShiftDeploy = () => {
           </p>
         </div>
 
-        <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0 sm:grid sm:gap-6 sm:overflow-visible sm:pb-0 sm:grid-cols-2 lg:grid-cols-4">
           {services.map(({ icon: Icon, title, body, href, cta = 'Find out more' }) => (
-            <li key={title}>
+            <li key={title} className="snap-start shrink-0 w-[82%] sm:w-auto">
               <Link
                 href={href}
                 prefetch={false}

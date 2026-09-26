@@ -19,12 +19,12 @@ export default function Hero() {
               Missed calls, slow replies, enquiries that go nowhere. We find where your business
               is losing customers, fix it, and show you the extra work it brings in.
             </p>
-            <nav aria-label="What we fix" className="mt-6 flex flex-wrap gap-2">
+            <nav aria-label="What we fix" className="mt-6 -mx-4 px-4 flex overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible sm:pb-0 gap-2">
               {heroFixes.map(({ href, label }) => (
                 <a
                   key={href}
                   href={href}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-primaryBlue hover:border-primaryOrange hover:text-primaryOrange"
+                  className="shrink-0 snap-start inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-primaryBlue hover:border-primaryOrange hover:text-primaryOrange"
                 >
                   {label} <ArrowDown size={14} aria-hidden="true" />
                 </a>
