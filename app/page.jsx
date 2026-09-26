@@ -4,17 +4,18 @@ import Landing from '../src/Pages/LandingPage/Landing';
 import JsonLd from '../src/components/JsonLd';
 
 export const metadata = {
-  title: 'Losing Customers? AI, Apps & Automation | ShiftDeploy',
+  title: 'Losing Customers? AI Receptionist & Automation | ShiftDeploy',
   description:
-    'Missed calls and slow replies cost you customers. We fix it with AI receptionists, WhatsApp automation, apps and websites.',
+    'Missed calls and slow replies cost you customers. We fix it with an AI receptionist, WhatsApp automation, online booking, apps and websites.',
   keywords: [
-    'AI receptionist UK', 'telephone answering service', 'WhatsApp automation for business', 'mobile app development UK', 'virtual receptionist', 'call answering service for small business', 'missed call text back',
-    'small business web design UK', 'local SEO', 'website speed optimisation',
-    'business automation UK', 'get more Google reviews', 'ShiftDeploy',
+    'AI receptionist UK', 'answering service', 'call answering service for small business', 'telephone answering service',
+    'WhatsApp Business API', 'WhatsApp automation for business', 'online booking system for small business UK',
+    'AI automation', 'business automation UK', 'mobile app development UK',
+    'small business web design UK', 'local SEO', 'Google Business Profile', 'get more Google reviews', 'ShiftDeploy',
   ],
   alternates: { canonical: 'https://shiftdeploy.com' },
   openGraph: {
-    title: 'Losing Customers? AI, Apps & Automation | ShiftDeploy',
+    title: 'Losing Customers? AI Receptionist & Automation | ShiftDeploy',
     description:
       'Stop losing customers you never knew you had. We fix it with the right tool: AI call answering, WhatsApp automation, an app or a website.',
     url: 'https://shiftdeploy.com',

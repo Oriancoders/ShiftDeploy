@@ -23,7 +23,7 @@ const services = [
   {
     icon: LayoutTemplate,
     title: 'Web design & development',
-    body: 'A new website, with local SEO built in, so nearby customers find you on Google.',
+    body: 'A new website, with local SEO built in, so nearby customers find you on Google and Google Maps.',
     href: '/services/shiftbuild',
   },
   {
@@ -46,7 +46,7 @@ const services = [
   },
   {
     icon: Workflow,
-    title: 'Business automation',
+    title: 'AI & business automation',
     body: 'Reminders, follow-ups and invoices that go out without you chasing.',
     href: '/services/shiftflow',
   },

@@ -11,7 +11,7 @@ const pains = [
 const gets = [
   { icon: Send, title: 'Quotes followed up for you', label: 'Automatic follow-ups', body: 'A polite follow-up goes out a few days after every quote, so more of them turn into jobs.' },
   { icon: BellRing, title: 'Fewer no-shows', label: 'Appointment reminders', body: 'Customers get a text or WhatsApp reminder before they’re due, so fewer forget.' },
-  { icon: CalendarCheck, title: 'Book online in seconds', label: 'Online booking', body: 'Customers pick a time and book themselves, day or night.' },
+  { icon: CalendarCheck, title: 'Book online in seconds', label: 'Online booking system', body: 'Customers pick a time and book themselves, day or night.' },
   { icon: ListChecks, title: 'Every lead in one list', label: 'Simple enquiry tracking', body: 'All your enquiries in one place, so you can see who needs a reply and nothing gets lost.' },
   { icon: MousePointerClick, title: 'A website that makes saying yes easy', label: 'Conversion rate optimisation', body: 'Clearer wording, shorter forms and obvious buttons, so more visitors get in touch.' },
   { icon: Star, title: 'Reviews where people decide', label: 'Trust and reviews', body: 'Real reviews shown right where customers are making up their minds.' },
@@ -26,19 +26,23 @@ const steps = [
 
 const faqs = [
   {
-    q: 'How do I follow up a quote without being pushy?',
-    a: 'A short, friendly message a few days later asking if they have any questions works well. We set this up to happen automatically, so every quote gets followed up without you remembering.',
+    q: 'How do I follow up on a quote without being pushy?',
+    a: 'A short, friendly email or WhatsApp a few days later asking if they have any questions works well. We set this up to happen automatically, so every quote gets followed up without you remembering.',
   },
   {
     q: 'How can I reduce no-shows?',
     a: 'Send a confirmation when someone books and a reminder before the appointment, by text or WhatsApp. Many businesses also take a deposit. We set up reminders that go out on their own.',
   },
   {
-    q: 'Can customers book online with me?',
-    a: 'Yes. We set up online booking so customers can pick a time that suits them and get reminders automatically.',
+    q: 'Can you set up an online booking system for my business?',
+    a: 'Yes. Customers pick a time that suits them from your website, WhatsApp or a link you text them, and get reminders automatically. Bookings land in the diary you already use.',
   },
   {
-    q: 'Why isn’t my website getting enquiries?',
+    q: 'How do I get more leads for my business?',
+    a: 'Before paying for more leads, win more of the ones you already get. Reply to every enquiry fast, follow up every quote, and make booking easy. Most businesses find more work there than in extra advertising.',
+  },
+  {
+    q: 'Why isn’t my website getting enquiries or leads?',
     a: 'If people visit but don’t get in touch, it’s usually unclear wording, no obvious next step, a long form or a site that’s awkward on a phone. Our free check shows which one it is.',
   },
   {

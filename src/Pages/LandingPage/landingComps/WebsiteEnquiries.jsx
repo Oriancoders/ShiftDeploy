@@ -39,7 +39,7 @@ export default function WebsiteEnquiries() {
           </h2>
           <p className="text-lg sm:text-xl mt-6 leading-relaxed text-gray-700">
             We build and fix websites for service businesses so they load fast, get found on
-            Google and turn visitors into calls and bookings.
+            Google and Google Maps, and turn visitors into calls and bookings.
           </p>
         </div>
 

@@ -26,7 +26,7 @@ const problems = [
     problem: '“I keep missing calls and messages.”',
     intro: 'Every call you can’t answer is a customer who rings someone else.',
     services: [
-      { icon: PhoneCall, name: 'Every call answered', label: 'AI receptionist', body: 'Answers day or night, takes details and books appointments.', gets: ['Answers when you’re busy', 'Books into your diary', 'Texts you the details'], href: '/digital-receptionist' },
+      { icon: PhoneCall, name: 'Every call answered', label: 'AI receptionist & call answering', body: 'Answers day or night, takes details and books appointments.', gets: ['Answers when you’re busy', 'Books into your diary', 'Texts you the details'], href: '/digital-receptionist' },
       { icon: MessageSquareText, name: 'A text back when you miss a call', label: 'Missed call text back', body: 'The caller gets a friendly text straight away.', gets: ['Stops them ringing others', 'Lets them book or reply', 'Works automatically'] },
       { icon: MessageCircle, name: 'Instant WhatsApp replies', label: 'WhatsApp automation', body: 'Answers in seconds, bookings at any hour.', gets: ['Replies in seconds', 'Book or ask questions', 'Reminders sent for you'] },
     ],
@@ -39,7 +39,7 @@ const problems = [
     services: [
       { icon: Send, name: 'Quotes followed up for you', label: 'Automatic follow-ups', body: 'A polite nudge after every quote, without you remembering.', gets: ['Every quote chased', 'Friendly, not pushy', 'More jobs won'] },
       { icon: BellRing, name: 'Fewer no-shows', label: 'Appointment reminders', body: 'Text or WhatsApp reminders before every appointment.', gets: ['Fewer empty slots', 'Sent automatically', 'Easy to reschedule'] },
-      { icon: MousePointerClick, name: 'Easier to say yes', label: 'Online booking & conversion', body: 'Online booking and a website that makes enquiring easy.', gets: ['Book in seconds', 'Shorter forms', 'Clear next steps'] },
+      { icon: MousePointerClick, name: 'Easier to say yes', label: 'Online booking system', body: 'Online booking and a website that makes enquiring easy.', gets: ['Book in seconds', 'Shorter forms', 'Clear next steps'] },
     ],
   },
   {
@@ -49,7 +49,7 @@ const problems = [
     intro: 'Invoices, reminders and chasing payments, after a full day’s work.',
     services: [
       { icon: ReceiptPoundSterling, name: 'Get paid without chasing', label: 'Invoice automation', body: 'Invoices and polite payment reminders that go out on their own.', gets: ['Invoices sent on time', 'Automatic reminders', 'Less chasing'] },
-      { icon: Bot, name: 'An assistant for the boring jobs', label: 'AI assistant & business automation', body: 'Sorts enquiries, drafts replies and stops the copying and pasting.', gets: ['Details entered once', 'Replies drafted for you', 'Works with your tools'] },
+      { icon: Bot, name: 'An assistant for the boring jobs', label: 'AI assistant & AI automation', body: 'Sorts enquiries, drafts replies and stops the copying and pasting.', gets: ['Details entered once', 'Replies drafted for you', 'Works with your tools'] },
       { icon: Smartphone, name: 'Tools built around you', label: 'Apps & website maintenance', body: 'Custom apps, and a website looked after every month.', gets: ['Apps for bookings or jobs', 'Website kept updated', 'One team to call'] },
     ],
   },

@@ -2,14 +2,14 @@ export const revalidate = 3600;
 import GetFoundPage from '../../../src/Pages/Services/GetFoundPage';
 import RelatedInsights from '../../../src/components/RelatedInsights';
 
-const title = 'Get More Local Customers From Google';
+const title = 'Get Found on Google Maps & Win Local Customers';
 const description =
-  'More local customers finding you first: Google Maps, local SEO, more Google reviews and a website that brings calls.';
+  'Not showing on Google? We get you found on Google Maps and in AI search, with local SEO, more reviews and a website that brings calls.';
 
 export const metadata = {
   title,
   description,
-  keywords: ['how to get more customers', 'local SEO', 'get on Google Maps', 'more Google reviews', 'web design for small business', 'Google Business Profile help'],
+  keywords: ['how to get my business on Google Maps', 'why is my business not showing on Google', 'local SEO', 'local SEO for dentists', 'Google Business Profile', 'get more Google reviews', 'how to appear in AI search', 'website design for tradesmen', 'web design for small business'],
   alternates: { canonical: 'https://shiftdeploy.com/services/shiftbuild' },
   openGraph: {
     title: `${title} | ShiftDeploy`,

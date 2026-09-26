@@ -19,8 +19,8 @@ const gets = [
 ];
 
 const audiences = [
-  { title: 'Trades', body: 'Plumbers, electricians, builders and other trades who need the phone to ring.', href: '/plumbers', cta: 'See our work for plumbers' },
-  { title: 'Clinics and practices', body: 'Private clinics, dentists and therapists who need trust and bookings.', href: '/review-your-doctor', cta: 'See our review system for clinics' },
+  { title: 'Plumbers and trades', body: 'Plumbers, electricians, builders and other trades who need the phone to ring.', href: '/plumbers', cta: 'See our work for plumbers' },
+  { title: 'Dentists and clinics', body: 'Dental practices, private clinics and therapists who need trust and bookings.', href: '/review-your-doctor', cta: 'See our review system for clinics' },
   { title: 'Salons and local services', body: 'Hair, beauty, fitness and local businesses that run on appointments.' },
 ];
 
@@ -39,6 +39,14 @@ const faqs = [
   {
     q: 'How do I get my business on Google Maps?',
     a: 'You need a verified Google Business Profile with the right category, service area, photos and opening hours. We set it up or improve the one you have, so you’re more likely to appear in the map results.',
+  },
+  {
+    q: 'Why is my business not showing on Google?',
+    a: 'The usual reasons are an unverified or incomplete Google Business Profile, the wrong business category, too few reviews, or a website that is slow or doesn’t say clearly what you do and where. Our free check finds which one is holding you back.',
+  },
+  {
+    q: 'How do I get ChatGPT and Google’s AI Overviews to recommend my business?',
+    a: 'AI tools recommend businesses they can clearly understand and trust. That means a website that answers customers’ questions in plain English, consistent details everywhere you’re listed, and genuine reviews. We set your website and profiles up so AI search can find and recommend you.',
   },
   {
     q: 'What is local SEO?',

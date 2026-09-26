@@ -28,7 +28,11 @@ const faqs = [
   },
   {
     q: 'Can you automate WhatsApp messages for my business?',
-    a: 'Yes. We set up WhatsApp for your business so customers get instant replies, can book or ask questions at any hour, and receive appointment reminders automatically. Many of your customers already prefer WhatsApp to calling.',
+    a: 'Yes. We connect your number to the WhatsApp Business API so customers get instant auto replies, can book or ask questions at any hour, and receive appointment reminders automatically. Many of your customers already prefer WhatsApp to calling.',
+  },
+  {
+    q: 'Can you set up an online booking system?',
+    a: 'Yes. Customers can book online, by WhatsApp or through your AI receptionist, and every booking lands in the same diary. Automatic reminders go out before each appointment, which cuts no-shows.',
   },
   {
     q: 'Why isn’t my website getting enquiries?',
@@ -37,6 +41,10 @@ const faqs = [
   {
     q: 'Do I need a new website, or can you fix the one I have?',
     a: 'Often you don’t need a new one. Many websites only need to load faster, explain things more clearly and make it easier to call or book. If a rebuild really is the better option, we’ll tell you why.',
+  },
+  {
+    q: 'Why is my business not showing on Google Maps?',
+    a: 'Usually your Google Business Profile is missing, unverified or incomplete, you have fewer reviews than nearby competitors, or your website doesn’t back up what the profile says. We check all of this in your free check and fix it, so local customers find you first.',
   },
   {
     q: 'How can I get more Google reviews for my business?',

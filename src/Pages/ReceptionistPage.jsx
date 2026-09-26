@@ -20,8 +20,8 @@ const gets = [
 ];
 
 const audiences = [
-  { title: 'Trades', body: 'Plumbers, electricians and builders who can’t answer the phone on a job.', href: '/plumbers', cta: 'See our work for plumbers' },
-  { title: 'Clinics and practices', body: 'Private clinics, dentists and therapists who need every booking captured.' },
+  { title: 'Plumbers and trades', body: 'Plumbers, electricians and builders who can’t answer the phone on a job.', href: '/plumbers', cta: 'See our work for plumbers' },
+  { title: 'Dentists and clinics', body: 'Dental practices, private clinics and therapists who need every booking captured.' },
   { title: 'Salons and local services', body: 'Hair, beauty, fitness and local businesses that run on appointments.' },
 ];
 
@@ -39,7 +39,15 @@ const faqs = [
   },
   {
     q: 'How much does an AI receptionist cost?',
-    a: 'It depends on your call volume and which channels you want covered. It costs a fraction of a full-time receptionist, which typically runs £2,000 to £2,500 a month in the UK. You get an exact price after the free demo.',
+    a: 'You pay a monthly fee based on your call volume and which channels you want covered. It costs a fraction of a full-time receptionist, which typically runs £2,000 to £2,500 per month in the UK. You get an exact price after the free demo.',
+  },
+  {
+    q: 'Can AI answer my business phone calls?',
+    a: 'Yes. Calls you can’t get to are forwarded to your AI receptionist, which answers in a natural voice, deals with common questions, takes the caller’s details and books them in. You get a text with every call.',
+  },
+  {
+    q: 'Is an AI receptionist better than a call answering service?',
+    a: 'For most bookings and questions, yes. A traditional answering service takes a message and you still call back. An AI receptionist answers instantly, 24/7, and can actually book the appointment. For anything unusual, it passes the call to you.',
   },
   {
     q: 'Will callers know they’re talking to an AI?',
@@ -76,7 +84,7 @@ export default function ReceptionistPage() {
       crumb="AI receptionist"
       h1="Every call, chat and WhatsApp"
       h1Accent="answered. Day or night."
-      intro="Your AI receptionist picks up the phone, replies on your website and answers WhatsApp messages, 24/7. It answers questions, takes details and books appointments, then texts you what came in."
+      intro="Your AI receptionist picks up the phone, replies on your website and answers WhatsApp messages, 24/7, including out of hours. It answers questions, takes details and books appointments, then texts you what came in."
       ctaLabel="Book a free demo"
       visual={<HeroAnimation />}
       ticks={['Free demo', 'Keep your own number', 'Set up for you']}

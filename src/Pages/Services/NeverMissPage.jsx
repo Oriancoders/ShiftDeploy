@@ -10,7 +10,7 @@ const pains = [
 ];
 
 const gets = [
-  { icon: PhoneCall, title: 'Every call answered', label: 'AI receptionist', body: 'A virtual receptionist answers your calls day or night, takes details and books appointments.', href: '/digital-receptionist', cta: 'See the AI receptionist' },
+  { icon: PhoneCall, title: 'Every call answered', label: 'AI receptionist & call answering', body: 'A virtual receptionist answers your calls day or night, takes details and books appointments.', href: '/digital-receptionist', cta: 'See the AI receptionist' },
   { icon: MessageSquareText, title: 'A text back when you miss a call', label: 'Missed call text back', body: 'If a call slips through, the caller gets a friendly text straight away, so they don’t ring someone else.' },
   { icon: MessageCircle, title: 'Instant WhatsApp replies', label: 'WhatsApp automation', body: 'Customers get an answer on WhatsApp in seconds, and can book or ask questions at any hour.' },
   { icon: Mail, title: 'Enquiry forms that reply at once', label: 'Instant enquiry replies', body: 'Every website enquiry gets an immediate reply, so the customer knows you’ve got it.' },
@@ -37,6 +37,14 @@ const faqs = [
   {
     q: 'Can I keep my business phone number?',
     a: 'Yes. Calls you can’t answer are forwarded, so customers ring the same number they always have.',
+  },
+  {
+    q: 'How much are missed calls costing my business?',
+    a: 'Take the calls you miss in a week, the share that would have booked, and your average job value. Even two lost jobs a week adds up to thousands a year. Our free check helps you work out your own number.',
+  },
+  {
+    q: 'Can you answer my calls out of hours?',
+    a: 'Yes. Evenings, weekends and bank holidays are covered. Out-of-hours callers get answered, can book a slot, and you see every enquiry in the morning.',
   },
   {
     q: 'What is missed call text back?',

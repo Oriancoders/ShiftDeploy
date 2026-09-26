@@ -11,7 +11,7 @@ const pains = [
 const gets = [
   { icon: ReceiptPoundSterling, title: 'Invoices and payment chasers', label: 'Invoice automation', body: 'Invoices go out on time and polite reminders follow, so you get paid without chasing.' },
   { icon: Bot, title: 'An assistant for the boring jobs', label: 'AI assistant (AI agent)', body: 'An AI assistant that sorts enquiries, drafts replies and updates your records, so you don’t have to.' },
-  { icon: Workflow, title: 'No more copying and pasting', label: 'Business automation', body: 'We connect the tools you already use, so details only need entering once.' },
+  { icon: Workflow, title: 'No more copying and pasting', label: 'AI & business automation', body: 'We connect the tools you already use, so details only need entering once.' },
   { icon: Smartphone, title: 'An app built around your business', label: 'Mobile & web apps', body: 'Booking, job or customer apps that fit how your business actually runs.' },
   { icon: ShieldCheck, title: 'Your website looked after', label: 'Website maintenance & support', body: 'Updates, security checks and small changes handled for a fixed monthly price.' },
   { icon: BarChart3, title: 'See how you’re doing at a glance', label: 'Simple dashboards', body: 'Enquiries, jobs and money in one simple view, without the spreadsheet.' },
@@ -30,12 +30,16 @@ const faqs = [
     a: 'Common ones are invoices and payment reminders, appointment reminders, replying to enquiries, quote follow-ups and copying details between your email, diary and spreadsheets.',
   },
   {
+    q: 'Can I automate my business with AI?',
+    a: 'Yes, the repetitive parts. AI automation handles jobs that follow the same steps each time, like replying to enquiries, sending reminders, chasing invoices and updating records. You stay in charge of the work that needs you.',
+  },
+  {
     q: 'What is an AI agent, and can it help my business?',
     a: 'An AI agent is an assistant that can carry out tasks for you, like reading enquiries, drafting replies or updating records. It’s useful for repetitive jobs that follow the same steps each time.',
   },
   {
     q: 'How do I stop chasing unpaid invoices?',
-    a: 'Send invoices straight after the job with an easy way to pay, then let polite automatic reminders do the chasing. We set this up for you.',
+    a: 'Send invoices straight after the job with an easy way to pay, then let polite automatic reminders do the chasing. If you use accounting software like Xero or QuickBooks, we check in your free check how it can be connected.',
   },
   {
     q: 'Do I need to change the software I use?',

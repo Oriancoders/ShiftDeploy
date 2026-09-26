@@ -1,14 +1,14 @@
 export const revalidate = 3600;
 import ReceptionistPage from '../../src/Pages/ReceptionistPage';
 
-const title = 'AI Receptionist for Calls, Chat & WhatsApp';
+const title = 'AI Receptionist: 24/7 Call Answering & WhatsApp';
 const description =
-  'An AI receptionist that answers your phone, website chat and WhatsApp 24/7 and books appointments. Keep your number.';
+  'An AI receptionist and 24/7 answering service for your phone, website chat and WhatsApp. It books appointments. Keep your number.';
 
 export const metadata = {
   title,
   description,
-  keywords: ['AI receptionist', 'AI receptionist UK', 'virtual receptionist', 'AI phone answering', 'AI chatbot for business', 'WhatsApp automation', 'call answering service'],
+  keywords: ['AI receptionist', 'AI receptionist UK', 'AI receptionist cost', 'AI receptionist for dentists', 'AI receptionist for small business', 'answering service', 'call answering service', 'out of hours call answering', 'AI phone answering', 'AI chatbot for business', 'WhatsApp auto reply'],
   alternates: { canonical: 'https://shiftdeploy.com/digital-receptionist' },
   openGraph: {
     title: `${title} | ShiftDeploy`,

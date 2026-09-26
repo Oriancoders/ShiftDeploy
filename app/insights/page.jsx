@@ -9,8 +9,8 @@ export const metadata = {
   description:
     'Plain-English tips for service businesses on getting found, answering every enquiry, winning jobs and cutting admin.',
   keywords: [
-    'small business tips UK', 'how to get more customers', 'get more Google reviews',
-    'missed calls small business', 'business automation tips', 'local SEO tips', 'ShiftDeploy blog',
+    'small business tips UK', 'how to get more customers for my business', 'how to get more Google reviews for my business',
+    'how much are missed calls costing your business', 'AI automation for small business', 'local SEO tips', 'how to get found on Google', 'ShiftDeploy blog',
   ],
   alternates: { canonical: 'https://shiftdeploy.com/insights' },
   openGraph: {

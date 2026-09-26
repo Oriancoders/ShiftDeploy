@@ -2,14 +2,14 @@ export const revalidate = 3600;
 import AdminPage from '../../../src/Pages/Services/AdminPage';
 import RelatedInsights from '../../../src/components/RelatedInsights';
 
-const title = 'Business Automation & AI Assistants';
+const title = 'AI Automation & AI Assistants for Your Business';
 const description =
-  'Get your evenings back. Automate invoices, payment chasers and admin with AI assistants, apps and website care.';
+  'Get your evenings back. Automate invoices, payment chasers and admin with AI automation, AI assistants, custom apps and website care.';
 
 export const metadata = {
   title,
   description,
-  keywords: ['business automation', 'automate admin', 'AI agent for small business', 'invoice automation', 'custom app development', 'website maintenance'],
+  keywords: ['AI automation', 'automate my business with AI', 'AI assistant for business owners', 'AI agent for business', 'business automation UK', 'invoice automation', 'automated invoices Xero', 'app for my business', 'website maintenance'],
   alternates: { canonical: 'https://shiftdeploy.com/services/shiftflow' },
   openGraph: {
     title: `${title} | ShiftDeploy`,

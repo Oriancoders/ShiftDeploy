@@ -4,8 +4,8 @@ import { ArrowRight, BellRing, MessageSquareReply, ReceiptPoundSterling } from '
 const jobs = [
   {
     icon: BellRing,
-    title: 'Appointment reminders',
-    body: 'Customers get a text before they’re due, so fewer people forget to turn up.',
+    title: 'Online booking and reminders',
+    body: 'Customers book online at any hour and get a text before they’re due, so fewer people forget to turn up.',
   },
   {
     icon: MessageSquareReply,
@@ -25,7 +25,7 @@ export default function AdminAutomation() {
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center mb-12 sm:mb-16">
           <p className="text-sm sm:text-base font-semibold text-orange-700 mb-4">
-            Business automation
+            AI &amp; business automation
           </p>
           <h2 className="text-3xl sm:text-5xl font-bold leading-[1.1] text-primaryBlue text-balance">
             Still doing admin at 9pm?

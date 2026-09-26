@@ -2,14 +2,14 @@ export const revalidate = 3600;
 import WinJobsPage from '../../../src/Pages/Services/WinJobsPage';
 import RelatedInsights from '../../../src/components/RelatedInsights';
 
-const title = 'Win More Jobs From Your Enquiries';
+const title = 'Win More Jobs: Quote Follow-Ups & Online Booking';
 const description =
   'Quotes going quiet or customers not turning up? Automatic follow-ups, reminders and online booking that win more jobs.';
 
 export const metadata = {
   title,
   description,
-  keywords: ['follow up quotes', 'reduce no-shows', 'appointment reminders', 'online booking system', 'convert more leads', 'website not getting enquiries'],
+  keywords: ['online booking system for small business UK', 'how to follow up on a quote', 'quote follow up email', 'reduce no-shows', 'appointment reminders', 'how to get more leads for my business', 'website not getting leads', 'conversion rate optimisation'],
   alternates: { canonical: 'https://shiftdeploy.com/services/shiftconvert' },
   openGraph: {
     title: `${title} | ShiftDeploy`,

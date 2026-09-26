@@ -39,6 +39,14 @@ const faqs = [
     a: 'Ask every patient at the right moment and make it quick. With Review Your Doctor, patients scan a code at reception and can leave a Google review in two taps.',
   },
   {
+    q: 'How do I get a QR code for Google reviews?',
+    a: 'Review Your Doctor gives you a branded poster with your own QR code for Google reviews. Put it at reception and patients scan it with their phone camera. There’s nothing to design or set up.',
+  },
+  {
+    q: 'Can it replace our paper patient feedback forms?',
+    a: 'Yes. Instead of a paper patient feedback form, patients rate their visit on their phone in seconds. You see every response in one dashboard, and low ratings alert you straight away.',
+  },
+  {
     q: 'Is it allowed to ask patients for reviews?',
     a: 'Yes. Google allows businesses to ask for reviews, as long as every customer gets the same chance to leave one. Review Your Doctor gives every patient the same choice.',
   },
