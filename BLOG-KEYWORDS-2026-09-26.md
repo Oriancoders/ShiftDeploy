@@ -186,3 +186,80 @@ After each one goes live: request indexing in Search Console, and share it on Li
 4. **One FAQ block** with 4–6 questions taken from Google Autocomplete for that keyword.
 5. **End with the free check**, linked to the matching service page above.
 6. **Industry posts** ("for dentists", "for plumbers") should use that industry’s words and examples, not generic ones.
+
+---
+
+## Publishing calendar (auto-scheduled)
+
+All 59 posts are in Sanity and publish themselves, one a day at 09:00 UK time, from 28 Sep to 25 Nov 2026.
+Nothing needs pressing. Each post has status `published` with a future date; the site hides it until then.
+
+- Check progress: `node scripts/blog/status.mjs`
+- Calendar in Sanity: document `content-calendar-2026`; each post also has a `contentPlan` field (order, date, keyword numbers, cluster)
+- In `/admin/insights` these show as **scheduled** (amber) until their day
+- Content lives in `scripts/blog/posts-*.mjs`; re-run `node scripts/blog/schedule.mjs --apply` after editing
+- To pause a post: open it in /admin/insights and set it back to draft
+
+| # | Date | Post | Focus keyword |
+|---|---|---|---|
+| 1 | 2026-09-28 | /insights/how-much-does-an-ai-receptionist-cost | how much does an AI receptionist cost |
+| 2 | 2026-09-29 | /insights/how-much-does-a-website-cost | how much does a website cost uk |
+| 3 | 2026-09-30 | /insights/ai-receptionist-for-dentists | ai receptionist for dentist uk |
+| 4 | 2026-10-01 | /insights/how-to-rank-higher-on-google-maps | how to rank higher on google maps |
+| 5 | 2026-10-02 | /insights/how-to-reduce-no-shows | how to reduce no shows and cancellations |
+| 6 | 2026-10-03 | /insights/virtual-receptionist-cost | how much does a virtual receptionist cost |
+| 7 | 2026-10-04 | /insights/marketing-for-dental-practice | marketing for dental practice |
+| 8 | 2026-10-05 | /insights/why-is-my-business-not-showing-on-google-maps | why is my business not showing on google maps |
+| 9 | 2026-10-06 | /insights/website-design-for-tradesmen | website design for tradesmen |
+| 10 | 2026-10-07 | /insights/ai-receptionist-for-tradesmen | ai receptionist for tradesmen |
+| 11 | 2026-10-08 | /insights/marketing-for-plumbers | marketing for plumbers |
+| 12 | 2026-10-09 | /insights/ai-receptionist-for-plumbers | ai receptionist for plumbers |
+| 13 | 2026-10-10 | /insights/marketing-for-aesthetic-clinic | marketing for aesthetic clinic |
+| 14 | 2026-10-11 | /insights/ai-receptionist-for-aesthetic-clinics | ai receptionist for aesthetic clinic |
+| 15 | 2026-10-12 | /insights/how-to-get-more-google-reviews | how to get more google reviews for my business |
+| 16 | 2026-10-13 | /insights/24-hour-answering-service | 24 hour call answering service uk |
+| 17 | 2026-10-14 | /insights/website-not-getting-leads | website not getting leads |
+| 18 | 2026-10-15 | /insights/ai-receptionist-for-clinics | ai receptionist for clinics |
+| 19 | 2026-10-16 | /insights/booking-system-for-dental-practice | booking system for dental practice |
+| 20 | 2026-10-17 | /insights/local-seo-cost | local seo cost per month |
+| 21 | 2026-10-18 | /insights/marketing-for-physiotherapy-clinic | marketing for physiotherapy clinic |
+| 22 | 2026-10-19 | /insights/ai-receptionist-for-physiotherapy | ai receptionist for physiotherapy |
+| 23 | 2026-10-20 | /insights/whatsapp-business-api-provider | whatsapp business api provider |
+| 24 | 2026-10-21 | /insights/ai-receptionist-for-salons | ai receptionist for hair salon |
+| 25 | 2026-10-22 | /insights/qr-code-for-google-reviews | qr code for google reviews |
+| 26 | 2026-10-23 | /insights/how-to-get-more-customers-for-my-business | how to get more customers for my business |
+| 27 | 2026-10-24 | /insights/ai-receptionist-for-electricians | ai receptionist for electricians |
+| 28 | 2026-10-25 | /insights/booking-system-for-physio | booking system for physio |
+| 29 | 2026-10-26 | /insights/how-to-get-my-business-on-google-maps | how to get my business on google maps |
+| 30 | 2026-10-27 | /insights/how-much-does-an-online-booking-system-cost | how much does an online booking system cost |
+| 31 | 2026-10-28 | /insights/google-reviews-for-dental-practices | google reviews for dental clinic |
+| 32 | 2026-10-29 | /insights/whatsapp-chatbot-for-business | whatsapp chatbot for business |
+| 33 | 2026-10-30 | /insights/how-to-get-more-work-as-an-electrician | how to get more work as an electrician |
+| 34 | 2026-10-31 | /insights/booking-system-for-salons | best booking system for salons |
+| 35 | 2026-11-01 | /insights/how-to-reduce-patient-no-shows | how to reduce patient no shows |
+| 36 | 2026-11-02 | /insights/local-seo-for-trades | local seo for trades |
+| 37 | 2026-11-03 | /insights/ai-receptionist-for-cleaning-business | ai receptionist for cleaning business |
+| 38 | 2026-11-04 | /insights/how-to-get-more-cleaning-customers | how to get more customers for cleaning business |
+| 39 | 2026-11-05 | /insights/average-cost-of-a-website | average cost of a website for small business |
+| 40 | 2026-11-06 | /insights/how-to-get-more-work-builders-roofers | how to get more work as a builder |
+| 41 | 2026-11-07 | /insights/whatsapp-for-clinics | whatsapp chatbot for healthcare |
+| 42 | 2026-11-08 | /insights/appointment-reminder-text-examples | appointment reminder text example |
+| 43 | 2026-11-09 | /insights/ai-receptionist-for-vets | ai receptionist for vets |
+| 44 | 2026-11-10 | /insights/how-to-get-more-patients-in-your-clinic | how to get more patients in your clinic |
+| 45 | 2026-11-11 | /insights/ai-receptionist-for-gyms | ai receptionist for gyms |
+| 46 | 2026-11-12 | /insights/how-to-get-more-gym-members | how to get more leads for my gym |
+| 47 | 2026-11-13 | /insights/ai-receptionist-for-restaurants | ai receptionist for restaurants |
+| 48 | 2026-11-14 | /insights/how-to-get-more-customers-for-my-restaurant | how to get more customers for my restaurant |
+| 49 | 2026-11-15 | /insights/ai-receptionist-for-accountants | ai receptionist for accountants |
+| 50 | 2026-11-16 | /insights/how-to-get-more-accounting-clients | how to get more accounting clients |
+| 51 | 2026-11-17 | /insights/how-to-get-more-clients-for-beauty-salon | how to get more clients for beauty salon |
+| 52 | 2026-11-18 | /insights/ai-receptionist-for-garages | ai receptionist for garages |
+| 53 | 2026-11-19 | /insights/ai-receptionist-for-estate-agents | ai receptionist for estate agents |
+| 54 | 2026-11-20 | /insights/booking-system-for-tradespeople | booking system for plumbers |
+| 55 | 2026-11-21 | /insights/how-to-get-chatgpt-to-recommend-my-business | how to get chatgpt to recommend my business |
+| 56 | 2026-11-22 | /insights/crm-for-tradesmen | crm for tradesman |
+| 57 | 2026-11-23 | /insights/ai-automation-for-dental-practices | ai automation for dental clinics |
+| 58 | 2026-11-24 | /insights/crm-for-beauty-salon | best crm for beauty salon |
+| 59 | 2026-11-25 | /insights/booking-system-for-aesthetics | best booking system for aesthetics uk |
+
+Keywords merged into a stronger single post (to avoid Google’s scaled-content problems): 53→93, 55→96, 56→94, 59/60→95, 68→92, 75→86, 76→81, 77→61, 78→57, 79→54, 80→62, 37→15, 39→16, 40→19.

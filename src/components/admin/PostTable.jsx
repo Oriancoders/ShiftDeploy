@@ -27,8 +27,22 @@ function formatDate(value) {
 const STATUSES = [
   { id: 'all', label: 'All' },
   { id: 'published', label: 'Published' },
+  { id: 'scheduled', label: 'Scheduled' },
   { id: 'draft', label: 'Draft' },
 ];
+
+// A published post with a future date is hidden from the public site until
+// that date, so it is shown here as scheduled.
+export function displayStatus(post, now = Date.now()) {
+  if (post.status !== 'published') return 'draft';
+  return Date.parse(post.publishedAt) > now ? 'scheduled' : 'published';
+}
+
+const STATUS_PILL = {
+  published: 'bg-blue-100 text-blue-700',
+  scheduled: 'bg-amber-100 text-amber-800',
+  draft: 'bg-gray-100 text-gray-600',
+};
 
 export default function PostTable({ posts }) {
   const [query, setQuery] = useState('');
@@ -41,8 +55,7 @@ export default function PostTable({ posts }) {
     const terms = q ? q.split(/\s+/) : [];
 
     return posts.filter((post) => {
-      const postStatus = post.status || 'draft';
-      if (status !== 'all' && postStatus !== status) return false;
+      if (status !== 'all' && displayStatus(post) !== status) return false;
 
       if (aiFilter !== 'all') {
         const ready = post.hasDirectAnswer && (post.faqCount ?? 0) >= 3;
@@ -56,6 +69,7 @@ export default function PostTable({ posts }) {
         post.slug,
         post.authorName,
         post.excerpt,
+        post.focusKeyword,
         ...(post.categories || []).map((c) => c.title),
       ]
         .filter(Boolean)
@@ -191,14 +205,8 @@ export default function PostTable({ posts }) {
                       {formatDate(post.publishedAt || post.updatedAt)}
                     </td>
                     <td className="px-4 py-3">
-                      <span
-                        className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-                          post.status === 'published'
-                            ? 'bg-blue-100 text-blue-700'
-                            : 'bg-gray-100 text-gray-600'
-                        }`}
-                      >
-                        {post.status || 'draft'}
+                      <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${STATUS_PILL[displayStatus(post)]}`}>
+                        {displayStatus(post)}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-right">

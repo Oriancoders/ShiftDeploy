@@ -18,7 +18,9 @@ export default async function AdminInsightsPage() {
   // that is far cheaper than a server round trip per keystroke, and it makes
   // the search feel instant.
   const posts = sanityWriteClient ? await sanityWriteClient.fetch(adminPostsQuery) : [];
-  const published = posts.filter((p) => p.status === 'published').length;
+  const now = Date.now();
+  const scheduled = posts.filter((p) => p.status === 'published' && Date.parse(p.publishedAt) > now).length;
+  const published = posts.filter((p) => p.status === 'published').length - scheduled;
 
   return (
     <AdminShell user={user}>
@@ -26,7 +28,7 @@ export default async function AdminInsightsPage() {
         <div className="flex-1">
           <h1 className="text-xl font-bold text-primaryBlue">Posts</h1>
           <p className="text-sm text-gray-500">
-            {posts.length} total · {published} published · {posts.length - published} draft
+            {posts.length} total · {published} published · {scheduled} scheduled · {posts.length - published - scheduled} draft
           </p>
         </div>
         <Link

@@ -16,7 +16,8 @@ export const adminPostsQuery = `*[_type == "post"] | order(coalesce(publishedAt,
   "authorName": author->name,
   categories[]->{ title, "slug": slug.current },
   "hasDirectAnswer": defined(directAnswer.answer),
-  "faqCount": count(faqSection.items)
+  "faqCount": count(faqSection.items),
+  "focusKeyword": seo.focusKeyword
 }`;
 
 /** Full document for the admin editor. */
