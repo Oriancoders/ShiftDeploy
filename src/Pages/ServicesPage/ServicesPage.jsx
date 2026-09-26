@@ -131,7 +131,7 @@ export default function ServicesPage() {
         <section className="bg-gray-50 pt-28 pb-14 sm:pt-36 sm:pb-20">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p className="text-sm sm:text-base font-semibold text-orange-700 mb-4">Our services</p>
-            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold leading-[1.1] text-primaryBlue text-balance">
+            <h1 className="text-[2rem] leading-[1.15] sm:text-5xl sm:leading-[1.1] xl:text-6xl font-bold text-primaryBlue text-balance">
               Tell us the problem.
               <span className="block text-primaryOrange">We’ll pick the right fix.</span>
             </h1>
@@ -144,7 +144,7 @@ export default function ServicesPage() {
                 <a
                   key={id}
                   href={`#${id}`}
-                  className="shrink-0 snap-start inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-primaryBlue hover:border-primaryOrange hover:text-primaryOrange"
+                  className="shrink-0 snap-start inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-primaryBlue hover:border-primaryOrange hover:text-primaryOrange"
                 >
                   {problem.replace(/[“”]/g, '')} <ArrowDown size={14} aria-hidden="true" />
                 </a>
@@ -161,13 +161,13 @@ export default function ServicesPage() {
                   <h2 className="text-3xl sm:text-4xl font-bold text-primaryBlue text-balance">{problem}</h2>
                   <p className="mt-3 text-lg sm:text-xl text-gray-700">{intro}</p>
                 </div>
-                <Link href={href} prefetch={false} className="shrink-0 inline-flex items-center gap-2 font-bold text-primaryBlue hover:text-primaryOrange">
+                <Link href={href} prefetch={false} className="shrink-0 min-h-[44px] inline-flex items-center gap-2 font-bold text-primaryBlue hover:text-primaryOrange">
                   See how we fix this <ArrowRight size={18} aria-hidden="true" />
                 </Link>
               </div>
-              <ul className="grid gap-6 md:grid-cols-3">
+              <ul className="-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:px-0 md:grid md:gap-6 md:overflow-visible md:pb-0 md:grid-cols-3">
                 {services.map(({ icon: Icon, name, label, body, gets, href: itemHref }) => (
-                  <li key={name}>
+                  <li key={name} className="snap-start shrink-0 w-[82%] md:w-auto">
                     <Link
                       href={itemHref || href}
                       prefetch={false}

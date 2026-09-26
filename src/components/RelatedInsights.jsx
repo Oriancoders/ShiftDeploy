@@ -64,7 +64,7 @@ export default async function RelatedInsights({
           </div>
           <Link
             href="/insights"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primaryBlue hover:text-primaryOrange"
+            className="min-h-[44px] inline-flex items-center gap-1.5 text-sm font-semibold text-primaryBlue hover:text-primaryOrange"
           >
             All insights <ArrowRight className="size-4" />
           </Link>

@@ -78,7 +78,7 @@ export default function ServiceDetail({
                 <span aria-hidden="true"> / </span>
                 <span className="font-semibold text-orange-700">{crumb}</span>
               </nav>
-              <h1 className="text-4xl sm:text-5xl xl:text-6xl font-bold leading-[1.1] text-primaryBlue text-balance">
+              <h1 className="text-[2rem] leading-[1.15] sm:text-5xl sm:leading-[1.1] xl:text-6xl font-bold text-primaryBlue text-balance">
                 {h1}
                 <span className="block text-primaryOrange">{h1Accent}</span>
               </h1>
@@ -114,9 +114,9 @@ export default function ServiceDetail({
                 ))}
               </ul>
             )}
-            <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0 sm:grid sm:gap-6 sm:overflow-visible sm:pb-0 sm:grid-cols-2 lg:grid-cols-4">
               {pains.items.map(({ title, body }) => (
-                <li key={title} className="rounded-2xl border border-gray-200 bg-gray-50 p-6">
+                <li key={title} className="snap-start shrink-0 w-[82%] sm:w-auto rounded-2xl border border-gray-200 bg-gray-50 p-6">
                   <h3 className="text-lg font-bold text-primaryBlue">{title}</h3>
                   <p className="mt-2 text-gray-700">{body}</p>
                 </li>
@@ -128,9 +128,9 @@ export default function ServiceDetail({
         <section className="bg-gray-50 py-14 sm:py-20">
           <div className={container}>
             <SectionHead eyebrow={gets.eyebrow || 'How we fix it'} title={gets.title} />
-            <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <ul className="-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0 sm:grid sm:gap-6 sm:overflow-visible sm:pb-0 sm:grid-cols-2 lg:grid-cols-3">
               {gets.items.map(({ icon: Icon, title, label, body, href, cta = 'Find out more' }) => (
-                <li key={title} className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 sm:p-8">
+                <li key={title} className="snap-start shrink-0 w-[82%] sm:w-auto flex flex-col rounded-2xl border border-gray-200 bg-white p-6 sm:p-8">
                   <span className="flex size-12 items-center justify-center rounded-full bg-orange-50">
                     <Icon className="size-6 text-primaryOrange" aria-hidden="true" />
                   </span>
@@ -138,7 +138,7 @@ export default function ServiceDetail({
                   {label && <p className="mt-1 text-sm font-semibold text-orange-700">{label}</p>}
                   <p className="mt-2 text-gray-700 sm:text-lg flex-1">{body}</p>
                   {href && (
-                    <Link href={href} prefetch={false} className="mt-4 inline-flex items-center gap-2 font-bold text-primaryBlue hover:text-primaryOrange">
+                    <Link href={href} prefetch={false} className="mt-2 min-h-[44px] inline-flex items-center gap-2 font-bold text-primaryBlue hover:text-primaryOrange">
                       {cta} <ArrowRight size={18} aria-hidden="true" />
                     </Link>
                   )}
@@ -152,13 +152,13 @@ export default function ServiceDetail({
           <section className="bg-white py-14 sm:py-20">
             <div className={container}>
               <SectionHead eyebrow="Who it’s for" title={audiences.title} />
-              <ul className="grid gap-6 md:grid-cols-3">
+              <ul className="-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0 sm:grid sm:gap-6 sm:overflow-visible sm:pb-0 md:grid-cols-3">
                 {audiences.items.map(({ title, body, href, cta }) => (
-                  <li key={title} className="rounded-2xl border border-gray-200 bg-gray-50 p-6 sm:p-8">
+                  <li key={title} className="snap-start shrink-0 w-[82%] sm:w-auto rounded-2xl border border-gray-200 bg-gray-50 p-6 sm:p-8">
                     <h3 className="text-xl font-bold text-primaryBlue">{title}</h3>
                     <p className="mt-2 text-gray-700 sm:text-lg">{body}</p>
                     {href && (
-                      <Link href={href} prefetch={false} className="mt-4 inline-flex items-center gap-2 font-bold text-primaryBlue hover:text-primaryOrange">
+                      <Link href={href} prefetch={false} className="mt-2 min-h-[44px] inline-flex items-center gap-2 font-bold text-primaryBlue hover:text-primaryOrange">
                         {cta} <ArrowRight size={18} aria-hidden="true" />
                       </Link>
                     )}
@@ -172,9 +172,9 @@ export default function ServiceDetail({
         <section className={`py-14 sm:py-20 ${audiences ? 'bg-gray-50' : 'bg-white'}`}>
           <div className={container}>
             <SectionHead eyebrow="How it works" title={steps.title} />
-            <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <ol className="-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0 sm:grid sm:gap-6 sm:overflow-visible sm:pb-0 sm:grid-cols-2 lg:grid-cols-4">
               {steps.items.map(({ title, body }, i) => (
-                <li key={title} className={`rounded-2xl border border-gray-200 p-6 sm:p-8 ${audiences ? 'bg-white' : 'bg-gray-50'}`}>
+                <li key={title} className={`snap-start shrink-0 w-[82%] sm:w-auto rounded-2xl border border-gray-200 p-6 sm:p-8 ${audiences ? 'bg-white' : 'bg-gray-50'}`}>
                   <span className="flex size-10 items-center justify-center rounded-full bg-primaryBlue text-white font-bold">{i + 1}</span>
                   <h3 className="mt-5 text-xl font-bold text-primaryBlue">{title}</h3>
                   <p className="mt-2 text-gray-700 sm:text-lg">{body}</p>
