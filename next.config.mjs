@@ -10,6 +10,8 @@ const nextConfig = {
   async redirects() {
     return [
       { source: '/insideShiftDeploy', destination: '/about', permanent: true },
+      { source: '/deploy-toolkit', destination: '/services', permanent: true },
+      { source: '/shift-protocol', destination: '/about', permanent: true },
     ];
   },
 };

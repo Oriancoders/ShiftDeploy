@@ -22,8 +22,8 @@ export default async function sitemap() {
   const staticRoutes = [
     '', '/services', '/services/shiftspeed', '/services/shiftconvert',
     '/services/shiftbuild', '/services/shiftflow', '/about',
-    '/product', '/review-your-doctor', '/service-growth-audit', '/shift-protocol',
-    '/deploy-toolkit', '/missions', '/insights', '/digital-receptionist', '/plumbers',
+    '/product', '/review-your-doctor', '/service-growth-audit',
+    '/missions', '/insights', '/digital-receptionist', '/plumbers',
     '/ContactUs', '/CaseStudies/SlackerIOT', '/CaseStudies/BullseyesCase',
     '/CaseStudies/K2TradersCase', '/privacy-policy', '/terms-of-services',
   ].map((path) => ({ url: `${BASE_URL}${path}` }));

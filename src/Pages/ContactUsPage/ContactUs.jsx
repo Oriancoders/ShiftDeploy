@@ -1,382 +1,216 @@
 'use client';
-import React, { useState, useRef, useEffect } from 'react';
-import { m as motion, useInView } from 'framer-motion';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
-import { fadeInUp, staggerContainer } from '../../utils/animations';
-import Footer from '../../components/Footer';
-import Navigation from '../../components/Navigation';
-import emailjs from "@emailjs/browser";
-import { trackGeneratedLead } from '../../lib/leadTracking';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { FaXTwitter } from 'react-icons/fa6';
-import { FaLinkedin, } from 'react-icons/fa';
-import { IoMail } from 'react-icons/io5';
+import { ArrowRight, Phone, Mail, Check } from 'lucide-react';
+import { FaLinkedin } from 'react-icons/fa';
+import Navigation from '../../components/Navigation';
+import Footer from '../../components/Footer';
+import JsonLd from '../../components/JsonLd';
+import { trackGeneratedLead } from '../../lib/leadTracking';
 
-const ContactUs = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const router = useRouter()
+const problems = ['Missing calls or messages', 'Not enough customers', 'Quotes or no-shows', 'Too much admin', 'Something else'];
 
-  // 🟢 Page load hone par scroll top
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+const nextSteps = [
+  { title: 'We reply within 24 hours', body: 'From a real person, during UK working hours.' },
+  { title: 'We do your free check', body: 'We look at where you’re losing customers. Nothing on your side changes.' },
+  { title: 'You get a plain-English plan', body: 'What to fix first, what it costs, and no obligation to go ahead.' },
+];
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: '',
-    phone: '',
-    budget: '',
-    timeline: ''
-  });
+const faqs = [
+  { q: 'Is the free check really free?', a: 'Yes. There’s no cost and no obligation. If we can’t help, we’ll tell you.' },
+  { q: 'What happens after I send this?', a: 'A person replies within 24 hours to arrange your free check, usually by email or a short call.' },
+  { q: 'Do I need to prepare anything?', a: 'No. Just tell us what’s going wrong. We don’t need access to anything for the free check.' },
+];
 
-  const [formStatus, setFormStatus] = useState(null); // 'success', 'error', or null
+const schema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact ShiftDeploy',
+    url: 'https://shiftdeploy.com/ContactUs',
+    mainEntity: { '@id': 'https://shiftdeploy.com/#organization' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(({ q, a }) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  },
+];
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+const inputBase = 'mt-2 w-full rounded-xl border px-4 py-3.5 text-lg focus:outline-none focus:ring-2';
+const inputOk = 'border-gray-300 focus:border-primaryOrange focus:ring-primaryOrange/30';
+const inputBad = 'border-red-500 focus:ring-red-200';
+
+export default function ContactUs() {
+  const router = useRouter();
+  const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', problem: '', message: '' });
+  const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState(null);
+
+  const update = (field) => (e) => {
+    setForm((f) => ({ ...f, [field]: e.target.value }));
+    setErrors((x) => ({ ...x, [field]: undefined }));
   };
-
-
-
-
-  const formRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormStatus("loading");
+    const found = {};
+    if (!form.name.trim()) found.name = 'Please tell us your name';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) found.email = 'Enter your email address, like you@yourbusiness.co.uk';
+    setErrors(found);
+    if (found.name) return document.getElementById('contact-name')?.focus();
+    if (found.email) return document.getElementById('contact-email')?.focus();
 
-    emailjs
-      .sendForm(
-        "service_jrpagw4",   // ⚡ Step 2 → Service ID
-        "template_scjrafd",  // ⚡ Step 2 → Template ID
-        formRef.current,     // ref to the <form>
-        "QvcGHkk74en4u55cN"    // ⚡ Step 2 → Public Key
-      )
-      .then(
-        () => {
-          trackGeneratedLead('contact');
-          setFormStatus("success");
-          setTimeout(() => {
-            router.push("/thankyou")
-          }, 1000)
-          setFormData({ name: "", email: "", company: "", message: "", phone: "", budget: "", timeline: "" });
-          setTimeout(() => setFormStatus(null), 15000);
-
-        },
-        (error) => {
-          console.error("EmailJS Error:", error);
-          setFormStatus("error");
-        }
-      );
+    setStatus('loading');
+    const message = [form.problem && `Biggest problem: ${form.problem}`, form.message.trim()].filter(Boolean).join('\n\n') || 'No details given.';
+    import('@emailjs/browser')
+      .then(({ default: emailjs }) => emailjs.send(
+        'service_jrpagw4',
+        'template_scjrafd',
+        { name: form.name.trim(), email: form.email.trim(), phone: form.phone.trim(), company: form.company.trim(), message },
+        'QvcGHkk74en4u55cN'
+      ))
+      .then(() => {
+        trackGeneratedLead('contact');
+        setStatus('success');
+        router.push('/thankyou');
+      })
+      .catch(() => setStatus('error'));
   };
 
-  const contactInfo = [
-    {
-      icon: <IoMail className="w-6 sm:w-7 h-6 sm:h-7" />,
-      label: 'Email',
-      value: 'hello@shiftdeploy.com',
-      href: 'mailto:hello@shiftdeploy.com',
-    },
-    {
-      icon: <FaLinkedin className="w-6 sm:w-7 h-6 sm:h-7" />,
-      label: 'LinkedIn',
-      value: 'www.linkedin.com/company/shiftdeploy',
-
-      href: 'https://www.linkedin.com/company/shiftdeploy',
-    },
-    {
-      icon: <FaXTwitter className="w-6 sm:w-7 h-6 sm:h-7" />,
-      label: 'Twitter',
-      value: 'x.com/ShiftDeploy',
-      href: 'https://x.com/ShiftDeploy',
-    }
-
-  ];
-
-
-
   return (
-    <>
+    <div className="w-full">
+      <JsonLd data={schema} />
       <Navigation />
-      {/* Primary content landmark: AI extractors use <main> to find the
-          article body rather than guessing from the DOM. */}
-      <main>
-      <section id="contact-us" className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-x-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-20 left-20 size-96 bg-blue-600 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 size-80 bg-indigo-600 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-400 rounded-full blur-3xl" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  py-20 lg:py-24">
-          {/* Header Section */}
-          <motion.div
-            ref={ref}
-            variants={staggerContainer}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            className="text-center mb-6 sm:mb-16 lg:mb-20"
-          >
-            <motion.h1
-              variants={fadeInUp}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primaryBlue mb-4 sm:mb-6 lg:mb-8"
-            >
-              Get a Free Performance Audit
-            </motion.h1>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl lg:max-w-3xl mx-auto leading-relaxed px-4 sm:px-0"
-            >
-              We’ll review your website’s speed, usability, and conversion friction and show how it affects real visitors.
-              No changes are made to your site during the audit.
-            </motion.p>
-
-          </motion.div>
-
-          {/* Main Content - Two Column Layout */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-20 max-w-full">
-            {/* Left Column - Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: -60 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -60 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="space-y-8 sm:space-y-10 lg:space-y-12 sm:order-1 order-2 min-w-0"
-            >
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-primaryBlue mb-6 sm:mb-8">
-                What you’ll get
-              </h2>
-
-              <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
-                A short, structured performance visibility report that shows how your website performs for real users today.
-                This is an informational health check only, no access required, no technical diagnosis, and no implementation guidance.
+      <main id="main-content">
+        <section className="bg-gray-50 pt-28 pb-14 sm:pt-36 sm:pb-20">
+          <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <p className="text-sm sm:text-base font-semibold text-orange-700 mb-4">Contact us</p>
+              <h1 className="text-[2rem] leading-[1.15] sm:text-5xl sm:leading-[1.1] font-bold text-primaryBlue text-balance">
+                Get your free check
+              </h1>
+              <p className="text-lg sm:text-xl mt-5 leading-relaxed text-gray-700">
+                Tell us what’s going wrong, like missed calls, a quiet website, quotes going unanswered
+                or too much admin. We’ll show you where you’re losing work and the simplest way to fix it.
               </p>
+            </div>
 
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 sm:p-6 space-y-3">
-                <p className="text-slate-900 font-semibold text-base sm:text-lg">Health check includes:</p>
-                <ul className="text-slate-600 text-sm sm:text-base leading-relaxed space-y-2 list-disc pl-5">
-                  <li>Load speed and responsiveness overview</li>
-                  <li>Core Web Vitals snapshot (LCP, INP, CLS)</li>
-                  <li>Visual stability during page load</li>
-                  <li>High-level indication of whether performance meets modern user expectations</li>
-                </ul>
-                <p className="text-slate-500 text-sm sm:text-base pt-2">
-                  Typical turnaround: <span className="text-slate-700 font-medium">24–48 hours</span>
-                </p>
-              </div>
-
-
-
-              <h2 className="text-2xl sm:text-3xl lg:text-3xl font-semibold text-primaryBlue mb-6 sm:mb-8 leading-10">
-                Contact Via Other Platforms
-              </h2>
-              {/* Contact Information */}
-              <div className="space-y-6 sm:space-y-8">
-                {contactInfo.map((info, index) => (
-                  <motion.div
-                    key={info?.id ?? info?.slug ?? info?.title ?? info?.name ?? index}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                    className="flex items-start gap-x-4 sm:gap-x-5"
-                  >
-                    <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-xl flex items-center justify-center flex-shrink-0 bg-primaryBlue text-white">
-                      {info.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-slate-900 font-semibold text-base sm:text-lg mb-1">
-                        {info.label}
-                      </h3>
-                      {info.href ? (
-                        <a
-                          href={info.href}
-                          target='_blank'
-                          className={`text-base sm:text-lg transition-colors duration-300 text-gray-600 hover:text-gray-800 break-all`}
-                        >
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p className="text-slate-600 text-base sm:text-lg">{info.value}</p>
-                      )}
-                      {info.subtitle && (
-                        <p className="text-slate-500 text-sm mt-1">{info.subtitle}</p>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-
-            </motion.div>
-
-            {/* Right Column - Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 60 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-8 lg:mt-0 sm:order-2 order-1 min-w-0"
-            >
-              <div className="w-full max-w-full bg-white rounded-2xl sm:shadow-xl border border-slate-200 p-4 sm:p-6 overflow-hidden">
-                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 ">
-                  {/* Name Field */}
+            <div className="mt-10 grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:gap-16 items-start">
+              <form onSubmit={handleSubmit} noValidate className="rounded-2xl bg-white border border-gray-200 shadow-xl p-6 sm:p-8">
+                <div className="grid gap-5 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="name" className="block text-slate-900 font-semibold text-base sm:text-lg mb-3">
-                      Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4  py-2  border border-slate-300 rounded-xl text-slate-900 placeholder-slate-500  focus:ring-2 focus:ring-primaryBlue transition-all duration-300 text-base sm:text-lg"
-                      placeholder="Your full name"
-                    />
+                    <label htmlFor="contact-name" className="font-semibold text-primaryBlue">Your name</label>
+                    <input id="contact-name" autoComplete="name" value={form.name} onChange={update('name')} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? 'contact-name-error' : undefined} className={`${inputBase} ${errors.name ? inputBad : inputOk}`} />
+                    {errors.name && <p id="contact-name-error" className="mt-2 text-sm font-semibold text-red-700">{errors.name}</p>}
                   </div>
+                  <div>
+                    <label htmlFor="contact-email" className="font-semibold text-primaryBlue">Email</label>
+                    <input id="contact-email" type="email" autoComplete="email" value={form.email} onChange={update('email')} placeholder="you@yourbusiness.co.uk" aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? 'contact-email-error' : undefined} className={`${inputBase} ${errors.email ? inputBad : inputOk}`} />
+                    {errors.email && <p id="contact-email-error" className="mt-2 text-sm font-semibold text-red-700">{errors.email}</p>}
+                  </div>
+                  <div>
+                    <label htmlFor="contact-phone" className="font-semibold text-primaryBlue">Phone <span className="font-normal text-gray-500">(optional)</span></label>
+                    <input id="contact-phone" type="tel" autoComplete="tel" value={form.phone} onChange={update('phone')} className={`${inputBase} ${inputOk}`} />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-company" className="font-semibold text-primaryBlue">Business or website <span className="font-normal text-gray-500">(optional)</span></label>
+                    <input id="contact-company" autoComplete="organization" value={form.company} onChange={update('company')} className={`${inputBase} ${inputOk}`} />
+                  </div>
+                </div>
 
-                  <div className='grid grid-cols-1 md:grid-cols-2 gap-6 '>
-                    {/* Email Field */}
-                    <div>
-                      <label htmlFor="email" className="block text-slate-900 font-semibold text-base sm:text-lg mb-3">
-                        Email *
+                <fieldset className="mt-6">
+                  <legend className="font-semibold text-primaryBlue">What’s the biggest problem? <span className="font-normal text-gray-500">(optional)</span></legend>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {problems.map((p) => (
+                      <label key={p} className={`cursor-pointer min-h-[44px] inline-flex items-center rounded-full border px-4 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-primaryOrange text-sm sm:text-base font-semibold transition-colors ${form.problem === p ? 'border-primaryOrange bg-orange-50 text-primaryBlue' : 'border-gray-300 text-gray-700 hover:border-primaryOrange'}`}>
+                        <input type="radio" name="problem" value={p} checked={form.problem === p} onChange={update('problem')} className="sr-only" />
+                        {p}
                       </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4  py-2 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-500 focus:ring-2 focus:ring-primaryBlue transition-all duration-300 text-base sm:text-lg"
-                        placeholder="your.email@company.com"
-                      />
-                    </div>
-
-                    {/* Phone Number Field */}
-                    <div>
-                      <label htmlFor="phone" className="block text-slate-900 font-semibold text-base sm:text-lg mb-3">
-                        Contact Number
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-slate-300 rounded-xl text-slate-900 
-               placeholder-slate-500 focus:ring-2 focus:ring-primaryBlue transition-all duration-300 text-base sm:text-lg"
-                        placeholder="Enter your phone number"
-                      />
-                    </div>
+                    ))}
                   </div>
+                </fieldset>
 
+                <label htmlFor="contact-message" className="mt-6 block font-semibold text-primaryBlue">Tell us a bit more <span className="font-normal text-gray-500">(optional)</span></label>
+                <textarea id="contact-message" rows={4} value={form.message} onChange={update('message')} placeholder="For example: we miss calls when we’re on jobs and lose work to other firms." className={`${inputBase} ${inputOk} resize-y`} />
 
-
-                  {/* Company Field */}
-                  <div>
-                    <label htmlFor="company" className="block text-slate-900 font-semibold text-base sm:text-lg mb-3">
-                      Website / Company
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      className="w-full px-4  py-2 border border-slate-300 rounded-xl text-slate-900 placeholder-slate-500 focus:ring-2 focus:ring-primaryBlue transition-all duration-300 text-base sm:text-lg"
-                      placeholder="Your website URL or company name"
-                    />
-                  </div>
-
-
-
-                  {/* Message Field */}
-                  <div>
-                    <label htmlFor="message" className="block text-slate-900 font-semibold text-base sm:text-lg mb-3">
-                      What should we audit first? *
-
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      rows={5}
-                      className="w-full px-4  py-2  border border-slate-300 rounded-xl text-slate-900 placeholder-slate-500 focus:ring-2 focus:ring-primaryBlue transition-all duration-300 resize-vertical text-base sm:text-lg"
-                      placeholder="tell us what matters (speed, bookings/leads, mobile UX, conversions)..."
-                    />
-                  </div>
-
-                  {/* Submit Button */}
-                  <motion.button
-                    type="submit"
-                    disabled={formStatus === 'loading'}
-
-                    className="w-full bg-primaryOrange hover:bg-toOrange text-white font-semibold py-4 sm:py-5 px-6 sm:px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-x-3 text-base sm:text-lg disabled:opacity-70 disabled:cursor-not-allowed"
-                  >
-                    {formStatus === 'loading' ? (
-                      <>
-                        <div className="size-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        <span>Sending...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-5 sm:w-6 h-5 sm:h-6" />
-                        <span>Get Free Audit</span>
-                        {/* // https://ui.aceternity.com/components/stateful-button - > to be added here  */}
-
-                      </>
-                    )}
-                  </motion.button>
-
-                  {/* Status Messages */}
-                  {formStatus === 'success' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex items-center gap-x-3 text-green-600 bg-green-50 p-4 rounded-xl border border-green-200"
-                    >
-                      <CheckCircle className="size-5 flex-shrink-0" />
-                      <span className="text-sm sm:text-base">Message sent successfully! We&apos;ll get back to you soon.</span>
-                    </motion.div>
+                <button type="submit" disabled={status === 'loading'} className="mt-6 w-full bg-primaryOrange hover:bg-toOrange disabled:bg-gray-500 text-white text-lg px-7 py-4 rounded-xl font-bold inline-flex items-center justify-center gap-2 shadow-lg">
+                  {status === 'loading' ? (
+                    <>Sending <span className="size-5 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden="true" /></>
+                  ) : (
+                    <>Get your free check <ArrowRight size={20} aria-hidden="true" /></>
                   )}
-
-                  {formStatus === 'error' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex items-center gap-x-3 text-red-600 bg-red-50 p-4 rounded-xl border border-red-200"
-                    >
-                      <AlertCircle className="size-5 flex-shrink-0" />
-                      <span className="text-sm sm:text-base">Something went wrong. Please try again.</span>
-                    </motion.div>
-                  )}
-
-                  {/* Reassurance Text */}
-                  <p className="text-slate-500 text-sm sm:text-base text-center">
-                    We usually respond within 24 hours.
+                </button>
+                <p className="mt-3 text-center text-sm text-gray-600">Free, no obligation. We reply within 24 hours.</p>
+                {status === 'error' && (
+                  <p role="status" className="mt-4 rounded-xl p-4 font-semibold bg-red-50 text-red-700 border border-red-200">
+                    Sorry, that didn’t send. Please try again, or call us on 07311 126710.
                   </p>
-                </form>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+                )}
+              </form>
 
+              <aside className="space-y-8">
+                <div>
+                  <h2 className="text-2xl font-bold text-primaryBlue">What happens next</h2>
+                  <ol className="mt-5 space-y-5">
+                    {nextSteps.map(({ title, body }, i) => (
+                      <li key={title} className="flex gap-4">
+                        <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primaryBlue text-white font-bold">{i + 1}</span>
+                        <div>
+                          <p className="font-bold text-primaryBlue text-lg">{title}</p>
+                          <p className="text-gray-700">{body}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+
+                <div className="rounded-2xl border border-gray-200 bg-white p-6">
+                  <h2 className="text-xl font-bold text-primaryBlue">Prefer to talk?</h2>
+                  <ul className="mt-4 space-y-2">
+                    <li>
+                      <a href="tel:+447311126710" className="min-h-[44px] inline-flex items-center gap-3 font-semibold text-primaryBlue hover:text-primaryOrange">
+                        <Phone className="size-5 text-primaryOrange" aria-hidden="true" /> 07311 126710
+                      </a>
+                    </li>
+                    <li>
+                      <a href="mailto:contact@shiftdeploy.com" className="min-h-[44px] inline-flex items-center gap-3 font-semibold text-primaryBlue hover:text-primaryOrange">
+                        <Mail className="size-5 text-primaryOrange" aria-hidden="true" /> contact@shiftdeploy.com
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.linkedin.com/company/shiftdeploy/" target="_blank" rel="noopener noreferrer" className="min-h-[44px] inline-flex items-center gap-3 font-semibold text-primaryBlue hover:text-primaryOrange">
+                        <FaLinkedin className="size-5 text-primaryOrange" aria-hidden="true" /> ShiftDeploy on LinkedIn
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <ul className="space-y-2 text-gray-700">
+                  {['Free, no obligation', 'Plain English, no jargon', 'Honest if we can’t help'].map((t) => (
+                    <li key={t} className="flex items-center gap-2"><Check className="size-5 text-green-700" aria-hidden="true" /> {t}</li>
+                  ))}
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-14 sm:py-20">
+          <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primaryBlue">Straight answers.</h2>
+            <dl className="mt-8 grid gap-6 md:grid-cols-3">
+              {faqs.map(({ q, a }) => (
+                <div key={q} className="rounded-2xl border border-gray-200 bg-gray-50 p-6">
+                  <dt><h3 className="text-lg font-bold text-primaryBlue">{q}</h3></dt>
+                  <dd className="mt-2 text-gray-700">{a}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
-};
-
-export default ContactUs;
-
+}
