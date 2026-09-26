@@ -6,7 +6,7 @@ import JsonLd from '../../src/components/JsonLd';
 export const metadata = {
   title: 'Blog: Tips to Get More Customers and Save Time',
   description:
-    'Practical, plain-English tips for service businesses on getting found, answering every enquiry, winning more jobs and cutting admin.',
+    'Plain-English tips for service businesses on getting found, answering every enquiry, winning jobs and cutting admin.',
   keywords: [
     'small business tips UK', 'how to get more customers', 'get more Google reviews',
     'missed calls small business', 'business automation tips', 'local SEO tips', 'ShiftDeploy blog',

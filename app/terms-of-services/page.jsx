@@ -5,6 +5,7 @@ export const metadata = {
   title: 'Terms of Service',
   description:
     'Read ShiftDeploy\'s terms of service to understand the rules and guidelines governing use of our services.',
+  openGraph: { url: 'https://shiftdeploy.com/terms-of-services', title: 'Terms of Service | ShiftDeploy', images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'ShiftDeploy' }] },
   alternates: { canonical: 'https://shiftdeploy.com/terms-of-services' },
   robots: { index: true, follow: false },
 };

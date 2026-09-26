@@ -5,7 +5,7 @@ import JsonLd from '../../src/components/JsonLd';
 export const metadata = {
   title: 'Websites & Local SEO for UK Plumbers',
   description:
-    'Get found on Google when local customers search for a plumber. Websites, local SEO and AI visibility built for UK plumbers. Request a free audit and tailored quote.',
+    'Get found on Google when local customers search for a plumber. Websites, local SEO and AI visibility for UK plumbers.',
   keywords: [
     'plumber website design',
     'plumber SEO UK',

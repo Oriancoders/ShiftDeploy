@@ -3,7 +3,7 @@ import ServicesPage from '../../src/Pages/ServicesPage/ServicesPage';
 
 const title = 'How We Help Service Businesses Win More Work';
 const description =
-  'Not found on Google, missing calls, quotes going quiet or buried in admin? Find your problem and the fix: AI receptionist, automation, apps or websites.';
+  'Not found on Google, missing calls or buried in admin? Find your problem and the fix: AI, automation, apps or websites.';
 
 export const metadata = {
   title,

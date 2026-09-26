@@ -4,6 +4,7 @@ import CaseStudyDetail from '../../components/CaseStudyDetail';
 export default function K2TradersPage() {
   return (
     <CaseStudyDetail
+      published="2025-09-09"
       slug="K2TradersCase"
       client="K2 Traders"
       service="E-commerce website"

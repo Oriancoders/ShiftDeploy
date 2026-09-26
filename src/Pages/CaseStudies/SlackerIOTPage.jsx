@@ -4,6 +4,7 @@ import CaseStudyDetail from '../../components/CaseStudyDetail';
 export default function SlackerIOTPage() {
   return (
     <CaseStudyDetail
+      published="2025-09-10"
       slug="SlackerIOT"
       client="Slacker IoT"
       service="Web app development"

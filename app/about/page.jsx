@@ -3,7 +3,7 @@ import AboutPage from '../../src/Pages/About/AboutPage';
 
 const title = 'About Us';
 const description =
-  'A small remote team helping UK service businesses stop losing work, with AI receptionists, automation, apps and websites. Plain English, UK hours.';
+  'A small remote team helping UK service businesses stop losing work with AI receptionists, automation, apps and websites.';
 
 export const metadata = {
   title,

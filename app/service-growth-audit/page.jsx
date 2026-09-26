@@ -6,7 +6,7 @@ import JsonLd from '../../src/components/JsonLd';
 export const metadata = {
   title: 'Free Growth Audit: Find Your Lost Enquiries',
   description:
-    'A free growth audit for service businesses. We check your website, ads and enquiry forms and show you where interested customers give up.',
+    'A free growth audit for service businesses. We show you where interested customers give up on your website.',
   keywords: [
     'service growth audit',
     'free website audit',

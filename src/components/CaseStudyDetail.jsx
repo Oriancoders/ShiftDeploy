@@ -22,7 +22,7 @@ function SectionHead({ eyebrow, title, text }) {
 // Shared layout for case studies: problem, what we built, timeline, challenges, results.
 export default function CaseStudyDetail({
   slug, client, service, h1, h1Accent, intro, facts, image, imageAlt, problem, built, phases,
-  challenges, results, quote, cta, related,
+  challenges, results, quote, cta, related, published, updated = '2026-09-26',
 }) {
   const url = `https://shiftdeploy.com/CaseStudies/${slug}`;
   const schema = [
@@ -33,6 +33,8 @@ export default function CaseStudyDetail({
       description: intro,
       url,
       image,
+      datePublished: published,
+      dateModified: updated,
       about: { '@type': 'Organization', name: client },
       author: { '@id': 'https://shiftdeploy.com/#organization' },
       publisher: { '@id': 'https://shiftdeploy.com/#organization' },

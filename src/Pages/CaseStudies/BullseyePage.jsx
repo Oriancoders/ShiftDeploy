@@ -4,6 +4,7 @@ import CaseStudyDetail from '../../components/CaseStudyDetail';
 export default function BullseyePage() {
   return (
     <CaseStudyDetail
+      published="2025-09-09"
       slug="BullseyesCase"
       client="Bullseye Investments"
       service="Website design"

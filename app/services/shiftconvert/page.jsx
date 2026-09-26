@@ -4,7 +4,7 @@ import RelatedInsights from '../../../src/components/RelatedInsights';
 
 const title = 'Win More Jobs From Your Enquiries';
 const description =
-  'Quotes going quiet and customers not turning up? Automatic quote follow-ups, appointment reminders and online booking that turn enquiries into jobs.';
+  'Quotes going quiet or customers not turning up? Automatic follow-ups, reminders and online booking that win more jobs.';
 
 export const metadata = {
   title,

@@ -5,7 +5,7 @@ import { Bot, Play, ArrowLeft, MessageCircleMore, CalendarClock, CheckCircle2, U
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
-const defaultVideo = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
+const defaultVideo = 'https://res.cloudinary.com/dbazbq7u9/video/upload/v1774790198/Digital_Receptionist_Demo_by_ShiftDeploy_ytazqe.mp4';
 
 const bookingSteps = [
   {
@@ -30,7 +30,7 @@ const bookingSteps = [
     key: 'phone',
     label: 'Phone Number',
     type: 'tel',
-    placeholder: '+1 555 123 4567',
+    placeholder: '07700 900123',
     question: 'What is the best phone number for quick follow-up?',
     validate: (value) => value.replace(/\D/g, '').length >= 7,
     error: 'Please enter a valid phone number.',
@@ -236,6 +236,7 @@ export default function AiChatbotDemo() {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyDown={handleInputKeyDown}
                   placeholder={isCompleted ? 'Demo completed. Click restart.' : currentStep.placeholder}
+                  aria-label={isCompleted ? 'Demo completed' : 'Your reply to the receptionist'}
                   disabled={isCompleted}
                   className="flex-1 rounded-xl border border-gray-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primaryOrange/40 disabled:bg-gray-100 disabled:text-gray-400"
                 />
@@ -288,15 +289,19 @@ export default function AiChatbotDemo() {
             <h2 className="text-2xl md:text-3xl font-semibold text-[#0c1f3a]">See Video Demo</h2>
           </div>
           <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
-            <iframe
-              src={videoUrl}
-              title="Digital Receptionist Video Demo"
-              className="w-full aspect-video"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            />
+            {/\.(mp4|webm)(\?|$)/i.test(videoUrl) ? (
+              <video src={videoUrl} controls preload="metadata" playsInline className="w-full aspect-video bg-black" aria-label="Digital Receptionist video demo" />
+            ) : (
+              <iframe
+                src={videoUrl}
+                title="Digital Receptionist Video Demo"
+                className="w-full aspect-video"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            )}
           </div>
         </div>
       </section>

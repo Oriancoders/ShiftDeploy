@@ -3,7 +3,7 @@ import OurWorkPage from '../../src/Pages/MissionCompleted/OurWorkPage';
 
 const title = 'Our Work: Client Projects & Case Studies';
 const description =
-  'Websites and web apps we’ve designed and built for real businesses, from an online shop to an EV charging platform. Read what we did and what changed.';
+  'Websites and web apps we’ve built for real businesses, from an online shop to an EV charging platform.';
 
 export const metadata = {
   title,

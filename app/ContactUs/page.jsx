@@ -3,7 +3,7 @@ import ContactUs from '../../src/Pages/ContactUsPage/ContactUs';
 
 const title = 'Contact Us: Get Your Free Check';
 const description =
-  'Tell us what’s going wrong, like missed calls, a quiet website or too much admin. A person replies within 24 hours. Free, no obligation. 07311 126710.';
+  'Tell us what’s going wrong, like missed calls or too much admin. A person replies within 24 hours. Free, no obligation.';
 
 export const metadata = {
   title,

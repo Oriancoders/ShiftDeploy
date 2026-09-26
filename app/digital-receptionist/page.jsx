@@ -3,7 +3,7 @@ import ReceptionistPage from '../../src/Pages/ReceptionistPage';
 
 const title = 'AI Receptionist for Calls, Chat & WhatsApp';
 const description =
-  'An AI receptionist that answers your phone, website chat and WhatsApp 24/7, books appointments and texts you every enquiry. Keep your number. Free demo.';
+  'An AI receptionist that answers your phone, website chat and WhatsApp 24/7 and books appointments. Keep your number.';
 
 export const metadata = {
   title,

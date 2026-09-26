@@ -12,6 +12,10 @@ const nextConfig = {
       { source: '/insideShiftDeploy', destination: '/about', permanent: true },
       { source: '/deploy-toolkit', destination: '/services', permanent: true },
       { source: '/shift-protocol', destination: '/about', permanent: true },
+      { source: '/contactUs', destination: '/ContactUs', permanent: true },
+      { source: '/contactus', destination: '/ContactUs', permanent: true },
+      { source: '/contact', destination: '/ContactUs', permanent: true },
+      { source: '/contact-us', destination: '/ContactUs', permanent: true },
     ];
   },
 };

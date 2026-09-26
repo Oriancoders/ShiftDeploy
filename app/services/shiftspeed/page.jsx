@@ -4,7 +4,7 @@ import RelatedInsights from '../../../src/components/RelatedInsights';
 
 const title = 'Never Miss a Call or Enquiry: AI Receptionist';
 const description =
-  'Stop losing customers to missed calls. AI receptionist, missed call text back, instant WhatsApp replies and 24/7 booking, so every enquiry is answered.';
+  'Stop losing customers to missed calls: AI receptionist, missed call text back, WhatsApp replies and 24/7 booking.';
 
 export const metadata = {
   title,

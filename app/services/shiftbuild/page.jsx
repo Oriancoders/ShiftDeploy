@@ -4,7 +4,7 @@ import RelatedInsights from '../../../src/components/RelatedInsights';
 
 const title = 'Get More Local Customers From Google';
 const description =
-  'More customers finding you first. Google Maps, local SEO, more Google reviews and a website that brings in calls, for local service businesses.';
+  'More local customers finding you first: Google Maps, local SEO, more Google reviews and a website that brings calls.';
 
 export const metadata = {
   title,

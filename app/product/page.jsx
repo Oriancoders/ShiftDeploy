@@ -1,9 +1,9 @@
 export const revalidate = 3600;
 import ProductsPage from '../../src/Pages/ProductsPage';
 
-const title = 'Our Products: AI Receptionist & Review Software';
+const title = 'Products: AI Receptionist & Review Software';
 const description =
-  'Ready-made tools that work while you don’t: an AI receptionist that answers every call, and Google review software for UK private clinics.';
+  'An AI receptionist that answers every call, and Google review software for UK private clinics. Ready to use.';
 
 export const metadata = {
   title,

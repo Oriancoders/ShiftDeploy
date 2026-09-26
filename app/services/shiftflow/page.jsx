@@ -4,7 +4,7 @@ import RelatedInsights from '../../../src/components/RelatedInsights';
 
 const title = 'Business Automation & AI Assistants';
 const description =
-  'Get your evenings back. Automate invoices, payment chasers and repetitive admin with AI assistants, custom apps and website maintenance.';
+  'Get your evenings back. Automate invoices, payment chasers and admin with AI assistants, apps and website care.';
 
 export const metadata = {
   title,

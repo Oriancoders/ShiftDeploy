@@ -5,12 +5,12 @@ export const revalidate = 3600;
 import BullsEyesCase from '../../../src/Pages/CaseStudies/BullseyePage';
 
 export const metadata = {
-  title: 'Bullseye Investments Case Study: Website Redesign',
+  title: 'Bullseye Investments: Website Redesign Case Study',
   description:
     'How we redesigned Bullseye Investments’ website so visitors understand the offer quickly and reach the client portal easily.',
   alternates: { canonical: 'https://shiftdeploy.com/CaseStudies/BullseyesCase' },
   openGraph: {
-    title: 'Bullseye Investments Case Study: Website Redesign | ShiftDeploy',
+    title: 'Bullseye Investments: Website Redesign Case Study | ShiftDeploy',
     description:
       'How we redesigned Bullseye Investments’ website so visitors understand the offer quickly and reach the client portal easily.',
     url: 'https://shiftdeploy.com/CaseStudies/BullseyesCase',

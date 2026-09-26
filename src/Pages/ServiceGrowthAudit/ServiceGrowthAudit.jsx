@@ -335,6 +335,7 @@ const RangeInput = ({ label, value, min, max, step = 1, suffix = '', prefix = ''
       </div>
       <input
         type="range"
+        aria-label={label}
         min={min}
         max={max}
         step={step}
@@ -690,6 +691,8 @@ export default function ServiceGrowthAudit() {
                       <div>
                         <input
                           name="name"
+                          aria-label="Full name"
+                          autoComplete="name"
                           value={auditForm.name}
                           onChange={handleFormChange}
                           aria-invalid={Boolean(formErrors.name)}
@@ -701,6 +704,8 @@ export default function ServiceGrowthAudit() {
                       <div>
                         <input
                           name="email"
+                          aria-label="Email"
+                          autoComplete="email"
                           type="email"
                           value={auditForm.email}
                           onChange={handleFormChange}
@@ -718,6 +723,7 @@ export default function ServiceGrowthAudit() {
                         }`}>
                           <select
                             name="country_code"
+                            aria-label="Country code"
                             value={auditForm.country_code}
                             onChange={handleFormChange}
                             aria-label="Country code"
@@ -731,6 +737,8 @@ export default function ServiceGrowthAudit() {
                           </select>
                           <input
                             name="phone"
+                            aria-label="Phone number"
+                            autoComplete="tel"
                             value={auditForm.phone}
                             onChange={handleFormChange}
                             aria-invalid={Boolean(formErrors.phone)}
@@ -743,6 +751,7 @@ export default function ServiceGrowthAudit() {
                       <div>
                         <input
                           name="website"
+                          aria-label="Website"
                           value={auditForm.website}
                           onChange={handleFormChange}
                           aria-invalid={Boolean(formErrors.website)}
@@ -755,6 +764,7 @@ export default function ServiceGrowthAudit() {
                     <div>
                       <select
                         name="service_type"
+                        aria-label="Service business type"
                         value={auditForm.service_type}
                         onChange={handleFormChange}
                         aria-invalid={Boolean(formErrors.service_type)}
@@ -771,6 +781,7 @@ export default function ServiceGrowthAudit() {
                     </div>
                     <textarea
                       name="message"
+                      aria-label="Where do you think enquiries are being lost?"
                       rows={3}
                       value={auditForm.message}
                       onChange={handleFormChange}

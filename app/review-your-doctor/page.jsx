@@ -4,7 +4,7 @@ import ReviewYourDoctorLanding from '../../src/Pages/ReviewYourDoctorLanding';
 export const metadata = {
   title: 'Get More Google Reviews for Your Clinic',
   description:
-    'Review Your Doctor helps UK private clinics get more 5-star Google reviews and hear about problems privately first. Free for 30 days, then from £49 a month.',
+    'Get more 5-star Google reviews for your clinic and hear about problems privately first. Free for 30 days.',
   keywords: [
     'patient feedback software', 'dental clinic Google reviews', 'QR review system',
     'healthcare reputation management', 'GDPR patient feedback', 'clinic review platform',

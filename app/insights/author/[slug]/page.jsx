@@ -52,7 +52,7 @@ export async function generateMetadata({ params }) {
     `${author.name}${author.jobTitle ? `, ${author.jobTitle}` : ''} at ShiftDeploy.`;
 
   return {
-    title: `${author.name} | ShiftDeploy Insights`,
+    title: `${author.name}, ShiftDeploy blog author`,
     description: description.slice(0, 160),
     robots: author.posts?.length ? undefined : { index: false, follow: true },
     alternates: { canonical: `${SITE}/insights/author/${slug}` },
