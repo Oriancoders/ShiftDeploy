@@ -2,7 +2,7 @@
 // of the case study copy in the server HTML - invisible to crawlers and AI
 // engines. Static with hourly revalidation renders the whole page.
 export const revalidate = 3600;
-import K2TradersCase from '../../../src/Pages/CaseStudies/K2Traders';
+import K2TradersCase from '../../../src/Pages/CaseStudies/K2TradersPage';
 
 export const metadata = {
   title: 'K2 Traders Case Study: Online Shop',

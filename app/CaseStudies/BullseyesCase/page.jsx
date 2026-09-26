@@ -2,7 +2,7 @@
 // of the case study copy in the server HTML - invisible to crawlers and AI
 // engines. Static with hourly revalidation renders the whole page.
 export const revalidate = 3600;
-import BullsEyesCase from '../../../src/Pages/CaseStudies/BullsEyesCase';
+import BullsEyesCase from '../../../src/Pages/CaseStudies/BullseyePage';
 
 export const metadata = {
   title: 'Bullseye Investments Case Study: Website Redesign',
