@@ -1,9 +1,4 @@
-'use client';
-import React, { useRef } from 'react';
-import Link from 'next/link';
-import { m as motion, useInView } from 'framer-motion';
 import { Star, QrCode, ShieldCheck, BellRing, ArrowUpRight } from 'lucide-react';
-import { fadeInUp, fadeInRight, staggerContainer } from '../../../utils/animations';
 
 const LIVE_URL = 'https://reviewyourdoctor.shiftdeploy.com';
 
@@ -35,14 +30,13 @@ const benefits = [
 ];
 
 // A self-contained, animated "phone" mock of the patient flow (no external asset).
-function FlowMock({ inView }) {
+function FlowMock() {
   return (
-    <motion.div
-      variants={fadeInRight}
+    <div
+
       className="relative mx-auto w-full max-w-sm"
     >
       {/* glow */}
-      <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-gradient-to-tr from-emerald-400/20 via-green-500/10 to-transparent blur-2xl" />
 
       <div className="relative rounded-[2rem] border border-gray-100 bg-white p-6 shadow-2xl shadow-emerald-900/10">
         {/* clinic header */}
@@ -51,7 +45,7 @@ function FlowMock({ inView }) {
             <img
               src="/products/review-your-doctor/icon.png"
               alt=""
-              className="size-6 object-contain"
+              className="size-6 object-contain" width="24" height="24" loading="lazy"
             />
           </div>
           <div>
@@ -63,37 +57,37 @@ function FlowMock({ inView }) {
         {/* animated stars */}
         <div className="mb-5 flex justify-center gap-1.5">
           {[0, 1, 2, 3, 4].map((i) => (
-            <motion.span
+            <span
               key={i}
-              initial={{ scale: 0, rotate: -30, opacity: 0 }}
-              animate={inView ? { scale: 1, rotate: 0, opacity: 1 } : {}}
-              transition={{ delay: 0.5 + i * 0.12, type: 'spring', stiffness: 260, damping: 14 }}
+
+
+
             >
               <Star className="size-8 fill-amber-400 text-amber-400 drop-shadow-sm" />
-            </motion.span>
+            </span>
           ))}
         </div>
 
         {/* split into two compliant choices */}
         <div className="grid grid-cols-2 gap-3">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 1.35 }}
+          <div
+
+
+
             className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-center"
           >
             <p className="text-[13px] font-bold text-emerald-700">Leave a Google review</p>
             <p className="mt-0.5 text-[11px] text-emerald-600/80">Public, in two taps</p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 1.5 }}
+          </div>
+          <div
+
+
+
             className="rounded-xl border border-gray-200 bg-gray-50 p-3 text-center"
           >
             <p className="text-[13px] font-bold text-primaryBlue">Share privately</p>
             <p className="mt-0.5 text-[11px] text-gray-500">Manager alerted</p>
-          </motion.div>
+          </div>
         </div>
 
         {/* QR + alert chips */}
@@ -110,66 +104,65 @@ function FlowMock({ inView }) {
       </div>
 
       {/* floating compliance badge */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ delay: 1.7, type: 'spring' }}
-        className="absolute -right-3 -top-3 flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-bold text-emerald-600 shadow-lg ring-1 ring-emerald-100"
+      <div
+
+
+
+        className="absolute right-0 -top-3 flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-bold text-emerald-600 shadow-lg ring-1 ring-emerald-100"
       >
         <ShieldCheck className="size-4" />
         UK GDPR ready
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }
 
 const ReviewYourDoctor = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+
 
   return (
-    <section className="w-full overflow-hidden bg-white py-20 sm:py-24">
+    <section className="w-full overflow-hidden bg-white py-10 sm:py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          variants={staggerContainer}
-          initial="initial"
-          animate={isInView ? 'animate' : 'initial'}
-          className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16"
+        <div
+
+
+
+
+          className="grid grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16"
         >
           {/* LEFT: copy + value */}
           <div>
-            <motion.span
-              variants={fadeInUp}
+            <span
+
               className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1.5 text-sm font-semibold text-emerald-700 ring-1 ring-emerald-100"
             >
               <img
                 src="/products/review-your-doctor/icon.png"
                 alt="Review Your Doctor logo"
-                className="size-5 object-contain"
+                className="size-5 object-contain" width="20" height="20" loading="lazy"
               />
               SaaS product for healthcare
-            </motion.span>
+            </span>
 
-            <motion.h2
-              variants={fadeInUp}
+            <h2
+
               className="mt-5 text-3xl font-bold leading-tight text-primaryBlue sm:text-5xl"
             >
               Review Your Doctor
               <br />
               <span className="text-primaryOrange">turn happy patients into 5-star reviews</span>
-            </motion.h2>
+            </h2>
 
-            <motion.p
-              variants={fadeInUp}
+            <p
+
               className="mt-5 max-w-xl text-lg leading-relaxed text-gray-600"
             >
               A QR-powered patient feedback platform for UK private clinics. Patients scan,
               rate, and are guided, compliantly, to a public Google review or private feedback,
               so reputations grow and problems get fixed before they go public.
-            </motion.p>
+            </p>
 
-            <motion.div variants={fadeInUp} className="mt-8 grid gap-5 sm:grid-cols-2">
+            <div className="mt-8 grid gap-5 sm:grid-cols-2">
               {benefits.map((b) => (
                 <div key={b.title} className="flex gap-3">
                   <span className="mt-1 flex size-5 flex-shrink-0 items-center justify-center rounded-full bg-emerald-500 text-xs font-bold text-white">
@@ -181,9 +174,9 @@ const ReviewYourDoctor = () => {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </div>
 
-            <motion.div variants={fadeInUp} className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
                 href={`${LIVE_URL}/signup`}
                 target="_blank"
@@ -201,16 +194,16 @@ const ReviewYourDoctor = () => {
                 Visit the live site
                 <ArrowUpRight className="size-5" />
               </a>
-            </motion.div>
+            </div>
 
-            <motion.p variants={fadeInUp} className="mt-4 text-sm text-gray-500">
+            <p className="mt-4 text-sm text-gray-500">
               Free 30-day trial, then plans from £49/month. No card required to start.
-            </motion.p>
+            </p>
           </div>
 
           {/* RIGHT: animated flow mock */}
-          <FlowMock inView={isInView} />
-        </motion.div>
+          <FlowMock />
+        </div>
       </div>
     </section>
   );

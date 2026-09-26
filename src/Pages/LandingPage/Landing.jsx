@@ -1,57 +1,31 @@
-'use client';
-import React, { lazy, Suspense, useEffect } from 'react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
-// TrustStrip will be lazy-loaded below to keep initial bundle small
-
-// ✅ FIX 1: Import Hero DIRECTLY. No lazy loading for what the user sees first.
 import Hero from './landingComps/Hero';
+import DigitalReceptionist from './landingComps/DigitalReceptionist';
+import ReviewYourDoctor from './landingComps/ReviewYourDoctor';
+import InsideShiftDeploy from './landingComps/InsideShiftDeploy';
+import DeployToolkit from './landingComps/DeployToolkit';
+import ShiftProtocol from './landingComps/ShiftProtocol';
+import MissionsCompleted from './landingComps/MissionsCompleted';
+import VideoTestimonial from './landingComps/VideoTestimonial';
+import TrustStrip from '../../components/TrustStrip';
 
-// Everything below the fold is lazy - only Hero renders on first paint
-const DigitalReceptionist = lazy(() => import('./landingComps/DigitalReceptionist'));
-const ReviewYourDoctor = lazy(() => import('./landingComps/ReviewYourDoctor'));
-const InsideShiftDeploy = lazy(() => import('./landingComps/InsideShiftDeploy'));
-const DeployToolkit = lazy(() => import('./landingComps/DeployToolkit'));
-const ShiftProtocol = lazy(() => import('./landingComps/ShiftProtocol'));
-const MissionsCompleted = lazy(() => import('./landingComps/MissionsCompleted'));
-const VideoTestimonial = lazy(() => import('./landingComps/VideoTestimonial'));
-const TrustStrip = lazy(() => import('../../components/TrustStrip'));
-
-const Landing = () => {
-
-  // ✅ FIX 2: Remove the "isLoading" state blocker. 
-  // Just scroll to top as a side effect. It happens so fast user won't notice.
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' }); // Use 'instant' for initial load, 'smooth' feels laggy on mount
-  }, []);
-
+export default function Landing() {
   return (
-    <>
-      
-
-      <div className="w-full">
-        <Navigation />
-        
-        {/* ✅ FIX 3: Hero renders IMMEDIATELY. No Suspense fallback blocking it. */}
+    <div className="w-full">
+      <Navigation />
+      <main>
         <Hero />
-        
-        {/* ✅ FIX 4: Only wrap the heavy, lower-down stuff in Suspense */}
-        <Suspense fallback={<div className="min-h-48" aria-hidden="true" />}>
-          <DigitalReceptionist />
-          <ReviewYourDoctor />
-          <InsideShiftDeploy />
-          <VideoTestimonial videoSrc='https://res.cloudinary.com/dbazbq7u9/video/upload/v1771101197/Web_Video_1_handbraked_xii5jz.mp4'  posterSrc='https://res.cloudinary.com/dbazbq7u9/image/upload/v1771111040/poster_drnahj.webp'/>
-          <DeployToolkit />
-          <TrustStrip/>
-
-          <ShiftProtocol />
-          <MissionsCompleted />
-        </Suspense>
-        
-        <Footer />
-      </div>
-    </>
+        <DigitalReceptionist />
+        <ReviewYourDoctor />
+        <InsideShiftDeploy />
+        <VideoTestimonial />
+        <DeployToolkit />
+        <TrustStrip />
+        <ShiftProtocol />
+        <MissionsCompleted />
+      </main>
+      <Footer />
+    </div>
   );
-};
-
-export default Landing;
+}

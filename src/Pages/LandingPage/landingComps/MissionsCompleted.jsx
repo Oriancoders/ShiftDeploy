@@ -1,19 +1,8 @@
-'use client';
-import React, { useContext, useRef, useState, useEffect } from "react";
-import { m as motion, useInView } from 'framer-motion';
+import CloudinaryImage from '../../../components/CloudinaryImage';
 import { ExternalLink, Star, Calendar, Users, TrendingUp } from "lucide-react";
-import { fadeInUp, staggerContainer } from "../../../utils/animations";
-import { ContextAPI } from "../../../GlobalProvider/ContextAPI";
 import Link from "next/link";
 
 const MissionsCompleted = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const { scrwidth } = useContext(ContextAPI);
-
-  // Animated stats state
-  const [animatedNumbers, setAnimatedNumbers] = useState({});
-
   // Helper: split number + suffix (supports "10+", "4.9/5", "200%")
   const splitValue = (value) => {
     const match = value.match(/(\d+\.?\d*)(.*)/);
@@ -30,35 +19,6 @@ const MissionsCompleted = () => {
     { icon: Star, value: "4.9", suffix: "/5", label: "Client Satisfaction" },
   ];
 
-
-  const animateNumber = (index, targetValue) => {
-    let currentValue = 0;
-    const increment = targetValue / 50;
-    const timer = setInterval(() => {
-      currentValue += increment;
-      if (currentValue >= targetValue) {
-        currentValue = targetValue;
-        clearInterval(timer);
-      }
-      setAnimatedNumbers((prev) => ({
-        ...prev,
-        [index]: Math.round(currentValue * 10) / 10,
-      }));
-    }, 30);
-  };
-
-  useEffect(() => {
-    const timeoutIds = [];
-    if (isInView) {
-      stats.forEach((stat, index) => {
-        const { number } = splitValue(stat.value + (stat.suffix || ""));
-        const id = setTimeout(() => animateNumber(index, number), index * 200);
-        timeoutIds.push(id);
-      });
-    }
-    return () => { timeoutIds.forEach(clearTimeout); };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInView]);
 
   // ✅ Keep projects exactly as you said (real)
   const projects = [
@@ -120,70 +80,70 @@ const MissionsCompleted = () => {
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="w-full flex sm:flex-row flex-col justify-between items-center mb-8">
           {/* Left: Title + Copy */}
-          <motion.div
-            ref={ref}
-            variants={staggerContainer}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            className="mb-12 sm:mb-16 sm:flex-1 sm:border-r border-gray-300"
+          <div
+
+
+
+
+            className="mb-6 sm:mb-16 sm:flex-1 sm:border-r border-gray-300"
           >
-            <motion.h2
-              variants={fadeInUp}
+            <h2
+
               className="text-3xl sm:text-left text-center sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight"
             >
               Missions
               <br />
               <span className="text-primaryOrange">Completed</span>
-            </motion.h2>
+            </h2>
 
-            <motion.p
-              variants={fadeInUp}
+            <p
+
               className="text-lg sm:text-left text-center max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed px-4 sm:px-0 text-gray-700"
             >
               Here are a few projects we’ve delivered. Different industries, different stacks, one
               consistent focus: building systems that run reliably and perform better over time.
-            </motion.p>
+            </p>
 
 
-          </motion.div>
+          </div>
 
           {/* Right: Stats */}
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            animate={isInView ? "animate" : "initial"}
-            className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 sm:flex-1"
+          <div
+
+
+
+            className="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-16 lg:mb-20 sm:flex-1"
           >
             {stats.map((stat, index) => {
-              const { suffix } = splitValue(stat.value + (stat.suffix || ""));
+              const { number, suffix } = splitValue(stat.value + (stat.suffix || ""));
               return (
-                <motion.div key={stat?.id ?? stat?.slug ?? stat?.title ?? stat?.name ?? index} className="text-center">
+                <div key={stat?.id ?? stat?.slug ?? stat?.title ?? stat?.name ?? index} className="text-center">
                   <div className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 text-primaryBlue">
-                    {animatedNumbers[index] || 0}
+                    {number}
                     {suffix}
                   </div>
                   <div className="font-medium text-center text-gray-700">{stat.label}</div>
-                </motion.div>
+                </div>
               );
             })}
-          </motion.div>
+          </div>
         </div>
 
         {/* Projects showcase */}
         <div className="space-y-6 sm:space-y-8 lg:space-y-12">
           {projects.map((project, index) => (
-            <motion.div
+            <div
               key={project?.id ?? project?.slug ?? project?.title ?? project?.name ?? index}
-              initial={{ opacity: 0, y: 60 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+
+
+
               className="bg-white border border-gray-300 rounded-3xl overflow-hidden transition-all duration-100 group grid lg:grid-cols-2 gap-0"
             >
               {/* Left: Image */}
               <div
                 className={`relative h-48 sm:h-64 lg:h-full order-2 ${index % 2 === 0 ? "lg:order-2" : "lg:order-1"}`}
               >
-                <img
+                <CloudinaryImage
                   src={project.image}
                   alt={project.imageAlt}
                   className="size-full object-contain bg-gray-100 sm:rounded-none"
@@ -242,7 +202,7 @@ const MissionsCompleted = () => {
                   </Link>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

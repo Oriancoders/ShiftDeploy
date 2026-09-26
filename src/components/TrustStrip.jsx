@@ -1,98 +1,26 @@
-import React from "react";
-import { SiReact } from 'react-icons/si';
+import { SiReact, SiNextdotjs, SiNodedotjs, SiMongodb, SiDocker, SiKubernetes, SiVercel } from 'react-icons/si';
+import { FaAws, FaMicrosoft } from 'react-icons/fa6';
 
-/**
- * TrustStrip
- * - Shows a repeating row of logos (grayscale by default)
- * - Infinite marquee animation (left -> right)
- * - Hover the strip to pause; hover/focus a logo to reveal color
- *
- * Usage: <TrustStrip speed={30} /> // speed in seconds for full loop
- */
-
-const LOGO_URLS = [
-  // Replace these with your hosted logo URLs (PNG/SVG). Keep sizes similar for best results.
-  null,
-  "https://cdn.worldvectorlogo.com/logos/nextjs-2.svg",
-  "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg",
-  "https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg",
-  "https://cdn.worldvectorlogo.com/logos/docker.svg",
-  "https://cdn.worldvectorlogo.com/logos/kubernets.svg",
-  "https://cdn.worldvectorlogo.com/logos/aws-2.svg",
-  "https://cdn.worldvectorlogo.com/logos/microsoft-azure-2.svg",
-  "https://cdn.worldvectorlogo.com/logos/vercel.svg",
+const technologies = [
+  ['React', SiReact], ['Next.js', SiNextdotjs], ['Node.js', SiNodedotjs],
+  ['MongoDB', SiMongodb], ['Docker', SiDocker], ['Kubernetes', SiKubernetes],
+  ['AWS', FaAws], ['Microsoft Azure', FaMicrosoft], ['Vercel', SiVercel],
 ];
 
-const TrustStrip = ({ speed = 28 }) => {
-  const names = ['React', 'Next.js', 'Node.js', 'MongoDB', 'Docker', 'Kubernetes', 'AWS', 'Microsoft Azure', 'Vercel'];
-  // We duplicate the list to create a smooth seamless loop
-  const logos = [...LOGO_URLS, ...LOGO_URLS];
-
+export default function TrustStrip() {
   return (
-    <div className="w-full overflow-hidden bg-gray-50 py-20">
-        <h2 className="text-3xl sm:text-4xl font-semibold text-primaryBlue mb-6 leading-tight text-center px-6">Technologies We Work With</h2>
-      {/* Inline styles for keyframes so you don't need to change tailwind config */}
-      <style>{`
-        @keyframes trust-marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); } /* move half since we duplicated the list */
-        }
-
-        /* reduce GPU jank: use transform with translate3d */
-        .trust-marquee {
-          animation: trust-marquee ${speed}s linear infinite;
-          will-change: transform;
-        }
-
-        /* Pause animation when container is hovered */
-        .trust-strip:hover .trust-marquee,
-        .trust-strip:focus-within .trust-marquee {
-          animation-play-state: paused;
-        }
-      `}</style>
-
-      <div
-        className="trust-strip relative w-full  py-10 flex items-center "
-        aria-label="Technologies we use"
-      >
-        <div
-          className="trust-marquee flex items-center gap-8"
-          style={{ minWidth: "200%" }} /* ensures 2x length for seamless translation */
-        >
-          {logos.map((src, i) => (
-            <div
-              key={`${src}-${i}`}
-              className="flex-shrink-0"
-              style={{ width: "140px" }} /* adjust per design */
-            >
-              {src ? <img
-                src={src}
-                alt={i < names.length ? names[i] : ''}
-                className="mx-auto w-full object-contain filter grayscale transition-filter duration-200 ease-in-out logo-focus"
-                // Accessibility: make logos keyboard-focusable so keyboard users can remove grayscale
-                tabIndex={0}
-                style={{
-                  // ensure images look good on dark/light backgrounds
-                  maxHeight: "48px",
-                }}
-                onKeyDown={(e) => {
-                  // allow Enter/Space to "activate" (no action) but remove grayscale while focused
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.currentTarget.style.filter = "none";
-                    // put it back on blur (native behavior will remove later)
-                  }
-                }}
-                onFocus={(e) => (e.currentTarget.style.filter = "none")}
-                onBlur={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
-                onMouseEnter={(e) => (e.currentTarget.style.filter = "none")}
-                onMouseLeave={(e) => (e.currentTarget.style.filter = "grayscale(100%)")}
-              /> : <SiReact className="mx-auto size-12 text-gray-600" role="img" aria-label={i < names.length ? 'React' : undefined} aria-hidden={i >= names.length} />}
-            </div>
+    <section className="bg-gray-50 py-10 sm:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-4xl font-semibold text-primaryBlue mb-8 text-center">Technologies We Work With</h2>
+        <ul className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-5 sm:gap-8">
+          {technologies.map(([name, Icon]) => (
+            <li key={name} className="flex flex-col items-center gap-2 text-gray-600">
+              <Icon className="size-8 sm:size-10" aria-hidden="true" />
+              <span className="text-xs text-center">{name}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default TrustStrip;
+}

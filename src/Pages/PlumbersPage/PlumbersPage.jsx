@@ -1,4 +1,3 @@
-'use client';
 /*
   EXTRACTED DESIGN SYSTEM  (audited from the live codebase, nothing invented)
   ===========================================================================
@@ -69,26 +68,20 @@
     NOTE: that template only renders the ContactUs field names. See the
     mirrored hidden inputs in sections/PlumbersBooking.jsx.
 */
-import React, { lazy, Suspense, useEffect } from 'react';
 import Navigation from '../../components/Navigation';
 import Footer from '../../components/Footer';
-import ShiftDeployLoader from '../../components/ShiftDeployLoader';
 import PlumbersHero from './sections/PlumbersHero';
 import { PackageSelectionProvider } from './PackageSelectionContext';
 
-// Hero ships eagerly (it is the LCP element); everything below the fold is
-// split out, matching the pattern in Services/ShiftBuild/ShiftBuild.jsx.
-const PlumbersPain = lazy(() => import('./sections/PlumbersPain'));
-const PlumbersServices = lazy(() => import('./sections/PlumbersServices'));
-const PlumbersPackages = lazy(() => import('./sections/PlumbersPackages'));
-const PlumbersWork = lazy(() => import('./sections/PlumbersWork'));
-const PlumbersAudit = lazy(() => import('./sections/PlumbersAudit'));
-const PlumbersBooking = lazy(() => import('./sections/PlumbersBooking'));
+
+import PlumbersPain from './sections/PlumbersPain';
+import PlumbersServices from './sections/PlumbersServices';
+import PlumbersPackages from './sections/PlumbersPackages';
+import PlumbersWork from './sections/PlumbersWork';
+import PlumbersAudit from './sections/PlumbersAudit';
+import PlumbersBooking from './sections/PlumbersBooking';
 
 const PlumbersPage = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, []);
 
   return (
     <div className="w-full">
@@ -99,14 +92,13 @@ const PlumbersPage = () => {
       {/* Provider spans both the packages section and the booking form so a
           pricing CTA can preselect the enquiry dropdown. */}
       <PackageSelectionProvider>
-        <Suspense fallback={<ShiftDeployLoader />}>
           <PlumbersPain />
           <PlumbersServices />
           <PlumbersPackages />
           <PlumbersWork />
           <PlumbersAudit />
           <PlumbersBooking />
-        </Suspense>
+
       </PackageSelectionProvider>
 
       <Footer />

@@ -1,8 +1,4 @@
-'use client';
-import React from 'react';
-import { m as motion } from 'framer-motion';
 import { Mail, Phone, Slack, Linkedin } from 'lucide-react';
-import { fadeInUp, staggerContainer } from '../utils/animations';
 import Link from 'next/link';
 import { FaXTwitter } from 'react-icons/fa6';
 
@@ -36,16 +32,15 @@ const Footer = () => {
   return (
     <footer className="bg-primaryBlue text-white">
       <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-4 py-6 sm:py-8 lg:py-10">
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
+        <div
+
+
+
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 xl:gap-12"
         >
           {/* Company info */}
-          <motion.div variants={fadeInUp} className="sm:col-span-2 lg:col-span-1">
-            <motion.div whileHover={{ scale: 1.05 }} className="lg:max-w-60 sm:max-w-48 max-w-36">
+          <div className="sm:col-span-2 lg:col-span-1">
+            <div className="lg:max-w-60 sm:max-w-48 max-w-36">
               <img
                 src="/shiftdeploy-logo-white.png"
                 alt="ShiftDeploy"
@@ -54,7 +49,7 @@ const Footer = () => {
                 loading="lazy"
                 decoding="async"
               />
-            </motion.div>
+            </div>
             <p className="text-gray-300 mb-4 sm:mb-6 lg:mb-8 leading-relaxed text-xs sm:text-sm lg:text-base">
               Websites, apps and digital products for UK businesses, with ongoing
               performance and conversion support.
@@ -111,17 +106,17 @@ const Footer = () => {
                 </span>
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Company links */}
-          <motion.div variants={fadeInUp} className="sm:col-span-1 lg:col-span-1">
+          <div className="sm:col-span-1 lg:col-span-1">
             <h4 className="text-white font-semibold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
               Explore ShiftDeploy
             </h4>
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={link?.id ?? link?.slug ?? link?.title ?? link?.name ?? index}>
-                  <Link
+                  <Link prefetch={false}
                     href={link.href}
                     className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
                   >
@@ -130,17 +125,17 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Services links */}
-          <motion.div variants={fadeInUp} className="sm:col-span-1 lg:col-span-1">
+          <div className="sm:col-span-1 lg:col-span-1">
             <h4 className="text-white font-semibold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
               Services
             </h4>
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
               {footerLinks.services.map((link, index) => (
                 <li key={link?.id ?? link?.slug ?? link?.title ?? link?.name ?? index}>
-                  <Link
+                  <Link prefetch={false}
                     href={link.href}
                     className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
                   >
@@ -149,17 +144,17 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Case studies links */}
-          <motion.div variants={fadeInUp} className="sm:col-span-2 lg:col-span-1">
+          <div className="sm:col-span-2 lg:col-span-1">
             <h4 className="text-white font-semibold mb-3 sm:mb-4 lg:mb-6 text-sm sm:text-base lg:text-lg">
               Case Studies
             </h4>
             <ul className="space-y-1.5 sm:space-y-2 lg:space-y-3">
               {footerLinks.caseStudies.map((link, index) => (
                 <li key={link?.id ?? link?.slug ?? link?.title ?? link?.name ?? index}>
-                  <Link
+                  <Link prefetch={false}
                     href={link.href}
                     className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
                   >
@@ -168,15 +163,14 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Bottom section */}
-        <motion.div
-          variants={fadeInUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={{ once: true }}
+        <div
+
+
+
           className="mt-8 sm:mt-12 lg:mt-16 border-t border-gray-700 flex flex-col md:flex-row justify-center pt-6 items-center gap-y-3 sm:gap-y-4 lg:gap-y-6 md:gap-y-0"
         >
           <div className="flex flex-col sm:flex-row items-center gap-y-3 sm:gap-y-0 sm:gap-x-4 lg:gap-x-6 xl:gap-x-8 text-center sm:text-left">
@@ -184,13 +178,13 @@ const Footer = () => {
               © {currentYear} ShiftDeploy. All rights reserved.
             </p>
             <div className="flex gap-x-3 sm:gap-x-4 lg:gap-x-6">
-              <Link
+              <Link prefetch={false}
                 href="/privacy-policy"
                 className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
               >
                 Privacy Policy
               </Link>
-              <Link
+              <Link prefetch={false}
                 href="/terms-of-services"
                 className="text-gray-300 hover:text-primaryOrange transition-colors duration-300 font-medium text-xs sm:text-sm lg:text-base"
               >
@@ -198,7 +192,7 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );

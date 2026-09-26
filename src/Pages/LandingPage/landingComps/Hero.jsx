@@ -1,117 +1,39 @@
-'use client';
-import React, { lazy, Suspense } from "react";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
-import HeroAnimation from "./HeroAnimation";
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import HeroAnimation from './HeroAnimation';
 
-// 2. Lazy Import the heavy interactive component
-// This tells React: "Don't download this file until we actually need to render it."
-const CursorFollower = lazy(() => import("../../../utils/CursorFollower"));
-
-// 3. Create a lightweight placeholder that looks identical but doesn't move
-// This prevents layout shift (CLS) while the real button loads.
-
-
-const Hero = () => {
-
-
+export default function Hero() {
   return (
-    <>
-      <section className="bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12">
-        <div className="absolute inset-0 opacity-30">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle at 20% 80%, #4361EE 1px, transparent 1px), radial-gradient(circle at 80% 20%, #F76707 1px, transparent 1px), radial-gradient(circle at 40% 40%, #4361EE 1px, transparent 1px)",
-              backgroundSize: "100px 100px",
-            }}
-          />
-        </div>
-
-        <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-4 sm:gap-8 lg:gap-12 xl:gap-16 sm:items-center">
-
-            {/* Left Column: Text Content */}
-            <div className="flex flex-col lg:items-start sm:items-center">
-              <div className="hidden sm:block">
-                <Suspense fallback={<div className="w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-4 sm:px-6 py-2 rounded-full text-white font-semibold text-xs sm:text-sm lg:text-base">
-                  <p className="flex items-center justify-center gap-x-2 italic">
-                    Building <ArrowRight size={16} /> Optimisation{" "}
-                    <ArrowRight size={16} /> Succeed
-                  </p>
-                </div>}>
-                  <CursorFollower
-                    text={
-                      <p className="flex items-center justify-center gap-x-2 italic">
-                        Building <ArrowRight size={16} /> Optimisation{" "}
-                        <ArrowRight size={16} /> Succeed
-                      </p>
-                    }
-                    className="w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-6 py-2 rounded-full text-white"
-                    textClassName="text-white font-semibold text-xs sm:text-sm lg:text-base"
-                    gradientFrom="#f76707"
-                    gradientTo="#0B1D30"
-                    circleSize={100}
-                  />
-                </Suspense>
-              </div>
-
-              {/* //for mobile  */}
-              <span className="block sm:hidden w-fit mb-4 sm:mb-6 md:mb-8 bg-primaryBlue px-4 sm:px-6 py-2 rounded-full text-white font-semibold text-xs sm:text-sm lg:text-base">
-                <p className="flex items-center justify-center gap-x-2 italic">
-                  Building <ArrowRight size={16} /> Optimisation{" "}
-                  <ArrowRight size={16} /> Succeed
-                </p>
-              </span>
-
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left">
-                <h1>
-                  <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
-                   
-                    Web &amp; App Development
-                  </span>
-                  <br />
-                  <span className="text-primaryOrange"> for UK Businesses</span>
-                </h1>
-              </div>
-
-              <p className="text-xl mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl lg:mx-0 leading-relaxed sm:px-0 lg:text-left sm:text-center text-left text-gray-700">
-                Websites, apps and digital products for UK businesses.
-                We build, fix and optimise for speed, technical SEO and customer enquiries.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8 sm:mb-16">
-                <div>
-                  <Link
-                    href="/ContactUs"
-                    className="bg-primaryOrange border-2 border-primaryOrange hover:border-toOrange text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold flex items-center justify-center gap-x-2 hover:bg-toOrange text-md sm:w-fit w-full"
-                  >
-                    Get Free Audit
-                  </Link>
-                </div>
-
-                <div>
-                  <Link
-                    href={"/services/shiftspeed"}
-                    className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-4 sm:px-6 lg:px-8 xl:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl lg:rounded-2xl font-bold sm:hover:shadow-xl flex items-center justify-center gap-x-2 text-md"
-                  >
-                    View ShiftSpeed
-                  </Link>
-                </div>
-              </div>
+    <section className="bg-gray-50 pt-20 pb-10 sm:pt-28 sm:pb-14 text-textColor">
+      <div className="max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-12 items-center">
+          <div className="min-w-0">
+            <p className="inline-flex items-center gap-2 mb-5 sm:mb-7 bg-primaryBlue px-4 py-2 rounded-full text-white font-semibold text-xs sm:text-sm">
+              Building <ArrowRight size={14} aria-hidden="true" /> Optimisation
+              <ArrowRight size={14} aria-hidden="true" /> Succeed
+            </p>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-primaryBlue">
+              Web &amp; App Development
+              <span className="block text-primaryOrange"> for UK Businesses</span>
+            </h1>
+            <p className="text-base sm:text-xl mt-4 sm:mt-6 max-w-xl leading-relaxed text-gray-700">
+              Websites, apps and digital products for UK businesses. We build, fix and
+              optimise for speed, technical SEO and customer enquiries.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 mt-6 sm:mt-8">
+              <Link href="/ContactUs" prefetch={false} className="bg-primaryOrange border-2 border-primaryOrange hover:bg-toOrange text-white px-5 py-3 rounded-lg font-bold text-center">
+                Get Free Audit
+              </Link>
+              <Link href="/services/shiftspeed" prefetch={false} className="bg-white hover:bg-primaryBlue border-2 border-primaryBlue text-primaryBlue hover:text-white px-5 py-3 rounded-lg font-bold text-center">
+                View ShiftSpeed
+              </Link>
             </div>
-
-            {/* Right Column: Animation */}
-            <div className="relative mt-8 lg:mt-0 px-4 sm:px-0 flex items-center justify-center">
-              <HeroAnimation />
-            </div>
-
+          </div>
+          <div className="min-w-0 flex items-center justify-center">
+            <HeroAnimation />
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
-};
-
-export default Hero;
+}

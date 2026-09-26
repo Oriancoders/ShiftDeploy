@@ -1,43 +1,25 @@
-'use client';
-import React, { lazy, Suspense, useEffect } from "react";
-import Navigation from "../../../components/Navigation";
-import Footer from "../../../components/Footer";
-import ShiftDeployLoader from "../../../components/ShiftDeployLoader";
-import BuildHero from "./sections/BuildHero";
+import Navigation from '../../../components/Navigation';
+import Footer from '../../../components/Footer';
+import BuildHero from './sections/BuildHero';
+import BuildProblem from './sections/BuildProblem';
+import BuildSolution from './sections/BuildSolution';
+import BuildComparison from './sections/BuildComparison';
+import BuildFaqs from './sections/BuildFaqs';
+import { IndustriesSection } from './sections/IndustriesSection';
 
-const BuildProblem = lazy(() => import("./sections/BuildProblem"));
-const BuildSolution = lazy(() => import("./sections/BuildSolution"));
-const BuildComparison = lazy(() => import("./sections/BuildComparison"));
-const BuildFaqs = lazy(() => import("./sections/BuildFaqs"));
-const IndustriesSection = lazy(() =>
-  import("./sections/IndustriesSection").then((m) => ({ default: m.IndustriesSection }))
-);
-
-const ShiftBuild = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, []);
-
+export default function ShiftBuild() {
   return (
-    <>
-      
-
-      <div className="w-full">
-        <Navigation />
-
-        <Suspense fallback={<ShiftDeployLoader />}>
-          <BuildHero />
-          <BuildProblem />
-          <IndustriesSection />
-          <BuildSolution />
-          <BuildComparison />
-          <BuildFaqs />
-        </Suspense>
-
-        <Footer />
-      </div>
-    </>
+    <div className="w-full">
+      <Navigation />
+      <main>
+        <BuildHero />
+        <BuildProblem />
+        <IndustriesSection />
+        <BuildSolution />
+        <BuildComparison />
+        <BuildFaqs />
+      </main>
+      <Footer />
+    </div>
   );
-};
-
-export default ShiftBuild;
+}

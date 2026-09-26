@@ -4,7 +4,26 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-gutter: stable;
+}
+
+@media (min-width: 1024px) {
+  html { scrollbar-gutter: stable; }
+}
+
+.hero-speed-needle {
+  transform-origin: 120px 110px;
+  transform: rotate(65deg);
+  animation: hero-speed-sweep 900ms ease-out both;
+}
+
+@keyframes hero-speed-sweep {
+  from { transform: rotate(-65deg); }
+  to { transform: rotate(65deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-speed-needle, .trust-marquee { animation: none !important; }
 }
 
 /* Every image is width-constrained by default.

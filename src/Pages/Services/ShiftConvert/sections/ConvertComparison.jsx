@@ -59,8 +59,8 @@ export const ConvertComparison = () => {
     <section className="bg-slate" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-12 md:mb-16"
         >
@@ -74,8 +74,8 @@ export const ConvertComparison = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-7 gap-6 lg:gap-4 items-stretch">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={false}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-3 bg-white rounded-2xl border-2 border-primaryOrange p-6 md:p-8 shadow-lg relative overflow-hidden"
           >
@@ -93,8 +93,8 @@ export const ConvertComparison = () => {
               {beforeMetrics.map((metric, index) => (
                 <motion.div
                   key={metric?.id ?? metric?.slug ?? metric?.title ?? metric?.name ?? index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  initial={false}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.2 + index * 0.05 }}
                   className="flex items-center justify-between py-2 border-b border-red-100 last:border-0"
                 >
@@ -118,8 +118,8 @@ export const ConvertComparison = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            initial={false}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.3 }}
             className="lg:col-span-1 flex items-center justify-center py-4 lg:py-0"
           >
@@ -129,8 +129,8 @@ export const ConvertComparison = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={false}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-3 bg-white rounded-2xl border-2 border-primaryBlue p-6 md:p-8 shadow-lg relative overflow-hidden"
           >
@@ -148,8 +148,8 @@ export const ConvertComparison = () => {
               {afterMetrics.map((metric, index) => (
                 <motion.div
                   key={metric?.id ?? metric?.slug ?? metric?.title ?? metric?.name ?? index}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  initial={false}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.05 }}
                   className="flex items-center justify-between py-2 border-b border-green-100 last:border-0"
                 >
@@ -174,8 +174,8 @@ export const ConvertComparison = () => {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="rounded-2xl p-6 text-center"
         >

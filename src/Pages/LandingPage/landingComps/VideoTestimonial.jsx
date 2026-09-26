@@ -1,4 +1,5 @@
 'use client';
+import CloudinaryImage from '../../../components/CloudinaryImage';
 import React, { useState } from 'react';
 import { Play } from 'lucide-react'; // Ensure you have lucide-react installed
 
@@ -9,9 +10,9 @@ const VideoTestimonial = ({
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section className="w-full bg-gray-50 py-16 md:py-20 border-y border-gray-100">
+    <section className="w-full bg-gray-50 py-10 md:py-20 border-y border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 items-center">
           
           {/* LEFT: Video Facade (The Optimization) */}
           <div className="relative w-full rounded-xl shadow-2xl overflow-hidden bg-black aspect-video group">
@@ -23,7 +24,7 @@ const VideoTestimonial = ({
                 aria-label="Play testimonial video"
               >
                 {/* Optimized Poster Image */}
-                <img 
+                <CloudinaryImage
                   src={posterSrc} 
                   alt="Client video testimonial about working with ShiftDeploy"
                   className="size-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"

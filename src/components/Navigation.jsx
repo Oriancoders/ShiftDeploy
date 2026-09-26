@@ -14,6 +14,27 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
   const [openMobileDropdown, setOpenMobileDropdown] = useState(null);
   const pathname = usePathname();
 
+  useEffect(() => { setIsOpen(false); }, [pathname]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const closeOnEscape = (event) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+    const closeOnDesktop = () => {
+      if (window.innerWidth >= 1280) setIsOpen(false);
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    window.addEventListener('resize', closeOnDesktop);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', closeOnEscape);
+      window.removeEventListener('resize', closeOnDesktop);
+    };
+  }, [isOpen]);
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
@@ -62,7 +83,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
   return (
     <LazyMotion features={domAnimation}>
       <m.nav
-        initial={{ y: -100 }}
+        initial={false}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
         className={`fixed w-full z-50 transition-all duration-300
@@ -74,7 +95,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
           <div className="flex justify-between items-center h-14 sm:h-20">
             {/* Logo */}
             <m.div whileHover={{ scale: 1.05 }} className="2xl:max-w-60 sm:max-w-48 max-w-36">
-              <Link href="/">
+              <Link prefetch={false} href="/">
                 <img
                   src="/shiftdeploy-logo.png"
                   alt="ShiftDeploy"
@@ -86,7 +107,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
             </m.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex flex-1 items-center justify-center gap-x-5 xl:gap-x-10 2xl:gap-x-12 mx-6 xl:mx-12">
+            <div className="hidden xl:flex flex-1 items-center justify-center gap-x-5 xl:gap-x-10 2xl:gap-x-12 mx-6 xl:mx-12">
               {navItems.map(({ label, path, subPaths }) => {
                 const isActive =
                   pathname === path ||
@@ -107,7 +128,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                         ${isActive ? 'text-primaryBlue' : 'text-gray-700 hover:text-primaryBlue'}
                       `}
                     >
-                      <Link
+                      <Link prefetch={false}
                         href={path}
                         aria-current={isActive ? 'page' : undefined}
                         className="flex items-center gap-2"
@@ -130,7 +151,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                         className="absolute top-full left-0 bg-white shadow-lg rounded-md w-48 py-2 pt-3"
                       >
                         {subPaths.map((subItem) => (
-                          <Link
+                          <Link prefetch={false}
                             key={subItem.label}
                             href={subItem.path}
                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
@@ -147,7 +168,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
             </div>
 
             {/* Desktop CTA */}
-            <div className="hidden lg:flex items-center">
+            <div className="hidden xl:flex items-center">
               {onAuditClick ? (
                 <button
                   type="button"
@@ -157,7 +178,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                   Get Free Audit
                 </button>
               ) : (
-                <Link
+                <Link prefetch={false}
                   href="/ContactUs"
                   className="bg-primaryOrange hover:bg-toOrange text-white px-4 xl:px-6 py-2 xl:py-3 rounded-lg xl:rounded-xl font-semibold shadow-lg text-sm xl:text-base whitespace-nowrap"
                 >
@@ -167,7 +188,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
             </div>
 
             {/* Mobile menu button */}
-            <div className="lg:hidden">
+            <div className="xl:hidden">
               {/* Icon-only control, so it needs an explicit name: the SVG
                   carries no text and a screen reader or AI agent otherwise
                   announces it as an unlabelled button. aria-expanded and
@@ -192,17 +213,17 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
             <m.div
               id="mobile-navigation"
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: '100vh' }}
+              animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200"
+              className="xl:hidden bg-white border-t border-gray-200 max-h-[calc(100dvh-3.5rem)] sm:max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain"
             >
-              <div className="px-4 sm:px-6 py-4 sm:py-6 gap-y-3 sm:gap-y-4 flex flex-col justify-between h-[90dvh]">
+              <div className="px-4 sm:px-6 py-4 sm:py-6 gap-y-3 sm:gap-y-4 flex flex-col">
                 <div className="space-y-3">
                   {navItems.map(({ label, path, subPaths }, index) => (
                     <div key={index}>
                       {!subPaths && (
-                        <Link href={path}>
+                        <Link prefetch={false} href={path}>
                           <m.div
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -251,7 +272,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                                 className="pl-4 border-l border-gray-200 ml-4 space-y-2 overflow-hidden"
                               >
                                 {subPaths.map((subItem, subIndex) => (
-                                  <Link
+                                  <Link prefetch={false}
                                     key={subItem?.id ?? subItem?.slug ?? subItem?.title ?? subItem?.name ?? subIndex}
                                     href={subItem.path}
                                     onClick={() => setIsOpen(false)}
@@ -283,7 +304,7 @@ const Navigation = ({ isDarkBg = false, onAuditClick }) => {
                     Get Free Audit
                   </button>
                 ) : (
-                  <Link
+                  <Link prefetch={false}
                     href="/ContactUs"
                     onClick={() => setIsOpen(false)}
                     className="w-full text-center bg-primaryOrange text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold shadow-lg mt-4 sm:mt-6 text-base sm:text-lg"

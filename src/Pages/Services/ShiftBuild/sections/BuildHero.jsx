@@ -321,7 +321,7 @@ function AccentPill({ icon: Icon, label, value, color, position, delay }) {
 /* ========== MAIN HERO ========== */
 const BuildHero = () => {
   return (
-    <section className="bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-20 sm:pb-12">
+    <section className="bg-gradient-to-b from-gray-50 via-white to-gray-50 relative overflow-hidden flex sm:items-center pt-16 sm:pt-24 text-textColor pb-10 sm:pb-12">
       <div className="absolute inset-0 opacity-30 pointer-events-none">
         <div
           className="absolute inset-0"
@@ -352,10 +352,10 @@ const BuildHero = () => {
             />
 
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={false}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.2 }}
-              className="text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left"
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 lg:mb-8 leading-tight lg:text-left sm:text-center text-left"
             >
               <h1>
                 <span className="bg-gradient-to-r from-primaryBlue to-toBlue bg-clip-text text-transparent">
@@ -371,10 +371,10 @@ const BuildHero = () => {
             </motion.div>
 
             <motion.p
-              initial={{ opacity: 0 }}
+              initial={false}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.2 }}
-              className="text-xl mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl lg:mx-0 leading-relaxed sm:px-0 lg:text-left sm:text-center text-left text-gray-700"
+              className="text-base sm:text-xl mb-6 sm:mb-8 lg:mb-10 xl:mb-12 max-w-lg lg:max-w-xl xl:max-w-2xl lg:mx-0 leading-relaxed sm:px-0 lg:text-left sm:text-center text-left text-gray-700"
             >
               ShiftBuild designs and develops bespoke websites and web apps for UK businesses,
               with accessible journeys, technical SEO and performance built into the project.
@@ -384,9 +384,9 @@ const BuildHero = () => {
               </span>
             </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-20 sm:mb-16 px-4 sm:px-0">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-6 sm:mb-12 px-4 sm:px-0">
               <motion.div
-                initial={{ opacity: 0, y: 60 }}
+                initial={false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.3 }}
               >
@@ -402,7 +402,7 @@ const BuildHero = () => {
 
           {/* ===== RIGHT: Live Architecture Tree (transparent) ===== */}
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={false}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
             className="relative w-full flex items-center justify-center"

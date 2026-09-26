@@ -1,17 +1,14 @@
 'use client';
 import React, { useRef, useState } from "react";
-import { m as motion, useInView } from 'framer-motion';
+import { m as motion } from 'framer-motion';
 import {
 
   ArrowRight,
-  MoveLeft,
   Star,
 } from "lucide-react";
 import {
   staggerContainer,
-  scaleOnHover,
 } from "../../../utils/animations";
-import emailjs from "@emailjs/browser";
 import { trackGeneratedLead } from '../../../lib/leadTracking';
 import { websiteDomain } from '../../../lib/websiteDomain';
 import Link from "next/link";
@@ -23,8 +20,6 @@ const DeployToolkit = () => {
   const [message, setMessage] = useState("");
 
   const formRef = useRef();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const handleIndex = (index) => {
     setActiveIndex(index);
@@ -115,8 +110,8 @@ const DeployToolkit = () => {
 
     setLoading(true);
 
-    emailjs
-      .send(
+    import('@emailjs/browser')
+      .then(({ default: emailjs }) => emailjs.send(
         "service_tvail12",
         "template_5vz2597",
         {
@@ -125,7 +120,7 @@ const DeployToolkit = () => {
           current_date: new Date().toLocaleDateString(),
         },
         "QvcGHkk74en4u55cN"
-      )
+      ))
       .then(() => {
         trackGeneratedLead('homepage_audit');
         setMessage(
@@ -147,10 +142,9 @@ const DeployToolkit = () => {
     >
       <div className=" mx-auto flex flex-col justify-center items-center ">
         <motion.div
-          ref={ref}
           variants={staggerContainer}
-          initial="initial"
-          animate={isInView ? "animate" : "initial"}
+          initial={false}
+          animate="animate"
           className="text-center mb-8"
         >
           <motion.h2 className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6">
@@ -165,72 +159,27 @@ const DeployToolkit = () => {
 
         </motion.div>
 
-        <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 px-4 sm:px-6 lg:px-8 max-w-7xl 2xl:max-w-[80%]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-10 px-4 sm:px-6 lg:px-8 max-w-7xl 2xl:max-w-[80%]">
           {tools.map((tool, index) => (
-            <motion.div key={tool?.id ?? tool?.slug ?? tool?.title ?? tool?.name ?? index} variants={scaleOnHover}>
-              <div className="bg-white min-h-[350px] sm:min-h-[280px] lg:min-h-[350px] border sm:border-gray-200 rounded-3xl p-6 pb-12   sm:hover:shadow-md  transition-all duration-300 group relative overflow-hidden">
-                <h2 className="text-2xl font-semibold  mb-2 sm:mb-3 lg:mb-4 text-gray-900">
-                  {tool.title}
-                </h2>
-                <p className=" mb-3 sm:mb-4 lg:mb-6 leading-relaxed   sm:text-lg text-gray-700">
-                  {tool.description}
-                </p>
-
-                <div className="space-y-1.5 sm:space-y-2 lg:space-y-3">
-                  <div className="flex items-center  gap-x-2 sm:gap-x-3 ">
-                    <div className="size-3 bg-primaryOrange rounded-full flex-shrink-0" />
-                    <span className="text-md ">
-                      <span className="text-primaryOrange font-semibold">
-                        Problem:
-                      </span>
-                    </span>
-                  </div>
-                  <span className="text-gray-700 text-xs sm:text-base">
-                    {tool.problem}
-                  </span>
-                </div>
-                {/* this one card animation  */}
-                <div
-                  className={`w-full   absolute sm:-bottom-20 sm:left-20 bottom-0 left-0 group-hover:left-0 group-hover:bottom-0 text-white text-right ${activeIndex == index && "-bottom-20 left-20"
-                    }  transition-all duration-500`}
-                  style={{}}
-                >
-                  <span
-                    className={` font-bold bg-primaryBlue sm:px-2 px-4 py-2 inline-block rounded-tl-2xl cursor-pointer ${activeIndex == index && "translate-y-16 translate-x-1/2"
-                      }transition-all duration-500`}
-                    onClick={() => handleIndex(index)}
-                  >
-                    Reveal Solution{" "}
-                  </span>
-                </div>
-                {/* explanation card  */}
-                <div
-                  className={`size-full bg-primaryBlue  absolute  px-6 py-4 text-white rounded-2xl  ${activeIndex == index ? "top-0 left-0" : "-top-96 -left-96"
-                    } transition-all duration-500 flex flex-col justify-between`}
-                  style={{}}
-                >
-                  <div className="flex flex-col gap-y-2">
-                    <button
-                      type="button"
-                      aria-label="Close solution"
-                      title="Close solution"
-                      className={` font-bold   inline-block  cursor-pointer`}
-                      onClick={() => handleIndex(null)}
-                    >
-                      {" "}
-                      <MoveLeft />
-                    </button>
-
-                    <span className=" font-semibold text-xl">Our Solution</span>
-                    {tool.solution}
-                  </div>
-
-                  <div className="w-full text-right text-xl font-semibold ">
-                    {tool.result}
-                  </div>
-                </div>
+            <article key={tool.title} className="border border-gray-200 rounded-lg p-5 sm:p-6 bg-white flex flex-col items-start">
+              <h3 className="text-xl font-semibold mb-3 text-primaryBlue">{tool.title}</h3>
+              <p className="mb-4 leading-relaxed text-gray-700">{tool.description}</p>
+              <p className="text-sm text-gray-600 mb-4"><span className="font-semibold text-primaryOrange">Problem: </span>{tool.problem}</p>
+              <button
+                type="button"
+                aria-expanded={activeIndex === index}
+                aria-controls={`tool-solution-${index}`}
+                onClick={() => handleIndex(activeIndex === index ? null : index)}
+                className="mt-auto inline-flex items-center gap-2 py-2 font-semibold text-primaryBlue"
+              >
+                <ArrowRight size={18} aria-hidden="true" />
+                {activeIndex === index ? 'Hide solution' : 'Reveal solution'}
+              </button>
+              <div id={`tool-solution-${index}`} hidden={activeIndex !== index} className="mt-3 pt-4 border-t border-gray-200 text-sm leading-relaxed text-gray-700">
+                <p>{tool.solution}</p>
+                <p className="mt-3 font-semibold text-primaryBlue">{tool.result}</p>
               </div>
-            </motion.div>
+            </article>
           ))}
         </div>
 

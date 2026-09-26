@@ -1,12 +1,7 @@
-'use client';
 import { Layers, MessageSquare, Target } from "lucide-react"
-import { useEffect, useState, useRef } from "react"
 
 // Section 5: Philosophy
 function PhilosophySection() {
-  const [visibleItems, setVisibleItems] = useState([])
-  const sectionRef = useRef(null)
-  const itemRefs = useRef([])
 
   const philosophyItems = [
     {
@@ -35,31 +30,9 @@ function PhilosophySection() {
     },
   ]
 
-  useEffect(() => {
-    const __tids = [];
-    const __t = (id) => { __tids.push(id); return id; };
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = Number.parseInt(entry.target.getAttribute("data-index") || "0")
-          if (entry.isIntersecting) {
-            __t(setTimeout(() => {
-              setVisibleItems((prev) => [...new Set([...prev, index])])
-            }, index * 200))
-          }
-        })
-      },
-      { threshold: 0.2, rootMargin: "-100px" },
-    )
-
-    itemRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref)
-    })
-
-    return () => { observer.disconnect(); __tids.forEach(clearTimeout); }}, [])
 
   return (
-    <section ref={sectionRef} className="py-24 bg-primaryBlue relative overflow-hidden">
+    <section className="py-12 sm:py-24 bg-primaryBlue relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-toSecBlue/20 rounded-full blur-3xl"></div>
@@ -74,15 +47,11 @@ function PhilosophySection() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
+        <div className="grid md:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-20">
           {philosophyItems.map((item, index) => (
             <div
               key={item?.id ?? item?.slug ?? item?.title ?? item?.name ?? index}
-              ref={(el) => (itemRefs.current[index] = el)}
-              data-index={index}
-              className={`group cursor-pointer transition-all duration-300 transform ${
-                visibleItems.includes(index) ? "translate-y-0 opacity-100" : "translate-y-32 opacity-0"
-              }`}
+              className="group"
             >
               <div className="relative h-full">
                 <div

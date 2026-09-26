@@ -1,13 +1,7 @@
-'use client';
-import React, { useRef } from 'react';
-import { m as motion, useInView } from 'framer-motion';
 import { ArrowRight, CheckCircle } from 'lucide-react';
-import { fadeInUp, staggerContainer } from '../../../utils/animations';
 import Link from 'next/link';
 
 const InsideShiftDeploy = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const solutions = [
     {
@@ -64,38 +58,38 @@ const InsideShiftDeploy = () => {
   return (
     <section
       id="inside-shiftdeploy"
-      className=" text-textColor bg-gradient-to-b from-gray-50 to-gray-50"
+      className="pt-10 sm:pt-16 text-textColor bg-gray-50"
     >
       <div className="mx-auto flex flex-col justify-center items-center">
-        <motion.div
-          ref={ref}
-          variants={staggerContainer}
-          initial="initial"
-          animate={isInView ? "animate" : "initial"}
+        <div
+
+
+
+
           className="text-center mb-8"
         >
-          <motion.h2
-            variants={fadeInUp}
+          <h2
+
             className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight "
           >
             What <br/>
             <span className="text-primaryOrange ">ShiftDeploy Solves</span>
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            variants={fadeInUp}
+          <p
+
             className="text-lg max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6 leading-relaxed px-4 sm:px-0 text-gray-600"
           >
             We solve the issues that hold websites back, from slow performance and weak conversion to fragile builds and ongoing technical drag.
 
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl 2xl:max-w-[80%]">
+        <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl 2xl:max-w-[80%]">
           {solutions.map((solution, index) => (
-            <motion.div
+            <div
               key={solution?.id ?? solution?.slug ?? solution?.title ?? solution?.name ?? index}
-              className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-7 lg:p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group col-span-1 h-full relative overflow-hidden"
+              className="bg-white border border-gray-200 rounded-lg p-4 sm:p-7 lg:p-8 shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group col-span-1 h-full relative overflow-hidden"
             >
               <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primaryOrange to-primaryBlue" />
 
@@ -122,7 +116,7 @@ const InsideShiftDeploy = () => {
                   {solution.features.map((feature, featureIndex) => (
                     <li
                       key={feature?.id ?? feature?.slug ?? feature?.title ?? feature?.name ?? featureIndex}
-                      className="flex items-start justify-start gap-x-2 sm:gap-x-3 rounded-lg bg-gray-50 px-3 py-3"
+                      className="flex items-start justify-start gap-x-2 sm:gap-x-3 rounded-lg bg-gray-50 px-3 py-2 sm:py-3"
                     >
                       <CheckCircle className="w-4 sm:w-5 h-4 sm:h-5 mt-0.5 text-primaryOrange flex-shrink-0" />
                       <span className="text-gray-700 font-medium text-sm sm:text-base lg:text-lg leading-relaxed">
@@ -132,7 +126,7 @@ const InsideShiftDeploy = () => {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

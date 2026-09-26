@@ -1,13 +1,7 @@
-'use client';
-import React, { useRef } from 'react';
-import { m as motion, useInView } from 'framer-motion';
 import { Search, BarChart3, Lightbulb, CheckCircle, Rocket, ArrowRight } from 'lucide-react';
-import { fadeInUp, staggerContainer } from '../../../utils/animations';
 import Link from 'next/link';
 
 const ShiftProtocol = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, });
 
   const steps = [
     {
@@ -80,15 +74,15 @@ const ShiftProtocol = () => {
   return (
     <section id="the-shift-protocol" className="pt-12  bg-gradient-to-b from-white to-gray-50 overflow-hidden">
       <div className="mx-auto flex flex-col justify-center items-center ">
-        <motion.div
-          ref={ref}
-          variants={staggerContainer}
-          initial="initial"
-          animate={isInView ? "animate" : "initial"}
+        <div
+
+
+
+
           className="text-center mb-6 sm:mb-8 px-2" 
         >
-          <motion.h2
-            variants={fadeInUp}
+          <h2
+
             className="text-3xl sm:text-5xl font-bold text-primaryBlue mb-6 leading-tight  "
           >
             How
@@ -96,28 +90,28 @@ const ShiftProtocol = () => {
               We Turn Problems Into
             </span>
             Outcomes
-          </motion.h2>
-          <motion.p
-            variants={fadeInUp}
+          </h2>
+          <p
+
             className="text-lg  max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto mb-6  text-gray-700 leading-relaxed px-4 sm:px-0"
           >
             We don’t start with tools or assumptions. We start by understanding the problem,
             setting clear priorities, and delivering focused execution that actually moves the business forward.
 
 
-          </motion.p>
-          <motion.div
-            variants={fadeInUp}
+          </p>
+          <div
+
             className="flex justify-center"
           >
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
         {/* Process visualization */}
         <div className="relative mb-6  lg:mb-10">
 
 
-          <div className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl 2xl:max-w-[80%] mx-auto ">
+          <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16 lg:mb-20 px-4 sm:px-6 lg:px-8 max-w-7xl 2xl:max-w-[80%] mx-auto ">
             {steps.map((step, index) => (
               <div key={step?.id ?? step?.slug ?? step?.title ?? step?.name ?? index}>
                 {index == 5 ? (
@@ -148,19 +142,19 @@ const ShiftProtocol = () => {
                   </div>
 
                 ) : (
-                  <motion.div
+                  <div
                     key={step?.id ?? step?.slug ?? step?.title ?? step?.name ?? index}
-                    initial={{ opacity: 0, y: 60 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-                    transition={{ duration: 0.6, delay: index * 0.2, once: false }}
+
+
+
                     className="relative md:col-span-1 lg:col-span-1 bg-white border border-gray-200 rounded-xl sm:rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-md sm:hover:shadow-lg  transition-all duration-200 group h-full pt-6 sm:pt-8 lg:pt-8 sm:space-y-6 space-y-4 sm:min-h-[500px] "
                   >
 
 
-                    <motion.div
+                    <div
                       className={` w-12 sm:w-16 lg:w-14 h-12 sm:h-16 lg:h-14 mx-auto bg-primaryBlue rounded-lg sm:rounded-xl lg:rounded-2xl flex items-center justify-center flex-shrink-0   mb-4`}>
                       <step.icon className="w-6 sm:w-8  h-6 sm:h-8  text-white" />
-                    </motion.div>
+                    </div>
 
                     <h2 className="text-lg lg:text-xl xl:text-2xl font-semibold text-gray-900  text-center">{index + 1}: {step.title}</h2>
                     <p className="  text-center sm:leading-relaxed sm:text-lg text-gray-600">{step.description}</p>
@@ -173,7 +167,7 @@ const ShiftProtocol = () => {
                         </li>
                       ))}
                     </ul>
-                  </motion.div>
+                  </div>
                 )}
               </div>
             ))}
