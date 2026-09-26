@@ -57,7 +57,7 @@ const MissionsCompleted = () => {
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white hover:border-primaryOrange hover:shadow-lg transition"
               >
                 <div className="aspect-[16/10] bg-gray-100">
-                  <CloudinaryImage src={image} alt={imageAlt} className="size-full object-contain" loading="lazy" />
+                  <CloudinaryImage src={image} alt={imageAlt} className="size-full object-contain" width="960" height="600" loading="lazy" />
                 </div>
                 <div className="flex flex-1 flex-col p-6 sm:p-8">
                   <p className="text-sm font-semibold text-orange-700">

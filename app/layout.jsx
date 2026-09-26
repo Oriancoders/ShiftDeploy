@@ -34,6 +34,7 @@ export const metadata = {
     'ShiftDeploy',
     'web development UK',
   ],
+  icons: { icon: '/favicon.ico', apple: '/shiftdeploy-logo.png' },
   authors: [{ name: 'ShiftDeploy', url: 'https://shiftdeploy.com' }],
   creator: 'ShiftDeploy',
   openGraph: {
@@ -254,6 +255,7 @@ export default function RootLayout({ children }) {
         {/* Preconnect to Sanity CDN for blog images */}
         <link rel="preconnect" href="https://cdn.sanity.io" />
         <link rel="dns-prefetch" href="https://cdn.sanity.io" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="Site summary for AI assistants" />
       </head>
       <body className="overflow-x-hidden">
         <JsonLd data={organizationSchema} />

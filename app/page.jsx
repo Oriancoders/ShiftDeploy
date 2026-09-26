@@ -6,7 +6,7 @@ import JsonLd from '../src/components/JsonLd';
 export const metadata = {
   title: 'Losing Customers? AI, Apps & Automation | ShiftDeploy',
   description:
-    'Losing customers to missed calls, slow replies or admin? We fix it with the right tool: AI receptionist, WhatsApp automation, an app or a website.',
+    'Missed calls and slow replies cost you customers. We fix it with AI receptionists, WhatsApp automation, apps and websites.',
   keywords: [
     'AI receptionist UK', 'telephone answering service', 'WhatsApp automation for business', 'mobile app development UK', 'virtual receptionist', 'call answering service for small business', 'missed call text back',
     'small business web design UK', 'local SEO', 'website speed optimisation',
