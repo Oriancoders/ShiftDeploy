@@ -16,6 +16,7 @@ const DeployToolkit = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [sent, setSent] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,22 +25,24 @@ const DeployToolkit = () => {
 
     const domain = websiteDomain(websiteInput);
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!domain) {
-      setMessage('Please enter a valid website, like example.co.uk');
-      return;
-    }
-    if (!emailRegex.test(emailInput)) {
-      setMessage('Please enter a valid email address');
-      return;
-    }
+    const found = {};
+    if (!domain) found.website = 'Enter your website address, like yourbusiness.co.uk';
+    if (!emailRegex.test(emailInput.trim())) found.email = 'Enter your email address, like you@yourbusiness.co.uk';
+    setErrors(found);
+    if (found.website) return document.getElementById('audit-website')?.focus();
+    if (found.email) return document.getElementById('audit-email')?.focus();
 
     setLoading(true);
     import('@emailjs/browser')
       .then(({ default: emailjs }) => emailjs.send(
-        'service_tvail12',
-        'template_5vz2597',
-        { website: domain, email: emailInput, current_date: new Date().toLocaleDateString() },
+        'service_jrpagw4',
+        'template_scjrafd',
+        {
+          name: 'Free website audit request',
+          email: emailInput.trim(),
+          company: domain,
+          message: `[Homepage audit] Please send a free website audit for ${domain} to ${emailInput.trim()}. Requested ${new Date().toLocaleDateString('en-GB')}.`,
+        },
         'QvcGHkk74en4u55cN'
       ))
       .then(() => {
@@ -124,10 +127,14 @@ const DeployToolkit = () => {
             inputMode="url"
             autoComplete="url"
             value={websiteInput}
-            onChange={(e) => setWebsiteInput(e.target.value)}
+            onChange={(e) => { setWebsiteInput(e.target.value); setErrors((x) => ({ ...x, website: undefined })); }}
+            aria-invalid={Boolean(errors.website)}
+            aria-describedby={errors.website ? 'audit-website-error' : undefined}
             placeholder="yourbusiness.co.uk"
-            className="mt-2 w-full rounded-xl border border-gray-300 px-4 py-3.5 text-lg focus:border-primaryOrange focus:outline-none focus:ring-2 focus:ring-primaryOrange/30"
+            className={`mt-2 w-full rounded-xl border px-4 py-3.5 text-lg focus:outline-none focus:ring-2 ${errors.website ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:border-primaryOrange focus:ring-primaryOrange/30'}`}
           />
+
+          {errors.website && <p id="audit-website-error" className="mt-2 text-sm font-semibold text-red-700">{errors.website}</p>}
 
           <label htmlFor="audit-email" className="block mt-4 font-semibold text-primaryBlue">Where should we send it?</label>
           <input
@@ -136,10 +143,14 @@ const DeployToolkit = () => {
             type="email"
             autoComplete="email"
             value={emailInput}
-            onChange={(e) => setEmailInput(e.target.value)}
+            onChange={(e) => { setEmailInput(e.target.value); setErrors((x) => ({ ...x, email: undefined })); }}
+            aria-invalid={Boolean(errors.email)}
+            aria-describedby={errors.email ? 'audit-email-error' : undefined}
             placeholder="you@yourbusiness.co.uk"
-            className="mt-2 w-full rounded-xl border border-gray-300 px-4 py-3.5 text-lg focus:border-primaryOrange focus:outline-none focus:ring-2 focus:ring-primaryOrange/30"
+            className={`mt-2 w-full rounded-xl border px-4 py-3.5 text-lg focus:outline-none focus:ring-2 ${errors.email ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:border-primaryOrange focus:ring-primaryOrange/30'}`}
           />
+
+          {errors.email && <p id="audit-email-error" className="mt-2 text-sm font-semibold text-red-700">{errors.email}</p>}
 
           <button
             type="submit"
