@@ -150,13 +150,10 @@ export const portableTextComponents = {
       <div className="my-8 space-y-3">
         {value.title && <h3 className="text-2xl font-semibold text-primaryBlue mb-4">{value.title}</h3>}
         {Array.isArray(value.items) && value.items.map((item, idx) => (
-          <details key={item?.id ?? item?.slug ?? item?.title ?? item?.name ?? idx} className="group border border-gray-200 rounded-lg overflow-hidden">
-            <summary className="flex items-center justify-between px-5 py-4 cursor-pointer font-semibold text-primaryBlue bg-gray-50 hover:bg-gray-100 list-none">
-              {item.question}
-              <span className="ml-3 text-primaryOrange group-open:rotate-180 transition-transform">▼</span>
-            </summary>
+          <div key={item?.id ?? item?.slug ?? item?.title ?? item?.name ?? idx} className="border border-gray-200 rounded-lg overflow-hidden">
+<h4 className="px-5 py-4 font-semibold text-primaryBlue bg-gray-50">{item.question}</h4>
             <div className="px-5 py-4 text-gray-700 text-base leading-relaxed bg-white">{item.answer}</div>
-          </details>
+          </div>
         ))}
       </div>
     ),
