@@ -59,9 +59,9 @@ const PlumbersPain = () => (
           What Invisibility Is Costing You
         </h3>
         <p className="text-gray-700 leading-relaxed mb-4">
-          The average UK plumber job is worth £180–£400. If Google sends 10
-          extra calls to your competitor instead of you, that&apos;s
-          £1,800–£4,000 walking out the door.
+          A single plumbing job can be worth hundreds of pounds. Every call
+          that goes to a competitor because they showed up and you didn&apos;t
+          is work you never knew you lost.
         </p>
         <p className="text-gray-900 font-bold mb-6">Every. Single. Month.</p>
         <Eyebrow className="mb-6 !text-xs">

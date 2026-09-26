@@ -4,6 +4,15 @@ import Link from 'next/link';
 
 const projects = [
   {
+    title: 'From nothing online to found on Google',
+    client: 'Fluid Plumbing, Hull',
+    service: 'Website & local SEO',
+    image: '/fluid-plumbing-hull.webp',
+    imageAlt: 'Fluid Plumbing Solutions website for a plumber in Hull',
+    results: ['Live website in under two weeks', 'Showing on Google Maps locally', 'New customers finding him online'],
+    url: '/plumbers#work',
+  },
+  {
     title: 'An EV charging platform, built from scratch',
     client: 'Slacker IoT',
     service: 'Web app development',
@@ -43,12 +52,12 @@ const MissionsCompleted = () => {
             <span className="block text-primaryOrange">Real work, delivered.</span>
           </h2>
           <p className="text-lg sm:text-xl mt-6 leading-relaxed text-gray-700">
-            A few of the websites and web apps we’ve designed and built, from an online shop
-            to a full EV charging platform.
+            A few of the projects we’ve designed and built, from a plumber in Hull to a full EV
+            charging platform.
           </p>
         </div>
 
-        <ul className="-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:px-0 md:grid md:gap-6 md:overflow-visible md:pb-0 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="-mx-4 px-4 flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-4 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:px-0 md:grid md:gap-6 md:overflow-visible md:pb-0 md:grid-cols-2 xl:grid-cols-4">
           {projects.map(({ title, client, service, image, imageAlt, results, url }) => (
             <li key={client} className="snap-start shrink-0 w-[85%] md:w-auto">
               <Link

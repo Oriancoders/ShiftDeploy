@@ -144,6 +144,7 @@ const SearchResultVisual = () => {
           </motion.div>
         </div>
       </motion.div>
+      <p className="mt-3 text-center text-xs text-gray-500">Example search results</p>
     </div>
   );
 };

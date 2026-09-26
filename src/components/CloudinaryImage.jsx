@@ -1,4 +1,5 @@
 function sizedUrl(src, width) {
+  if (src.startsWith('/')) return src;
   const url = new URL(src);
   if (url.hostname !== 'res.cloudinary.com' || !url.pathname.includes('/image/upload/')) return src;
   url.pathname = url.pathname.replace('/image/upload/', `/image/upload/c_limit,w_${width}/`);

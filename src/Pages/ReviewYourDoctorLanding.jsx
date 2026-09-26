@@ -7,7 +7,6 @@ import {
 } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import ReviewYourDoctor from './LandingPage/landingComps/ReviewYourDoctor';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 
 const LIVE_URL = 'https://reviewyourdoctor.shiftdeploy.com';
@@ -30,7 +29,7 @@ const features = [
   { icon: ReceiptText, title: 'Billing without a billing system', desc: 'Add a patient, click send: a branded PDF receipt lands in their email, with revenue analytics on your dashboard.' },
   { icon: UsersRound, title: 'Patient records built in', desc: 'A simple patient book, deduplicated automatically, linked to their feedback and receipts.' },
   { icon: Palette, title: 'Your brand, your voice', desc: 'Your logo on the QR poster and receipts, fully customisable emails, sent as your clinic.' },
-  { icon: ShieldCheck, title: 'Compliance-first', desc: 'UK GDPR, a published DPA, consent at signup, and an equal review choice for every patient (no gating).' },
+  { icon: ShieldCheck, title: 'Compliance-first', desc: 'UK GDPR, a published DPA, consent at signup, and an equal review choice for every patient, in line with Google’s review rules.' },
   { icon: BarChart3, title: 'Live dashboard', desc: 'Ratings, trends, private feedback and revenue update in real time.' },
 ];
 
@@ -107,8 +106,8 @@ const ReviewYourDoctorLanding = () => {
             variants={fadeInUp}
             className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-gray-300"
           >
-            The QR-powered patient feedback platform that helps UK private clinics earn more
-            5-star Google reviews, while privately catching unhappy patients, fully GDPR compliant.
+            Patient review software that helps UK private clinics get more 5-star Google reviews,
+            and hear about any problem privately before it goes public. Built with UK GDPR in mind.
           </motion.p>
           <motion.div variants={fadeInUp} className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
             <a
@@ -164,7 +163,6 @@ const ReviewYourDoctorLanding = () => {
       )}
 
       {/* Reuse the rich product section */}
-      <ReviewYourDoctor />
 
       {/* HOW IT WORKS */}
       <section className="bg-gray-50 py-20 sm:py-24">

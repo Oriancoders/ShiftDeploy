@@ -9,6 +9,18 @@ const container = 'max-w-7xl 2xl:max-w-[80%] mx-auto px-4 sm:px-6 lg:px-8';
 
 const projects = [
   {
+    client: 'Fluid Plumbing Solutions, Hull',
+    service: 'Website & local SEO',
+    title: 'From nothing online to found on Google',
+    problem: 'A Hull plumber with no website, no logo and no way for local customers to find him online.',
+    did: 'We built his whole online presence from scratch: branding, a fast website and a Google Maps listing covering Hull and the East Riding.',
+    results: ['Live website in under two weeks', 'Showing on Google Maps locally', 'New customers finding him online'],
+    quote: '“Before ShiftDeploy I had nothing online. Now customers find me on Google. Best thing I’ve done for the business.” Zack Gibson, owner',
+    image: '/fluid-plumbing-hull.webp',
+    imageAlt: 'Fluid Plumbing Solutions website for a plumber in Hull',
+    href: '/plumbers#work',
+  },
+  {
     client: 'Bullseye Investments',
     service: 'Website design',
     title: 'A website that makes a clear first impression',
@@ -100,7 +112,7 @@ export default function OurWorkPage() {
 
         <section className="bg-white py-14 sm:py-20">
           <div className={`${container} space-y-10`}>
-            {projects.map(({ client, service, title, problem, did, results, image, imageAlt, href }, i) => (
+            {projects.map(({ client, service, title, problem, did, results, quote, image, imageAlt, href }, i) => (
               <article key={client} className="grid gap-8 lg:grid-cols-2 items-center rounded-2xl border border-gray-200 bg-gray-50 p-6 sm:p-10">
                 <div className={i % 2 ? 'lg:order-2' : ''}>
                   <div className="aspect-[16/10] overflow-hidden rounded-xl bg-white">
@@ -127,6 +139,7 @@ export default function OurWorkPage() {
                       </li>
                     ))}
                   </ul>
+                  {quote && <p className="mt-5 border-l-4 border-primaryOrange pl-4 text-gray-700 italic">{quote}</p>}
                   <Link href={href} prefetch={false} className="mt-6 min-h-[44px] inline-flex items-center gap-2 font-bold text-primaryBlue hover:text-primaryOrange">
                     Read the case study <ArrowRight size={18} aria-hidden="true" />
                   </Link>

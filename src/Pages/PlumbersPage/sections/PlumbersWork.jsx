@@ -29,7 +29,7 @@ const DETAILS = [
 ];
 
 const PlumbersWork = () => (
-  <Section className="bg-white">
+  <Section id="work" className="bg-white">
     <div className="mb-12">
       <Eyebrow className="mb-4">Our Work</Eyebrow>
       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primaryBlue">

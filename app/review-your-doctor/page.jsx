@@ -3,9 +3,9 @@ import ReviewYourDoctorLanding from '../../src/Pages/ReviewYourDoctorLanding';
 import JsonLd from '../../src/components/JsonLd';
 
 export const metadata = {
-  title: 'Review Your Doctor | QR Patient Feedback',
+  title: 'Get More Google Reviews for Your Clinic',
   description:
-    "A QR-powered patient feedback platform for UK private clinics. Earn more 5-star Google reviews, catch unhappy patients privately, stay GDPR compliant.",
+    'Review Your Doctor helps UK private clinics get more 5-star Google reviews and hear about problems privately first. Free for 30 days, then from £49 a month.',
   keywords: [
     'patient feedback software', 'dental clinic Google reviews', 'QR review system',
     'healthcare reputation management', 'GDPR patient feedback', 'clinic review platform',
@@ -13,9 +13,9 @@ export const metadata = {
   ],
   alternates: { canonical: 'https://shiftdeploy.com/review-your-doctor' },
   openGraph: {
-    title: 'Review Your Doctor | QR Patient Feedback',
+    title: 'Get More Google Reviews for Your Clinic | Review Your Doctor',
     description:
-      'A QR-powered patient feedback platform that grows 5-star Google reviews and catches unhappy patients privately, fully GDPR compliant.',
+      'Get more 5-star Google reviews for your clinic, and hear about problems privately first. Free for 30 days.',
     url: 'https://shiftdeploy.com/review-your-doctor',
     images: [{ url: '/og-image.png', width: 1200, height: 630 }],
   },
@@ -28,7 +28,7 @@ const schema = {
   applicationCategory: 'HealthApplication',
   operatingSystem: 'Web',
   description:
-    'QR-powered patient feedback platform for UK private clinics that grows 5-star Google reviews, captures negative feedback privately, and stays GDPR compliant.',
+    'Patient review software for UK private clinics that grows 5-star Google reviews and captures negative feedback privately, built with UK GDPR in mind.',
   url: 'https://reviewyourdoctor.shiftdeploy.com',
   offers: {
     '@type': 'Offer',

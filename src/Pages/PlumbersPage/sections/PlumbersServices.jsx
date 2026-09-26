@@ -10,27 +10,27 @@ import { Eyebrow, Section } from '../ui';
 const SERVICES = [
   {
     Icon: Wrench,
-    kicker: 'ShiftBuild',
-    title: 'Website That Actually Works',
-    body: 'Fast, mobile-first site built specifically for UK plumbers. Not a template. A real site that converts visitors into calls.',
+    kicker: 'Web design',
+    title: 'A Website That Brings In Calls',
+    body: 'A fast website built for plumbers, designed for phones. Not a template. Made to turn visitors into calls.',
   },
   {
     Icon: MapPin,
     kicker: 'Local SEO',
     title: 'Own Your City on Google',
-    body: 'We rank you for “plumber in [your city]” on Google Search and Maps. When locals search, you show up first.',
+    body: 'We help you show up for “plumber in [your area]” on Google Search and Maps, so more local people find you.',
   },
   {
     Icon: Sparkles,
     kicker: 'AI SEO / GEO',
     title: 'Found on ChatGPT & Gemini Too',
-    body: 'When someone asks AI “best plumber in Manchester”, your business comes up. Nobody else offers this to plumbers. We do.',
-    badge: 'New · Exclusive',
+    body: 'More people now ask AI tools like ChatGPT for a local plumber. We set your business up so these tools can find and recommend you.',
+    badge: 'New',
   },
   {
     Icon: RefreshCw,
-    kicker: 'ShiftFlow',
-    title: 'Growth on Autopilot',
+    kicker: 'Ongoing support',
+    title: 'Looked After Every Month',
     body: 'We maintain and grow your online presence monthly. You focus on jobs. We handle everything digital.',
   },
 ];
@@ -40,7 +40,7 @@ const PlumbersServices = () => (
     <div className="mb-12">
       <Eyebrow className="mb-4">What We Do</Eyebrow>
       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primaryBlue">
-        We Don&apos;t Build Websites. We Build Lead Machines.
+        We Don&apos;t Just Build Websites. We Build Ones That Bring In Jobs.
       </h2>
     </div>
 
